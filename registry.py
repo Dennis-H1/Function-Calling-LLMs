@@ -10,7 +10,7 @@ class Registry:
     def __contains__(self, name):
         return name in self._functions.keys()
 
-    def __getitem_(self, name):
+    def __getitem__(self, name):
         return self._functions.get(name)
 
     @property
