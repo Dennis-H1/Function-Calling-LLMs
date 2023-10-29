@@ -1,3 +1,7 @@
+import json
+from functools import wraps
+
+
 class Registry:
     def __init__(self):
         self._functions = {}
@@ -13,7 +17,19 @@ class Registry:
     def __getitem__(self, name):
         return self._functions.get(name)
 
+    def clear_register(self):
+        del self._functions
+        self._functions = {}
+
     @property
     def registered_functions(self):
         """Return the list of registered functions."""
         return self._functions
+
+
+def to_json(fcn):
+    @wraps(fcn)
+    def wrapper(*args, **kwargs):
+        result = fcn(*args, **kwargs)
+        return json.dumps(result)
+    return wrapper
