@@ -1,0 +1,86 @@
+[
+  {
+    "name": "top_rated_albums",
+    "description": "Retrieve the top-rated albums based on average rating.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "number",
+          "description": "The number of albums to return. Default is 10."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "most_reviewed_albums",
+    "description": "Retrieve the most reviewed albums.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "number",
+          "description": "The number of albums to return. Default is 10."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "albums_by_artist",
+    "description": "Retrieve all albums by a given artist.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "artist_name": {
+          "type": "string",
+          "description": "The name of the artist."
+        }
+      },
+      "required": ["artist_name"]
+    }
+  },
+  {
+    "name": "top_streamed_songs",
+    "description": "Retrieve the top-streamed songs.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "number",
+          "description": "The number of songs to return. Default is 10."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "songs_in_spotify_playlists",
+    "description": "Retrieve the top songs featured in the most Spotify playlists.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "number",
+          "description": "The number of songs to return. Default is 10."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "songs_by_artist",
+    "description": "Retrieve all songs by a given artist.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "artist_name": {
+          "type": "string",
+          "description": "The name of the artist."
+        }
+      },
+      "required": ["artist_name"]
+    }
+  }
+]
