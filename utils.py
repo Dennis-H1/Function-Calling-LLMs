@@ -69,8 +69,6 @@ def convert_args(function_name, functions_and_metadata):
     except KeyError as error:
         raise FunctionNotFoundError
 
-    print(metadata)
-
     expected_properties = extract_properties(metadata)
 
     request_args = request.args.to_dict()

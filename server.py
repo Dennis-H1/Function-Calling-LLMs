@@ -21,6 +21,9 @@ functions = match_functions_with_metadata(
 @app.route('/function_call/<function_name>', methods=['GET'])
 def function_call(function_name):
     try:
+
+        print(functions)
+
         converted_args = convert_args(function_name, functions)
     except FunctionNotFoundError as e:  # TODO conversion error
         return jsonify({"error": e}), 500
@@ -36,7 +39,11 @@ def function_call(function_name):
         return jsonify({"error": e})
 
 
+@app.route('/functions/all', methods=['GET'])
+def functions_all():
+    print(all_functions)
+    return jsonify({"result": sorted([name for _, name, _ in all_functions])})
+
+
 if __name__ == '__main__':
     app.run(debug=True)
-    print(Albums.top_rated_albums)
-    print(all_functions[0])
