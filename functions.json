@@ -1,19 +1,5 @@
 [
   {
-    "name": "top_rated_albums",
-    "description": "Returns the top-rated albums based on average rating.",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "n": {
-          "type": "number",
-          "description": "The number of albums to return. Default is 10."
-        }
-      },
-      "required": []
-    }
-  },
-  {
     "name": "albums_by_artist",
     "description": "Returns all albums by a given artist.",
     "parameters": {
@@ -27,7 +13,6 @@
       "required": ["artist_name"]
     }
   },
-
   {
     "name": "albums_by_genres",
     "description": "Returns all albums that contain any of the genres specified in the provided genres list.",
@@ -43,6 +28,21 @@
         }
       },
       "required": ["genres"]
+    }
+  },
+  {
+    "name": "top_streamed_songs",
+    "description": "Returns the n most streamed songs.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "number",
+          "description": "The number of top-streamed songs to return. Default is 10.",
+          "default": 10
+        }
+      },
+      "required": []
     }
   },
   {
@@ -99,6 +99,247 @@
         }
       },
       "required": []
+    }
+  },
+  {
+    "name": "filter_albums_by_date_range",
+    "description": "Filters and retrieves albums released within a specified date range. The range is inclusive of the start and end dates.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "start_date": {
+          "type": "string",
+          "description": "The start date of the date range for filtering albums. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format."
+        },
+        "end_date": {
+          "type": "string",
+          "description": "The end date of the date range for filtering albums. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format."
+        }
+      },
+      "required": ["start_date", "end_date"]
+    }
+  },
+  {
+    "name": "albums_by_genres2",
+    "description": "Retrieves albums that match specified inclusion and exclusion genre criteria.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "genres_in": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of genre strings the albums must contain."
+        },
+        "genres_out": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of genre strings the albums must not contain."
+        }
+      },
+      "required": ["genres_in", "genres_out"]
+    }
+  },
+  {
+    "name": "albums_by_date_and_genres",
+    "description": "Retrieves albums released on a specific date, in a specific month, or in a specific year that match any of the specified genres.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "release_date": {
+          "type": "string",
+          "description": "The release date of the albums. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format."
+        },
+        "genres": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of genre strings to filter albums by."
+        }
+      },
+      "required": ["release_date", "genres"]
+    }
+  },
+  {
+    "name": "high_rated_albums",
+    "description": "Retrieves albums with an average rating above a specified threshold and a minimum number of ratings.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "rating_threshold": {
+          "type": "number",
+          "description": "The minimum average rating for the albums. Defaults to 4.0 if not specified.",
+          "default": 4.0
+        },
+        "min_ratings": {
+          "type": "number",
+          "description": "The minimum number of ratings an album must have. Defaults to 100 if not specified.",
+          "default": 100
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "top_streamed_songs_by_genre",
+    "description": "Retrieves the top streamed songs within a specific genre, sorted by number of streams.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "genre": {
+          "type": "string",
+          "description": "The genre of the songs."
+        },
+        "n": {
+          "type": "number",
+          "description": "The number of top-streamed songs to return. Defaults to 5 if not specified.",
+          "default": 5
+        }
+      },
+      "required": ["genre"]
+    }
+  },
+  {
+    "name": "songs_by_danceability_explicitness",
+    "description": "Retrieves songs that meet a specified danceability threshold and explicitness criteria.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "danceability_threshold": {
+          "type": "number",
+          "description": "The minimum danceability rating (percentage) to filter songs by."
+        },
+        "explicit": {
+          "type": "boolean",
+          "description": "Flag to filter songs by explicit content. Defaults to True if not specified.",
+          "default": true
+        }
+      },
+      "required": ["danceability_threshold"]
+    }
+  },
+  {
+    "name": "albums_by_year_genres_and_descriptors",
+    "description": "Retrieves albums released on a specific date, month, or year, that fit within specified genres and match given descriptors.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "release_date": {
+          "type": "string",
+          "description": "Release date to filter albums by, in YYYY, YYYY-MM, or YYYY-MM-DD format."
+        },
+        "genres": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of genres to filter albums by."
+        },
+        "descriptors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of descriptors to match albums with."
+        }
+      },
+      "required": ["release_date", "genres", "descriptors"]
+    }
+  },
+  {
+    "name": "high_rated_reviewed_albums",
+    "description": "Retrieves albums that meet specific criteria of high average ratings, a minimum number of ratings, and a minimum number of reviews.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "rating_threshold": {
+          "type": "number",
+          "description": "The minimum average rating for the albums."
+        },
+        "min_ratings": {
+          "type": "number",
+          "description": "The minimum number of ratings an album must have."
+        },
+        "review_threshold": {
+          "type": "number",
+          "description": "The minimum number of reviews an album must have."
+        }
+      },
+      "required": ["rating_threshold", "min_ratings", "review_threshold"]
+    }
+  },
+  {
+    "name": "songs_by_danceability_explicitness_speechiness",
+    "description": "Retrieves songs based on specified thresholds for danceability, speechiness, and explicit content criteria.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "danceability_threshold": {
+          "type": "number",
+          "description": "The minimum danceability rating (percentage) to filter songs by."
+        },
+        "speechiness_threshold": {
+          "type": "number",
+          "description": "The minimum speechiness rating (percentage) to filter songs by."
+        },
+        "explicit": {
+          "type": "boolean",
+          "description": "Flag to filter songs by explicit content. Defaults to True if not specified."
+        }
+      },
+      "required": ["danceability_threshold", "speechiness_threshold"]
+    }
+  },
+  {
+    "name": "top_streamed_songs_by_artist_date",
+    "description": "Retrieves the top streamed songs by a specific artist, released on a given date, month, or year.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "artist_name": {
+          "type": "string",
+          "description": "The name of the artist whose songs are to be retrieved."
+        },
+        "release_date": {
+          "type": "string",
+          "description": "The release date of the songs to filter by, in YYYY, YYYY-MM, or YYYY-MM-DD format."
+        },
+        "n": {
+          "type": "number",
+          "description": "The number of top-streamed songs to return. Defaults to 5 if not specified."
+        }
+      },
+      "required": ["artist_name", "release_date"]
+    }
+  },
+  {
+    "name": "unique_albums",
+    "description": "Finds albums that are distinctive in terms of genre diversity and artist collaboration but have lower average ratings.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "genres_threshold": {
+          "type": "number",
+          "description": "The minimum number of genres an album must cover."
+        },
+        "artist_count_threshold": {
+          "type": "number",
+          "description": "The minimum number of artists required to be involved in an album."
+        },
+        "max_rating_threshold": {
+          "type": "number",
+          "description": "The maximum average rating that an album can have."
+        }
+      },
+      "required": [
+        "genres_threshold",
+        "artist_count_threshold",
+        "max_rating_threshold"
+      ]
     }
   }
 ]
