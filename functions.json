@@ -1,21 +1,7 @@
 [
   {
     "name": "top_rated_albums",
-    "description": "Retrieve the top-rated albums based on average rating.",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "n": {
-          "type": "number",
-          "description": "The number of albums to return. Default is 10."
-        }
-      },
-      "required": []
-    }
-  },
-  {
-    "name": "most_reviewed_albums",
-    "description": "Retrieve the most reviewed albums.",
+    "description": "Returns the top-rated albums based on average rating.",
     "parameters": {
       "type": "object",
       "properties": {
@@ -29,7 +15,7 @@
   },
   {
     "name": "albums_by_artist",
-    "description": "Retrieve all albums by a given artist.",
+    "description": "Returns all albums by a given artist.",
     "parameters": {
       "type": "object",
       "properties": {
@@ -41,74 +27,78 @@
       "required": ["artist_name"]
     }
   },
+
   {
-    "name": "top_streamed_songs",
-    "description": "Retrieve the top-streamed songs.",
+    "name": "albums_by_genres",
+    "description": "Returns all albums that contain any of the genres specified in the provided genres list.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "genres": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of genre strings to filter albums by."
+        }
+      },
+      "required": ["genres"]
+    }
+  },
+  {
+    "name": "songs_by_release_date",
+    "description": "Retrieves all songs released on a specific date, in a specific month, or in a specific year, based on the provided release date.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "release_date": {
+          "type": "string",
+          "description": "The release date to filter songs by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+        }
+      },
+      "required": ["release_date"]
+    }
+  },
+  {
+    "name": "songs_by_longest_duration",
+    "description": "Returns the top 'n' songs sorted by their duration, from longest to shortest.",
     "parameters": {
       "type": "object",
       "properties": {
         "n": {
           "type": "number",
-          "description": "The number of songs to return. Default is 10."
+          "description": "The number of top songs to return, based on duration. Defaults to 10 if not specified."
         }
       },
       "required": []
     }
   },
   {
-    "name": "songs_in_spotify_playlists",
-    "description": "Retrieve the top songs featured in the most Spotify playlists.",
+    "name": "songs_by_danceability",
+    "description": "Returns the top 10 songs sorted by streams that have a danceability rating above a specified threshold percentage.",
     "parameters": {
       "type": "object",
       "properties": {
-        "n": {
+        "danceability_threshold": {
           "type": "number",
-          "description": "The number of songs to return. Default is 10."
+          "description": "The minimum danceability rating (in percentage) to filter songs by."
+        }
+      },
+      "required": ["danceability_threshold"]
+    }
+  },
+  {
+    "name": "songs_by_explicitness",
+    "description": "Retrieves the top 10 songs filtered by their explicit content, sorted by a metric such as streams or popularity.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "explicit": {
+          "type": "boolean",
+          "description": "True for explicit content, False otherwise. Defaults to True."
         }
       },
       "required": []
-    }
-  },
-  {
-    "name": "songs_by_artist",
-    "description": "Retrieve all songs by a given artist.",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "artist_name": {
-          "type": "string",
-          "description": "The name of the artist."
-        }
-      },
-      "required": ["artist_name"]
-    }
-  },
-  {
-    "name": "artist_by_song",
-    "description": "Retrieve the artist of the specified song. ",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "song_name": {
-          "type": "string",
-          "description": "The name of the song."
-        }
-      },
-      "required": ["song_name"]
-    }
-  },
-  {
-    "name": "artist_by_album",
-    "description": "Retrieve the artist of the specified album. ",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "album_name": {
-          "type": "string",
-          "description": "The name of the album."
-        }
-      },
-      "required": ["album_name"]
     }
   }
 ]
