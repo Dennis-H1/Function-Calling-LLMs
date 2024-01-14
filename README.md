@@ -1,2 +1,5 @@
-# Function-Calling-LLMs
-Function Calling LLMs
+# Reasoning:
+
+# Compare albums from two years how they changed
+
+#

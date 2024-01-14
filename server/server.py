@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 import json
 
-from music import Albums, Songs, all_functions
-from utils import match_functions_with_metadata, convert_args, handle_function, FunctionExecutionError, FunctionNotFoundError
+from server.music import Albums, Songs, all_functions
+from server.utils import match_functions_with_metadata, convert_args, handle_function, FunctionExecutionError, FunctionNotFoundError
 
 app = Flask(__name__)
 
@@ -43,6 +43,11 @@ def function_call(function_name):
 def functions_all():
     print(all_functions)
     return jsonify({"result": sorted([name for _, name, _ in all_functions])})
+
+
+@app.route('/', methods=['GET'])
+def start():
+    print(request)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,87 @@
+{
+  "runs": [
+    {
+      "metadata": {
+        "id": "SINGLE-STEP-TRAVEL-V01",
+        "name": "Mannheim Function Calling Benchmark - GPT3.5 Music wo/ Example Values",
+        "function_set_id": "MUSIC-FUNC-DESC-1PARAM_V01",
+        "question_set_id": "MUSIC_SINGLE_STEP_V01",
+        "model": "gpt3.5-turbo",
+        "hyperparameters": {
+          "temperature": 0
+        },
+        "run_timestamp": "2024-01-15T12:00:00Z",
+        "test_driver_version": "1.0.0"
+      },
+
+      "statistics": {
+        "number_of_functions": {
+          "total": 140,
+          "correct": 102,
+          "accuracy": 0.729
+        },
+        "number_of_parameters": {
+          "total": 540,
+          "correct": 202,
+          "accuracy": 0.374
+        },
+        "number_of_answers": {
+          "total": 50,
+          "correct": 12,
+          "accuracy": 0.24
+        },
+        "number_of_tokens": {
+          "input": 303245,
+          "output": 23000
+        }
+      },
+
+      "results": [
+        {
+          "question_id": "MUSIC_SINGLE_STEP_AGG_Q1",
+          "question": "How long are the top 50 songs?",
+          "category": "Aggregation",
+          "overall_match": false,
+          "error_category": null,
+          "functions": {
+            "target": {
+              "paths": [
+                {
+                  "path_id": 1,
+                  "functions": ["Function1", "Function2"],
+                  "parameters": [
+                    { "param1": "value1", "param3": "value3" },
+                    { "param1": "value1", "param3": "value3" }
+                  ]
+                },
+                {
+                  "path_id": 2,
+                  "functions": ["Function1", "Function2"],
+                  "parameters": [
+                    { "param1": "value1", "param3": "value3" },
+                    { "param1": "value1", "param3": "value3" }
+                  ]
+                }
+              ],
+              "answers": ["Answer1", "Answer1"]
+            },
+            "model": {
+              "functions": ["Function5", "Function2"],
+              "parameters": [
+                { "param1": "value1", "param3": "value3" },
+                { "param1": "value1", "param3": "value3" }
+              ],
+              "answer": ""
+            },
+
+            "evaluation": {
+              "function": "Correct",
+              "parameters": "Partly Correct",
+              "answer": "False"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

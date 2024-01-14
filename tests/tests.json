@@ -1,0 +1,121 @@
+{
+  "question_sets": [
+    {
+      "id": "MUSIC_SINGLE_STEP_ONE_PARAM_V01",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ One Parameter and One Step",
+      "domain": "Music",
+      "date": "2024-01-14",
+      "description": "A paragraph of text describing the set of questions and its intended use",
+      "authors": [],
+      "license": "Apache 2.0",
+      "function_sets": ["MUSIC_FUNC_DESC_1PARAM_V01"],
+      "questions": [
+        {
+          "id": "MUSIC_SINGLE_STEP_AGG_Q1",
+          "category": "Aggregation",
+          "question": "",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["Function1"],
+                "parameters": [{ "param1": "value1", "param3": "value3" }]
+              },
+              {
+                "path_id": 2,
+                "functions": ["Function1"],
+                "parameters": [{ "param1": "value1", "param3": "value3" }]
+              }
+            ],
+            "expected_answers": ["Possible answer 1"],
+            "motivation": "",
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_AGG_Q1",
+          "category": "Aggregation",
+          "question": "",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["Function1", "Function2"],
+                "parameters": [
+                  { "param1": "value1", "param3": "value3" },
+                  { "param1": "value1", "param3": "value3" }
+                ]
+              },
+              {
+                "path_id": 2,
+                "functions": ["Function1", "Function2"],
+                "parameters": [
+                  { "param1": "value1", "param3": "value3" },
+                  { "param1": "value1", "param3": "value3" }
+                ]
+              }
+            ],
+            "expected_answers": ["Possible answer 1", "Possible answer 2"],
+            "motivation": "",
+            "comment": null
+          }
+        }
+      ]
+    }
+  ],
+
+  "function_sets": [
+    {
+      "id": "MUSIC_FUNC_DESC_1PARAM_V01",
+      "name": "Music - functions with simple function description and simple parameter description.",
+      "domain": "Music",
+      "categories": [
+        "Single Parameter",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "functions": [
+        {
+          "name": "albums_by_artist",
+          "description": "Returns all albums by a given artist.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        },
+        {
+          "name": "albums_by_genres",
+          "description": "Returns all albums that contain any of the genres specified in the provided genres list.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of genre strings to filter albums by."
+              }
+            },
+            "required": ["genres"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "MUSIC_FUNC_DESC_2STEP_V01",
+      "name": "Music - functions",
+      "domain": "Music",
+      "categories": [""],
+      "functions": []
+    }
+  ]
+}

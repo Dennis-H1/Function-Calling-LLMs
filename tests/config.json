@@ -1,0 +1,15 @@
+{
+  "id": "MUSIC_SINGLE_STEP_V01",
+  "name": "Mannheim Function Calling Benchmark - Testrun GPT3.5 Music One Parameter",
+  "description": "Configuration for running the benchmark against GPT3.5 using the single step travel questions and the detailed function descriptions including 3 example values for each parameter.",
+  "authors": [],
+  "license": "Apache2.0",
+  "model": "gpt4-preview",
+  "hyperparameters": {
+    "temperature": 0
+  },
+  "prompt": "You are a helpful assistant. Answer briefly.",
+  "function_set": "TRAVEL-FUNCT-DESCR-3VAL",
+  "question_set": "SINGLE-STEP-TRAVEL-V01",
+  "output_file": "./output.json"
+}
