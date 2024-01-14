@@ -1,0 +1,55 @@
+{
+  "question_sets": [
+    {
+      "id": "MUSIC_SINGLE_STEP_V01",
+      "name": "Mannheim Function Calling Benchmark: Single Step Questions w/ One Parameter",
+      "domain": "Music",
+      "date": "2024-01-15",
+      "description": "",
+      "authors": [],
+      "license": "Apache 2.0",
+      "function_sets": ["MUSIC-FUNC-DESC-1PARAM"],
+      "questions": [
+        {
+          "id": "MUSIC_SINGLE_STEP_AGG_Q1",
+          "category": "Aggregation",
+          "question": "",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["Function1", "Function2"],
+                "parameters": [
+                  { "param1": "value1", "param3": "value3" },
+                  { "param1": "value1", "param3": "value3" }
+                ]
+              },
+              {
+                "path_id": 2,
+                "functions": ["Function1", "Function2"],
+                "parameters": [
+                  { "param1": "value1", "param3": "value3" },
+                  { "param1": "value1", "param3": "value3" }
+                ]
+              }
+            ],
+            "expected_answers": ["Possible answer 1", "Possible answer 2"],
+            "motivation": "",
+            "comment": null
+          }
+        }
+      ]
+    }
+  ],
+
+  "function_sets": [
+    {
+      "id": "MUSIC-FUNC-DESC-1PARAM_V01",
+      "name": "",
+      "domain": "Music",
+      "category": "",
+      "available_functions": []
+    }
+  ]
+}
