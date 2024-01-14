@@ -1,0 +1,16 @@
+{
+  "Name": "Mannheim Function Calling Benchmark - Testrun GPT3.5 Travel 3 Example Values",
+  "ID": "SINGLE-STEP-TRAVEL-V01",
+  "Date": "2024-01-15",
+  "Description": "Configuration for running the benchmark against GPT3.5 using the single step travel questions and the detailed function descriptions including 3 example values for each parameter.",
+  "Authors": [],
+  "License": "Apache or similar open-source license",
+  "Model": "Exact name of the LLM that is used",
+  "Hyperparameters": {
+    "temperature": 0
+  },
+  "Prompt": "You are a helpful assistant. Answer briefly.",
+  "FunctionSetID": "TRAVEL-FUNCT-DESCR-3VAL",
+  "QuestionSetID": "SINGLE-STEP-TRAVEL-V01",
+  "OUTPUTFILE": "Name of the file into which the output (result) will be written."
+}
