@@ -69,12 +69,12 @@
             ],
             "answer": "10"
           },
+          "correct_answers": ["10"],
           "evaluation": {
             "functions": "PartlyCorrect",
             "parameters": "Wrong",
             "answer": "Correct"
-          },
-          "correct_answers": ["10"]
+          }
         }
       ]
     }
