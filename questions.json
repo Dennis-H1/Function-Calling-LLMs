@@ -1,19 +1,170 @@
 {
   "question_sets": [
     {
-      "id": "MUSIC_SINGLE_STEP_MULTI_PARAM_V01",
-      "name": "Mannheim Function Calling Benchmark: Questions w/ Multiple Parameters and One Step",
+      "id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Single Parameters, One Step and One Shot",
       "domain": "Music",
-      "date": "2024-01-14",
-      "description": "Simple, single step questions designed to test a subset of Selection of Records, Aggregation, Interpretation and Reasoning.",
+      "date": "2024-01-27",
+      "description": "Simple, single step questions designed to test a subset of selection of records, interpretation, reasoning, different languages, typos, related and unrelated context",
       "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
       "license": "Apache 2.0",
-      "function_sets": ["MUSIC_FUNC_DESC_1PARAM_V01"],
+      "function_sets": ["MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01"],
       "questions": [
         {
-          "id": "MUSIC_SINGLE_STEP_SEL_Q1",
-          "category": "Selection of Records",
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q1",
+          "category": "Selection",
+          "question": "Among the top 30 rated albums, which were released by 'Radiohead'?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (string matching).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_rated_albums"],
+                "parameters": [{ "n": 30 }]
+              }
+            ],
+            "expected_answers": ["Selects all 3 albums."],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q2",
+          "category": "Selection",
+          "question": "Which songs released in 2012 were performed by more than 1 artist?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (integer interval matching).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "2012" }]
+              }
+            ],
+            "expected_answers": ["Returns 3 songs performed by 2 artists."],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q3",
+          "category": "Selection",
+          "question": "Among all Eminem albums, which has the highest number of ratings?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (max integer).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist"],
+                "parameters": [{ "artist_name": "Eminem" }]
+              }
+            ],
+            "expected_answers": ["The Marshall Mathers LP"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q4",
+          "category": "Selection",
+          "question": "Among all top 10 albums, which have between 20000 and 50000 ratings?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (interval of large integer bounds).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_rated_albums"],
+                "parameters": [{ "n": 10 }]
+              }
+            ],
+            "expected_answers": [
+              "Includes all 8 of 10 songs that are within that range."
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q5",
+          "category": "Selection",
+          "question": "Among the top 5 albums, which 2 albums are the most similar based on genres? Why?",
+          "motivation": "Evaluate the ability to perform targeted information retrieval of a dataset based on similarity (reasoning).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_rated_albums"],
+                "parameters": [{ "n": 5 }]
+              }
+            ],
+            "expected_answers": [
+              "'Wish You Were Here'by Pink Floyd and 'In the Court of the Crimson King' by King Crimson. Both albums share genres such as 'Progressive Rock,' 'Psychedelic Rock,' and 'Art Rock.'"
+            ],
+            "comment": "Evaluated based on reasoning ability to see the overlap genre types."
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q6",
+          "category": "Selection",
+          "question": "What is the 10th highest rated 'Alt-Pop' song?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small double, rating).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_genres"],
+                "parameters": [{ "genres": ["Alt-Pop"] }]
+              }
+            ],
+            "expected_answers": ["I Don't Want You Anymore by Cherry Glazerr"],
+            "comment": "Small integer/floating values may provide problems for selection"
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q7",
+          "category": "Selection",
+          "question": "Among the 15 songs with the longest durations, what is the most popular song?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small double, rating).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_longest_duration"],
+                "parameters": [{ "n": 15 }]
+              }
+            ],
+            "expected_answers": ["2085 by AJR"],
+            "comment": ""
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q8",
+          "category": "Selection",
+          "question": "Among the songs released in 2020, which one has the 2nd most streams?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (large integer).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "2020" }]
+              }
+            ],
+            "expected_answers": [
+              "Levitating (feat. DaBaby) with 1802514301 streams"
+            ],
+            "comment": ""
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q9",
+          "category": "Selection",
           "question": "Among the most 15 streamed songs, which were released between January 2023 and Februray 2023?",
+          "motivation": "Evaluate the ability to perform targeted information retrieval of a dataset based on interval (date bounds)",
           "target": {
             "chained": false,
             "solution_paths": [
@@ -23,102 +174,64 @@
                 "parameters": [{ "n": 15 }]
               }
             ],
-            "expected_answers": ["'Everything I Love'"],
-            "motivation": "Ability to interpret datetimes and select records by datetime range.",
-            "comment": null
+            "expected_answers": ["Everything I Love by Morgan Wallen"],
+            "comment": ""
           }
         },
         {
-          "id": "MUSIC_SINGLE_STEP_AGG_Q1",
-          "category": "Aggregation",
-          "question": "Provide me the average number of streams of songs of Taylor Swift released in the time period of April till Dec of 2023.",
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q10",
+          "category": "Selection",
+          "question": "Among all Wonky albums, what album with more than 5 genres has the highest average rating?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on niche genre and on interval (more than, integer) and max. selection of record.",
           "target": {
             "chained": false,
             "solution_paths": [
               {
                 "path_id": 1,
-                "functions": ["top_streamed_songs_by_artist_date_range"],
-                "parameters": [
-                  {
-                    "artist_name": "Taylor Swift",
-                    "start_date": "2023-04",
-                    "end_date": "2023-12",
-                    "n": 5
-                  }
-                ]
-              }
-            ],
-            "expected_answers": ["47294288.2"],
-            "motivation": "Ability to make sense and perform selection using datetime ranges, string and integers. Followed by aggregation capabilities (average).",
-            "comment": null
-          }
-        },
-        {
-          "id": "MUSIC_SINGLE_STEP_INT_Q1",
-          "category": "Interpretation",
-          "question": "Can you retrieve the trendy tracks of Bad Bunny which were released on the last leap day?",
-          "target": {
-            "chained": false,
-            "solution_paths": [
-              {
-                "path_id": 1,
-                "functions": ["top_streamed_songs_by_artist"],
-                "parameters": [{ "artist_name": "Bad Bunny", "n": 5 }]
-              }
-            ],
-            "expected_answers": ["A Tu Merced", "La Santa", "La Zona"],
-            "motivation": "Ability to make sense of temporal information that represents an edge case.",
-            "comment": null
-          }
-        },
-        {
-          "id": "MUSIC_SINGLE_STEP_INT_Q2",
-          "category": "Interpretation",
-          "question": "Among the albums released in 2015, with rating, number of rating and reviews greater than 3, 10000 and 130 respectively, return the ones performed by females.",
-          "target": {
-            "chained": false,
-            "solution_paths": [
-              {
-                "path_id": 1,
-                "functions": ["high_rated_reviewed_albums_by_date"],
-                "parameters": [
-                  {
-                    "rating_threshold": 3,
-                    "min_ratings": 10000,
-                    "review_threshold": 130,
-                    "release_date": "2015"
-                  }
-                ]
-              }
-            ],
-            "expected_answers": ["Art Angels and E·MO·TION"],
-            "motivation": "Ability to make sense of various datatypes: dates, small to larger integers. Followed by manual filtering of records with the female descriptor.",
-            "comment": null
-          }
-        },
-        {
-          "id": "MUSIC_SINGLE_STEP_REA_Q1",
-          "category": "Reasoning",
-          "question": "I consider popularity to be based on the number of reviews received by the album. Provide me the most popular album from the list of albums released in 2020 of type Indie Folk which are melodic and poetic.",
-          "target": {
-            "chained": false,
-            "solution_paths": [
-              {
-                "path_id": 1,
-                "functions": ["albums_by_year_genres_and_descriptors"],
-                "parameters": [
-                  {
-                    "release_date": "2020",
-                    "genre": "['Indie Folk']",
-                    "descriptor": "['melodic', 'poetic']"
-                  }
-                ]
+                "functions": ["albums_by_genres"],
+                "parameters": [{ "genres": ["Wonky"] }]
               }
             ],
             "expected_answers": [
-              "Returns 'Microphones in 2020' with 193 reviews."
+              "OIL OF EVERY PEARL'S UN-INSIDES by SOPHIE",
+              "Niggas on the Moon: The Powers That B Disc 1 by Death Grips"
             ],
-            "motivation": "Ability to make value transition capabilities of projecting popularity to number of reviews.",
+            "comment": ""
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q11",
+          "category": "Selection",
+          "question": "What is the 25th most popular song?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on the last record only.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs"],
+                "parameters": [{ "n": 25 }]
+              }
+            ],
+            "expected_answers": ["VAGABUNDO"],
+            "comment": ""
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q12",
+          "category": "Selection",
+          "question": "Among the 10 longest songs, which were released by 'Eminem'?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on criterion (string match).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_longest_duration"],
+                "parameters": [{ "n": 10 }]
+              }
+            ],
+            "expected_answers": ["7"],
             "comment": null
           }
         }
@@ -128,14 +241,15 @@
 
   "function_sets": [
     {
-      "id": "MUSIC_FUNC_SIMPLE_DESC_V01",
-      "name": "Music - functions with simple function description and simple parameter description.",
+      "id": "MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
+      "name": "Music - functions with simple function description, no examples.",
       "domain": "Music",
       "categories": [
-        "Single Parameter",
+        "All Parameters",
         "Without Examples",
         "Simple Description"
       ],
+      "num_functions": 9,
       "functions": [
         {
           "name": "albums_by_artist",
@@ -152,8 +266,36 @@
           }
         },
         {
+          "name": "top_rated_albums",
+          "description": "Returns the top-rated albums based on average rating.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of albums to return. Default is 10."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "artist_by_album",
+          "description": "Returns the artist of an album by its name.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "album_name": {
+                "type": "string",
+                "description": "The name of the album."
+              }
+            },
+            "required": ["album_name"]
+          }
+        },
+        {
           "name": "albums_by_genres",
-          "description": "Returns all albums that contain any of the genres specified in the provided genres list.",
+          "description": "Retrieves a list of albums that contain any of the specified genres.",
           "parameters": {
             "type": "object",
             "properties": {
@@ -162,7 +304,7 @@
                 "items": {
                   "type": "string"
                 },
-                "description": "A list of genre strings to filter albums by."
+                "description": "A list of genre strings the albums must contain."
               }
             },
             "required": ["genres"]
@@ -211,442 +353,35 @@
           }
         },
         {
-          "name": "songs_by_danceability",
-          "description": "Returns the top 10 songs sorted by streams that have a danceability rating above a specified threshold percentage.",
+          "name": "artist_by_song",
+          "description": "Returns the artist of the song.",
           "parameters": {
             "type": "object",
             "properties": {
-              "danceability_threshold": {
-                "type": "number",
-                "description": "The minimum danceability rating (in percentage) to filter songs by."
-              }
-            },
-            "required": ["danceability_threshold"]
-          }
-        },
-        {
-          "name": "songs_by_explicitness",
-          "description": "Retrieves the top 10 songs filtered by their explicit content, sorted by a metric such as streams or popularity.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "explicit": {
-                "type": "boolean",
-                "description": "True for explicit content, False otherwise. Defaults to True."
-              }
-            },
-            "required": []
-          }
-        },
-        {
-          "name": "filter_albums_by_date_range",
-          "description": "Filters and retrieves albums released within a specified date range. The range is inclusive of the start and end dates.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "start_date": {
+              "song_name": {
                 "type": "string",
-                "description": "The start date of the date range for filtering albums. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format."
-              },
-              "end_date": {
-                "type": "string",
-                "description": "The end date of the date range for filtering albums. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format."
+                "description": "The name of the song."
               }
             },
-            "required": ["start_date", "end_date"]
+            "required": ["song_name"]
           }
         },
         {
-          "name": "albums_by_genres2",
-          "description": "Retrieves albums that match specified inclusion and exclusion genre criteria.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "genres_in": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "A list of genre strings the albums must contain."
-              },
-              "genres_out": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "A list of genre strings the albums must not contain."
-              }
-            },
-            "required": ["genres_in", "genres_out"]
-          }
-        },
-        {
-          "name": "albums_by_date_and_genres",
-          "description": "Retrieves albums released on a specific date, in a specific month, or in a specific year that match any of the specified genres.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "release_date": {
-                "type": "string",
-                "description": "The release date of the albums. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format."
-              },
-              "genres": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "A list of genre strings to filter albums by."
-              }
-            },
-            "required": ["release_date", "genres"]
-          }
-        },
-        {
-          "name": "high_rated_albums",
-          "description": "Retrieves albums with an average rating above a specified threshold and a minimum number of ratings.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "rating_threshold": {
-                "type": "number",
-                "description": "The minimum average rating for the albums. Defaults to 4.0 if not specified."
-              },
-              "min_ratings": {
-                "type": "number",
-                "description": "The minimum number of ratings an album must have. Defaults to 100 if not specified."
-              }
-            },
-            "required": []
-          }
-        },
-        {
-          "name": "top_streamed_songs_by_genre",
-          "description": "Retrieves the top streamed songs within a specific genre, sorted by number of streams.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "genre": {
-                "type": "string",
-                "description": "The genre of the songs."
-              },
-              "n": {
-                "type": "number",
-                "description": "The number of top-streamed songs to return. Defaults to 5 if not specified."
-              }
-            },
-            "required": ["genre"]
-          }
-        },
-        {
-          "name": "songs_by_danceability_explicitness",
-          "description": "Retrieves songs that meet a specified danceability threshold and explicitness criteria.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "danceability_threshold": {
-                "type": "number",
-                "description": "The minimum danceability rating (percentage) to filter songs by."
-              },
-              "explicit": {
-                "type": "boolean",
-                "description": "Flag to filter songs by explicit content. Defaults to True if not specified."
-              }
-            },
-            "required": ["danceability_threshold"]
-          }
-        },
-        {
-          "name": "albums_by_year_genres_and_descriptors",
-          "description": "Retrieves albums released on a specific date, month, or year, that fit within specified genres and match given descriptors.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "release_date": {
-                "type": "string",
-                "description": "Release date to filter albums by, in YYYY, YYYY-MM, or YYYY-MM-DD format."
-              },
-              "genres": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "List of genres to filter albums by."
-              },
-              "descriptors": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "List of descriptors to match albums with."
-              }
-            },
-            "required": ["release_date", "genres", "descriptors"]
-          }
-        },
-        {
-          "name": "high_rated_reviewed_albums",
-          "description": "Retrieves albums that meet specific criteria of high average ratings, a minimum number of ratings, and a minimum number of reviews.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "rating_threshold": {
-                "type": "number",
-                "description": "The minimum average rating for the albums."
-              },
-              "min_ratings": {
-                "type": "number",
-                "description": "The minimum number of ratings an album must have."
-              },
-              "review_threshold": {
-                "type": "number",
-                "description": "The minimum number of reviews an album must have."
-              }
-            },
-            "required": ["rating_threshold", "min_ratings", "review_threshold"]
-          }
-        },
-        {
-          "name": "songs_by_danceability_explicitness_speechiness",
-          "description": "Retrieves songs based on specified thresholds for danceability, speechiness, and explicit content criteria.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "danceability_threshold": {
-                "type": "number",
-                "description": "The minimum danceability rating (percentage) to filter songs by."
-              },
-              "speechiness_threshold": {
-                "type": "number",
-                "description": "The minimum speechiness rating (percentage) to filter songs by."
-              },
-              "explicit": {
-                "type": "boolean",
-                "description": "Flag to filter songs by explicit content. Defaults to True if not specified."
-              }
-            },
-            "required": ["danceability_threshold", "speechiness_threshold"]
-          }
-        },
-        {
-          "name": "top_streamed_songs_by_artist_date",
-          "description": "Retrieves the top streamed songs by a specific artist, released on a given date, month, or year.",
+          "name": "songs_by_artist",
+          "description": "Returns all songs by a given artist.",
           "parameters": {
             "type": "object",
             "properties": {
               "artist_name": {
                 "type": "string",
-                "description": "The name of the artist whose songs are to be retrieved."
-              },
-              "release_date": {
-                "type": "string",
-                "description": "The release date of the songs to filter by, in YYYY, YYYY-MM, or YYYY-MM-DD format."
-              },
-              "n": {
-                "type": "number",
-                "description": "The number of top-streamed songs to return. Defaults to 5 if not specified."
+                "description": "The name of the artist."
               }
             },
-            "required": ["artist_name", "release_date"]
-          }
-        },
-        {
-          "name": "unique_albums",
-          "description": "Finds albums that are distinctive in terms of genre diversity and artist collaboration but have lower average ratings.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "genres_threshold": {
-                "type": "number",
-                "description": "The minimum number of genres an album must cover."
-              },
-              "artist_count_threshold": {
-                "type": "number",
-                "description": "The minimum number of artists required to be involved in an album."
-              },
-              "max_rating_threshold": {
-                "type": "number",
-                "description": "The maximum average rating that an album can have."
-              }
-            },
-            "required": [
-              "genres_threshold",
-              "artist_count_threshold",
-              "max_rating_threshold"
-            ]
-          }
-        },
-        {
-          "name": "albums_by_dates_genres_rating",
-          "description": "Retrieves albums released within a specific date range, filtered by genres to include and exclude, and having an average rating above a specified minimum threshold.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "start_date": {
-                "type": "string",
-                "description": "The start date of the date range for filtering albums, in YYYY-MM-DD format."
-              },
-              "end_date": {
-                "type": "string",
-                "description": "The end date of the date range for filtering albums, in YYYY-MM-DD format."
-              },
-              "genre_in": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "List of genres that the albums must include."
-              },
-              "genre_out": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "List of genres that the albums must not include."
-              },
-              "min_rating": {
-                "type": "number",
-                "description": "The minimum average rating threshold for the albums."
-              }
-            },
-            "required": [
-              "start_date",
-              "end_date",
-              "genre_in",
-              "genre_out",
-              "min_rating"
-            ]
-          }
-        },
-        {
-          "name": "high_rated_reviewed_albums_by_date",
-          "description": "Retrieves albums that exceed a certain rating threshold, have a minimum number of ratings and reviews, and are released on a specified date.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "rating_threshold": {
-                "type": "number",
-                "description": "The minimum average rating for the albums."
-              },
-              "min_ratings": {
-                "type": "number",
-                "description": "The minimum number of ratings an album must have."
-              },
-              "review_threshold": {
-                "type": "number",
-                "description": "The minimum number of reviews an album must have."
-              },
-              "release_date": {
-                "type": "string",
-                "description": "The release date of the albums, in YYYY, YYYY-MM, or YYYY-MM-DD format."
-              }
-            },
-            "required": [
-              "rating_threshold",
-              "min_ratings",
-              "review_threshold",
-              "release_date"
-            ]
-          }
-        },
-        {
-          "name": "top_streamed_songs_by_artist_date_range",
-          "description": "Finds the top streamed songs by a specific artist within a given date range, and returns a specified number of these top songs.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "artist_name": {
-                "type": "string",
-                "description": "The name of the artist whose songs are to be retrieved."
-              },
-              "start_date": {
-                "type": "string",
-                "description": "The start date of the date range for filtering songs, in YYYY-MM-DD format."
-              },
-              "end_date": {
-                "type": "string",
-                "description": "The end date of the date range for filtering songs, in YYYY-MM-DD format."
-              },
-              "n": {
-                "type": "number",
-                "description": "The number of top-streamed songs to return. Defaults to 5 if not specified."
-              }
-            },
-            "required": ["artist_name", "start_date", "end_date", "n"]
-          }
-        },
-        {
-          "name": "speechiness_songs",
-          "description": "Finds songs based on specific criteria of speechiness, energy, explicit content, and BPM, allowing a tolerance range for speechiness and energy values.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "speechiness": {
-                "type": "number",
-                "description": "Target threshold for speechiness with an acceptable deviation defined by the threshold."
-              },
-              "energy": {
-                "type": "number",
-                "description": "Target threshold for energy with an acceptable deviation defined by the threshold."
-              },
-              "explicit": {
-                "type": "boolean",
-                "description": "Flag indicating whether to filter for explicit content."
-              },
-              "bpm": {
-                "type": "number",
-                "description": "Target Beats Per Minute (BPM) to filter songs by."
-              },
-              "threshold": {
-                "type": "number",
-                "description": "Range value to determine the acceptable deviation from the speechiness and energy thresholds. Defaults to 20 if not specified."
-              }
-            },
-            "required": [
-              "speechiness",
-              "energy",
-              "explicit",
-              "bpm",
-              "threshold"
-            ]
-          }
-        },
-        {
-          "name": "instrumental_songs",
-          "description": "Identifies songs based on specified levels of instrumentalness, valence, danceability, and BPM, with a tolerance range for each parameter.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "instrumentalness": {
-                "type": "number",
-                "description": "Target threshold for instrumentalness, with a specified deviation range."
-              },
-              "valence": {
-                "type": "number",
-                "description": "Target threshold for valence, with a specified deviation range."
-              },
-              "danceability": {
-                "type": "number",
-                "description": "Target threshold for danceability, with a specified deviation range."
-              },
-              "bpm": {
-                "type": "number",
-                "description": "Target Beats Per Minute (BPM) to filter songs by."
-              },
-              "threshold": {
-                "type": "number",
-                "description": "Range value to determine the acceptable deviation from the instrumentalness, valence, and danceability thresholds."
-              }
-            },
-            "required": [
-              "instrumentalness",
-              "valence",
-              "danceability",
-              "bpm",
-              "threshold"
-            ]
+            "required": ["artist_name"]
           }
         }
       ]
-    }
+    },
+    {}
   ]
 }

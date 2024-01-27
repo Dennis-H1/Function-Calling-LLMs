@@ -1,0 +1,197 @@
+{
+  "question_sets": [
+    {
+      "id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Single Parameters, One Step and One Shot",
+      "domain": "Music",
+      "date": "2024-01-27",
+      "description": "Simple, single step questions designed to test a subset of selection of records, interpretation, reasoning, different languages, typos, related and unrelated context",
+      "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
+      "license": "Apache 2.0",
+      "function_sets": ["MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01"],
+      "questions": [
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q1",
+          "category": "Selection",
+          "question": "Among the top 30 rated albums, which were released by 'Radiohead'?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (string matching).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_rated_albums"],
+                "parameters": [{ "n": 30 }]
+              }
+            ],
+            "expected_answers": ["Selects all 3 albums."],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q2",
+          "category": "Selection",
+          "question": "Which songs released in 2012 were performed by more than 1 artist?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (integer interval matching).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "2012" }]
+              }
+            ],
+            "expected_answers": ["Returns 3 songs performed by 2 artists."],
+            "comment": null
+          }
+        }
+      ]
+    }
+  ],
+
+  "function_sets": [
+    {
+      "id": "MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
+      "name": "Music - functions with simple function description, no examples.",
+      "domain": "Music",
+      "categories": [
+        "All Parameters",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 9,
+      "functions": [
+        {
+          "name": "albums_by_artist",
+          "description": "Returns all albums by a given artist.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        },
+        {
+          "name": "top_rated_albums",
+          "description": "Returns the top-rated albums based on average rating.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of albums to return. Default is 10."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "artist_by_album",
+          "description": "Returns the artist of an album by its name.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "album_name": {
+                "type": "string",
+                "description": "The name of the album."
+              }
+            },
+            "required": ["album_name"]
+          }
+        },
+        {
+          "name": "albums_by_genres",
+          "description": "Retrieves a list of albums that contain any of the specified genres.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of genre strings the albums must contain."
+              }
+            },
+            "required": ["genres"]
+          }
+        },
+        {
+          "name": "top_streamed_songs",
+          "description": "Returns the n most streamed songs.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of top-streamed songs to return. Default is 10."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "songs_by_release_date",
+          "description": "Retrieves all songs released on a specific date, in a specific month, or in a specific year, based on the provided release date.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date to filter songs by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+              }
+            },
+            "required": ["release_date"]
+          }
+        },
+        {
+          "name": "songs_by_longest_duration",
+          "description": "Returns the top 'n' songs sorted by their duration, from longest to shortest.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of top songs to return, based on duration. Defaults to 10 if not specified."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "artist_by_song",
+          "description": "Returns the artist of the song.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "song_name": {
+                "type": "string",
+                "description": "The name of the song."
+              }
+            },
+            "required": ["song_name"]
+          }
+        },
+        {
+          "name": "songs_by_artist",
+          "description": "Returns all songs by a given artist.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        }
+      ]
+    }
+  ]
+}

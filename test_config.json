@@ -9,7 +9,7 @@
     "temperature": 0
   },
   "prompt": "You are a helpful assistant. Answer briefly.",
-  "function_set": "MUSIC_FUNC_SIMPLE_DESC_V01",
-  "question_set": "MUSIC_SINGLE_STEP_MULTI_PARAM_V01",
+  "function_set": "MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
+  "question_set": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1",
   "output_file": "./output.json"
 }

@@ -24,7 +24,7 @@
     {
       "question_id": "MUSIC_SINGLE_STEP_AGG_Q1",
       "category": "Aggregation",
-      "error_category": null, //? maybe here already
+      "error_category": null,
       "question": "How long are the top 50 songs?",
       "overallMatch": false,
       "functions": {
