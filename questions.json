@@ -50,7 +50,7 @@
           "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q3",
           "category": "Selection",
           "question": "Among all Eminem albums, which has the highest number of ratings?",
-          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (max integer).",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (max. integer).",
           "target": {
             "chained": false,
             "solution_paths": [
@@ -108,7 +108,7 @@
           "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q6",
           "category": "Selection",
           "question": "What is the 10th highest rated 'Alt-Pop' song?",
-          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small double, rating).",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small floating point number).",
           "target": {
             "chained": false,
             "solution_paths": [
@@ -126,7 +126,7 @@
           "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q7",
           "category": "Selection",
           "question": "Among the 15 songs with the longest durations, what is the most popular song?",
-          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small double, rating).",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small floating point number).",
           "target": {
             "chained": false,
             "solution_paths": [
@@ -164,7 +164,7 @@
           "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q9",
           "category": "Selection",
           "question": "Among the most 15 streamed songs, which were released between January 2023 and Februray 2023?",
-          "motivation": "Evaluate the ability to perform targeted information retrieval of a dataset based on interval (date bounds)",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on interval (date range)",
           "target": {
             "chained": false,
             "solution_paths": [
@@ -182,7 +182,7 @@
           "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q10",
           "category": "Selection",
           "question": "Among all Wonky albums, what album with more than 5 genres has the highest average rating?",
-          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on niche genre and on interval (more than, integer) and max. selection of record.",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on niche genre identification and on interval (integer).",
           "target": {
             "chained": false,
             "solution_paths": [
@@ -203,7 +203,7 @@
           "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q11",
           "category": "Selection",
           "question": "What is the 25th most popular song?",
-          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on the last record only.",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on the criterion (last record only - ignore rest).",
           "target": {
             "chained": false,
             "solution_paths": [
@@ -232,6 +232,487 @@
               }
             ],
             "expected_answers": ["7"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q13",
+          "category": "Selection",
+          "question": "What is the song with the second highest average rating among songs released between 2000 and 2001?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small floating point number)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [{ "start_year": "2000", "end_year": "2001" }]
+              }
+            ],
+            "expected_answers": [
+              "Lift Yr. Skinny Fists Like Antennas to Heaven!"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q14",
+          "category": "Selection",
+          "question": "Among all 'Wonky' but not 'Deconstructed Club' albums, with less than 5 genres, what has the highest rating?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset. Identify genres correctly, identify elements (genres) in list.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_genres2"],
+                "parameters": [
+                  {
+                    "genres_in": ["Wonky"],
+                    "genres_out": ["Deconstructed Club"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Unlocked"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q15",
+          "category": "Selection",
+          "question": "Among all 'Wonky' but not 'Deconstructed Club' albums, which album has between 5 and 6 genres and a review count below 100?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on the criterion (count items in list, select by integer bound).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_genres2"],
+                "parameters": [
+                  {
+                    "genres_in": ["Wonky"],
+                    "genres_out": ["Deconstructed Club"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "Niggas on the Moon: The Powers That B Disc 1"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q16",
+          "category": "Selection",
+          "question": "What adult, television songs were released in 2023 with a rating lower than 3.0?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (small double integer range).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_date_and_genres"],
+                "parameters": [
+                  {
+                    "release_date": "2023",
+                    "genres": ["ambient", "television"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Returns 9 songs."],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q17",
+          "category": "Selection",
+          "question": "Among the top 3 songs of Coldplay, which one was released in 2002?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (date).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist"],
+                "parameters": [
+                  {
+                    "artist_name": "Coldplay",
+                    "n": 3
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["The Scientist"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q18",
+          "category": "Selection",
+          "question": "Which albums released between June 2020 and Sep 2020 are by Taylor Swift?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (date range) among 43 other records.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [
+                  { "start_date": "2020-06", "end_date": "2020-09" }
+                ]
+              }
+            ],
+            "expected_answers": ["Folklore"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q19",
+          "category": "Selection",
+          "question": "Among all the non-explitic songs with a dancability of 90 or more, what song has the longest duration?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (min. small floating point number).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness"],
+                "parameters": [
+                  { "danceability_threshold": 90, "explicit": false }
+                ]
+              }
+            ],
+            "expected_answers": ["DOGGY DOGGY"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q20",
+          "category": "Selection",
+          "question": "Among all the non-explitic songs with a dancability of 90 or more, what songs have a duration over 3 minutes?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (small floating point number range).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness"],
+                "parameters": [
+                  { "danceability_threshold": 90, "explicit": false }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'YOU THE VIBE', 'DOGGY DOGGY', 'MOLI', 'PALETA PA TO EL MUNDO', 'RICO FEO', and 'TEKIRIKI'"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q21",
+          "category": "Selection",
+          "question": "Among the albums released between 5.5.2000 and 9.9.2000, which are the most similar based on genres?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on similarity matching (reasoning) on items in list",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [
+                  { "start_date": "2000-05-05", "end_date": "2000-09-09" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'The Moon & Antarctica' and 'Rated R' on Rock",
+              "'The Moon & Antarctica' and 'Spirit They're Gone Spirit They've Vanished' on exact match on Neo-Psychedelia"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q22",
+          "category": "Selection",
+          "question": "What are the non-explicit songs with a danceability over 85 percent, and speechiness over 10% that has a duration over 4 minutes?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (small floating point number range).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness_speechiness"],
+                "parameters": [
+                  {
+                    "danceability_threshold": 85,
+                    "speechiness_threshold": 10,
+                    "explicit": false
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["'DOGGY DOGGY' and 'RULAY & PICA POLLO'"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q23",
+          "category": "Selection",
+          "question": "Which Hip Hop album was released in 2000, and contains 'vulgar' language?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on identifying vular as descriptor (and not genre).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_year_genres_and_descriptors"],
+                "parameters": [
+                  {
+                    "release_date": "2000",
+                    "genres": ["Hip Hop"],
+                    "descriptors": ["vulgar"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["'The Marshall Mathers LP'"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q24",
+          "category": "Selection",
+          "question": "Provide me those songs from top 10 songs of Taylor Swift released in 2022, which have bpm in the range of 80-110.",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (integer range).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist_date"],
+                "parameters": [
+                  {
+                    "artist_name": "Taylor Swift",
+                    "release_date": "2022",
+                    "n": 10
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'Anti-Hero', 'Lavender Haze', 'Karma' and 'Maroon'"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q25",
+          "category": "Selection",
+          "question": "From the list of albums released in 2020 of type Indie Folk which are melodic, poetic, return those albums having rating between 3.0 and 3.5.",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (small floating point number range).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_year_genres_and_descriptors"],
+                "parameters": [
+                  {
+                    "release_date": "2020",
+                    "genres": ["Indie Folk"],
+                    "descriptors": ["melodic", "poetic"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'Folklore', 'Evermore', 'Women in Music Pt. III' and 'Color Theory'"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q26",
+          "category": "Selection",
+          "question": "Among the top 5 songs released by SZA in 2022, which have the most similarity based on BPM?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on similarity (reasoning;  larger integer and very close).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist_date"],
+                "parameters": [
+                  { "artist_name": "SZA", "release_date": "2022", "n": 5 }
+                ]
+              }
+            ],
+            "expected_answers": ["'Seek & Destroy' and 'Gone Girl'"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q27",
+          "category": "Selection",
+          "question": "Which album is released between 2000 and 2002, contains Hip Hop but not Metal and has a rating of 3.9 or more?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on date, genres and floating point arguments.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_dates_genres_rating"],
+                "parameters": [
+                  {
+                    "start_date": "2000-01-01",
+                    "end_date": "2002-12-31",
+                    "genre_in": ["Hip Hop"],
+                    "genre_out": ["Metal"],
+                    "min_rating": 3.9
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Since I Left You"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q28",
+          "category": "Selection",
+          "question": "Which explicit songs with a speechiness of 50%, energy of 50% and bpm of 100 have a duration between 2.75 and 3.5 minutes?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (small floating point number range).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["speechiness_songs"],
+                "parameters": [
+                  {
+                    "speechiness": 50,
+                    "energy": 50,
+                    "explicit": true,
+                    "bpm": 100
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'Wrong', 'Bigger & Better', 'Kylie Grande', 'Lemme See' and 'Clocked In'"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q29",
+          "category": "Selection",
+          "question": "Which albums released in 2000, have a minimum of 5000 ratings, with at least an average rating of 3.5 and a minimum of 200 reviews, and rock as genre?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on criterion (min. date).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": 3.5,
+                    "min_ratings": 5000,
+                    "review_threshold": 200,
+                    "release_date": "2000"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["The Marshall Mathers LP"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q30",
+          "category": "Selection",
+          "question": "Which albums are released between 2000 and 2002, contain Hip Hop but not Metal and have a rating of 3.5 or more?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based identifying genres, and dates and returning all records.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_dates_genres_rating"],
+                "parameters": [
+                  {
+                    "start_date": "2000-01-01",
+                    "end_date": "2002-12-31",
+                    "genre_in": ["Hip Hop"],
+                    "genre_out": ["Metal"],
+                    "min_rating": 3.5
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'Since I Left You', 'The Marshall Mathers LP', and 'Stankonia'"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q31",
+          "category": "Selection",
+          "question": "Get the list of albums released in 1988 with min rating 3.5 and reviewed by more than 200 and rated by minimum 5000 persons. From this list, only provide those albums that are of type Progressive Metal. ",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (string matching in list of items per record).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": 3.5,
+                    "min_ratings": 5000,
+                    "review_threshold": 200,
+                    "release_date": "1988"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'...And Justice for All' and 'Seventh Son of a Seventh Son'"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q32",
+          "category": "Selection",
+          "question": "Which 2 explicit songs with a speechiness of 30, energy of 30% and bpm of 120 with an allowed difference of 25 are the most similar to each other based on acousticness?",
+          "motivation": "",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["speechiness_songs"],
+                "parameters": [
+                  {
+                    "speechiness": 30,
+                    "energy": 30,
+                    "explicit": true,
+                    "bpm": 120,
+                    "threshold": 25
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'Scared Of My Money' and 'Big Fish' with 9",
+              "'Don't Hurt Me' and 'Fuck You Too' with 16"
+            ],
             "comment": null
           }
         }
