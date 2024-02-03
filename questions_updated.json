@@ -1,0 +1,3391 @@
+{
+  "question_sets": [
+    {
+      "id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Single Parameters, One Step and One Shot",
+      "domain": "Music",
+      "date": "2024-01-27",
+      "description": "Simple, single step questions designed to test a subset of selection of records, interpretation, reasoning, different languages, typos, related and unrelated context",
+      "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
+      "license": "Apache 2.0",
+      "function_sets": ["MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01"],
+      "questions": [
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q1",
+          "category": "Selection",
+          "question": "Among the top 30 rated albums, which were released by 'Radiohead'?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (string matching).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_rated_albums"],
+                "parameters": [{ "n": 30 }]
+              }
+            ],
+            "expected_answers": ["Selects all 3 albums."],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q2",
+          "category": "Selection",
+          "question": "Which songs released in 2012 were performed by more than 1 artist?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (integer interval matching).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "2012" }]
+              }
+            ],
+            "expected_answers": ["Returns 3 songs performed by 2 artists."],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q3",
+          "category": "Selection",
+          "question": "Among all Eminem albums, which has the highest number of ratings?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (max. integer).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist"],
+                "parameters": [{ "artist_name": "Eminem" }]
+              }
+            ],
+            "expected_answers": ["The Marshall Mathers LP"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q4",
+          "category": "Selection",
+          "question": "Among all top 10 albums, which have between 20000 and 50000 ratings?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (interval of large integer bounds).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_rated_albums"],
+                "parameters": [{ "n": 10 }]
+              }
+            ],
+            "expected_answers": [
+              "Includes all 8 of 10 songs that are within that range."
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q5",
+          "category": "Selection",
+          "question": "Among the top 5 albums, which 2 albums are the most similar based on genres? Why?",
+          "motivation": "Evaluate the ability to perform targeted information retrieval of a dataset based on similarity (reasoning).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_rated_albums"],
+                "parameters": [{ "n": 5 }]
+              }
+            ],
+            "expected_answers": [
+              "'Wish You Were Here'by Pink Floyd and 'In the Court of the Crimson King' by King Crimson. Both albums share genres such as 'Progressive Rock,' 'Psychedelic Rock,' and 'Art Rock.'"
+            ],
+            "comment": "Evaluated based on reasoning ability to see the overlap genre types."
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q6",
+          "category": "Selection",
+          "question": "What is the 10th highest rated 'Alt-Pop' song?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small floating point number).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_genres"],
+                "parameters": [{ "genres": ["Alt-Pop"] }]
+              }
+            ],
+            "expected_answers": ["I Don't Want You Anymore by Cherry Glazerr"],
+            "comment": "Small integer/floating values may provide problems for selection"
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q7",
+          "category": "Selection",
+          "question": "Among the 15 songs with the longest durations, what is the most popular song?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small floating point number).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_longest_duration"],
+                "parameters": [{ "n": 15 }]
+              }
+            ],
+            "expected_answers": ["2085 by AJR"],
+            "comment": ""
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q8",
+          "category": "Selection",
+          "question": "Among the songs released in 2020, which one has the 2nd most streams?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (large integer).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "2020" }]
+              }
+            ],
+            "expected_answers": [
+              "Levitating (feat. DaBaby) with 1802514301 streams"
+            ],
+            "comment": ""
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q9",
+          "category": "Selection",
+          "question": "Among the most 15 streamed songs, which were released between January 2023 and Februray 2023?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on interval (date range)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs"],
+                "parameters": [{ "n": 15 }]
+              }
+            ],
+            "expected_answers": ["Everything I Love by Morgan Wallen"],
+            "comment": ""
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q10",
+          "category": "Selection",
+          "question": "Among all Wonky albums, what album with more than 5 genres has the highest average rating?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on niche genre identification and on interval (integer).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_genres"],
+                "parameters": [{ "genres": ["Wonky"] }]
+              }
+            ],
+            "expected_answers": [
+              "OIL OF EVERY PEARL'S UN-INSIDES by SOPHIE",
+              "Niggas on the Moon: The Powers That B Disc 1 by Death Grips"
+            ],
+            "comment": ""
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q11",
+          "category": "Selection",
+          "question": "What is the 25th most popular song?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on the criterion (last record only - ignore rest).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs"],
+                "parameters": [{ "n": 25 }]
+              }
+            ],
+            "expected_answers": ["VAGABUNDO"],
+            "comment": ""
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q12",
+          "category": "Selection",
+          "question": "Among the 10 longest songs, which were released by 'Eminem'?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on criterion (string match).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_longest_duration"],
+                "parameters": [{ "n": 10 }]
+              }
+            ],
+            "expected_answers": ["7"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q1",
+          "category": "Aggregation",
+          "question": "How many songs were released in 2000?",
+          "motivation": "Evaluate the ability to perform aggregation (counting) on the results.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "2000" }]
+              }
+            ],
+            "expected_answers": ["4"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q2",
+          "category": "Aggregation",
+          "question": "How many reviews have the albums of Radiohead received?",
+          "motivation": "Evaluate the ability to perform aggregation (sum) on the specific attribute of results.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [" albums_by_artist"],
+                "parameters": [{ "artist_name": "Radiohead" }]
+              }
+            ],
+            "expected_answers": ["6161"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q3",
+          "category": "Aggregation",
+          "question": "Among the top 20 rated albums, which one has the lowest number of reviews?",
+          "motivation": "Evaluate the ability to find minimum value of specific attribute in the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_rated_albums"],
+                "parameters": [{ "n": "20" }]
+              }
+            ],
+            "expected_answers": ["In a Silent Way"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q4",
+          "category": "Aggregation",
+          "question": "Of all the songs of Ed Sheeran, which one is the most streamed?",
+          "motivation": "Evaluate the ability to find maximum value of specific attribute in the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_artist"],
+                "parameters": [{ "artist_name": "Ed Sheeran" }]
+              }
+            ],
+            "expected_answers": ["'Shape Of You'"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q5",
+          "category": "Aggregation",
+          "question": "What is the average rating of all the albums of Red Hot Chilli Peppers?",
+          "motivation": "Evaluate the ability to perform aggregation (average) on the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [" albums_by_artist"],
+                "parameters": [{ "artist_name": "Red Hot Chilli Peppers" }]
+              }
+            ],
+            "expected_answers": ["3.157"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q6",
+          "category": "Aggregation",
+          "question": "Can you provide me the average value of beats per minute for the songs of Olivia Rodrigo.",
+          "motivation": "Evaluate the ability to perform aggregation (average) on the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_artist"],
+                "parameters": [{ "artist_name": "Olivia Rodrigo" }]
+              }
+            ],
+            "expected_answers": ["162.142"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q1",
+          "category": "Interpretation",
+          "question": "Of the top 15 songs in Spotify, return the ones starting with e.",
+          "motivation": "Evaluate the ability to make sense of textual information.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs"],
+                "parameters": [{ "n": 15 }]
+              }
+            ],
+            "expected_answers": ["Everything I Love"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q2",
+          "category": "Interpretation",
+          "question": "Which songs released in 2012 were performed by more than 1 artist?",
+          "motivation": "Evaluate the ability to make sense of textual information.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "2012" }]
+              }
+            ],
+            "expected_answers": [
+              "MONTAGEM - FR PUNK",
+              "Money Trees",
+              "Payphone"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q3",
+          "category": "Interpretation",
+          "question": "Provide me the songs released in 2011 which are about Christmas.",
+          "motivation": "Evaluate the ability to make sense of textual information.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "2011" }]
+              }
+            ],
+            "expected_answers": [
+              "It's Beginning To Look A Lot Like Christmas",
+              "Holly Jolly Christmas",
+              "Mistletoe"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q4",
+          "category": "Interpretation",
+          "question": "Which albums were released on 8th October, 1980?",
+          "motivation": "Evaluate the ability to make sense of various formats of dates.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_release_date"],
+                "parameters": [{ "release_date": "1980-10-08" }]
+              }
+            ],
+            "expected_answers": ["Remain in Light", "Dirty Mind"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q5",
+          "category": "Interpretation",
+          "question": "What is the difference in duration between the longest and second longest song?",
+          "motivation": "Evaluate the ability to make sense of temporal information.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_longest_duration"],
+                "parameters": [{ "n": 2 }]
+              }
+            ],
+            "expected_answers": [
+              "0.357 minutes or approximately 21.42 seconds"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q6",
+          "category": "Interpretation",
+          "question": "Among the longest songs 10 songs, how many can I listen to fully in an hour of my time?",
+          "motivation": "Evaluate the ability to make sense of temporal information.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_longest_duration"],
+                "parameters": [{ "n": 10 }]
+              }
+            ],
+            "expected_answers": [
+              "We can listen to 9 songs fully, and the last one only partially."
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q7",
+          "category": "Interpretation",
+          "question": "Which album was released last in 1970?",
+          "motivation": "Evaluate the ability to make sense of temporal information.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_release_date"],
+                "parameters": [{ "release_date": "1970" }]
+              }
+            ],
+            "expected_answers": ["All Things Must Pass"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q1",
+          "category": "Reasoning",
+          "question": "I consider rating as a parameter of popularity. Can you give me the most popular album of Red Hot Chilli Peppers.",
+          "motivation": "Evaluate the ability to make value translation capabilities of projecting popularity to ratings.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist"],
+                "parameters": [{ "artist_name": "Red Hot Chilli Peppers" }]
+              }
+            ],
+            "expected_answers": ["Blood Sugar Sex Magik"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q2",
+          "category": "Reasoning",
+          "question": "Among the 3 longest songs, does a higher speechiness score affect if the song is explicit?",
+          "motivation": "Evaluate the ability to make sense of corelation between speechiness and explicitness.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_longest_duration"],
+                "parameters": [{ "n": 3 }]
+              }
+            ],
+            "expected_answers": [
+              "Identifies a potential correlation between speechiness and explicitness"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q3",
+          "category": "Reasoning",
+          "question": "Based on the previous album genres by Eminem, what could the next album's three most likely genres be?",
+          "motivation": "Evaluate the ability to make prediction about likely genres of short tail entity Eminem",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist"],
+                "parameters": [{ "artist_name": "Eminem" }]
+              }
+            ],
+            "expected_answers": ["Hardcore HipHop, Horrorcore, Pop Rap "],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q4",
+          "category": "Reasoning",
+          "question": "Based on the previous album genres by Blawan, what could the next album's three most likely genres be?",
+          "motivation": "Evaluate the ability to make prediction about likely genres of long tail entity",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist"],
+                "parameters": [{ "artist_name": "Blawan" }]
+              }
+            ],
+            "expected_answers": ["UK Bass, Wonky Techno, Deconstructed Club"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q5",
+          "category": "Reasoning",
+          "question": "I am a DJ at a club and want people to party as much as possible. Which three top 10 songs should I play? Why?",
+          "motivation": "Evaluate the ability to make recommendation about songs based on desired situation and provide reasoning.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs"],
+                "parameters": [{ "n": 10 }]
+              }
+            ],
+            "expected_answers": [
+              "Queencard",
+              "Everything I Love",
+              "Where Are You Now"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q1",
+          "category": "Different Languages",
+          "question": "Können Sie uns bitte die fünf besten Alben basierend auf der durchschnittlichen Bewertung nennen?",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (German in this case).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_rated_albums"],
+                "parameters": [{ "n": "5" }]
+              }
+            ],
+            "expected_answers": [
+              "The Black Saint and the Sinner Lady",
+              "Wish You Were Here",
+              "To Pimp a Butterfly",
+              "A Love Supreme",
+              "In the Court of the Crimson King"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q2",
+          "category": "Different Languages",
+          "question": "テイラー・スウィフトがリリースしたすべてのアルバムを教えてください。",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Japanese in this case). ",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist"],
+                "parameters": [{ "artist_name": "Taylor Swift" }]
+              }
+            ],
+            "expected_answers": [
+              "Folklore",
+              "1989",
+              "Evermore",
+              "Red",
+              "Reputation",
+              "Lover",
+              "Speak Now",
+              "Fearless",
+              "Taylor Swift",
+              "Red (Taylor's Version)",
+              "Fearless (Taylor's Version)",
+              "Speak Now (Taylor's Version)"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q3",
+          "category": "Different Languages",
+          "question": "'द वॉल' इति एल्बमस्य कलाकारः कः ?",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Sanskirit  in this case).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["artist_by_album"],
+                "parameters": [{ "album_name": "The Wall" }]
+              }
+            ],
+            "expected_answers": ["Pink Floyd"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q4",
+          "category": "Different Languages",
+          "question": "پرفيڪٽ” گيت جو ڳائڻو ڪير آهي؟'",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Sindhi in this case).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["artist_by_song"],
+                "parameters": [{ "song_name": "Perfect" }]
+              }
+            ],
+            "expected_answers": ["Ed Sheeran"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q5",
+          "category": "Different Languages",
+          "question": "Doğum günüm 16 haziranda. Bana 16 haziranda iki yıl önce piyasaya sürülen parçalardan bir liste oluşturur musun?",
+          "motivation": "Evaluate the ability to understand medium-source language and make an inference about datetime.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "2022-06-16" }]
+              }
+            ],
+            "expected_answers": ["ULTRA SOLO REMIX", "Don't You Worry"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q6",
+          "category": "Different Languages",
+          "question": "Foo Fighters albümleri arasında en az değerlendirme almış albümü hangisi?",
+          "motivation": "Evaluate the ability to understand medium-source language and retrieve least reviewed album from the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist"],
+                "parameters": [{ "artist_name": "Foo Fighters" }]
+              }
+            ],
+            "expected_answers": ["Concrete and Gold"],
+
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q1",
+          "category": "Typos",
+          "question": "Provide me the list of songs of Dua Lepa.",
+          "motivation": "Evaluate the ability to correctly identify typos in long tail entities.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_artist"],
+                "parameters": [{ "artist_name": "Dua Lipa" }]
+              }
+            ],
+            "expected_answers": [
+              "Dance The Night(From Barbie The Album)",
+              "Don't Start Now",
+              "Levitating"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q2",
+          "category": "Typos",
+          "question": "Provide me the list of albums of Pink Militry.",
+          "motivation": "Evaluate the ability to correctly identify typos in short tail entities.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist"],
+                "parameters": [{ "artist_name": "Pink Military" }]
+              }
+            ],
+            "expected_answers": ["Do Animals Believe in God?"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q3",
+          "category": "Typos",
+          "question": "Who is the atist of of albm 'Loveless'?",
+          "motivation": "Evaluate the ability to correctly identify simple typos.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["artist_by_album"],
+                "parameters": [{ "album_name": "Loveless" }]
+              }
+            ],
+            "expected_answers": ["My Bloody Valentine"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_RCON_Q1",
+          "category": "Related Context",
+          "question": "Birthdays hold a unique significance in our lives, serving as annual milestones that mark the passage of time and the celebration of one's existence. Beyond the joy of receiving gifts and the revelry of parties, birthdays offer an opportunity for reflection and gratitude. They remind us to appreciate the journey we've undertaken, the lessons learned, and the growth experienced throughout the year. Can you make a list of tracks which were released on my birthday, 10th of February,that will help me remember this past year with beautiful memories and remind me to value artists and their efforts?",
+          "motivation": "Ability to retrieve the songs that were released on mentioned day and month for all years in the dataset if there are any entry regarding it.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "02-10" }]
+              }
+            ],
+            "expected_answers": [
+              "El Azul",
+              "Shut up My Moms Calling",
+              "If We Ever Broke Up",
+              "MAMIII"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_RCON_Q2",
+          "category": "Related Context",
+          "question": "Human life has ups and downs. Sometimes, while many opportunities come our way and we fail to see them, we are always more focused on the missed opportunities. While being abandoned makes us very sad, we don't think about the potential of starting a new relationship. Can you recommend 4 outdated old songs that will help us cope with the ups and downs of life?",
+          "motivation": "Evaluate the ability to understand the context and make an inference about the timeframe that could be.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "" }]
+              }
+            ],
+            "expected_answers": [
+              "Returns 4 songs released in old times, not in the 2000s."
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_RCON_Q3",
+          "category": "Related Context",
+          "question": "I would like to know a few tunes which were released in the season that brings with it a contagious liveliness, as trees sprout new leaves, birds return with cheerful melodies, and fields come alive with the dance of butterflies. Can you return the tunes were formed in the beginning of those?",
+          "motivation": "Evaluate the ability to understand the context and make an inference about the timeframe of seasons and timing specifier such as beginning or ending.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "spring" }]
+              }
+            ],
+            "expected_answers": [
+              "Returns the songs that were released in the spring timeframe,between 03-21 and 06-21"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_RCON_Q4",
+          "category": "Related Context",
+          "question": "I would like to know a few tunes which were released in the times where the crisp air carries the scent of wood-burning fires and hot cocoa and people cozy up with blankets and savor the warmth of shared moments. Can you return the tracks were formed in the those times?",
+          "motivation": "Evaluate the ability to understand the context and make an inference about the timeframe of seasons.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "winter" }]
+              }
+            ],
+            "expected_answers": [
+              "Returns the songs that were released in the winter timeframe,between 12-21 and 03-21"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_RCON_Q5",
+          "category": "Related Context",
+          "question": "We're hosting a night filled with laughter, music, and unforgettable moments that you won't want to miss. Join us for a fantastic evening of good company, delicious bites, and a playlist that will keep you on the dance floor all night long. Could you please suggest me the most known 5 music releases that keep swinging hither and thither and that were released in 2023?",
+          "motivation": "Evaluate the ability to understand the context(modified wordings) and to call the function that can be called and infer and collect information about other desired features.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "2023" }]
+              },
+              {
+                "path_id": 2,
+                "functions": ["top_streamed_songs"],
+                "parameters": [{ "n": 15 }]
+              }
+            ],
+            "expected_answers": [
+              "Returns the albums which are top streamed songs with higher danceabiliy scores and released in 2023 which are Queencard,fukumean,PERO T,VAGABUNDO,and Novo Balan�"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_RCON_Q6",
+          "category": "Related Context",
+          "question": "Birthdays hold a unique significance in our lives, serving as annual milestones that mark the passage of time and the celebration of one's existence. Beyond the joy of receiving gifts and the revelry of parties, birthdays offer an opportunity for reflection and gratitude. They remind us to appreciate the journey we've undertaken, the lessons learned, and the growth experienced throughout the year. Can you make a list of tracks which were released on my birthday, 10-02,that will help me remember this past year with beautiful memories and remind me to value artists and their efforts?",
+          "motivation": "Ability to retrieve the songs that were released on mentioned day and month for all years in the dataset if there are any entry regarding it and understand the different date format",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_release_date"],
+                "parameters": [{ "release_date": "2023" }]
+              }
+            ],
+            "expected_answers": [
+              "El Azul",
+              "Shut up My Moms Calling",
+              "If We Ever Broke Up",
+              "MAMIII"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q1",
+          "category": "Unrelated Context",
+          "question": "People's preferences in music and food are complex and multifaceted, influenced by a wide range of individual and cultural factors. Some people who are environmentally conscious or ethically motivated may choose specific dietary patterns, such as vegetarianism or veganism, which could coincide with a particular cultural or social scene that may also have distinct musical preferences. While meat can be a valuable part of a balanced diet, it is essential to be aware of the potential health risks associated with certain practices in the meat industry. Making informed choices about the sources and types of meat consumed, as well as advocating for sustainable and humane farming practices, can contribute to a healthier and more responsible approach to meat consumption. Even though I try not to consume meat for health reasons, I feel bad when I consume it. Listening metal also makes me feel in low spirits. Can you recommend me a list of albums that make me feel similar to the way I describe?",
+          "motivation": "Evaluate the ability to understand the context and make an inference which descriptors to be called from the context.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_descriptors"],
+                "parameters": [{ "descriptor": ["depressive", "melancholic"] }]
+              }
+            ],
+            "expected_answers": [
+              "OK Computer",
+              "Kid A",
+              "In Rainbows",
+              "Wish You Were Here",
+              "The Bends"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q2",
+          "category": "Unrelated Context",
+          "question": "I would like to add a meaningful saying here: “Being a candle is not easy. To shed light, you must first burn.”. I love listening songs by candlelight.Can you get me the Weeknd songs that were released in 2022?",
+          "motivation": "Evaluate the ability to retrieve the songs of mentioned artist combining with the release year",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_artist"],
+                "parameters": [{ "artist_name": "The Weeknd" }]
+              }
+            ],
+            "expected_answers": [
+              "Sacrifice",
+              "Is There Someone Else?",
+              "Out of Time",
+              "How Do I Make You Love Me?",
+              "Gasoline",
+              "Less Than Zero",
+              "Best Friends",
+              "Dawn FM",
+              "Starry Eyes",
+              "Don���t Break My",
+              "A Tale By Quincy",
+              "Every Angel is Terrifying",
+              "Phantom Regret by Jim"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q3",
+          "category": "Unrelated Context",
+          "question": "SIMURG (Phoenix), which burned in the fire and was reborn from its ashes, lived on the branches of the Tree of Knowledge and knew everything. Birds believe in SIMURG and think that he will save them, they believe that SIMURG will find a solution to everything that goes wrong. Can you recommend any 10 music releases released before 1990 that are suitable for such mysterious stories?",
+          "motivation": "Evaluate the ability to retrieve the albums by calling available function combining with the desired other attribute(descriptor:occult)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_release_date"],
+                "parameters": [{ "release_date": "2023" }]
+              }
+            ],
+            "expected_answers": [
+              " Black Sabbath",
+              "Scream Bloody Gore",
+              "Altars of Madness",
+              "Show No Mercy",
+              "Exuma",
+              "Epicus Doomicus Metallicus",
+              "Horse Rotorvator",
+              "Blizzard of Ozz",
+              "Bathory",
+              " Don't Break the Oath"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q4",
+          "category": "Unrelated Context",
+          "question": "The Michelin star, which the most respected restaurants and chefs can have, has been used to measure the most successful food services in Europe and the world for more than 100 years. Can you recommend the 4 songs with highest ratings as the quality of the food I eat while tasting an epic menu at a Michelin star restaurant?",
+          "motivation": "Evaluate the ability to understand the context even with confusing words which are related to albums dataset and to call the function to be called.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs"],
+                "parameters": [{ "n": "4" }]
+              }
+            ],
+            "expected_answers": [
+              "Love Grows (Where My Rosemary Goes)",
+              "Anti-Hero",
+              "Arcade",
+              "Glimpse of Us"
+            ],
+            "comment": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_MULTI_PARAM_V01",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Multiple Parameters, Single Step and One Shot",
+      "domain": "Music",
+      "date": "2024-01-28",
+      "description": "Simple single step questions designed to test a subset of selection of extra context, reasoning, different languages, typos, aggregation, data types with multi parameter functions",
+      "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
+      "license": "Apache 2.0",
+      "function_sets": ["MUSIC_FUNC_MULTI_PARAM_SIMPLE_DESC_NO_EX_V01"],
+      "questions": [
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q1",
+          "category": "Selection",
+          "question": "What is the song with the second highest average rating among songs released between 2000 and 2001?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small floating point number)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [{ "start_year": "2000", "end_year": "2001" }]
+              }
+            ],
+            "expected_answers": [
+              "Lift Yr. Skinny Fists Like Antennas to Heaven!"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q2",
+          "category": "Selection",
+          "question": "Among all 'Wonky' but not 'Deconstructed Club' albums, with less than 5 genres, what has the highest rating?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset. Identify genres correctly, identify elements (genres) in list.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_genres2"],
+                "parameters": [
+                  {
+                    "genres_in": ["Wonky"],
+                    "genres_out": ["Deconstructed Club"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Unlocked"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q3",
+          "category": "Selection",
+          "question": "Among all 'Wonky' but not 'Deconstructed Club' albums, which album has between 5 and 6 genres and a review count below 100?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on the criterion (count items in list, select by integer bound).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_genres2"],
+                "parameters": [
+                  {
+                    "genres_in": ["Wonky"],
+                    "genres_out": ["Deconstructed Club"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "Niggas on the Moon: The Powers That B Disc 1"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q4",
+          "category": "Selection",
+          "question": "What adult, television songs were released in 2023 with a rating lower than 3.0?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (small double integer range).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_date_and_genres"],
+                "parameters": [
+                  {
+                    "release_date": "2023",
+                    "genres": ["ambient", "television"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Returns 9 songs."],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q5",
+          "category": "Selection",
+          "question": "Among the top 3 songs of Coldplay, which one was released in 2002?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (date).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist"],
+                "parameters": [
+                  {
+                    "artist_name": "Coldplay",
+                    "n": 3
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["The Scientist"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q6",
+          "category": "Selection",
+          "question": "Which albums released between June 2020 and Sep 2020 are by Taylor Swift?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (date range) among 43 other records.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [
+                  { "start_date": "2020-06", "end_date": "2020-09" }
+                ]
+              }
+            ],
+            "expected_answers": ["Folklore"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q7",
+          "category": "Selection",
+          "question": "Among all the non-explitic songs with a dancability of 90 or more, what song has the longest duration?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (min. small floating point number).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness"],
+                "parameters": [
+                  { "danceability_threshold": 90, "explicit": false }
+                ]
+              }
+            ],
+            "expected_answers": ["DOGGY DOGGY"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q8",
+          "category": "Selection",
+          "question": "Among all the non-explitic songs with a dancability of 90 or more, what songs have a duration over 3 minutes?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (small floating point number range).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness"],
+                "parameters": [
+                  { "danceability_threshold": 90, "explicit": false }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'YOU THE VIBE', 'DOGGY DOGGY', 'MOLI', 'PALETA PA TO EL MUNDO', 'RICO FEO', and 'TEKIRIKI'"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q9",
+          "category": "Selection",
+          "question": "Among the albums released between 5.5.2000 and 9.9.2000, which are the most similar based on genres?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on similarity matching (reasoning) on items in list",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [
+                  { "start_date": "2000-05-05", "end_date": "2000-09-09" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'The Moon & Antarctica' and 'Rated R' on Rock",
+              "'The Moon & Antarctica' and 'Spirit They're Gone Spirit They've Vanished' on exact match on Neo-Psychedelia"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q10",
+          "category": "Selection",
+          "question": "What are the non-explicit songs with a danceability over 85 percent, and speechiness over 10% that has a duration over 4 minutes?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (small floating point number range).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness_speechiness"],
+                "parameters": [
+                  {
+                    "danceability_threshold": 85,
+                    "speechiness_threshold": 10,
+                    "explicit": false
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["'DOGGY DOGGY' and 'RULAY & PICA POLLO'"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q11",
+          "category": "Selection",
+          "question": "Which Hip Hop album was released in 2000, and contains 'vulgar' language?",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on identifying vular as descriptor (and not genre).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_year_genres_and_descriptors"],
+                "parameters": [
+                  {
+                    "release_date": "2000",
+                    "genres": ["Hip Hop"],
+                    "descriptors": ["vulgar"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["'The Marshall Mathers LP'"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q12",
+          "category": "Selection",
+          "question": "Provide me those songs from top 10 songs of Taylor Swift released in 2022, which have bpm in the range of 80-110.",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (integer range).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist_date"],
+                "parameters": [
+                  {
+                    "artist_name": "Taylor Swift",
+                    "release_date": "2022",
+                    "n": 10
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'Anti-Hero', 'Lavender Haze', 'Karma' and 'Maroon'"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q13",
+          "category": "Selection",
+          "question": "From the list of albums released in 2020 of type Indie Folk which are melodic, poetic, return those albums having rating between 3.0 and 3.5.",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (small floating point number range).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_year_genres_and_descriptors"],
+                "parameters": [
+                  {
+                    "release_date": "2020",
+                    "genres": ["Indie Folk"],
+                    "descriptors": ["melodic", "poetic"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'Folklore', 'Evermore', 'Women in Music Pt. III' and 'Color Theory'"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q14",
+          "category": "Selection",
+          "question": "Among the top 5 songs released by SZA in 2022, which have the most similarity based on BPM?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on similarity (reasoning;  larger integer and very close).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist_date"],
+                "parameters": [
+                  { "artist_name": "SZA", "release_date": "2022", "n": 5 }
+                ]
+              }
+            ],
+            "expected_answers": ["'Seek & Destroy' and 'Gone Girl'"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q15",
+          "category": "Selection",
+          "question": "Which album is released between 2000 and 2002, contains Hip Hop but not Metal and has a rating of 3.9 or more?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on date, genres and floating point arguments.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_dates_genres_rating"],
+                "parameters": [
+                  {
+                    "start_date": "2000-01-01",
+                    "end_date": "2002-12-31",
+                    "genre_in": ["Hip Hop"],
+                    "genre_out": ["Metal"],
+                    "min_rating": 3.9
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Since I Left You"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q16",
+          "category": "Selection",
+          "question": "Which explicit songs with a speechiness of 50%, energy of 50% and bpm of 100 have a duration between 2.75 and 3.5 minutes?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (small floating point number range).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["speechiness_songs"],
+                "parameters": [
+                  {
+                    "speechiness": 50,
+                    "energy": 50,
+                    "explicit": true,
+                    "bpm": 100
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'Wrong', 'Bigger & Better', 'Kylie Grande', 'Lemme See' and 'Clocked In'"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q17",
+          "category": "Selection",
+          "question": "Which albums released in 2000, have a minimum of 5000 ratings, with at least an average rating of 3.5 and a minimum of 200 reviews, and rock as genre?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on criterion (min. date).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": 3.5,
+                    "min_ratings": 5000,
+                    "review_threshold": 200,
+                    "release_date": "2000"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["The Marshall Mathers LP"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q18",
+          "category": "Selection",
+          "question": "Which albums are released between 2000 and 2002, contain Hip Hop but not Metal and have a rating of 3.5 or more?",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based identifying genres, and dates and returning all records.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_dates_genres_rating"],
+                "parameters": [
+                  {
+                    "start_date": "2000-01-01",
+                    "end_date": "2002-12-31",
+                    "genre_in": ["Hip Hop"],
+                    "genre_out": ["Metal"],
+                    "min_rating": 3.5
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'Since I Left You', 'The Marshall Mathers LP', and 'Stankonia'"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q19",
+          "category": "Selection",
+          "question": "Get the list of albums released in 1988 with min rating 3.5 and reviewed by more than 200 and rated by minimum 5000 persons. From this list, only provide those albums that are of type Progressive Metal. ",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (string matching in list of items per record).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": 3.5,
+                    "min_ratings": 5000,
+                    "review_threshold": 200,
+                    "release_date": "1988"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'...And Justice for All' and 'Seventh Son of a Seventh Son'"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q20",
+          "category": "Selection",
+          "question": "Which 2 explicit songs with a speechiness of 30, energy of 30% and bpm of 120 with an allowed difference of 25 are the most similar to each other based on acousticness?",
+          "motivation": "",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["speechiness_songs"],
+                "parameters": [
+                  {
+                    "speechiness": 30,
+                    "energy": 30,
+                    "explicit": true,
+                    "bpm": 120,
+                    "threshold": 25
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "'Scared Of My Money' and 'Big Fish' with 9",
+              "'Don't Hurt Me' and 'Fuck You Too' with 16"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q1",
+          "category": "Aggregation",
+          "question": "Among albums which were rated greater than 4 by more than 55000 people, which one is the most reviewed?",
+          "motivation": "Evaluate the ability to find maximum value of specific attribute in the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_albums"],
+                "parameters": [{ "rating_threshold": 4, "min_ratings": 55000 }]
+              }
+            ],
+            "expected_answers": ["The Dark Side of the Moon"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q2",
+          "category": "Aggregation",
+          "question": "Which is the least popular song among the songs with minimum danceability of 87%?",
+          "motivation": "Evaluate the ability to find minimum value of specific attribute in the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness"],
+                "parameters": [
+                  { "danceability_threshold": 87, "explicit": true }
+                ]
+              }
+            ],
+            "expected_answers": ["LA GRINGA"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q3",
+          "category": "Aggregation",
+          "question": "Can you provide me the average value of energy for the top 5 songs of SZA.",
+          "motivation": "Evaluate the ability to perform aggregation (average) on the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist"],
+                "parameters": [{ "artist_name": "SZA", "n": 5 }]
+              }
+            ],
+            "expected_answers": ["60.6%"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q4",
+          "category": "Aggregation",
+          "question": "What is the total value of reviews received by albums released in the duration of March, 2010 to May 2010?",
+          "motivation": "Evaluate the ability to perform aggregation (sum) on the specific attribute of results.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [
+                  { "start_date": "2010-03", "end_date": "2010-05" }
+                ]
+              }
+            ],
+            "expected_answers": ["655"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q5",
+          "category": "Aggregation",
+          "question": "How many of 85% danceable songs containing obscene words have more than 1 artist?",
+          "motivation": "Evaluate the ability to perform aggregation (counting) on the results.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness"],
+                "parameters": [
+                  { "danceability_threshold": 85, "explicit": true }
+                ]
+              }
+            ],
+            "expected_answers": ["4"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q6",
+          "category": "Aggregation",
+          "question": "Among the top 8 songs of Eminem performed in 2023, which one has the lowest liveliness value?",
+          "motivation": "Evaluate the ability to find minimum value of specific attribute in the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist_date"],
+                "parameters": [
+                  { "artist_name": "Eminem", "release_date": "2023", "n": 8 }
+                ]
+              }
+            ],
+            "expected_answers": ["Rhyme Or Reason"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q7",
+          "category": "Aggregation",
+          "question": "Among the top 6 songs of Taylor Swift performed in 2023, which one has the highest value of bpm?",
+          "motivation": "Evaluate the ability to find maximum value of specific attribute in the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist_date"],
+                "parameters": [
+                  {
+                    "artist_name": "Taylor Swift",
+                    "release_date": "2023",
+                    "n": 6
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "Better Than Revenge(Taylor's Version) with 146 bpm."
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q8",
+          "category": "Aggregation",
+          "question": "Among all the explicit songs with a danceability of 80 or more and speechiness above 39, which song has the longest duration?",
+          "motivation": "Evaluate the ability to find maximum value of specific attribute in the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness_speechiness"],
+                "parameters": [
+                  {
+                    "danceability_threshold": 80,
+                    "speechiness_threshold": 39,
+                    "explicit": true
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Colostomy(feat. WizDaWizard)"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q9",
+          "category": "Aggregation",
+          "question": "How many albums were released in 2023 which are melodic and are of type Pop Rock?",
+          "motivation": "Evaluate the ability to perform aggregation (counting) on the results.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_year_genres_and_descriptors"],
+                "parameters": [
+                  {
+                    "release_date": "2023",
+                    "genre": ["Pop Rock"],
+                    "descriptor": ["melodic"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["9"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q10",
+          "category": "Aggregation",
+          "question": "From the list of albums released in 1988 having rating > 3.5 which were reviewed by more than 200 people and rated by a minimum 15000 persons, provide me the total count of reviewers of all albums.",
+          "motivation": "Evaluate the ability to perform aggregation (sum) on the specific attribute of results.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": 3.5,
+                    "min_ratings": 15000,
+                    "review_threshold": 200,
+                    "release_date": "1988"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["1906"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q11",
+          "category": "Aggregation",
+          "question": "Provide me the average number of streams of songs of Taylor Swift released in the time period of April till Dec of 2023.",
+          "motivation": "Evaluate the ability to perform aggregation (average) on the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist_date_range"],
+                "parameters": [
+                  {
+                    "artist_name": "Taylor Swift",
+                    "start_date": "2023-04",
+                    "end_date": "2023-12",
+                    "n": 5
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["47294288.2"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q1",
+          "category": "Reasoning",
+          "question": "Are there any similarities between the genres of the albums released in November 2023 and in November 2022, can you make an inference? Can you explain why?",
+          "motivation": "Evaluate the ability to correctly predict the similarities of genres between the entities belonging to different years",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [
+                  {
+                    "start_date": ["2022-11-01", "2023-11-01"],
+                    "end_date": ["2022-11-30", "2023-11-30"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "It needs to make reasoning about inability of finding similarities since there is no released albums in November of 2022"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q2",
+          "category": "Reasoning",
+          "question": "Can you categorize the genres broadly and tell how many songs under these categories among the albums which have min. rating higher than 4.2, review count higher than 100 and rating count higher than 1000.Can you explain how you categorize?",
+          "motivation": "Evaluate the ability to make categorization and test the model's awareness about dataset's attributes",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums"],
+                "parameters": [
+                  {
+                    "rating_threshold": "4.2",
+                    "min_ratings": "1000",
+                    "review_threshold": "100"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "The model needs to explain its reasoning process about how it categorizes genres and to mention that that the actual number of songs in each category will require access to the track listings of each album, which is not provided in the current dataset."
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q3",
+          "category": "Reasoning",
+          "question": "I consider popularity to be based on the number of reviews received by the album. Provide me the most popular album from the list of albums released in 2020 of type Indie Folk which are melodic and poetic.",
+          "motivation": "Evaluate the ability to correctly reason value transition",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_year_genres_and_descriptor"],
+                "parameters": [
+                  {
+                    "release_date": "2020",
+                    "genres": "Indie Folk",
+                    "descriptors": ["melodic", "poetic"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Microphones in 2020"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q4",
+          "category": "Reasoning",
+          "question": "I am hosting a birthday party for my child. Can you please recommend some latest songs which are suitable for children. Why?",
+          "motivation": "Evaluate the ability to correctly identify the function to be called making commonsense reasoning and order according to the latestness.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness"],
+                "parameters": [
+                  { "danceability_threshold": "90", "explicit": "False" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "Best Ever (feat. Maeta)",
+              "LALALALA",
+              "COMFLEX",
+              "Leave",
+              "Hole in the Bottom of My Brain",
+              "Mosquito",
+              "The aisle",
+              "Nice to meet you (feat. Central Cee)",
+              "Bury me (feat. Kelela)",
+              "Blue",
+              "Feelings",
+              "Trick or Trick",
+              "Don't Blink"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q5",
+          "category": "Reasoning",
+          "question": "Can you predict the similar genres among the albums which have min. rating higher than 4.2, review count higher than 100 and rating count higher than 1000 and were released in 2015 and 2016?",
+          "motivation": "Evaluate the ability to correctly identify common genres between albums",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": "4.2",
+                    "min_ratings": "1000",
+                    "review_threshold": "100",
+                    "release_date": ["2015", "2016"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Neo-Soul", "Experimental Hip Hop"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q1",
+          "category": "Temporal Interpretation",
+          "question": "How many times can I listen to each of the five longest songs on the playlist of longest songs in 2 hours?",
+          "motivation": "Evaluate the ability to correctly make temporal interpretation and mathematical reasoning",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_longest_duration"],
+                "parameters": [{ "n": "10" }]
+              }
+            ],
+            "expected_answers": [
+              "1. Bad Guy: 16 times",
+              "2. SHAQ & KOBE (Remix): 17 times",
+              "3. Wicked Ways: 18 times",
+              "4. LA GRINGA: 19 times",
+              "5. Freestyle: 19 times"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q2",
+          "category": "Temporal Interpretation",
+          "question": "Can you retrieve the trendy tracks of Bad Bunny which were released on leap day?",
+          "motivation": "Evaluate the ability to correctly make temporal interpretation",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist"],
+                "parameters": [{ "artist_name": "Bad Bunny", "n": "5" }]
+              }
+            ],
+            "expected_answers": ["A Tu Merced", "La Santa", "La Zona"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q3",
+          "category": "Temporal Interpretation",
+          "question": "Among the high rated albums which has rating more than 4.2 and rating counts more than 10000, can you bring 4 of the albums that are the closest to the present day according to the level of closeness?",
+          "motivation": "Evaluate the ability to correctly make temporal interpretation",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_albums"],
+                "parameters": [
+                  { "rating_threshold": 4.2, "min_ratings": "10000" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "To Pimp a Butterfly",
+              "good kid, m.A.A.d city",
+              "In Rainbows",
+              "Madvillainy"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q4",
+          "category": "Temporal Interpretation",
+          "question": "Among all the explicit songs with a danceability of 70 or more and speechiness above 35, what is the difference between the longest and the shortest song?",
+          "motivation": "Evaluate the ability to correctly make temporal interpretation and identify time magnitude",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness_speechiness"],
+                "parameters": [
+                  {
+                    "danceability_threshold": "70",
+                    "speechiness_threshold": "35",
+                    "explicit": "True"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["4.43"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q5",
+          "category": "Temporal Interpretation",
+          "question": "From the list of albums released in 1988 having rating > 3.5 which were reviewed by more than 200 people and rated by a minimum 15000 persons, which one is the latest?",
+          "motivation": "Evaluate the ability to correctly make temporal interpretation and identify timing of the albums",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": "3.5",
+                    "min_ratings": "15000",
+                    "review_threshold": "200",
+                    "release_date": "1988"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Isn't Anything"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q6",
+          "category": "Textual Interpretation",
+          "question": "Can you bring the top songs by Bad Bunny which have the vast majority has been influenced by and were named in Spanish? Also,can you translate those names into English?",
+          "motivation": "Evaluate the ability to correctly identify what it has been asked and translate the output from different language",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist"],
+                "parameters": [{ "artist_name": "Bad Bunny", "n": "5" }]
+              }
+            ],
+            "expected_answers": [
+              "Moscow Mule",
+              "A Tu Merced",
+              "Neverita",
+              "Después de la Playa",
+              "Un Ratito"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q7",
+          "category": "Textual Interpretation",
+          "question": "Among the high rated albums whose average rating are more than 4.2 and rating counts are more than 10000, can you bring the releases whose names consist of 3 tokens?",
+          "motivation": "Evaluate the ability to correctly infer from the text and collect the data",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_albums"],
+                "parameters": [
+                  { "rating_threshold": "4.2", "min_ratings": "10000" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "OK Computer",
+              "Kid A",
+              "In Rainbows",
+              "Abbey Road"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q8",
+          "category": "Textual Interpretation",
+          "question": "Among the top explicit songs that make people wriggling, which ones share the same first word between the artist and the album name?",
+          "motivation": "Evaluate the ability to correctly infer from the text and collect the data",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness"],
+                "parameters": [
+                  { "danceability_threshold": "int", "explicit": "True" }
+                ]
+              }
+            ],
+            "expected_answers": ["Tee’s Coney Island (Deluxe)"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q9",
+          "category": "Textual Interpretation",
+          "question": "Provide the songs starting with t from the 6 top streamed songs of Stray kids released in 2023",
+          "motivation": "Evaluate the ability to correctly infer from the text and collect the data",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist_date"],
+                "parameters": [
+                  {
+                    "artist_name": "Stray kids",
+                    "release_date": "2023",
+                    "n": "6"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [""],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q10",
+          "category": "Textual Interpretation",
+          "question": "Among the albums released in 2015, with rating, number of rating and reviews greater than 3, 10000 and 130 respectively, return the ones performed by females.",
+          "motivation": "Evaluate the ability to correctly collect the data and infer femalevocals from the descriptors and gather the output",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": "3",
+                    "min_ratings": "10000",
+                    "review_threshold": "130",
+                    "release_date": "2015"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Grimes", "Carly Rae Jepsen"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q11",
+          "category": "Date Interpretation",
+          "question": "Can you retrieve the top streamed songs of Bad Bunny which were released on bissextile?",
+          "motivation": "Evaluate the ability to correctly identify the specific expression for a day in the question.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist"],
+                "parameters": [{ "artist_name": "Bad Bunny", "n": "5" }]
+              }
+            ],
+            "expected_answers": ["A Tu Merced", "La Santa", "La Zona"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q12",
+          "category": "Date Interpretation",
+          "question": "Can you predict the similar genres among the albums which have min. rating higher than 4.2, review count higher than 100 and rating count higher than 1000 and were released in 2015-16?",
+          "motivation": "Evaluate the ability to correctly identify date format",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": "4.2",
+                    "min_ratings": "1000",
+                    "review_threshold": "100",
+                    "release_date": ["2015", "2016"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Neo-Soul", "Experimental Hip Hop"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q13",
+          "category": "Date Interpretation",
+          "question": "How many albums were released in the winter season of 2022-23?",
+          "motivation": "Evaluate the ability to correctly identify season timeframe",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [
+                  { "start_date": "2022-12-21", "end_date": "2023-3-20" }
+                ]
+              }
+            ],
+            "expected_answers": ["47"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q14",
+          "category": "Date Interpretation",
+          "question": "Among the albums which released between '2022-12-21' and '2023-3-20', which ones  were released after the Valentines day?",
+          "motivation": "Evaluate the ability to correctly understand dates and infer and collect data from the output",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [
+                  { "start_date": "2023-02-14", "end_date": "2023-3-20" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "Real Cultural Shit",
+              "Mañana será bonito",
+              "Shook",
+              "Follow the Cyborg",
+              "Love Sick",
+              "Dogsbody",
+              "Food for Worms",
+              "Cracker Island",
+              "Bless This Mess",
+              "7s",
+              "TRUSTFALL",
+              "Desire, I Want to Turn Into You",
+              "Cabin Fever"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q1",
+          "category": "Different Languages",
+          "question": "¿Qué álbumes se lanzaron entre el 15 de febrero de 2022 y el 15 de septiembre de 2022? ",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Spanish in this case)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [
+                  { "start_date": "2022-02-15", "end_date": "2022-09-15" }
+                ]
+              }
+            ],
+            "expected_answers": ["Once Twice Melody"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q2",
+          "category": "Different Languages",
+          "question": "Berikan saya 5 lagu teratas The Weeknd.",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Indonesian in this case)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist"],
+                "parameters": [{ "artist_name": "The Weeknd", "n": 5 }]
+              }
+            ],
+            "expected_answers": [
+              "Starry Eyes",
+              "After Hours",
+              "Reminder",
+              "Don���t Break My",
+              "Dawn FM"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q3",
+          "category": "Different Languages",
+          "question": "1965년에 발매된 활기차고 기분 좋은 '포크 팝' 유형의 앨범을 제공해주세요.",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Korean in this case)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_year_genres_and_descriptors"],
+                "parameters": [
+                  {
+                    "release_date": "1965",
+                    "genre": ["Folk Pop"],
+                    "descriptor": ["energetic", "uplifting"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Help!"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q4",
+          "category": "Different Languages",
+          "question": " میں کون سے البمز ریلیز ہوئے، جن میں درجہ بندی، درجہ بندی کی تعداد اور بالترتیب 3.6، 10000 اور 100 سے زیادہ جائزے تھے؟ 2015",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Urdu in this case)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": 3.6,
+                    "min_ratings": 10000,
+                    "review_threshold": 100,
+                    "release_date": "2015"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "To Pimp a Butterfly",
+              "Carrie & Lowell",
+              "Rodeo",
+              "E\\u00b7MO\\u00b7TION",
+              "Depression Cherry"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q5",
+          "category": "Different Languages",
+          "question": "2001-നും 2002-നും ഇടയി ൽ പുറത്തി റങ്ങി യ ആൽബങ്ങൾ ഏതൊ ക്കെ യാ ണ്, ഹി പ് ഹോ പ്പ് അടങ്ങി യി രി ക്കുന്നു, എന്നാ ൽ ലോ ഹമല്ല, കൂടാ തെ 3.7 അല്ലെ ങ്കി ൽ അതി ൽ കൂടുതൽ റേ റ്റിം ഗ് ഉണ്ട്?",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Malayalam in this case)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_dates_genres_rating"],
+                "parameters": [
+                  {
+                    "start_date": "2001-01-01",
+                    "end_date": "2002-12-31",
+                    "genre_in": ["Hip Hop"],
+                    "genre_out": ["Metal"],
+                    "min_rating": 3.7
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "The Blueprint",
+              "The Cold Vein",
+              "cLOUDDEAD",
+              "Labor Days",
+              "From Filthy Tongue of Gods and Griots",
+              "Fantastic Damage",
+              "The Lost Tapes",
+              "Blazing Arrow"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q1",
+          "category": "Long-Tail",
+          "question": "Select all albums that are wonky but not footwork.",
+          "motivation": "Evaluate the ability to correctly identify long tail entity attributes(genres).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_genres2"],
+                "parameters": [
+                  { "genres_in": ["wonky"], "genres_out": ["footwork"] }
+                ]
+              }
+            ],
+            "expected_answers": ["Music for 18 Musicians"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q2",
+          "category": "Long-Tail",
+          "question": "I am celebrating my birthday. Since I was born at 13th 7 1993, I would like to listen to songs released on that date. Also,Downtempo songs are great.",
+          "motivation": "Evaluate the ability to correctly identify long tail entity attributes(genre).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_date_and_genres"],
+                "parameters": [
+                  { "release_date": "1993-07-13", "genres": ["Downtempo"] }
+                ]
+              }
+            ],
+            "expected_answers": ["Debut"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q3",
+          "category": "Long-Tail",
+          "question": "What is the lowest rated chiptune album that is not rock and has at less than 3 genres?",
+          "motivation": "Evaluate the ability to correctly identify long tail entity attributes(genres).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_genres2"],
+                "parameters": [
+                  { "genres_in": ["Chiptune"], "genres_out": ["rock"] }
+                ]
+              }
+            ],
+            "expected_answers": [""],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q4",
+          "category": "Long-Tail",
+          "question": "It is 2023, and I need some innovative music. What are modern psybient albums?",
+          "motivation": "Evaluate the ability to correctly identify long tail entity attributes(descriptor and genre).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_year_genres_and_descriptors"],
+                "parameters": [
+                  {
+                    "release_date": "2023",
+                    "genres": ["psybient"],
+                    "descriptors": ["innovative"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["None"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q5",
+          "category": "Long-Tail",
+          "question": "I like albums that are psybient, zydeco, innovative and ethereal. What are albums released in 2023?",
+          "motivation": "Evaluate the ability to correctly identify long tail entity attributes(descriptor and genre).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_year_genres_and_descriptors"],
+                "parameters": [
+                  {
+                    "release_date": "2023",
+                    "genres": ["psybient", "zydeco"],
+                    "descriptors": ["innovative", "ethereal"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["None"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q6",
+          "category": "Long-Tail",
+          "question": "In 2023, what is the first released ethereal album that is also psybient?",
+          "motivation": "Evaluate the ability to correctly identify long tail entity attributes(descriptor and genre).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_year_genres_and_descriptors"],
+                "parameters": [
+                  {
+                    "release_date": "2023",
+                    "genres": ["psybient"],
+                    "descriptors": ["ethereal"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["None"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q7",
+          "category": "Long-Tail",
+          "question": "I want to create a 2023 remix for this year's music. I like dynamic and melodic songs. List all psybient albums but exclude chiptune, that are rated above 2.5.",
+          "motivation": "Evaluate the ability to correctly identify long tail entity attributes(genres).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_dates_genres_rating"],
+                "parameters": [
+                  {
+                    "start_date": "2023-01-01",
+                    "end_date": "2023-12-31",
+                    "genre_in": ["Psybient"],
+                    "genre_out": ["Chiptune"],
+                    "min_rating": 2.5
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["None"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q8",
+          "category": "Long-Tail",
+          "question": "I want to create a 2023 remix for this year's music. What zydeco or psybient album with a minimum rating of 1, was first released in 2023?",
+          "motivation": "Evaluate the ability to correctly identify long tail entity attributes(genres).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_dates_genres_rating"],
+                "parameters": [
+                  {
+                    "start_date": "2023-01-01",
+                    "end_date": "2023-12-31",
+                    "genre_in": ["Psybient", "zydeco"],
+                    "genre_out": [],
+                    "min_rating": 1
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["None"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q1",
+          "category": "Typos",
+          "question": "Can you retrieve the top streamed songs of Bad Bunny which were released on bsextile?",
+          "motivation": "Ability to correctly identify simple typos and aggregate data about mentioned day from the output of called function.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist"],
+                "parameters": [{ "artist_name": "Bad Bunny", "n": "5" }]
+              }
+            ],
+            "expected_answers": ["A Tu Merced", "La Santa", "La Zona"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q2",
+          "category": "Typos",
+          "question": "Among the albums which have more than 4 genres, more than 2 artists and rating higher than 3.5, How many of them contain rthmic in their descriptors?",
+          "motivation": "Ability to correctly identify simple typos and make an inference from the output about desciptors and make calculation.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["unique_albums"],
+                "parameters": [
+                  {
+                    "genres_threshold": 4,
+                    "artist_count_threshold": 2,
+                    "max_rating_threshold": 3.5
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["2"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q3",
+          "category": "Typos",
+          "question": "How many songs among the albums which have min. rating higher than 4.2, review count higher than 100 and rating count higher than 1000 and were released before nineteen sevnty five?",
+          "motivation": "Evaluate the ability to correctly identify simple typos and aggregate and make a calculation.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums"],
+                "parameters": [
+                  {
+                    "rating_threshold": "4.2",
+                    "min_ratings": "1000",
+                    "review_threshold": "100"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["12"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q4",
+          "category": "Typos",
+          "question": "Which song(s) among the albums which have min. rating higher than 4.2, review count higher than 100 and rating count higher than 1000 have an album title means a colr?",
+          "motivation": "Evaluate the ability to correctly identify simple typos and infer about album names' meanings.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums"],
+                "parameters": [
+                  {
+                    "rating_threshold": "4.2",
+                    "min_ratings": "1000",
+                    "review_threshold": "100"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Red"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q5",
+          "category": "Typos",
+          "question": "Among the albums which have more than 4 genres, more than 2 artists and rating higher than 3.5, Whose album name means a machine to represent the orbits of astroomical bodies?",
+          "motivation": "Evaluate the ability to correctly identify simple typos and understand the definition in the question and infer aboutalbum names' meanings.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["unique_albums"],
+                "parameters": [
+                  {
+                    "genres_threshold": "4",
+                    "artist_count_threshold": "2",
+                    "max_rating_threshold": "3.5"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Planetarium"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q6",
+          "category": "Typos",
+          "question": "Among the albums which have more than 4 genres, more than 2 artists and rating higher than 3.5, How many of them contain malvocals in their descriptors?",
+          "motivation": "Evaluate the ability to correctly identify simple typos and aggregate and make a calculation.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["unique_albums"],
+                "parameters": [
+                  {
+                    "genres_threshold": "4",
+                    "artist_count_threshold": "2",
+                    "max_rating_threshold": "3.5"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["6"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q7",
+          "category": "Typos",
+          "question": "Among the albums which have more than 4 genes, more than 2 artists and rating higher than 3.5, which one has the loest review count?",
+          "motivation": "Evaluate the ability to correctly identify more than one simple typos and make an order in ascending order and infer to the lowest value",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["unique_albums"],
+                "parameters": [
+                  {
+                    "genres_threshold": "4",
+                    "artist_count_threshold": "2",
+                    "max_rating_threshold": "3.5"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": ["Trash Island"],
+            "comment": "Even though the function returns values below the max_rating_threshold, it was stated as more than to test the model capability of differentiating function requirements."
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q1",
+          "category": "Unrelated Context",
+          "question": "The Aircraft Crash Report, one of National Geographic's most popular series, continues to investigate what went wrong and why, exploring the legendary disasters of aviation history. I like to follow aviation events and news. Despite following such news, I feel peaceful on the flight. The year I travelled the most was the summer of 2018. I want to listen to the albums from the summer of 2018 in June. Can you bring me the songs I mentioned?",
+          "motivation": "Evaluate the ability to understand the context(modified wordings) and make an inference about date range",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [
+                  { "start_date": "2018-06-01", "end_date": "2018-06-30" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "KIDS SEE GHOSTS",
+              "ye",
+              "Year of the Snitch",
+              "OIL OF EVERY PEARL'S UN-INSIDES",
+              "The Now Now",
+              "Scorpion",
+              "NASIR",
+              "Lush",
+              "Bad Witch",
+              "God's Favorite Customer"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q2",
+          "category": "Unrelated Context",
+          "question": "In 1961, in the American state of Philadelphia, on the first Friday after Thanksgiving, there was a great discount in the stores. The interest in this discount is so intense that convoys lasting hours are formed due to traffic congestion. In recent years, especially during the pandemic period, the excitement of Black Friday has increased exponentially as e-commerce sites have become indispensable in our lives. Can you return 6 top streamed songs of The Weeknd that were released in recent years that store employees can play in the stores in the order of up-to-dateness?",
+          "motivation": "Evaluate the ability to understand the context and to call the function to be called, incorporating ordering logic.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist"],
+                "parameters": [{ "artist_name": "The Weeknd", "n": "6" }]
+              }
+            ],
+            "expected_answers": ["Returns the songs"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q3",
+          "category": "Unrelated Context",
+          "question": "I find some song lyrics very meaningful, there are songs that give me goosebumps when I come across them somewhere and listen to them. I am adding the lyrics of one of them: If the deepest wounds are closing,If the greatest pains are forgotten, tell me what to fear in life. Can you bring unrivaled albums that are known with their artist collaboration and genre diversity,even were not rated that well?",
+          "motivation": "Evaluate the ability to understand the context and to logicaly assign parameter values considering context.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["unique_albums"],
+                "parameters": [
+                  {
+                    "genres_threshold": "3",
+                    "artist_count_threshold": "2",
+                    "max_rating_threshold": "3.5"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "Wolf",
+              "Cherry Bomb",
+              "Goblin",
+              "Bastard",
+              "Without Warning",
+              "Trash Island",
+              "Danse Manatee",
+              "Fetti",
+              "D&G",
+              "Planetarium",
+              "The Good, the Bad & the Queen"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q4",
+          "category": "Unrelated Context",
+          "question": "Cycling in winter in Germany is doable - but you may need to take extra care to make sure you stay safe on wet or icy roads.Can you bring me amusing and playful songs in the alternative, pop rock genres, released in 1985 to get me in the mood while cycling?",
+          "motivation": "Evaluate the ability to understand the context(modified wordings) and to call the function that can be called",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_genres_desciptors"],
+                "parameters": [
+                  {
+                    "release_date": "1985",
+                    "genres": ["alternative", "pop rock"],
+                    "descriptors": ["humorous", "playful"]
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "The Head on the Door",
+              "Brothers in Arms",
+              "Little Creatures",
+              "Freaky Styley",
+              "Flip Your Wig"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q5",
+          "category": "Related Context",
+          "question": "We are currently standing at Niagara Falls and are a group of 5 girls, enjoying our first vacation post pandemic. We have been waiting for this time for so long. The weather is also sunny and breezy and the sight is breathtaking. We have been friends since 2000. Can you provide some albums released in this year, that has a minimum of 35000 ratings, with at least an average rating of 3.5 and a minimum of 200 reviews?",
+          "motivation": "Evaluate the ability to understand the context and to call the function that can be called with the correct parameters mentioned in the question.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": "3.5",
+                    "min_ratings": "35000",
+                    "review_threshold": "200",
+                    "release_date": "2000"
+                  }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "Kid A",
+              "Lift Yr. Skinny Fists Like Antennas to Heaven!"
+            ],
+            "comment": null
+          }
+        }
+      ]
+    }
+  ],
+
+  "function_sets": [
+    {
+      "id": "MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
+      "name": "Music - 1 parameter functions with simple function description, no examples.",
+      "domain": "Music",
+      "categories": ["1 Parameter", "Without Examples", "Simple Description"],
+      "num_functions": 9,
+      "functions": [
+        {
+          "name": "albums_by_artist",
+          "description": "Returns all albums by a given artist.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        },
+        {
+          "name": "top_rated_albums",
+          "description": "Returns the top-rated albums based on average rating.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of albums to return. Default is 10."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "artist_by_album",
+          "description": "Returns the artist of an album by its name.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "album_name": {
+                "type": "string",
+                "description": "The name of the album."
+              }
+            },
+            "required": ["album_name"]
+          }
+        },
+        {
+          "name": "albums_by_genres",
+          "description": "Retrieves a list of albums that contain any of the specified genres.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of genre strings the albums must contain."
+              }
+            },
+            "required": ["genres"]
+          }
+        },
+        {
+          "name": "top_streamed_songs",
+          "description": "Returns the n most streamed songs.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of top-streamed songs to return. Default is 10."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "songs_by_release_date",
+          "description": "Retrieves all songs released on a specific date, in a specific month, or in a specific year, based on the provided release date.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date to filter songs by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+              }
+            },
+            "required": ["release_date"]
+          }
+        },
+        {
+          "name": "songs_by_longest_duration",
+          "description": "Returns the top 'n' songs sorted by their duration, from longest to shortest.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of top songs to return, based on duration. Defaults to 10 if not specified."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "artist_by_song",
+          "description": "Returns the artist of the song.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "song_name": {
+                "type": "string",
+                "description": "The name of the song."
+              }
+            },
+            "required": ["song_name"]
+          }
+        },
+        {
+          "name": "songs_by_artist",
+          "description": "Returns all songs by a given artist.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "MUSIC_FUNC_MULTI_PARAM_SIMPLE_DESC_NO_EX_V01",
+      "name": "Music - Multi(>1) parameter functions with simple function description, no examples.",
+      "domain": "Music",
+      "categories": [
+        "Multi Parameters",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 22,
+      "functions": [
+        {
+          "name": "filter_albums_by_date_range",
+          "description": "Filters and retrieves albums released within a specified date range. The range is inclusive of the start and end dates.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "start_date": {
+                "type": "string",
+                "description": "The start date of the date range for filtering albums. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format."
+              },
+              "end_date": {
+                "type": "string",
+                "description": "The end date of the date range for filtering albums. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format."
+              }
+            },
+            "required": ["start_date", "end_date"]
+          }
+        },
+        {
+          "name": "albums_by_genres2",
+          "description": "Retrieves albums that match specified inclusion and exclusion genre criteria.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genres_in": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of genre strings the albums must contain."
+              },
+              "genres_out": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of genre strings the albums must not contain."
+              }
+            },
+            "required": ["genres_in", "genres_out"]
+          }
+        },
+        {
+          "name": "albums_by_date_and_genres",
+          "description": "Retrieves albums released on a specific date, in a specific month, or in a specific year that match any of the specified genres.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date of the albums. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format."
+              },
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of genre strings to filter albums by."
+              }
+            },
+            "required": ["release_date", "genres"]
+          }
+        },
+        {
+          "name": "high_rated_albums",
+          "description": "Retrieves albums with an average rating above a specified threshold and a minimum number of ratings.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "rating_threshold": {
+                "type": "number",
+                "description": "The minimum average rating for the albums. Defaults to 4.0 if not specified."
+              },
+              "min_ratings": {
+                "type": "number",
+                "description": "The minimum number of ratings an album must have. Defaults to 100 if not specified."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "top_streamed_songs_by_genre",
+          "description": "Retrieves the top streamed songs within a specific genre, sorted by number of streams.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genre": {
+                "type": "string",
+                "description": "The genre of the songs."
+              },
+              "n": {
+                "type": "number",
+                "description": "The number of top-streamed songs to return. Defaults to 5 if not specified."
+              }
+            },
+            "required": ["genre"]
+          }
+        },
+        {
+          "name": "songs_by_danceability_explicitness",
+          "description": "Retrieves songs that meet a specified danceability threshold and explicitness criteria.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "danceability_threshold": {
+                "type": "number",
+                "description": "The minimum danceability rating (percentage) to filter songs by."
+              },
+              "explicit": {
+                "type": "boolean",
+                "description": "Flag to filter songs by explicit content. Defaults to True if not specified."
+              }
+            },
+            "required": ["danceability_threshold"]
+          }
+        },
+        {
+          "name": "albums_by_year_genres_and_descriptors",
+          "description": "Retrieves albums released on a specific date, month, or year, that fit within specified genres and match given descriptors.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "Release date to filter albums by, in YYYY, YYYY-MM, or YYYY-MM-DD format."
+              },
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of genres to filter albums by."
+              },
+              "descriptors": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of descriptors to match albums with."
+              }
+            },
+            "required": ["release_date", "genres", "descriptors"]
+          }
+        },
+        {
+          "name": "high_rated_reviewed_albums",
+          "description": "Retrieves albums that meet specific criteria of high average ratings, a minimum number of ratings, and a minimum number of reviews.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "rating_threshold": {
+                "type": "number",
+                "description": "The minimum average rating for the albums."
+              },
+              "min_ratings": {
+                "type": "number",
+                "description": "The minimum number of ratings an album must have."
+              },
+              "review_threshold": {
+                "type": "number",
+                "description": "The minimum number of reviews an album must have."
+              }
+            },
+            "required": ["rating_threshold", "min_ratings", "review_threshold"]
+          }
+        },
+        {
+          "name": "songs_by_danceability_explicitness_speechiness",
+          "description": "Retrieves songs based on specified thresholds for danceability, speechiness, and explicit content criteria.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "danceability_threshold": {
+                "type": "number",
+                "description": "The minimum danceability rating (percentage) to filter songs by."
+              },
+              "speechiness_threshold": {
+                "type": "number",
+                "description": "The minimum speechiness rating (percentage) to filter songs by."
+              },
+              "explicit": {
+                "type": "boolean",
+                "description": "Flag to filter songs by explicit content. Defaults to True if not specified."
+              }
+            },
+            "required": ["danceability_threshold", "speechiness_threshold"]
+          }
+        },
+        {
+          "name": "top_streamed_songs_by_artist_date",
+          "description": "Retrieves the top streamed songs by a specific artist, released on a given date, month, or year.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist whose songs are to be retrieved."
+              },
+              "release_date": {
+                "type": "string",
+                "description": "The release date of the songs to filter by, in YYYY, YYYY-MM, or YYYY-MM-DD format."
+              },
+              "n": {
+                "type": "number",
+                "description": "The number of top-streamed songs to return. Defaults to 5 if not specified."
+              }
+            },
+            "required": ["artist_name", "release_date"]
+          }
+        },
+        {
+          "name": "unique_albums",
+          "description": "Finds albums that are distinctive in terms of genre diversity and artist collaboration but have lower average ratings.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genres_threshold": {
+                "type": "number",
+                "description": "The minimum number of genres an album must cover."
+              },
+              "artist_count_threshold": {
+                "type": "number",
+                "description": "The minimum number of artists required to be involved in an album."
+              },
+              "max_rating_threshold": {
+                "type": "number",
+                "description": "The maximum average rating that an album can have."
+              }
+            },
+            "required": [
+              "genres_threshold",
+              "artist_count_threshold",
+              "max_rating_threshold"
+            ]
+          }
+        },
+        {
+          "name": "albums_by_dates_genres_rating",
+          "description": "Retrieves albums released within a specific date range, filtered by genres to include and exclude, and having an average rating above a specified minimum threshold.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "start_date": {
+                "type": "string",
+                "description": "The start date of the date range for filtering albums, in YYYY-MM-DD format."
+              },
+              "end_date": {
+                "type": "string",
+                "description": "The end date of the date range for filtering albums, in YYYY-MM-DD format."
+              },
+              "genre_in": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of genres that the albums must include."
+              },
+              "genre_out": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of genres that the albums must not include."
+              },
+              "min_rating": {
+                "type": "number",
+                "description": "The minimum average rating threshold for the albums."
+              }
+            },
+            "required": [
+              "start_date",
+              "end_date",
+              "genre_in",
+              "genre_out",
+              "min_rating"
+            ]
+          }
+        },
+        {
+          "name": "high_rated_reviewed_albums_by_date",
+          "description": "Retrieves albums that exceed a certain rating threshold, have a minimum number of ratings and reviews, and are released on a specified date.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "rating_threshold": {
+                "type": "number",
+                "description": "The minimum average rating for the albums."
+              },
+              "min_ratings": {
+                "type": "number",
+                "description": "The minimum number of ratings an album must have."
+              },
+              "review_threshold": {
+                "type": "number",
+                "description": "The minimum number of reviews an album must have."
+              },
+              "release_date": {
+                "type": "string",
+                "description": "The release date of the albums, in YYYY, YYYY-MM, or YYYY-MM-DD format."
+              }
+            },
+            "required": [
+              "rating_threshold",
+              "min_ratings",
+              "review_threshold",
+              "release_date"
+            ]
+          }
+        },
+        {
+          "name": "top_streamed_songs_by_artist_date_range",
+          "description": "Finds the top streamed songs by a specific artist within a given date range, and returns a specified number of these top songs.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist whose songs are to be retrieved."
+              },
+              "start_date": {
+                "type": "string",
+                "description": "The start date of the date range for filtering songs, in YYYY-MM-DD format."
+              },
+              "end_date": {
+                "type": "string",
+                "description": "The end date of the date range for filtering songs, in YYYY-MM-DD format."
+              },
+              "n": {
+                "type": "number",
+                "description": "The number of top-streamed songs to return. Defaults to 5 if not specified."
+              }
+            },
+            "required": ["artist_name", "start_date", "end_date", "n"]
+          }
+        },
+        {
+          "name": "speechiness_songs",
+          "description": "Finds songs based on specific criteria of speechiness, energy, explicit content, and BPM, allowing a tolerance range for speechiness and energy values.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "speechiness": {
+                "type": "number",
+                "description": "Target threshold for speechiness with an acceptable deviation defined by the threshold."
+              },
+              "energy": {
+                "type": "number",
+                "description": "Target threshold for energy with an acceptable deviation defined by the threshold."
+              },
+              "explicit": {
+                "type": "boolean",
+                "description": "Flag indicating whether to filter for explicit content."
+              },
+              "bpm": {
+                "type": "number",
+                "description": "Target Beats Per Minute (BPM) to filter songs by."
+              },
+              "threshold": {
+                "type": "number",
+                "description": "Range value to determine the acceptable deviation from the speechiness and energy thresholds. Defaults to 20 if not specified."
+              }
+            },
+            "required": [
+              "speechiness",
+              "energy",
+              "explicit",
+              "bpm",
+              "threshold"
+            ]
+          }
+        },
+        {
+          "name": "instrumental_songs",
+          "description": "Identifies songs based on specified levels of instrumentalness, valence, danceability, and BPM, with a tolerance range for each parameter.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "instrumentalness": {
+                "type": "number",
+                "description": "Target threshold for instrumentalness, with a specified deviation range."
+              },
+              "valence": {
+                "type": "number",
+                "description": "Target threshold for valence, with a specified deviation range."
+              },
+              "danceability": {
+                "type": "number",
+                "description": "Target threshold for danceability, with a specified deviation range."
+              },
+              "bpm": {
+                "type": "number",
+                "description": "Target Beats Per Minute (BPM) to filter songs by."
+              },
+              "threshold": {
+                "type": "number",
+                "description": "Range value to determine the acceptable deviation from the instrumentalness, valence, and danceability thresholds."
+              }
+            },
+            "required": [
+              "instrumentalness",
+              "valence",
+              "danceability",
+              "bpm",
+              "threshold"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,1 +1,1339 @@
-{"runs": [{"metadata": {"id": "MUSIC_SINGLE_STEP_MULTI_PARAM_V01", "name": "Mannheim Function Calling Benchmark - gpt-4-1106-preview Music wo/ Example Values", "question_set_id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1", "function_set_id": "MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01", "model": "gpt-4-1106-preview", "hyperparameters": {"temperature": 0}, "run_timestamp": "2024-01-27 22:25:02.438563", "test_driver_version": "1.0.0"}, "statistics": {"number_of_functions": {"total": 2, "correct": 1, "accuracy": 0.5}, "number_of_parameters": {"total": 2, "correct": 1, "accuracy": 0.5}, "number_of_answers": {"total": 2, "correct": 0, "accuracy": 0.0}, "number_of_tokens": {"input": 0, "output": 0}}, "results": [{"question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q1", "category": "Selection", "question": "Among the top 30 rated albums, which were released by 'Radiohead'?", "overall_match": false, "error_category": null, "correct_paths": [{"path_id": 1, "functions": ["top_rated_albums"], "parameters": [{"n": 30}]}], "model_solution": {"functions": ["albums_by_artist"], "parameters": [{"artist_name": "Radiohead"}], "answer": "Among the top-rated albums by Radiohead, the following have high average ratings:\n\n1. OK Computer with an average rating of 4.24\n2. Kid A with an average rating of 4.23\n3. In Rainbows with an average rating of 4.2\n\nThese albums are likely to be among the top 30 rated albums overall, given their high average ratings and significant number of ratings."}, "correct_answers": ["Selects all 3 albums."], "evaluation": {"functions": "Incorrect", "parameters": "Incorrect", "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"}}, {"question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q2", "category": "Selection", "question": "Which songs released in 2012 were performed by more than 1 artist?", "overall_match": false, "error_category": null, "correct_paths": [{"path_id": 1, "functions": ["songs_by_release_date"], "parameters": [{"release_date": "2012"}]}], "model_solution": {"functions": ["songs_by_release_date"], "parameters": [{"release_date": "2012"}], "answer": "The songs released in 2012 that were performed by more than 1 artist are:\n\n1. MONTAGEM - FR PUNK by Ayparia and unxbected\n2. Money Trees by Kendrick Lamar and Jay Rock\n3. Payphone by Maroon 5 and Wiz Khalifa"}, "correct_answers": ["Returns 3 songs performed by 2 artists."], "evaluation": {"functions": "Correct", "parameters": "Correct", "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"}}]}, {"metadata": {"id": "MUSIC_SINGLE_STEP_MULTI_PARAM_V01", "name": "Mannheim Function Calling Benchmark - gpt-4-1106-preview Music wo/ Example Values", "question_set_id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1", "function_set_id": "MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01", "model": "gpt-4-1106-preview", "hyperparameters": {"temperature": 0}, "run_timestamp": "2024-01-27 23:39:04.736334", "test_driver_version": "1.0.0"}, "statistics": {"number_of_functions": {"total": 2, "correct": 1, "accuracy": 0.5}, "number_of_parameters": {"total": 2, "correct": 1, "accuracy": 0.5}, "number_of_answers": {"total": 2, "correct": 0, "accuracy": 0.0}, "number_of_tokens": {"input": 0, "output": 0}}, "results": [{"question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q1", "category": "Selection", "question": "Among the top 30 rated albums, which were released by 'Radiohead'?", "overall_match": false, "error_category": null, "correct_paths": [{"path_id": 1, "functions": ["top_rated_albums"], "parameters": [{"n": 30}]}], "model_solution": {"functions": ["albums_by_artist"], "parameters": [{"artist_name": "Radiohead"}], "answer": "Among the top-rated albums by Radiohead, the following have high average ratings:\n\n1. OK Computer with an average rating of 4.24\n2. Kid A with an average rating of 4.23\n3. In Rainbows with an average rating of 4.2\n\nThese albums are likely to be among the top 30 rated albums overall, given their high average ratings and significant number of ratings."}, "correct_answers": ["Selects all 3 albums."], "evaluation": {"functions": "Incorrect", "parameters": "Incorrect", "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"}}, {"question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q2", "category": "Selection", "question": "Which songs released in 2012 were performed by more than 1 artist?", "overall_match": false, "error_category": null, "correct_paths": [{"path_id": 1, "functions": ["songs_by_release_date"], "parameters": [{"release_date": "2012"}]}], "model_solution": {"functions": ["songs_by_release_date"], "parameters": [{"release_date": "2012"}], "answer": "The songs released in 2012 that were performed by more than 1 artist are:\n\n1. MONTAGEM - FR PUNK by Ayparia and unxbected\n2. Money Trees by Kendrick Lamar and Jay Rock\n3. Payphone by Maroon 5 and Wiz Khalifa"}, "correct_answers": ["Returns 3 songs performed by 2 artists."], "evaluation": {"functions": "Correct", "parameters": "Correct", "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"}}]}]}
+{
+  "runs": [
+    {
+      "metadata": {
+        "id": "MUSIC_SINGLE_STEP_MULTI_PARAM_V01",
+        "name": "Mannheim Function Calling Benchmark - gpt-4-1106-preview Music wo/ Example Values",
+        "question_set_id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1",
+        "function_set_id": "MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
+        "model": "gpt-4-1106-preview",
+        "hyperparameters": { "temperature": 0 },
+        "run_timestamp": "2024-01-28 21:15:05.641389",
+        "test_driver_version": "1.0.0"
+      },
+      "statistics": {
+        "number_of_functions": {
+          "total": 48,
+          "correct": 26,
+          "accuracy": 0.5416666666666666
+        },
+        "number_of_parameters": {
+          "total": 48,
+          "correct": 27,
+          "accuracy": 0.5625
+        },
+        "number_of_answers": { "total": 48, "correct": 0, "accuracy": 0.0 },
+        "number_of_tokens": { "input": 0, "output": 0 }
+      },
+      "results": [
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q1",
+          "category": "Selection",
+          "question": "Among the top 30 rated albums, which were released by 'Radiohead'?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["top_rated_albums"],
+              "parameters": [{ "n": 30 }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Radiohead" }],
+            "answer": "Among the top-rated albums by Radiohead, the following have high average ratings:\n\n1. 'OK Computer' with an average rating of 4.24\n2. 'Kid A' with an average rating of 4.23\n3. 'In Rainbows' with an average rating of 4.2\n\nThese albums are likely to be among the top 30 rated albums overall, given their high average ratings and significant number of ratings."
+          },
+          "correct_answers": ["Selects all 3 albums."],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q2",
+          "category": "Selection",
+          "question": "Which songs released in 2012 were performed by more than 1 artist?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_release_date"],
+              "parameters": [{ "release_date": "2012" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_release_date"],
+            "parameters": [{ "release_date": "2012" }],
+            "answer": "The songs released in 2012 that were performed by more than 1 artist are:\n\n1. 'MONTAGEM - FR PUNK' by Ayparia and unxbected\n2. 'Money Trees' by Kendrick Lamar and Jay Rock\n3. 'Payphone' by Maroon 5 and Wiz Khalifa"
+          },
+          "correct_answers": ["Returns 3 songs performed by 2 artists."],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q3",
+          "category": "Selection",
+          "question": "Among all Eminem albums, which has the highest number of ratings?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_artist"],
+              "parameters": [{ "artist_name": "Eminem" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Eminem" }],
+            "answer": "The Eminem album with the highest number of ratings is 'The Marshall Mathers LP,' which has 17,698 ratings."
+          },
+          "correct_answers": ["The Marshall Mathers LP"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q4",
+          "category": "Selection",
+          "question": "Among all top 10 albums, which have between 20000 and 50000 ratings?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["top_rated_albums"],
+              "parameters": [{ "n": 10 }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "all" }],
+            "answer": "I apologize, but it seems there was an issue retrieving the data for the top 10 albums and their ratings. Could you please specify an artist or clarify your request?"
+          },
+          "correct_answers": [
+            "Includes all 8 of 10 songs that are within that range."
+          ],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q5",
+          "category": "Selection",
+          "question": "Among the top 5 albums, which 2 albums are the most similar based on genres? Why?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["top_rated_albums"],
+              "parameters": [{ "n": 5 }]
+            }
+          ],
+          "model_solution": {
+            "functions": [],
+            "parameters": [],
+            "answer": "To determine which two albums among the top 5 are the most similar based on genres, I would need to know what the current top 5 albums are and their respective genres. However, I don't have real-time access to current music charts or databases to provide this information directly.\n\nIf you can provide me with the names of the top 5 albums, I can then analyze their genres and determine which two are the most similar. Alternatively, if you're looking for a general approach to determine similarity, you would compare the genre tags of each album and look for the two with the most genres in common. The more genres two albums share, the more similar they are in terms of musical style."
+          },
+          "correct_answers": [
+            "'Wish You Were Here'by Pink Floyd and 'In the Court of the Crimson King' by King Crimson. Both albums share genres such as 'Progressive Rock,' 'Psychedelic Rock,' and 'Art Rock.'"
+          ],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q6",
+          "category": "Selection",
+          "question": "What is the 10th highest rated 'Alt-Pop' song?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_genres"],
+              "parameters": [{ "genres": ["Alt-Pop"] }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["top_streamed_songs"],
+            "parameters": [{ "n": 10 }],
+            "answer": "The 10th highest rated 'Alt-Pop' song is not explicitly listed in the data provided. The data returned is for the top 10 streamed songs, which may not necessarily be 'Alt-Pop' songs. If you are looking for 'Alt-Pop' specifically, I would need a different method to filter songs by genre."
+          },
+          "correct_answers": ["I Don't Want You Anymore by Cherry Glazerr"],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q7",
+          "category": "Selection",
+          "question": "Among the 15 songs with the longest durations, what is the most popular song?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_longest_duration"],
+              "parameters": [{ "n": 15 }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_longest_duration"],
+            "parameters": [{ "n": 15 }],
+            "answer": "The most popular song among the 15 songs with the longest durations is '2085' by AJR, with a popularity score of 64.0."
+          },
+          "correct_answers": ["2085 by AJR"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q8",
+          "category": "Selection",
+          "question": "Among the songs released in 2020, which one has the 2nd most streams?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_release_date"],
+              "parameters": [{ "release_date": "2020" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_release_date"],
+            "parameters": [{ "release_date": "2020" }],
+            "answer": "The song released in 2020 with the 2nd most streams is 'Save Your Tears' by The Weeknd, with 1,591,223,784 streams."
+          },
+          "correct_answers": [
+            "Levitating (feat. DaBaby) with 1802514301 streams"
+          ],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q9",
+          "category": "Selection",
+          "question": "Among the most 15 streamed songs, which were released between January 2023 and Februray 2023?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["top_streamed_songs"],
+              "parameters": [{ "n": 15 }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["top_streamed_songs"],
+            "parameters": [{ "n": 15 }],
+            "answer": "Among the most streamed 15 songs, the ones released between January 2023 and February 2023 are:\n\n1. 'Everything I Love' by Morgan Wallen, released on January 31, 2023.\n2. 'People Pt.2 (feat. IU)' by IU and Agust D, released on April 7, 2023. (Note: This song is outside the specified range but is included in the list due to the absence of other songs within the specified date range.)"
+          },
+          "correct_answers": ["Everything I Love by Morgan Wallen"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q10",
+          "category": "Selection",
+          "question": "Among all Wonky albums, what album with more than 5 genres has the highest average rating?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_genres"],
+              "parameters": [{ "genres": ["Wonky"] }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Wonky" }],
+            "answer": "It appears that there are no albums listed under the artist name 'Wonky' in the database I have access to. If 'Wonky' refers to a genre rather than an artist, I would need to search differently. Please provide more specific details or check if the artist's name is spelled correctly."
+          },
+          "correct_answers": [
+            "OIL OF EVERY PEARL'S UN-INSIDES by SOPHIE",
+            "Niggas on the Moon: The Powers That B Disc 1 by Death Grips"
+          ],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q11",
+          "category": "Selection",
+          "question": "What is the 25th most popular song?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["top_streamed_songs"],
+              "parameters": [{ "n": 25 }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["top_streamed_songs"],
+            "parameters": [{ "n": 25 }],
+            "answer": "The 25th most popular song is 'Sem Alian\\ufffd\\ufffda no ' by MC Xenon and Os Gemeos da Putaria."
+          },
+          "correct_answers": ["VAGABUNDO"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q12",
+          "category": "Selection",
+          "question": "Among the 10 longest songs, which were released by 'Eminem'?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_longest_duration"],
+              "parameters": [{ "n": 10 }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_longest_duration"],
+            "parameters": [{ "n": 10 }],
+            "answer": "Among the 10 longest songs, the following were released by Eminem:\n\n1. 'Bad Guy' - Duration: 7.24 minutes\n2. 'Wicked Ways' - Duration: 6.51 minutes\n3. 'Rap God - Instrumental' - Duration: 6.10 minutes\n4. 'Rap God' - Duration: 6.06 minutes\n5. 'Evil Twin' - Duration: 5.95 minutes\n6. 'Headlights - Instrumental' - Duration: 5.84 minutes\n7. 'Headlights' (featuring Nate Ruess) - Duration: 5.72 minutes"
+          },
+          "correct_answers": ["7"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q1",
+          "category": "Aggregation",
+          "question": "How many songs were released in 2000?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_release_date"],
+              "parameters": [{ "release_date": "2000" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_release_date"],
+            "parameters": [{ "release_date": "2000" }],
+            "answer": "Four songs from the year 2000 are listed in the provided data. However, this does not represent the total number of songs released in that year, as there were many more songs released in 2000. The data provided is just a sample and not a comprehensive list."
+          },
+          "correct_answers": ["4"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q2",
+          "category": "Aggregation",
+          "question": "How many reviews have the albums of Radiohead received?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": [" albums_by_artist"],
+              "parameters": [{ "artist_name": "Radiohead" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Radiohead" }],
+            "answer": "The albums of Radiohead have received the following number of reviews:\n\n- OK Computer: 1541 reviews\n- Kid A: 751 reviews\n- In Rainbows: 752 reviews\n- The Bends: 798 reviews\n- Amnesiac: 549 reviews\n- Hail to the Thief: 493 reviews\n- A Moon Shaped Pool: 276 reviews\n- Pablo Honey: 496 reviews\n- The King of Limbs: 485 reviews\n- In Rainbows Disk 2: 20 reviews\n\nTo calculate the total number of reviews, we would add these numbers together."
+          },
+          "correct_answers": ["6161"],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q3",
+          "category": "Aggregation",
+          "question": "Among the top 20 rated albums, which one has the lowest number of reviews?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["top_rated_albums"],
+              "parameters": [{ "n": "20" }]
+            }
+          ],
+          "model_solution": {
+            "functions": [],
+            "parameters": [],
+            "answer": "I'm sorry, but I don't have access to real-time databases or external systems that track album ratings and the number of reviews they have received. To find out which of the top 20 rated albums has the lowest number of reviews, you would typically need to consult a music review aggregator or a platform that provides such statistics, like Metacritic, RateYourMusic, or a similar service. If you have access to a specific database or service in mind, you could check there for the most current information."
+          },
+          "correct_answers": ["In a Silent Way"],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q4",
+          "category": "Aggregation",
+          "question": "Of all the songs of Ed Sheeran, which one is the most streamed?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_artist"],
+              "parameters": [{ "artist_name": "Ed Sheeran" }]
+            }
+          ],
+          "model_solution": {
+            "functions": [
+              "albums_by_artist",
+              "top_streamed_songs",
+              "top_streamed_songs"
+            ],
+            "parameters": [
+              { "artist_name": "Ed Sheeran" },
+              { "n": 1 },
+              { "n": 5 }
+            ],
+            "answer": "I apologize for the inconvenience, but it seems that the data retrieved does not include the most streamed song by Ed Sheeran. The information provided is for other artists' songs. Unfortunately, I am unable to provide the most streamed song by Ed Sheeran at this time."
+          },
+          "correct_answers": ["'Shape Of You'"],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q5",
+          "category": "Aggregation",
+          "question": "What is the average rating of all the albums of Red Hot Chilli Peppers?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": [" albums_by_artist"],
+              "parameters": [{ "artist_name": "Red Hot Chilli Peppers" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Red Hot Chili Peppers" }],
+            "answer": "To calculate the average rating of all the albums by Red Hot Chili Peppers, we'll take the sum of the average ratings and divide it by the number of albums.\n\nSum of average ratings = 3.48 (Californication) + 3.6 (Blood Sugar Sex Magik) + 3.29 (By the Way) + 3.01 (Stadium Arcadium) + 3.29 (Mother's Milk) + 2.62 (I'm With You) + 2.81 (The Getaway) = 22.10\n\nNumber of albums = 7\n\nAverage rating = Sum of average ratings / Number of albums = 22.10 / 7 \u2248 3.16\n\nThe average rating of all the albums by Red Hot Chili Peppers is approximately 3.16."
+          },
+          "correct_answers": ["3.157"],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q6",
+          "category": "Aggregation",
+          "question": "Can you provide me the average value of beats per minute for the songs of Olivia Rodrigo.",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_artist"],
+              "parameters": [{ "artist_name": "Olivia Rodrigo" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Olivia Rodrigo" }],
+            "answer": "I can provide you with the BPM for the songs from Olivia Rodrigo's album 'Sour,' as it is her only album listed. However, I don't have direct access to the BPM data for each song. You would typically need to look up this information on a music database or streaming service that provides detailed track information. Once you have the BPM for each song, you can calculate the average by adding them together and dividing by the number of songs."
+          },
+          "correct_answers": ["162.142"],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q1",
+          "category": "Interpretation",
+          "question": "Of the top 15 songs in Spotify, return the ones starting with e.",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["top_streamed_songs"],
+              "parameters": [{ "n": 15 }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["top_streamed_songs"],
+            "parameters": [{ "n": 15 }],
+            "answer": "Among the top 15 streamed songs on Spotify, the ones starting with the letter 'E' are:\n\n1. 'Everything I Love' by Morgan Wallen\n2. 'Anti-Hero' by Taylor Swift\n3. 'Alone' by Burna Boy (Note: While 'Alone' does not start with an 'E,' it is included in the list because the artist's name starts with an 'E.')"
+          },
+          "correct_answers": ["Everything I Love"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q2",
+          "category": "Interpretation",
+          "question": "Which songs released in 2012 were performed by more than 1 artist?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_release_date"],
+              "parameters": [{ "release_date": "2012" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_release_date"],
+            "parameters": [{ "release_date": "2012" }],
+            "answer": "The songs released in 2012 that were performed by more than 1 artist are:\n\n1. 'MONTAGEM - FR PUNK' by Ayparia and unxbected\n2. 'Money Trees' by Kendrick Lamar and Jay Rock\n3. 'Payphone' by Maroon 5 and Wiz Khalifa"
+          },
+          "correct_answers": ["MONTAGEM - FR PUNK", "Money Trees", "Payphone"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q3",
+          "category": "Interpretation",
+          "question": "Provide me the songs released in 2011 which are about Christmas.",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_release_date"],
+              "parameters": [{ "release_date": "2011" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_release_date"],
+            "parameters": [{ "release_date": "2011" }],
+            "answer": "Here are the songs released in 2011 that are about Christmas:\n\n1. 'It's Beginning To Look A Lot Like Christmas' by Michael Bubl\u00e9\n2. 'Holly Jolly Christmas' by Michael Bubl\u00e9\n3. 'Mistletoe' by Justin Bieber\n\nThese tracks are specifically themed around the Christmas holiday."
+          },
+          "correct_answers": [
+            "It's Beginning To Look A Lot Like Christmas",
+            "Holly Jolly Christmas",
+            "Mistletoe"
+          ],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q4",
+          "category": "Interpretation",
+          "question": "Which albums were released on 8th October, 1980?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_release_date"],
+              "parameters": [{ "release_date": "1980-10-08" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_release_date"],
+            "parameters": [{ "release_date": "1980-10-08" }],
+            "answer": "No albums were found that were released on 8th October, 1980, in the database I have access to. It's possible that the database may not have complete information or that no notable albums were released on that specific date."
+          },
+          "correct_answers": ["Remain in Light", "Dirty Mind"],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q5",
+          "category": "Interpretation",
+          "question": "What is the difference in duration between the longest and second longest song?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_longest_duration"],
+              "parameters": [{ "n": 2 }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_longest_duration"],
+            "parameters": [{ "n": 2 }],
+            "answer": "The difference in duration between the longest and the second longest song is:\n\n7.239316666666666 minutes (Eminem - Bad Guy) - 6.88225 minutes (Rick Ross, Meek Mill, Shaquille O'Neal, Dame D.O.L.L.A - SHAQ & KOBE (Remix)) = 0.357066666666666 minutes\n\nConverted to seconds: 0.357066666666666 minutes * 60 seconds/minute = 21.424 seconds\n\nSo, the difference is approximately 21.4 seconds."
+          },
+          "correct_answers": ["0.357 minutes or approximately 21.42 seconds"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q6",
+          "category": "Interpretation",
+          "question": "Among the longest songs 10 songs, how many can I listen to fully in an hour of my time?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_longest_duration"],
+              "parameters": [{ "n": 10 }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_longest_duration"],
+            "parameters": [{ "n": 10 }],
+            "answer": "To determine how many of the longest songs you can listen to fully in an hour, we need to sum up their durations until we reach 60 minutes (1 hour). Here are the durations of the top 10 longest songs:\n\n1. 7.24 minutes\n2. 6.88 minutes\n3. 6.51 minutes\n4. 6.28 minutes\n5. 6.18 minutes\n6. 6.10 minutes\n7. 6.06 minutes\n8. 5.95 minutes\n9. 5.84 minutes\n10. 5.72 minutes\n\nNow, let's add them up until we reach 60 minutes:\n\n7.24 + 6.88 + 6.51 + 6.28 + 6.18 + 6.10 + 6.06 + 5.95 + 5.84 + 5.72 = 62.76 minutes\n\nSince 62.76 minutes is more than 60 minutes, we need to exclude the last song to stay within the hour:\n\n7.24 + 6.88 + 6.51 + 6.28 + 6.18 + 6.10 + 6.06 + 5.95 + 5.84 = 57.04 minutes\n\nAfter adding up the durations of the first nine songs, we reach 57.04 minutes, which is less than 60 minutes. Therefore, you can listen to 9 out of the 10 longest songs fully in an hour of your time."
+          },
+          "correct_answers": [
+            "We can listen to 9 songs fully, and the last one only partially."
+          ],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q7",
+          "category": "Interpretation",
+          "question": "Which album was released last in 1970?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_release_date"],
+              "parameters": [{ "release_date": "1970" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_release_date"],
+            "parameters": [{ "release_date": "1970" }],
+            "answer": "The data provided does not include specific album release dates or the last album released in 1970. It only includes information about individual songs released in 1970. To find out which album was released last in 1970, we would need more comprehensive data on album release dates from that year."
+          },
+          "correct_answers": ["All Things Must Pass"],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q1",
+          "category": "Reasoning",
+          "question": "I consider rating as a parameter of popularity. Can you give me the most popular album of Red Hot Chilli Peppers.",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_artist"],
+              "parameters": [{ "artist_name": "Red Hot Chilli Peppers" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Red Hot Chili Peppers" }],
+            "answer": "The most popular album by Red Hot Chili Peppers, based on average rating and rating count, is 'Blood Sugar Sex Magik' with an average rating of 3.6 and a rating count of 15,587."
+          },
+          "correct_answers": ["Blood Sugar Sex Magik"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q2",
+          "category": "Reasoning",
+          "question": "Among the 3 longest songs, does a higher speechiness score affect if the song is explicit?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_longest_duration"],
+              "parameters": [{ "n": 3 }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_longest_duration"],
+            "parameters": [{ "n": 3 }],
+            "answer": "The three longest songs all have relatively high speechiness scores (45%, 44%, and 42%) and are all explicit. However, since all three songs are explicit, we cannot determine from this data alone whether a higher speechiness score affects whether a song is explicit. We would need a larger and more varied sample of songs with different speechiness scores and explicitness statuses to make a more accurate assessment."
+          },
+          "correct_answers": [
+            "Identifies a potential correlation between speechiness and explicitness"
+          ],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q3",
+          "category": "Reasoning",
+          "question": "Based on the previous album genres by Eminem, what could the next album's three most likely genres be?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_artist"],
+              "parameters": [{ "artist_name": "Eminem" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Eminem" }],
+            "answer": "Based on Eminem's previous album genres, the next album's three most likely genres could be:\n\n1. Hardcore Hip Hop\n2. Pop Rap\n3. Horrorcore\n\nThese genres appear frequently across his discography."
+          },
+          "correct_answers": ["Hardcore HipHop, Horrorcore, Pop Rap "],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q4",
+          "category": "Reasoning",
+          "question": "Based on the previous album genres by Blawan, what could the next album's three most likely genres be?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_artist"],
+              "parameters": [{ "artist_name": "Blawan" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Blawan" }],
+            "answer": "Based on the previous album 'Dismantled Into Juice' by Blawan, the next album's three most likely genres could be:\n\n1. UK Bass\n2. Wonky Techno\n3. Deconstructed Club\n\nThese genres reflect Blawan's recent musical direction and style."
+          },
+          "correct_answers": ["UK Bass, Wonky Techno, Deconstructed Club"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q5",
+          "category": "Reasoning",
+          "question": "I am a DJ at a club and want people to party as much as possible. Which three top 10 songs should I play? Why?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["top_streamed_songs"],
+              "parameters": [{ "n": 10 }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["top_streamed_songs"],
+            "parameters": [{ "n": 10 }],
+            "answer": "As a DJ looking to keep the party atmosphere high, you should consider playing songs with a high danceability, energy, and valence (happiness) percentage. Based on the top 10 streamed songs provided, here are three that should work well:\n\n1. 'Queencard' by (G)I-DLE - With a BPM of 130, danceability of 82%, valence of 69%, and energy of 83%, this song is upbeat and likely to get people dancing.\n2. 'Love Grows (Where My Rosemary Goes)' by Edison Lighthouse - Although an older track, it has a BPM of 110, danceability of 53%, valence of 75%, and energy of 69%, which makes it a feel-good song that can appeal to a wide audience.\n3. 'Anti-Hero' by Taylor Swift - It has a BPM of 97, danceability of 64%, valence of 51%, and energy of 63%, making it a catchy and danceable track that's popular and recognizable.\n\nThese songs have the right combination of tempo, rhythm, and mood to maintain a high-energy party atmosphere."
+          },
+          "correct_answers": [
+            "Queencard",
+            "Everything I Love",
+            "Where Are You Now"
+          ],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q1",
+          "category": "Different Languages",
+          "question": "K\u00f6nnen Sie uns bitte die f\u00fcnf besten Alben basierend auf der durchschnittlichen Bewertung nennen?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["top_rated_albums"],
+              "parameters": [{ "n": "5" }]
+            }
+          ],
+          "model_solution": {
+            "functions": [],
+            "parameters": [],
+            "answer": "Entschuldigung, aber ich habe keinen direkten Zugriff auf aktuelle Datenbanken oder Ressourcen, die eine Liste der besten Alben basierend auf der durchschnittlichen Bewertung bereitstellen k\u00f6nnten. Normalerweise w\u00fcrden solche Informationen von Musikbewertungsplattformen wie Pitchfork, Metacritic oder anderen Kritikeraggregatoren stammen. Ich empfehle, diese Websites zu besuchen, um die aktuellsten Informationen zu den bestbewerteten Alben zu erhalten."
+          },
+          "correct_answers": [
+            "The Black Saint and the Sinner Lady",
+            "Wish You Were Here",
+            "To Pimp a Butterfly",
+            "A Love Supreme",
+            "In the Court of the Crimson King"
+          ],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q2",
+          "category": "Different Languages",
+          "question": "\u30c6\u30a4\u30e9\u30fc\u30fb\u30b9\u30a6\u30a3\u30d5\u30c8\u304c\u30ea\u30ea\u30fc\u30b9\u3057\u305f\u3059\u3079\u3066\u306e\u30a2\u30eb\u30d0\u30e0\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044\u3002",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_artist"],
+              "parameters": [{ "artist_name": "Taylor Swift" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Taylor Swift" }],
+            "answer": "\u30c6\u30a4\u30e9\u30fc\u30fb\u30b9\u30a6\u30a3\u30d5\u30c8\u304c\u30ea\u30ea\u30fc\u30b9\u3057\u305f\u30a2\u30eb\u30d0\u30e0\u306f\u4ee5\u4e0b\u306e\u901a\u308a\u3067\u3059\uff1a\n\n1. 'Folklore' (2020-07-24)\n2. '1989' (2014-10-27)\n3. 'Evermore' (2020-12-11)\n4. 'Red' (2012-10-22)\n5. 'Reputation' (2017-11-10)\n6. 'Lover' (2019-08-23)\n7. 'Speak Now' (2010-10-25)\n8. 'Fearless' (2008-11-11)\n9. 'Taylor Swift' (2006-10-24)\n10. 'Red (Taylor's Version)' (2021-11-12)\n11. 'Fearless (Taylor's Version)' (2021-04-09)\n12. 'Speak Now (Taylor's Version)' (2023-07-07)\n\n\u3053\u308c\u3089\u306f\u5f7c\u5973\u306e\u30b9\u30bf\u30b8\u30aa\u30a2\u30eb\u30d0\u30e0\u3067\u3001\u3044\u304f\u3064\u304b\u306f\u30aa\u30ea\u30b8\u30ca\u30eb\u30a2\u30eb\u30d0\u30e0\u306e\u518d\u9332\u30d0\u30fc\u30b8\u30e7\u30f3\uff08'Taylor's Version'\uff09\u3082\u542b\u307e\u308c\u3066\u3044\u307e\u3059\u3002"
+          },
+          "correct_answers": [
+            "Folklore",
+            "1989",
+            "Evermore",
+            "Red",
+            "Reputation",
+            "Lover",
+            "Speak Now",
+            "Fearless",
+            "Taylor Swift",
+            "Red (Taylor's Version)",
+            "Fearless (Taylor's Version)",
+            "Speak Now (Taylor's Version)"
+          ],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q3",
+          "category": "Different Languages",
+          "question": "'\u0926 \u0935\u0949\u0932' \u0907\u0924\u093f \u090f\u0932\u094d\u092c\u092e\u0938\u094d\u092f \u0915\u0932\u093e\u0915\u093e\u0930\u0903 \u0915\u0903 ?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["artist_by_album"],
+              "parameters": [{ "album_name": "The Wall" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Pink Floyd" }],
+            "answer": "\u090f\u0932\u094d\u092c\u092e '\u0926 \u0935\u0949\u0932' \u0915\u0947 \u0915\u0932\u093e\u0915\u093e\u0930 \u0939\u0948\u0902 Pink Floyd."
+          },
+          "correct_answers": ["Pink Floyd"],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q4",
+          "category": "Different Languages",
+          "question": "\u067e\u0631\u0641\u064a\u06aa\u067d\u201d \u06af\u064a\u062a \u062c\u0648 \u06b3\u0627\u0626\u06bb\u0648 \u06aa\u064a\u0631 \u0622\u0647\u064a\u061f'",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["artist_by_song"],
+              "parameters": [{ "song_name": "Perfect" }]
+            }
+          ],
+          "model_solution": {
+            "functions": [],
+            "parameters": [],
+            "answer": "'Perfect' \u06af\u064a\u062a \u062c\u0648 \u06b3\u0627\u0626\u06bb\u0648 \u0628\u0631\u0637\u0627\u0646\u0648\u064a \u06af\u0644\u0648\u06aa\u0627\u0631 \u0627\u064a\u068a \u0634\u064a\u0631\u0646 (Ed Sheeran) \u0622\u0647\u064a."
+          },
+          "correct_answers": ["Ed Sheeran"],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q5",
+          "category": "Different Languages",
+          "question": "Do\u011fum g\u00fcn\u00fcm 16 haziranda. Bana 16 haziranda iki y\u0131l \u00f6nce piyasaya s\u00fcr\u00fclen par\u00e7alardan bir liste olu\u015fturur musun?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_release_date"],
+              "parameters": [{ "release_date": "2022-06-16" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_release_date"],
+            "parameters": [{ "release_date": "2021-06-16" }],
+            "answer": "\u0130ki y\u0131l \u00f6nce, 16 Haziran 2021'de piyasaya s\u00fcr\u00fclen herhangi bir par\u00e7a bulunamad\u0131. Ba\u015fka bir tarih veya bilgiyle yard\u0131mc\u0131 olmam\u0131 ister misiniz?"
+          },
+          "correct_answers": ["ULTRA SOLO REMIX", "Don't You Worry"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q6",
+          "category": "Different Languages",
+          "question": "Foo Fighters alb\u00fcmleri aras\u0131nda en az de\u011ferlendirme alm\u0131\u015f alb\u00fcm\u00fc hangisi?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_artist"],
+              "parameters": [{ "artist_name": "Foo Fighters" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Foo Fighters" }],
+            "answer": "Foo Fighters'\u0131n en az de\u011ferlendirme alm\u0131\u015f alb\u00fcm\u00fc 'Concrete and Gold' alb\u00fcm\u00fcd\u00fcr ve 33 de\u011ferlendirme alm\u0131\u015ft\u0131r."
+          },
+          "correct_answers": ["Concrete and Gold"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q1",
+          "category": "Typos",
+          "question": "Provide me the list of songs of Dua Lepa.",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_artist"],
+              "parameters": [{ "artist_name": "Dua Lipa" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Dua Lipa" }],
+            "answer": "Dua Lipa has released the following albums:\n\n1. 'Future Nostalgia' - Released on March 27, 2020. Genres include Synthpop, Funktronica, Dance-Pop, Nu-Disco, and Electropop.\n\n2. 'Dua Lipa' - Released on June 2, 2017. Genres include Synthpop, Contemporary R&B, Dance-Pop, Alt-Pop, and Electropop.\n\nTo provide a list of songs from these albums, I would need to look up the tracklists for each album. Would you like me to do that?"
+          },
+          "correct_answers": [
+            "Dance The Night(From Barbie The Album)",
+            "Don't Start Now",
+            "Levitating"
+          ],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q2",
+          "category": "Typos",
+          "question": "Provide me the list of albums of Pink Militry.",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_artist"],
+              "parameters": [{ "artist_name": "Pink Military" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Pink Military" }],
+            "answer": "It appears that there are no albums listed for the artist Pink Military in the database I have access to. It's possible that the artist's work is not included in this particular dataset or there may be a spelling error in the artist's name. If Pink Military is a lesser-known or independent artist, their albums might not be as widely documented in mainstream databases."
+          },
+          "correct_answers": ["Do Animals Believe in God?"],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q3",
+          "category": "Typos",
+          "question": "Who is the atist of of albm 'Loveless'?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["artist_by_album"],
+              "parameters": [{ "album_name": "Loveless" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "My Bloody Valentine" }],
+            "answer": "The artist of the album 'Loveless' is My Bloody Valentine."
+          },
+          "correct_answers": ["My Bloody Valentine"],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_RCON_Q1",
+          "category": "Related Context",
+          "question": "Birthdays hold a unique significance in our lives, serving as annual milestones that mark the passage of time and the celebration of one's existence. Beyond the joy of receiving gifts and the revelry of parties, birthdays offer an opportunity for reflection and gratitude. They remind us to appreciate the journey we've undertaken, the lessons learned, and the growth experienced throughout the year. Can you make a list of tracks which were released on my birthday, 10th of February,that will help me remember this past year with beautiful memories and remind me to value artists and their efforts?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_release_date"],
+              "parameters": [{ "release_date": "02-10" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_release_date"],
+            "parameters": [{ "release_date": "2023-02-10" }],
+            "answer": "Here are two tracks released on your birthday, February 10th, 2023, that can help you remember the past year with beautiful memories and remind you to value artists and their efforts:\n\n1. 'El Azul' by Junior H and Peso Pluma\n2. 'If We Ever Broke Up' by Mae Stephens\n\nEnjoy reflecting on your year with these tunes!"
+          },
+          "correct_answers": [
+            "El Azul",
+            "Shut up My Moms Calling",
+            "If We Ever Broke Up",
+            "MAMIII"
+          ],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_RCON_Q2",
+          "category": "Related Context",
+          "question": "Human life has ups and downs. Sometimes, while many opportunities come our way and we fail to see them, we are always more focused on the missed opportunities. While being abandoned makes us very sad, we don't think about the potential of starting a new relationship. Can you recommend 4 outdated old songs that will help us cope with the ups and downs of life?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_release_date"],
+              "parameters": [{ "release_date": "" }]
+            }
+          ],
+          "model_solution": {
+            "functions": [],
+            "parameters": [],
+            "answer": "Music has a timeless quality that can provide comfort and perspective during life's ups and downs. Here are four classic songs that might resonate with the theme of coping with life's challenges:\n\n1. 'Let It Be' by The Beatles \u2013 This song is a classic reminder that sometimes, acceptance and letting things be can provide peace amidst turmoil.\n\n2. 'Bridge Over Troubled Water' by Simon & Garfunkel \u2013 A song about support and being there for someone when they're facing hard times.\n\n3. 'Lean on Me' by Bill Withers \u2013 A soulful tune that emphasizes the importance of friendship and mutual support during difficult periods.\n\n4. 'The Times They Are A-Changin'' by Bob Dylan \u2013 This song reflects on change as a constant in life and encourages embracing it rather than resisting.\n\nThese songs, while old, carry messages that are just as relevant today as when they were first released. They can offer solace and a sense of shared human experience through their lyrics and melodies."
+          },
+          "correct_answers": [
+            "Returns 4 songs released in old times, not in the 2000s."
+          ],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_RCON_Q3",
+          "category": "Related Context",
+          "question": "I would like to know a few tunes which were released in the season that brings with it a contagious liveliness, as trees sprout new leaves, birds return with cheerful melodies, and fields come alive with the dance of butterflies. Can you return the tunes were formed in the beginning of those?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_release_date"],
+              "parameters": [{ "release_date": "spring" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_release_date"],
+            "parameters": [{ "release_date": "2023-03" }],
+            "answer": "Here are a few tunes that were released in March 2023, marking the beginning of spring:\n\n1. 'LALA' by Myke Towers (Released on March 23, 2023)\n2. 'Ella Baila Sola' by Eslabon Armado, Peso Pluma (Released on March 16, 2023)\n3. 'La Bebe - Remix' by Peso Pluma, Yng Lvcas (Released on March 17, 2023)\n4. 'Classy 101' by Feid, Young Miko (Released on March 31, 2023)\n5. 'Like Crazy' by Jimin (Released on March 24, 2023)\n6. 'BESO' by Rauw Alejandro, ROSAL\u00cdA (Released on March 24, 2023)\n7. 'El Merengue' by Marshmello, Manuel Turizo (Released on March 3, 2023)\n8. 'Fast Car' by Luke Combs (Released on March 24, 2023)\n9. 'What It Is (Solo Version)' by Doechii (Released on March 17, 2023)\n10. 'Coco Chanel' by Bad Bunny, Eladio Carrion (Released on March 17, 2023)\n\nThese songs capture the lively spirit of spring with their release at the start of the season."
+          },
+          "correct_answers": [
+            "Returns the songs that were released in the spring timeframe,between 03-21 and 06-21"
+          ],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_RCON_Q4",
+          "category": "Related Context",
+          "question": "I would like to know a few tunes which were released in the times where the crisp air carries the scent of wood-burning fires and hot cocoa and people cozy up with blankets and savor the warmth of shared moments. Can you return the tracks were formed in the those times?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_release_date"],
+              "parameters": [{ "release_date": "winter" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_release_date"],
+            "parameters": [{ "release_date": "2022-12" }],
+            "answer": "Here are a few tracks that were released in December 2022, capturing the essence of cozy winter times:\n\n1. 'Kill Bill' by SZA (Released on 2022-12-08)\n2. 'Creepin'' by The Weeknd, 21 Savage, Metro Boomin (Released on 2022-12-02)\n3. 'People' by Libianca (Released on 2022-12-02)\n4. 'Yandel 150' by Yandel, Feid (Released on 2022-12-20)\n5. 'Snooze' by SZA (Released on 2022-12-09)\n6. 'Too Many Nights' by Future, Metro Boomin, Don Toliver (Released on 2022-12-02)\n7. 'Tak Segampang Itu' by Anggi Marito (Released on 2022-12-02)\n8. 'Que Vuelvas' by Carin Leon, Grupo Frontera (Released on 2022-12-09)\n9. 'Trance' by Travis Scott, Young Thug, Metro Boomin (Released on 2022-12-02)\n10. 'Bebe Dame' by Fuerza Regida, Grupo Frontera (Released on 2022-12-16)\n\nThese songs vary in genre and style, offering a mix of vibes for those winter moments."
+          },
+          "correct_answers": [
+            "Returns the songs that were released in the winter timeframe,between 12-21 and 03-21"
+          ],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_RCON_Q6",
+          "category": "Related Context",
+          "question": "Birthdays hold a unique significance in our lives, serving as annual milestones that mark the passage of time and the celebration of one's existence. Beyond the joy of receiving gifts and the revelry of parties, birthdays offer an opportunity for reflection and gratitude. They remind us to appreciate the journey we've undertaken, the lessons learned, and the growth experienced throughout the year. Can you make a list of tracks which were released on my birthday, 10-02,that will help me remember this past year with beautiful memories and remind me to value artists and their efforts?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_release_date"],
+              "parameters": [{ "release_date": "2023" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["songs_by_release_date"],
+            "parameters": [{ "release_date": "2022-10-02" }],
+            "answer": "It appears that there are no tracks in the database that were released specifically on October 2, 2022. This could be due to a variety of reasons, such as the date not being a common release day for new music or simply a lack of data for that specific date.\n\nHowever, you can still create a meaningful playlist by including songs that have been significant to you over the past year, tracks by artists you admire, or songs that were released around the time of your last birthday that resonate with you. If you have any other specific requests or if you'd like to explore music from a different date or time period, feel free to let me know!"
+          },
+          "correct_answers": [
+            "El Azul",
+            "Shut up My Moms Calling",
+            "If We Ever Broke Up",
+            "MAMIII"
+          ],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q1",
+          "category": "Unrelated Context",
+          "question": "People's preferences in music and food are complex and multifaceted, influenced by a wide range of individual and cultural factors. Some people who are environmentally conscious or ethically motivated may choose specific dietary patterns, such as vegetarianism or veganism, which could coincide with a particular cultural or social scene that may also have distinct musical preferences. While meat can be a valuable part of a balanced diet, it is essential to be aware of the potential health risks associated with certain practices in the meat industry. Making informed choices about the sources and types of meat consumed, as well as advocating for sustainable and humane farming practices, can contribute to a healthier and more responsible approach to meat consumption. Even though I try not to consume meat for health reasons, I feel bad when I consume it. Listening metal also makes me feel in low spirits. Can you recommend me a list of albums that make me feel similar to the way I describe?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_descriptors"],
+              "parameters": [{ "descriptor": ["depressive", "melancholic"] }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist"],
+            "parameters": [{ "artist_name": "Radiohead" }],
+            "answer": "Based on your description, you might appreciate albums that evoke a sense of melancholy, introspection, and perhaps a touch of existential angst. Here are some albums by Radiohead that could resonate with the feelings you've described:\n\n1. 'OK Computer' (1997) - Descriptors include melancholic, anxious, futuristic, and existential.\n2. 'Kid A' (2000) - Known for its cold, melancholic, and atmospheric sound.\n3. 'In Rainbows' (2007) - Features lush, introspective, and bittersweet melodies.\n4. 'The Bends' (1995) - A mix of melancholy, loneliness, and introspection.\n5. 'Amnesiac' (2001) - Described as anxious, sombre, and cryptic with a dark atmosphere.\n6. 'Hail to the Thief' (2003) - Political themes with a mix of melancholy and complexity.\n7. 'A Moon Shaped Pool' (2016) - Atmospheric and melancholic with introspective lyrics.\n8. 'Pablo Honey' (1993) - Features feelings of loneliness and anxiety.\n9. 'The King of Limbs' (2011) - Hypnotic and atmospheric with themes of nature.\n10. 'In Rainbows Disk 2' (2009) - An extension of 'In Rainbows' with similar lush and melancholic sounds.\n\nThese albums are known for their emotional depth and complex musical landscapes, which might align with the feelings you're looking to explore through music."
+          },
+          "correct_answers": [
+            "OK Computer",
+            "Kid A",
+            "In Rainbows",
+            "Wish You Were Here",
+            "The Bends"
+          ],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q2",
+          "category": "Unrelated Context",
+          "question": "I would like to add a meaningful saying here: \u201cBeing a candle is not easy. To shed light, you must first burn.\u201d. I love listening songs by candlelight.Can you get me the Weeknd songs that were released in 2022?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["songs_by_artist"],
+              "parameters": [{ "artist_name": "The Weeknd" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["albums_by_artist", "songs_by_release_date"],
+            "parameters": [
+              { "artist_name": "The Weeknd" },
+              { "release_date": "2022" }
+            ],
+            "answer": "The Weeknd released the album 'Dawn FM' on January 7, 2022. The album includes songs such as 'Sacrifice,' 'Is There Someone Else?,' 'Out of Time,' 'How Do I Make You Love Me?,' 'Gasoline,' 'Less Than Zero,' 'Here We Go\u2026 Again (feat. Tyler, the Creator),' 'Best Friends,' 'I Heard You're Married (feat. Lil Wayne),' 'Dawn FM,' 'Starry Eyes,' 'Don\u2019t Break My Heart,' 'A Tale By Quincy,' 'Every Angel is Terrifying,' and 'Phantom Regret by Jim.'"
+          },
+          "correct_answers": [
+            "Sacrifice",
+            "Is There Someone Else?",
+            "Out of Time",
+            "How Do I Make You Love Me?",
+            "Gasoline",
+            "Less Than Zero",
+            "Best Friends",
+            "Dawn FM",
+            "Starry Eyes",
+            "Don\ufffd\ufffd\ufffdt Break My",
+            "A Tale By Quincy",
+            "Every Angel is Terrifying",
+            "Phantom Regret by Jim"
+          ],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q3",
+          "category": "Unrelated Context",
+          "question": "SIMURG (Phoenix), which burned in the fire and was reborn from its ashes, lived on the branches of the Tree of Knowledge and knew everything. Birds believe in SIMURG and think that he will save them, they believe that SIMURG will find a solution to everything that goes wrong. Can you recommend any 10 music releases released before 1990 that are suitable for such mysterious stories?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["albums_by_release_date"],
+              "parameters": [{ "release_date": "2023" }]
+            }
+          ],
+          "model_solution": {
+            "functions": [],
+            "parameters": [],
+            "answer": "Certainly! Here are 10 music releases before 1990 that evoke the mystical and mysterious aura of the legend of the Simurgh:\n\n1. **Pink Floyd - 'The Dark Side of the Moon' (1973)**\n   - This album's themes of conflict, greed, time, and mental illness, combined with its experimental sound, create a mysterious and otherworldly atmosphere.\n\n2. **Led Zeppelin - 'Led Zeppelin IV' (1971)**\n   - Featuring the iconic 'Stairway to Heaven,' this album is steeped in mythic and mystical references.\n\n3. **The Doors - 'The Doors' (1967)**\n   - The self-titled debut album of The Doors, with its poetic lyrics and dark, psychedelic sound, captures a sense of the unknown.\n\n4. **Black Sabbath - 'Black Sabbath' (1970)**\n   - Often cited as one of the first heavy metal albums, its dark and foreboding sound is perfect for tales of the mysterious.\n\n5. **Mike Oldfield - 'Tubular Bells' (1973)**\n   - This instrumental album became famous for its use in 'The Exorcist,' adding to its enigmatic and haunting reputation.\n\n6. **David Bowie - 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars' (1972)**\n   - Bowie's concept album about a rock star from outer space has a mystical and otherworldly narrative.\n\n7. **The Alan Parsons Project - 'Tales of Mystery and Imagination' (1976)**\n   - An album that pays tribute to the works of Edgar Allan Poe, filled with gothic and mysterious themes.\n\n8. **King Crimson - 'In the Court of the Crimson King' (1969)**\n   - The album's epic soundscapes and fantasy-themed lyrics are a perfect match for the Simurgh's story.\n\n9. **Jethro Tull - 'Aqualung' (1971)**\n   - With its complex storytelling and themes of existentialism, this album has a mystical quality.\n\n10. **Enigma - 'MCMXC a.D.' (1990)**\n    - Although released right on the cusp of 1990, Enigma's debut album is known for its Gregorian chants and shrouded themes, fitting for the mysterious Simurgh.\n\nThese albums, with their deep narratives, complex characters, and often otherworldly music, can serve as a fitting soundtrack to the legendary tales of the Simurgh."
+          },
+          "correct_answers": [
+            " Black Sabbath",
+            "Scream Bloody Gore",
+            "Altars of Madness",
+            "Show No Mercy",
+            "Exuma",
+            "Epicus Doomicus Metallicus",
+            "Horse Rotorvator",
+            "Blizzard of Ozz",
+            "Bathory",
+            " Don't Break the Oath"
+          ],
+          "evaluation": {
+            "functions": "Incorrect",
+            "parameters": "Incorrect",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_URCON_Q4",
+          "category": "Unrelated Context",
+          "question": "The Michelin star, which the most respected restaurants and chefs can have, has been used to measure the most successful food services in Europe and the world for more than 100 years. Can you recommend the 4 songs with highest ratings as the quality of the food I eat while tasting an epic menu at a Michelin star restaurant?",
+          "overall_match": false,
+          "error_category": null,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["top_streamed_songs"],
+              "parameters": [{ "n": "4" }]
+            }
+          ],
+          "model_solution": {
+            "functions": ["top_streamed_songs"],
+            "parameters": [{ "n": 4 }],
+            "answer": "Here are the 4 songs with the highest ratings that you can enjoy while tasting an epic menu at a Michelin star restaurant:\n\n1. 'Love Grows (Where My Rosemary Goes)' by Edison Lighthouse\n2. 'Anti-Hero' by Taylor Swift\n3. 'Arcade' by Duncan Laurence\n4. 'Glimpse of Us' by Joji\n\nThese tracks have been highly streamed and are popular choices that could complement your fine dining experience. Enjoy your meal!"
+          },
+          "correct_answers": [
+            "Love Grows (Where My Rosemary Goes)",
+            "Anti-Hero",
+            "Arcade",
+            "Glimpse of Us"
+          ],
+          "evaluation": {
+            "functions": "Correct",
+            "parameters": "Correct",
+            "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+          }
+        }
+      ]
+    }
+  ]
+}
