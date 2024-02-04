@@ -2832,6 +2832,162 @@
 
   "function_sets": [
     {
+      "id": "MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2",
+      "name": "Music - one and multi parameter functions with simple function description, no examples.",
+      "domain": "Music",
+      "categories": [
+        "1 Parameter",
+        "Multiple Parameter",
+        "Without Examples",
+        "Complex Description"
+      ],
+      "num_functions": 9,
+      "functions": [
+        {
+          "name": "artist_info",
+          "description": "Retrieves detailed information for a specified artist, including attributes like name, band status, formation/birth date, city, country, genres, and related artists.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist. Matches against the 'Name' column in the ARTIST_SQL dataset."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        },
+        {
+          "name": "album_info",
+          "description": "Fetches detailed information about a specific album, covering attributes such as album name, artist name, release date, genres, descriptors, average rating, rating count, and review count.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "album_name": {
+                "type": "string",
+                "description": "The name of the album. Matches against the 'release_name' column in the ALBUMS_SQL dataset."
+              }
+            },
+            "required": ["album_name"]
+          }
+        },
+        {
+          "name": "song_info",
+          "description": "Provides detailed information on a specific song, including track name, artist(s) name, album name, artist count, release date, streams, BPM, key, mode, danceability, valence, energy, acousticness, instrumentalness, liveness, speechiness, and duration in minutes.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "song_name": {
+                "type": "string",
+                "description": "The name of the song. Matches against the 'track_name' column in the SONGS_SQL dataset."
+              }
+            },
+            "required": ["song_name"]
+          }
+        },
+        {
+          "name": "albums_by_artist",
+          "description": "Retrieves all albums by a specific artist, searching through the 'artist_name' column in the ALBUMS_SQL dataset. It includes album name, artist name, release date, genres, descriptors, average rating, rating count, and review count.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The artist's name to search albums for. The search is performed within the 'artist_name' column, supporting partial matches."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        },
+        {
+          "name": "artists_by_genres",
+          "description": "Finds artists that match any of the specified genres, utilizing the 'genres' column in the ARTIST_SQL dataset. It covers artist's name, is_band status, formation/birth date, city, country, genres, and related artists.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of genre strings to filter artists by. The filtering checks the 'genres' column for any matches."
+              }
+            },
+            "required": ["genres"]
+          }
+        },
+        {
+          "name": "songs_by_album",
+          "description": "Retrieves all songs from a specific album, including details such as track name, artist(s) name, album name, artist count, release date, streams, and various musical and acoustic properties like BPM, danceability, and duration in minutes.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "album_name": {
+                "type": "string",
+                "description": "The name of the album to find songs for. Matches against the 'album_name' column in the SONGS_SQL dataset."
+              }
+            },
+            "required": ["album_name"]
+          }
+        },
+        {
+          "name": "max_rating_given_albums",
+          "description": "Finds the highest average rating from a list of specified albums. Returns the maximum average rating and the names of albums that share this rating. Relies on 'release_name' for album identification and 'avg_rating' for evaluation.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "albums": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of album names to evaluate. The function searches the 'release_name' column in the ALBUMS_SQL dataset."
+              }
+            },
+            "required": ["albums"]
+          }
+        },
+        {
+          "name": "sum_streams_given_songs",
+          "description": "Calculates the total number of streams for a specified list of songs. Accepts either a list of song names or a single comma-separated string of song names. Utilizes the 'track_name' for song identification and 'streams' for summing.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "songs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of song names, or a single string of comma-separated song names, to calculate total streams for. Matches against the 'track_name' column in the SONGS_SQL dataset."
+              }
+            },
+            "required": ["songs"]
+          }
+        },
+        {
+          "name": "highest_rated_albums",
+          "description": "Retrieves albums that have an average rating above a specified threshold and a minimum number of ratings. Filters based on 'avg_rating' and 'rating_count' columns, providing detailed album information.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "rating_threshold": {
+                "type": "number",
+                "default": 4.0,
+                "description": "The minimum average rating albums must meet to be included. Searches the 'avg_rating' column in the ALBUMS_SQL dataset."
+              },
+              "min_ratings": {
+                "type": "number",
+                "default": 100,
+                "description": "The minimum number of ratings an album must have to be considered. Filters using the 'rating_count' column."
+              }
+            },
+            "required": []
+          }
+        }
+      ]
+    },
+
+    {
       "id": "MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
       "name": "Music - 1 parameter functions with simple function description, no examples.",
       "domain": "Music",
