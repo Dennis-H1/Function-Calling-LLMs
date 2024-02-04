@@ -1,1 +1,70 @@
-{"metadata": {"id": "MUSIC_SINGLE_STEP_MULTI_PARAM_V01", "name": "Mannheim Function Calling Benchmark - gpt-4-1106-preview Music wo/ Example Values", "question_set_id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1", "function_set_id": "MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01", "model": "gpt-4-1106-preview", "hyperparameters": {"temperature": 0}, "run_timestamp": "2024-01-27 23:37:57.728688", "test_driver_version": "1.0.0"}, "statistics": {"number_of_functions": {"total": 2, "correct": 1, "accuracy": 0.5}, "number_of_parameters": {"total": 2, "correct": 1, "accuracy": 0.5}, "number_of_answers": {"total": 2, "correct": 0, "accuracy": 0.0}, "number_of_tokens": {"input": 0, "output": 0}}, "results": [{"question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q1", "category": "Selection", "question": "Among the top 30 rated albums, which were released by 'Radiohead'?", "overall_match": false, "error_category": null, "correct_paths": [{"path_id": 1, "functions": ["top_rated_albums"], "parameters": [{"n": 30}]}], "model_solution": {"functions": ["albums_by_artist"], "parameters": [{"artist_name": "Radiohead"}], "answer": "Among the top-rated albums by Radiohead, the following have high average ratings:\n\n1. OK Computer with an average rating of 4.24\n2. Kid A with an average rating of 4.23\n3. In Rainbows with an average rating of 4.2\n\nThese albums are likely to be among the top 30 rated albums overall, given their high average ratings and significant number of ratings."}, "correct_answers": ["Selects all 3 albums."], "evaluation": {"functions": "Incorrect", "parameters": "Incorrect", "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"}}, {"question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q2", "category": "Selection", "question": "Which songs released in 2012 were performed by more than 1 artist?", "overall_match": false, "error_category": null, "correct_paths": [{"path_id": 1, "functions": ["songs_by_release_date"], "parameters": [{"release_date": "2012"}]}], "model_solution": {"functions": ["songs_by_release_date"], "parameters": [{"release_date": "2012"}], "answer": "The songs released in 2012 that were performed by more than 1 artist are:\n\n1. MONTAGEM - FR PUNK by Ayparia and unxbected\n2. Money Trees by Kendrick Lamar and Jay Rock\n3. Payphone by Maroon 5 and Wiz Khalifa"}, "correct_answers": ["Returns 3 songs performed by 2 artists."], "evaluation": {"functions": "Correct", "parameters": "Correct", "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"}}]}
+{
+  "metadata": {
+    "id": "MUSIC_SINGLE_STEP_MULTI_PARAM_V01",
+    "name": "Mannheim Function Calling Benchmark - gpt-4-1106-preview Music wo/ Example Values",
+    "question_set_id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1",
+    "function_set_id": "MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
+    "model": "gpt-4-1106-preview",
+    "hyperparameters": { "temperature": 0 },
+    "run_timestamp": "2024-01-27 23:37:57.728688",
+    "test_driver_version": "1.0.0"
+  },
+  "statistics": {
+    "number_of_functions": { "total": 2, "correct": 1, "accuracy": 0.5 },
+    "number_of_parameters": { "total": 2, "correct": 1, "accuracy": 0.5 },
+    "number_of_answers": { "total": 2, "correct": 0, "accuracy": 0.0 },
+    "number_of_tokens": { "input": 0, "output": 0 }
+  },
+  "results": [
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q1",
+      "category": "Selection",
+      "question": "Among the top 30 rated albums, which were released by 'Radiohead'?",
+      "overall_match": false,
+      "error_category": null,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["top_rated_albums"],
+          "parameters": [{ "n": 30 }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_artist"],
+        "parameters": [{ "artist_name": "Radiohead" }],
+        "answer": "Among the top-rated albums by Radiohead, the following have high average ratings:\n\n1. OK Computer with an average rating of 4.24\n2. Kid A with an average rating of 4.23\n3. In Rainbows with an average rating of 4.2\n\nThese albums are likely to be among the top 30 rated albums overall, given their high average ratings and significant number of ratings."
+      },
+      "correct_answers": ["Selects all 3 albums."],
+      "evaluation": {
+        "functions": "Incorrect",
+        "parameters": "Incorrect",
+        "answer": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q2",
+      "category": "Selection",
+      "question": "Which songs released in 2012 were performed by more than 1 artist?",
+      "overall_match": false,
+      "error_category": null,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_release_date"],
+          "parameters": [{ "release_date": "2012" }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_release_date"],
+        "parameters": [{ "release_date": "2012" }],
+        "answer": "The songs released in 2012 that were performed by more than 1 artist are:\n\n1. MONTAGEM - FR PUNK by Ayparia and unxbected\n2. Money Trees by Kendrick Lamar and Jay Rock\n3. Payphone by Maroon 5 and Wiz Khalifa"
+      },
+      "correct_answers": ["Returns 3 songs performed by 2 artists."],
+      "evaluation": {
+        "functions": "Correct",
+        "parameters": "Correct",
+        "answer": "<<UNKNOWN - PLEASE INSERT YOURSELF>>"
+      }
+    }
+  ]
+}

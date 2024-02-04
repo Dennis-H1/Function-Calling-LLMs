@@ -1020,12 +1020,15 @@
           "question": "What is the song with the second highest average rating among songs released between 2000 and 2001?",
           "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small floating point number)",
           "target": {
-            "chained": false,
+            "chained": true,
             "solution_paths": [
               {
                 "path_id": 1,
-                "functions": ["filter_albums_by_date_range"],
-                "parameters": [{ "start_year": "2000", "end_year": "2001" }]
+                "functions": ["filter_albums_by_date_range", "next function"],
+                "parameters": [
+                  { "start_year": "2000", "end_year": "2001" },
+                  { "start_year": "2000", "end_year": "2001" }
+                ]
               }
             ],
             "expected_answers": [
