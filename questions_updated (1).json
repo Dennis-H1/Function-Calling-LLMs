@@ -1,30 +1,487 @@
 {
   "question_sets": [
     {
-      "id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1",
-      "name": "Mannheim Function Calling Benchmark: Questions w/ Single Parameters, One Step and One Shot",
+      "id": "MUSIC_Q_SEQ_MULTI_STEP_ONE_SHOT_V1",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Multi Step and One Shot for Sequential Function Calling",
       "domain": "Music",
-      "date": "2024-01-27",
-      "description": "Simple, single step questions designed to test a subset of selection of records, interpretation, reasoning, different languages, typos, related and unrelated context",
+      "date": "2024-02-04",
+      "description": "Simple, multiple step questions designed to test a subset of selection of records, interpretation, reasoning, different languages, typos, related and unrelated context using sequential function calling",
       "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
       "license": "Apache 2.0",
-      "function_sets": ["MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01"],
+      "function_sets": ["MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2"],
       "questions": [
         {
-          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q1",
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q1",
           "category": "Selection",
-          "question": "Among the top 10 rated albums, which were released by 'Radiohead'? Call the function twice!",
-          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (string matching).",
+          "question": "Among all the albums of Kanye West, return the album with the maximum rating.",
+          "motivation": "",
           "target": {
-            "chained": false,
+            "chained": true,
             "solution_paths": [
               {
                 "path_id": 1,
-                "functions": ["top_rated_albums"],
-                "parameters": [{ "n": 30 }]
+                "functions": ["albums_by_artist", "max_rating_given_albums"],
+                "parameters": [
+                  { "artist_name": "Kanye West" },
+                  { "albums": "Donda, Donda2, 808s & Heartbreak" }
+                ]
               }
             ],
-            "expected_answers": ["Selects all 3 albums."],
+            "expected_answers": ["808s & Heartbreak"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q2",
+          "category": "Selection",
+          "question": "A very famous artist of US, couldn’t recall his name, whose song is 'Mockingbird' is one of my favourites.  Can you find his name and please return his all albums that are rated above 2.5.",
+          "motivation": "",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["song_info", "albums_by_artist"],
+                "parameters": [
+                  { "song_name": "Mockingbird" },
+                  { "artist_name": "Eminem" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "The Marshall Mathers LP",
+              "The Slim Shady LP",
+              "The eminem show",
+              "Recovery",
+              "Infinite"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q3",
+          "category": "Selection",
+          "question": "Among the albums with rating > 3.5 and minimum number of rating as 30000, select the album released in 2022 and provide the songs of that album. ",
+          "motivation": "",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["highest_rated_albums", "songs_by_album"],
+                "parameters": [
+                  { "rating_threshold": 3.5, "min_ratings": 30000 },
+                  { "album_name": "Mr. Morale & The Big Steppers" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "N95",
+              "United in grief",
+              "Rich Spirit",
+              "Count me out",
+              "Worldwide Steppers",
+              "Crown",
+              "Auntie Diaries",
+              "Mirror",
+              "Savior",
+              "Rich",
+              "Heart part 5"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q4",
+          "category": "Selection",
+          "question": "Provide me the album with the third lowest number of reviews of the same artist as that of 'Ray of Light'.",
+          "motivation": "",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["album_info", "albums_by_artist"],
+                "parameters": [
+                  { "album_name": "Ray of Light" },
+                  { "artist_name": "Madonna" }
+                ]
+              }
+            ],
+            "expected_answers": ["Music"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q5",
+          "category": "Selection",
+          "question": "I like songs with high energy, my friend recommended an artist and his albums, but I only remember the name of album “Oasis”. Can you please provide the songs of this artist with bpm in the range of 120-160.",
+          "motivation": "",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["album_info", "songs_by_artist"],
+                "parameters": [
+                  { "album_name": "Oasis" },
+                  { "artist_name": "Bad Bunny" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "Neverita",
+              "Yo No Soy Celoso",
+              "Un Coco",
+              "Dos Mil 16",
+              "Aguacero"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q1",
+          "category": "Aggregation",
+          "question": "I have heard a lot about this song ‘Cruel Summer’ by some artist. Can you find its artist and return me the average of the number of ratings received by his/her albums.",
+          "motivation": "Evaluate the ability to perform aggregation (average) on the result.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["song_info", "albums_by_artist"],
+                "parameters": [
+                  { "song_name": "Cruel Summer" },
+                  { "artist_name": "Taylor Swift" }
+                ]
+              }
+            ],
+            "expected_answers": ["5095.71"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q2",
+          "category": "Aggregation",
+          "question": "Of all the albums of Olivia Rodrigo, please get the songs of her album released in 2021 and return the one with the highest bpm value.",
+          "motivation": "Evaluate the ability to find maximum value of specific attribute in the result.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist", "songs_by_album"],
+                "parameters": [
+                  { "artist_name": "Olivia Rodrigo" },
+                  { "album_name": "Sour" }
+                ]
+              }
+            ],
+            "expected_answers": ["Deja Vu"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q3",
+          "category": "Aggregation",
+          "question": "Please return the album with the lowest rating released in the same year in which Mistletoe was released.",
+          "motivation": "Evaluate the ability to find minimum value of specific attribute in the result.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["song_info", "albums_by_release_date"],
+                "parameters": [
+                  { "song_name": "Mistletoe" },
+                  { "release_date": "2011" }
+                ]
+              }
+            ],
+            "expected_answers": ["Under the Mistletoe"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q4",
+          "category": "Aggregation",
+          "question": "How many songs are released by the co-artist of Taylor Swift in the song “The Joker and the Queen (feat. Taylor Swift)”?",
+          "motivation": "Evaluate the ability to perform aggregation (counting) on the results.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["song_info", "songs_by_artist"],
+                "parameters": [
+                  {
+                    "song_name": "The Joker and the Queen (feat. Taylor Swift)"
+                  },
+                  { "artist_name": "Ed Sheeran" }
+                ]
+              }
+            ],
+            "expected_answers": ["9"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q5",
+          "category": "Aggregation",
+          "question": "Can you please return the sum of the number of reviews received by the albums of the famous band whose song is Creep?",
+          "motivation": "Evaluate the ability to perform aggregation (sum) on the specific attribute of results.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["song_info", "albums_by_artist"],
+                "parameters": [
+                  { "song_name": "Creep" },
+                  { "artist_name": "Radiohead" }
+                ]
+              }
+            ],
+            "expected_answers": ["4338"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q6",
+          "category": "Aggregation",
+          "question": "Of the two singers of song Merry Christmas, who is the older one?",
+          "motivation": "Evaluate the ability to identify lowest value w.r.t date. ",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["song_info", "artist_info"],
+                "parameters": [
+                  { "song_name": "Merry Christmas" },
+                  { "artist_name": "Ed Sheeran" },
+                  { "artist_name": "Elton John" }
+                ]
+              }
+            ],
+            "expected_answers": ["Elton John"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_REA_Q1",
+          "category": "Reasoning",
+          "question": "I am organizing a party and compiling songs with high beats. Can you get the albums of Bad Bunny and please recommend the songs from his most recent album which are suitable for the party.",
+          "motivation": "",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist", "songs_by_album"],
+                "parameters": [
+                  { "artist_name": "Bad Bunny" },
+                  { "album_name": "Un verano sin ti" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "Neverita",
+              "Yo No Soy Celoso",
+              "Dos Mil 16",
+              "Un Coco",
+              "Aguacero",
+              "Un Verano Sin Ti"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_REA_Q2",
+          "category": "Reasoning",
+          "question": "I cannot remember the artist name of this famous song “Perfect”. Can you please find the artist and then his albums and return the one which is most popular. I consider popularity to be proportional to the number of reviews received by the albums.",
+          "motivation": "",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["song_info", "albums_by_artist"],
+                "parameters": [
+                  { "song_name": "Perfect" },
+                  { "artist_name": "Ed Sheeran" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "Identifies a potential correlation between speechiness and explicitness ÷ (Divide)"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_REA_Q3",
+          "category": "Reasoning",
+          "question": "Of all the albums released in 2000, which album do you think is not suitable for children and why? Also return the songs of this album.",
+          "motivation": "",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_release_date", "songs_by_album"],
+                "parameters": [
+                  { "release_date": "2000" },
+                  { "album_name": "The Marshall Mathers LP" }
+                ]
+              }
+            ],
+            "expected_answers": ["The Real Slim Shady", "Stan"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_REA_Q4",
+          "category": "Reasoning",
+          "question": "Find the albums of the artist of song “Blank Space” and predict what 3 genres could likely be of his/her upcoming album based on previous genres.",
+          "motivation": "",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["song_info", "albums_by_artist"],
+                "parameters": [
+                  { "song_name": "Blank Space" },
+                  { "artist_name": "Taylor Swift" }
+                ]
+              }
+            ],
+            "expected_answers": ["Country Pop, Pop Rock, Folk Pop"],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q1",
+          "category": "Different Languages",
+          "question": "Ich mag das Album von Lady Gaga, das 2008 veröffentlicht wurde, sehr. Finden Sie ihre Alben und können Sie mir dann die Künstler empfehlen, die dem gleichen Genre wie das genannte Album angehören.",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (German in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["abums_by_artist", "artists_by_genres"],
+                "parameters": [
+                  { "artist_name": "Lady Gaga" },
+                  { "genres": ["Dance-Pop", "Electropop"] }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "The weeknd",
+              "Justin Timberlake",
+              "Britney Spears",
+              "Michael Jackson",
+              "Guns n' Roses"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q2",
+          "category": "Different Languages",
+          "question": "'Love and Theft' 앨범의 아티스트가 미국 출신인지 영국 출신인지는 기억나지 않습니다. 내 혼란을 없애 주시겠습니까?",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Korean in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["album_info", "artist_info"],
+                "parameters": [
+                  { "album_name": "Love and Theft" },
+                  { "artist_name": "Bob Dylan" }
+                ]
+              }
+            ],
+            "expected_answers": ["Bob Dylan is from United States."],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q3",
+          "category": "Different Languages",
+          "question": "उस वर्ष में रिलीज़ हुए सभी एल्बम प्रदान करें जिसमें एनचांटेड गाना रिलीज़ किया गया था।",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Hindi in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["song_info", "albums_by_release_date"],
+                "parameters": [
+                  { "song_name": "Enchanted" },
+                  { "release_date": "2010" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "Speak Now",
+              "Loud",
+              "Recovery",
+              "Doo-Wops & Hooligans"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q4",
+          "category": "Different Languages",
+          "question": "Türlerinden biri Merseybeat olan sanatçının son 5 albümünü bana verin.",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Turkish in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["artists_by_genres", "abums_by_artist"],
+                "parameters": [
+                  { "genres": ["Merseybeat"] },
+                  { "artist_name": "The Beatles" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "With the Beatles",
+              "Please Please me",
+              "Beatles for Sale",
+              "Yellow Submarine",
+              "Love"
+            ],
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q5",
+          "category": "Different Languages",
+          "question": "Jaa kappaleen 'Sigue' toisen artistin nimi ja tiedot, paitsi Ed Sheeran.",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Finnish in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["song_info", "artist_info"],
+                "parameters": [
+                  { "song_name": "Sigue" },
+                  { "artist_name": "J Balvin" }
+                ]
+              }
+            ],
+            "expected_answers": [
+              "The second artist is J Balvin, born in Mediilin,Colombia on 7th May 1985."
+            ],
             "comment": null
           }
         }
@@ -1859,7 +2316,7 @@
   "function_sets": [
     {
       "id": "MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2",
-      "name": "Music - one and multi parameter functions with simple function description, no examples.",
+      "name": "Music - one and multi parameter functions with elaborative function description, no examples.",
       "domain": "Music",
       "categories": [
         "1 Parameter",
@@ -1867,7 +2324,7 @@
         "Without Examples",
         "Complex Description"
       ],
-      "num_functions": 9,
+      "num_functions": 11,
       "functions": [
         {
           "name": "artist_info",
@@ -2008,6 +2465,34 @@
               }
             },
             "required": []
+          }
+        },
+        {
+          "name": "albums_by_release_date",
+          "description": "Retrieves all albums released on a specific date, in a specific month, or in a specific year, based on the provided release date, searching through the 'release_date' column in the ALBUMS_SQL dataset. It includes album name, artist name, release date, genres, descriptors, average rating, rating count, and review count.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date to filter albums by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+              }
+            },
+            "required": ["release_date"]
+          }
+        },
+        {
+          "name": "songs_by_artist",
+          "description": "Retrieves all songs by a specific artist, including details such as track name, artist(s) name, album name, artist count, release date, streams, and various musical and acoustic properties like BPM, danceability, and duration in minutes.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The artist's name to search songs for. The search is performed within the 'artist_name' column, supporting partial matches."
+              }
+            },
+            "required": ["artist_name"]
           }
         }
       ]
