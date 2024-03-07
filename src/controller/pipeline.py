@@ -152,7 +152,7 @@ class Pipeline:
                              EvaluationCategory.CORRECT and response_eval == EvaluationCategory.CORRECT)
 
             error_category = None if overall_match else Evaluator.eval_error_category(
-                self.llm_service, conversation, function_eval, argument_eval, response_eval)
+                self.llm_service, conversation, question["target"], function_eval, argument_eval, response_eval)
 
             # statistics
             total_functions = len(function_names)
