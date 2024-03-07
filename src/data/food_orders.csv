@@ -1,0 +1,1899 @@
+restaurant_name,cuisine_type,cost_of_the_order,day_of_the_week,rating,food_preparation_time,delivery_time
+Hangawi,Korean,30.75,Weekend,Not given,25,20
+Blue Ribbon Sushi Izakaya,Japanese,12.08,Weekend,Not given,25,23
+Cafe Habana,Mexican,12.23,Weekday,5,23,28
+Blue Ribbon Fried Chicken,American,29.2,Weekend,3,25,15
+Dirty Bird to Go,American,11.59,Weekday,4,25,24
+Tamarind TriBeCa,Indian,25.22,Weekday,3,20,24
+The Meatball Shop,Italian,6.07,Weekend,Not given,28,21
+Barbounia,Mediterranean,5.97,Weekday,3,33,30
+Anjappar Chettinad,Indian,16.44,Weekday,5,21,26
+Bukhara Grill,Indian,7.18,Weekday,5,29,26
+Big Wong Restaurant _¤¾Ñ¼,Chinese,5.92,Weekday,Not given,34,28
+Empanada Mama (closed),Mexican,8.1,Weekend,5,23,22
+Blue Ribbon Fried Chicken,American,24.3,Weekend,5,23,17
+Pylos,Mediterranean,11.3,Weekend,3,24,23
+Lucky's Famous Burgers,American,12.13,Weekday,Not given,23,30
+Shake Shack,American,16.2,Weekend,5,33,25
+Sushi of Gari,Japanese,16.98,Weekend,Not given,30,16
+Blue Ribbon Sushi Izakaya,Japanese,33.03,Weekend,Not given,21,22
+RedFarm Hudson,Chinese,14.12,Weekend,4,25,24
+Blue Ribbon Sushi,Japanese,16.2,Weekend,4,35,26
+Five Guys Burgers and Fries,American,24.2,Weekend,4,21,24
+Shake Shack,American,15.91,Weekend,Not given,25,20
+Shake Shack,American,29.1,Weekday,5,21,30
+Tortaria,Mexican,8.92,Weekend,Not given,33,16
+Cafe Mogador,Middle Eastern,15.86,Weekday,Not given,32,29
+Cafe Mogador,Middle Eastern,29.1,Weekday,5,20,29
+The Meatball Shop,Italian,21.88,Weekday,5,24,27
+Otto Enoteca Pizzeria,Italian,14.02,Weekend,Not given,24,16
+Vezzo Thin Crust Pizza,Italian,9.17,Weekend,Not given,21,24
+Sushi of Gari 46,Japanese,12.18,Weekday,Not given,20,29
+The Kati Roll Company,Indian,31.33,Weekend,5,28,25
+Klong,Thai,29.05,Weekend,5,35,24
+5 Napkin Burger,American,8.39,Weekday,Not given,35,24
+TAO,Japanese,9.12,Weekend,Not given,34,18
+Parm,Italian,29.1,Weekend,5,30,26
+Sushi Samba,Japanese,15.47,Weekend,Not given,32,26
+Blue Ribbon Sushi,Japanese,16.01,Weekday,4,23,31
+The Meatball Shop,Italian,24.3,Weekday,4,31,29
+Haru Gramercy Park,Japanese,29.83,Weekday,5,20,32
+Shake Shack,American,19.89,Weekend,Not given,27,19
+Chipotle Mexican Grill $1.99 Delivery,Mexican,19.35,Weekend,4,21,18
+TAO,Japanese,33.22,Weekend,Not given,23,19
+RedFarm Broadway,Chinese,24.25,Weekend,5,22,15
+Cafeteria,American,16.44,Weekend,Not given,33,22
+Five Guys Burgers and Fries,American,22.75,Weekend,5,30,20
+The Meatball Shop,Italian,6.74,Weekend,5,29,23
+DuMont Burger,American,29.05,Weekend,5,22,30
+Sarabeth's East,American,13.78,Weekend,4,34,24
+Blue Ribbon Fried Chicken,American,19.89,Weekday,Not given,27,24
+Hill Country Fried Chicken,Southern,16.93,Weekend,5,33,21
+Bistango,Italian,21.88,Weekend,Not given,21,19
+Blue Ribbon Fried Chicken,American,29.39,Weekend,Not given,27,28
+TAO,Japanese,20.23,Weekend,5,22,20
+RedFarm Broadway,Chinese,29.1,Weekend,Not given,22,23
+Jack's Wife Freda,Mediterranean,22.75,Weekend,3,35,29
+Mamoun's Falafel,Mediterranean,14.12,Weekend,3,31,15
+Sushi of Gari 46,Japanese,14.6,Weekday,3,24,24
+RedFarm Hudson,Chinese,12.23,Weekday,5,25,33
+Prosperity Dumpling,Chinese,14.02,Weekend,5,20,30
+Blue Ribbon Fried Chicken,American,6.79,Weekday,Not given,33,28
+Blue Ribbon Fried Chicken,American,24.25,Weekend,Not given,28,21
+Blue Ribbon Sushi Bar & Grill,Japanese,33.03,Weekend,Not given,33,20
+Cafe Habana,Mexican,31.38,Weekend,4,23,27
+Westville Hudson,American,8.34,Weekday,Not given,22,26
+Shake Shack,American,33.03,Weekday,Not given,22,32
+Blue Ribbon Brooklyn,American,24.2,Weekday,3,22,32
+RedFarm Broadway,Chinese,12.46,Weekend,4,24,20
+Nobu Next Door,Japanese,15.86,Weekend,5,29,23
+Osteria Morini,Italian,14.55,Weekend,Not given,34,22
+Blue Ribbon Fried Chicken,American,32.93,Weekend,5,24,23
+Shake Shack,American,16.98,Weekend,Not given,22,21
+Shake Shack,American,8.0,Weekend,5,27,23
+Parm,Italian,13.05,Weekend,Not given,28,27
+Sushi Samba,Japanese,29.05,Weekend,5,31,16
+Haandi,Indian,5.67,Weekday,4,23,31
+The Meatball Shop,Italian,16.93,Weekend,Not given,30,25
+Benihana,Japanese,29.29,Weekend,5,20,18
+The Kati Roll Company,Indian,16.15,Weekend,5,20,29
+RedFarm Hudson,Chinese,22.75,Weekend,Not given,31,30
+Han Dynasty,Chinese,13.34,Weekend,4,34,27
+Shake Shack,American,9.75,Weekend,5,33,25
+Cafeteria,American,6.69,Weekday,4,21,32
+Shake Shack,American,4.75,Weekday,4,35,28
+Chipotle Mexican Grill $1.99 Delivery,Mexican,12.56,Weekend,5,22,18
+The Meatball Shop,Italian,21.2,Weekend,Not given,34,16
+Tortaria,Mexican,19.31,Weekend,Not given,27,28
+Nobu Next Door,Japanese,16.3,Weekday,3,20,24
+Otto Enoteca Pizzeria,Italian,13.05,Weekday,5,33,27
+TAO,Japanese,25.27,Weekday,4,24,24
+Hill Country Fried Chicken,Southern,14.79,Weekend,5,35,15
+Shake Shack,American,5.72,Weekday,3,31,24
+Chote Nawab,Indian,16.15,Weekend,5,24,30
+RedFarm Hudson,Chinese,33.03,Weekend,4,26,22
+Mission Cantina,Mexican,16.2,Weekend,5,31,18
+Xi'an Famous Foods,Chinese,9.22,Weekday,Not given,31,32
+Blue Ribbon Fried Chicken,American,16.39,Weekend,Not given,27,22
+Blue Ribbon Fried Chicken,American,12.18,Weekday,3,29,27
+Shake Shack,American,24.2,Weekday,4,29,29
+Sarabeth's East,American,17.03,Weekend,3,26,30
+Cafe Habana,Mexican,6.79,Weekday,Not given,33,25
+Rubirosa,Italian,21.83,Weekend,3,30,27
+Blue Ribbon Fried Chicken,American,31.29,Weekday,Not given,22,33
+Blue Ribbon Sushi,Japanese,11.83,Weekend,4,26,21
+Five Guys Burgers and Fries,American,24.3,Weekend,5,30,20
+The Meatball Shop,Italian,22.26,Weekend,Not given,28,25
+TAO,Japanese,20.47,Weekend,4,26,30
+Blue Ribbon Sushi,Japanese,12.18,Weekend,5,28,25
+Joe's Shanghai _Àü£¾÷´,Chinese,15.81,Weekend,5,20,26
+Otto Enoteca Pizzeria,Italian,22.36,Weekend,5,26,27
+Blue Ribbon Sushi,Japanese,8.68,Weekend,5,34,27
+Shake Shack,American,21.83,Weekend,Not given,23,22
+Bareburger,American,16.3,Weekday,Not given,20,28
+The Odeon,American,12.9,Weekday,3,31,28
+Parm,Italian,29.15,Weekday,5,23,27
+Pongsri Thai,Thai,13.05,Weekday,4,31,24
+Yama Japanese Restaurant,Japanese,22.36,Weekend,5,30,16
+Shake Shack,American,31.29,Weekday,Not given,26,32
+Blue Ribbon Fried Chicken,American,7.86,Weekday,4,22,33
+Yama Japanese Restaurant,Japanese,16.1,Weekend,Not given,33,27
+Momoya,Japanese,16.98,Weekday,5,31,32
+Osteria Morini,Italian,12.95,Weekend,5,26,28
+Blue Ribbon Fried Chicken,American,11.69,Weekend,5,21,24
+Five Guys Burgers and Fries,American,12.13,Weekend,Not given,26,15
+The Meatball Shop,American,12.32,Weekend,Not given,31,19
+Balthazar Boulangerie,French,12.13,Weekend,Not given,22,27
+Sushi of Gari,Japanese,12.18,Weekday,5,25,24
+Parm,Italian,14.99,Weekend,Not given,34,24
+The Meatball Shop,Italian,6.74,Weekend,5,26,30
+CafÌ© China,Chinese,24.3,Weekend,Not given,20,23
+Shake Shack,American,10.38,Weekend,3,24,29
+RedFarm Broadway,Chinese,6.79,Weekend,5,33,28
+RedFarm Hudson,Chinese,25.27,Weekend,Not given,34,28
+Otto Enoteca Pizzeria,Italian,14.99,Weekend,Not given,29,21
+RedFarm Hudson,Chinese,29.05,Weekend,4,22,28
+Blue Ribbon Sushi Bar & Grill,Japanese,9.65,Weekend,Not given,25,26
+The Meatball Shop,Italian,29.2,Weekend,Not given,31,24
+Nobu Next Door,Japanese,5.77,Weekday,4,29,24
+CafÌ© China,Chinese,32.93,Weekday,3,26,28
+Boqueria,Spanish,12.13,Weekend,5,30,20
+Bareburger,American,12.08,Weekend,Not given,29,20
+Blue Ribbon Fried Chicken,American,11.59,Weekday,Not given,25,24
+TAO,Japanese,9.56,Weekend,5,21,17
+Song Thai Restaurant & Bar,Thai,24.2,Weekend,5,21,26
+Sushi of Gari,Japanese,29.34,Weekday,Not given,32,25
+The Meatball Shop,Italian,11.16,Weekday,5,22,28
+Shake Shack,American,24.25,Weekday,Not given,32,24
+Blue Ribbon Sushi,Japanese,29.2,Weekend,Not given,22,25
+Shake Shack,American,14.07,Weekend,Not given,25,28
+Parm,Italian,19.35,Weekend,4,35,19
+RedFarm Hudson,Chinese,16.1,Weekend,4,23,29
+Shake Shack,American,22.8,Weekend,Not given,30,19
+Blue Ribbon Sushi Bar & Grill,Japanese,15.23,Weekend,Not given,30,19
+Five Guys Burgers and Fries,American,33.03,Weekend,Not given,29,25
+Shake Shack,American,12.95,Weekend,Not given,27,18
+Shake Shack,American,16.49,Weekend,5,32,22
+Benihana,Japanese,29.05,Weekend,Not given,25,26
+RedFarm Broadway,Chinese,31.33,Weekend,3,33,23
+TAO,Japanese,16.01,Weekend,Not given,26,16
+Tamarind TriBeCa,Indian,14.07,Weekend,4,26,21
+Sushi of Gari 46,Japanese,8.83,Weekday,Not given,31,33
+The Kati Roll Company,Indian,33.03,Weekend,Not given,35,21
+Shake Shack,American,16.25,Weekday,3,30,24
+The Meatball Shop,Italian,22.36,Weekend,4,28,18
+The Kati Roll Company,Indian,16.83,Weekend,4,26,20
+Rubirosa,Italian,8.0,Weekday,4,27,29
+Blue Ribbon Sushi,Japanese,16.01,Weekend,Not given,29,22
+RedFarm Broadway,Chinese,16.01,Weekday,4,23,27
+Five Leaves,American,10.24,Weekday,Not given,22,25
+Otto Enoteca Pizzeria,Italian,19.4,Weekday,4,32,28
+Pinto Nouveau Thai Bistro,Thai,19.35,Weekend,4,34,24
+Barbounia,Mediterranean,13.97,Weekend,5,29,25
+Cafe Mogador,Middle Eastern,13.0,Weekend,Not given,21,15
+Five Guys Burgers and Fries,American,13.05,Weekend,Not given,34,27
+RedFarm Broadway,Chinese,8.49,Weekend,Not given,24,16
+Parm,Italian,22.8,Weekday,5,33,33
+Barbounia,Mediterranean,20.18,Weekend,5,29,19
+RedFarm Broadway,Chinese,19.59,Weekend,5,24,19
+Dirty Bird to Go,American,19.4,Weekend,4,25,19
+The Meatball Shop,Italian,17.03,Weekday,Not given,22,29
+Amy Ruth's,Southern,16.11,Weekend,4,30,26
+Pepe Giallo,Italian,14.6,Weekday,3,32,24
+TAO,Japanese,12.27,Weekday,Not given,26,29
+indikitch,Indian,22.26,Weekend,Not given,35,16
+The Meatball Shop,Italian,6.79,Weekend,Not given,26,15
+Han Dynasty,Chinese,14.12,Weekend,4,35,19
+The Meatball Shop,Italian,29.15,Weekend,5,34,20
+Prosperity Dumpling,Chinese,12.18,Weekday,Not given,26,24
+Chipotle Mexican Grill $1.99 Delivery,Mexican,25.22,Weekend,4,27,22
+Shake Shack,American,13.39,Weekend,Not given,30,22
+Blue Ribbon Fried Chicken,American,9.02,Weekend,5,31,15
+Sushi of Gari,Japanese,29.15,Weekend,Not given,34,24
+Yama 49,Japanese,13.0,Weekday,5,24,32
+Blue Ribbon Fried Chicken,American,15.33,Weekday,4,24,29
+Yama Japanese Restaurant,Japanese,14.55,Weekend,5,20,28
+Momoya,Japanese,31.43,Weekend,Not given,24,17
+Five Guys Burgers and Fries,American,33.03,Weekend,5,29,15
+Piccolo Angolo,Italian,15.91,Weekend,4,26,26
+Momoya,Japanese,12.18,Weekend,4,27,25
+Shake Shack,American,19.35,Weekday,Not given,35,33
+RedFarm Broadway,Chinese,19.35,Weekend,Not given,24,28
+Hill Country Fried Chicken,Southern,29.35,Weekend,4,26,24
+Shake Shack,American,15.28,Weekday,4,30,29
+Pepe Rosso To Go,Italian,12.23,Weekday,3,24,24
+Shake Shack,American,9.6,Weekday,4,35,28
+Han Dynasty,Chinese,12.95,Weekend,Not given,20,25
+Shake Shack,American,8.88,Weekend,5,27,23
+Shake Shack,American,15.96,Weekend,3,30,21
+Jack's Wife Freda,Mediterranean,15.47,Weekend,5,33,16
+Five Guys Burgers and Fries,American,12.23,Weekend,5,22,22
+Shake Shack,American,8.05,Weekday,4,25,27
+Momoya,Japanese,8.54,Weekday,4,28,29
+Nobu Next Door,Japanese,29.15,Weekday,5,28,25
+Han Dynasty,Chinese,7.23,Weekend,5,21,18
+L'Express,French,19.69,Weekend,3,26,17
+Parm,Italian,12.13,Weekend,3,34,22
+Bareburger,American,16.49,Weekday,Not given,31,27
+Mission Cantina,Mexican,12.08,Weekend,Not given,30,18
+5 Napkin Burger,American,9.27,Weekend,Not given,34,30
+Han Dynasty,Chinese,24.25,Weekend,5,33,26
+Han Dynasty,Chinese,5.67,Weekday,4,21,31
+Blue Ribbon Sushi Bar & Grill,Japanese,14.12,Weekend,3,21,24
+Han Dynasty,Chinese,33.03,Weekday,Not given,33,31
+Han Dynasty,Chinese,8.97,Weekend,4,33,19
+Amma,Indian,8.88,Weekday,4,27,24
+Blue Ribbon Sushi Izakaya,Japanese,12.13,Weekday,5,30,29
+Delicatessen,American,11.64,Weekend,Not given,27,27
+Sushi of Gari 46,Japanese,31.43,Weekend,4,35,23
+Blue Ribbon Sushi Bar & Grill,Japanese,13.15,Weekend,5,30,30
+Blue Ribbon Fried Chicken,American,14.02,Weekend,5,20,28
+Sarabeth's East,American,9.41,Weekend,Not given,25,16
+Osteria Morini,Italian,9.07,Weekend,Not given,33,16
+Rubirosa,Italian,14.07,Weekend,5,35,16
+S'MAC,American,14.46,Weekend,Not given,34,17
+Vanessa's Dumplings,Chinese,6.7,Weekend,5,20,17
+Blue Ribbon Sushi Izakaya,Japanese,14.07,Weekday,4,24,26
+Tamarind TriBeCa,Indian,19.45,Weekend,4,29,19
+Cafe Habana,Mexican,13.97,Weekday,3,34,28
+Sushi of Gari 46,Japanese,12.22,Weekend,4,24,20
+Bhatti Indian Grill,Indian,29.25,Weekend,5,21,15
+Cafeteria,American,17.03,Weekend,Not given,34,20
+Taro Sushi,Japanese,16.05,Weekday,5,35,32
+Yama Japanese Restaurant,Japanese,17.08,Weekend,5,28,15
+Blue Ribbon Sushi,Japanese,11.3,Weekday,Not given,24,24
+Delicatessen,American,32.98,Weekend,5,34,16
+Hill Country Fried Chicken,Southern,29.15,Weekend,5,33,25
+The Meatball Shop,Italian,13.0,Weekday,5,23,26
+Pepe Rosso To Go,Italian,13.73,Weekend,Not given,21,28
+Han Dynasty,Chinese,12.23,Weekend,3,33,27
+Bareburger,American,16.25,Weekend,Not given,29,15
+Bistango,Italian,24.2,Weekend,Not given,28,21
+The Meatball Shop,Italian,14.31,Weekend,Not given,23,17
+Blue Ribbon Sushi Bar & Grill,Japanese,19.4,Weekend,Not given,28,20
+Shake Shack,American,14.12,Weekday,Not given,31,28
+Donburi-ya,Japanese,14.7,Weekend,Not given,30,27
+Balthazar Boulangerie,French,15.52,Weekend,Not given,21,29
+Hatsuhana,Japanese,8.97,Weekend,4,25,26
+Vanessa's Dumplings,Chinese,29.2,Weekday,Not given,27,30
+RedFarm Broadway,Chinese,11.64,Weekend,3,26,21
+Samurai Mama,Japanese,11.64,Weekend,5,21,18
+Waverly Diner,American,19.4,Weekend,5,25,23
+Tarallucci e Vino Restaurant,Italian,29.1,Weekday,Not given,28,33
+Momoya,Japanese,14.02,Weekday,4,24,30
+P.J. Clarke's,American,6.11,Weekend,4,27,25
+Blue Ribbon Fried Chicken,American,12.23,Weekend,4,21,26
+Blue Ribbon Fried Chicken,American,12.18,Weekend,Not given,31,23
+The Meatball Shop,Italian,24.2,Weekend,5,24,24
+The Meatball Shop,Italian,12.18,Weekend,Not given,27,17
+Amma,Indian,17.03,Weekend,Not given,28,19
+The Meatball Shop,Italian,22.26,Weekday,4,30,26
+The Meatball Shop,Italian,19.45,Weekday,5,31,32
+Lantern Thai Kitchen,Thai,21.93,Weekday,Not given,22,25
+Shake Shack,American,15.76,Weekend,5,24,22
+ilili Restaurant,Middle Eastern,9.46,Weekday,4,25,25
+Yama 49,Japanese,12.61,Weekday,5,23,28
+Blue Ribbon Brooklyn,American,22.85,Weekend,3,23,19
+P.J. Clarke's,American,12.18,Weekend,3,22,28
+RedFarm Broadway,Chinese,12.61,Weekday,Not given,26,27
+Otto Enoteca Pizzeria,Italian,12.13,Weekend,5,33,21
+RedFarm Hudson,Chinese,12.13,Weekend,Not given,20,22
+The Meatball Shop,Italian,8.54,Weekday,5,24,29
+Momoya,Japanese,19.35,Weekday,Not given,29,24
+The Smile,American,12.18,Weekend,Not given,22,27
+Parm,Italian,22.8,Weekend,Not given,35,20
+Shake Shack,American,12.13,Weekend,4,32,15
+Blue Ribbon Sushi Bar & Grill,Japanese,19.45,Weekday,5,34,27
+RedFarm Hudson,Chinese,12.13,Weekend,3,31,25
+Blue Ribbon Sushi Bar & Grill,Japanese,12.18,Weekend,Not given,24,18
+Momoya,Japanese,12.13,Weekend,5,22,21
+Bareburger,American,12.56,Weekend,Not given,24,26
+TAO,Japanese,24.3,Weekend,Not given,24,22
+Balthazar Boulangerie,French,29.15,Weekday,4,31,28
+Shake Shack,American,16.06,Weekend,5,30,17
+RedFarm Broadway,Chinese,24.3,Weekend,5,27,29
+Chipotle Mexican Grill $1.99 Delivery,Mexican,9.6,Weekend,3,23,26
+The Meatball Shop,Italian,19.4,Weekend,Not given,28,17
+Blue Ribbon Fried Chicken,American,29.1,Weekend,4,21,22
+Vanessa's Dumpling House,Chinese,12.18,Weekend,Not given,27,18
+RedFarm Broadway,Chinese,21.39,Weekend,5,23,24
+Bubby's ,American,24.25,Weekend,Not given,34,28
+RedFarm Hudson,Chinese,32.93,Weekend,Not given,33,30
+RedFarm Hudson,Chinese,14.07,Weekday,Not given,20,32
+Woorijip,Korean,8.25,Weekend,3,26,26
+The Smile,American,19.4,Weekday,5,26,27
+Shake Shack,American,12.18,Weekend,4,23,28
+The Meatball Shop,Italian,14.94,Weekend,5,32,25
+RedFarm Broadway,Chinese,14.26,Weekend,Not given,28,24
+Dirty Bird To Go (archived),American,8.54,Weekend,Not given,32,30
+The Meatball Shop,Italian,12.18,Weekend,Not given,25,28
+Rubirosa,Italian,29.1,Weekend,5,30,28
+Rubirosa,Italian,12.56,Weekend,4,31,17
+Blue Ribbon Sushi,Japanese,9.17,Weekend,3,25,28
+Lucky's Famous Burgers,American,16.2,Weekend,5,32,27
+Five Guys Burgers and Fries,American,14.12,Weekday,5,23,32
+Haveli Indian Restaurant,Indian,5.72,Weekend,3,24,26
+Blue Ribbon Fried Chicken,American,21.34,Weekend,Not given,35,23
+Shake Shack,American,6.79,Weekend,Not given,20,25
+Blue Ribbon Fried Chicken,American,12.18,Weekend,4,22,29
+Bareburger,American,12.18,Weekend,Not given,33,18
+Dos Caminos,Mexican,6.11,Weekend,5,26,21
+Chipotle Mexican Grill $1.99 Delivery,Mexican,14.16,Weekday,Not given,22,24
+Shake Shack,American,5.68,Weekend,Not given,31,30
+da Umberto,Italian,12.27,Weekday,5,20,30
+The Meatball Shop,Italian,20.18,Weekend,4,32,26
+Shake Shack,American,14.02,Weekend,5,26,21
+Blue Ribbon Sushi Bar & Grill,Japanese,16.2,Weekday,5,27,27
+Dirty Bird To Go (archived),American,15.57,Weekend,Not given,30,24
+Mission Cantina,Mexican,14.45,Weekend,Not given,27,29
+Shake Shack,American,8.15,Weekend,Not given,26,17
+The Meatball Shop,American,29.25,Weekend,3,21,19
+Parm,Italian,8.78,Weekend,3,23,26
+Sushi of Gari,Japanese,15.96,Weekend,5,23,22
+Tamarind TriBeCa,Indian,8.59,Weekday,5,32,31
+P.J. Clarke's,American,15.62,Weekday,5,27,32
+Tortaria,Mexican,13.0,Weekday,5,21,24
+RedFarm Hudson,Chinese,12.23,Weekend,4,24,19
+Cafe Habana,Mexican,25.22,Weekday,Not given,32,28
+Blue Ribbon Sushi Bar & Grill,Japanese,5.87,Weekend,4,31,20
+Hill Country Fried Chicken,Southern,24.2,Weekend,4,25,15
+Shake Shack,American,19.45,Weekday,4,28,24
+Shake Shack,American,12.18,Weekend,Not given,29,22
+Lucky's Famous Burgers,American,6.01,Weekend,Not given,33,16
+Han Dynasty,Chinese,21.93,Weekend,Not given,24,20
+Parm,Italian,5.92,Weekend,3,21,25
+Cafe Mogador,Middle Eastern,24.2,Weekend,4,32,22
+Blue Ribbon Sushi,Japanese,15.76,Weekend,Not given,30,26
+Sushi Samba,Japanese,6.11,Weekend,5,30,27
+Vanessa's Dumpling House,Chinese,5.72,Weekend,Not given,20,21
+Shake Shack,American,19.4,Weekend,Not given,30,18
+Shake Shack,American,8.49,Weekday,Not given,33,32
+Shake Shack,American,32.93,Weekend,Not given,32,25
+Shake Shack,American,12.23,Weekend,Not given,20,27
+Osteria Morini,Italian,9.17,Weekend,Not given,25,22
+The Meatball Shop,Italian,11.69,Weekend,Not given,30,21
+Pepe Rosso To Go,Italian,24.2,Weekend,3,27,19
+Sushi of Gari Tribeca,Japanese,9.85,Weekend,Not given,26,17
+Vanessa's Dumplings,Chinese,25.22,Weekday,Not given,32,24
+Bubby's ,American,22.75,Weekend,5,32,16
+Blue Ribbon Sushi,Japanese,6.84,Weekend,4,20,30
+Blue Ribbon Sushi,Japanese,24.3,Weekend,4,35,18
+Momoya,Japanese,19.35,Weekend,4,27,28
+Shake Shack,American,12.13,Weekday,3,22,27
+Burger Joint,American,9.02,Weekday,5,24,29
+RedFarm Hudson,Chinese,12.18,Weekend,Not given,20,18
+ilili Restaurant,Middle Eastern,9.17,Weekend,Not given,26,19
+Pylos,Mediterranean,19.4,Weekend,Not given,28,29
+Room Service,Thai,6.69,Weekday,Not given,25,32
+Blue Ribbon Sushi,Japanese,5.82,Weekend,Not given,34,27
+Sarabeth's Restaurant,American,12.08,Weekend,Not given,28,26
+Shake Shack,American,15.76,Weekend,5,32,24
+Blue Ribbon Fried Chicken,American,33.03,Weekend,5,34,24
+Blue Ribbon Sushi,Japanese,24.25,Weekend,4,24,23
+Shake Shack,American,12.13,Weekend,Not given,30,19
+Sarabeth's East,American,5.72,Weekend,Not given,33,26
+Xe May Sandwich Shop,Vietnamese,7.96,Weekend,5,25,29
+Hibino,Japanese,14.02,Weekend,4,28,15
+The Kati Roll Company,Indian,14.07,Weekend,5,33,17
+CafÌ© China,Chinese,21.83,Weekend,4,32,15
+Hill Country Fried Chicken,Southern,29.15,Weekend,Not given,20,17
+Shake Shack,American,22.26,Weekend,4,32,17
+Yama Japanese Restaurant,Japanese,5.82,Weekend,Not given,30,30
+Blue Ribbon Fried Chicken,American,29.1,Weekend,Not given,31,27
+The Smile,American,13.39,Weekend,Not given,20,16
+Nobu Next Door,Japanese,9.7,Weekend,5,30,29
+Dos Caminos,Mexican,22.36,Weekend,Not given,30,26
+The Meatball Shop,Italian,12.13,Weekday,4,22,32
+Bareburger,American,6.07,Weekend,4,23,15
+Blue Ribbon Fried Chicken,American,24.3,Weekend,5,22,26
+Yama Japanese Restaurant,Japanese,8.78,Weekend,4,22,28
+Osteria Morini,Italian,24.25,Weekday,Not given,22,24
+RedFarm Broadway,Chinese,20.18,Weekday,Not given,30,26
+Cafe Habana,Mexican,4.85,Weekend,5,28,22
+RedFarm Broadway,Chinese,6.06,Weekend,3,32,18
+Waverly Diner,American,6.84,Weekend,Not given,24,18
+Mira Sushi,Japanese,13.05,Weekend,4,33,29
+Vanessa's Dumpling House,Chinese,5.92,Weekday,Not given,30,32
+Shake Shack,American,12.13,Weekday,5,30,26
+Shake Shack,American,12.18,Weekday,5,23,31
+Five Guys Burgers and Fries,American,29.15,Weekend,Not given,20,16
+Blue Ribbon Fried Chicken,American,8.1,Weekend,Not given,33,22
+Shake Shack,American,7.23,Weekend,3,29,18
+Boqueria,Spanish,12.66,Weekend,Not given,27,30
+The Meatball Shop,Italian,12.23,Weekend,4,31,28
+Shake Shack,American,9.07,Weekday,4,21,32
+ilili Restaurant,Middle Eastern,6.02,Weekday,Not given,27,29
+Five Guys Burgers and Fries,American,14.12,Weekend,4,27,27
+Melt Shop,American,21.93,Weekend,5,30,18
+Jack's Wife Freda,Mediterranean,16.15,Weekend,4,26,22
+Shake Shack,American,7.08,Weekend,4,25,23
+Momoya,Japanese,32.93,Weekday,3,28,27
+Blue Ribbon Fried Chicken,American,12.13,Weekend,Not given,20,26
+S'MAC,American,15.57,Weekend,5,34,28
+The Meatball Shop,Italian,29.15,Weekend,5,23,30
+S'MAC,American,15.47,Weekday,5,31,32
+S'MAC,American,12.37,Weekend,4,30,28
+Tamarind TriBeCa,Indian,16.49,Weekday,Not given,31,28
+Blue Ribbon Fried Chicken,American,24.3,Weekday,5,20,27
+The Meatball Shop,Italian,14.84,Weekend,Not given,20,28
+Yama Japanese Restaurant,Japanese,25.27,Weekend,Not given,30,16
+The Meatball Shop,Italian,17.08,Weekday,5,22,26
+Blue Ribbon Fried Chicken,American,22.31,Weekday,5,28,27
+Dos Caminos,Mexican,12.08,Weekday,5,26,26
+RedFarm Broadway,Chinese,12.61,Weekend,4,32,17
+Blue Ribbon Sushi Izakaya,Japanese,13.1,Weekday,5,24,28
+RedFarm Hudson,Chinese,12.13,Weekend,5,28,29
+Shake Shack,American,8.25,Weekend,Not given,30,15
+Blue Ribbon Sushi Bar & Grill,Japanese,16.39,Weekend,Not given,31,18
+Han Dynasty,Chinese,14.75,Weekend,Not given,30,16
+J. G. Melon,American,12.66,Weekend,4,23,20
+Mamoun's Falafel,Mediterranean,9.07,Weekend,Not given,20,24
+Hummus Place,Middle Eastern,16.15,Weekend,4,30,28
+Nobu Next Door,Japanese,29.29,Weekday,4,30,24
+Cafeteria,American,20.47,Weekday,3,32,24
+Tarallucci e Vino Restaurant,Italian,11.59,Weekend,Not given,21,15
+The Kati Roll Company,Indian,24.35,Weekday,Not given,33,29
+Sushi of Gari 46,Japanese,16.44,Weekend,4,24,27
+P.J. Clarke's,American,5.92,Weekday,3,33,30
+The Meatball Shop,Italian,14.12,Weekend,Not given,32,18
+S'MAC,American,5.92,Weekday,4,34,30
+Blue Ribbon Fried Chicken,American,13.0,Weekend,Not given,29,30
+The Meatball Shop,Italian,21.83,Weekend,4,30,20
+Otto Enoteca Pizzeria,Italian,16.15,Weekend,Not given,35,22
+The Meatball Shop,Italian,12.23,Weekday,Not given,28,33
+Chipotle Mexican Grill $1.99 Delivery,Mexican,24.3,Weekday,Not given,21,33
+ilili Restaurant,Middle Eastern,29.05,Weekend,Not given,24,29
+Shake Shack,American,15.76,Weekend,3,35,29
+TAO,Japanese,8.1,Weekend,5,32,16
+Blue Ribbon Sushi,Japanese,12.18,Weekend,5,34,29
+Cafe Mogador,Middle Eastern,25.17,Weekend,4,23,30
+Shake Shack,American,20.23,Weekend,Not given,32,18
+Saravanaa Bhavan,Indian,9.12,Weekday,5,28,28
+TAO,Japanese,12.18,Weekday,Not given,26,33
+Westville Hudson,American,20.23,Weekday,Not given,31,29
+Blue Ribbon Sushi Izakaya,Japanese,24.25,Weekend,5,33,21
+Blue Ribbon Fried Chicken,American,16.2,Weekend,Not given,32,23
+Melt Shop,American,9.12,Weekday,Not given,29,33
+Friend of a Farmer,American,9.75,Weekend,Not given,26,30
+The Loop,Japanese,31.38,Weekend,4,26,24
+Blue Ribbon Fried Chicken,American,24.3,Weekend,5,34,21
+The Meatball Shop,Italian,19.35,Weekend,5,21,23
+Han Dynasty,Chinese,14.16,Weekend,Not given,30,23
+indikitch,Indian,9.26,Weekend,5,33,26
+Sushi of Gari,Japanese,32.98,Weekend,4,34,21
+Blue Ribbon Sushi Bar & Grill,Japanese,12.18,Weekend,5,22,18
+Sushi of Gari Tribeca,Japanese,9.55,Weekend,4,35,25
+Hangawi,Korean,6.74,Weekend,Not given,21,22
+Cafe Habana,Mexican,14.07,Weekend,4,26,21
+RedFarm Hudson,Chinese,14.02,Weekend,Not given,29,22
+Empanada Mama (closed),Mexican,5.92,Weekday,3,34,25
+Nobu Next Door,Japanese,12.46,Weekend,4,35,28
+Sushi of Gari Tribeca,Japanese,29.2,Weekend,5,32,22
+Nobu Next Door,Japanese,15.76,Weekday,Not given,33,31
+Balade,Middle Eastern,9.22,Weekday,5,25,24
+Osteria Morini,Italian,8.88,Weekend,Not given,34,26
+The Odeon,American,13.92,Weekend,Not given,34,23
+RedFarm Hudson,Chinese,29.34,Weekend,5,27,29
+Yama 49,Japanese,22.36,Weekend,Not given,33,25
+Donburi-ya,Japanese,5.77,Weekend,Not given,27,29
+Osteria Morini,Italian,12.13,Weekend,5,22,26
+The Meatball Shop,American,6.69,Weekend,4,27,27
+Chipotle Mexican Grill $1.99 Delivery,Mexican,15.57,Weekend,4,31,20
+The Loop,Japanese,4.66,Weekend,Not given,34,25
+RedFarm Broadway,Chinese,19.35,Weekend,5,33,18
+The Meatball Shop,Italian,8.78,Weekday,5,34,33
+Blue Ribbon Sushi,Japanese,9.17,Weekend,Not given,27,29
+Shake Shack,American,29.1,Weekend,Not given,23,28
+RedFarm Hudson,Chinese,5.77,Weekend,4,33,28
+Posto,Italian,24.25,Weekend,Not given,23,25
+The Meatball Shop,Italian,9.41,Weekday,5,30,32
+Han Dynasty,Chinese,29.15,Weekend,Not given,31,19
+Pepe Rosso To Go,Italian,15.57,Weekend,5,29,27
+Nobu Next Door,Japanese,11.59,Weekend,5,26,24
+Parm,Italian,16.3,Weekend,3,26,23
+Mamoun's Falafel,Mediterranean,12.18,Weekday,5,25,30
+RedFarm Hudson,Chinese,12.08,Weekday,Not given,21,26
+The Kati Roll Company,Indian,17.03,Weekend,5,24,22
+Terakawa Ramen,Japanese,8.54,Weekday,3,27,25
+Nobu Next Door,Japanese,6.74,Weekend,Not given,31,29
+Kambi Ramen House,Japanese,32.93,Weekend,5,35,19
+Blue Ribbon Sushi,Japanese,12.18,Weekday,Not given,34,32
+Blue Ribbon Sushi,Japanese,12.23,Weekend,3,33,21
+Shake Shack,American,14.94,Weekday,Not given,33,31
+Shake Shack,American,12.95,Weekday,5,20,30
+Jack's Wife Freda,Mediterranean,25.17,Weekday,4,31,25
+Blue Ribbon Sushi,Japanese,13.87,Weekend,Not given,28,28
+Shake Shack,American,24.3,Weekend,4,35,16
+Wo Hop Restaurant,Chinese,14.16,Weekend,4,22,16
+The Smile,American,25.17,Weekend,3,31,15
+Shake Shack,American,31.43,Weekend,5,30,19
+Shake Shack,American,13.0,Weekend,Not given,20,18
+Blue Ribbon Fried Chicken,American,24.2,Weekend,Not given,28,29
+Shake Shack,American,12.66,Weekend,5,35,24
+Momoya,Japanese,6.84,Weekday,Not given,21,24
+Spice Thai,Thai,15.86,Weekend,Not given,34,25
+Cafe Habana,Mexican,9.75,Weekday,5,34,30
+da Umberto,Italian,7.61,Weekend,Not given,23,26
+Sushi of Gari 46,Japanese,29.05,Weekend,Not given,21,23
+Room Service,Thai,22.31,Weekend,Not given,22,15
+Dickson's Farmstand Meats,American,15.72,Weekend,4,23,28
+TAO,Japanese,25.22,Weekend,Not given,26,16
+Xi'an Famous Foods,Chinese,24.3,Weekend,4,32,29
+J. G. Melon,American,8.35,Weekend,5,29,23
+Momoya,Japanese,22.85,Weekend,4,32,17
+UVA Wine Bar & Restaurant,Italian,29.15,Weekend,Not given,29,30
+Blue Ribbon Sushi Bar & Grill,Japanese,19.35,Weekday,5,23,28
+Jack's Wife Freda,Mediterranean,32.93,Weekend,3,21,16
+Momoya,Japanese,14.21,Weekend,Not given,24,30
+Donburi-ya,Japanese,15.86,Weekday,5,28,28
+TAO,Japanese,15.28,Weekend,4,33,22
+The Meatball Shop,Italian,12.13,Weekend,5,34,16
+The Meatball Shop,Italian,22.36,Weekend,4,35,21
+Shake Shack,American,5.68,Weekend,Not given,26,18
+Sushi of Gari Tribeca,Japanese,29.15,Weekend,4,22,17
+Waverly Diner,American,22.8,Weekend,4,25,21
+The Meatball Shop,Italian,19.45,Weekend,5,21,19
+Vanessa's Dumpling House,Chinese,15.52,Weekend,5,20,23
+Blue Ribbon Sushi,Japanese,25.27,Weekend,3,20,20
+The Meatball Shop,Italian,32.93,Weekend,5,34,29
+S'MAC,American,24.2,Weekend,Not given,28,17
+Rubirosa,Italian,24.2,Weekend,5,31,15
+Shake Shack,American,14.65,Weekday,Not given,26,33
+Shake Shack,American,12.08,Weekend,3,29,24
+Rubirosa,Italian,5.77,Weekend,Not given,27,21
+P.J. Clarke's,American,4.71,Weekend,Not given,23,15
+Blue Ribbon Fried Chicken,American,8.78,Weekend,Not given,22,26
+Blue Ribbon Sushi Izakaya,Japanese,12.23,Weekend,3,34,25
+RedFarm Broadway,Chinese,12.23,Weekend,4,21,21
+Blue Ribbon Fried Chicken,American,29.15,Weekday,5,20,29
+Burger Joint,American,13.1,Weekend,Not given,22,18
+Chipotle Mexican Grill $1.99 Delivery,Mexican,22.26,Weekend,4,21,21
+Parm,Italian,12.56,Weekday,Not given,32,28
+Sushi of Gari 46,Japanese,13.05,Weekend,Not given,24,22
+Rubirosa,Italian,13.92,Weekend,Not given,29,27
+Balthazar Boulangerie,French,21.39,Weekend,Not given,35,29
+Blue Ribbon Sushi,Japanese,29.25,Weekend,Not given,33,17
+Burger Joint,American,12.18,Weekend,4,35,15
+Shake Shack,American,12.18,Weekend,Not given,26,25
+ilili Restaurant,Middle Eastern,12.66,Weekend,5,21,15
+RedFarm Hudson,Chinese,12.18,Weekend,Not given,24,27
+Bareburger,American,8.63,Weekend,4,21,22
+Tamarind TriBeCa,Indian,12.18,Weekend,Not given,26,30
+Sushi of Gari Tribeca,Japanese,14.12,Weekend,Not given,21,29
+Blue Ribbon Sushi,Japanese,16.93,Weekend,4,30,25
+Parm,Italian,6.79,Weekend,3,21,30
+Han Dynasty,Chinese,29.2,Weekend,Not given,26,30
+RedFarm Broadway,Chinese,14.02,Weekday,Not given,25,26
+Nobu Next Door,Japanese,25.17,Weekend,4,31,29
+RedFarm Broadway,Chinese,12.61,Weekend,5,28,21
+Serafina Fabulous Pizza,Italian,13.68,Weekend,5,20,20
+Blue Ribbon Sushi,Japanese,11.93,Weekend,3,24,21
+Lantern Thai Kitchen,Thai,13.97,Weekend,Not given,28,29
+The Meatball Shop,Italian,14.02,Weekday,5,20,27
+Blue Ribbon Sushi,Japanese,8.1,Weekend,5,35,18
+Jack's Wife Freda,Mediterranean,12.18,Weekend,3,33,23
+Pylos,Mediterranean,35.41,Weekday,4,21,29
+Gaia Italian Cafe,Italian,8.78,Weekend,Not given,25,15
+Shake Shack,American,16.25,Weekend,5,27,23
+Blue Ribbon Sushi,Japanese,6.64,Weekend,Not given,23,15
+The Meatball Shop,American,15.86,Weekday,5,29,26
+Parm,Italian,17.03,Weekday,3,21,27
+Bareburger,American,24.2,Weekend,4,23,23
+J. G. Melon,American,8.25,Weekday,3,34,33
+Five Guys Burgers and Fries,American,12.08,Weekend,Not given,20,18
+CafÌ© China,Chinese,12.13,Weekend,Not given,27,25
+ilili Restaurant,Middle Eastern,16.49,Weekend,4,30,28
+Blue Ribbon Sushi Izakaya,Japanese,6.79,Weekend,5,32,30
+Sushi of Gari,Japanese,10.72,Weekday,Not given,30,26
+Piccolo Angolo,Italian,19.35,Weekend,Not given,29,29
+Chola Eclectic Indian Cuisine,Indian,8.73,Weekend,5,30,28
+TAO,Japanese,9.65,Weekend,4,25,18
+Vanessa's Dumplings,Chinese,16.78,Weekend,5,27,29
+Mamoun's Falafel,Mediterranean,12.61,Weekend,4,21,17
+RedFarm Broadway,Chinese,24.25,Weekend,5,29,22
+Westville Hudson,American,11.16,Weekend,4,24,20
+Pongsri Thai,Thai,20.18,Weekday,Not given,23,25
+Blue Ribbon Sushi Izakaya,Japanese,32.93,Weekend,4,21,19
+Parm,Italian,15.86,Weekday,Not given,30,24
+Parm,Italian,12.13,Weekend,4,29,26
+Blue Ribbon Sushi,Japanese,13.87,Weekday,Not given,31,30
+Rubirosa,Italian,14.12,Weekday,3,26,27
+TAO,Japanese,24.25,Weekend,4,22,21
+Blue Ribbon Sushi,Japanese,14.07,Weekday,Not given,35,29
+indikitch,Indian,5.58,Weekend,Not given,35,30
+Prosperity Dumpling,Chinese,13.63,Weekend,5,25,24
+RedFarm Hudson,Chinese,15.52,Weekend,5,30,18
+Shake Shack,American,8.73,Weekend,Not given,35,17
+Melt Shop,American,25.27,Weekend,5,27,30
+Hot Kitchen,Chinese,29.54,Weekend,5,34,28
+Junoon,Indian,9.22,Weekday,Not given,30,32
+Blue Ribbon Fried Chicken,American,15.33,Weekend,Not given,23,15
+Tamarind TriBeCa,Indian,12.13,Weekend,Not given,35,20
+Han Dynasty,Chinese,14.02,Weekend,Not given,24,15
+The Smile,American,8.39,Weekday,Not given,20,31
+Han Dynasty,Chinese,12.13,Weekend,5,33,27
+The Meatball Shop,Italian,16.49,Weekend,3,22,28
+Osteria Morini,Italian,9.22,Weekday,4,29,33
+The Meatball Shop,Italian,19.35,Weekend,Not given,27,20
+RedFarm Broadway,Chinese,22.8,Weekday,Not given,33,33
+Shake Shack,American,29.49,Weekend,Not given,34,24
+Ravagh Persian Grill,Middle Eastern,16.93,Weekend,Not given,33,21
+Rohm Thai,Thai,29.1,Weekend,Not given,31,23
+RedFarm Hudson,Chinese,15.04,Weekend,3,35,25
+Momoya,Japanese,11.59,Weekend,3,24,29
+Hill Country Fried Chicken,Southern,31.43,Weekday,5,25,28
+Blue Ribbon Fried Chicken,American,18.24,Weekend,Not given,21,16
+Nobu Next Door,Japanese,4.47,Weekend,5,28,26
+Vanessa's Dumplings,Chinese,8.98,Weekend,Not given,20,20
+Shake Shack,American,29.39,Weekday,Not given,23,33
+Dig Inn Seasonal Market,American,15.71,Weekday,5,27,26
+Shake Shack,American,29.1,Weekday,5,29,31
+Bareburger,American,8.39,Weekend,3,27,30
+Blue Ribbon Sushi Izakaya,Japanese,8.93,Weekend,5,28,18
+Han Dynasty,Chinese,13.0,Weekend,4,32,22
+Dos Caminos,Mexican,16.06,Weekend,Not given,35,19
+Olea,Mediterranean,6.69,Weekday,Not given,20,28
+Shake Shack,American,16.1,Weekend,Not given,28,24
+Jack's Wife Freda,Mediterranean,6.69,Weekend,5,21,16
+Nobu Next Door,Japanese,9.51,Weekend,Not given,25,29
+TAO,Japanese,12.08,Weekend,Not given,24,30
+Blue Ribbon Sushi,Japanese,5.82,Weekday,Not given,27,28
+Nobu Next Door,Japanese,9.41,Weekend,Not given,32,30
+Xe May Sandwich Shop,Vietnamese,14.07,Weekday,Not given,28,28
+Rubirosa,Italian,22.8,Weekday,5,32,27
+Cafeteria,American,12.23,Weekday,Not given,26,25
+Blue Ribbon Sushi Bar & Grill,Japanese,15.91,Weekend,Not given,31,16
+Otto Enoteca Pizzeria,Italian,9.61,Weekend,5,26,30
+Shake Shack,American,8.0,Weekend,4,24,30
+RedFarm Hudson,Chinese,12.08,Weekend,Not given,21,24
+Shake Shack,American,12.08,Weekday,Not given,27,27
+Rubirosa,Italian,14.12,Weekend,Not given,33,15
+Sarabeth's Restaurant,American,21.93,Weekend,Not given,25,27
+Cafe Mogador,Middle Eastern,15.91,Weekend,5,32,15
+Amy Ruth's,Southern,7.38,Weekday,4,24,29
+Shake Shack,American,21.39,Weekend,4,28,18
+Cho Dang Gol,Korean,29.25,Weekend,4,23,21
+El Parador Cafe,Mexican,13.19,Weekday,5,22,28
+Vanessa's Dumplings,Chinese,15.57,Weekend,5,33,28
+Parm,Italian,19.45,Weekday,Not given,28,28
+Shake Shack,American,25.17,Weekend,5,27,26
+RedFarm Hudson,Chinese,19.35,Weekend,4,31,15
+TAO,Japanese,12.61,Weekend,5,32,24
+Chipotle Mexican Grill $1.99 Delivery,Mexican,12.13,Weekend,5,34,19
+Jack's Wife Freda,Mediterranean,12.08,Weekend,5,30,19
+Dirty Bird to Go,American,12.08,Weekday,Not given,23,32
+Blue Ribbon Sushi Izakaya,Japanese,9.51,Weekend,Not given,35,21
+Blue Ribbon Sushi Bar & Grill,Japanese,4.85,Weekend,5,20,21
+Blue Ribbon Fried Chicken,American,14.07,Weekday,4,34,24
+Chipotle Mexican Grill $1.99 Delivery,Mexican,29.1,Weekend,5,24,28
+Socarrat Paella Bar,Spanish,25.22,Weekend,5,23,20
+The Meatball Shop,Italian,31.33,Weekend,3,30,15
+Shake Shack,American,17.03,Weekday,5,35,32
+Don's Bogam BBQ & Wine Bar,Korean,12.23,Weekend,Not given,32,20
+Tamarind TriBeCa,Indian,6.07,Weekend,4,30,17
+Shake Shack,American,10.82,Weekend,4,34,20
+Han Dynasty,Chinese,9.51,Weekday,Not given,24,27
+Bareburger,American,8.73,Weekend,5,21,19
+Blue Ribbon Sushi Izakaya,Japanese,12.23,Weekday,Not given,26,26
+da Umberto,Italian,32.98,Weekend,Not given,30,28
+Parm,Italian,19.35,Weekday,4,23,26
+Xi'an Famous Foods,Chinese,19.45,Weekend,5,28,18
+Five Leaves,American,6.26,Weekday,5,31,26
+Alidoro,American,12.61,Weekend,Not given,34,22
+RedFarm Broadway,Chinese,13.1,Weekend,4,26,22
+Tony's Di Napoli,Italian,14.07,Weekend,Not given,22,27
+Shake Shack,American,15.57,Weekend,Not given,35,18
+Bareburger,American,13.05,Weekend,4,31,30
+Blue Ribbon Sushi Izakaya,Japanese,16.44,Weekend,Not given,32,23
+Blue Ribbon Sushi,Japanese,8.54,Weekend,5,34,25
+Nobu Next Door,Japanese,12.13,Weekend,Not given,28,16
+Westville Hudson,American,33.03,Weekend,5,25,18
+Cipriani Le Specialita,Italian,5.92,Weekend,5,35,30
+The Meatball Shop,Italian,32.98,Weekday,3,23,25
+Shake Shack,American,16.25,Weekday,5,27,31
+Blue Ribbon Sushi,Japanese,29.1,Weekend,5,20,16
+The Meatball Shop,Italian,12.08,Weekday,Not given,25,28
+Cafe Habana,Mexican,8.25,Weekend,4,21,29
+RedFarm Broadway,Chinese,8.2,Weekend,4,31,30
+Shake Shack,American,22.36,Weekday,3,20,32
+Chipotle Mexican Grill $1.99 Delivery,Mexican,16.44,Weekday,Not given,33,30
+The Loop,Japanese,24.3,Weekend,5,21,29
+The Meatball Shop,Italian,8.63,Weekday,4,28,27
+Momoya,Japanese,9.02,Weekend,Not given,21,30
+Blue Ribbon Sushi,Japanese,12.08,Weekend,5,31,16
+TAO,Japanese,15.76,Weekend,Not given,26,19
+Burger Joint,American,21.88,Weekend,5,26,24
+Barbounia,Mediterranean,5.77,Weekend,Not given,23,23
+Shake Shack,American,32.98,Weekend,3,22,21
+RedFarm Hudson,Chinese,29.1,Weekday,Not given,27,26
+Five Guys Burgers and Fries,American,14.12,Weekend,4,28,25
+Blue Ribbon Sushi,Japanese,11.59,Weekend,Not given,26,23
+Blue Ribbon Fried Chicken,American,9.75,Weekday,5,23,32
+Five Guys Burgers and Fries,American,12.18,Weekend,Not given,22,26
+Empanada Mama (closed),Mexican,15.57,Weekend,4,24,20
+Shake Shack,American,24.25,Weekend,5,34,24
+Blue Ribbon Fried Chicken,American,31.38,Weekend,3,35,20
+Shake Shack,American,15.76,Weekday,5,30,24
+Blue Ribbon Sushi,Japanese,24.25,Weekday,5,30,26
+Tony's Di Napoli,Italian,29.1,Weekend,Not given,26,19
+Han Dynasty,Chinese,12.08,Weekend,5,22,23
+Blue Ribbon Fried Chicken,American,12.13,Weekend,Not given,21,28
+Blue Ribbon Sushi,Japanese,15.86,Weekend,Not given,33,15
+Shake Shack,American,14.07,Weekend,5,33,25
+Saravanaa Bhavan,Indian,24.25,Weekday,5,29,26
+Sushi Choshi,Japanese,13.73,Weekend,3,35,27
+The Smile,American,12.18,Weekday,5,29,27
+Chipotle Mexican Grill $1.99 Delivery,Mexican,29.05,Weekend,Not given,28,27
+RedFarm Broadway,Chinese,32.98,Weekend,4,25,15
+Cafe Habana,Mexican,6.69,Weekday,5,26,31
+The Meatball Shop,Italian,24.3,Weekend,Not given,33,21
+Rubirosa,Italian,7.33,Weekend,5,26,22
+RedFarm Hudson,Chinese,9.12,Weekday,5,29,26
+Sarabeth's East,American,12.13,Weekend,Not given,34,30
+Kanoyama,Japanese,32.98,Weekend,5,35,16
+UVA Wine Bar & Restaurant,Italian,14.65,Weekday,5,32,25
+Parm,Italian,31.33,Weekend,Not given,24,16
+RedFarm Broadway,Chinese,9.65,Weekend,5,30,20
+Blue Ribbon Fried Chicken,American,12.95,Weekend,5,27,28
+P.J. Clarke's,American,21.34,Weekday,5,25,28
+Shake Shack,American,19.4,Weekend,5,32,15
+RedFarm Hudson,Chinese,6.69,Weekend,Not given,24,20
+Blue Ribbon Sushi,Japanese,12.13,Weekday,Not given,26,27
+Nobu Next Door,Japanese,15.91,Weekend,4,26,15
+Shake Shack,American,5.77,Weekend,4,28,18
+The Meatball Shop,Italian,12.23,Weekend,5,24,17
+The Meatball Shop,Italian,12.23,Weekend,5,25,19
+Shake Shack,American,12.18,Weekend,Not given,35,29
+Tamarind TriBeCa,Indian,11.64,Weekend,Not given,33,23
+V-Nam Cafe,Vietnamese,22.26,Weekend,5,33,26
+Don's Bogam BBQ & Wine Bar,Korean,14.07,Weekend,3,33,16
+Blue Ribbon Sushi,Japanese,16.49,Weekend,3,24,30
+The Meatball Shop,Italian,9.65,Weekday,5,34,28
+Parm,Italian,12.23,Weekend,Not given,21,30
+Han Dynasty,Chinese,12.18,Weekday,Not given,26,26
+Sushi of Gari Tribeca,Japanese,12.13,Weekend,Not given,25,30
+Blue Ribbon Sushi,Japanese,12.95,Weekend,5,25,16
+Momoya,Japanese,19.4,Weekend,4,27,16
+RedFarm Hudson,Chinese,29.1,Weekend,Not given,27,28
+Han Dynasty,Chinese,29.15,Weekday,Not given,20,24
+Amma,Indian,31.43,Weekday,5,20,27
+Blue Ribbon Sushi,Japanese,16.15,Weekend,3,23,21
+ilili Restaurant,Middle Eastern,8.97,Weekend,Not given,24,19
+Blue Ribbon Sushi Bar & Grill,Japanese,15.28,Weekday,Not given,24,29
+Shake Shack,American,10.24,Weekend,Not given,22,21
+Vanessa's Dumpling House,Chinese,29.1,Weekday,Not given,22,25
+Blue Ribbon Sushi,Japanese,12.9,Weekday,3,25,31
+Otto Enoteca Pizzeria,Italian,29.05,Weekend,5,24,18
+Blue Ribbon Sushi,Japanese,19.35,Weekend,5,26,23
+TAO,Japanese,12.71,Weekend,3,22,17
+Blue Ribbon Sushi,Japanese,24.3,Weekend,5,32,28
+The Smile,American,12.08,Weekend,5,27,25
+ilili Restaurant,Middle Eastern,29.25,Weekend,3,27,21
+Tortaria,Mexican,13.05,Weekend,5,23,19
+Shake Shack,American,25.22,Weekend,4,35,27
+Shake Shack,American,12.95,Weekend,Not given,32,19
+Nobu Next Door,Japanese,16.06,Weekend,Not given,31,23
+Shake Shack,American,29.05,Weekend,5,21,22
+Bareburger,American,5.63,Weekend,4,32,30
+Shake Shack,American,19.4,Weekend,5,32,24
+Parm,Italian,25.17,Weekday,4,33,32
+Bareburger,American,25.22,Weekday,3,31,27
+Hill Country Fried Chicken,Southern,14.84,Weekend,4,21,21
+The Meatball Shop,Italian,6.69,Weekend,Not given,25,22
+The Meatball Shop,Italian,22.36,Weekend,5,32,21
+TAO,Japanese,15.28,Weekend,5,20,27
+Parm,Italian,8.2,Weekday,Not given,34,24
+Shake Shack,American,22.31,Weekday,Not given,33,32
+Tamarind TriBeCa,Indian,12.23,Weekend,4,21,21
+Bubby's ,American,12.18,Weekday,4,28,31
+Shake Shack,American,12.61,Weekend,4,29,19
+Rubirosa,Italian,14.12,Weekday,4,26,32
+Hatsuhana,Japanese,14.07,Weekend,5,27,24
+Han Dynasty,Chinese,12.18,Weekday,3,33,29
+Blue Ribbon Sushi,Japanese,17.07,Weekend,4,27,15
+The Meatball Shop,Italian,12.18,Weekend,5,25,28
+Blue Ribbon Sushi,Japanese,8.83,Weekend,4,20,19
+Sushi of Gari 46,Japanese,14.31,Weekend,Not given,27,25
+TAO,Japanese,25.22,Weekend,5,28,17
+Terakawa Ramen,Japanese,14.65,Weekend,4,30,16
+Blue Ribbon Sushi,Japanese,12.71,Weekday,Not given,24,28
+Rubirosa,Italian,21.88,Weekend,4,28,27
+Blue Ribbon Sushi Bar & Grill,Japanese,12.95,Weekday,Not given,28,28
+Sushi of Gari Tribeca,Japanese,8.63,Weekend,5,33,28
+Blue Ribbon Fried Chicken,American,21.83,Weekend,Not given,20,27
+RedFarm Broadway,Chinese,5.48,Weekend,3,27,18
+Parm,Italian,22.36,Weekend,Not given,27,27
+Blue Ribbon Sushi,Japanese,12.13,Weekend,5,31,29
+Blue Ribbon Fried Chicken,American,12.18,Weekend,Not given,25,17
+Zero Otto Nove,Italian,12.18,Weekday,4,29,25
+Bareburger,American,12.18,Weekday,3,25,24
+TAO,Japanese,22.12,Weekday,5,32,30
+Shake Shack,American,33.03,Weekday,Not given,31,28
+Joe's Shanghai _Àü£¾÷´,Chinese,16.1,Weekend,5,31,22
+The Smile,American,22.26,Weekend,5,25,26
+Blue Ribbon Sushi Izakaya,Japanese,19.45,Weekday,5,33,32
+Shake Shack,American,15.77,Weekend,3,29,20
+The Meatball Shop,Italian,14.7,Weekday,5,30,24
+Shake Shack,American,14.07,Weekend,3,21,27
+ilili Restaurant,Middle Eastern,13.73,Weekday,5,22,33
+Shake Shack,American,12.61,Weekend,4,26,25
+Shake Shack,American,8.34,Weekend,5,21,30
+Blue Ribbon Sushi,Japanese,12.18,Weekend,4,27,16
+The Meatball Shop,Italian,29.15,Weekend,5,29,27
+Blue Ribbon Sushi Bar & Grill,Japanese,24.25,Weekend,5,25,26
+Blue Ribbon Sushi,Japanese,12.32,Weekday,Not given,29,27
+Shake Shack,American,15.96,Weekday,4,28,27
+Blue Ribbon Fried Chicken,American,6.45,Weekend,4,30,24
+Five Guys Burgers and Fries,American,24.3,Weekend,5,28,18
+RedFarm Hudson,Chinese,12.56,Weekend,3,20,22
+Hill Country Fried Chicken,Southern,22.31,Weekday,3,21,25
+Sushi of Gari,Japanese,15.52,Weekend,Not given,20,16
+Dos Caminos,Mexican,6.74,Weekend,5,32,26
+Blue Ribbon Sushi Bar & Grill,Japanese,6.02,Weekday,Not given,29,25
+J. G. Melon,American,6.74,Weekend,5,20,29
+Mira Sushi,Japanese,11.79,Weekend,Not given,32,26
+TAO,Japanese,29.05,Weekend,4,35,24
+Blue Ribbon Sushi Bar & Grill,Japanese,19.35,Weekend,Not given,23,17
+L'Express,French,11.98,Weekday,5,21,28
+Blue Ribbon Sushi Bar & Grill,Japanese,11.69,Weekday,5,21,28
+Blue Ribbon Sushi,Japanese,16.44,Weekend,5,30,29
+RedFarm Hudson,Chinese,20.32,Weekday,5,30,29
+Blue Ribbon Sushi,Japanese,14.02,Weekend,4,23,18
+RedFarm Broadway,Chinese,9.07,Weekend,4,35,17
+Mamoun's Falafel,Mediterranean,5.92,Weekday,Not given,31,33
+Shake Shack,American,15.52,Weekend,5,33,17
+Jack's Wife Freda,Mediterranean,22.31,Weekend,Not given,23,28
+Parm,Italian,28.57,Weekday,5,22,32
+Shake Shack,American,24.25,Weekend,4,27,30
+Cafeteria,American,12.08,Weekend,3,35,28
+Blue Ribbon Sushi,Japanese,22.07,Weekend,4,33,15
+Shake Shack,American,21.29,Weekend,Not given,35,21
+S'MAC,American,16.49,Weekend,5,27,19
+P.J. Clarke's,American,25.27,Weekday,5,34,29
+Blue Ribbon Fried Chicken,American,11.64,Weekend,5,24,16
+Don's Bogam BBQ & Wine Bar,Korean,12.61,Weekend,4,25,26
+The Meatball Shop,Italian,13.0,Weekend,5,34,26
+The Meatball Shop,American,31.43,Weekend,Not given,31,22
+Junoon,Indian,25.17,Weekday,Not given,23,24
+Blue Ribbon Sushi Bar & Grill,Japanese,9.12,Weekend,3,27,27
+Parm,Italian,31.43,Weekday,5,28,25
+Jack's Wife Freda,Mediterranean,29.05,Weekend,5,35,28
+Yama 49,Japanese,31.33,Weekend,5,21,27
+Sarabeth's Restaurant,American,24.25,Weekend,5,23,24
+Shake Shack,American,12.37,Weekend,3,28,28
+Blue Ribbon Fried Chicken,American,24.25,Weekend,Not given,27,21
+Sushi of Gari 46,Japanese,29.05,Weekend,3,35,26
+Shake Shack,American,5.63,Weekend,Not given,27,16
+RedFarm Hudson,Chinese,9.51,Weekend,3,29,26
+Blue Ribbon Sushi Izakaya,Japanese,15.76,Weekend,4,33,23
+Shake Shack,American,11.64,Weekend,Not given,23,29
+Blue Ribbon Sushi,Japanese,12.13,Weekend,5,30,28
+TAO,Japanese,14.99,Weekend,Not given,24,21
+The Meatball Shop,American,12.18,Weekend,4,23,22
+Dos Caminos Soho,Mexican,12.66,Weekday,5,24,30
+Parm,Italian,12.08,Weekend,5,30,25
+Saravanaa Bhavan,Indian,15.52,Weekday,5,33,26
+Go! Go! Curry!,Japanese,20.18,Weekend,3,22,29
+Blue Ribbon Sushi,Japanese,31.43,Weekend,5,24,17
+J. G. Melon,American,12.18,Weekend,Not given,32,22
+La Follia,Italian,8.05,Weekend,Not given,28,20
+The Meatball Shop,Italian,14.41,Weekend,Not given,28,28
+Izakaya Ten,Japanese,12.23,Weekday,5,23,24
+Blue Ribbon Sushi,Japanese,13.0,Weekday,5,22,31
+The Kati Roll Company,Indian,24.2,Weekend,5,26,16
+TAO,Japanese,14.75,Weekend,5,35,19
+Nobu Next Door,Japanese,5.77,Weekend,4,25,29
+Hot Kitchen,Chinese,13.0,Weekend,5,32,25
+Blue Ribbon Sushi Izakaya,Japanese,29.05,Weekday,4,28,25
+Rubirosa,Italian,12.23,Weekend,Not given,21,18
+Cafe Mogador,Middle Eastern,29.88,Weekend,4,20,17
+Blue Ribbon Fried Chicken,American,20.23,Weekday,4,20,26
+Shake Shack,American,4.8,Weekend,4,22,24
+Serafina Fabulous Pizza,Italian,14.84,Weekday,3,35,31
+Blue Ribbon Sushi,Japanese,24.25,Weekend,5,35,16
+Nobu Next Door,Japanese,12.18,Weekend,5,32,23
+Blue Ribbon Fried Chicken,American,10.14,Weekend,4,21,17
+Han Dynasty,Chinese,12.13,Weekend,Not given,20,25
+Xi'an Famous Foods,Chinese,14.12,Weekend,4,32,19
+Tony's Di Napoli,Italian,11.3,Weekend,4,35,29
+Lantern Thai Kitchen,Thai,32.93,Weekend,Not given,34,27
+RedFarm Broadway,Chinese,24.2,Weekday,Not given,22,33
+Blue Ribbon Fried Chicken,American,8.44,Weekend,3,31,18
+Shake Shack,American,24.25,Weekday,5,20,27
+P.J. Clarke's,American,31.43,Weekend,4,31,23
+Sushi of Gari Tribeca,Japanese,9.46,Weekend,Not given,22,29
+Tony's Di Napoli,Italian,15.81,Weekend,5,35,30
+Westville Hudson,American,12.18,Weekend,3,20,25
+The Kati Roll Company,Indian,29.25,Weekend,Not given,30,21
+Han Dynasty,Chinese,6.84,Weekend,5,22,22
+Nobu Next Door,Japanese,12.66,Weekend,Not given,20,21
+Parm,Italian,12.18,Weekend,Not given,32,26
+Blue Ribbon Fried Chicken,American,33.03,Weekend,5,35,25
+12 Chairs,Middle Eastern,16.3,Weekday,4,27,26
+Blue Ribbon Sushi,Japanese,12.95,Weekend,Not given,22,23
+Kanoyama,Japanese,25.27,Weekday,Not given,29,33
+Blue Ribbon Sushi,Japanese,6.74,Weekend,4,22,28
+Parm,Italian,21.88,Weekend,4,23,30
+Bhatti Indian Grill,Indian,32.98,Weekday,Not given,32,30
+Westville Hudson,American,16.98,Weekend,5,34,20
+The Meatball Shop,Italian,11.59,Weekday,Not given,21,30
+RedFarm Hudson,Chinese,12.18,Weekend,Not given,22,27
+Philippe Chow,Chinese,24.2,Weekday,5,28,30
+Bukhara Grill,Indian,16.54,Weekend,5,23,17
+Sushi of Gari Tribeca,Japanese,9.27,Weekend,Not given,20,17
+RedFarm Broadway,Chinese,24.3,Weekday,5,24,31
+Donburi-ya,Japanese,12.18,Weekend,Not given,23,23
+Chipotle Mexican Grill $1.99 Delivery,Mexican,12.13,Weekend,3,34,25
+12 Chairs,Middle Eastern,29.1,Weekend,Not given,22,26
+Blue Ribbon Sushi Bar & Grill,Japanese,12.37,Weekend,Not given,21,16
+Dirty Bird To Go (archived),American,12.13,Weekend,4,22,27
+Blue Ribbon Sushi Izakaya,Japanese,18.24,Weekend,5,32,22
+The MasalaWala,Indian,12.13,Weekend,4,32,15
+Han Dynasty,Chinese,12.08,Weekend,5,27,29
+Blue Ribbon Sushi,Japanese,6.79,Weekday,5,21,29
+Blue Ribbon Sushi,Japanese,12.13,Weekend,5,26,17
+TAO,Japanese,29.49,Weekday,Not given,22,32
+Vezzo Thin Crust Pizza,Italian,13.05,Weekend,5,31,27
+Shake Shack,American,15.77,Weekend,4,35,23
+Vezzo Thin Crust Pizza,Italian,22.26,Weekday,Not given,22,32
+Sushi of Gari 46,Japanese,9.02,Weekend,5,32,17
+Han Dynasty,Chinese,7.71,Weekend,5,22,18
+Blue Ribbon Fried Chicken,American,14.65,Weekend,Not given,34,23
+Han Dynasty,Chinese,22.31,Weekend,5,29,15
+brgr,American,5.72,Weekday,3,24,26
+Cafe Mogador,Middle Eastern,6.69,Weekend,4,23,30
+Hill Country Fried Chicken,Southern,29.78,Weekday,Not given,35,33
+Sushi of Gari,Japanese,16.01,Weekend,Not given,33,19
+Sushi of Gari,Japanese,15.96,Weekend,Not given,22,19
+Shake Shack,American,14.07,Weekend,Not given,33,21
+Blue Ribbon Sushi,Japanese,24.25,Weekday,4,22,29
+Vanessa's Dumpling House,Chinese,14.84,Weekend,5,31,24
+Shake Shack,American,22.85,Weekend,5,24,23
+Vanessa's Dumplings,Chinese,20.23,Weekend,5,33,17
+RedFarm Hudson,Chinese,14.6,Weekend,3,30,28
+TAO,Japanese,15.52,Weekend,4,32,27
+Blue Ribbon Fried Chicken,American,8.98,Weekend,3,26,27
+Melt Shop,American,19.4,Weekend,4,30,25
+Five Guys Burgers and Fries,American,13.0,Weekday,5,30,27
+The Smile,American,5.82,Weekend,3,22,25
+Blue Ribbon Sushi,Japanese,16.06,Weekend,Not given,24,21
+RedFarm Hudson,Chinese,5.82,Weekend,5,22,22
+Sushi of Gari 46,Japanese,13.05,Weekday,Not given,28,30
+Parm,Italian,9.22,Weekend,4,31,25
+Burger Joint,American,8.35,Weekend,4,28,17
+Cafe Habana,Mexican,25.17,Weekend,Not given,27,26
+Chipotle Mexican Grill $1.99 Delivery,Mexican,29.05,Weekend,4,22,21
+Jack's Wife Freda,Mediterranean,8.49,Weekend,Not given,23,18
+Blue Ribbon Sushi,Japanese,6.74,Weekend,5,22,29
+Pinto Nouveau Thai Bistro,Thai,24.2,Weekend,5,29,15
+Shake Shack,American,12.18,Weekend,5,32,24
+The Meatball Shop,Italian,19.4,Weekend,5,28,30
+Shake Shack,American,14.07,Weekend,5,34,17
+RedFarm Broadway,Chinese,31.86,Weekend,4,25,19
+RedFarm Broadway,Chinese,12.56,Weekday,4,35,33
+Sushi of Gari Tribeca,Japanese,14.07,Weekend,5,34,29
+The Meatball Shop,American,5.82,Weekend,5,30,30
+Carmine's,Italian,19.98,Weekday,5,34,30
+Shake Shack,American,14.07,Weekend,Not given,31,25
+Jack's Wife Freda,Mediterranean,14.12,Weekday,5,25,25
+Sushi of Gari Tribeca,Japanese,12.42,Weekend,4,23,20
+Parm,Italian,12.13,Weekend,Not given,25,29
+Five Guys Burgers and Fries,American,19.45,Weekday,3,28,28
+Blue Ribbon Fried Chicken,American,12.18,Weekend,4,26,29
+The Meatball Shop,Italian,6.69,Weekend,Not given,25,18
+Nobu Next Door,Japanese,13.97,Weekday,Not given,27,24
+Blue Ribbon Sushi Bar & Grill,Japanese,5.72,Weekday,5,32,26
+Haandi,Indian,13.1,Weekend,Not given,31,30
+Shake Shack,American,6.07,Weekday,4,23,27
+Melt Shop,American,12.56,Weekend,4,25,23
+P.J. Clarke's,American,14.07,Weekday,5,33,26
+Blue Ribbon Fried Chicken,American,12.52,Weekday,4,24,31
+Shake Shack,American,21.93,Weekday,Not given,21,33
+Sarabeth's East,American,25.27,Weekend,4,23,19
+Asuka Sushi,Japanese,22.75,Weekday,5,25,32
+The Meatball Shop,American,12.18,Weekend,5,22,26
+Rubirosa,Italian,15.38,Weekday,Not given,30,31
+Yama Japanese Restaurant,Japanese,12.66,Weekend,Not given,25,26
+Nobu Next Door,Japanese,25.17,Weekend,Not given,21,16
+P.J. Clarke's,American,24.25,Weekend,Not given,24,15
+Shake Shack,American,14.02,Weekend,4,20,21
+ilili Restaurant,Middle Eastern,31.33,Weekday,4,29,27
+Blue Ribbon Sushi Izakaya,Japanese,9.7,Weekend,Not given,25,15
+Blue Ribbon Sushi Izakaya,Japanese,33.03,Weekend,3,34,23
+Sushi of Gari Tribeca,Japanese,24.2,Weekend,Not given,22,21
+Burger Joint,American,16.15,Weekend,Not given,31,15
+Aurora,Italian,21.93,Weekend,Not given,31,18
+Shake Shack,American,9.41,Weekend,5,22,20
+Hill Country Fried Chicken,Southern,14.12,Weekend,5,25,15
+Parm,Italian,14.55,Weekday,5,30,32
+Blue Ribbon Sushi Bar & Grill,Japanese,33.03,Weekend,5,28,15
+Blue Ribbon Sushi,Japanese,13.0,Weekend,5,34,15
+Sarabeth's,American,25.17,Weekend,3,28,23
+Rubirosa,Italian,5.97,Weekend,3,30,25
+Sushi Samba,Japanese,13.0,Weekend,4,33,21
+Melt Shop,American,12.66,Weekend,3,27,26
+Blue Ribbon Sushi Bar & Grill,Japanese,14.12,Weekend,Not given,31,25
+Osteria Morini,Italian,8.3,Weekend,Not given,27,19
+Hatsuhana,Japanese,17.03,Weekday,4,35,33
+Blue Ribbon Sushi,Japanese,14.02,Weekday,Not given,35,29
+RedFarm Hudson,Chinese,24.2,Weekend,5,27,19
+Five Guys Burgers and Fries,American,16.01,Weekend,Not given,27,19
+The Meatball Shop,Italian,25.22,Weekend,5,32,25
+The Kati Roll Company,Indian,19.45,Weekend,Not given,25,24
+Blue Ribbon Sushi Bar & Grill,Japanese,12.08,Weekday,5,29,24
+Blue Ribbon Fried Chicken,American,24.25,Weekday,5,33,30
+Cafe Habana,Mexican,16.98,Weekday,4,23,30
+Blue Ribbon Fried Chicken,American,13.0,Weekend,Not given,24,30
+Tamarind TriBeCa,Indian,13.24,Weekend,Not given,23,30
+Parm,Italian,29.39,Weekday,Not given,26,30
+Waverly Diner,American,11.59,Weekend,Not given,25,22
+Barbounia,Mediterranean,12.13,Weekend,Not given,26,26
+Rubirosa,Italian,24.2,Weekend,4,23,26
+Crema Restaurante,Mexican,15.86,Weekend,Not given,31,30
+Tamarind TriBeCa,Indian,12.95,Weekday,3,27,24
+Shake Shack,American,15.86,Weekend,3,34,20
+Big Daddy's,American,14.84,Weekend,5,32,22
+Yama Japanese Restaurant,Japanese,5.77,Weekend,Not given,34,21
+Sushi of Gari 46,Japanese,22.8,Weekend,Not given,30,25
+The Meatball Shop,Italian,29.25,Weekday,5,35,29
+Blue Ribbon Sushi Bar & Grill,Japanese,22.36,Weekend,4,25,18
+Sushi of Gari 46,Japanese,22.26,Weekend,5,27,26
+Donburi-ya,Japanese,8.01,Weekday,5,30,30
+Pepe Rosso To Go,Italian,16.3,Weekend,Not given,23,30
+TAO,Japanese,31.43,Weekend,Not given,34,20
+Parm,Italian,12.13,Weekend,3,23,15
+TAO,Japanese,8.05,Weekday,Not given,26,31
+Parm,Italian,19.4,Weekday,Not given,24,28
+Amma,Indian,19.35,Weekend,Not given,30,16
+TAO,Japanese,16.15,Weekend,3,24,22
+Momoya,Japanese,16.05,Weekday,4,34,33
+Parm,Italian,24.25,Weekend,4,34,21
+Shake Shack,American,9.07,Weekday,3,35,26
+Blue Ribbon Sushi Bar & Grill,Japanese,13.05,Weekday,5,22,28
+Shake Shack,American,12.13,Weekday,5,25,30
+Shake Shack,American,24.35,Weekday,5,34,26
+Han Dynasty,Chinese,16.01,Weekend,5,30,16
+Tony's Di Napoli,Italian,5.82,Weekend,5,26,26
+Cafe Mogador,Middle Eastern,16.15,Weekend,5,29,27
+Blue Ribbon Sushi,Japanese,29.68,Weekend,3,26,30
+The Meatball Shop,Italian,12.18,Weekend,3,27,20
+Sushi of Gari 46,Japanese,12.56,Weekend,4,20,22
+Chipotle Mexican Grill $1.99 Delivery,Mexican,16.1,Weekend,Not given,22,26
+Parm,Italian,21.93,Weekend,4,22,25
+Sushi of Gari 46,Japanese,5.77,Weekday,4,32,24
+Nobu Next Door,Japanese,6.02,Weekend,5,33,24
+Aurora,Italian,6.74,Weekday,Not given,30,26
+Blue Ribbon Sushi,Japanese,11.59,Weekend,4,22,18
+Dickson's Farmstand Meats,American,33.03,Weekend,5,35,20
+RedFarm Hudson,Chinese,33.03,Weekend,3,32,19
+Shake Shack,American,5.72,Weekend,Not given,24,19
+Blue Ribbon Sushi,Japanese,29.15,Weekday,Not given,26,24
+indikitch,Indian,14.07,Weekend,4,20,30
+Donburi-ya,Japanese,6.64,Weekday,Not given,21,29
+Melt Shop,American,9.6,Weekend,5,30,16
+Blue Ribbon Sushi,Japanese,9.32,Weekend,4,32,18
+ilili Restaurant,Middle Eastern,25.22,Weekday,5,25,33
+Shake Shack,American,16.93,Weekend,Not given,25,26
+Blue Ribbon Fried Chicken,American,16.44,Weekend,4,24,16
+Blue Ribbon Sushi Izakaya,Japanese,14.41,Weekend,5,22,20
+Pepe Rosso To Go,Italian,12.13,Weekend,4,25,18
+Tamarind TriBeCa,Indian,22.26,Weekend,5,34,15
+Shake Shack,American,24.3,Weekday,4,35,29
+The Smile,American,12.27,Weekday,Not given,32,24
+Blue Ribbon Sushi Izakaya,Japanese,12.23,Weekend,Not given,33,23
+Waverly Diner,American,14.6,Weekday,3,20,32
+Moonstruck on Second,American,14.94,Weekend,5,27,20
+Blue Ribbon Sushi Bar & Grill,Japanese,16.54,Weekend,Not given,27,17
+RedFarm Hudson,Chinese,11.64,Weekend,Not given,34,18
+Melt Shop,American,11.69,Weekday,4,21,27
+RedFarm Broadway,Chinese,6.74,Weekend,Not given,31,27
+Cafe Mogador,Middle Eastern,9.22,Weekend,Not given,23,15
+The Meatball Shop,American,5.77,Weekend,Not given,33,27
+Blue Ribbon Sushi Izakaya,Japanese,21.93,Weekend,Not given,35,26
+Shake Shack,American,9.02,Weekday,4,23,27
+Serafina Fabulous Pizza,Italian,22.8,Weekday,4,28,31
+Rubirosa,Italian,12.51,Weekend,5,21,15
+Ravagh Persian Grill,Middle Eastern,14.07,Weekday,5,34,33
+The Kati Roll Company,Indian,5.34,Weekend,4,27,18
+Westville Hudson,American,29.1,Weekend,Not given,20,24
+Five Guys Burgers and Fries,American,6.4,Weekday,5,23,32
+Cafe Mogador,Middle Eastern,14.12,Weekend,Not given,24,24
+TAO,Japanese,12.18,Weekend,Not given,23,24
+Osteria Morini,Italian,19.45,Weekend,Not given,26,29
+Momoya,Japanese,11.59,Weekend,5,20,21
+Nobu Next Door,Japanese,9.22,Weekend,Not given,29,23
+Empanada Mama (closed),Mexican,12.13,Weekend,5,21,22
+Shake Shack,American,15.76,Weekend,4,34,27
+Junoon,Indian,29.49,Weekend,5,23,17
+Nobu Next Door,Japanese,19.35,Weekend,4,28,30
+Shake Shack,American,31.43,Weekend,Not given,30,19
+Blue Ribbon Sushi,Japanese,19.4,Weekend,5,24,25
+Blue Ribbon Sushi,Japanese,11.69,Weekend,Not given,28,29
+Han Dynasty,Chinese,19.3,Weekend,Not given,34,21
+The Meatball Shop,Italian,7.61,Weekend,3,20,26
+The Meatball Shop,Italian,8.3,Weekday,Not given,29,32
+RedFarm Hudson,Chinese,25.17,Weekend,Not given,21,17
+TAO,Japanese,12.08,Weekday,3,24,26
+The Meatball Shop,Italian,12.71,Weekday,5,29,33
+The Meatball Shop,Italian,12.18,Weekend,Not given,20,16
+Parm,Italian,29.35,Weekend,5,29,17
+Five Guys Burgers and Fries,American,25.27,Weekend,5,27,29
+Xi'an Famous Foods,Chinese,8.54,Weekend,5,29,30
+Han Dynasty,Chinese,29.15,Weekend,Not given,27,15
+Blue Ribbon Sushi,Japanese,17.85,Weekend,Not given,28,18
+Blue Ribbon Sushi Izakaya,Japanese,16.1,Weekend,3,20,28
+The Kati Roll Company,Indian,14.07,Weekend,5,23,20
+Shake Shack,American,15.57,Weekday,4,34,25
+Parm,Italian,16.44,Weekend,4,23,22
+Cafe de La Esquina,Mexican,16.06,Weekend,5,27,21
+Olive Garden,Italian,6.74,Weekend,5,23,19
+Blue Ribbon Fried Chicken,American,14.07,Weekday,Not given,20,31
+Cho Dang Gol,Korean,12.13,Weekend,4,29,16
+The Meatball Shop,Italian,8.54,Weekend,3,31,15
+Cafeteria,American,11.59,Weekend,Not given,24,19
+Jack's Wife Freda,Mediterranean,31.43,Weekend,5,34,20
+Benihana,Japanese,16.11,Weekend,Not given,25,29
+Blue Ribbon Sushi,Japanese,9.41,Weekend,5,24,18
+67 Burger,American,29.05,Weekday,5,20,28
+RedFarm Broadway,Chinese,5.87,Weekend,4,27,22
+Blue Ribbon Sushi Bar & Grill,Japanese,12.18,Weekend,4,24,15
+Boqueria,Spanish,12.13,Weekday,Not given,33,28
+Rubirosa,Italian,16.2,Weekend,4,21,27
+Blue Ribbon Sushi,Japanese,5.97,Weekend,3,31,30
+Shake Shack,American,12.23,Weekday,5,35,25
+Blue Ribbon Sushi,Japanese,14.12,Weekday,5,35,33
+Parm,Italian,6.74,Weekday,5,25,30
+RedFarm Broadway,Chinese,19.4,Weekend,5,24,25
+Blue Ribbon Fried Chicken,American,12.13,Weekend,Not given,35,29
+Burger Joint,American,14.16,Weekend,4,28,28
+Yama Japanese Restaurant,Japanese,12.13,Weekend,Not given,26,26
+Jack's Wife Freda,Mediterranean,31.38,Weekend,Not given,28,18
+Sushi Samba,Japanese,22.85,Weekday,5,21,32
+Westville Hudson,American,32.93,Weekend,5,30,20
+The Meatball Shop,Italian,19.4,Weekend,Not given,20,16
+Shake Shack,American,8.1,Weekend,Not given,25,24
+Melt Shop,American,9.02,Weekday,Not given,29,24
+Shake Shack,American,9.12,Weekend,Not given,31,19
+TAO,Japanese,6.69,Weekday,4,26,25
+Serafina Fabulous Pizza,Italian,16.88,Weekend,Not given,33,27
+Waverly Diner,American,16.3,Weekday,3,28,25
+Five Guys Burgers and Fries,American,9.27,Weekend,4,23,25
+TAO,Japanese,15.86,Weekend,4,22,17
+Blue Ribbon Sushi,Japanese,12.23,Weekend,Not given,20,24
+Balthazar Boulangerie,French,12.13,Weekend,5,25,24
+Bareburger,American,17.03,Weekend,5,35,21
+Bareburger,American,13.77,Weekend,3,33,29
+V-Nam Cafe,Vietnamese,6.01,Weekday,3,20,31
+Blue Ribbon Sushi Bar & Grill,Japanese,29.25,Weekday,Not given,25,29
+Blue Ribbon Sushi,Japanese,16.1,Weekend,3,26,17
+RedFarm Hudson,Chinese,5.73,Weekday,Not given,25,25
+Shake Shack,American,6.07,Weekend,4,28,19
+RedFarm Hudson,Chinese,15.23,Weekend,5,31,16
+Parm,Italian,9.17,Weekend,Not given,25,17
+Tamarind TriBeCa,Indian,29.15,Weekend,3,35,22
+Shake Shack,American,29.05,Weekend,4,33,16
+Han Dynasty,Chinese,33.03,Weekday,5,35,32
+Blue Ribbon Sushi Izakaya,Japanese,8.83,Weekday,5,34,27
+Bareburger,American,6.74,Weekend,Not given,26,29
+Sushi of Gari Tribeca,Japanese,17.03,Weekend,Not given,23,22
+Benihana,Japanese,25.22,Weekday,4,27,27
+Tres Carnes,Mexican,9.17,Weekend,4,25,30
+Schnipper's Quality Kitchen,American,12.18,Weekend,Not given,31,22
+Parm,Italian,12.18,Weekend,Not given,29,16
+Shake Shack,American,15.57,Weekend,5,32,17
+Lucky's Famous Burgers,American,12.13,Weekday,5,21,30
+Blue Ribbon Fried Chicken,American,14.6,Weekend,3,27,27
+Sushi of Gari 46,Japanese,11.84,Weekend,Not given,27,24
+Sushi of Gari,Japanese,14.07,Weekend,Not given,35,26
+Go! Go! Curry!,Japanese,33.03,Weekend,Not given,22,15
+Shake Shack,American,8.1,Weekend,5,26,27
+Dirty Bird to Go,American,12.18,Weekday,Not given,20,24
+Parm,Italian,5.72,Weekend,4,26,27
+Nha Trang One,Vietnamese,15.67,Weekday,3,23,24
+Nobu Next Door,Japanese,12.18,Weekend,4,29,20
+Shake Shack,American,16.2,Weekend,Not given,20,21
+Market Table,American,6.79,Weekend,Not given,21,17
+Sushi Samba,Japanese,12.61,Weekend,5,29,29
+TAO,Japanese,32.93,Weekend,Not given,34,16
+Sushi of Gari Tribeca,Japanese,14.79,Weekend,Not given,32,24
+Otto Enoteca Pizzeria,Italian,24.2,Weekend,Not given,34,15
+Parm,Italian,6.69,Weekend,5,24,28
+Hill Country Fried Chicken,Southern,12.23,Weekday,4,20,29
+Tamarind TriBeCa,Indian,6.74,Weekend,5,25,26
+Blue Ribbon Sushi,Japanese,16.06,Weekday,Not given,34,33
+Blue Ribbon Fried Chicken,American,12.23,Weekend,Not given,30,20
+Asuka Sushi,Japanese,22.8,Weekend,Not given,30,28
+Sushi of Gari Tribeca,Japanese,12.18,Weekend,5,35,19
+Five Leaves,American,9.17,Weekend,4,34,23
+Shake Shack,American,14.07,Weekday,4,24,28
+Blue Ribbon Fried Chicken,American,14.84,Weekend,5,21,25
+Shake Shack,American,6.69,Weekday,5,26,32
+Hatsuhana,Japanese,14.07,Weekend,Not given,26,17
+Pylos,Mediterranean,14.12,Weekday,4,26,24
+Blue Ribbon Sushi,Japanese,6.69,Weekend,Not given,35,26
+Shake Shack,American,13.58,Weekend,Not given,25,24
+Blue Ribbon Fried Chicken,American,33.18,Weekend,Not given,26,20
+Haveli Indian Restaurant,Indian,29.1,Weekday,3,23,24
+Westville Hudson,American,24.25,Weekend,Not given,25,21
+Blue Ribbon Fried Chicken,American,29.05,Weekend,5,29,20
+Rubirosa,Italian,6.55,Weekend,Not given,23,15
+Blue Ribbon Sushi,Japanese,24.3,Weekday,Not given,21,26
+Rubirosa,Italian,19.4,Weekend,4,34,16
+Shake Shack,American,20.52,Weekend,3,31,15
+Tamarind TriBeCa,Indian,29.39,Weekend,5,30,25
+Han Dynasty,Chinese,13.78,Weekend,5,27,20
+Shake Shack,American,14.12,Weekend,Not given,29,30
+The Kati Roll Company,Indian,19.4,Weekday,5,24,30
+Blue Ribbon Fried Chicken,American,19.4,Weekend,4,33,21
+Sushi Samba,Japanese,6.84,Weekend,5,27,20
+Pepe Rosso To Go,Italian,22.8,Weekend,5,35,24
+Shake Shack,American,19.4,Weekend,5,33,27
+RedFarm Hudson,Chinese,14.12,Weekend,5,21,24
+Junoon,Indian,28.62,Weekday,5,21,32
+Blue Ribbon Sushi,Japanese,29.25,Weekend,Not given,22,27
+Vanessa's Dumpling House,Chinese,9.65,Weekend,5,20,22
+Blue Ribbon Fried Chicken,American,15.71,Weekend,3,27,25
+Sushi of Gari 46,Japanese,12.13,Weekday,Not given,20,33
+Shake Shack,American,15.18,Weekday,5,30,33
+Parm,Italian,22.36,Weekend,4,21,30
+Saravanaa Bhavan,Indian,12.13,Weekday,Not given,32,26
+Shake Shack,American,12.13,Weekend,5,26,26
+Sushi of Gari,Japanese,31.43,Weekend,Not given,21,27
+Blue Ribbon Fried Chicken,American,20.18,Weekend,3,22,20
+ilili Restaurant,Middle Eastern,16.3,Weekend,4,27,16
+RedFarm Broadway,Chinese,14.07,Weekend,3,34,17
+Sushi of Gari,Japanese,6.69,Weekend,4,22,16
+Han Dynasty,Chinese,24.2,Weekend,5,23,15
+Shake Shack,American,6.69,Weekday,Not given,20,29
+ilili Restaurant,Middle Eastern,9.56,Weekend,Not given,27,27
+Han Dynasty,Chinese,8.54,Weekend,4,31,15
+Rubirosa,Italian,24.2,Weekend,4,34,16
+Dos Caminos,Mexican,8.1,Weekday,Not given,23,26
+Blue Ribbon Fried Chicken,American,19.35,Weekday,Not given,35,24
+Cafe Mogador,Middle Eastern,13.68,Weekend,4,29,18
+TAO,Japanese,13.97,Weekend,5,28,25
+Blue Ribbon Sushi,Japanese,9.75,Weekday,5,27,27
+Tamarind TriBeCa,Indian,6.74,Weekend,4,20,17
+Cho Dang Gol,Korean,11.84,Weekend,5,25,16
+Five Guys Burgers and Fries,American,16.05,Weekend,4,29,18
+Blue Ribbon Sushi Izakaya,Japanese,12.23,Weekend,Not given,21,23
+Sarabeth's,American,32.93,Weekday,4,33,33
+Empanada Mama (closed),Mexican,14.21,Weekend,Not given,27,25
+Momoya,Japanese,29.1,Weekday,4,21,29
+Shake Shack,American,15.57,Weekday,Not given,28,30
+Sushi of Gari 46,Japanese,12.13,Weekend,Not given,25,29
+Blue Ribbon Fried Chicken,American,29.15,Weekend,4,31,17
+Burger Joint,American,11.98,Weekend,Not given,20,17
+Sarabeth's,American,29.3,Weekend,5,23,17
+Go! Go! Curry!,Japanese,14.02,Weekday,4,22,27
+The Meatball Shop,American,32.93,Weekend,3,35,16
+Five Guys Burgers and Fries,American,14.07,Weekday,Not given,24,26
+Sushi of Gari 46,Japanese,25.17,Weekend,Not given,29,27
+Galli Restaurant,Italian,16.06,Weekend,5,22,16
+Shake Shack,American,24.25,Weekend,5,31,28
+V-Nam Cafe,Vietnamese,12.13,Weekend,4,20,26
+Izakaya Ten,Japanese,13.05,Weekend,3,34,23
+Room Service,Thai,12.23,Weekend,Not given,35,16
+P.J. Clarke's,American,12.18,Weekday,5,30,24
+The Meatball Shop,Italian,29.1,Weekday,5,22,33
+Kanoyama,Japanese,12.81,Weekend,5,23,24
+Westville Hudson,American,24.3,Weekend,Not given,32,15
+Parm,Italian,14.79,Weekend,Not given,33,29
+Sarabeth's East,American,29.3,Weekend,Not given,27,20
+Blue Ribbon Fried Chicken,American,8.93,Weekday,5,34,30
+Blue Ribbon Sushi,Japanese,12.23,Weekend,4,29,22
+RedFarm Broadway,Chinese,16.1,Weekend,5,21,27
+Five Guys Burgers and Fries,American,12.08,Weekday,Not given,28,27
+Cafe Mogador,Middle Eastern,24.25,Weekend,Not given,26,22
+Yama Japanese Restaurant,Japanese,12.18,Weekday,Not given,30,25
+brgr,American,14.07,Weekend,Not given,26,24
+Shake Shack,American,15.52,Weekend,5,22,17
+The Meatball Shop,American,12.13,Weekend,Not given,23,23
+Parm,Italian,29.44,Weekend,4,33,24
+Sushi of Gari Tribeca,Japanese,8.63,Weekend,5,33,17
+Nobu Next Door,Japanese,5.67,Weekday,5,33,25
+Sushi of Gari 46,Japanese,12.18,Weekday,4,24,27
+Hampton Chutney Co.,Thai,12.37,Weekend,4,21,20
+The Meatball Shop,American,19.35,Weekend,4,31,25
+The Meatball Shop,Italian,32.98,Weekday,5,26,27
+Momoya,Japanese,8.1,Weekend,Not given,32,27
+Nobu Next Door,Japanese,11.11,Weekend,Not given,25,30
+The Meatball Shop,American,12.56,Weekend,Not given,28,22
+Parm,Italian,25.27,Weekday,Not given,27,27
+The Meatball Shop,Italian,12.13,Weekend,4,21,25
+Jack's Wife Freda,Mediterranean,9.41,Weekend,5,28,15
+Blue Ribbon Fried Chicken,American,9.51,Weekday,Not given,30,29
+Byblos Restaurant,Middle Eastern,25.27,Weekend,3,33,16
+Blue Ribbon Sushi,Japanese,12.56,Weekend,Not given,32,20
+Bareburger,American,15.57,Weekday,4,24,28
+TAO,Japanese,19.35,Weekend,Not given,34,22
+The Smile,American,29.1,Weekend,Not given,22,16
+Burger Joint,American,12.23,Weekday,Not given,21,27
+Boqueria,Spanish,14.5,Weekend,Not given,35,29
+Shake Shack,American,25.22,Weekend,3,27,25
+Blue Ribbon Sushi,Japanese,24.35,Weekend,5,33,22
+Blue Ribbon Fried Chicken,American,21.29,Weekend,5,28,29
+Lantern Thai Kitchen,Thai,9.46,Weekend,5,29,19
+The Meatball Shop,Italian,14.02,Weekday,5,32,32
+P.J. Clarke's,American,15.96,Weekend,Not given,27,18
+Blue Ribbon Sushi,Japanese,19.4,Weekday,Not given,24,24
+Donburi-ya,Japanese,12.37,Weekend,5,24,17
+Parm,Italian,12.13,Weekday,4,23,31
+Balthazar Boulangerie,French,21.93,Weekend,Not given,31,20
+Izakaya Ten,Japanese,6.02,Weekend,Not given,24,19
+Empanada Mama (closed),Mexican,19.35,Weekend,5,29,22
+L'Express,French,22.02,Weekday,Not given,21,27
+TAO,Japanese,8.0,Weekday,4,28,24
+Nobu Next Door,Japanese,29.1,Weekday,3,35,27
+Sushi Samba,Japanese,12.95,Weekend,Not given,21,21
+Blue Ribbon Sushi Bar & Grill,Japanese,16.1,Weekend,Not given,27,27
+Blue Ribbon Fried Chicken,American,5.73,Weekend,Not given,34,16
+Han Dynasty,Chinese,8.1,Weekend,5,23,26
+Tamarind TriBeCa,Indian,16.98,Weekend,5,22,17
+Shake Shack,American,8.34,Weekend,Not given,23,28
+Blue Ribbon Sushi,Japanese,24.25,Weekday,Not given,29,25
+Song Thai Restaurant & Bar,Thai,29.2,Weekend,5,21,28
+S'MAC,American,14.55,Weekend,Not given,29,29
+The Meatball Shop,Italian,24.2,Weekday,4,28,30
+Blue Ribbon Sushi,Japanese,12.13,Weekday,Not given,32,29
+J. G. Melon,American,19.45,Weekend,5,24,15
+Hummus Place,Middle Eastern,9.75,Weekend,5,28,28
+Empanada Mama (closed),Mexican,19.98,Weekday,4,23,32
+Blue Ribbon Sushi Bar & Grill,Japanese,11.88,Weekend,5,25,17
+RedFarm Broadway,Chinese,6.69,Weekend,Not given,27,24
+RedFarm Hudson,Chinese,21.29,Weekend,4,32,25
+Hill Country Fried Chicken,Southern,11.64,Weekend,4,35,21
+Bareburger,American,32.93,Weekend,Not given,29,24
+Blue Ribbon Fried Chicken,American,12.56,Weekday,5,27,27
+RedFarm Broadway,Chinese,14.07,Weekday,Not given,35,33
+Rubirosa,Italian,33.03,Weekend,5,22,28
+Cafe Mogador,Middle Eastern,12.95,Weekend,3,21,20
+Shake Shack,American,12.27,Weekend,5,24,28
+Tamarind TriBeCa,Indian,12.18,Weekend,5,25,20
+The Meatball Shop,Italian,12.08,Weekend,3,32,19
+Dickson's Farmstand Meats,American,12.18,Weekend,5,21,20
+Blue Ribbon Sushi,Japanese,12.22,Weekend,Not given,34,28
+Shake Shack,American,12.95,Weekend,4,30,26
+Sushi of Gari 46,Japanese,29.1,Weekday,5,32,30
+Chipotle Mexican Grill $1.99 Delivery,Mexican,15.23,Weekend,Not given,31,21
+Blue Ribbon Sushi Bar & Grill,Japanese,15.81,Weekday,Not given,21,29
+RedFarm Broadway,Chinese,15.96,Weekday,4,35,33
+Bareburger,American,16.25,Weekend,Not given,32,28
+TAO,Japanese,8.54,Weekend,4,26,23
+TAO,Japanese,29.1,Weekend,Not given,28,23
+Blue Ribbon Sushi,Japanese,6.74,Weekend,Not given,31,27
+Blue Ribbon Sushi,Japanese,31.38,Weekend,Not given,26,27
+Parm,Italian,22.75,Weekday,Not given,30,27
+Barbounia,Mediterranean,16.93,Weekend,5,30,18
+Rubirosa,Italian,32.98,Weekend,Not given,33,30
+Shake Shack,American,5.82,Weekday,Not given,29,29
+Blue Ribbon Sushi Bar & Grill,Japanese,22.26,Weekday,Not given,20,26
+Mission Cantina,Mexican,15.57,Weekend,5,21,28
+Tres Carnes,Mexican,33.32,Weekday,4,21,33
+Blue Ribbon Fried Chicken,American,21.34,Weekend,5,28,21
+The Meatball Shop,American,31.43,Weekend,4,20,21
+Sushi of Gari 46,Japanese,9.22,Weekend,4,32,28
+Momoya,Japanese,9.55,Weekend,5,30,26
+The Smile,American,8.59,Weekend,4,32,29
+Schnipper's Quality Kitchen,American,14.02,Weekend,5,20,16
+Joe's Shanghai _Àü£¾÷´,Chinese,16.15,Weekend,3,33,20
+RedFarm Broadway,Chinese,8.97,Weekend,Not given,21,16
+TAO,Japanese,9.22,Weekend,5,26,25
+Nobu Next Door,Japanese,8.97,Weekday,Not given,22,31
+Nobu Next Door,Japanese,14.12,Weekend,3,30,19
+Shake Shack,American,19.35,Weekend,4,21,29
+Shake Shack,American,20.52,Weekend,Not given,31,26
+Vanessa's Dumpling House,Chinese,18.43,Weekend,5,34,28
+Yama Japanese Restaurant,Japanese,9.27,Weekend,Not given,23,29
+Parm,Italian,12.47,Weekend,Not given,22,24
+Chipotle Mexican Grill $1.99 Delivery,Mexican,29.15,Weekday,Not given,21,24
+Shake Shack,American,12.18,Weekend,Not given,23,16
+Westville Hudson,American,9.51,Weekend,Not given,27,28
+Otto Enoteca Pizzeria,Italian,12.18,Weekend,5,21,20
+Jack's Wife Freda,Mediterranean,12.13,Weekend,4,33,23
+Shake Shack,American,6.79,Weekend,4,35,30
+Blue Ribbon Fried Chicken,American,12.08,Weekend,4,21,21
+RedFarm Hudson,Chinese,13.92,Weekend,5,28,24
+The Meatball Shop,Italian,6.84,Weekend,Not given,25,18
+Grand Sichuan International,Chinese,25.27,Weekday,5,35,30
+Nobu Next Door,Japanese,9.17,Weekend,Not given,24,15
+Shake Shack,American,24.3,Weekday,4,33,30
+Shake Shack,American,16.2,Weekday,Not given,27,30
+Tres Carnes,Mexican,20.13,Weekend,Not given,35,18
+Bareburger,American,19.35,Weekday,4,33,27
+Vanessa's Dumplings,Chinese,14.02,Weekend,4,22,24
+Shake Shack,American,22.36,Weekday,Not given,33,25
+Big Daddy's,American,12.08,Weekend,5,22,16
+Shake Shack,American,12.18,Weekday,Not given,26,27
+Sarabeth's Restaurant,American,12.27,Weekend,5,24,24
+Han Dynasty,Chinese,6.64,Weekend,Not given,25,29
+Sushi of Gari Tribeca,Japanese,31.33,Weekday,Not given,34,26
+J. G. Melon,American,6.06,Weekday,4,24,27
+Shake Shack,American,24.2,Weekday,Not given,22,31
+Parm,Italian,15.77,Weekend,4,27,18
+Cafe Mogador,Middle Eastern,29.05,Weekend,4,27,30
+RedFarm Hudson,Chinese,15.96,Weekend,3,21,18
+Shake Shack,American,5.72,Weekend,Not given,34,17
+Jack's Wife Freda,Mediterranean,5.67,Weekday,3,24,29
+Byblos Restaurant,Middle Eastern,24.2,Weekend,Not given,32,20
+Pinto Nouveau Thai Bistro,Thai,11.79,Weekend,5,21,27
+Cafe Habana,Mexican,8.73,Weekday,3,27,28
+RedFarm Broadway,Chinese,21.93,Weekend,Not given,22,22
+The Meatball Shop,American,24.2,Weekend,5,21,30
+J. G. Melon,American,22.26,Weekend,5,22,25
+Blue Ribbon Sushi,Japanese,14.5,Weekday,3,34,24
+Blue Ribbon Fried Chicken,American,12.23,Weekend,5,27,27
+Shake Shack,American,20.57,Weekend,5,24,19
+TAO,Japanese,16.05,Weekend,4,23,20
+Parm,Italian,25.27,Weekend,5,28,16
+Sushi of Gari 46,Japanese,7.38,Weekend,Not given,29,28
+Blue Ribbon Sushi,Japanese,13.78,Weekend,4,32,23
+Bareburger,American,22.85,Weekday,Not given,21,30
+Sushi of Gari 46,Japanese,12.13,Weekend,Not given,31,24
+RedFarm Broadway,Chinese,12.9,Weekday,3,29,29
+Shake Shack,American,29.49,Weekend,5,20,24
+Shake Shack,American,15.76,Weekend,5,20,25
+Le Grainne Cafe,French,29.25,Weekend,5,27,24
+Han Dynasty,Chinese,5.82,Weekend,Not given,26,24
+Westville Hudson,American,21.88,Weekend,5,20,15
+Cafe Habana,Mexican,9.51,Weekend,5,22,21
+Vanessa's Dumplings,Chinese,15.09,Weekend,Not given,25,25
+Osteria Morini,Italian,24.2,Weekday,3,28,28
+Il Bambino,Italian,29.25,Weekend,4,34,29
+Parm,Italian,16.44,Weekend,5,29,26
+Blue Ribbon Sushi,Japanese,24.3,Weekday,5,21,33
+The Meatball Shop,Italian,6.06,Weekend,Not given,20,27
+Five Guys Burgers and Fries,American,12.18,Weekend,Not given,21,19
+Parm,Italian,12.08,Weekend,3,25,28
+Sushi of Gari Tribeca,Japanese,19.45,Weekend,4,25,15
+The Meatball Shop,Italian,9.65,Weekend,Not given,29,16
+Shake Shack,American,19.74,Weekday,4,35,32
+Kori Restaurant and Bar,Korean,12.18,Weekday,4,26,26
+RedFarm Broadway,Chinese,14.55,Weekend,5,28,20
+J. G. Melon,American,6.07,Weekday,3,29,25
+Sarabeth's Restaurant,American,15.91,Weekday,Not given,20,31
+DespaÌ±a,Spanish,16.98,Weekend,Not given,20,22
+Sushi of Gari 46,Japanese,25.22,Weekend,Not given,32,28
+Yama Japanese Restaurant,Japanese,32.93,Weekend,5,29,17
+The Meatball Shop,Italian,12.08,Weekday,5,33,25
+12 Chairs,Middle Eastern,29.05,Weekday,5,28,32
+Rubirosa,Italian,24.3,Weekend,Not given,30,26
+Blue Ribbon Sushi,Japanese,18.04,Weekend,Not given,35,28
+Lamarca Pasta,Italian,9.22,Weekend,Not given,23,19
+L'Express,French,29.2,Weekend,5,21,29
+Mission Cantina,Mexican,29.15,Weekend,Not given,31,26
+RedFarm Broadway,Chinese,12.32,Weekday,Not given,30,27
+Chipotle Mexican Grill $1.99 Delivery,Mexican,19.35,Weekend,Not given,25,22
+Blue Ribbon Sushi Izakaya,Japanese,29.1,Weekend,Not given,32,26
+P.J. Clarke's,American,29.2,Weekend,Not given,30,22
+Parm,Italian,13.68,Weekend,4,33,21
+Empanada Mama (closed),Mexican,11.88,Weekend,5,23,27
+Parm,Italian,14.12,Weekend,3,28,22
+Sushi of Gari 46,Japanese,16.06,Weekend,Not given,31,24
+Cho Dang Gol,Korean,14.02,Weekend,Not given,25,20
+El Parador Cafe,Mexican,24.2,Weekend,Not given,28,18
+Blue Ribbon Fried Chicken,American,8.2,Weekend,5,34,17
+TAO,Japanese,24.25,Weekend,Not given,31,27
+Cafe Mogador,Middle Eastern,25.27,Weekday,5,30,25
+Blue Ribbon Brooklyn,American,5.97,Weekday,4,32,24
+RedFarm Broadway,Chinese,22.36,Weekend,Not given,24,27
+Empanada Mama (closed),Mexican,24.3,Weekday,Not given,25,24
+Bareburger,American,12.13,Weekend,5,32,26
+Nobu Next Door,Japanese,19.4,Weekend,Not given,28,29
+The Meatball Shop,Italian,12.23,Weekend,5,35,22
+Rubirosa,Italian,8.54,Weekend,Not given,34,28
+L'Express,French,24.2,Weekday,Not given,28,24
+Parm,Italian,8.59,Weekday,5,32,33
+Rubirosa,Italian,31.67,Weekend,Not given,25,15
+Sushi of Gari 46,Japanese,24.3,Weekend,3,29,23
+Nobu Next Door,Japanese,29.05,Weekend,5,33,29
+Burger Joint,American,12.13,Weekday,5,31,33
+Sarabeth's Restaurant,American,12.23,Weekend,4,26,24
+Tamarind TriBeCa,Indian,16.44,Weekend,5,23,24
+The Meatball Shop,Italian,5.05,Weekend,Not given,29,19
+Shake Shack,American,22.75,Weekday,4,21,27
+The Meatball Shop,Italian,16.98,Weekend,Not given,32,30
+Sushi of Gari 46,Japanese,12.13,Weekend,5,27,20
+Blue Ribbon Sushi Izakaya,Japanese,12.08,Weekend,3,35,15
+Olea,Mediterranean,12.23,Weekend,4,29,24
+Boqueria,Spanish,29.05,Weekend,4,24,24
+Parm,Italian,8.68,Weekend,Not given,20,19
+The Meatball Shop,Italian,29.2,Weekend,5,29,23
+Shake Shack,American,24.2,Weekend,Not given,25,24
+The Meatball Shop,Italian,29.05,Weekend,4,32,19
+Rubirosa,Italian,9.17,Weekend,4,27,25
+Boqueria,Spanish,13.0,Weekend,5,26,24
+The Meatball Shop,Italian,11.69,Weekend,4,35,16
+Blue Ribbon Fried Chicken,American,13.0,Weekday,4,33,29
+Lucky Strike,American,29.25,Weekend,4,21,21
+RedFarm Hudson,Chinese,7.03,Weekday,5,32,24
+Blue Ribbon Sushi,Japanese,16.11,Weekend,5,22,26
+Han Dynasty,Chinese,14.8,Weekday,4,23,25
+Blue Ribbon Sushi,Japanese,19.45,Weekday,Not given,22,27
+The Meatball Shop,Italian,8.83,Weekday,Not given,31,25
+Rubirosa,Italian,29.1,Weekend,5,28,16
+Boqueria,Spanish,29.1,Weekend,Not given,28,19
+Hatsuhana,Japanese,29.49,Weekend,4,22,23
+Shake Shack,American,9.07,Weekend,Not given,24,16
+Carmine's,Italian,21.93,Weekend,5,20,28
+Paul & Jimmy's,Italian,16.05,Weekend,Not given,33,15
+The Loop,Japanese,16.98,Weekend,5,26,27
+Shake Shack,American,12.13,Weekday,Not given,34,26
+The Smile,American,12.13,Weekend,4,29,24
+TAO,Japanese,12.66,Weekday,Not given,29,29
+RedFarm Hudson,Chinese,21.34,Weekend,Not given,23,17
+The Smile,American,14.94,Weekend,Not given,27,22
+Jack's Wife Freda,Mediterranean,12.13,Weekend,5,21,19
+Blue Ribbon Fried Chicken,American,12.23,Weekday,5,33,26
+Shake Shack,American,29.1,Weekday,4,29,24
+Pinto Nouveau Thai Bistro,Thai,17.08,Weekend,Not given,23,16
+Pylos,Mediterranean,14.02,Weekday,3,30,29
+The Meatball Shop,American,14.5,Weekend,5,25,22
+TAO,Japanese,6.69,Weekend,5,22,28
+Vezzo Thin Crust Pizza,Italian,12.13,Weekend,5,34,26
+TAO,Japanese,12.17,Weekend,5,22,16
+Tamarind TriBeCa,Indian,15.77,Weekend,5,25,29
+Momoya,Japanese,12.18,Weekend,4,26,25
+Balthazar Boulangerie,French,12.18,Weekend,3,24,29
+The Meatball Shop,Italian,16.1,Weekend,Not given,20,15
+The Meatball Shop,Italian,6.4,Weekend,Not given,23,20
+Momoya,Japanese,9.41,Weekend,5,26,20
+The Meatball Shop,Italian,12.08,Weekend,Not given,23,23
+Blue Ribbon Sushi,Japanese,8.54,Weekday,4,22,26
+RedFarm Broadway,Chinese,24.25,Weekday,5,25,25
+The Meatball Shop,American,7.28,Weekday,5,20,29
+Shake Shack,American,6.01,Weekday,5,23,30
+Olive Garden,Italian,16.1,Weekday,Not given,24,29
+Dos Caminos,Mexican,11.59,Weekend,Not given,33,22
+Sarabeth's Restaurant,American,29.15,Weekday,Not given,20,26
+Lucky's Famous Burgers,American,5.77,Weekend,4,21,20
+Blue Ribbon Fried Chicken,American,6.79,Weekend,3,28,27
+Shake Shack,American,5.92,Weekday,5,34,24
+Cho Dang Gol,Korean,5.77,Weekend,5,21,17
+Burger Joint,American,15.72,Weekend,4,31,30
+Empanada Mama (closed),Mexican,31.38,Weekend,5,24,18
+RedFarm Hudson,Chinese,19.35,Weekend,Not given,30,24
+V-Nam Cafe,Vietnamese,12.08,Weekend,Not given,31,19
+Nobu Next Door,Japanese,15.13,Weekday,Not given,21,30
+Shake Shack,American,29.25,Weekend,4,25,19
+Boqueria,Spanish,24.25,Weekend,Not given,28,18
+Five Leaves,American,12.13,Weekend,Not given,23,15
+Nobu Next Door,Japanese,12.23,Weekday,5,31,29
+Blue Ribbon Sushi Bar & Grill,Japanese,15.81,Weekend,Not given,21,25
+Benihana,Japanese,5.77,Weekend,Not given,22,22
+The Meatball Shop,Italian,9.17,Weekend,Not given,30,30
+Jack's Wife Freda,Mediterranean,12.47,Weekend,5,34,20
+Tamarind TriBeCa,Indian,25.22,Weekend,5,30,26
+The Meatball Shop,Italian,33.03,Weekend,5,30,16
+RedFarm Hudson,Chinese,29.44,Weekday,4,29,32
+Blue Ribbon Sushi Bar & Grill,Japanese,15.96,Weekend,5,31,20
+RedFarm Broadway,Chinese,12.13,Weekend,4,20,19
+RedFarm Hudson,Chinese,4.75,Weekend,3,23,25
+Shake Shack,American,21.83,Weekend,Not given,28,23
+Bareburger,American,6.84,Weekend,5,22,24
+The Meatball Shop,Italian,6.74,Weekend,Not given,30,25
+The Meatball Shop,Italian,16.54,Weekday,5,32,24
+RedFarm Hudson,Chinese,29.29,Weekend,4,27,21
+Momoya,Japanese,12.23,Weekday,3,32,24
+Blue Ribbon Sushi,Japanese,17.08,Weekday,5,35,29
+Blue Ribbon Sushi,Japanese,12.13,Weekend,4,35,28
+S'MAC,American,12.61,Weekday,Not given,34,24
+Rubirosa,Italian,24.2,Weekend,Not given,33,28
+Burger Joint,American,7.81,Weekend,3,33,24
+Boqueria,Spanish,22.85,Weekend,5,28,30
+Delicatessen,American,24.2,Weekend,4,21,19
+12 Chairs,Middle Eastern,14.12,Weekend,Not given,31,27
+Grand Sichuan International,Chinese,12.23,Weekend,Not given,24,28
+Bareburger,American,14.12,Weekend,4,26,19
+Rubirosa,Italian,24.35,Weekend,3,30,28
+Blue Ribbon Sushi Bar & Grill,Japanese,16.74,Weekend,4,22,20
+Blue Ribbon Sushi,Japanese,9.85,Weekend,3,24,15
+Sushi of Gari,Japanese,9.31,Weekend,5,31,22
+Shake Shack,American,17.03,Weekend,Not given,21,28
+Nobu Next Door,Japanese,12.08,Weekend,Not given,21,19
+Shake Shack,American,12.13,Weekday,Not given,22,25
+Blue Ribbon Fried Chicken,American,8.39,Weekend,4,26,17
+Xi'an Famous Foods,Chinese,6.64,Weekend,Not given,35,19
+The Meatball Shop,Italian,9.22,Weekend,Not given,30,19
+P.J. Clarke's,American,31.33,Weekend,4,26,19
+Shake Shack,American,22.36,Weekend,4,27,27
+The Kati Roll Company,Indian,20.13,Weekday,Not given,24,31
+Shake Shack,American,13.1,Weekday,Not given,20,28
+Joe's Shanghai _Àü£¾÷´,Chinese,22.31,Weekday,3,27,31
+Waverly Diner,American,14.94,Weekend,Not given,28,28
+Shake Shack,American,16.15,Weekday,4,20,26
+Blue Ribbon Fried Chicken,American,25.27,Weekend,5,29,28
+Friend of a Farmer,American,9.7,Weekend,Not given,35,22
+Chipotle Mexican Grill $1.99 Delivery,Mexican,29.1,Weekday,5,21,29
+The Smile,American,9.17,Weekday,5,26,28
+Vanessa's Dumplings,Chinese,9.51,Weekend,Not given,31,23
+Momoya,Japanese,6.02,Weekend,5,28,20
+Blue Ribbon Fried Chicken,American,15.72,Weekend,4,25,19
+Balthazar Boulangerie,French,21.25,Weekend,Not given,25,20
+Chipotle Mexican Grill $1.99 Delivery,Mexican,29.1,Weekend,4,27,25
+Bareburger,American,24.2,Weekend,5,27,24
+Saravanaa Bhavan,Indian,9.17,Weekday,Not given,24,29
+Shake Shack,American,11.69,Weekend,Not given,31,28
+Schnipper's Quality Kitchen,American,25.22,Weekend,4,33,18
+RedFarm Broadway,Chinese,31.87,Weekend,5,27,18
+Blue Ribbon Sushi Izakaya,Japanese,9.22,Weekend,Not given,28,15
+Shake Shack,American,12.18,Weekend,Not given,31,28
+Blue Ribbon Sushi,Japanese,16.44,Weekend,Not given,22,18
+Shake Shack,American,13.1,Weekend,4,30,29
+Vezzo Thin Crust Pizza,Italian,12.13,Weekend,Not given,27,15
+Sushi of Gari Tribeca,Japanese,12.13,Weekday,5,22,26
+The Meatball Shop,Italian,15.57,Weekend,4,20,24
+Tamarind TriBeCa,Indian,14.02,Weekday,Not given,20,25
+Yama Japanese Restaurant,Japanese,24.25,Weekday,Not given,23,30
+The Odeon,American,6.69,Weekend,4,30,20
+The Meatball Shop,Italian,24.3,Weekend,4,29,15
+Shake Shack,American,24.25,Weekday,Not given,23,30
+Cafe Mogador,Middle Eastern,19.45,Weekday,4,23,29
+Yama Japanese Restaurant,Japanese,9.65,Weekend,5,24,16
+Shake Shack,American,12.66,Weekend,5,25,15
+Hunan Manor,Chinese,5.72,Weekday,5,31,26
+Sushi of Gari Tribeca,Japanese,19.02,Weekend,5,27,29
+Ravagh Persian Grill,Middle Eastern,16.06,Weekend,Not given,28,21
+Hatsuhana,Japanese,29.15,Weekend,3,33,28
+Blue Ribbon Fried Chicken,American,12.13,Weekend,5,25,29
+Shake Shack,American,19.45,Weekday,3,24,29
+Parm,Italian,21.83,Weekday,Not given,23,32
+Sushi of Gari Tribeca,Japanese,21.83,Weekday,Not given,34,30
+5 Napkin Burger,American,29.05,Weekend,3,26,21
+The Meatball Shop,Italian,12.56,Weekday,Not given,31,32
+Sushi of Gari 46,Japanese,29.15,Weekday,Not given,32,32
+Sushi of Gari,Japanese,12.13,Weekday,5,29,26
+RedFarm Hudson,Chinese,12.23,Weekday,Not given,20,25
+The Meatball Shop,American,14.55,Weekend,5,21,30
+Han Dynasty,Chinese,34.19,Weekday,Not given,21,31
+Five Guys Burgers and Fries,American,19.45,Weekend,5,22,23
+The Meatball Shop,Italian,14.6,Weekend,5,21,23
+Shake Shack,American,5.53,Weekday,4,28,26
+Blue Ribbon Sushi Bar & Grill,Japanese,10.82,Weekend,Not given,25,24
+Blue Ribbon Sushi,Japanese,32.93,Weekday,3,34,31
+Asuka Sushi,Japanese,19.45,Weekend,5,23,23
+Shake Shack,American,29.15,Weekend,5,20,21
+Sushi of Gari 46,Japanese,19.35,Weekday,Not given,28,24
+J. G. Melon,American,14.6,Weekend,5,32,24
+Parm,Italian,11.59,Weekday,5,35,29
+Melt Shop,American,29.15,Weekend,4,26,17
+J. G. Melon,American,29.05,Weekend,Not given,26,28
+Sushi of Gari 46,Japanese,22.46,Weekday,Not given,21,29
+Jack's Wife Freda,Mediterranean,16.01,Weekday,Not given,28,33
+Lucky's Famous Burgers,American,11.59,Weekend,5,26,23
+ilili Restaurant,Middle Eastern,25.22,Weekday,4,32,25
+Junoon,Indian,22.75,Weekend,5,29,28
+J. G. Melon,American,7.33,Weekday,Not given,31,30
+Momoya,Japanese,15.81,Weekend,5,25,15
+Cafe Habana,Mexican,8.1,Weekend,Not given,20,16
+Westville Hudson,American,16.01,Weekend,5,20,18
+Five Guys Burgers and Fries,American,29.73,Weekend,5,21,25
+J. G. Melon,American,10.43,Weekday,5,35,29
+Delicatessen,American,32.93,Weekend,4,30,18
+Chipotle Mexican Grill $1.99 Delivery,Mexican,31.33,Weekend,4,35,21
+Parm,Italian,10.14,Weekday,Not given,24,28
+Coppola's East,Italian,13.05,Weekend,Not given,32,16
+RedFarm Broadway,Chinese,16.2,Weekend,5,29,18
+Mamoun's Falafel,Mediterranean,14.46,Weekend,Not given,20,29
+Serafina Fabulous Pizza,Italian,19.5,Weekday,5,22,33
+Blue Ribbon Sushi,Japanese,14.5,Weekend,Not given,28,28
+Five Guys Burgers and Fries,American,13.0,Weekend,4,29,27
+TAO,Japanese,25.27,Weekday,Not given,33,30
+Blue Ribbon Sushi,Japanese,12.08,Weekend,4,33,22
+Shake Shack,American,12.18,Weekend,4,27,23
+Shake Shack,American,29.1,Weekend,5,26,24
+RedFarm Hudson,Chinese,12.61,Weekend,5,31,22
+Sushi of Gari 46,Japanese,12.18,Weekday,Not given,24,26
+Shake Shack,American,8.63,Weekend,Not given,33,19
+Yama Japanese Restaurant,Japanese,9.02,Weekday,3,25,33
+Osteria Morini,Italian,9.51,Weekend,Not given,22,26
+Blue Ribbon Fried Chicken,American,29.05,Weekend,5,30,29
+Sushi Samba,Japanese,14.02,Weekend,Not given,30,29
+Carmine's,Italian,29.05,Weekday,Not given,33,32
+DespaÌ±a,Spanish,16.06,Weekend,5,21,17
+The Meatball Shop,Italian,24.3,Weekend,5,28,25
+Blue Ribbon Sushi Bar & Grill,Japanese,12.13,Weekend,Not given,21,29
+RedFarm Broadway,Chinese,9.27,Weekday,4,32,29
+Blue Ribbon Sushi Bar & Grill,Japanese,4.9,Weekday,4,29,32
+Emporio,Italian,31.43,Weekend,Not given,25,29
+Parm,Italian,9.12,Weekend,Not given,23,21
+Blue Ribbon Sushi Bar & Grill,Japanese,15.33,Weekend,5,32,29
+Blue Ribbon Fried Chicken,American,12.13,Weekend,5,28,23
+Jack's Wife Freda,Mediterranean,16.15,Weekday,5,22,24
+Jack's Wife Freda,Mediterranean,6.74,Weekend,Not given,25,22
+Parm,Italian,7.38,Weekend,Not given,26,20
+Tamarind TriBeCa,Indian,6.69,Weekend,5,22,18
+Hill Country Fried Chicken,Southern,12.47,Weekend,Not given,29,28
+Osteria Morini,Italian,6.79,Weekday,4,32,29
+Sushi of Gari 46,Japanese,12.13,Weekday,5,34,28
+Shake Shack,American,12.18,Weekend,Not given,23,18
+Otto Enoteca Pizzeria,Italian,24.25,Weekday,Not given,31,30
+Empanada Mama (closed),Mexican,22.75,Weekend,Not given,29,18
+Rubirosa,Italian,24.3,Weekday,3,29,31
+The Meatball Shop,Italian,13.05,Weekday,5,23,31
+CafÌ© China,Chinese,15.57,Weekday,4,34,31
+Rubirosa,Italian,12.95,Weekend,4,30,25
+Sushi of Gari,Japanese,22.75,Weekend,5,30,22
+Momoya,Japanese,24.3,Weekend,5,28,20
+Parm,Italian,14.02,Weekday,Not given,28,32
+Friend of a Farmer,American,24.2,Weekend,Not given,33,27
+Wa Jeal,Chinese,6.74,Weekend,Not given,32,24
+Blue Ribbon Sushi,Japanese,14.02,Weekend,Not given,35,16
+RedFarm Broadway,Chinese,14.07,Weekend,3,20,15
+RedFarm Hudson,Chinese,12.18,Weekend,5,34,24
+Jack's Wife Freda,Mediterranean,12.95,Weekday,3,22,33
+Parm,Italian,15.37,Weekend,Not given,29,23
+RedFarm Broadway,Chinese,7.67,Weekend,5,24,15
+Vanessa's Dumplings,Chinese,8.3,Weekend,Not given,24,20
+Rubirosa,Italian,12.18,Weekend,Not given,33,20
+Blue Ribbon Fried Chicken,American,29.44,Weekend,4,33,27
+Blue Ribbon Sushi Bar & Grill,Japanese,12.56,Weekday,Not given,32,27
+Han Dynasty,Chinese,12.18,Weekend,Not given,30,15
+Xi'an Famous Foods,Chinese,14.12,Weekday,3,24,31
+Shake Shack,American,25.22,Weekend,Not given,28,26
+Cafeteria,American,13.05,Weekend,Not given,31,16
+Shake Shack,American,12.08,Weekend,5,28,23
+ilili Restaurant,Middle Eastern,24.2,Weekday,4,34,24
+Tamarind TriBeCa,Indian,12.47,Weekend,5,32,26
+The Kati Roll Company,Indian,5.87,Weekday,Not given,26,30
+Le Zie 2000 Trattoria,Italian,15.47,Weekend,Not given,22,30
+Blue Ribbon Fried Chicken,American,24.3,Weekend,5,22,15
+Le Grainne Cafe,French,15.96,Weekend,4,25,22
+RedFarm Broadway,Chinese,24.2,Weekend,5,31,19
+Momoya,Japanese,29.35,Weekday,Not given,31,30
+Shake Shack,American,8.63,Weekday,Not given,31,32
+Han Dynasty,Chinese,16.44,Weekday,Not given,23,29
+Shake Shack,American,24.25,Weekend,4,20,29
+RedFarm Broadway,Chinese,14.12,Weekend,Not given,35,23
+5 Napkin Burger,American,7.91,Weekday,Not given,29,26
+Han Dynasty,Chinese,19.4,Weekend,Not given,35,26
+The Meatball Shop,Italian,21.34,Weekday,5,22,24
+The Meatball Shop,Italian,13.19,Weekend,Not given,26,29
+Han Dynasty,Chinese,9.75,Weekend,Not given,29,25
+Shake Shack,American,8.2,Weekday,4,33,26
+Tamarind TriBeCa,Indian,24.2,Weekend,Not given,24,29
+The Meatball Shop,Italian,13.53,Weekend,5,22,24
+Vanessa's Dumplings,Chinese,12.13,Weekday,Not given,31,33
+S'MAC,American,9.56,Weekend,Not given,27,20
+Five Guys Burgers and Fries,American,5.72,Weekday,Not given,22,24
+Sushi of Gari Tribeca,Japanese,9.46,Weekend,5,32,20
+Parm,Italian,15.91,Weekday,Not given,32,28
+Blue Ribbon Sushi,Japanese,29.1,Weekend,4,21,15
+Blue Ribbon Fried Chicken,American,12.18,Weekend,5,35,27
+Westville Hudson,American,20.13,Weekend,4,29,19
+Blue Ribbon Sushi,Japanese,33.37,Weekday,3,30,27
+Shake Shack,American,29.15,Weekday,Not given,34,28
+Sushi of Gari Tribeca,Japanese,17.03,Weekday,Not given,35,30
+Han Dynasty,Chinese,22.31,Weekend,3,23,29
+Sushi Samba,Japanese,31.33,Weekend,5,35,20
+Tamarind TriBeCa,Indian,24.2,Weekend,4,28,26
+ilili Restaurant,Middle Eastern,31.43,Weekday,3,26,29
+Shake Shack,American,29.3,Weekday,5,33,32
+Xi'an Famous Foods,Chinese,6.02,Weekend,5,33,24
+Terakawa Ramen,Japanese,19.6,Weekday,Not given,23,26
+Blue Ribbon Fried Chicken,American,6.84,Weekend,3,24,26
+RedFarm Hudson,Chinese,16.49,Weekend,3,34,20
+RedFarm Broadway,Chinese,12.23,Weekend,Not given,32,19
+Cafe Mogador,Middle Eastern,5.77,Weekend,3,20,16
+Shake Shack,American,24.3,Weekend,4,25,15
+Empanada Mama (closed),Mexican,12.37,Weekend,Not given,29,25
+Blue Ribbon Sushi,Japanese,19.4,Weekend,5,26,17
+ilili Restaurant,Middle Eastern,12.23,Weekday,5,24,32
+Balthazar Boulangerie,French,29.1,Weekend,5,31,27
+Rye House,American,12.13,Weekday,4,26,30
+Momoya,Japanese,25.27,Weekday,5,31,30
+Shake Shack,American,11.59,Weekday,3,23,25
+TAO,Japanese,13.48,Weekday,Not given,27,32
+S'MAC,American,25.27,Weekend,5,20,29
+Jack's Wife Freda,Mediterranean,20.71,Weekend,Not given,35,16
+Blue Ribbon Sushi,Japanese,24.2,Weekend,4,29,18
+Vanessa's Dumplings,Chinese,24.2,Weekend,4,20,18
+The Meatball Shop,Italian,20.61,Weekend,Not given,34,30
+Hiroko's Place,Japanese,13.05,Weekend,Not given,32,27
+Nobu Next Door,Japanese,15.76,Weekday,Not given,27,28
+Grand Sichuan International,Chinese,7.66,Weekday,5,33,31
+Sushi of Gari Tribeca,Japanese,10.86,Weekday,4,28,28
+Shake Shack,American,22.26,Weekday,5,33,32
+P.J. Clarke's,American,31.38,Weekend,Not given,31,23
+Hummus Place,Middle Eastern,29.05,Weekend,5,26,17
+The Smile,American,7.81,Weekend,5,24,21
+L'Express,French,16.98,Weekday,Not given,35,29
+Blue Ribbon Sushi,Japanese,29.15,Weekend,4,31,19
+Shake Shack,American,24.3,Weekend,5,21,24
+Blue Ribbon Brooklyn,American,13.1,Weekend,Not given,32,19
+5 Napkin Burger,American,25.22,Weekend,5,27,21
+ilili Restaurant,Middle Eastern,32.93,Weekend,4,25,17
+Rubirosa,Italian,25.27,Weekday,4,23,31
+The Meatball Shop,Italian,12.95,Weekday,4,29,24
+Shake Shack,American,31.43,Weekend,3,22,24
+Cafe Habana,Mexican,15.62,Weekend,Not given,29,19
+Zero Otto Nove,Italian,5.87,Weekend,Not given,31,18
+J. G. Melon,American,8.83,Weekend,5,31,19
+Olea,Mediterranean,24.2,Weekend,Not given,20,16
+Blue Ribbon Fried Chicken,American,29.3,Weekend,4,28,16
+Momoya,Japanese,24.3,Weekend,4,35,30
+The Smile,American,25.22,Weekday,4,25,28
+Blue Ribbon Fried Chicken,American,12.61,Weekend,3,30,30
+Chipotle Mexican Grill $1.99 Delivery,Mexican,29.1,Weekday,4,22,32
+Blue Ribbon Sushi,Japanese,21.83,Weekday,3,21,26
+Blue Ribbon Fried Chicken,American,9.27,Weekend,Not given,29,16
+Empanada Mama (closed),Mexican,15.37,Weekend,3,35,30
+Blue Ribbon Fried Chicken,American,12.18,Weekend,4,32,22
+Frank Restaurant,Italian,12.08,Weekday,4,20,31
+Grand Sichuan International,Chinese,32.93,Weekend,Not given,32,28
+Yama 49,Japanese,22.31,Weekend,5,29,17
+Shake Shack,American,15.18,Weekday,Not given,34,30
+Blue Ribbon Sushi Izakaya,Japanese,16.01,Weekday,5,23,27
+Shake Shack,American,29.1,Weekend,5,29,17
+Blue Ribbon Sushi,Japanese,12.18,Weekend,4,30,17
+Yama Japanese Restaurant,Japanese,12.08,Weekday,Not given,25,33
+RedFarm Hudson,Chinese,12.13,Weekend,Not given,31,27
+Westville Hudson,American,12.56,Weekend,5,26,28
+Sushi Samba,Japanese,22.36,Weekend,5,31,30
+Nobu Next Door,Japanese,33.37,Weekend,4,32,21
+Delicatessen,American,12.18,Weekend,Not given,24,17
+Balthazar Boulangerie,French,12.23,Weekend,4,35,23
+Dos Caminos,Mexican,12.18,Weekday,5,24,30
+Osteria Morini,Italian,5.77,Weekend,3,24,19
+Sushi of Gari 46,Japanese,16.3,Weekend,Not given,21,29
+The Kati Roll Company,Indian,11.64,Weekend,4,34,18
+The Meatball Shop,Italian,15.91,Weekend,Not given,26,20
+Vanessa's Dumpling House,Chinese,16.49,Weekend,5,26,25
+Sarabeth's West,American,14.12,Weekday,3,21,33
+Rubirosa,Italian,7.95,Weekday,Not given,20,26
+Nobu Next Door,Japanese,9.7,Weekend,Not given,21,19
+Cafeteria,American,15.52,Weekend,3,28,30
+Han Dynasty,Chinese,16.2,Weekend,Not given,29,18
+Blue Ribbon Sushi,Japanese,24.3,Weekend,Not given,29,15
+CafÌ© China,Chinese,12.61,Weekend,5,20,20
+Sushi of Gari 46,Japanese,22.26,Weekend,5,28,22
+Parm,Italian,9.07,Weekday,4,23,30
+Nobu Next Door,Japanese,7.86,Weekday,5,20,27
+Parm,Italian,12.23,Weekday,Not given,27,26
+Shake Shack,American,21.39,Weekend,3,33,22
+Shake Shack,American,16.93,Weekend,5,35,28
+Mamoun's Falafel,Mediterranean,14.41,Weekend,5,33,26
+Momoya,Japanese,8.05,Weekend,Not given,31,25
+RedFarm Hudson,Chinese,19.35,Weekday,5,35,28
+Shake Shack,American,16.98,Weekend,3,23,23
+The Meatball Shop,Italian,11.64,Weekend,4,23,24
+Nobu Next Door,Japanese,29.15,Weekend,Not given,27,15
+Cho Dang Gol,Korean,12.18,Weekday,5,20,26
+DuMont Burger,American,24.25,Weekend,3,28,20
+Blue Ribbon Sushi,Japanese,19.45,Weekday,Not given,28,28
+S'MAC,American,16.11,Weekday,5,25,24
+Sushi of Gari 46,Japanese,31.43,Weekend,5,29,30
+The Meatball Shop,Italian,25.27,Weekend,Not given,25,29
+Blue Ribbon Sushi,Japanese,12.13,Weekend,3,24,23
+Xi'an Famous Foods,Chinese,20.86,Weekend,4,35,26
+Blue Ribbon Sushi,Japanese,8.54,Weekend,5,34,29
+RedFarm Broadway,Chinese,31.43,Weekend,4,30,23
+J. G. Melon,American,19.4,Weekday,4,35,26
+Shake Shack,American,12.23,Weekday,4,31,24
+Yama Japanese Restaurant,Japanese,6.69,Weekend,4,28,17
+Blue Ribbon Fried Chicken,American,29.59,Weekend,5,23,25
+Shake Shack,American,22.31,Weekend,Not given,35,28
+DuMont Burger,American,12.56,Weekend,Not given,35,19
+Amy Ruth's,Southern,12.23,Weekday,Not given,32,33
+The Meatball Shop,Italian,13.53,Weekday,3,20,31
+wichcraft,American,8.1,Weekday,5,28,28
+Blue Ribbon Sushi,Japanese,5.92,Weekday,Not given,27,31
+Blue Ribbon Sushi,Japanese,12.13,Weekend,5,28,15
+Shake Shack,American,13.97,Weekend,5,35,27
+Shake Shack,American,12.23,Weekend,Not given,27,18
+Melt Shop,American,16.98,Weekend,5,30,19
+The Meatball Shop,American,9.27,Weekend,Not given,24,23
+Shake Shack,American,31.43,Weekend,3,31,24
+Shake Shack,American,29.05,Weekday,4,27,29
+The Meatball Shop,American,14.5,Weekend,5,34,25
+Shake Shack,American,5.82,Weekend,Not given,26,30
+The Meatball Shop,Italian,16.2,Weekend,5,21,26
+RedFarm Broadway,Chinese,8.68,Weekday,3,33,30
+TAO,Japanese,15.67,Weekend,5,20,22
+Shake Shack,American,5.82,Weekend,Not given,22,28
+Han Dynasty,Chinese,29.15,Weekend,Not given,29,21
+Chipotle Mexican Grill $1.99 Delivery,Mexican,22.31,Weekend,5,31,17
+The Smile,American,12.18,Weekend,5,31,19
+Blue Ribbon Sushi,Japanese,25.22,Weekday,Not given,31,24
+Jack's Wife Freda,Mediterranean,12.18,Weekday,5,23,31
+Blue Ribbon Sushi,Japanese,19.45,Weekend,Not given,28,24

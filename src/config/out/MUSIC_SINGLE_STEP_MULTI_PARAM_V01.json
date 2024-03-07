@@ -1,0 +1,319 @@
+{
+  "metadata": {
+    "run_id": "MUSIC_SINGLE_STEP_MULTI_PARAM_V01",
+    "run_name": "Mannheim Function Calling Benchmark - gpt-4-1106-preview Music wo/ Example Values",
+    "question_set_id": "MUSIC_Q_SEQ_MULTI_STEP_ONE_SHOT_V1",
+    "function_set_id": "MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2",
+    "prompt": "You are a helpful assistant. Answer briefly.",
+    "model": "gpt-4-1106-preview",
+    "hyperparameters": { "temperature": 0 },
+    "run_start_timestamp": "2024-03-07 17:44:37.350905",
+    "run_end_timestamp": "2024-03-07 17:45:37.633763",
+    "test_driver_version": "1.0.0"
+  },
+  "statistics": {
+    "number_of_functions": { "total": 14, "correct": 10, "accuracy": 0.714 },
+    "number_of_parameters": { "total": 14, "correct": 11, "accuracy": 0.786 },
+    "number_of_answers": { "total": 7, "correct": 6, "accuracy": 0.857 },
+    "number_of_tokens": { "input": 8644, "output": 1278 }
+  },
+  "question_result": [
+    {
+      "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q1",
+      "category": "Selection",
+      "question": "Among all the albums of Kanye West, return the album with the maximum rating. Return the answer in JSON format: {'album':'my_album_name'} ",
+      "motivation": "Evaluate the ability to perform single-targeted information retrieval of data based on a defined criteria (max. integer/float).",
+      "overall_match": true,
+      "error_category": null,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_artist_2", "max_rating_given_albums"],
+          "parameters": [
+            { "artist_name": "Kanye West" },
+            { "albums": ["Donda", "Donda 2", "808s & Heartbreak"] }
+          ]
+        }
+      ],
+      "model_solution": [
+        {
+          "functions": ["albums_by_artist_2", "max_rating_given_albums"],
+          "parameters": [
+            { "artist_name": "Kanye West" },
+            { "albums": ["Donda", "Donda 2", "808s & Heartbreak"] }
+          ],
+          "answer": "```json\n{'album':'808s & Heartbreak'}\n```"
+        }
+      ],
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "808s & Heartbreak" }
+      },
+      "evaluation": {
+        "functions": "Correct",
+        "parameters": "Correct",
+        "answer": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q2",
+      "category": "Aggregation",
+      "question": "Of all the albums of Olivia Rodrigo, please get the songs of her album released in 2021 and return the one with the highest bpm value. Return the answer in JSON format: {'song':'song_name'}",
+      "motivation": "Evaluate the ability to find maximum value of specific attribute in the result.",
+      "overall_match": true,
+      "error_category": null,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_artist_2", "songs_by_album"],
+          "parameters": [
+            { "artist_name": "Olivia Rodrigo" },
+            { "album_name": "Sour" }
+          ]
+        }
+      ],
+      "model_solution": [
+        {
+          "functions": ["albums_by_artist_2", "songs_by_album"],
+          "parameters": [
+            { "artist_name": "Olivia Rodrigo" },
+            { "album_name": "Sour" }
+          ],
+          "answer": "```json\n{'song':'deja vu'}\n```"
+        }
+      ],
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "song": "deja vu" }
+      },
+      "evaluation": {
+        "functions": "Correct",
+        "parameters": "Correct",
+        "answer": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_REA_Q3",
+      "category": "Reasoning",
+      "question": "Of all the albums released in 2000, which album do you think is not suitable for children and why? Also return the songs of this album. Return the answer in JSON format: {'album': [album_name_here], 'songs': [song_names_here]}",
+      "motivation": "Evaluate the ability to make album selection based on desired situation using descriptors. ",
+      "overall_match": true,
+      "error_category": null,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_release_date", "songs_by_album"],
+          "parameters": [
+            { "release_date": "2000" },
+            { "album_name": "The Marshall Mathers LP" }
+          ]
+        }
+      ],
+      "model_solution": [
+        {
+          "functions": ["albums_by_release_date", "songs_by_album"],
+          "parameters": [
+            { "release_date": "2000" },
+            { "album_name": "The Marshall Mathers LP" }
+          ],
+          "answer": "```json\n{\n  'album': 'The Marshall Mathers LP',\n  'songs': ['The Real Slim Shady', 'Stan']\n}\n```\n\nThe album 'The Marshall Mathers LP' by Eminem is not suitable for children due to its descriptors such as 'vulgar, hateful, misanthropic, sarcastic, humorous, violence, drugs, angry, crime, aggressive.' The songs from this album include 'The Real Slim Shady' and 'Stan.'"
+        }
+      ],
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "album": "The Marshall Mathers LP",
+          "songs": ["The Real Slim Shady", "Stan"]
+        }
+      },
+      "evaluation": {
+        "functions": "Correct",
+        "parameters": "Correct",
+        "answer": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_RCON_Q2",
+      "category": "Related Context",
+      "question": "Born January 5, 1975, American theatre, TV series and film actor has collaborated with American singer, Stefani Joanne Angelina Germanotta. There is also a film in the title of the song with this collaboration, in which both of them are actors. Can you get me the bpm of the song they're collaborating on? Return the answer in JSON format: {'bpm':'bpm_here'}",
+      "motivation": "Evaluate the ability to understand the context.",
+      "overall_match": false,
+      "error_category": "`RELIANCE_ON_PREVIOUS_KNOWLEDGE`",
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["artist_info", "songs_by_artist_2"],
+          "parameters": [
+            { "artist_name": "Bradley Cooper" },
+            { "artist_name": "Lady Gaga, Bradley Cooper" }
+          ]
+        }
+      ],
+      "model_solution": [
+        {
+          "functions": ["song_info"],
+          "parameters": [{ "song_name": "Shallow" }],
+          "answer": "```json\n{'bpm':96}\n```"
+        }
+      ],
+      "correct_answer": { "ordered_items": [], "answer": { "bpm": "96" } },
+      "evaluation": {
+        "functions": "Incorrect",
+        "parameters": "Incorrect",
+        "answer": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_RCON_Q1",
+      "category": "Related Context",
+      "question": "Taylor Swift's albums have helped many thesis writing students to maintain their motivation, there are a lot of posts about this on social media. I would like to investigate whether there are genres that help motivation. Can you bring the genres of the album with the highest rating among the albums? Return the answer in JSON format: {'genres': [genre_names_here]}",
+      "motivation": "Evaluate the ability to understand the context.",
+      "overall_match": false,
+      "error_category": "INCORRECT_STRING_HANDLING",
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_artist_2", "album_info"],
+          "parameters": [
+            { "artist_name": "Taylor Swift" },
+            { "album_name": "Red (Taylor's Version)" }
+          ]
+        }
+      ],
+      "model_solution": [
+        {
+          "functions": [
+            "albums_by_artist_2",
+            "max_rating_given_albums",
+            "album_info"
+          ],
+          "parameters": [
+            { "artist_name": "Taylor Swift" },
+            {
+              "albums": [
+                "Folklore",
+                "1989",
+                "Evermore",
+                "Red",
+                "Reputation",
+                "Lover",
+                "Speak Now",
+                "Fearless",
+                "Taylor Swift",
+                "Red (Taylor's Version)",
+                "Fearless (Taylor's Version)",
+                "Midnights",
+                "1989 (Taylor's Version)",
+                "Speak Now (Taylor's Version)"
+              ]
+            },
+            { "album_name": "Red (Taylor's Version)" }
+          ],
+          "answer": "```json\n{'genres': ['Folk Pop', 'Pop Rock', 'Country Pop', 'Singer-Songwriter', 'Heartland Rock']}\n```"
+        }
+      ],
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "genres": [
+            "Folk Pop",
+            "Pop Rock",
+            "Country Pop",
+            "Singer-Songwriter",
+            "Heartland Rock"
+          ]
+        }
+      },
+      "evaluation": {
+        "functions": "Partially Correct",
+        "parameters": "Partially Correct",
+        "answer": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q5",
+      "category": "Different Languages",
+      "question": "Jaa kappaleen 'Sigue' toisen artistin nimi ja tiedot, paitsi Ed Sheeran. Return the answer in JSON format: {'second_artist':'name_of_second_artist', 'place_of_birth':'town, state', 'born_in':'YYYY-MM-DD'}",
+      "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Finnish in this case).",
+      "overall_match": true,
+      "error_category": null,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["song_info", "artist_info"],
+          "parameters": [
+            { "song_name": "Sigue" },
+            { "artist_name": "J Balvin" }
+          ]
+        }
+      ],
+      "model_solution": [
+        {
+          "functions": ["song_info", "artist_info"],
+          "parameters": [
+            { "song_name": "Sigue" },
+            { "artist_name": "J Balvin" }
+          ],
+          "answer": "```json\n{\n  'second_artist': 'J Balvin',\n  'place_of_birth': 'Medell\u00edn, Colombia',\n  'born_in': '1985-05-07'\n}\n```"
+        }
+      ],
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "second_artist": "J Balvin",
+          "place_of_birth": "Medell\u00edn, Colombia",
+          "born_in": "1985-05-07"
+        }
+      },
+      "evaluation": {
+        "functions": "Correct",
+        "parameters": "Correct",
+        "answer": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q_OTHER",
+      "category": "Different Languages",
+      "question": "I loved the song 'City of Gods'. Give me all songs released by the same artist ordered from older to newer excluding 'City of Gods'. Return the answer in JSON format: {'songs': [ordered_song_names_here]}",
+      "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Finnish in this case).",
+      "overall_match": false,
+      "error_category": "LIST_PASSING_ERROR",
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["song_info", "artist_info"],
+          "parameters": [
+            { "song_name": "City of Gods" },
+            { "artist_name": "Kanye West" }
+          ]
+        }
+      ],
+      "model_solution": [
+        {
+          "functions": ["song_info", "songs_by_artist_2"],
+          "parameters": [
+            { "song_name": "City of Gods" },
+            { "artist_name": "Kanye West" }
+          ],
+          "answer": "```json\n{\n  'songs': [\n    'Heartless',\n    'Praise God',\n    'True Love',\n    'Hot Shit (feat. Ye & Lil Durk)'\n  ]\n}\n```"
+        }
+      ],
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "songs": [
+            "Heartless",
+            "Praise God",
+            "True Love",
+            "Hot Shit (feat. Ye & Lil Durk)"
+          ]
+        }
+      },
+      "evaluation": {
+        "functions": "Partially Correct",
+        "parameters": "Correct",
+        "answer": "Correct"
+      }
+    }
+  ]
+}

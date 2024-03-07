@@ -1,0 +1,279 @@
+{
+  "question_sets": [
+    {
+      "id": "MUSIC_Q_SEQ_MULTI_STEP_ONE_SHOT_V1",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Multi Step and One Shot for Sequential Function Calling",
+      "domain": "Music",
+      "date": "2024-02-04",
+      "description": "Simple, multiple step questions designed to test a subset of selection of records, interpretation, reasoning, different languages, typos, related and unrelated context using sequential function calling",
+      "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
+      "license": "Apache 2.0",
+      "function_sets": ["MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2"],
+      "questions": [
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q1",
+          "category": "Selection",
+          "question": "Among all the albums of Kanye West, return the album with the maximum rating. Return the answer in JSON format: {'album':'my_album_name'} ",
+          "motivation": "Evaluate the ability to perform single-targeted information retrieval of data based on a defined criteria (max. integer/float).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist_2", "max_rating_given_albums"],
+                "parameters": [
+                  { "artist_name": "Kanye West" },
+                  { "albums": ["Donda", "Donda 2", "808s & Heartbreak"] }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "album": "808s & Heartbreak"
+              }
+            }
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q2",
+          "category": "Aggregation",
+          "question": "Of all the albums of Olivia Rodrigo, please get the songs of her album released in 2021 and return the one with the highest bpm value. Return the answer in JSON format: {'song':'song_name'}",
+          "motivation": "Evaluate the ability to find maximum value of specific attribute in the result.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist_2", "songs_by_album"],
+                "parameters": [
+                  { "artist_name": "Olivia Rodrigo" },
+                  { "album_name": "Sour" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "song": "deja vu"
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_REA_Q3",
+          "category": "Reasoning",
+          "question": "Of all the albums released in 2000, which album do you think is not suitable for children and why? Also return the songs of this album. Return the answer in JSON format: {'album': [album_name_here], 'songs': [song_names_here]}",
+          "motivation": "Evaluate the ability to make album selection based on desired situation using descriptors. ",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_release_date", "songs_by_album"],
+                "parameters": [
+                  { "release_date": "2000" },
+                  { "album_name": "The Marshall Mathers LP" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "album": "The Marshall Mathers LP",
+                "songs": ["The Real Slim Shady", "Stan"]
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_RCON_Q2",
+          "category": "Related Context",
+          "question": "Born January 5, 1975, American theatre, TV series and film actor has collaborated with American singer, Stefani Joanne Angelina Germanotta. There is also a film in the title of the song with this collaboration, in which both of them are actors. Can you get me the bpm of the song they're collaborating on? Return the answer in JSON format: {'bpm':'bpm_here'}",
+          "motivation": "Evaluate the ability to understand the context.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["artist_info", "songs_by_artist_2"],
+                "parameters": [
+                  { "artist_name": "Bradley Cooper" },
+                  { "artist_name": "Lady Gaga, Bradley Cooper" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "bpm": 96
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_RCON_Q1",
+          "category": "Related Context",
+          "question": "Taylor Swift's albums have helped many thesis writing students to maintain their motivation, there are a lot of posts about this on social media. I would like to investigate whether there are genres that help motivation. Can you bring the genres of the album with the highest rating among the albums? Return the answer in JSON format: {'genres': [genre_names_here]}",
+          "motivation": "Evaluate the ability to understand the context.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist_2", "album_info"],
+                "parameters": [
+                  { "artist_name": "Taylor Swift" },
+                  { "album_name": "Red (Taylor's Version)" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "genres": [
+                  "Folk Pop",
+                  "Pop Rock",
+                  "Country Pop",
+                  "Singer-Songwriter",
+                  "Heartland Rock"
+                ]
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q5",
+          "category": "Different Languages",
+          "question": "Jaa kappaleen 'Sigue' toisen artistin nimi ja tiedot, paitsi Ed Sheeran. Return the answer in JSON format: {'second_artist':'name_of_second_artist', 'place_of_birth':'town, state', 'born_in':'YYYY-MM-DD'}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Finnish in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["song_info", "artist_info"],
+                "parameters": [
+                  { "song_name": "Sigue" },
+                  { "artist_name": "J Balvin" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "second_artist": "J Balvin",
+                "place_of_birth": "Medellín, Colombia",
+                "born_in": "1985-05-07"
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q_OTHER",
+          "category": "Different Languages",
+          "question": "I loved the song 'City of Gods'. Give me all songs released by the same artist ordered from older to newer excluding 'City of Gods'. Return the answer in JSON format: {'songs': [ordered_song_names_here]}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Finnish in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["song_info", "artist_info"],
+                "parameters": [
+                  { "song_name": "City of Gods" },
+                  { "artist_name": "Kanye West" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "songs": [
+                  "Heartless",
+                  "Praise God",
+                  "True Love",
+                  "Hot Shit (feat. Ye & Lil Durk)"
+                ]
+              }
+            },
+            "comment": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "MUSIC_Q_PAR_MULTI_STEP_ONE_SHOT_V1",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Multi Step and One Shot for Sequential Function Calling",
+      "domain": "Music",
+      "date": "2024-02-04",
+      "description": "Simple, multiple step questions designed to test a subset of selection of records, interpretation, reasoning, different languages, typos, related and unrelated context using sequential function calling",
+      "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
+      "license": "Apache 2.0",
+      "function_sets": ["MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2"],
+      "questions": [
+        {
+          "id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_AGG_Q2",
+          "category": "Aggregation",
+          "question": "Provide the average no of streams for the songs of Bruno Mars, Olivia Rodrigo and Coldplay in that order. Which artist's songs has the highest avg streams? Return the answer in JSON format: {'artist_with_highest_number_streams': 'name', 'avg_num_streams': [ordered_n]}",
+          "motivation": "Evaluate the ability to perform aggregation (average) on the result and find maximum value among the aggregated result.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "songs_by_artist",
+                  "songs_by_artist",
+                  "songs_by_artist"
+                ],
+                "parameters": [
+                  { "artist_name": "Bruno Mars" },
+                  { "artist_name": "Olivia Rodrigo" },
+                  { "artist_name": "Coldplay" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": ["avg_num_streams"],
+              "answer": {
+                "artist_with_highest_number_streams": "Bruno Mars",
+                "avg_num_streams": [1461730149.75, 1063164130.86, 1275058686]
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_REA_Q2",
+          "category": "Reasoning",
+          "question": "Do you find Adele and Miley Cyrus to be similar based on their genres?",
+          "motivation": "Evaluate the ability to reason about similarity of artists based on analyzing their genres.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["artist_info", "artist_info"],
+                "parameters": [
+                  { "artist_name": "Adele" },
+                  { "artist_name": "Miley Cyrus" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {}
+            },
+            "comment": null
+          }
+        }
+      ]
+    }
+  ]
+}
