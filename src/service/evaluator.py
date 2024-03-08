@@ -142,8 +142,11 @@ class Evaluator:
 
             return True
 
-        model_response = re.sub(
-            r"(?<=[{:])'|'(?=[}:])", '"', re.sub('"', "'", model_response))
+        model_response = re.sub("'", '"', model_response)
+        model_response = re.sub('(?<=\w)"(?=\w)', "'", model_response)
+
+        print(model_response)
+
         model_response_raw = re.search(
             r'\{(.|\n)*?\}', model_response, re.DOTALL)
 
@@ -155,7 +158,8 @@ class Evaluator:
 
             except json.JSONDecodeError:
                 print(model_response)
-                raise Exception  # TODO #IllegalJSONResponseFormat("...")
+                # raise Exception  # TODO #IllegalJSONResponseFormat("...")
+                return EvaluationCategory.INCORRECT
 
         return EvaluationCategory.INCORRECT
 
