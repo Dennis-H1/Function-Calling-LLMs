@@ -6,8 +6,8 @@ ARTISTS_SQL = pd.read_excel("./src/data/artists_2.xlsx")
 ALBUMS_SQL = pd.read_excel("./src/data/albums_2.xlsx")
 
 # single step
-SONGS = pd.read_csv("./src/data/albums_1.csv")
-ALBUMS = pd.read_csv("./src/data/songs_1.csv")
+ALBUMS = pd.read_csv("./src/data/albums_1.csv")
+SONGS = pd.read_csv("./src/data/songs_1.csv")
 
 
 # single step functions

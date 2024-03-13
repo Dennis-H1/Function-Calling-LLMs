@@ -45,14 +45,14 @@ class FunctionHandlerService:
         required = self.get_required(function_name)
         out = dict()
 
-        for arg_name in arguments.keys():
+        for arg_name, arg_value in arguments.items():
 
             if arg_name in parameter_details.keys():
                 p_type, _ = parameter_details[arg_name]
 
                 match p_type:
                     case "string": value = arguments.get(arg_name, default=None, type=str)
-                    case "number": value = arguments.get(arg_name, default=None, type=float)
+                    case "number": value = arguments.get(arg_name, default=None, type=int) if arg_value.isdecimal() else arguments.get(arg_name, default=None, type=float)
                     case "boolean": value = arguments.get(arg_name, default=None, type=bool)
                     case "array": value = arguments.getlist(arg_name)
                     case _: raise IllegalArgumentError(function_name, {arg_name})
@@ -70,11 +70,13 @@ class FunctionHandlerService:
 
     def handle_function(self, function_name: str, function_args: dict) -> json:
         try:
-            return json.dumps(self.useCaseFunctions.call_function(function_name, function_args))
+            return self.useCaseFunctions.call_function(function_name, function_args)
         except (FunctionExecutionError, FunctionNotFoundError) as e:
             # self._handle_error(e)
+            print("ERROR")
             raise e  # TODO
         except json.JSONDecodeError:
+            print("ERROR")
             raise FunctionExecutionError(function_name, function_args)
 
     # def _handle_error(error: FunctionNotFoundError | FunctionExecutionError, retry=3):  # TODO

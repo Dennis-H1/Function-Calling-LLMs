@@ -124,7 +124,7 @@ class Evaluator:
         return best_match_count, best_status
 
     @staticmethod
-    def eval_response(model_response: dict, target_responses: dict) -> EvaluationCategory:
+    def eval_response(llm_service: LLMService, conversation: Conversation, model_response: dict, target_responses: dict) -> EvaluationCategory:
 
         def eval_response(model_response: dict, target_response: dict, ordered_items: dict):
 
@@ -142,10 +142,56 @@ class Evaluator:
 
             return True
 
-        model_response = re.sub("'", '"', model_response)
-        model_response = re.sub('(?<=\w)"(?=\w)', "'", model_response)
+        # question = f"""
+        # Given the target response: {target_responses}.
 
-        print(model_response)
+        # Is the final response correct w.r.t. target response? Does it answer the question and is factually correct?
+        # Final response: {conversation.messages_as_dicts[-1]["content"]}
+
+        # Respond either with "Correct" or "Incorrect".
+        # """
+
+        # question = f"""
+        # Given the target response: {target_responses}.
+        # Given the final response: {conversation.messages_as_dicts[-1]["content"]}
+
+        # Does the final response answer the question completely and factually correct like the target response does?
+
+        # Respond either with "Correct" or "Incorrect".
+        # """
+
+        # print(question)
+
+        # conversation = Conversation()
+        # conversation.add({"role": Role.SYSTEM.value,
+        #                  "content": "You are an evaluation helper and respond with only 'Incorrect' or 'Correct'."})
+        # conversation.add({"role": Role.USER.value, "content": question})
+        # result, _ = llm_service.start_chat(conversation)
+
+        # import pprint
+        # pprint.pprint(result.lstrip().rstrip().lower())
+
+        # if result.lstrip().rstrip().lower() == EvaluationCategory.CORRECT.value.lower():
+        #     return EvaluationCategory.CORRECT
+        # else:
+        #     return EvaluationCategory.INCORRECT
+
+        model_response = re.sub("'", '"', model_response)
+        model_response = re.sub(r"{\s*", "{", model_response)
+        model_response = re.sub(r"\s}*}", "}", model_response)
+        model_response = re.sub(r"\[\s*", "[", model_response)
+        model_response = re.sub(r"\s*]", "]", model_response)
+        model_response = re.sub(r",\s*(?!\s*\w)", ",", model_response)
+        model_response = re.sub(r"/s*,", ",", model_response)
+        model_response = re.sub(r":\s*", ":", model_response)
+        model_response = re.sub(r"\s*:", ":", model_response)
+        model_response = re.sub('(?<=[\s\w])"(?![:,}\]])', "'", model_response)
+
+        # model_response = re.sub("'", '"', model_response)
+        # model_response = re.sub(
+        #     '(?<=\w)"(?!([:,\\n]|\s*\\n))', "'", model_response)
+
+        # print(model_response)
 
         model_response_raw = re.search(
             r'\{(.|\n)*?\}', model_response, re.DOTALL)
@@ -153,11 +199,14 @@ class Evaluator:
         if model_response_raw:
             try:
                 model_response = json.loads(model_response_raw.group())
+                # print(model_response)
+
                 if eval_response(model_response, target_responses["answer"], target_responses["ordered_items"]):
                     return EvaluationCategory.CORRECT
 
             except json.JSONDecodeError:
-                print(model_response)
+                print("ERROR")
+                # print(model_response)
                 # raise Exception  # TODO #IllegalJSONResponseFormat("...")
                 return EvaluationCategory.INCORRECT
 

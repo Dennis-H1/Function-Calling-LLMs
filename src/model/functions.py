@@ -33,4 +33,4 @@ class UseCaseFunctions:
         try:
             return fcn(**function_args)
         except Exception:
-            FunctionExecutionError(function_name, function_args)
+            raise FunctionExecutionError(function_name, function_args)

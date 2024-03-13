@@ -137,13 +137,16 @@ class Pipeline:
             model_solution = QuestionResult.ModelSolution(
                 function_names, function_args, response),
 
+            tokens_in, tokens_out = self.llm_service.get_tokens_from_conversation(
+                conversation)
+
             # evaluation
             correct_functions, function_eval = Evaluator.eval_functions(
                 function_names, question["target"]["solution_paths"])
             correct_parameters, argument_eval = Evaluator.eval_arguments(
                 function_args, question["target"]["solution_paths"])
             response_eval = Evaluator.eval_response(
-                response, question["target"]["expected_answer"])
+                self.llm_service, conversation, response, question["target"]["expected_answer"])
 
             evaluation = QuestionResult.Evaluation(
                 function_eval.value, argument_eval.value, response_eval.value)
@@ -156,10 +159,9 @@ class Pipeline:
 
             # statistics
             total_functions = len(function_names)
-            total_parameters = len(function_args)
+            total_parameters = len(
+                [param for params in function_args for param in params])
             answer_correct = 1 if response_eval == EvaluationCategory.CORRECT else 0
-            tokens_in, tokens_out = self.llm_service.get_tokens_from_conversation(
-                conversation)
 
             statistics.update_functions(correct_functions, total_functions)
             statistics.update_parameters(correct_parameters, total_parameters)

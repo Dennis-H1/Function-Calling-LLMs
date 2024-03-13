@@ -42,12 +42,6 @@ class FunctionServer:
                     function_name, request.args)
                 result = self.function_handler.handle_function(
                     function_name, function_args)
-
-                import pprint
-                # pprint.pprint(result)
-
-                print(function_args)
-
                 return jsonify(result)
             except (FunctionExecutionError, FunctionNotFoundError) as e:
                 print("FUNCTION_ERROR")
