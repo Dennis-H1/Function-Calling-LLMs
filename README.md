@@ -10,15 +10,17 @@ Our project goal was to create a testing pipeline for benchmarking the accuracy 
 
 2. Switch into the _master_ branch
 
-3. Install dependencies: pip install requirements.txt
+3. Optional: Create python virtual environment & activate it
 
-4. Set up the .env file with API_KEY=...
+4. Install dependencies: pip install requirements.txt
+
+5. Set up the .env file with API_KEY=...
 
 ### Usage
 
-##### Configuration:
+##### Configuration
 
-Before running any tests, we have to configure our benchmark pipeline. For that, navigate into the src > config folder.
+Before running any tests, we have to configure our benchmark pipeline. For that, navigate to the src > config folder.
 There, you can see three JSON files. The question_sets JSON contains all the questions and expected solutions for both use cases.
 The function_sets JSON contains all available functions grouped into function groups that provide all available functions and their descriptions to the test run.
 Finally, the test_config JSON contains the run configuration. We expect you to make changes here. You can specify the model or hyperparameters to use, or
@@ -26,9 +28,11 @@ the function and question set that we are interested in testing.
 
 Do not forget to configure your config.json file before starting the run.
 
-##### Run:
+##### Run
 
 To run the project, execute: python main.py
+
+https://github.com/Dennis-H1/Function-Calling-LLMs/assets/108003634/a3129cd3-0357-451f-870d-b5c1bf5e640e
 
 ### Features
 
