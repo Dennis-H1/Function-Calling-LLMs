@@ -83,7 +83,6 @@ class QuestionResult:
     question: str
     motivation: str
     overall_match: bool
-    error_category: Optional[str]
     correct_paths: List[Dict[str, Dict]]
     model_solution: ModelSolution
     correct_answer: str
@@ -146,16 +145,13 @@ class Pipeline:
             correct_parameters, argument_eval = Evaluator.eval_arguments(
                 function_args, question["target"]["solution_paths"])
             response_eval = Evaluator.eval_response(
-                self.llm_service, conversation, response, question["target"]["expected_answer"])
+                response, question["target"]["expected_answer"])
 
             evaluation = QuestionResult.Evaluation(
                 function_eval.value, argument_eval.value, response_eval.value)
 
             overall_match = (function_eval == EvaluationCategory.CORRECT and argument_eval ==
                              EvaluationCategory.CORRECT and response_eval == EvaluationCategory.CORRECT)
-
-            error_category = None if overall_match else Evaluator.eval_error_category(
-                self.llm_service, conversation, question["target"], function_eval, argument_eval, response_eval)
 
             # statistics
             total_functions = len(function_names)
@@ -174,7 +170,6 @@ class Pipeline:
                                     question["question"],
                                     question["motivation"],
                                     overall_match,
-                                    error_category,
                                     question["target"]["solution_paths"],
                                     model_solution,
                                     question["target"]["expected_answer"],
