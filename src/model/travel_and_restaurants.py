@@ -1,5 +1,5 @@
 from math import radians, sin, cos, sqrt, atan2
-
+from statistics import mean
 import pandas as pd
 
 data = pd.read_csv("./src/data/airbnbs.csv")  # airbnb_data
@@ -22,35 +22,35 @@ def haversine(lat1, lon1, lat2, lon2):
 
 
 def define_name(name):
-    for idx, listing_name in enumerate(data["name"].values()):
+    for idx, listing_name in enumerate(data["name"].values):
         if str(listing_name).lower() == str(name).lower():
             return data["host_name"][idx]
     return "Host name not found"
 
 
 def define_nights(name):
-    for idx, listing_name in enumerate(data["name"].values()):
+    for idx, listing_name in enumerate(data["name"].values):
         if listing_name.lower() == name.lower():
-            return data["minimum_nights"][idx]
+            return int(data["minimum_nights"][idx])
     return "Min nights not found"
 
 
 def define_price(name):
-    for idx, listing_name in enumerate(data["name"].values()):
+    for idx, listing_name in enumerate(data["name"].values):
         if listing_name.lower() == name.lower():
-            return data["price"][idx]
+            return int(data["price"][idx])
     return "Price not found"
 
 
-def define_nr_reviews(name):
-    for idx, listing_name in enumerate(data["name"].values()):
+def get_nr_of_reviews(name):
+    for idx, listing_name in enumerate(data["name"].values):
         if listing_name.lower() == name.lower():
-            return data["number_of_reviews"][idx]
+            return int(data["number_of_reviews"][idx])
     return "Number of reviews not found"
 
 
 def define_neighbourhood_group(name):
-    for idx, listing_name in enumerate(data["name"].values()):
+    for idx, listing_name in enumerate(data["name"].values):
         if str(listing_name).lower() == str(name).lower():
             return data["neighbourhood_group"][idx]
     return "Neighbourhood group not found"
@@ -58,7 +58,8 @@ def define_neighbourhood_group(name):
 
 def define_name_by_neighbourhood_group(neighbourhood_group):
     list_data = []
-    for idx, listing_name in enumerate(data["neighbourhood_group"].values()):
+
+    for idx, listing_name in enumerate(data["neighbourhood_group"].values):
         if listing_name.lower() == neighbourhood_group.lower():
             list_data.append(data["name"][idx])
     return list_data  # Return the populated list
@@ -66,7 +67,7 @@ def define_name_by_neighbourhood_group(neighbourhood_group):
 
 def define_name_by_price(price):
     name_data = []
-    for idx, listing_price in enumerate(data["price"].values()):
+    for idx, listing_price in enumerate(data["price"].values):
         if listing_price == price:
             name_data.append(data["name"][idx])
     return name_data  # Return the populated list
@@ -118,24 +119,20 @@ def define_airbnb_by_latitude_longitude(latitude, longitude, max_distance=4.0):
 
 def define_name_by_lower_price(price):
     name_data = []
-    for idx, listing_price in enumerate(data["price"].values()):
+    for idx, listing_price in enumerate(data["price"].values):
         if listing_price <= price:
             name_data.append(data["name"][idx])
     return name_data
 
-    return "Listing names not found"
-
 
 def define_name_by_price_and_neighbourhood_group(price, neighbourhood_group):
     name_data = []
-    for idx, listing_neighbourhood in enumerate(data["neighbourhood_group"].values()):
+    for idx, listing_neighbourhood in enumerate(data["neighbourhood_group"].values):
         if listing_neighbourhood.lower() <= neighbourhood_group.lower():
-            for idx, listing_price in enumerate(data["price"].values()):
+            for idx, listing_price in enumerate(data["price"].values):
                 if listing_price <= price:
                     name_data.append(data["name"][idx])
     return name_data
-
-    return "Listing names not found"
 
 
 def define_name_by_price_min_nights_and_neighbourhood_group(price, min_nights, neighbourhood_group):
@@ -278,7 +275,7 @@ def define_average_price_by_neighbourhood_group_room_type(neighbourhood_group, r
 
 def define_name_by_room_type(room_type):
     list_data = []
-    for idx, listing_name in enumerate(data["room_type"].values()):
+    for idx, listing_name in enumerate(data["room_type"].values):
         if listing_name.lower() == room_type.lower():
             list_data.append(data["name"][idx])
     return list_data
@@ -286,7 +283,7 @@ def define_name_by_room_type(room_type):
 
 def define_name_by_date_review(last_review_date):
     list_data = []
-    for idx, listing_name in enumerate(data["last_review"].values()):
+    for idx, listing_name in enumerate(data["last_review"].values):
         if listing_name == last_review_date:
             list_data.append(data["name"][idx])
     return list_data
@@ -294,7 +291,7 @@ def define_name_by_date_review(last_review_date):
 
 def define_name_by_min_nights(minimum_nights):
     list_data = []
-    for idx, listing_name in enumerate(data["minimum_nights"].values()):
+    for idx, listing_name in enumerate(data["minimum_nights"].values):
         if listing_name == minimum_nights:
             list_data.append(data["name"][idx])
     return list_data
@@ -302,7 +299,7 @@ def define_name_by_min_nights(minimum_nights):
 
 def define_restaurants_by_cuisine(cuisine):
     restaurant_data = []
-    for idx, restaurant in enumerate(data_2["cuisine"].values()):
+    for idx, restaurant in enumerate(data_2["cuisine"].values):
         restaurant_str = str(restaurant)
         if restaurant_str.lower() == cuisine.lower():
             restaurant_data.append(data_2["DBA"][idx])
@@ -312,14 +309,14 @@ def define_restaurants_by_cuisine(cuisine):
 
 
 def define_borough(restaurant):
-    for idx, borough in enumerate(data_2["DBA"].values()):
+    for idx, borough in enumerate(data_2["DBA"].values):
         if borough.lower() == restaurant.lower():
             return data_2["BORO"][idx]
     return "Borough not found"
 
 
 def define_cuisine(restaurant):
-    for idx, cuisine in enumerate(data_2["DBA"].values()):
+    for idx, cuisine in enumerate(data_2["DBA"].values):
         if cuisine.lower() == restaurant.lower():
             return data_3["cuisine"][idx]
     return "Cuisine not found"
@@ -451,7 +448,7 @@ def define_lat_long_by_restaurant_street(restaurant, street):
 def define_lat_long_by_listing(listing):
     prox_data = []
 
-    for idx, listing_airbnb in enumerate(data["name"].values()):
+    for idx, listing_airbnb in enumerate(data["name"].values):
         listing_airbnb = str(data["name"][idx])
         listing_lat = data["latitude"][idx]
         listing_long = data["longitude"][idx]
@@ -586,7 +583,7 @@ def define_cuisine_restaurant_airbnb_closeness(latitude, longitude, max_distance
 def define_cuisine_rating(cuisine: str):
     prox_data = []
 
-    for idx, cuisine_type in enumerate(data_3["cuisine_type"].values()):
+    for idx, cuisine_type in enumerate(data_3["cuisine_type"].values):
         cuisine_type = str(data_3["cuisine_type"][idx])
         rating = data_3["rating"][idx]
 
@@ -605,7 +602,7 @@ def define_cuisine_rating(cuisine: str):
 def define_restaurants_by_rating(rating):
     prox_data = []
 
-    for idx, restaurant_rating in enumerate(data_3["rating"].values()):
+    for idx, restaurant_rating in enumerate(data_3["rating"].values):
         restaurant_name = str(data_3["restaurant_name"][idx])
         restaurant_rating = data_3["rating"][idx]
 
@@ -623,7 +620,7 @@ def define_restaurants_by_rating(rating):
 def define_neigh_by_rest(restaurant, neighborhood):
     prox_data = []
 
-    for idx, restaurant_name in enumerate(data_2["DBA"].values()):
+    for idx, restaurant_name in enumerate(data_2["DBA"].values):
         restaurant_name = str(data_2["DBA"][idx])
         neighborhood_group = str(data_2["BORO"][idx])
 
@@ -749,48 +746,606 @@ def define_avg_prep_time_by_restaurant_name(restaurant_name, data_3):
     else:
         return "No restaurants found"
 
+# >>> actual functions <<<
+
+
+def get_host_name(listing_name: str):
+    host_name = define_name(listing_name)
+    if host_name:
+        return {
+            "host_name": host_name,
+        }
+    else:
+        return {"error": "Host name not found"}
+
+
+def get_min_nights(listing_name: str):
+    minimum_nights = define_nights(listing_name)
+    if minimum_nights:
+        return {
+            "minimum_nights": minimum_nights,
+        }
+    else:
+        return {"error": "Minimum Nights not found"}
+
+
+def get_nr_of_reviews(listing_name: str):
+    nr_of_reviews = define_nr_reviews(listing_name)
+    if nr_of_reviews:
+        return {
+            "nr_of_reviews": nr_of_reviews,
+        }
+    else:
+        return {"error": "Number of reviews not found"}
+
+
+def get_frequent_listings(nr_of_listings):
+    listing = define_listings_by_frequency(nr_of_listings, data)
+
+    if listing:
+        return {
+            "name": listing,
+        }
+    else:
+        return {"error": "No airbnbs"}
+
+
+def get_listing_price(listing_name):
+    price = define_price(listing_name)
+    if price:
+        return {
+            "price": price,
+        }
+    else:
+        return {"error": "Price not found"}
+
+
+def get_listing_by_room_type(room_type):
+    listing = define_name_by_room_type(room_type)
+    if listing:
+        return {
+            "room_type": room_type,
+            "name": listing,
+        }
+    else:
+        return {"error": "Room type not found"}
+
+
+def get_listing_by_neighbourhood_group(neighbourhood_group):
+    listing = define_name_by_neighbourhood_group(neighbourhood_group)
+    if listing:
+        return {
+            "neighbourhood_group": neighbourhood_group,
+            "name": listing,
+        }
+    else:
+        return {"error": "Listing not found"}
+
+
+def get_listings_by_review_date(last_review_date):
+    listing = define_name_by_date_review(last_review_date)
+    if listing:
+        return {
+            "last_review_date": last_review_date,
+            "name": listing,
+        }
+    else:
+        return {"error": "Date not found"}
+
+
+def get_listings_by_min_nights(minimum_nights):
+    listing = define_name_by_min_nights(minimum_nights)
+    if listing:
+        return {
+            "minimum_nights": minimum_nights,
+            "name": listing,
+        }
+    else:
+        return {"error": "Listing not found"}
+
+
+def get_listing_by_price(price):
+    listing = define_name_by_price(price)
+
+    if listing:
+        return {
+            "name": listing,
+            "price": price,
+        }
+    else:
+        return {"error": "Airbnb with that price not found"}
+
+
+def get_listing_by_lower_price(price):
+    listing = define_name_by_lower_price(price)
+
+    if listing:
+        return {
+            "name": listing,
+            "price": price,
+        }
+    else:
+        return {"error": "There are no available airbnbs with lower or equal to that price"}
+
+
+def get_neighbourhood_group(name):
+    neighbourhood_group = define_neighbourhood_group(name)
+    if neighbourhood_group:
+        return {
+            "name": name,
+            "neighbourhood_group": neighbourhood_group
+        }
+    else:
+        return {"error": "Neighbourhood group not found"}
+
+
+def get_airbnb_by_price_and_neighborhood_group(price, neighbourhood_group):
+    listing = define_name_by_price_and_neighbourhood_group(
+        price, neighbourhood_group)
+
+    if listing:
+        return {
+            "name": listing,
+            "price": price,
+            "neighbourhood_group": neighbourhood_group,
+
+        }
+    else:
+        return {"error": "There are no available airbnbs with lower or equal to that price and in that neighborhood"}
+
+
+def get_airbnb_by_price_min_nights_and_neighborhood_group(price, min_nights, neighbourhood_group):
+    listing = define_name_by_price_min_nights_and_neighbourhood_group(
+        price, min_nights, neighbourhood_group)
+    if listing:
+        return {
+            "name": listing,
+            "price": price,
+            "min_nights": min_nights,
+            "neighbourhood_group": neighbourhood_group,
+
+        }
+    else:
+        return {"error": "There are no available airbnbs with lower or equal to that price,minimum nights and in that neighborhood"}
+
+
+def get_airbnb_by_neighbourhood_group_room_type_date(neighbourhood_group, room_type, last_review_date):
+    listing = define_name_by_neighbourhood_group_room_type_and_date(
+        neighbourhood_group, room_type, last_review_date)
+
+    if listing:
+        return {
+            "name": listing,
+            "neighbourhood_group": neighbourhood_group,
+            "room_type": room_type,
+            "last_review_date": last_review_date,
+
+        }
+    else:
+        return {"error": "There are no available airbnbs in that neighbourhood with that room type and review date"}
+
+
+def get_airbnb_by_price_range_neighbourhood(min_price, max_price, neighbourhood_group):
+    listing = define_name_by_price_range_and_neighbourhood_group(
+        min_price, max_price, neighbourhood_group)
+
+    if listing:
+        return {
+            "name": listing,
+            "neighbourhood_group": neighbourhood_group,
+            "min_price": min_price,
+            "max_price": max_price,
+
+        }
+    else:
+        return {"error": "There are no available airbnbs in that neighbourhood and price range"}
+
+
+def get_x_most_popular_places_in_neighbourhood_group_room_type(popularity, neighbourhood_group, room_type):
+    listing = define_popularity_by_neighbourhood_group_room_type(
+        popularity, neighbourhood_group, room_type, data)
+
+    if listing:
+        return {
+            "name": listing,
+            "neighbourhood_group": neighbourhood_group,
+            "popularity": popularity,
+            "room_type": room_type,
+
+        }
+    else:
+        return {"error": "There are no available airbnbs in that neighbourhood with that room type and number of reviews"}
+
+
+def get_min_cost_by_neighbourhood_group_room_type_min_nights(nr_requests, neighbourhood_group, room_type, min_nights):
+    listing = get_min_cost_by_neighbourhood_group_room_type_min_nights(
+        nr_requests, neighbourhood_group, room_type, min_nights, data)
+
+    if listing:
+        return {
+            "name": listing,
+            "nr_requests": nr_requests,
+            "neighbourhood_group": neighbourhood_group,
+            "room_type": room_type,
+            "min_nights": min_nights,
+
+        }
+    else:
+        return {"error": "There are no available airbnbs in that neighbourhood with that room type and number of minimum nights"}
+
+
+def get_avg_by_neighbourgood_group_and_room_type(neighbourhood_group, room_type):
+    avg_price = define_average_price_by_neighbourhood_group_room_type(
+        neighbourhood_group, room_type, data)
+
+    if avg_price:
+        return {
+            "average_price": avg_price,
+            "neighbourhood_group": neighbourhood_group,
+            "room_type": room_type,
+        }
+    else:
+        return {"error": "There are no available airbnbs in that neighbourhood with that room type"}
+
+
+def get_restaurants_by_cuisine(cuisine):
+    restaurant_name = define_restaurants_by_cuisine(cuisine)
+    if restaurant_name:
+        return {
+            "cuisine": cuisine,
+            "restaurant_name": restaurant_name
+        }
+    else:
+        return {"error": "Cuisine not found"}
+
+
+def get_borough_location(restaurant):
+    borough = define_borough(restaurant)
+    if borough:
+        return {
+            "borough": borough,
+            "restaurant": restaurant
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_cuisine(restaurant):
+    cuisine = define_cuisine(restaurant)
+    if cuisine:
+        return {
+            "cuisine": cuisine,
+            "restaurant": restaurant
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_telephone_number_by_name_neighbourhood_group_cuisine(restaurant, neighbourhood_group, cuisine):
+    phone = define_phone_by_name_neighbourhood_cuisine(
+        restaurant, neighbourhood_group, cuisine)
+    if phone:
+        return {
+            "restaurant": restaurant,
+            "neighbourhood_group": neighbourhood_group,
+            "cuisine": cuisine,
+            "phone": phone,
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_restaurant_by_zipcode_cuisine_borough_phone(zip_code, cuisine, borough, phone):
+    restaurant = define_restaurant_by_zipcode_cuisine_borough_phone(
+        zip_code, cuisine, borough, phone)
+    if restaurant:
+        return {
+            "restaurant": restaurant,
+            "zip_code": zip_code,
+            "cuisine": cuisine,
+            "phone": phone,
+            "borough": borough,
+        }
+    else:
+        return {"error": "Restaurant not found"}, 404
+
+
+def get_info_by_name_cuisine_borough_phone(restaurant, cuisine, borough, phone):
+    info = define_info_by_restaurant_cuisine_borough_phone(
+        restaurant, cuisine, borough, phone)
+    if info:
+        return {
+            "restaurant": restaurant,
+            "cuisine": cuisine,
+            "phone": phone,
+            "borough": borough,
+            "info": info,
+
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_restaurant_by_cuisine_borough(cuisine, borough):
+    restaurant = define_restaurant_by_cuisine_borough(cuisine, borough)
+    if restaurant:
+        return {
+            "restaurant": restaurant,
+            "cuisine": cuisine,
+            "borough": borough,
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_long_lat_by_name_street(restaurant, street):
+    info = define_lat_long_by_restaurant_street(restaurant, street)
+    if info:
+        return {
+            "restaurant": restaurant,
+            "street": street,
+            "info": info
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_airbnb_by_lat_long(latitude, longitude):
+    try:
+        latitude = float(latitude)
+        longitude = float(longitude)
+
+        airbnb = define_airbnb_by_latitude_longitude(latitude, longitude)
+
+        if airbnb:
+            return {
+                "latitude": latitude,
+                "longitude": longitude,
+                "airbnb": airbnb,
+            }
+        else:
+            return {"error": "No available airbnbs"}
+    except ValueError:
+        return {"error": "Invalid latitude or longitude provided"}
+
+
+def get_long_lat_by_airbnb(listing):
+    info = define_lat_long_by_listing(listing)
+    if info:
+        return {
+            "airbnb": listing,
+            "info": info
+        }
+    else:
+        return {"error": "Airbnb not found"}
+
+
+def get_airbnb_address_by_lat_long(latitude, longitude):
+    try:
+        info = define_closest_airbnb_address(latitude, longitude)
+        if info:
+            return {
+                "latitude": latitude,
+                "longitude": longitude,
+                "info": info
+            }
+        else:
+            return {"error": "Airbnb not found"}
+    except Exception as e:
+        return {"error": f"Invalid latitude and longitude values"}
+
+
+def get_restaurant_by_airbnb_closeness(latitude, longitude):
+    info = define_closest_restaurant_by_airbnb(latitude, longitude)
+    if info:
+        return {
+            "latitude": latitude,
+            "longitude": longitude,
+            "info": info
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_info_restaurant_with_zipcode_street_building(latitude, longitude):
+    info = define_restaurant_info_zipcode_street_building(
+        latitude, longitude)
+    if info:
+        return {
+            "latitude": latitude,
+            "longitude": longitude,
+            "info": info
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_rating_per_cuisines(cuisines):
+    if not cuisines:
+        return {"error": "No cuisines provided"}
+
+    cuisines_data = dict()
+
+    for cuisine in cuisines.split(','):
+        info = define_cuisine_rating(cuisine)
+        if info:
+            ratings = [float(entry["rating"])
+                       for entry in info if entry["rating"].lower() != "not given"]
+            if ratings:
+                avg_rating = mean(ratings)
+                cuisines_data[cuisine] = avg_rating
+            else:
+                cuisines_data[cuisine] = {
+                    "error": "No valid ratings for this cuisine"}
+        else:
+            cuisines_data[cuisine] = {"error": "Cuisine not found"}
+
+    return cuisines_data
+
+
+def get_restaurants_by_ratings(rating):
+    info = define_restaurants_by_rating(rating)
+    if info:
+        return {
+            "info": info
+        }
+    else:
+        return {"error": "Rating not found"}
+
+
+def get_neighborhood_by_rest_specification(restaurants, neighborhood):
+    if not restaurants:
+        return {"error": "No restaurants provided"}
+
+    restaurants_data = dict()
+
+    for restaurant in restaurants.split(','):
+        info = define_neigh_by_rest(restaurant, neighborhood)
+        if info:
+            restaurants_data[restaurant] = info
+        else:
+            restaurants_data[restaurant] = {
+                "error": f"Restaurant '{restaurant}' not found in the specified neighborhood"}
+
+    return restaurants_data
+
+
+def get_airbnb_with_max_reviews(popularity, neighbourhood_group, room_type):
+    listing = define_airbnbs_with_max_reviews(
+        popularity, neighbourhood_group, room_type, data)
+    if listing:
+        return {
+            "name": listing,
+        }
+    else:
+        return {"error": "Listing not found"}
+
+
+def get_ratings_per_cuisines(cuisines):
+    if not cuisines:
+        return {"error": "No cuisines provided"}
+
+    cuisines_data = dict()
+
+    for cuisine in cuisines.split(','):
+        info = define_cuisine_rating(cuisine)
+        if info:
+            ratings = [float(entry["rating"])
+                       for entry in info if entry["rating"].lower() != "not given"]
+            if ratings:
+                avg_rating = mean(ratings)
+                cuisines_data[cuisine] = avg_rating
+            else:
+                cuisines_data[cuisine] = {
+                    "error": "No valid ratings for this cuisine"}
+        else:
+            cuisines_data[cuisine] = {"error": "Cuisine not found"}
+
+    return cuisines_data
+
+
+def get_restaurant_long_lat_by_zipcode_cuisine_borough_phone(zip_code, cuisine, borough, phone):
+    restaurant = define_restaurant_lat_long_by_zipcode_cuisine_borough_phone(
+        zip_code, cuisine, borough, phone)
+    if restaurant:
+        return {
+            "restaurant": restaurant,
+            "zip_code": zip_code,
+            "cuisine": cuisine,
+            "phone": phone,
+            "borough": borough,
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_avg_prep_time_by_restaurant_name(restaurant_name):
+    preparation = define_avg_prep_time_by_restaurant_name(
+        restaurant_name, data_3)
+    if preparation:
+        return {
+            "preparation": preparation,
+            "restaurant_name": restaurant_name,
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_avg_delivery_time_by_restaurant_name(restaurant_name):
+    delivery = define_avg_delivery_time_by_restaurant_name(
+        restaurant_name, data_3)
+    if delivery:
+        return {
+            "delivery": delivery,
+            "restaurant_name": restaurant_name,
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_avg_costs_by_restaurant_name(cuisine, borough):
+    restaurant = define_restaurant_by_cuisine_borough(cuisine, borough)
+    if restaurant:
+        return {
+            "restaurant": restaurant,
+            "cuisine": cuisine,
+            "borough": borough,
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_rating_by_restaurant_name(restaurant_name):
+    rating = define_rating_by_restaurant_name(restaurant_name)
+    if rating:
+        return {
+            "rating": rating,
+            "restaurant_name": restaurant_name,
+        }
+    else:
+        return {"error": "Restaurant not found"}
+
 
 class TravelAndRestaurantFunctions():
-    functions = set((define_airbnb_by_latitude_longitude,
-                    define_airbnbs_with_max_reviews,
-                    define_average_price_by_neighbourhood_group_room_type,
-                    define_avg_costs_by_restaurant_name,
-                    define_avg_delivery_time_by_restaurant_name,
-                    define_avg_prep_time_by_restaurant_name,
-                    define_borough,
-                    define_closest_airbnb_address,
-                    define_closest_restaurant_by_airbnb,
-                    define_cuisine,
-                    define_cuisine_rating,
-                    define_cuisine_restaurant_airbnb_closeness,
-                    define_info_by_restaurant_cuisine_borough_phone,
-                    define_lat_long_by_listing,
-                    define_lat_long_by_restaurant_street,
-                    define_listings_by_frequency,
-                    define_name,
-                    define_name_by_date_review,
-                    define_name_by_lower_price,
-                    define_name_by_min_nights,
-                    define_name_by_neighbourhood_group,
-                    define_name_by_neighbourhood_group_room_type_and_date,
-                    define_name_by_price,
-                    define_name_by_price_and_neighbourhood_group,
-                    define_name_by_price_min_nights_and_neighbourhood_group,
-                    define_name_by_price_range_and_neighbourhood_group,
-                    define_name_by_room_type,
-                    define_neigh_by_rest,
-                    define_neighbourhood_group,
-                    define_nights,
-                    define_nr_reviews,
-                    define_phone_by_name_neighbourhood_cuisine,
-                    define_popularity_by_neighbourhood_group_room_type,
-                    define_price,
-                    define_rating_by_restaurant_name,
-                    define_restaurant_by_cuisine_borough,
-                    define_restaurant_by_zipcode_cuisine_borough_phone,
-                    define_restaurant_info_zipcode_street_building,
-                    define_restaurant_lat_long_by_zipcode_cuisine_borough_phone,
-                    define_restaurants_by_cuisine,
-                    define_restaurants_by_rating,
-                    get_min_cost_by_neighbourhood_group_room_type_min_nights,
-                    haversine))
+    functions = set((
+        get_airbnb_by_lat_long,
+        get_airbnb_by_neighbourhood_group_room_type_date,
+        get_airbnb_by_price_and_neighborhood_group,
+        get_airbnb_by_price_min_nights_and_neighborhood_group,
+        get_airbnb_by_price_range_neighbourhood,
+        get_airbnb_with_max_reviews,
+        get_avg_by_neighbourgood_group_and_room_type,
+        get_avg_costs_by_restaurant_name,
+        get_avg_delivery_time_by_restaurant_name,
+        get_avg_prep_time_by_restaurant_name,
+        get_borough_location,
+        get_cuisine,
+        get_frequent_listings,
+        get_host_name,
+        get_info_by_name_cuisine_borough_phone,
+        get_info_restaurant_with_zipcode_street_building,
+        get_listing_by_lower_price,
+        get_listing_by_neighbourhood_group,
+        get_listing_by_price,
+        get_listing_by_room_type,
+        get_listing_price,
+        get_listings_by_min_nights,
+        get_listings_by_review_date,
+        get_long_lat_by_airbnb,
+        get_long_lat_by_name_street,
+        get_min_cost_by_neighbourhood_group_room_type_min_nights,
+        get_min_nights,
+        get_neighborhood_by_rest_specification,
+        get_neighbourhood_group,
+        get_nr_of_reviews,
+        get_rating_by_restaurant_name,
+        get_rating_per_cuisines,
+        get_ratings_per_cuisines,
+        get_restaurant_by_airbnb_closeness,
+        get_restaurant_by_cuisine_borough,
+        get_restaurant_by_zipcode_cuisine_borough_phone,
+        get_restaurant_long_lat_by_zipcode_cuisine_borough_phone,
+        get_restaurants_by_cuisine,
+        get_restaurants_by_ratings,
+        get_telephone_number_by_name_neighbourhood_group_cuisine,
+        get_x_most_popular_places_in_neighbourhood_group_room_type))
