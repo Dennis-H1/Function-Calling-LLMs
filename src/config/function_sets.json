@@ -1,6 +1,1040 @@
 {
   "function_sets": [
     {
+      "id": "TRAVEL_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 14,
+      "functions": [
+        {
+          "name": "get_host_name",
+          "description": "Provide the host name for the AirbnB listing",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "listing_name": {
+                "type": "string",
+                "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+              }
+            },
+            "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_min_nights",
+          "description": "Provide the number of nights required to stay for an airbnb",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "listing_name": {
+                "type": "string",
+                "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+              }
+            },
+            "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_nr_of_reviews",
+          "description": "Provide the number of reviews for an airbnb",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "listing_name": {
+                "type": "string",
+                "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+              }
+            },
+            "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_listing_price",
+          "description": "Provide the price of an airbnb",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "listing_name": {
+                "type": "string",
+                "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+              }
+            },
+            "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_listing_by_neighbourhood_group",
+          "description": "Get the airbnbs for a specific neighbourhood group",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "neighbourhood_group": {
+                "type": "string",
+                "description": "The name of the neighbourhood group, e.g. Brooklyn"
+              }
+            },
+            "required": ["neighbourhood_group"]
+          }
+        },
+        {
+          "name": "get_listings_by_review_date",
+          "description": "Get the listings for a specific review date",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "last_review_date": {
+                "type": "string",
+                "description": "The date of the last review, e.g. 12-05-19"
+              }
+            },
+            "required": ["last_review_date"]
+          }
+        },
+        {
+          "name": "get_listings_by_min_nights",
+          "description": "Get the listings for a specific number of minimum nights to stay at an airbnb",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "minimum_nights": {
+                "type": "string",
+                "description": "The number of minimum nights, e.g. 3"
+              }
+            },
+            "required": ["minimum_nights"]
+          }
+        },
+        {
+          "name": "get_frequent_listings",
+          "description": "Get the frequent airbnbs",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "nr_of_listings": {
+                "type": "number",
+                "description": "The number of listings, e.g. 3"
+              }
+            },
+            "required": ["nr_of_listings"]
+          }
+        },
+        {
+          "name": "get_listing_by_price",
+          "description": "Get the airbnbs for a specific price",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "price": {
+                "type": "number",
+                "description": "The price of an airbnb per night, e.g. 90 dollars"
+              }
+            },
+            "required": ["price"]
+          }
+        },
+        {
+          "name": "get_listing_by_lower_price",
+          "description": "Get the airbnbs for a price equal or less to the price requested",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "price": {
+                "type": "number",
+                "description": "The price of an airbnb per night, e.g. 90 dollars"
+              }
+            },
+            "required": ["price"]
+          }
+        },
+        {
+          "name": "get_neighbourhood_group",
+          "description": "Get the neighbourhood group of a specific airbnb",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the airbnb, e.g. Brooklyn Home in the Heart of it All"
+              }
+            },
+            "required": ["name"]
+          }
+        },
+        {
+          "name": "get_restaurants_by_cuisine",
+          "description": "For a specific cuisine category, get the respective restaurants",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "cuisine": {
+                "type": "string",
+                "description": "The cuisine type, e.g. Japanese"
+              }
+            },
+            "required": ["cuisine"]
+          }
+        },
+        {
+          "name": "get_borough_location",
+          "description": "For a specific restaurant, get the borough location",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "restaurant": {
+                "type": "string",
+                "description": "The restaurant name, e.g. Junoon"
+              }
+            },
+            "required": ["restaurant"]
+          }
+        },
+        {
+          "name": "get_cuisine",
+          "description": "For a specific restaurant, get the cuisine",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "restaurant": {
+                "type": "string",
+                "description": "The restaurant name, e.g. Junoon"
+              }
+            },
+            "required": ["restaurant"]
+          }
+        },
+        {
+          "name": "get_listing_by_room_type",
+          "description": "Get the airbnbs for a specific room type",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "room_type": {
+                "type": "string",
+                "description": "The room type, e.g. Entire home apt"
+              }
+            },
+            "required": ["room_type"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "TRAVEL_FUNC_ONE_PARAM_COMPLEX_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Without Examples",
+        "Complex Description"
+      ],
+      "num_functions": 14,
+      "functions": [
+        {
+          "name": "get_host_name",
+          "description": "Provide the name of the Airbnb’s owner.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "listing_name": {
+                "type": "string",
+                "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+              }
+            },
+            "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_min_nights",
+          "description": "Provide the minimum duration of stay for the Airbnb reservation.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "listing_name": {
+                "type": "string",
+                "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+              }
+            },
+            "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_nr_of_reviews",
+          "description": "Provide the count of guest evaluations for the Airbnb listing.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "listing_name": {
+                "type": "string",
+                "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+              }
+            },
+            "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_listing_price",
+          "description": "Provide the rental cost for the Airbnb accommodation.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "listing_name": {
+                "type": "string",
+                "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+              }
+            },
+            "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_listing_by_neighbourhood_group",
+          "description": "Get the listings of Airbnb properties within a designated district area.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "neighbourhood_group": {
+                "type": "string",
+                "description": "The name of the neighbourhood group, e.g. Brooklyn"
+              }
+            },
+            "required": ["neighbourhood_group"]
+          }
+        },
+        {
+          "name": "get_listings_by_review_date",
+          "description": "Get the Airbnb properties associated with a particular date of feedback.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "last_review_date": {
+                "type": "string",
+                "description": "The date of the last review, e.g. 12-05-19"
+              }
+            },
+            "required": ["last_review_date"]
+          }
+        },
+        {
+          "name": "get_listings_by_min_nights",
+          "description": "Get the Airbnb offerings that require a set minimum number of nights for booking.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "minimum_nights": {
+                "type": "string",
+                "description": "The number of minimum nights, e.g. 3"
+              }
+            },
+            "required": ["minimum_nights"]
+          }
+        },
+        {
+          "name": "get_frequent_listings",
+          "description": "Get the Airbnb´s that are most commonly booked.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "nr_of_listings": {
+                "type": "number",
+                "description": "The number of listings, e.g. 3"
+              }
+            },
+            "required": ["nr_of_listings"]
+          }
+        },
+        {
+          "name": "get_listing_by_price",
+          "description": "Locate Airbnb rentals available at a specified price point.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "price": {
+                "type": "number",
+                "description": "The price of an airbnb per night, e.g. 90 dollars"
+              }
+            },
+            "required": ["price"]
+          }
+        },
+        {
+          "name": "get_listing_by_lower_price",
+          "description": "Get the Airbnb properties priced at or below the specified amount.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "price": {
+                "type": "number",
+                "description": "The price of an airbnb per night, e.g. 90 dollars"
+              }
+            },
+            "required": ["price"]
+          }
+        },
+        {
+          "name": "get_neighbourhood_group",
+          "description": "Get the local community association for a particular Airbnb listing",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the airbnb, e.g. Brooklyn Home in the Heart of it All"
+              }
+            },
+            "required": ["name"]
+          }
+        },
+        {
+          "name": "get_restaurants_by_cuisine",
+          "description": " Get some places that serve a particular type of cuisine",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "cuisine": {
+                "type": "string",
+                "description": "The cuisine type, e.g. Japanese"
+              }
+            },
+            "required": ["cuisine"]
+          }
+        },
+        {
+          "name": "get_borough_location",
+          "description": "Determine the district where a particular restaurant is situated.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "restaurant": {
+                "type": "string",
+                "description": "The restaurant name, e.g. Junoon"
+              }
+            },
+            "required": ["restaurant"]
+          }
+        },
+        {
+          "name": "get_cuisine",
+          "description": "Identify the culinary style or category of food that a certain dining establishment specializes in.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "restaurant": {
+                "type": "string",
+                "description": "The restaurant name, e.g. Junoon"
+              }
+            },
+            "required": ["restaurant"]
+          }
+        },
+        {
+          "name": "get_listing_by_room_type",
+          "description": "Search for Airbnb properties that match a specific accommodation category or room configuration.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "room_type": {
+                "type": "string",
+                "description": "The room type, e.g. Entire home apt"
+              }
+            },
+            "required": ["room_type"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "TRAVEL_FUNC_MULTI_PARAM_SIMPLE_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 10,
+      "functions": [
+        {
+          "name": "get_airbnb_by_price_range_neighbourhood",
+          "description": "Get the listing by neighbourhood group between a specific price range",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "min_price": {
+                "type": "string",
+                "description": "The min price in the range"
+              },
+              "max_price": {
+                "type": "string",
+                "description": "The maximum price in the range"
+              },
+              "neighbourhood_group": {
+                "type": "string",
+                "description": "The name of the neighbourhood group, e.g. Brooklyn"
+              }
+            },
+            "required": ["min_price", "max_price", "neighbourhood_group"]
+          }
+        },
+        {
+          "name": "get_airbnb_by_price_min_nights_and_neighborhood_group",
+          "description": "Get the listing by minimum price, minimum nights and and a specific neighbourhood group",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "price": {
+                "type": "number",
+                "description": "The price of an airbnb per night, e.g. 90 dollars"
+              },
+              "min_nights": {
+                "type": "number",
+                "description": "The minimum amount of nights, e.g. 2"
+              },
+              "neighbourhood_group": {
+                "type": "string",
+                "description": "The name of the neighbourhood group, e.g. Brooklyn"
+              }
+            },
+            "required": ["price", "min_nights", "neighbourhood_group"]
+          }
+        },
+        {
+          "name": "get_airbnb_by_neighbourhood_group_room_type_date",
+          "description": "Get the listing by neighbourhood group, room type and last review date",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "room_type": {
+                "type": "string",
+                "description": "The type of room of an airbnb, e.g. private room"
+              },
+              "last_review_date": {
+                "type": "string",
+                "description": "The date when the last review was recorded, e.g. 23-09-2019"
+              },
+              "neighbourhood_group": {
+                "type": "string",
+                "description": "The name of the neighbourhood group, e.g. Brooklyn"
+              }
+            },
+            "required": ["room_type", "last_review_date", "neighbourhood_group"]
+          }
+        },
+        {
+          "name": "get_airbnb_by_price_range_neighbourhood",
+          "description": "Get the listing by neighbourhood group between a specific price range",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "min_price": {
+                "type": "string",
+                "description": "The min price in the range"
+              },
+              "max_price": {
+                "type": "string",
+                "description": "The maximum price in the range"
+              },
+              "neighbourhood_group": {
+                "type": "string",
+                "description": "The name of the neighbourhood group, e.g. Brooklyn"
+              }
+            },
+            "required": ["min_price", "max_price", "neighbourhood_group"]
+          }
+        },
+        {
+          "name": "get_x_most_popular_places_in_neighbourhood_group_room_type",
+          "description": "Get the x most popular airbnbs in a neighbourhood group and for a specific room type ",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "popularity": {
+                "type": "number",
+                "description": "The number of airbnbs to output"
+              },
+              "neighbourhood_group": {
+                "type": "string",
+                "description": "The name of the neighbourhood group, e.g. Brooklyn"
+              },
+              "room_type": {
+                "type": "string",
+                "description": "The type of the room, e.g. Shared Room"
+              }
+            },
+            "required": ["popularity", "neighbourhood_group", "room_type"]
+          }
+        },
+
+        {
+          "name": "get_avg_by_neighbourgood_group_and_room_type",
+          "description": "Get the average price of a neighbourhood group by room type ",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "neighbourhood_group": {
+                "type": "string",
+                "description": "The name of the neighbourhood group, e.g. Brooklyn"
+              },
+              "room_type": {
+                "type": "string",
+                "description": "The type of the room, e.g. Shared Room"
+              }
+            },
+            "required": ["neighbourhood_group", "room_type"]
+          }
+        },
+
+        {
+          "name": "get_min_cost_by_neighbourhood_group_room_type_min_nights",
+          "description": "Get the least costly airbnbs for a specific neighbourhood group,room type and minimum nights",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "nr_requests": {
+                "type": "number",
+                "description": "The number of airbnbs to output"
+              },
+              "neighbourhood_group": {
+                "type": "string",
+                "description": "The name of the neighbourhood group, e.g. Brooklyn"
+              },
+              "room_type": {
+                "type": "string",
+                "description": "The type of the room, e.g. Shared Room"
+              },
+              "min_nights": {
+                "type": "string",
+                "description": "The minimum number of nights to stay"
+              }
+            },
+            "required": [
+              "nr_requests",
+              "neighbourhood_group",
+              "room_type",
+              "min_nights"
+            ]
+          }
+        },
+
+        {
+          "name": "get_telephone_number_by_name_neighbourhood_group_cuisine",
+          "description": "Get the telephone number of a restaurant given the neighbourhood group or cuisine",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "restaurant": {
+                "type": "string",
+                "description": "The name of the restaurant"
+              },
+              "neighbourhood_group": {
+                "type": "string",
+                "description": "The name of the borough"
+              },
+              "cuisine": {
+                "type": "string",
+                "description": "The cuisine of the restaurant e.g. Japanese"
+              }
+            },
+            "required": ["restaurant", "neighbourhood_group", "cuisine"]
+          }
+        },
+
+        {
+          "name": "get_restaurant_by_zipcode_cuisine_borough_phone",
+          "description": "Get the restaurant info by zip code, cuisine, borough and phone number",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "zip_code": {
+                "type": "number",
+                "description": "The zip code of the restaurant"
+              },
+              "cuisine": {
+                "type": "string",
+                "description": "The cuisine of the restaurant e.g. Japanese"
+              },
+              "borough": {
+                "type": "string",
+                "description": "The borough of the restaurant e.g. Bronx"
+              },
+              "phone": {
+                "type": "string",
+                "description": "The phone number of the restaurant"
+              }
+            },
+            "required": ["zip_code", "cuisine", "borough", "phone"]
+          }
+        },
+
+        {
+          "name": "get_info_by_name_cuisine_borough_phone",
+          "description": "Get the information of a restaurant (street, building and zip code)",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "restaurant": {
+                "type": "string",
+                "description": "The name of the restaurant"
+              },
+              "cuisine": {
+                "type": "string",
+                "description": "The cuisine of the restaurant e.g. Japanese"
+              },
+              "borough": {
+                "type": "string",
+                "description": "The borough of the restaurant e.g. Bronx"
+              },
+              "phone": {
+                "type": "string",
+                "description": "The phone number of the restaurant"
+              }
+            },
+            "required": ["restaurant", "cuisine", "borough", "phone"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "TRAVEL_FUNC_MULTI_CALL_SEQUENTIAL_SIMPLE_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions, multiple calls and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Multi-call",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 11,
+      "functions": [
+        {
+          "name": "get_airbnb_by_price_min_nights_and_neighborhood_group",
+          "description": "Get the listing by minimum price, minimum nights and and a specific neighbourhood group",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "price": {
+                "type": "number",
+                "description": "The price of an airbnb per night, e.g. 90 dollars"
+              },
+              "min_nights": {
+                "type": "number",
+                "description": "The minimum amount of nights, e.g. 2"
+              },
+              "neighbourhood_group": {
+                "type": "string",
+                "description": "The name of the neighbourhood group, e.g. Brooklyn"
+              }
+            },
+            "required": ["price", "min_nights", "neighbourhood_group"]
+          }
+        },
+        {
+          "name": "get_long_lat_by_name_street",
+          "description": "Get the latitude and longitude of a restaurant by street",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "restaurant": {
+                "type": "string",
+                "description": "The name of the restaurant"
+              },
+              "street": {
+                "type": "string",
+                "description": "The street where the restaurant is located"
+              }
+            },
+            "required": ["restaurant", "street"]
+          }
+        },
+        {
+          "name": "get_airbnb_by_lat_long",
+          "description": "Get the airbnb by latitude and longitude",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "type": "string",
+                "description": "The latitude of the airbnb"
+              },
+              "longitude": {
+                "type": "string",
+                "description": "The longitude of the airbnb"
+              }
+            },
+            "required": ["latitude", "longitude"]
+          }
+        },
+        {
+          "name": "get_long_lat_by_airbnb",
+          "description": "Get the airbnb by latitude and longitude",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "listing": {
+                "type": "string",
+                "description": "The airbnb's name"
+              }
+            },
+            "required": ["listing"]
+          }
+        },
+        {
+          "name": "get_airbnb_address_by_lat_long",
+          "description": "Get the airbnb address from longitude and latitude",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "type": "string",
+                "description": "The restaurant's latitude"
+              },
+              "longitude": {
+                "type": "string",
+                "description": "The restaurant's longitude"
+              }
+            },
+            "required": ["latitude", "longitude"]
+          }
+        },
+        {
+          "name": "get_restaurant_by_airbnb_closeness",
+          "description": "Get the restaurant close to an airbnb",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "type": "string",
+                "description": "The airbnb's latitude"
+              },
+              "longitude": {
+                "type": "string",
+                "description": "The airbnb's longitude"
+              }
+            },
+            "required": ["latitude", "longitude"]
+          }
+        },
+        {
+          "name": "get_info_restaurant_with_zipcode_street_building",
+          "description": "Get the restaurant info (zipcode,street and building)",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "type": "string",
+                "description": "The airbnb's latitude"
+              },
+              "longitude": {
+                "type": "string",
+                "description": "The airbnb's longitude"
+              }
+            },
+            "required": ["latitude", "longitude"]
+          }
+        },
+        {
+          "name": "get_restaurants_by_ratings",
+          "description": "Get the restaurants according to a specific rating",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "rating": {
+                "type": "string",
+                "description": "The rating of the restaurant"
+              }
+            },
+            "required": ["rating"]
+          }
+        },
+        {
+          "name": "get_neighborhood_by_rest_specification",
+          "description": "Get the restaurants according to a specific neighborhood",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "restaurants": {
+                "type": "string",
+                "description": "The list of restaurant name"
+              },
+              "neigborhood": {
+                "type": "string",
+                "description": "The neighborhood of a restaurant"
+              }
+            },
+            "required": ["restaurants", "neigborhood"]
+          }
+        },
+        {
+          "name": "get_airbnb_with_max_reviews",
+          "description": "Get the airbnbs with max number of reviews at a specific neighborhood group and room type",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "popularity": {
+                "type": "int",
+                "description": "The number of airbnbs to show"
+              },
+              "neighbourhood_group": {
+                "type": "string",
+                "description": "The neighborhood of an airbnb"
+              },
+              "room_type": {
+                "type": "string",
+                "description": "The type of room of an airbnb"
+              }
+            },
+            "required": ["popularity", "neigborhood_group", "room_type"]
+          }
+        },
+        {
+          "name": "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+          "description": "Get the restaurant info and latitude and longitude by zip code, cuisine, borough and phone number",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "zip_code": {
+                "type": "number",
+                "description": "The zip code of the restaurant"
+              },
+              "cuisine": {
+                "type": "string",
+                "description": "The cuisine of the restaurant e.g. Japanese"
+              },
+              "borough": {
+                "type": "string",
+                "description": "The borough of the restaurant e.g. Bronx"
+              },
+              "phone": {
+                "type": "string",
+                "description": "The phone number of the restaurant"
+              }
+            },
+            "required": ["zip_code", "cuisine", "borough", "phone"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "TRAVEL_FUNC_MULTI_CALL_PARALLEL_SIMPLE_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions, multiple calls and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Multi-call",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 7,
+      "functions": [
+        {
+          "name": "get_avg_prep_time_by_restaurant_name",
+          "description": "Get average prep time of a restaurant",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "restaurant_name": {
+                "type": "string",
+                "description": "The restaurant name"
+              }
+            },
+            "required": ["restaurant_name"]
+          }
+        },
+        {
+          "name": "get_avg_costs_by_restaurant_name",
+          "description": "Get average costs of a restaurant",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "restaurant_name": {
+                "type": "string",
+                "description": "The restaurant name"
+              }
+            },
+            "required": ["restaurant_name"]
+          }
+        },
+        {
+          "name": "get_rating_by_restaurant_name",
+          "description": "Get rating by restaurant name",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "restaurant_name": {
+                "type": "string",
+                "description": "The restaurant name"
+              }
+            },
+            "required": ["restaurant_name"]
+          }
+        },
+        {
+          "name": "get_avg_delivery_time_by_restaurant_name",
+          "description": "Get average delivery time of a restaurant",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "restaurant_name": {
+                "type": "string",
+                "description": "The restaurant name"
+              }
+            },
+            "required": ["restaurant_name"]
+          }
+        },
+        {
+          "name": "get_restaurant_by_cuisine_borough",
+          "description": "Get restaurant by borough and cuisine",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "borough": {
+                "type": "string",
+                "description": "The borough, e.g. Manhattan"
+              },
+              "cuisine": {
+                "type": "string",
+                "description": "The cuisine type of the restaurant, e.g Italian"
+              }
+            },
+            "required": ["borough", "cuisine"]
+          }
+        },
+        {
+          "name": "get_neighbourhood_group",
+          "description": "Get the neighbourhood group of a specific airbnb",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the airbnb, e.g. Brooklyn Home in the Heart of it All"
+              }
+            },
+            "required": ["name"]
+          }
+        },
+        {
+          "name": "get_ratings_per_cuisines",
+          "description": "Get restaurant by borough and cuisine",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "cuisines": {
+                "type": "string",
+                "description": "The cuisine type, e.g Italian"
+              }
+            },
+            "required": ["cuisines"]
+          }
+        }
+      ]
+    },
+
+    {
       "id": "MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2",
       "name": "Music - one and multi parameter functions with elaborative function description, no examples.",
       "domain": "Music",
@@ -180,19 +1214,32 @@
             },
             "required": ["artist_name"]
           }
+        },
+        {
+          "name": "songs_by_release_date",
+          "description": "Retrieves all songs released on a specific date, in a specific month, or in a specific year, based on the provided release date.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date to filter songs by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+              }
+            },
+            "required": ["release_date"]
+          }
         }
       ]
     },
-
     {
       "id": "MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
       "name": "Music - 1 parameter functions with simple function description, no examples.",
       "domain": "Music",
       "categories": ["1 Parameter", "Without Examples", "Simple Description"],
-      "num_functions": 9,
+      "num_functions": 10,
       "functions": [
         {
-          "name": "albums_by_artist",
+          "name": "albums_by_artist_1",
           "description": "Returns all albums by a given artist.",
           "parameters": {
             "type": "object",
@@ -248,6 +1295,20 @@
               }
             },
             "required": ["genres"]
+          }
+        },
+        {
+          "name": "albums_by_release_date",
+          "description": "Retrieves all albums released on a specific date.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date to filter albums by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+              }
+            },
+            "required": ["release_date"]
           }
         },
         {
@@ -307,7 +1368,7 @@
           }
         },
         {
-          "name": "songs_by_artist",
+          "name": "songs_by_artist_1",
           "description": "Returns all songs by a given artist.",
           "parameters": {
             "type": "object",
@@ -331,7 +1392,7 @@
         "Without Examples",
         "Simple Description"
       ],
-      "num_functions": 22,
+      "num_functions": 16,
       "functions": [
         {
           "name": "filter_albums_by_date_range",
@@ -415,21 +1476,21 @@
           }
         },
         {
-          "name": "top_streamed_songs_by_genre",
-          "description": "Retrieves the top streamed songs within a specific genre, sorted by number of streams.",
+          "name": "top_streamed_songs_by_artist",
+          "description": "Retrieves the top streamed songs by specific artist, sorted by number of streams.",
           "parameters": {
             "type": "object",
             "properties": {
-              "genre": {
+              "artist_name": {
                 "type": "string",
-                "description": "The genre of the songs."
+                "description": "The name of the artist."
               },
               "n": {
                 "type": "number",
                 "description": "The number of top-streamed songs to return. Defaults to 5 if not specified."
               }
             },
-            "required": ["genre"]
+            "required": ["artist_name"]
           }
         },
         {
@@ -739,6 +1800,158 @@
               "bpm",
               "threshold"
             ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "MUSIC_FUNC_ONE_PARAM_COMPLEX_DESC_NO_EX_V01",
+      "name": "Music - 1 parameter functions with complex function description, no examples.",
+      "domain": "Music",
+      "categories": ["1 Parameter", "Without Examples", "Complex Description"],
+      "num_functions": 10,
+      "functions": [
+        {
+          "name": "albums_by_artist_1",
+          "description": "Fetches the collection of music releases associated with a specific performer.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        },
+        {
+          "name": "top_rated_albums",
+          "description": "Retrieves the records of most favoured music releases ranked by their scores.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of albums to return. Default is 10."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "artist_by_album",
+          "description": "Fetches the singer who released a stated collection.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "album_name": {
+                "type": "string",
+                "description": "The name of the album."
+              }
+            },
+            "required": ["album_name"]
+          }
+        },
+        {
+          "name": "albums_by_genres",
+          "description": "Retrieves a list of records that can be classified to be of the specified category/type.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of genre strings the albums must contain."
+              }
+            },
+            "required": ["genres"]
+          }
+        },
+        {
+          "name": "albums_by_release_date",
+          "description": "Retrieves all collections launched during a particular timeframe.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date to filter albums by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+              }
+            },
+            "required": ["release_date"]
+          }
+        },
+        {
+          "name": "top_streamed_songs",
+          "description": "Retrieves the trendy tracks which the vast majority has been influenced by",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of top-streamed songs to return. Default is 10."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "songs_by_release_date",
+          "description": "Retrieves all musical pieces launched during a particular timeframe.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date to filter songs by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+              }
+            },
+            "required": ["release_date"]
+          }
+        },
+        {
+          "name": "songs_by_longest_duration",
+          "description": "Retrieves the n highest-ranking tunes arranged by their length.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of top songs to return, based on duration. Defaults to 10 if not specified."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "artist_by_song",
+          "description": "Fetches the performer who released a stated track.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "song_name": {
+                "type": "string",
+                "description": "The name of the song."
+              }
+            },
+            "required": ["song_name"]
+          }
+        },
+        {
+          "name": "songs_by_artist_1",
+          "description": "Retrieves the music recordings that have been released by the specified singer.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist."
+              }
+            },
+            "required": ["artist_name"]
           }
         }
       ]
