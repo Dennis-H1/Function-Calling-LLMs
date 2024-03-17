@@ -285,7 +285,7 @@ class ConfigManager:
         try:
             with open(file_path, encoding="utf-8") as f:
                 json_data = json.load(f)
-                # validate(json_data, schema=json_schema)
+                validate(json_data, schema=json_schema)
         except json.JSONDecodeError:
             raise json.JSONDecodeError(
                 f"There is a JSON formatting error with the {file_path} file.")
