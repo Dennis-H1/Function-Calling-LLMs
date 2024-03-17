@@ -185,7 +185,7 @@ class LLMService():
             final_response = conversation.messages_as_dicts[-1]["content"]
             final_response = re.sub('"', "'", final_response, flags=re.M)
 
-        except (ValueError, FunctionExecutionError, FunctionNotFoundError) as e:  # TODO error messages
+        except (ValueError, FunctionExecutionError, FunctionNotFoundError, openai.error.APIError) as e:
             print(f"Failed to answer due to error: {e}")
             final_response = None
 

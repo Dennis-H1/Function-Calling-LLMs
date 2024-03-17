@@ -66,7 +66,7 @@ class FunctionHandlerService:
         else:
             # minimum required arguments were not provided
             raise IllegalArgumentError(
-                function_name, {set(out.keys()).difference(required)})
+                function_name, arguments)
 
     def handle_function(self, function_name: str, function_args: dict) -> json:
         try:
