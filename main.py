@@ -10,8 +10,8 @@ from src.util.config_manager import ConfigManager
 
 load_dotenv()
 API_KEY = os.environ.get("API_KEY")
-HOST = os.environ.get("HOST")
-PORT = int(os.environ.get("PORT"))
+HOST = "127.0.0.1"
+PORT = 5000
 
 
 def main():
