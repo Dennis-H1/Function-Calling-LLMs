@@ -4,6 +4,8 @@ import openai
 import requests
 from enum import Enum
 from tiktoken import get_encoding
+from dataclasses import dataclass
+from typing import List, Dict
 
 from src.util.errors import FunctionNotFoundError, FunctionExecutionError
 
@@ -16,6 +18,13 @@ class Role(Enum):
     SYSTEM = "system"
     USER = "user"
     TOOL = "tool"
+
+
+@dataclass
+class ModelSolution:
+    functions: List[Dict]
+    parameters: List[Dict]
+    answer: str
 
 
 class Response:
@@ -147,9 +156,6 @@ class LLMService():
         except requests.ConnectionError as e:
             raise e  # TODO exceptions
 
-    def handle_error(self):
-        raise NotImplementedError
-
     def process_question_parallel(self, conversation: Conversation):
         function_arguments = []
         function_names = []
@@ -175,7 +181,7 @@ class LLMService():
 
         return function_names, function_arguments
 
-    def process_question(self, question) -> tuple[str, list[dict], list[dict], int, int, Conversation]:
+    def process_question(self, question) -> tuple[ModelSolution, Conversation]:
         conversation = Conversation()
         conversation.add({"role": Role.SYSTEM.value, "content": self.prompt})
         conversation.add({"role": Role.USER.value, "content": question})
@@ -197,7 +203,7 @@ class LLMService():
             function_names, function_arguments = self.process_question_sequential(
                 conversation)
 
-        return final_response, function_names, function_arguments, conversation
+        return ModelSolution(function_names, function_arguments, final_response), conversation
 
     def get_tokens(self, string: str, encoding_name: str = "cl100k_base") -> int:
         """Returns the number of tokens in a text string."""

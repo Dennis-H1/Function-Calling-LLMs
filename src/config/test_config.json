@@ -1,5 +1,5 @@
 {
-  "id": "TRAVEL_Q_SINGLE_STEP_ONE_SHOT_V01",
+  "id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1",
   "name": "Mannheim Function Calling Benchmark - gpt-4-1106-preview Music wo/ Example Values",
   "description": "Configuration for running the benchmark against GPT4.5 using the single step music questions, functions with up to 5 parameters and simple function descriptions.",
   "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
@@ -9,7 +9,7 @@
     "temperature": 0
   },
   "prompt": "You are a helpful assistant. Answer briefly.",
-  "function_set": "TRAVEL_FUNC_ONE_PARAM_COMPLEX_DESC_NO_EX_V01",
-  "question_set": "TRAVEL_Q_SINGLE_STEP_ONE_SHOT_V01",
-  "output_file": "./src/config/out/TRAVEL_Q_SINGLE_STEP_ONE_SHOT_V01.json"
+  "function_set": "MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2",
+  "question_set": "MUSIC_Q_SEQ_MULTI_STEP_ONE_SHOT_V1",
+  "output_file": "./src/config/out/MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1.json"
 }

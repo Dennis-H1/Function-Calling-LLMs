@@ -1,10 +1,11 @@
 from tqdm import tqdm
 from datetime import datetime
-from typing import Dict, List, Optional
-from dataclasses import dataclass, field, asdict
+from typing import Dict, List
+from dataclasses import dataclass, field
 
-from src.service.evaluator import Evaluator, EvaluationCategory
-from src.service.llm_service import LLMService
+from src.service.evaluator import Evaluator, Evaluation, Path
+from src.service.llm_service import LLMService, ModelSolution
+from src.util.to_dict import to_dict
 
 
 @dataclass
@@ -66,18 +67,6 @@ class Statistics:
 @dataclass
 class QuestionResult:
 
-    @dataclass
-    class ModelSolution:
-        functions: List[Dict]
-        parameters: List[Dict]
-        answer: str
-
-    @dataclass
-    class Evaluation:
-        functions: EvaluationCategory
-        parameters: EvaluationCategory
-        answer: EvaluationCategory
-
     question_id: str
     category: str
     question: str
@@ -95,8 +84,8 @@ class Run:
     statistics: Statistics
     question_result: List[QuestionResult]
 
-    def to_dict(self) -> dict:
-        return asdict(self)
+    def to_dict(self):
+        return to_dict(self)
 
 
 class Pipeline:
@@ -130,46 +119,34 @@ class Pipeline:
         for question in tqdm(self.question_set["questions"], desc="Test Run", unit="Question"):
 
             # llm response
-            response, function_names, function_args, conversation = self.llm_service.process_question(
+            model_solution, conversation = self.llm_service.process_question(
                 question["question"])
-
-            model_solution = QuestionResult.ModelSolution(
-                function_names, function_args, response),
 
             tokens_in, tokens_out = self.llm_service.get_tokens_from_conversation(
                 conversation)
 
             # evaluation
-            correct_functions, function_eval = Evaluator.eval_functions(
-                function_names, question["target"]["solution_paths"])
-            correct_parameters, argument_eval = Evaluator.eval_arguments(
-                function_args, question["target"]["solution_paths"])
-            response_eval = Evaluator.eval_response(
-                response, question["target"]["expected_answer"])
-
-            evaluation = QuestionResult.Evaluation(
-                function_eval.value, argument_eval.value, response_eval.value)
-
-            overall_match = (function_eval == EvaluationCategory.CORRECT and argument_eval ==
-                             EvaluationCategory.CORRECT and response_eval == EvaluationCategory.CORRECT)
+            evaluation = Evaluator.get_overall_evaluation(model_solution, [Path(
+                path["functions"], path["parameters"]) for path in question["target"]["solution_paths"]], question["target"]["expected_answer"])
 
             # statistics
-            total_functions = len(function_names)
-            total_parameters = len(
-                [param for params in function_args for param in params])
-            answer_correct = 1 if response_eval == EvaluationCategory.CORRECT else 0
+            total_functions = evaluation.get_total_number_functions()
+            total_parameters = evaluation.get_total_number_arguments()
+            correct_functions = evaluation.get_num_correct_functions()
+            correct_parameters = evaluation.get_num_correct_arguments()
+            answer_correct = evaluation.get_answer_correct()
 
             statistics.update_functions(correct_functions, total_functions)
             statistics.update_parameters(correct_parameters, total_parameters)
-            statistics.update_answers(answer_correct)
+            statistics.update_answers(int(answer_correct))
             statistics.update_tokens(tokens_in, tokens_out)
 
-            # question result
+            # result
             result = QuestionResult(question["id"],
                                     question["category"],
                                     question["question"],
                                     question["motivation"],
-                                    overall_match,
+                                    evaluation.get_overall_match(),
                                     question["target"]["solution_paths"],
                                     model_solution,
                                     question["target"]["expected_answer"],
