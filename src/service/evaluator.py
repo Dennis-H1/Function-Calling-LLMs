@@ -102,7 +102,7 @@ class Evaluator:
         len_target_parameters = sum([len(params)
                                      for params in target_parameters])
 
-        if matches == len_target_parameters:
+        if matches == len_target_parameters and matches > 0:
             evaluation_category = EvaluationCategory.CORRECT
         elif matches > 0:
             evaluation_category = EvaluationCategory.PARTIALLY_CORRECT
@@ -234,36 +234,37 @@ class Evaluator:
             model_solution.functions, correct_paths
         )
 
-        def generate_n_gram(l: list[str], n: int):
-            if n > len(l) or n <= 0:
-                return []
-
-            out = []
-            for i in range(len(l)):
-                if i + n > len(l):
-                    break
-                else:
-                    out.append(l[i: i + n])
-            return out
-
-        def find_n_gram(called, path, n: int):
-            called_n_grams = generate_n_gram(called, n)
-            target_n_grams = generate_n_gram(path.functions, n)
-
-            i = 0
-            for called, target in zip(called_n_grams, target_n_grams):
-                if called == target:
+        def find_n_gram(large: list[str], small: list[str], n: int):
+            for i in range(len(large) - n + 1):
+                matched = all([i == l for i, l in zip(small, large[i:])])
+                if matched:
                     return i, i + n
-                i += 1
+
             return 0, 0
 
-        start, end = find_n_gram(
-            model_solution.functions, gold_path, num_correct_functions
-        )
+        if len(gold_path.functions) >= len(model_solution.functions):
+            start, end = find_n_gram(
+                gold_path.functions, model_solution.functions, len(gold_path.functions))
+
+            print(start, end)
+            print(gold_path.parameters)
+
+            gold_path.parameters = gold_path.parameters[start: end]
+
+        else:
+            start, end = find_n_gram(
+                model_solution.functions, gold_path.functions, num_correct_functions)
+
+            print(start, end)
+            print(model_solution.parameters)
+
+            model_solution.parameters = model_solution.parameters[start: end]
+
+        print(num_correct_functions, gold_path, start, end)
 
         num_correct_arguments, argument_eval = Evaluator.eval_arguments(
             model_solution.parameters,
-            gold_path.parameters[start:end],
+            gold_path.parameters,
         )
 
         response_eval = Evaluator.eval_response(

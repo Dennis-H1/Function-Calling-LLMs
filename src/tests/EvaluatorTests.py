@@ -355,6 +355,25 @@ class EvaluatorTests(unittest.TestCase):
         self.assertEqual(num_correct_arguments, 1)
         self.assertEqual(argument_eval, EvaluationCategory.PARTIALLY_CORRECT)
 
+    def test_param4(self):
+        model_solution = {
+            "parameters": [{"release_date": "2010"}]
+        }
+
+        gold_path = Path(
+            functions=["top_streamed_songs", "songs_by_release_date"],
+            parameters=[{"n": 5}, {"release_date": "2010"}],
+        )
+
+        start, end = 1, 2
+
+        num_correct_arguments, argument_eval = Evaluator.eval_arguments(
+            model_solution["parameters"],
+            gold_path.parameters[start:end],
+        )
+        self.assertEqual(num_correct_arguments, 1)
+        self.assertEqual(argument_eval, EvaluationCategory.CORRECT)
+
 
 if __name__ == "__main__":
     unittest.main()
