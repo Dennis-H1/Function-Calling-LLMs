@@ -651,6 +651,34 @@ def instrumental_songs(instrumentalness: float, valence: float, danceability: fl
     return filtered_songs.to_dict(orient='records')
 
 
+def albums_by_release_date_1(release_date: str):
+    """
+    Get all albums released on a specific date, month, or year.
+
+    Parameters:
+        release_date (str): Release date to filter by. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format.
+
+    Returns:
+        list[dict]: A list of dictionaries representing all albums released on the specified date.
+    """
+    # Determine the length of the release_date string to understand the format
+    date_length = len(release_date)
+
+    if date_length == 4:  # Year format YYYY
+        filter_condition = (
+            ALBUMS['release_date'].str.startswith(release_date))
+    elif date_length == 7:  # Month format YYYY-MM
+        filter_condition = (ALBUMS['release_date'].str[:7] == release_date)
+    elif date_length == 10:  # Day format YYYY-MM-DD
+        filter_condition = (ALBUMS['release_date'] == release_date)
+    else:
+        raise ValueError(
+            "Invalid date format. Please use YYYY, YYYY-MM, or YYYY-MM-DD.")
+
+    filtered_albums = ALBUMS[filter_condition]
+    return filtered_albums.to_dict(orient='records')
+
+
 def artist_info(artist_name: str):
     artist_info = ARTISTS_SQL[ARTISTS_SQL['Name'] == artist_name]
     return artist_info.to_dict(orient='records')
@@ -707,7 +735,7 @@ def sum_streams_given_songs(songs: list[str]):
     return {"total_streams": total_streams}
 
 
-def albums_by_release_date(release_date: str):
+def albums_by_release_date_2(release_date: str):
     date_length = len(release_date)
 
     if date_length == 4:  # Year format YYYY
@@ -750,7 +778,7 @@ def highest_rated_albums(rating_threshold: float = 4.0, min_ratings: int = 100):
 class MusicFunctions:
     functions = set((
         # single-step functions
-        albums_by_artist_1,  # TODO duplicate => change in function_set
+        albums_by_artist_1,
         albums_by_date_and_genres,
         albums_by_dates_genres_rating,
         albums_by_genres,
@@ -763,7 +791,7 @@ class MusicFunctions:
         high_rated_reviewed_albums,
         high_rated_reviewed_albums_by_date,
         instrumental_songs,
-        songs_by_artist_1,  # TODO duplicate => change in function_set
+        songs_by_artist_1,
         songs_by_danceability_explicitness,
         songs_by_danceability_explicitness_speechiness,
         songs_by_longest_duration,
@@ -775,11 +803,12 @@ class MusicFunctions:
         top_streamed_songs_by_artist_date,
         top_streamed_songs_by_artist_date_range,
         unique_albums,
+        albums_by_release_date_1,
 
         # multi-step functions
         album_info,
-        albums_by_artist_2,  # TODO duplicate => change in function_set
-        albums_by_release_date,
+        albums_by_artist_2,
+        albums_by_release_date_2,
         artist_info,
         artists_by_genres,
         filter_by_release_date,
@@ -787,6 +816,6 @@ class MusicFunctions:
         max_rating_given_albums,
         song_info,
         songs_by_album,
-        songs_by_artist_2,  # TODO duplicate => change in function_set
+        songs_by_artist_2,
         sum_streams_given_songs
     ))
