@@ -126,8 +126,10 @@ class Pipeline:
                 conversation)
 
             # evaluation
-            evaluation = Evaluator.get_overall_evaluation(model_solution, [Path(
-                path["functions"], path["parameters"]) for path in question["target"]["solution_paths"]], question["target"]["expected_answer"])
+            paths = [Path(path["functions"], path["parameters"])
+                     for path in question["target"]["solution_paths"]]
+            evaluation = Evaluator.get_overall_evaluation(
+                model_solution, paths, question["target"]["expected_answer"])
 
             # statistics
             total_functions = evaluation.get_total_number_functions()

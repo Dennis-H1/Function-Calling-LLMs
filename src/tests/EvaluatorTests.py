@@ -1,262 +1,359 @@
 import unittest
-from src.service.evaluator import Evaluator, EvaluationCategory
+from src.service.evaluator import Evaluator, EvaluationCategory, Path
 
 
 class EvaluatorTests(unittest.TestCase):
+    def test_eval(self):
 
-    # Description of the eval_functions algorithm:
-    # for each path:
-    #   for each (function in called, function in path): do fcn by fcn check for both lists...
-    #   if no match: Incorrect
-    #   if any match: Partially Correct
-    #   if all match: Correct
-    # Among all processed paths: select the path that has the most matches
+        model_solution_1 = ["top_streamed_songs", "songs_by_release_date"]
+        model_solution_2 = ["top_streamed_songs"]
+        model_solution_3 = []
+        model_solution_4 = ["incorrect_function"]
 
-    def test_eval_functions_single_paths_different_lenghts(self):
-
-        path1 = [
+        correct_paths_1 = [
             {
                 "path_id": 1,
+                "functions": ["top_streamed_songs", "songs_by_release_date"],
+                "parameters": [
+                    {"n": 5}, {"release_date": "2010"}
+                ]
+            }
+        ]
+
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_1, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_1]
+        )
+        self.assertEqual(num_correct_functions, 2)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.CORRECT)
+
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_2, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_1]
+        )
+        self.assertEqual(num_correct_functions, 1)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.PARTIALLY_CORRECT)
+
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_3, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_1]
+        )
+        self.assertEqual(num_correct_functions, 0)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.INCORRECT)
+
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_4, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_1]
+        )
+        self.assertEqual(num_correct_functions, 0)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.INCORRECT)
+
+    def test_eval2(self):
+
+        model_solution_1 = ["top_streamed_songs", "songs_by_release_date"]
+        model_solution_2 = ["top_streamed_songs"]
+        model_solution_4 = ["incorrect_function"]
+
+        correct_paths_2 = [
+            {
+                "path_id": 2,
+                "functions": ["top_streamed_songs"],
+                "parameters": [
+                    {"n": 5}, {"release_date": "2010"}
+                ]
+            }
+        ]
+
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_1, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_2]
+        )
+        self.assertEqual(num_correct_functions, 1)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.PARTIALLY_CORRECT)
+
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_2, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_2]
+        )
+        self.assertEqual(num_correct_functions, 1)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.CORRECT)
+
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_4, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_2]
+        )
+        self.assertEqual(num_correct_functions, 0)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.INCORRECT)
+
+    def test_eval3(self):
+
+        model_solution_1 = ["top_streamed_songs", "songs_by_release_date"]
+        model_solution_2 = ["top_streamed_songs"]
+        model_solution_4 = ["incorrect_function"]
+        correct_paths_3 = [
+            {
+                "path_id": 3,
                 "functions": [],
-                "parameters": []
+                "parameters": [
+                    {"n": 5}, {"release_date": "2010"}
+                ]
             }
         ]
 
-        path2 = [
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_1, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_3]
+        )
+        self.assertEqual(num_correct_functions, 0)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.INCORRECT)
+
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_2, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_3]
+        )
+        self.assertEqual(num_correct_functions, 0)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.INCORRECT)
+
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_4, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_3]
+        )
+        self.assertEqual(num_correct_functions, 0)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.INCORRECT)
+
+    def test_eval4(self):
+        model_solution_1 = ["top_streamed_songs", "songs_by_release_date"]
+        model_solution_2 = ["top_streamed_songs"]
+        model_solution_4 = ["incorrect_function"]
+        correct_paths_5 = [
             {
-                "path_id": 1,
-                "functions": ["top_rated_albums"],
-                "parameters": [{}]
+                "path_id": 3,
+                "functions": ["other_function_not_in_called"],
+                "parameters": [
+                    {"n": 5}, {"release_date": "2010"}
+                ]
             }
         ]
 
-        path3 = [
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_1, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_5]
+        )
+        self.assertEqual(num_correct_functions, 0)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.INCORRECT)
+
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_2, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_5]
+        )
+        self.assertEqual(num_correct_functions, 0)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.INCORRECT)
+
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_4, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_5]
+        )
+        self.assertEqual(num_correct_functions, 0)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.INCORRECT)
+
+    def test_eval4(self):
+        model_solution_1 = ["top_streamed_songs", "songs_by_release_date"]
+        model_solution_4 = ["incorrect_function", "called"]
+        correct_paths_5 = [
             {
-                "path_id": 1,
-                "functions": ["top_rated_albums", "albums_by_artist", "top_streamed_albums"],
-                "parameters": [{}, {}, {}]
+                "path_id": 3,
+                "functions": ["called"],
+                "parameters": [
+                    {"n": 5}, {"release_date": "2010"}
+                ]
             }
         ]
 
-        path4 = [
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_1, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_5]
+        )
+        self.assertEqual(num_correct_functions, 0)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.INCORRECT)
+
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_4, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_5]
+        )
+        self.assertEqual(num_correct_functions, 1)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.PARTIALLY_CORRECT)
+
+    def test_eval5(self):
+        model_solution_1 = ["f1", "f2"]
+        correct_paths_5 = [
             {
-                "path_id": 1,
-                "functions": ["albums_by_release_date",
-                              "albums_by_release_date"],
-                "parameters": [{}, {}]
-            }
-        ]
-
-        path5 = [
-            {
-                "path_id": 1,
-                "functions": ["albums_by_release_date", "albums_by_artist", "top_streamed_songs", "songs_by_artist"],
-                "parameters": [{}, {}, {}, {}]
-            }
-        ]
-
-        called1 = []
-        called2 = ["top_rated_albums"]
-        called3 = ["top_rated_albums",
-                   "albums_by_artist", "top_streamed_albums"]
-        called4 = ["albums_by_release_date",
-                   "albums_by_release_date"]
-        called5 = ["albums_by_release_date", "albums_by_artist",
-                   "top_streamed_songs", "songs_by_artist"]
-
-        self.assertEqual((0, EvaluationCategory.INCORRECT),
-                         Evaluator.eval_functions(called1, path1))  # Exception Case (never reached in production)
-        self.assertEqual((1, EvaluationCategory.CORRECT),
-                         Evaluator.eval_functions(called2, path2))
-        self.assertEqual((3, EvaluationCategory.CORRECT),
-                         Evaluator.eval_functions(called3, path3))
-        self.assertEqual((2, EvaluationCategory.CORRECT),
-                         Evaluator.eval_functions(called4, path4))
-        self.assertEqual((4, EvaluationCategory.CORRECT),
-                         Evaluator.eval_functions(called5, path5))
-
-    def test_eval_functions_single_paths_different_order(self):
-        path1 = [
-            {
-                "path_id": 1,
-                "functions": ["top_rated_albums", "albums_by_artist"],
-                "parameters": [{}, {}]
-            }
-        ]
-
-        path2 = [
-            {
-                "path_id": 1,
-                "functions": ["top_rated_albums", "albums_by_artist", "albums_by_artist"],
-                "parameters": [{}, {}, {}]
-            }
-        ]
-
-        path3 = [
-            {
-                "path_id": 1,
-                "functions": ["top_rated_albums", "albums_by_artist", "albums_by_artist", "albums_by_artist", "albums_by_artist"],
-                "parameters": [{}, {}, {}, {}, {}]
-            }
-        ]
-
-        called1 = ["albums_by_artist", "top_rated_albums"]
-        called2 = ["albums_by_artist", "top_rated_albums", "albums_by_artist"]
-        called3 = ["albums_by_artist", "top_rated_albums",
-                   "albums_by_artist", "albums_by_artist", "albums_by_artist"]
-
-        self.assertEqual((0, EvaluationCategory.INCORRECT),
-                         Evaluator.eval_functions(called1, path1))
-        self.assertEqual((1, EvaluationCategory.PARTIALLY_CORRECT),
-                         Evaluator.eval_functions(called2, path2))
-        self.assertEqual((3, EvaluationCategory.PARTIALLY_CORRECT),
-                         Evaluator.eval_functions(called3, path3))
-
-    def test_eval_functions_multiple_paths_different_lengths(self):
-        path1 = [
-            {
-                "path_id": 1,
-                "functions": ["top_rated_albums", "top_rated_albums", "top_rated_albums", "top_rated_albums", "top_rated_albums"],
-                "parameters": [{}]
+                "path_id": 3,
+                "functions": ["called"],
+                "parameters": [
+                    {"n": 5}, {"release_date": "2010"}
+                ]
             },
             {
-                "path_id": 2,
-                "functions": ["top_streamed_songs"],
-                "parameters": [{}]
+                "path_id": 4,
+                "functions": ["f1", "other"],
+                "parameters": [
+                    {"n": 5}, {"release_date": "2010"}
+                ]
             }
         ]
 
-        called1 = ["top_rated_albums"]
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_1, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_5]
+        )
+        self.assertEqual(num_correct_functions, 1)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.PARTIALLY_CORRECT)
 
-        self.assertEqual((1, EvaluationCategory.PARTIALLY_CORRECT),
-                         Evaluator.eval_functions(called1, path1))
-
-    def test_eval_functions_multiple_paths_different_order(self):
-
-        path1 = [
+    def test_eval6(self):
+        model_solution_1 = ["f1", "f2"]
+        correct_paths_5 = [
             {
-                "path_id": 1,
-                "functions": ["top_rated_albums"],
-                "parameters": [{}]
+                "path_id": 3,
+                "functions": ["called"],
+                "parameters": [
+                    {"n": 5}
+                ]
             },
             {
-                "path_id": 2,
-                "functions": ["top_streamed_songs"],
-                "parameters": [{}]
+                "path_id": 4,
+                "functions": ["called", "called"],
+                "parameters": [
+                    {"n": 5}, {"release_date": "2010"}
+                ]
             }
         ]
 
-        path2 = [
-            {
-                "path_id": 1,
-                "functions": ["top_rated_albums", "top_streamed_songs", "unique_songs", "albums_by_artist"],
-                "parameters": [{}, {}, {}, {}]
-            },
-            {
-                "path_id": 2,
-                "functions": ["top_streamed_songs"],
-                "parameters": [{}]
-            }
-        ]
+        _, num_correct_functions, function_eval = Evaluator.eval_functions(
+            model_solution_1, [Path(
+                path["functions"], path["parameters"]) for path in correct_paths_5]
+        )
+        self.assertEqual(num_correct_functions, 0)
+        self.assertEqual(function_eval,
+                         EvaluationCategory.INCORRECT)
 
-        path3 = [
-            {
-                "path_id": 1,
-                "functions": ["top_rated_albums", "top_streamed_songs", "unique_songs", "albums_by_artist"],
-                "parameters": [{}, {}, {}, {}]
-            },
-            {
-                "path_id": 2,
-                "functions": ["songs_by_artist", "songs_by_artist", "songs_by_artist", "songs_by_artist"],
-                "parameters": [{}]
-            }
-        ]
+    def test_param(self):
 
-        called1 = ["top_rated_albums"]
-        called2 = ["top_rated_albums", "top_streamed_songs",
-                   "unique_songs", "albums_by_artist"]
-        called3 = ["top_rated_albums", "songs_by_artist",
-                   "songs_by_artist", "songs_by_artist"]
+        model_solution = {
+            "parameters": [{"n": 10}]
+        }
 
-        self.assertEqual((1, EvaluationCategory.CORRECT),
-                         Evaluator.eval_functions(called1, path1))
-        self.assertEqual((4, EvaluationCategory.CORRECT),
-                         Evaluator.eval_functions(called2, path2))
-        self.assertEqual((3, EvaluationCategory.PARTIALLY_CORRECT),
-                         Evaluator.eval_functions(called3, path3))
+        gold_path = Path(functions=[], parameters=[
+            {"n": 10},
+            {"n": 20}
+        ])
+        start, end = 0, 1
 
-    # Description of the eval_arguments algorithm:
-    # for each path:
-    #   for each (paramterset in called, parameterset in path): compare their keys & values
-    #   if no match: Incorrect (also if lists do not exactly contain all the items)
-    #   if any match: Partially Correct if ANY key:value (parameter) pair matches
-    #   if all match: Correct
-    # Among all processed paths: select the path that has the most matches
-    # If no matches at all for all paths: return the first path
+        num_correct_arguments, argument_eval = Evaluator.eval_arguments(
+            model_solution["parameters"],
+            gold_path.parameters[start:end],
+        )
 
-    def test_eval_arguments_single_paths(self):
-        path1 = [
-            {
-                "path_id": 1,
-                "functions": ["top_rated_albums", "items_by_numbers"],
-                "parameters": [{"n": 30}, {"items": [1, 2, 3, 4, 5], "k": 30}]
-            }
-        ]
+        self.assertEqual(num_correct_arguments, 1)
+        self.assertEqual(argument_eval, EvaluationCategory.CORRECT)
 
-        path2 = [
-            {
-                "path_id": 1,
-                "functions": ["top_rated_albums"],
-                "parameters": [{"items": [1, 2, 3, 4, 5, 6]}]
-            }
-        ]
+    def test_param2(self):
+        model_solution = {
+            "parameters": [{"test_param": [1, 2, 3, 4, 5]}]
+        }
 
-        called1 = [{"n": 30}, {"items": [1, 2, 3, 4, 5], "k": 30}]
-        called2 = [{"items": [1, 2, 3, 4, 5]}]
+        gold_path = Path(functions=[], parameters=[
+            {"n": [1, 2, 3, 4, 5]},
+        ])
 
-        self.assertEqual((3, EvaluationCategory.CORRECT),
-                         Evaluator.eval_arguments(called1, path1))
-        self.assertEqual((0, EvaluationCategory.INCORRECT),
-                         Evaluator.eval_arguments(called2, path2))
+        gold_path2 = Path(functions=[], parameters=[
+            {"test_param": [1, 2, 3, 4, 5]},
+        ])
 
-    def test_eval_arguments_multiple_paths(self):
-        path1 = [
-            {
-                "path_id": 1,
-                "functions": ["top_rated_albums", "items_by_numbers"],
-                "parameters": [{"items": [1, 2, 3, 4, 5]}, {"n": 30}]
-            },
-            {
-                "path_id": 2,
-                "functions": ["top_rated_albums", "items_by_numbers"],
-                "parameters": [{"n": 30}, {"items": [1, 2, 3, 4, 5]}]
-            }
-        ]
+        gold_path3 = Path(functions=[], parameters=[
+            {"test_param": [5, 4, 3, 2, 1]},
+        ])
 
-        path2 = [
-            {
-                "path_id": 1,
-                "functions": ["top_rated_albums", "items_by_numbers"],
-                "parameters": [{"n": 30, "k": 999}]
-            },
-            {
-                "path_id": 1,
-                "functions": ["top_rated_albums", "items_by_numbers"],
-                "parameters": [{"n": 30, "k": 1000}]
-            }
+        start, end = 0, 1
 
-        ]
+        num_correct_arguments, argument_eval = Evaluator.eval_arguments(
+            model_solution["parameters"],
+            gold_path.parameters[start:end],
+        )
 
-        called1 = [{"n": 30}, {"items": [1, 2, 3, 4, 5]}]
-        called2 = [{"n": 30, "k": 40}]
+        self.assertEqual(num_correct_arguments, 0)
+        self.assertEqual(argument_eval, EvaluationCategory.INCORRECT)
 
-        self.assertEqual((2, EvaluationCategory.CORRECT),
-                         Evaluator.eval_arguments(called1, path1))
-        self.assertEqual((1, EvaluationCategory.PARTIALLY_CORRECT),
-                         Evaluator.eval_arguments(called2, path2))
+        num_correct_arguments, argument_eval = Evaluator.eval_arguments(
+            model_solution["parameters"],
+            gold_path2.parameters[start:end],
+        )
 
-    def test_eval_functions(self):
-        self.assertEqual()
+        self.assertEqual(num_correct_arguments, 1)
+        self.assertEqual(argument_eval, EvaluationCategory.CORRECT)
+
+        num_correct_arguments, argument_eval = Evaluator.eval_arguments(
+            model_solution["parameters"],
+            gold_path3.parameters[start:end],
+        )
+
+        self.assertEqual(num_correct_arguments, 1)
+        self.assertEqual(argument_eval, EvaluationCategory.CORRECT)
+
+    def test_param3(self):
+        model_solution = {
+            "parameters": [{"n": 1, "m": 2}]
+        }
+
+        gold_path = Path(functions=[], parameters=[
+            {"n": 1, "m": 2},
+        ])
+
+        gold_path2 = Path(functions=[], parameters=[
+            {"n": 1, "p": 2},
+        ])
+
+        gold_path3 = Path(functions=[], parameters=[
+            {"n": 1, "m": 100},
+        ])
+
+        start, end = 0, 2
+
+        num_correct_arguments, argument_eval = Evaluator.eval_arguments(
+            model_solution["parameters"],
+            gold_path.parameters[start:end],
+        )
+        self.assertEqual(num_correct_arguments, 2)
+        self.assertEqual(argument_eval, EvaluationCategory.CORRECT)
+
+        num_correct_arguments, argument_eval = Evaluator.eval_arguments(
+            model_solution["parameters"],
+            gold_path2.parameters[start:end],
+        )
+        self.assertEqual(num_correct_arguments, 1)
+        self.assertEqual(argument_eval, EvaluationCategory.PARTIALLY_CORRECT)
+
+        num_correct_arguments, argument_eval = Evaluator.eval_arguments(
+            model_solution["parameters"],
+            gold_path3.parameters[start:end],
+        )
+        self.assertEqual(num_correct_arguments, 1)
+        self.assertEqual(argument_eval, EvaluationCategory.PARTIALLY_CORRECT)
 
 
 if __name__ == "__main__":

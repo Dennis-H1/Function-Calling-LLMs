@@ -76,7 +76,6 @@ class Evaluator:
     def eval_arguments(
         called_parameters: list[dict],
         target_parameters: list[dict],
-        target_all_parameters: list[dict],
     ):
         matches = 0
         for called_params, target_params in zip(called_parameters, target_parameters):
@@ -100,13 +99,12 @@ class Evaluator:
                     elif value == target_params[key]:
                         matches += 1
 
-        len_total_parameters = sum([len(params) for params in target_all_parameters])
+        len_target_parameters = sum([len(params)
+                                     for params in target_parameters])
 
-        print(len_total_parameters)
-
-        if matches == len_total_parameters:
+        if matches == len_target_parameters:
             evaluation_category = EvaluationCategory.CORRECT
-        elif matches > len_total_parameters:
+        elif matches > 0:
             evaluation_category = EvaluationCategory.PARTIALLY_CORRECT
         else:
             evaluation_category = EvaluationCategory.INCORRECT
@@ -116,7 +114,7 @@ class Evaluator:
     @staticmethod
     def eval_functions(
         called_functions: list[str], correct_paths: list[Path]
-    ) -> tuple[int, EvaluationCategory]:
+    ) -> tuple[Path, int, EvaluationCategory]:
 
         def generate_n_gram(l: list[str], n: int):
             if n > len(l) or n <= 0:
@@ -127,14 +125,15 @@ class Evaluator:
                 if i + n > len(l):
                     break
                 else:
-                    out.append(l[i : i + n])
+                    out.append(l[i: i + n])
             return out
 
-        def best_n_gram(called, paths):
+        def best_n_gram(called: list[str], paths: list[Path]):
             max_n = 0
             max_path = paths[0]
 
-            max_range = min(len(called), max([len(path.functions) for path in paths]))
+            max_range = min(len(called), max(
+                [len(path.functions) for path in paths]))
             for n in range(1, max_range + 1):
                 for path in paths:
                     n_grams_target = generate_n_gram(path.functions, n)
@@ -147,17 +146,16 @@ class Evaluator:
                         max_n += 1
                         max_path = path
                         break
-            return max_path, n
+            return max_path, max_n
 
         max_path, n = best_n_gram(called_functions, correct_paths)
-        num_functions = max_path.get_num_functions()
 
-        if num_functions == len(called_functions):
+        if n != 0 and n == len(max_path.functions) and len(max_path.functions) == len(called_functions):
             evaluation_category = EvaluationCategory.CORRECT
-        elif num_functions > len(called_functions):
-            evaluation_category = EvaluationCategory.PARTIALLY_CORRECT
-        else:
+        elif n == 0:
             evaluation_category = EvaluationCategory.INCORRECT
+        else:
+            evaluation_category = EvaluationCategory.PARTIALLY_CORRECT
 
         return max_path, n, evaluation_category
 
@@ -170,7 +168,7 @@ class Evaluator:
             model_response: dict, target_response: dict, ordered_items: dict
         ):
 
-            if model_response.keys() != target_response.keys():
+            if sorted(model_response.keys()) != sorted(target_response.keys()):
                 return False
 
             for key in model_response.keys():
@@ -184,6 +182,14 @@ class Evaluator:
                     ):
                         if sorted(model_response[key]) != sorted(target_response[key]):
                             return False
+
+                    # round numbers by 2 decimals
+                    elif isinstance(model_response[key], Number) and isinstance(
+                        target_response[key], Number
+                    ):
+                        if round(model_response[key], 2) != round(target_response[key], 2):
+                            return False
+
                     else:
                         if model_response[key] != target_response[key]:
                             return False
@@ -201,7 +207,8 @@ class Evaluator:
         model_response = re.sub(r"\s*:", ":", model_response)
         model_response = re.sub('(?<=[\s\w])"(?![:,}\]])', "'", model_response)
 
-        model_response_raw = re.search(r"\{(.|\n)*?\}", model_response, re.DOTALL)
+        model_response_raw = re.search(
+            r"\{(.|\n)*?\}", model_response, re.DOTALL)
 
         if model_response_raw:
             try:
@@ -236,7 +243,7 @@ class Evaluator:
                 if i + n > len(l):
                     break
                 else:
-                    out.append(l[i : i + n])
+                    out.append(l[i: i + n])
             return out
 
         def find_n_gram(called, path, n: int):
@@ -257,15 +264,10 @@ class Evaluator:
         num_correct_arguments, argument_eval = Evaluator.eval_arguments(
             model_solution.parameters,
             gold_path.parameters[start:end],
-            gold_path.parameters,
         )
 
-        print(f"Start: {start}, End: {end}")
-
-        print(model_solution.parameters, gold_path.parameters[start:end])
-        print(f"Num correct:  {num_correct_arguments} Eval: {argument_eval.value}")
-
-        response_eval = Evaluator.eval_response(model_solution.answer, target_response)
+        response_eval = Evaluator.eval_response(
+            model_solution.answer, target_response)
 
         return Evaluation(
             function_eval,
