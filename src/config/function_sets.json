@@ -83,7 +83,7 @@
         },
         {
           "name": "get_listings_by_review_date",
-          "description": "Get the listings for a specific review date",
+          "description": "Get the listings for a specific review date in the format DD-MM-YY",
           "parameters": {
             "type": "object",
             "properties": {
@@ -116,7 +116,7 @@
             "type": "object",
             "properties": {
               "nr_of_listings": {
-                "type": "number",
+                "type": "integer",
                 "description": "The number of listings, e.g. 3"
               }
             },
@@ -125,12 +125,12 @@
         },
         {
           "name": "get_listing_by_price",
-          "description": "Get the airbnbs for a specific price",
+          "description": "Get the airbnbs for a specific price in US dollars currency",
           "parameters": {
             "type": "object",
             "properties": {
               "price": {
-                "type": "number",
+                "type": "integer",
                 "description": "The price of an airbnb per night, e.g. 90 dollars"
               }
             },
@@ -139,12 +139,12 @@
         },
         {
           "name": "get_listing_by_lower_price",
-          "description": "Get the airbnbs for a price equal or less to the price requested",
+          "description": "Get the airbnbs for a price equal or less to the price requested in US dollars",
           "parameters": {
             "type": "object",
             "properties": {
               "price": {
-                "type": "number",
+                "type": "integer",
                 "description": "The price of an airbnb per night, e.g. 90 dollars"
               }
             },
@@ -278,7 +278,7 @@
         },
         {
           "name": "get_listing_price",
-          "description": "Provide the rental cost for the Airbnb accommodation.",
+          "description": "Provide the rental cost for the Airbnb accommodation in US dollars.",
           "parameters": {
             "type": "object",
             "properties": {
@@ -306,7 +306,7 @@
         },
         {
           "name": "get_listings_by_review_date",
-          "description": "Get the Airbnb properties associated with a particular date of feedback.",
+          "description": "Get the Airbnb properties associated with a particular date of feedback in the date format DD-MM-YY.",
           "parameters": {
             "type": "object",
             "properties": {
@@ -339,7 +339,7 @@
             "type": "object",
             "properties": {
               "nr_of_listings": {
-                "type": "number",
+                "type": "integer",
                 "description": "The number of listings, e.g. 3"
               }
             },
@@ -348,12 +348,12 @@
         },
         {
           "name": "get_listing_by_price",
-          "description": "Locate Airbnb rentals available at a specified price point.",
+          "description": "Locate Airbnb rentals available at a specified price point in US dollars.",
           "parameters": {
             "type": "object",
             "properties": {
               "price": {
-                "type": "number",
+                "type": "integer",
                 "description": "The price of an airbnb per night, e.g. 90 dollars"
               }
             },
@@ -362,12 +362,12 @@
         },
         {
           "name": "get_listing_by_lower_price",
-          "description": "Get the Airbnb properties priced at or below the specified amount.",
+          "description": "Get the Airbnb properties priced at or below the specified amount in US dollars.",
           "parameters": {
             "type": "object",
             "properties": {
               "price": {
-                "type": "number",
+                "type": "integer",
                 "description": "The price of an airbnb per night, e.g. 90 dollars"
               }
             },
@@ -459,7 +459,7 @@
       "functions": [
         {
           "name": "get_airbnb_by_price_range_neighbourhood",
-          "description": "Get the listing by neighbourhood group between a specific price range",
+          "description": "Get the listing by neighbourhood group between a specific price range in US dollars",
           "parameters": {
             "type": "object",
             "properties": {
@@ -481,16 +481,16 @@
         },
         {
           "name": "get_airbnb_by_price_min_nights_and_neighborhood_group",
-          "description": "Get the listing by minimum price, minimum nights and and a specific neighbourhood group",
+          "description": "Get the listing by minimum price in US dollars, minimum nights and and a specific neighbourhood group",
           "parameters": {
             "type": "object",
             "properties": {
               "price": {
-                "type": "number",
+                "type": "integer",
                 "description": "The price of an airbnb per night, e.g. 90 dollars"
               },
               "min_nights": {
-                "type": "number",
+                "type": "integer",
                 "description": "The minimum amount of nights, e.g. 2"
               },
               "neighbourhood_group": {
@@ -503,7 +503,7 @@
         },
         {
           "name": "get_airbnb_by_neighbourhood_group_room_type_date",
-          "description": "Get the listing by neighbourhood group, room type and last review date",
+          "description": "Get the listing by neighbourhood group, room type and last review date in the format DD-YY-MM",
           "parameters": {
             "type": "object",
             "properties": {
@@ -525,7 +525,7 @@
         },
         {
           "name": "get_airbnb_by_price_range_neighbourhood",
-          "description": "Get the listing by neighbourhood group between a specific price range",
+          "description": "Get the listing by neighbourhood group between a specific price range in US dollars",
           "parameters": {
             "type": "object",
             "properties": {
@@ -552,7 +552,7 @@
             "type": "object",
             "properties": {
               "popularity": {
-                "type": "number",
+                "type": "integer",
                 "description": "The number of airbnbs to output"
               },
               "neighbourhood_group": {
@@ -570,7 +570,7 @@
 
         {
           "name": "get_avg_by_neighbourgood_group_and_room_type",
-          "description": "Get the average price of a neighbourhood group by room type ",
+          "description": "Get the average price in US dollars of a neighbourhood group by room type ",
           "parameters": {
             "type": "object",
             "properties": {
@@ -589,12 +589,12 @@
 
         {
           "name": "get_min_cost_by_neighbourhood_group_room_type_min_nights",
-          "description": "Get the least costly airbnbs for a specific neighbourhood group,room type and minimum nights",
+          "description": "Get the least costly in US dollars airbnbs for a specific neighbourhood group,room type and minimum nights",
           "parameters": {
             "type": "object",
             "properties": {
               "nr_requests": {
-                "type": "number",
+                "type": "integer",
                 "description": "The number of airbnbs to output"
               },
               "neighbourhood_group": {
@@ -649,7 +649,7 @@
             "type": "object",
             "properties": {
               "zip_code": {
-                "type": "number",
+                "type": "integer",
                 "description": "The zip code of the restaurant"
               },
               "cuisine": {
@@ -711,16 +711,16 @@
       "functions": [
         {
           "name": "get_airbnb_by_price_min_nights_and_neighborhood_group",
-          "description": "Get the listing by minimum price, minimum nights and and a specific neighbourhood group",
+          "description": "Get the listing by minimum price in US dollars, minimum nights and and a specific neighbourhood group",
           "parameters": {
             "type": "object",
             "properties": {
               "price": {
-                "type": "number",
+                "type": "integer",
                 "description": "The price of an airbnb per night, e.g. 90 dollars"
               },
               "min_nights": {
-                "type": "number",
+                "type": "integer",
                 "description": "The minimum amount of nights, e.g. 2"
               },
               "neighbourhood_group": {
@@ -945,7 +945,7 @@
         },
         {
           "name": "get_avg_costs_by_restaurant_name",
-          "description": "Get average costs of a restaurant",
+          "description": "Get average costs of a restaurant in US dollars",
           "parameters": {
             "type": "object",
             "properties": {
@@ -1188,7 +1188,7 @@
           }
         },
         {
-          "name": "albums_by_release_date",
+          "name": "albums_by_release_date_2",
           "description": "Retrieves all albums released on a specific date, in a specific month, or in a specific year, based on the provided release date, searching through the 'release_date' column in the ALBUMS_SQL dataset. It includes album name, artist name, release date, genres, descriptors, average rating, rating count, and review count.",
           "parameters": {
             "type": "object",
@@ -1203,30 +1203,16 @@
         },
         {
           "name": "songs_by_artist_2",
-          "description": "Retrieves all songs by a specific artist, including details such as track name, artist(s) name, album name, artist count, release date, streams, and various musical and acoustic properties like BPM, danceability, and duration in minutes.",
+          "description": "Retrieves all songs by a specific artist, searching through the 'artist(s)_name' column in the SONGS_SQL dataset,  including details such as track name, artist(s) name, album name, artist count, release date, streams, and various musical and acoustic properties like BPM, danceability, and duration in minutes.",
           "parameters": {
             "type": "object",
             "properties": {
               "artist_name": {
                 "type": "string",
-                "description": "The artist's name to search songs for. The search is performed within the 'artist_name' column, supporting partial matches."
+                "description": "The artist's name to search songs for. The search is performed within the 'artist(s)_name' column, supporting partial matches."
               }
             },
             "required": ["artist_name"]
-          }
-        },
-        {
-          "name": "songs_by_release_date",
-          "description": "Retrieves all songs released on a specific date, in a specific month, or in a specific year, based on the provided release date.",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "release_date": {
-                "type": "string",
-                "description": "The release date to filter songs by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
-              }
-            },
-            "required": ["release_date"]
           }
         }
       ]
@@ -1298,7 +1284,7 @@
           }
         },
         {
-          "name": "albums_by_release_date",
+          "name": "albums_by_release_date_1",
           "description": "Retrieves all albums released on a specific date.",
           "parameters": {
             "type": "object",
@@ -1871,7 +1857,7 @@
           }
         },
         {
-          "name": "albums_by_release_date",
+          "name": "albums_by_release_date_1",
           "description": "Retrieves all collections launched during a particular timeframe.",
           "parameters": {
             "type": "object",
