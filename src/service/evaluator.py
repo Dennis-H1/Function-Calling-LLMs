@@ -245,22 +245,12 @@ class Evaluator:
         if len(gold_path.functions) >= len(model_solution.functions):
             start, end = find_n_gram(
                 gold_path.functions, model_solution.functions, len(gold_path.functions))
-
-            print(start, end)
-            print(gold_path.parameters)
-
             gold_path.parameters = gold_path.parameters[start: end]
 
         else:
             start, end = find_n_gram(
                 model_solution.functions, gold_path.functions, num_correct_functions)
-
-            print(start, end)
-            print(model_solution.parameters)
-
             model_solution.parameters = model_solution.parameters[start: end]
-
-        print(num_correct_functions, gold_path, start, end)
 
         num_correct_arguments, argument_eval = Evaluator.eval_arguments(
             model_solution.parameters,
