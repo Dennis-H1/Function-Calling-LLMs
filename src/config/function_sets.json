@@ -116,7 +116,7 @@
             "type": "object",
             "properties": {
               "nr_of_listings": {
-                "type": "integer",
+                "type": "number",
                 "description": "The number of listings, e.g. 3"
               }
             },
@@ -130,7 +130,7 @@
             "type": "object",
             "properties": {
               "price": {
-                "type": "integer",
+                "type": "number",
                 "description": "The price of an airbnb per night, e.g. 90 dollars"
               }
             },
@@ -144,7 +144,7 @@
             "type": "object",
             "properties": {
               "price": {
-                "type": "integer",
+                "type": "number",
                 "description": "The price of an airbnb per night, e.g. 90 dollars"
               }
             },
@@ -339,7 +339,7 @@
             "type": "object",
             "properties": {
               "nr_of_listings": {
-                "type": "integer",
+                "type": "number",
                 "description": "The number of listings, e.g. 3"
               }
             },
@@ -353,7 +353,7 @@
             "type": "object",
             "properties": {
               "price": {
-                "type": "integer",
+                "type": "number",
                 "description": "The price of an airbnb per night, e.g. 90 dollars"
               }
             },
@@ -367,7 +367,7 @@
             "type": "object",
             "properties": {
               "price": {
-                "type": "integer",
+                "type": "number",
                 "description": "The price of an airbnb per night, e.g. 90 dollars"
               }
             },
@@ -486,11 +486,11 @@
             "type": "object",
             "properties": {
               "price": {
-                "type": "integer",
+                "type": "number",
                 "description": "The price of an airbnb per night, e.g. 90 dollars"
               },
               "min_nights": {
-                "type": "integer",
+                "type": "number",
                 "description": "The minimum amount of nights, e.g. 2"
               },
               "neighbourhood_group": {
@@ -552,7 +552,7 @@
             "type": "object",
             "properties": {
               "popularity": {
-                "type": "integer",
+                "type": "number",
                 "description": "The number of airbnbs to output"
               },
               "neighbourhood_group": {
@@ -594,7 +594,7 @@
             "type": "object",
             "properties": {
               "nr_requests": {
-                "type": "integer",
+                "type": "number",
                 "description": "The number of airbnbs to output"
               },
               "neighbourhood_group": {
@@ -649,7 +649,7 @@
             "type": "object",
             "properties": {
               "zip_code": {
-                "type": "integer",
+                "type": "number",
                 "description": "The zip code of the restaurant"
               },
               "cuisine": {
@@ -716,11 +716,11 @@
             "type": "object",
             "properties": {
               "price": {
-                "type": "integer",
+                "type": "number",
                 "description": "The price of an airbnb per night, e.g. 90 dollars"
               },
               "min_nights": {
-                "type": "integer",
+                "type": "number",
                 "description": "The minimum amount of nights, e.g. 2"
               },
               "neighbourhood_group": {
