@@ -10,12 +10,19 @@ current_script_dir = Path(__file__).parent.parent.parent.resolve()
 
 class ConfigManager:
 
+    config = None
+    question_set = None
+    function_set = None
+
+    __use_case_mappings = {
+        "music": UseCase.MUSIC,
+        "travel": UseCase.TRAVEL_AND_RESTAURANTS,
+        "restaurant": UseCase.TRAVEL_AND_RESTAURANTS
+    }
+
     class QuestionSetNotFoundException(Exception):
         def __init__(self, question_set_id: str) -> None:
             self.question_set_id = question_set_id
-
-        def __repr__(self):
-            return f"QuestionSetNotFoundException(question_set_id={self.question_set_id})"
 
         def __str__(self):
             return f"The question set {self.question_set_id} that is provided in the test_config.json does not exist in the question_sets.json. You can find the files here: {ConfigManager.ConfigPath.QUESTION_SET_FILE_PATH.value}"
@@ -24,17 +31,22 @@ class ConfigManager:
         def __init__(self, function_set_id: str) -> None:
             self.function_set_id = function_set_id
 
-        def __repr__(self):
-            return f"FunctionSetNotFoundException(function_set_id={self.function_set_id})"
-
         def __str__(self):
             return f"The function set {self.function_set_id} that is provided in the test_config.json does not exist in the function_sets.json. You can find the files here: {ConfigManager.ConfigPath.FUNCTION_SET_FILE_PATH.value}"
 
+    class UseCaseNotFoundException(Exception):
+        def __init__(self, id: str) -> None:
+            self.id = id
+
+        def __str__(self):
+            return f"The config id value of >>>{self.id}<<< does not contain any of the keywords: 'music', 'travel' or 'restaurant'. We cannot assign a usecase."
+
     class ConfigPath(Enum):
-        TEST_CONFIG_FILE_PATH = current_script_dir/"src"/"config"/"test_config.json"
-        QUESTION_SET_FILE_PATH = current_script_dir/"src"/"config"/"question_sets.json"
-        FUNCTION_SET_FILE_PATH = current_script_dir/"src"/"config"/"function_sets.json"
-        DEFAULT_OUTPUT_FILE_PATH = current_script_dir/"src"/"config"/"out"/"output.json"
+        BASE_DIR = current_script_dir/"src"/"config"
+        TEST_CONFIG_FILE_PATH = BASE_DIR / "test_config.json"
+        QUESTION_SET_FILE_PATH = BASE_DIR / "question_sets.json"
+        FUNCTION_SET_FILE_PATH = BASE_DIR / "function_sets.json"
+        DEFAULT_OUTPUT_FILE_PATH = BASE_DIR / "out"/"output.json"
 
     class Schema(Enum):
         TEST_CONFIG_SCHEMA = {
@@ -250,8 +262,6 @@ class ConfigManager:
                                         },
                                         "parameters": {
                                             "type": "object",
-                                            # TODO: need to specify further here?
-                                            # TODO: we also want a "required" here, but not to be parsed for schema validation like the other "required", but as actual key
                                         }
                                     },
                                     "required": ["name", "description", "parameters"]
@@ -266,14 +276,13 @@ class ConfigManager:
         }
 
     @classmethod
-    def load_data(cls) -> dict:
-        cls.config = cls._load_data(cls.ConfigPath.TEST_CONFIG_FILE_PATH.value,
-                                    cls.Schema.TEST_CONFIG_SCHEMA.value)
-        all_question_sets = cls._load_data(cls.ConfigPath.QUESTION_SET_FILE_PATH.value,
-                                           cls.Schema.QUESTION_SET_SCHEMA.value)
-
-        all_function_sets = cls._load_data(cls.ConfigPath.FUNCTION_SET_FILE_PATH.value,
-                                           cls.Schema.FUNCTION_SET_SCHEMA.value)
+    def load_data(cls) -> tuple[dict, dict, dict]:
+        cls.config = cls._load_data(
+            cls.ConfigPath.TEST_CONFIG_FILE_PATH.value, cls.Schema.TEST_CONFIG_SCHEMA.value)
+        all_question_sets = cls._load_data(
+            cls.ConfigPath.QUESTION_SET_FILE_PATH.value, cls.Schema.QUESTION_SET_SCHEMA.value)
+        all_function_sets = cls._load_data(
+            cls.ConfigPath.FUNCTION_SET_FILE_PATH.value, cls.Schema.FUNCTION_SET_SCHEMA.value)
 
         cls.question_set = cls._get_question_set(all_question_sets)
         cls.function_set = cls._get_function_set(all_function_sets)
@@ -281,25 +290,32 @@ class ConfigManager:
         return cls.config, cls.question_set, cls.function_set
 
     @classmethod
+    def output_path(cls) -> str:
+        if cls.config is None:
+            return cls.ConfigPath.DEFAULT_OUTPUT_FILE_PATH.value
+        else:
+            return cls.config.get("output_file") or cls.ConfigPath.DEFAULT_OUTPUT_FILE_PATH.value
+
+    @classmethod
+    def get_use_case(cls) -> UseCase:
+        for keyword, use_case in cls.__use_case_mappings.items():
+            if keyword in cls.config["id"].lower():
+                return use_case
+
+        raise cls.UseCaseNotFoundException(cls.config["id"])
+
+    @classmethod
     def _load_data(cls, file_path: str, json_schema: dict) -> dict:
         try:
             with open(file_path, encoding="utf-8") as f:
                 json_data = json.load(f)
-                validate(json_data, schema=json_schema)
         except json.JSONDecodeError:
             raise json.JSONDecodeError(
                 f"There is a JSON formatting error with the {file_path} file.")
-        except ValidationError as e:
-            raise ValidationError(
-                f"There is a JSON validation error with the {file_path} file. Some keys or values are not correctly specified: {e.message}, {e.cause}, {e.args}")
-        return json_data
 
-    @classmethod
-    def output_path(cls) -> str:
-        if cls.config is None:
-            return cls.ConfigPath.DEFAULT_OUTPUT_FILE_PATH
-        else:
-            return cls.config.get("output_file") or cls.ConfigPath.DEFAULT_OUTPUT_FILE_PATH.value
+        cls._validate_json(json_data, json_schema, file_path)
+
+        return json_data
 
     @classmethod
     def _get_question_set(cls, question_sets: list[dict]):
@@ -328,9 +344,10 @@ class ConfigManager:
         return function_set
 
     @classmethod
-    def get_use_case(cls) -> UseCase:
-        if "music" in str(cls.config["id"]).lower():
-            return UseCase.MUSIC
-
-        if "travel" in str(cls.config["id"]).lower() or "restaurant" in str(cls.config["id"]):
-            return UseCase.TRAVEL_AND_RESTAURANTS
+    def _validate_json(cls, json_data: dict, json_schema: dict, file_path: str) -> None:
+        try:
+            validate(json_data, schema=json_schema)
+        except ValidationError as e:
+            raise ValidationError(
+                f"There is a JSON validation error with the {file_path} file. Some keys or values are not correctly specified: {e.message}.")
+        return json_data
