@@ -147,7 +147,7 @@ class GPTService(LLMService):
                 for tool_call in response.tool_calls:
                     try:
                         result = self._handle_function(
-                            response.function_call)
+                            tool_call["function"])
                         conversation.add({"role": "tool", "content": result,
                                           "name": tool_call.function.name, "tool_call_id": tool_call.id})
                     except ServerResponseError as error:
