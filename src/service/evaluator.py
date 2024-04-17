@@ -1,34 +1,18 @@
 import re
 import json
 from enum import Enum
-from itertools import zip_longest
-from dataclasses import dataclass, field
-
-from src.service.llm_service import ModelSolution
+from dataclasses import dataclass
 from numbers import Number
+
+
+from src.util.components import Path
+from src.util.protocols import ModelSolution
 
 
 class EvaluationCategory(Enum):
     CORRECT = "Correct"
     PARTIALLY_CORRECT = "Partially Correct"
     INCORRECT = "Incorrect"
-
-
-@dataclass
-class Path:
-    functions: list[str]
-    parameters: list[dict]
-    n_gram: int = field(default=0)
-    _exclude: tuple = ("functions", "parameters", "n_gram")
-
-    def get_num_functions(self) -> int:
-        return len(self.functions)
-
-    def get_num_arguments(self) -> int:
-        num_params = 0
-        for params in self.parameters:
-            num_params += len(params)
-        return num_params
 
 
 @dataclass

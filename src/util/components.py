@@ -1,5 +1,22 @@
 from enum import Enum
-from dataclasses import fields, is_dataclass
+from dataclasses import dataclass, field, fields, is_dataclass
+
+
+@dataclass
+class Path:
+    functions: list[str]
+    parameters: list[dict]
+    n_gram: int = field(default=0)
+    _exclude: tuple = ("functions", "parameters", "n_gram")
+
+    def get_num_functions(self) -> int:
+        return len(self.functions)
+
+    def get_num_arguments(self) -> int:
+        num_params = 0
+        for params in self.parameters:
+            num_params += len(params)
+        return num_params
 
 
 def to_dict(instance, exclude=None) -> dict:

@@ -20,3 +20,9 @@ class IllegalArgumentError(Exception):
         self.function_args = function_args
         super().__init__(
             f"Error parsing arguments {function_args} for function {function_name}.")
+
+
+class ServerResponseError(Exception):
+    def __init__(self):
+        super().__init__(
+            f"Error received from Server. This could entail that the function was not found or wrong arguments were passed.")
