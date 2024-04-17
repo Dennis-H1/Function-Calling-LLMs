@@ -25,21 +25,21 @@ def define_name(name):
     for idx, listing_name in enumerate(data["name"].values):
         if str(listing_name).lower() == str(name).lower():
             return data["host_name"][idx]
-    return "Host name not found"
+    return None
 
 
 def define_nights(name):
     for idx, listing_name in enumerate(data["name"].values):
         if listing_name.lower() == name.lower():
             return int(data["minimum_nights"][idx])
-    return "Min nights not found"
+    return None
 
 
 def define_price(name):
     for idx, listing_name in enumerate(data["name"].values):
         if listing_name.lower() == name.lower():
             return int(data["price"][idx])
-    return "Price not found"
+    return None
 
 
 def define_nr_of_reviews(name):
@@ -54,7 +54,7 @@ def define_neighbourhood_group(name):
     for idx, listing_name in enumerate(data["name"].values):
         if str(listing_name).lower() == str(name).lower():
             return data["neighbourhood_group"][idx]
-    return "Neighbourhood group not found"
+    return None
 
 
 def define_name_by_neighbourhood_group(neighbourhood_group):
@@ -73,8 +73,6 @@ def define_name_by_price(price):
             name_data.append(data["name"][idx])
     return name_data  # Return the populated list
 
-    return "Listing names not found"
-
 
 def define_listings_by_frequency(nr, data):
     reviews = data['number_of_reviews']
@@ -90,7 +88,7 @@ def define_listings_by_frequency(nr, data):
     if top_entries:
         return list(top_entries.keys())
     else:
-        return "Listing names not found"
+        return None
 
 
 def define_airbnb_by_latitude_longitude(latitude, longitude, max_distance=4.0):
@@ -115,7 +113,7 @@ def define_airbnb_by_latitude_longitude(latitude, longitude, max_distance=4.0):
     if closeby_airbnbs:
         return closeby_airbnbs
     else:
-        return "No closeby Airbnb listings found"
+        return None
 
 
 def define_name_by_lower_price(price):
@@ -216,7 +214,7 @@ def define_popularity_by_neighbourhood_group_room_type(popularity, neighbourhood
     if top_entries:
         return list(top_entries.keys())
     else:
-        return "No listings found"
+        return None
 
 
 def get_min_cost_by_neighbourhood_group_room_type_min_nights(nr_requests, neighbourhood_group, room_type, min_nights, data):
@@ -249,7 +247,7 @@ def get_min_cost_by_neighbourhood_group_room_type_min_nights(nr_requests, neighb
     if sorted_listings:
         return [name for name, _ in sorted_listings[:nr_requests]]
     else:
-        return "No listings found"
+        return None
 
 
 def define_average_price_by_neighbourhood_group_room_type(neighbourhood_group, room_type, data):
@@ -271,7 +269,7 @@ def define_average_price_by_neighbourhood_group_room_type(neighbourhood_group, r
     if count > 0:
         return total_price / count
     else:
-        return "No listings found"
+        return None
 
 
 def define_name_by_room_type(room_type):
@@ -306,21 +304,19 @@ def define_restaurants_by_cuisine(cuisine):
             restaurant_data.append(data_2["DBA"][idx])
     return restaurant_data
 
-    return "Restaurants not found"
-
 
 def define_borough(restaurant):
     for idx, borough in enumerate(data_2["DBA"].values):
         if borough.lower() == restaurant.lower():
             return data_2["BORO"][idx]
-    return "Borough not found"
+    return None
 
 
 def define_cuisine(restaurant):
     for idx, cuisine in enumerate(data_2["DBA"].values):
         if cuisine.lower() == restaurant.lower():
             return data_3["cuisine"][idx]
-    return "Cuisine not found"
+    return None
 
 
 def define_phone_by_name_neighbourhood_cuisine(restaurant, neighbourhood_group, cuisine):
@@ -490,7 +486,7 @@ def define_closest_airbnb_address(latitude, longitude):
     if closest_airbnb:
         return closest_airbnb
     else:
-        return "No nearby Airbnb found"
+        return None
 
 
 def define_closest_restaurant_by_airbnb(latitude, longitude, max_distance=5.0):
@@ -516,7 +512,7 @@ def define_closest_restaurant_by_airbnb(latitude, longitude, max_distance=5.0):
     if closest_restaurants:
         return closest_restaurants
     else:
-        return "No nearby restaurant found"
+        return None
 
 
 def define_restaurant_info_zipcode_street_building(latitude, longitude, max_distance=5.0):
@@ -550,7 +546,7 @@ def define_restaurant_info_zipcode_street_building(latitude, longitude, max_dist
     if closest_restaurants:
         return closest_restaurants
     else:
-        return "restaurant info not found"
+        return None
 
 
 def define_cuisine_restaurant_airbnb_closeness(latitude, longitude, max_distance=5.0):
@@ -578,7 +574,7 @@ def define_cuisine_restaurant_airbnb_closeness(latitude, longitude, max_distance
     if closest_restaurants:
         return closest_restaurants
     else:
-        return "restaurant info not found"
+        return None
 
 
 def define_cuisine_rating(cuisine: str):
@@ -638,7 +634,7 @@ def define_neigh_by_rest(restaurant, neighborhood):
     return prox_data
 
 
-def define_airbnbs_with_max_reviews(popularity, neighbourhood_group, room_type, data):
+def define_airbnbs_with_max_reviews(popularity, neighbourhood_group, room_type):
     filtered_listings = []
 
     for idx in range(len(data['name'])):
@@ -670,7 +666,7 @@ def define_airbnbs_with_max_reviews(popularity, neighbourhood_group, room_type, 
     if top_entries:
         return top_entries
     else:
-        return "No listings found"
+        return None
 
 
 def define_rating_by_restaurant_name(restaurant_name):
@@ -705,7 +701,7 @@ def define_avg_costs_by_restaurant_name(restaurant_name, data_3):
     if count > 0:
         return total_price / count
     else:
-        return "No restaurants found"
+        return None
 
 
 def define_avg_delivery_time_by_restaurant_name(restaurant_name, data_3):
@@ -725,7 +721,7 @@ def define_avg_delivery_time_by_restaurant_name(restaurant_name, data_3):
     if count > 0:
         return total_price / count
     else:
-        return "No restaurants found"
+        return None
 
 
 def define_avg_prep_time_by_restaurant_name(restaurant_name, data_3):
@@ -745,7 +741,7 @@ def define_avg_prep_time_by_restaurant_name(restaurant_name, data_3):
     if count > 0:
         return total_price / count
     else:
-        return "No restaurants found"
+        return None
 
 # >>> actual functions <<<
 
@@ -1212,8 +1208,9 @@ def get_neighborhood_by_rest_specification(restaurants, neighborhood):
 
 
 def get_airbnb_with_max_reviews(popularity, neighbourhood_group, room_type):
+
     listing = define_airbnbs_with_max_reviews(
-        popularity, neighbourhood_group, room_type, data)
+        popularity, neighbourhood_group, room_type)
     if listing:
         return {
             "name": listing,
@@ -1334,6 +1331,7 @@ class TravelAndRestaurantFunctions():
         get_listings_by_review_date,
         get_long_lat_by_airbnb,
         get_long_lat_by_name_street,
+        get_airbnb_address_by_lat_long,
         get_min_cost_by_neighbourhood_group_room_type_min_nights,
         get_min_nights,
         get_neighborhood_by_rest_specification,

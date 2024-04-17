@@ -21,6 +21,9 @@ def main():
     output_path = ConfigManager.output_path()
     use_case = ConfigManager.get_use_case()
 
+    print(
+        f">> The Benchmark will be run on the {use_case.value} functions. <<")
+
     prompt = config["prompt"]
     model = config["model"]
     hp = config["hyperparameters"]

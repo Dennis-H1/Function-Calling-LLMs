@@ -8,7 +8,7 @@ PORT = os.environ.get("PORT") or 5000
 REQUEST_TIMEOUT = 5
 
 
-def server_request(function_name: str, arguments: list):
+def server_request(function_name: str, arguments: dict):
     try:
         response = requests.get(
             f"http://{HOST}:{PORT}/function_call/{function_name}", arguments, timeout=REQUEST_TIMEOUT)
