@@ -112,7 +112,6 @@ class Pipeline:
         results: list[Pipeline.QuestionResult] = []
 
         for question in tqdm(self.question_set["questions"], desc="Test Run", unit="Question"):
-            print("next question")
             # llm response
             model_solution, tokens_in, tokens_out = self.llm_service.process_question(
                 question["question"])
