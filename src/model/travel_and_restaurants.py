@@ -42,11 +42,12 @@ def define_price(name):
     return "Price not found"
 
 
-def get_nr_of_reviews(name):
+def define_nr_of_reviews(name):
     for idx, listing_name in enumerate(data["name"].values):
         if listing_name.lower() == name.lower():
             return int(data["number_of_reviews"][idx])
-    return "Number of reviews not found"
+
+    raise ValueError("name was not found")
 
 
 def define_neighbourhood_group(name):
@@ -770,7 +771,7 @@ def get_min_nights(listing_name: str):
 
 
 def get_nr_of_reviews(listing_name: str):
-    nr_of_reviews = define_nr_reviews(listing_name)
+    nr_of_reviews = define_nr_of_reviews(listing_name)
     if nr_of_reviews:
         return {
             "nr_of_reviews": nr_of_reviews,
