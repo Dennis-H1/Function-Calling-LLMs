@@ -653,7 +653,7 @@ def define_airbnbs_with_max_reviews(popularity, neighbourhood_group, room_type):
                 "name": listing_name,
                 "latitude": latitude,
                 "longitude": longitude,
-                "num_reviews": num_reviews
+                "num_reviews": int(num_reviews)
             })
 
     # Sort the filtered listings by the number of reviews in descending order
