@@ -777,7 +777,7 @@ def get_nr_of_reviews(listing_name: str):
 
 
 def get_frequent_listings(nr_of_listings):
-    listing = define_listings_by_frequency(nr_of_listings, data)
+    listing = define_listings_by_frequency(nr_of_listings)
 
     if listing:
         return {
@@ -940,7 +940,7 @@ def get_airbnb_by_price_range_neighbourhood(min_price, max_price, neighbourhood_
 
 def get_x_most_popular_places_in_neighbourhood_group_room_type(popularity, neighbourhood_group, room_type):
     listing = define_popularity_by_neighbourhood_group_room_type(
-        popularity, neighbourhood_group, room_type, data)
+        popularity, neighbourhood_group, room_type)
 
     if listing:
         return {
@@ -956,7 +956,7 @@ def get_x_most_popular_places_in_neighbourhood_group_room_type(popularity, neigh
 
 def get_min_cost_by_neighbourhood_group_room_type_min_nights(nr_requests, neighbourhood_group, room_type, min_nights):
     listing = define_min_cost_by_neighbourhood_group_room_type_min_nights(
-        nr_requests, neighbourhood_group, room_type, min_nights, data)
+        nr_requests, neighbourhood_group, room_type, min_nights)
 
     if listing:
         return {
@@ -973,7 +973,7 @@ def get_min_cost_by_neighbourhood_group_room_type_min_nights(nr_requests, neighb
 
 def get_avg_by_neighbourgood_group_and_room_type(neighbourhood_group, room_type):
     avg_price = define_average_price_by_neighbourhood_group_room_type(
-        neighbourhood_group, room_type, data)
+        neighbourhood_group, room_type)
 
     if avg_price:
         return {
@@ -1236,7 +1236,7 @@ def get_restaurant_long_lat_by_zipcode_cuisine_borough_phone(zip_code, cuisine, 
 
 def get_avg_prep_time_by_restaurant_name(restaurant_name):
     preparation = define_avg_prep_time_by_restaurant_name(
-        restaurant_name, data_3)
+        restaurant_name)
     if preparation:
         return {
             "preparation": preparation,
@@ -1248,7 +1248,7 @@ def get_avg_prep_time_by_restaurant_name(restaurant_name):
 
 def get_avg_delivery_time_by_restaurant_name(restaurant_name):
     delivery = define_avg_delivery_time_by_restaurant_name(
-        restaurant_name, data_3)
+        restaurant_name)
     if delivery:
         return {
             "delivery": delivery,
