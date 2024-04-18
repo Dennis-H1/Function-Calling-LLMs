@@ -217,7 +217,7 @@ def define_popularity_by_neighbourhood_group_room_type(popularity, neighbourhood
         return None
 
 
-def get_min_cost_by_neighbourhood_group_room_type_min_nights(nr_requests, neighbourhood_group, room_type, min_nights, data):
+def define_min_cost_by_neighbourhood_group_room_type_min_nights(nr_requests, neighbourhood_group, room_type, min_nights, data):
     selected_listings = []
 
     for idx in range(len(data['name'])):
@@ -684,7 +684,7 @@ def define_rating_by_restaurant_name(restaurant_name):
     return name_data
 
 
-def define_avg_costs_by_restaurant_name(restaurant_name, data_3):
+def define_avg_costs_by_restaurant_name(restaurant_name):
     total_price = 0
     count = 0
 
@@ -704,7 +704,7 @@ def define_avg_costs_by_restaurant_name(restaurant_name, data_3):
         return None
 
 
-def define_avg_delivery_time_by_restaurant_name(restaurant_name, data_3):
+def define_avg_delivery_time_by_restaurant_name(restaurant_name):
     total_price = 0
     count = 0
 
@@ -724,7 +724,7 @@ def define_avg_delivery_time_by_restaurant_name(restaurant_name, data_3):
         return None
 
 
-def define_avg_prep_time_by_restaurant_name(restaurant_name, data_3):
+def define_avg_prep_time_by_restaurant_name(restaurant_name):
     total_price = 0
     count = 0
 
@@ -955,7 +955,7 @@ def get_x_most_popular_places_in_neighbourhood_group_room_type(popularity, neigh
 
 
 def get_min_cost_by_neighbourhood_group_room_type_min_nights(nr_requests, neighbourhood_group, room_type, min_nights):
-    listing = get_min_cost_by_neighbourhood_group_room_type_min_nights(
+    listing = define_min_cost_by_neighbourhood_group_room_type_min_nights(
         nr_requests, neighbourhood_group, room_type, min_nights, data)
 
     if listing:
@@ -1157,29 +1157,6 @@ def get_info_restaurant_with_zipcode_street_building(latitude, longitude):
         return {"error": "Restaurant not found"}
 
 
-def get_rating_per_cuisines(cuisines):
-    if not cuisines:
-        return {"error": "No cuisines provided"}
-
-    cuisines_data = dict()
-
-    for cuisine in cuisines.split(','):
-        info = define_cuisine_rating(cuisine)
-        if info:
-            ratings = [float(entry["rating"])
-                       for entry in info if entry["rating"].lower() != "not given"]
-            if ratings:
-                avg_rating = mean(ratings)
-                cuisines_data[cuisine] = avg_rating
-            else:
-                cuisines_data[cuisine] = {
-                    "error": "No valid ratings for this cuisine"}
-        else:
-            cuisines_data[cuisine] = {"error": "Cuisine not found"}
-
-    return cuisines_data
-
-
 def get_restaurants_by_ratings(rating):
     info = define_restaurants_by_rating(rating)
     if info:
@@ -1281,13 +1258,12 @@ def get_avg_delivery_time_by_restaurant_name(restaurant_name):
         return {"error": "Restaurant not found"}
 
 
-def get_avg_costs_by_restaurant_name(cuisine, borough):
-    restaurant = define_restaurant_by_cuisine_borough(cuisine, borough)
-    if restaurant:
+def get_avg_costs_by_restaurant_name(restaurant_name):
+    costs = define_avg_costs_by_restaurant_name(restaurant_name)
+    if costs:
         return {
-            "restaurant": restaurant,
-            "cuisine": cuisine,
-            "borough": borough,
+            "costs": costs,
+            "restaurant_name": restaurant_name,
         }
     else:
         return {"error": "Restaurant not found"}
@@ -1300,6 +1276,19 @@ def get_rating_by_restaurant_name(restaurant_name):
             "rating": rating,
             "restaurant_name": restaurant_name,
         }
+    else:
+        return {"error": "Restaurant not found"}
+
+
+def get_cuisine_restaurant_by_airbnb_closeness(latitude, longitude):
+    info = define_cuisine_restaurant_airbnb_closeness(latitude, longitude)
+    if info:
+        info_data = {
+            "latitude": latitude,
+            "longitude": longitude,
+            "info": info
+        }
+        return info_data
     else:
         return {"error": "Restaurant not found"}
 
@@ -1338,7 +1327,6 @@ class TravelAndRestaurantFunctions():
         get_neighbourhood_group,
         get_nr_of_reviews,
         get_rating_by_restaurant_name,
-        get_rating_per_cuisines,
         get_ratings_per_cuisines,
         get_restaurant_by_airbnb_closeness,
         get_restaurant_by_cuisine_borough,
@@ -1347,4 +1335,5 @@ class TravelAndRestaurantFunctions():
         get_restaurants_by_cuisine,
         get_restaurants_by_ratings,
         get_telephone_number_by_name_neighbourhood_group_cuisine,
-        get_x_most_popular_places_in_neighbourhood_group_room_type))
+        get_x_most_popular_places_in_neighbourhood_group_room_type,
+        get_cuisine_restaurant_by_airbnb_closeness))
