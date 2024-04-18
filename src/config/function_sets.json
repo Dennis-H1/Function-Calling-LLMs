@@ -102,7 +102,7 @@
             "type": "object",
             "properties": {
               "minimum_nights": {
-                "type": "string",
+                "type": "number",
                 "description": "The number of minimum nights, e.g. 3"
               }
             },
@@ -325,7 +325,7 @@
             "type": "object",
             "properties": {
               "minimum_nights": {
-                "type": "string",
+                "type": "number",
                 "description": "The number of minimum nights, e.g. 3"
               }
             },
@@ -464,11 +464,11 @@
             "type": "object",
             "properties": {
               "min_price": {
-                "type": "string",
+                "type": "number",
                 "description": "The min price in the range"
               },
               "max_price": {
-                "type": "string",
+                "type": "number",
                 "description": "The maximum price in the range"
               },
               "neighbourhood_group": {
@@ -530,11 +530,11 @@
             "type": "object",
             "properties": {
               "min_price": {
-                "type": "string",
+                "type": "number",
                 "description": "The min price in the range"
               },
               "max_price": {
-                "type": "string",
+                "type": "number",
                 "description": "The maximum price in the range"
               },
               "neighbourhood_group": {
@@ -606,7 +606,7 @@
                 "description": "The type of the room, e.g. Shared Room"
               },
               "min_nights": {
-                "type": "string",
+                "type": "number",
                 "description": "The minimum number of nights to stay"
               }
             },
@@ -842,7 +842,7 @@
             "type": "object",
             "properties": {
               "rating": {
-                "type": "string",
+                "type": "number",
                 "description": "The rating of the restaurant"
               }
             },
