@@ -74,7 +74,7 @@ def define_name_by_price(price):
     return name_data  # Return the populated list
 
 
-def define_listings_by_frequency(nr, data):
+def define_listings_by_frequency(nr):
     reviews = data['number_of_reviews']
     names = data['name']
     sorted_reviews = dict(
@@ -187,7 +187,7 @@ def define_name_by_price_range_and_neighbourhood_group(min_price, max_price, nei
     return name_data
 
 
-def define_popularity_by_neighbourhood_group_room_type(popularity, neighbourhood_group, room_type, data):
+def define_popularity_by_neighbourhood_group_room_type(popularity, neighbourhood_group, room_type):
     filtered_listings = []
 
     for idx in range(len(data['name'])):
@@ -217,7 +217,7 @@ def define_popularity_by_neighbourhood_group_room_type(popularity, neighbourhood
         return None
 
 
-def define_min_cost_by_neighbourhood_group_room_type_min_nights(nr_requests, neighbourhood_group, room_type, min_nights, data):
+def define_min_cost_by_neighbourhood_group_room_type_min_nights(nr_requests, neighbourhood_group, room_type, min_nights):
     selected_listings = []
 
     for idx in range(len(data['name'])):
@@ -250,7 +250,7 @@ def define_min_cost_by_neighbourhood_group_room_type_min_nights(nr_requests, nei
         return None
 
 
-def define_average_price_by_neighbourhood_group_room_type(neighbourhood_group, room_type, data):
+def define_average_price_by_neighbourhood_group_room_type(neighbourhood_group, room_type):
     total_price = 0
     count = 0
 
