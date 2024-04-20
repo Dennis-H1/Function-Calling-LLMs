@@ -1,0 +1,17 @@
+  {
+      "id": "TRAVEL_SINGLE_STEP_COMPLEX_RUN",
+      "name": "Mannheim Function Calling Benchmark _ Testrun GPT4 Travel Use Case",
+      "description": "Configuration for running the benchmark against GPT4",
+      "authors": ["Deidamea Bajri", "Serxhina Kutrolli","Stiliana Jano"],
+      "license": "Apache2.0",
+      "model": "gpt-4-turbo-preview",
+      "hyperparameters": {
+        "temperature": 0,
+        "mode" : "sequential"
+      },
+      "prompt": "You are a helpful assistant. Answer briefly.",
+      "function_set": "TRAVEL_FUNC_ONE_PARAM_COMPLEX_DESC_NO_EX_V01",
+      "question_set": "TRAVEL_Q_SINGLE_STEP_ONE_SHOT_V01",
+      "output_file": "./src/config/out/TRAVEL_Q_SINGLE_STEP_ONE_SHOT_COMPLEX_V1.json"
+  }
+  

@@ -1,0 +1,84 @@
+{
+    "question_result": [
+      {
+         "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TAIL_Q2",
+         "category":"Long-Tail",
+         "question":"Does the DUNKIN BASKIN ROBBINS restaurant also make coffee and tea? Return the answer in JSON format: {'cuisine':['my_cuisine']}",
+         "motivation":"Testing the ability of the LLM to distinguish between the entry records containing the same values",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_cuisine"
+               ],
+               "parameters":[
+                  {
+                     "restaurant":"DUNKIN',' BASKIN ROBBINS"
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "answer":"```json\n{\n  'cuisine': ['Coffee & Tea']\n}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "cuisine":[
+                  "Donuts",
+                  "Coffee,Tea"
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Incorrect",
+            "argument_eval":"Incorrect",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TAIL_Q3",
+         "category":"Long-Tail",
+         "question":" I am close to 'DUNKIN',' BASKIN ROBBINS .'Is it sure that I will find coffee or tea there? Return the answer in JSON format: {'cuisine':['my_cuisine']}",
+         "motivation":"Testing the ability of the LLM to distinguish between the entry records containing the same values",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_cuisine"
+               ],
+               "parameters":[
+                  {
+                     "restaurant":"DUNKIN', BASKIN ROBBINS"
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "answer":"```json\n{'cuisine':['Ice Cream']}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "cuisine":[
+                  "Donuts",
+                  "Coffee,Tea"
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Incorrect",
+            "argument_eval":"Incorrect",
+            "response_eval":"Incorrect"
+         }
+      }
+
+                       
+    ]
+}

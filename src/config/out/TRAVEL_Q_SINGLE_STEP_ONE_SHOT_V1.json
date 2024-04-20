@@ -1,0 +1,2590 @@
+{
+    "metadata":{
+       "run_id":"TRAVEL_SINGLE_STEP_SIMPLE_RUN",
+       "run_name":"Mannheim Function Calling Benchmark _ Testrun GPT4 Travel Use Case",
+       "question_set_id":"TRAVEL_Q_SINGLE_STEP_ONE_SHOT_V01",
+       "function_set_id":"TRAVEL_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
+       "prompt":"You are a helpful assistant. Answer briefly.",
+       "model":"gpt-4-turbo-preview",
+       "hyperparameters":{
+          "temperature":0,
+          "mode":"sequential"
+       },
+       "run_start_timestamp":"2024-04-18 20:36:48.217484",
+       "run_end_timestamp":"2024-04-18 20:44:00.083103",
+       "test_driver_version":"1.0.0"
+    },
+    "statistics":{
+       "number_of_functions":{
+          "total":51,
+          "correct":47,
+          "accuracy":0.92
+       },
+       "number_of_parameters":{
+          "total":51,
+          "correct":39,
+          "accuracy":0.76
+       },
+       "number_of_answers":{
+          "total":51,
+          "correct":33,
+          "accuracy":0.65
+       },
+       "number_of_tokens":{
+          "input":58961,
+          "output":9513
+       }
+    },
+    "question_result":[
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q1",
+          "category":"Languages",
+          "question":"A mund te me ndihmosh te gjej nje airbnb qe ndodhet ne New York dhe ka nje cmim relativisht te lire, afersisht 46 dollare? Please return at most 10 entries. Return the answer in JSON format: {'airbnb': [my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (Albanian)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":46
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":46
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Huge room in great area, 25 minutes from Manhattan',\n    'Room in Bushwick Bk available June',\n    'Sunny spacious room full of good energy',\n    'Nice & new room, washer/dryer, 5 min to train!',\n    'Private Room for short stay in a house.',\n    'NEW Bedroom w/Private Toilet (Great Study Space)',\n    'Beautiful sunny room in Brooklyn',\n    '\u91d1\u57ce\u53d1\u53cc\u4eba\u623f suit2 queens size bed',\n    'Bedroom 7 bed A.',\n    'BK'S FINEST CLOSE 2 TRANSPORTATION-'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Huge room in great area 25 minutes from Manhattan",
+                   "Room in Bushwick Bk available June",
+                   "Sunny spacious room full of good energy",
+                   "Nice & new room washerdryer 5 min to train!",
+                   "Private Room for short stay in a house.",
+                   "NEW Bedroom wPrivate Toilet (Great Study Space)",
+                   "Beautiful sunny room in Brooklyn",
+                   "\u91d1\u57ce\u53d1\u53cc\u4eba\u623f suit2 queens size bed",
+                   "Bedroom 7 bed A.",
+                   "BK'S FINEST CLOSE 2 TRANSPORTATION-"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q2",
+          "category":"Languages",
+          "question":"Dua te fle afer Bronxit, a me gjen dhjete opsione aty afer ku mund te qendroj? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (Albanian)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_neighbourhood_group"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Bronx"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_neighbourhood_group"
+             ],
+             "parameters":[
+                {
+                   "neighbourhood_group":"Bronx"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Apartment around the park',\n    'Bronx Apartment College Ave',\n    'Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)',\n    'Sunny Room across CrotonaPark for Women Only Space',\n    'Uptown Bronx Apartment',\n    'The Sweet',\n    'Private Studio in Private Home',\n    'Large Private Room. Safe area. Near 4 and D trains',\n    'Cozy 1 Bedroom Apartment near Yankee Stadium',\n    'Charming Attic RM with Backyard/Porch/Near Metro'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Apartment around the park",
+                   "Bronx Apartment College Ave",
+                   "Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)",
+                   "Sunny Room across CrotonaPark for Women Only Space",
+                   "Uptown Bronx Apartment",
+                   "The Sweet",
+                   "Private Studio in Private Home",
+                   "Large Private Room. Safe area. Near 4 and D trains",
+                   "Cozy 1 Bedroom Apartment near Yankee Stadium",
+                   "Charming Attic RM with BackyardPorchNear Metro"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q3",
+          "category":"Languages",
+          "question":"Po verdallisem neper new york dhe nuk po gjej ndonje vend per te ndenjur sonte. Nuk kam shume para ne xhep keshtu qe me duhet nje vend i lire per fjetur? Me jep dot nja pese sugjerime qe kushtojne rreth 30 dollare per nate? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (Albanian)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":30
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":30
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Room in Bushwick Bk available June',\n    'Calm bed great area.',\n    'Beautiful NYC Apartment in Popular Brooklyn spot!!',\n    'Sunnyside RM w/ a view. Near everything you need.',\n    'Room with a view',\n    'Room in spacious house in Brooklyn!',\n    'Bronx Apartment College Ave',\n    'Beautiful room in renovated Manhattan apartment',\n    'Warm little oasis in Brooklyn with Full size bed',\n    'Comfortable, cozy, dorm-like room',\n    'Great room in a two-bedroom apartment.',\n    'Cozy Ridgewood Spot',\n    'Cozy Four Twenty Friendly Bedroom in Brooklyn',\n    'Quite and comfortable shared room in UES'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Room in Bushwick Bk available June",
+                   "Calm bed great area.",
+                   "Beautiful NYC Apartment in Popular Brooklyn spot!!",
+                   "Sunnyside RM w a view. Near everything you need.",
+                   "Room with a view"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q4",
+          "category":"Languages",
+          "question":"Po verdallisem neper new york dhe nuk po gjej ndonje vend per te ndenjur sonte. Nuk kam shume para ne xhep keshtu qe me duhet nje vend i lire per fjetur? Me jep dot nja pese sugjerime qe kushtojne rreth dyzetepese dollare per nate?  Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (Albanian) and specifically the string representation of a number",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":45
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":45
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Huge room in great area, 25 minutes from Manhattan',\n    'Room in Bushwick Bk available June',\n    'Sunny spacious room full of good energy',\n    'Nice & new room, washer/dryer, 5 min to train!',\n    'Private Room for short stay in a house.',\n    'NEW Bedroom w/Private Toilet (Great Study Space)',\n    'Beautiful sunny room in Brooklyn',\n    '\u91d1\u57ce\u53d1\u53cc\u4eba\u623f suit2 queens size bed',\n    'Bedroom 7 bed A.',\n    'BK'S FINEST CLOSE 2 TRANSPORTATION-',\n    'Super-cute apartment in Harlem!',\n    'The Jamaica Experience',\n    'Calm bed great area.',\n    'Sunny room in Brooklyn',\n    'private room w/ separate entrance in quiet area',\n    'Sunny, Cozy Room Near Train, Cafes & Parks',\n    'Beautiful NYC Apartment in Popular Brooklyn spot!!',\n    'Brooklyn Home On The Beach',\n    'Large, Furnished Bedroom in Bushwick',\n    'Sunny, peaceful room in Ridgewood/Bushwick',\n    'Sunnyside RM w/ a view. Near everything you need.',\n    'Room with a view',\n    'Cozy room in Brooklyn steps from train',\n    'Cozy room w/ Laundry in Building + 3 Bathrooms!',\n    'Spacious Room in Washington Heights',\n    'Room in spacious house in Brooklyn!',\n    'Lefferts Garden/ Prospect Park Gem',\n    'Nice room near SI Ferry \\n15 minutes by car.',\n    'Spacious, quiet loft close to EVERYTHING! Views!',\n    'Cute sunny room in big Bushwick apartment',\n    'Cozy Room Great Price in Bushwick, Bklyn!(Suite 3)',\n    'Colorful Room in Crown Heights',\n    'Bronx Apartment College Ave',\n    'Lovely room, close to all!',\n    'Cozy NYC apartment shared space female only',\n    'Beautiful shared room in 20 min to Manhattan',\n    'beautiful ROOFTOP apartment',\n    'Cozy & clean Bedstuy, Brooklyn bedroom',\n    'Sparse room inside well-kept apartment',\n    'Private Room with Queen-size Bed',\n    'Fully Furnished Luk Room including Air Conditiner!',\n    'Laundry + Central AC - Modern Style - Near Metro',\n    'Sunny Room across CrotonaPark for Women Only Space',\n    'Private room Flushing Queens, 15 min from 7train',\n    'Beautiful room in renovated Manhattan apartment',\n    'Shared Room 4 FEMALE Guests 30mins to Manhattan-3',\n    'ROOM AC WI-FI PARKING CABLE FOR 2',\n    'Light twin room',\n    'Quite and comfortable shared room in UES',\n    'Private large room near LGA airport with queen bed',\n    'Warm little oasis in Brooklyn with Full size bed',\n    'Comfortable, cozy, dorm-like room',\n    'Cozy Beautiful Room Only 20min from Manhattan NYC!',\n    'Sunny and isolated living room on Roosevelt island',\n    'SUNNY BEDROOM IN LARGE BK APT!',\n    'Great room in a two-bedroom apartment.',\n    'Private room in quintessential BK!',\n    'Cozy Ridgewood Spot',\n    'Cosy Studio in Rego Park',\n    'Home Sweet Room-HOMEY-Queens NYC!!',\n    'Cozy bedroom on Roosevelt Island',\n    '25 minutes from Manhattan, shared room bunk beds',\n    'Bedstuy Artists Quarter (tower corner room)',\n    'Spacious, Private bedroom in Bushwick apartment',\n    'Harmony House 2 on Madison Street',\n    'Lady's Powder Room',\n    'Cozy Four Twenty Friendly Bedroom in Brooklyn',\n    '2MinToTrainsCozyLivingRoomMaimonideLutheranHospita',\n    'Lovely,Cozy,bright,beautiful room **only female**',\n    'Cozy Room in Crown Heights',\n    'Private Room in 4BR Modern Manhattan Apartment',\n    'Room in LIC/Astoria close to the city & LGA/JFK',\n    'Sunny private bedroom in Bushwick, Brooklyn',\n    'great room in the best place',\n    '1920s Room 1 block from Prospect Park and Q Access',\n    'Sweet Space in Bed Stuy: July',\n    'Comfy room with WiFi. Mins to Central Park!',\n    'Cozy Room Great Price in Bushwick Bklyn! (Suite 2)',\n    'Shared male Room on Manhattan. Amazing view! II',\n    'A Couch In East Williamsburg Near Train.',\n    'Lovely Bedroom in Trendy Brooklyn',\n    'Cozy and Quiet.',\n    'Artsy + Light. River Views. 30 min to 42nd St.',\n    'Spacious Brooklyn Loft/private room',\n    'Quite and comfortable shared room in UES',\n    'Newly renovated Room for 1',\n    'Shared 1br in Flushing for cheap',\n    'Comfortable and clean room',\n    'Shared space w/privacy near NY Botanic Garden',\n    'This is your Happy Place in Brooklyn NYC',\n    'Spacious Private Access Near Trains M - L and J',\n    'Sunny little Nook in NYC!',\n    'Workspace Room 2',\n    'PEACEFUL ESCAPE FROM THE BUSY CITY!  L/2',\n    'Cozy, private bedroom in Greenpoint/Williamsburg',\n    '\u9759\u623f',\n    'Large Size Room Next to Subway',\n    '\u2022Bright and Cozy room in an elegant apartment\u2022'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Huge room in great area 25 minutes from Manhattan",
+                   "Room in Bushwick Bk available June",
+                   "Sunny spacious room full of good energy",
+                   "Nice & new room washerdryer 5 min to train!",
+                   "Private Room for short stay in a house."
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q5",
+          "category":"Languages",
+          "question":"\u03b8\u03b5\u03bb\u03c9 \u03bd\u03b1 \u03bc\u03bf\u03c5 \u03b4\u03c9\u03c3\u03b5\u03b9\u03c2 \u03b4\u03b5\u03ba\u03b1 \u03b1\u03b9\u03c1\u03bc\u03c0\u03b9\u03bd\u03bc\u03c0 \u03c0\u03bf\u03c5 \u03b5\u03b9\u03bd\u03b1\u03b9 \u03c0\u03c1\u03bf\u03c3\u03c9\u03c0\u03b9\u03ba\u03b1 \u03b4\u03c9\u03bc\u03b1\u03c4\u03b9\u03b1 \u03c3\u03c4\u03b7 \u03c0\u03b5\u03c1\u03b9\u03bf\u03c7\u03b7 \u03c4\u03b7\u03c2 \u039d\u03b5\u03b1\u03c2 \u03a5\u03bf\u03c1\u03ba\u03b7\u03c2. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (Greek)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_room_type"
+                ],
+                "parameters":[
+                   {
+                      "room_type":"Private room"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_room_type"
+             ],
+             "parameters":[
+                {
+                   "room_type":"Private room"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Sunny and spacious  1-bedroom in Brooklyn',\n    'Large Private Room in Greenpoint Williamsburg',\n    'Huge room in great area, 25 minutes from Manhattan',\n    'Brooklyn Home in the Heart of it All',\n    'Large Parlor Room, Landmark Home 1 block to PRATT',\n    'Room in Bushwick Bk available June',\n    'British Room @ Columbia Uni.',\n    'Private 2 bedroom w/ Rooftop Manhattan View!',\n    'Large charming bedroom'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                    "Amazing huge furnished room!",
+                    "Sunny and spacious  1-bedroom in Brooklyn",
+                    "Large Private Room in Greenpoint Williamsburg",
+                    "Huge room in great area 25 minutes from Manhattan",
+                    "Brooklyn Home in the Heart of it All",
+                    "Large Parlor Room Landmark Home 1 block to PRATT",
+                    "Room in Bushwick Bk available June",
+                    "British Room @ Columbia Uni.",
+                    "Private 2 bedroom w Rooftop Manhattan View!",
+                    "Large charming bedroom"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q7",
+          "category":"Languages",
+          "question":"\u0395\u03b9\u03bc\u03b1\u03b9 \u03c3\u03c4\u03b7 \u039d\u03b5\u03b1 \u03a5\u03bf\u03c1\u03ba\u03b7 \u03b1\u03c5\u03c4\u03b7 \u03c4\u03b7 \u03c3\u03c4\u03b9\u03b3\u03bc\u03b7, \u03ba\u03b1\u03b9 \u03b8\u03b1 \u03b7\u03b8\u03b5\u03bb\u03b1 \u03bd\u03b1 \u03c6\u03b1\u03c9 \u03c3\u03b5 \u03b3\u03b9\u03b1\u03c0\u03bf\u03bd\u03b5\u03b6\u03b9\u03ba\u03bf \u03b5\u03c3\u03c4\u03b9\u03b1\u03c4\u03bf\u03c1\u03b9\u03bf \u03c3\u03b5 \u03b1\u03c5\u03c4\u03b7 \u03c4\u03b7 \u03c0\u03b5\u03c1\u03b9\u03bf\u03c7\u03b7. \u039c\u03c0\u03bf\u03c1\u03b5\u03b9\u03c2 \u03bd\u03b1 \u03bc\u03b5 \u03b2\u03bf\u03b7\u03b8\u03b7\u03c3\u03b5\u03b9\u03c2 \u03bc\u03b5 \u03b4\u03b5\u03ba\u03b1 \u03b5\u03c3\u03c4\u03b9\u03b1\u03c4\u03bf\u03c1\u03b9\u03b1; Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (Greek)",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurants_by_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"Japanese"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurants_by_cuisine"
+             ],
+             "parameters":[
+                {
+                   "cuisine":"Japanese"
+                }
+             ],
+             "answer":"```json\n{\n  'restaurant': [\n    'AJISAI JAPANESE FUSION',\n    'SUSHI DAMO',\n    'AKAGI SUSHI',\n    'IKUMI',\n    'AYA SUSHI',\n    'ZURUTTO RAMEN & GYOZA BAR',\n    'SUSHI YASUDA',\n    'NEW SUSHI TATSU',\n    'KOTO SUSHI & STEAK',\n    'KONDO JAPANESE RESTAURANT'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant":[
+                   "AJISAI JAPANESE FUSION",
+                   "SUSHI DAMO",
+                   "AKAGI SUSHI",
+                   "IKUMI",
+                   "AYA SUSHI",
+                   "ZURUTTO RAMEN & GYOZA BAR",
+                   "SUSHI YASUDA",
+                   "NEW SUSHI TATSU",
+                   "KOTO SUSHI & STEAK",
+                   "KONDO JAPANESE RESTAURANT"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q8",
+          "category":"Languages",
+          "question":"\u0398\u03b1 \u03b7\u03b8\u03b5\u03bb\u03b1 \u03bd\u03b1 \u03bc\u03b5\u03b9\u03bd\u03c9 \u03c3\u03b5 \u03b5\u03bd\u03b1 \u03b4\u03b9\u03b1\u03bc\u03b5\u03c1\u03b9\u03c3\u03bc\u03b1 \u03c3\u03c4\u03b7 \u039d\u03b5\u03b1 \u03a5\u03bf\u03c1\u03ba\u03b7, \u03b1\u03bb\u03bb\u03b1 \u03b4\u03b5 \u03be\u03b5\u03c1\u03c9 \u03c0\u03bf\u03c5. \u039c\u03c0\u03bf\u03c1\u03b5\u03b9\u03c2 \u03bd\u03b1 \u03b2\u03c1\u03b5\u03b9\u03c2 \u03b4\u03b5\u03ba\u03b1 \u03c3\u03b5 \u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03c9; Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (Greek)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_room_type"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Entire home apartment"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_room_type"
+             ],
+             "parameters":[
+                {
+                   "room_type":"Entire home/apt"
+                }
+             ],
+             "answer":"I encountered an issue retrieving the listings for 'Entire home/apt' room type. It seems there was a problem with the room type specification. Let's try a different approach or adjust the request."
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Fun 3 Bedroom Just Minutes to Manhattan!!",
+                   "Spacious Bright 1 Bedroom East Village Apartment",
+                   "Spacious Brooklyn Brownstone 3BR+",
+                   "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                   "Spacious 1BR Bushwick Surfers Loft!",
+                   "West Village Studio Apartment",
+                   "West Village Apartment near Washington Square Park",
+                   "5 rooms in clean apartment West Harlem",
+                   "Soho loft with everything",
+                   "Cozy & artsy apt in East Village - 2 bedrooms"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q9",
+          "category":"Languages",
+          "question":"Ich w\u00fcrde gerne japanisch essen. Kannst du zehn Orten in Manhattan finden? Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (German)",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurants_by_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"Japanese"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurants_by_cuisine"
+             ],
+             "parameters":[
+                {
+                   "cuisine":"Japanese"
+                }
+             ],
+             "answer":"```json\n{'restaurant':['AJISAI JAPANESE FUSION','SUSHI DAMO','AKAGI SUSHI','IKUMI','AYA SUSHI','ZURUTTO RAMEN & GYOZA BAR','SUSHI YASUDA','NEW SUSHI TATSU','KOTO SUSHI & STEAK','KONDO JAPANESE RESTAURANT']}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant":[
+                   "AJISAI JAPANESE FUSION",
+                   "SUSHI DAMO",
+                   "AKAGI SUSHI",
+                   "IKUMI",
+                   "AYA SUSHI",
+                   "ZURUTTO RAMEN & GYOZA BAR",
+                   "SUSHI YASUDA",
+                   "NEW SUSHI TATSU",
+                   "KOTO SUSHI & STEAK",
+                   "KONDO JAPANESE RESTAURANT"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q10",
+          "category":"Languages",
+          "question":"Pouvez-vous, s\u2019il vous pla\u00eet, me procurer le restaurant de quartier 'JUNOON'? Return the answer in JSON format: {'location':'my_location'}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (French)",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_borough_location"
+                ],
+                "parameters":[
+                   {
+                      "restaurant":"Junoon"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_borough_location"
+             ],
+             "parameters":[
+                {
+                   "restaurant":"Junoon"
+                }
+             ],
+             "answer":"```json\n{'location':'Manhattan'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "location":"Manhattan"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TYPO_Q1",
+          "category":"Typos",
+          "question":"Can you please help me find a place to stay in New York which cost cen dollars? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (cen instead of 10)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_price"
+                ],
+                "parameters":[
+                   {
+                      "price":10
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_price"
+             ],
+             "parameters":[
+                {
+                   "price":100
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Spacious brand new apartment 2 bedrooms - 2bath',\n    'Gorgeous Two Bedroom Apartment Columbias Campus',\n    'Entire Cozy Apt in Brooklyn - 20 mins to Manhattan',\n    'Front Studio in Loft Apartment - Steiner Studios',\n    'Entire Sun Drenched Apartment in Clinton Hill',\n    'Charming East Village Studio',\n    'Cozy, Sunny, UWS Junior One Bedroom',\n    'Huge Dumbo Loft',\n    'The Emerald Suite  (A Gem In A Historic Mansion)',\n    'Seaview Studio in  Brooklyn New york.',\n    'Well Equipped One-Bedroom Apartment',\n    'Cozy brownstone bed & bath; pvt.ent',\n    '2 Bedrooms and a Comfy Couch On Washington',\n    'Private Essex Street Bedroom in the LowerEast Side',\n    'Spacious  Harlem 1-Br. Terrace Apt with Doorman',\n    'Airy, Modern, Large Room W'burg two blocks subway',\n    'Williamsburg, BK large apt',\n    'Bedroom with Patio in Prime Williamsburg Location!',\n    'Chic and Cozy Heart of Williamsburg',\n    'Spacious One King Bed Junior Suite in Times Square',\n    'Cozy Room with Window View near Times Square',\n    'Great spacious room in Stylish apt near Highline',\n    'Cozy private room w/private bath, Hell's Kitchen',\n    'Cute beach bungalow by the beach, 80min Manhattan',\n    'Charming & inviting Brooklyn Brownstone apartment',\n    'Superb Private Bedroom with Private Bath in UPS!',\n    'Family friendly apartment near Prospect Park',\n    'Sunny, Spacious Lower Harlem Condo',\n    'Amazing Brooklyn 1Bd with Private Balcony',\n    'King Suite with sofa bed, your sanctuary in SoHo',\n    'LARGE 1BR (CONV 2BR) CROWN HEIGHTS',\n    'Minimalist Vegan Room in Columbus Circle',\n    'Cozy, Full 1 Bedroom Apartment Near Central Park',\n    'Brownstone BK heaven',\n    'Beach Haven',\n    'World Trade Center Delight',\n    'Apartment near Upper East Side',\n    'Charming -One bedroom -Williamsburg',\n    'TWO BEDROOM APARTMENT IN BEAUTIFUL BED-STUY',\n    'Great view, 1 BR right next to Central Park!'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Room with a view"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TYPO_Q2",
+          "category":"Typos",
+          "question":"Can you please help me find a place to stay in New York which cost hundred and twenty and four? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (twenty four instead of twenty and four)",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_price"
+                ],
+                "parameters":[
+                   {
+                      "price":124
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_price"
+             ],
+             "parameters":[
+                {
+                   "price":124
+                }
+             ],
+             "answer":"```json\n{'airbnb':['Cute apartment with Backyard']}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Cute apartment with Backyard"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TYPO_Q3",
+          "category":"Typos",
+          "question":"Can you please help me find somewhere to stay in Bronks? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (Bronx instead of Bronks)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_neighbourhood_group"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Bronx"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_neighbourhood_group"
+             ],
+             "parameters":[
+                {
+                   "neighbourhood_group":"Bronx"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Apartment around the park',\n    'Bronx Apartment College Ave',\n    'Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)',\n    'Sunny Room across CrotonaPark for Women Only Space',\n    'Uptown Bronx Apartment',\n    'The Sweet',\n    'Private Studio in Private Home',\n    'Large Private Room. Safe area. Near 4 and D trains',\n    'Cozy 1 Bedroom Apartment near Yankee Stadium',\n    'Charming Attic RM with Backyard/Porch/Near Metro'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Apartment around the park",
+                   "Bronx Apartment College Ave",
+                   "Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)",
+                   "Sunny Room across CrotonaPark for Women Only Space",
+                   "Uptown Bronx Apartment",
+                   "The Sweet, Private Studio in Private Home",
+                   "Large Private Room. Safe area. Near 4 and D trains",
+                   "Cozy 1 Bedroom Apartment near Yankee Stadium",
+                   "Charming Attic RM with BackyardPorchNear Metro"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TYPO_Q4",
+          "category":"Typos",
+          "question":"Can you please help me find somewhere to eat pica? Please return at most 10 entries. Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+          "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (pizza instead of pica)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurants_by_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"pizza"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurants_by_cuisine"
+             ],
+             "parameters":[
+                {
+                   "cuisine":"Peruvian"
+                }
+             ],
+             "answer":"```json\n{'restaurant':['LIMA RESTAURANT','LOS CHILES BAR & RESTAURANT','MACA RESTAURANT']}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant":[
+                   "BELLA ROMA PIZZA",
+                   "MAKAVELY PIZZA",
+                   "BEN'S PIZZA",
+                   "BELLEROSE FAMOUS PIZZA",
+                   "LINDA PIZZERIA",
+                   "J AND D PIZZA",
+                   "AVE D PIZZERIA",
+                   "DOMINO'S PIZZA #3680",
+                   "THWAITES PLACE PELHAM PIZZA",
+                   "LONA PIZZA"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TYPO_Q5",
+          "category":"Typos",
+          "question":"Can you please help me find somewhere enjoy some good smoothi? Please return at most 10 entries. Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+          "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (Smoothie instead of smoothi)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurants_by_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"smoothie"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurants_by_cuisine"
+             ],
+             "parameters":[
+                {
+                   "cuisine":"Smoothies"
+                }
+             ],
+             "answer":"```json\n{'restaurant':[]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant":[
+                   "JUICE RIGHT CORP.",
+                   "JOE & THE JUICE",
+                   "JUICY MAMA",
+                   "THE SPOT CAFE",
+                   "HEALTH IS LIFE (HERBALIFE)",
+                   "JOE & THE JUICE",
+                   "HEALTHY LIVING HERBALIFE",
+                   "JUICE N' GO",
+                   "JUICES FOR LIFE",
+                   "KUNG FU TEA"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TYPO_Q6",
+          "category":"Typos",
+          "question":"I want to find a shered place to stay, can you give me some suggestions? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+          "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (Shared instead of shered)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_room_type"
+                ],
+                "parameters":[
+                   {
+                      "room_type":"Shared room"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_room_type"
+             ],
+             "parameters":[
+                {
+                   "room_type":"Shared room"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Bedroom 7 bed A.',\n    'Williamsburg Loft!! Bedford L 1blk!',\n    'Calm bed great area.',\n    'Spacious, quiet loft close to EVERYTHING! Views!',\n    'Shared Cozy Apartment By Times Square Manhattan',\n    'Times Square Holiday Rental Loft!',\n    'Cozy NYC apartment shared space female only',\n    'Beautiful shared room in 20 min to Manhattan',\n    'Comfortable sofa bed in chic apt',\n    'Central Park - Comfy Futon Couch for 2'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Bedroom 7 bed A., Williamsburg Loft!! Bedford L 1blk!",
+                   "Calm bed great area.",
+                   "Spacious quiet loft close to EVERYTHING! Views!",
+                   "Shared Cozy Apartment By Times Square Manhattan",
+                   "Times Square Holiday Rental Loft!",
+                   "Cozy NYC apartment shared space female only",
+                   "Beautiful shared room in 20 min to Manhattan",
+                   "Comfortable sofa bed in chic apt",
+                   "Central Park - Comfy Futon Couch for 2",
+                   "Shared Room 4 FEMALE Guests 30mins to Manhattan-3"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q1",
+          "category":"Data Types",
+          "question":"Can you please get for me some airbnbs that cost 90 euros per night? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand the currency differences (euros) and convert it to dollars, then retrieval of the airbnbs in the respective dollar conversion ",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_price"
+                ],
+                "parameters":[
+                   {
+                      "price":90
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_price"
+             ],
+             "parameters":[
+                {
+                   "price":90
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Quiet & Spacious Brooklyn Apt for Cat-Lovers',\n    'NICEQUIET10 MINUTES TO TIME SQUARE.',\n    '\u2655 Downtown Manhattan I Private Bedroom\u2655',\n    'Quiet room in Greenpoint, Brooklyn',\n    'Beautiful & Spacious EV Bedroom',\n    'Red Hook studio space with private entrance',\n    'Spacious yellow room in Brooklyn',\n    'Cozy apartment in Noho/ Soho',\n    'Rm @Top Floor of a Luxury Building!',\n    'UWS Studio  - Great Neighborhood!'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                   "NICEQUIET10 MINUTES TO TIME SQUARE.",
+                   "\u2655 Downtown Manhattan I Private Bedroom\u2655",
+                   "Quiet room in Greenpoint Brooklyn",
+                   "Beautiful & Spacious EV Bedroom",
+                   "Red Hook studio space with private entrance",
+                   "Spacious yellow room in Brooklyn",
+                   "Cozy apartment in Noho Soho",
+                   "Rm @Top Floor of a Luxury Building!",
+                   "UWS Studio - Great Neighborhood!"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q2",
+          "category":"Data Types",
+          "question":"I don't have much money and I would like to book an airbnb below 505 yuan, can you suggest me some? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand the currency differences (yuan) and convert it to dollars, then retrieval of the airbnbs in the respective dollar conversion",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":70
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":505
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Fun 3 Bedroom Just Minutes to Manhattan!!',\n    'Sunny and spacious 1-bedroom in Brooklyn',\n    'Large Private Room in Greenpoint Williamsburg',\n    'Spacious Bright 1 Bedroom East Village Apartment',\n    'Spacious Brooklyn Brownstone 3BR+',\n    'Quiet & Spacious Brooklyn Apt for Cat-Lovers',\n    'Huge room in great area 25 minutes from Manhattan',\n    'Brooklyn Home in the Heart of it All',\n    'Spacious 1BR Bushwick Surfers Loft!'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Huge room in great area 25 minutes from Manhattan",
+                   "Brooklyn Home in the Heart of it All",
+                   "Room in Bushwick Bk available June",
+                   "Midtown Luxury Living room close to Highline",
+                   "Furnished Bedroom in Murray Hill",
+                   "Sunny spacious room full of good energy",
+                   "Nice & new room washerdryer 5 min to train!",
+                   "Spacious Town House near Park",
+                   "Be Comfy Loft Bedroom"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q3",
+          "category":"Data Types",
+          "question":"I have limited funds available and am seeking accommodation, can you give me some recommendations for less than 9000 cents? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":90
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":90
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Sunny and spacious  1-bedroom in Brooklyn',\n    'Quiet & Spacious Brooklyn Apt for Cat-Lovers',\n    'Huge room in great area, 25 minutes from Manhattan',\n    'Brooklyn Home in the Heart of it All',\n    'Room in Bushwick Bk available June',\n    'British Room @ Columbia Uni.',\n    'Spacious One-bedroom Home in Columbia U',\n    'Midtown Luxury Living room close to Highline',\n    'Bargain Warm Spacious Studio in Carroll Gardens!'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Sunny and spacious 1-bedroom in Brooklyn",
+                   "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                   "Huge room in great area 25 minutes from Manhattan",
+                   "Brooklyn Home in the Heart of it All",
+                   "Room in Bushwick Bk available June",
+                   "British Room @ Columbia Uni.",
+                   "Spacious One-bedroom Home in Columbia U",
+                   "Midtown Luxury Living room close to Highline",
+                   "Bargain Warm Spacious Studio in Carroll Gardens!"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q4",
+          "category":"Data Types",
+          "question":"Can you find me some airbnbs that have as last review date the date 12-05-2019? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand another date format (DD-MM-YYYY), regardless of another pre-specified format (DD-MM-YY)",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listings_by_review_date"
+                ],
+                "parameters":[
+                   {
+                      "last_review_date":"12-05-19"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listings_by_review_date"
+             ],
+             "parameters":[
+                {
+                   "last_review_date":"12-05-19"
+                }
+             ],
+             "answer":"```json\n{'airbnb':['Quiet & Spacious Brooklyn Apt for Cat-Lovers']}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Quiet & Spacious Brooklyn Apt for Cat-Lovers"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q5",
+          "category":"Data Types",
+          "question":"Could you please find me an accomodation that is rated on 24th of June 2019 ? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+          "motivation":"Testing the ability of the LLM to understand another date format (Date and Month as string, then YYYY), regardless of another pre-specified format (DD-MM-YY)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listings_by_review_date"
+                ],
+                "parameters":[
+                   {
+                      "last_review_date":"24-06-19"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listings_by_review_date"
+             ],
+             "parameters":[
+                {
+                   "last_review_date":"24-06-19"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Large Private Room in Greenpoint Williamsburg',\n    'Convenient East Village Studio',\n    'Red Hook studio space with private entrance',\n    'BRIGHT Modern Spacious East Village Studio Apt',\n    'Huge Beautiful Loft in the Heart of Williamsburg',\n    'Private big one bedroom apt, Brooklyn,NY',\n    'Cozy Studio with Patio Close to the Subway',\n    'Room at walking distance to the Empire State!',\n    'Best Location Sun Filled West Village Townhome',\n    'Shared Room By Times Square near Central Park 3'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Large Private Room in Greenpoint Williamsburg",
+                   "Convenient East Village Studio",
+                   "Red Hook studio space with private entrance",
+                   "BRIGHT Modern Spacious East Village Studio Apt",
+                   "Huge Beautiful Loft in the Heart of Williamsburg",
+                   "Private big one bedroom apt BrooklynNY",
+                   "Cozy Studio with Patio Close to the Subway",
+                   "Room at walking distance to the Empire State!",
+                   "Best Location Sun Filled West Village Townhome",
+                   "Shared Room By Times Square near Central Park 3"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q6",
+          "category":"Data Types",
+          "question":"Could you please find me an accomodation that is rated on 01-02-2019 ? Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+          "motivation":"Testing the ability of the LLM to understand another date format (DD-MM-YYYY), regardless of another pre-specified format (DD-MM-YY)",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listings_by_review_date"
+                ],
+                "parameters":[
+                   {
+                      "last_review_date":"01-02-19"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listings_by_review_date"
+             ],
+             "parameters":[
+                {
+                   "last_review_date":"01-02-19"
+                }
+             ],
+             "answer":"```json\n{'airbnb':'Warm little oasis in Brooklyn with Full size bed'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":"Warm little oasis in Brooklyn with Full size bed"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q7",
+          "category":"Data Types",
+          "question":"Could you please find me an accomodation that is lastly rated in June of 2018, maybe on the first? Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+          "motivation":"Testing the ability of the LLM to understand the date as text and convert it to the right date format (DD-MM-YY)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listings_by_review_date"
+                ],
+                "parameters":[
+                   {
+                      "last_review_date":"01-06-18"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listings_by_review_date"
+             ],
+             "parameters":[
+                {
+                   "last_review_date":"06-01-18"
+                }
+             ],
+             "answer":"```json\n{''}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Cozy Two Room Studio Astori"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q8",
+          "category":"Data Types",
+          "question":"Could you please find me an accomodation that requires for me to stay at least 48 hours? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand the time measurement unit (hours) to do the appropriate conversion to days/nights",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listings_by_min_nights"
+                ],
+                "parameters":[
+                   {
+                      "minimum_nights":2
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listings_by_min_nights"
+             ],
+             "parameters":[
+                {
+                   "minimum_nights":2
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Fun 3 Bedroom Just Minutes to Manhattan!!',\n    'Spacious Brooklyn Brownstone 3BR+',\n    'Spacious brand new apartment 2 bedrooms - 2bath',\n    'Magical 3-bed/3-bath fabulous views',\n    'Central Harlem Private Studio',\n    'LIC Jackson park luxury apartment Queen Plaza',\n    'BEST location in Williamsburg',\n    'NICEQUIET10 MINUTES TO TIME SQUARE.',\n    'Entire Cozy Apt in Brooklyn - 20 mins to Manhattan'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Fun 3 Bedroom Just Minutes to Manhattan!!",
+                   "Spacious Brooklyn Brownstone 3BR+",
+                   "Spacious brand new apartment 2 bedrooms - 2bath",
+                   "Magical 3-bed3-bath fabulous views",
+                   "Central Harlem Private Studio",
+                   "LIC Jackson park luxury apartment Queen Plaza",
+                   "BEST location in Williamsburg",
+                   "NICEQUIET10 MINUTES TO TIME SQUARE.",
+                   "Entire Cozy Apt in Brooklyn - 20 mins to Manhattan"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q9",
+          "category":"Data Types",
+          "question":"I have limited funds available, only 42 dollars and 100 cents, can you give me ten recommendations for accommodation? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":43
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":43
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Room in Bushwick Bk available June',\n    'Nice & new room, washer/dryer, 5 min to train!',\n    'Private Room for short stay in a house.',\n    'NEW Bedroom w/Private Toilet (Great Study Space)',\n    '\u91d1\u57ce\u53d1\u53cc\u4eba\u623f suit2 queens size bed',\n    'Bedroom 7 bed A.',\n    'BK'S FINEST CLOSE 2 TRANSPORTATION-',\n    'Calm bed great area.',\n    'Sunny room in Brooklyn',\n    'Sunny, Cozy Room Near Train, Cafes & Parks'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Room in Bushwick Bk available June",
+                   "Nice & new room  washerdryer 5 min to train!",
+                   "Private Room for short stay in a house.",
+                   "NEW Bedroom wPrivate Toilet (Great Study Space)",
+                   "\u91d1\u57ce\u53d1\u53cc\u4eba\u623f suit2 queens size bed",
+                   "Bedroom 7 bed A.",
+                   "BK'S FINEST CLOSE 2 TRANSPORTATION-",
+                   "Calm bed great area.",
+                   "Sunny room in Brooklyn",
+                   "Sunny Cozy Room Near Train Cafes & Parks"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q1",
+          "category":"Extra Context",
+          "question":"I woke up really tired and sad today and I would like to travel somewhere. I am on my way to Manhattan from Los Angeles and I know there is the Statue of Liberty nearby so I can see that to cure my depression. Could you find me five places to stay for the night and cure my depression? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand the main goal requested by the user, regardless of any related or unrelated extra context given to the prompt",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_neighbourhood_group"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Manhattan"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_neighbourhood_group",
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "neighbourhood_group":"Manhattan"
+                },
+                {
+                    "price":100
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'British Room @ Columbia Uni'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Spacious Bright 1 Bedroom East Village Apartment",
+                   "West Village Studio Apartment",
+                   "West Village Apartment near Washington Square Park",
+                   "5 rooms in clean apartment West Harlem",
+                   "Soho loft with everything"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q2",
+          "category":"Extra Context",
+          "question":"I got really tired today at school and I have not eaten anything. I still don't have a lot of time and I am located in the area of Brooklyn. I would like to eat something fast, for example fast food, could you recommend me some places? Please return at most 10 entries. Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+          "motivation":"Testing the ability of the LLM to understand the main goal requested by the user, regardless of any related or unrelated extra context given to the prompt",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurants_by_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"Hamburgers"
+                   }
+                ]
+             },
+             {
+                "path_id":2,
+                "functions":[
+                   "get_restaurants_by_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"Hotdogs"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurants_by_cuisine"
+             ],
+             "parameters":[
+                {
+                   "cuisine":"Fast Food"
+                }
+             ],
+             "answer":"```json\n{'restaurant':[]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant":[
+                   "CITI FIELD NATHAN'S FAMOUS STAND 417",
+                   "NATHAN'S FAMOUS"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q3",
+          "category":"Extra Context",
+          "question":"I got really tired today at school and I have not eaten anything. I still don't have a lot of time and I am located in the area of Brooklyn. I would like to eat something but I cannot eat meat, but would like something with cheese. Could you recommend me some places? Please return at most 10 entries. Return the answer in JSON format: {'restaurant_vegetarian':'my_restaurant_vegetarian','restaurant_vegan':'my_restaurant_vegan' }",
+          "motivation":"Testing the ability of the LLM to understand the main goal requested by the user, regardless of any related or unrelated extra context given to the prompt",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurants_by_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"Vegetarian"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurants_by_cuisine"
+             ],
+             "parameters":[
+                {
+                   "cuisine":"Vegetarian"
+                }
+             ],
+             "answer":"```json\n{\n  'restaurant_vegetarian': 'QUANTUM LEAP',\n }\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant_vegetarian":[
+                   "QUANTUM LEAP"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q4",
+          "category":"Extra Context",
+          "question":"I got really tired today at school and I have not eaten anything. I still don't have a lot of time and I am located in the area of Brooklyn. I would like to eat something. I am really craving some good burgers around this area, could you recommend me some? Please return at most 10 entries.Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+          "motivation":"Testing the ability of the LLM to understand the main goal requested by the user, regardless of any related or unrelated extra context given to the prompt",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurants_by_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"Hamburgers"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurants_by_cuisine"
+             ],
+             "parameters":[
+                {
+                   "cuisine":"Burgers"
+                }
+             ],
+             "answer":"```json\n{'restaurant':[]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant":[
+                   "JIMBO'S HAMBURGER PALACE",
+                   "GINBO'S HAMBURGER HOUSE",
+                   "SHAKE SHACK",
+                   "BURGER KING",
+                   "BAREBURGER",
+                   "JIMBO'S HAMBURGER PALACE",
+                   "SMASHBURGER #1712",
+                   "MCDONALD'S",
+                   "MCDONALD'S",
+                   "SHAKE SHACK"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q5",
+          "category":"Extra Context",
+          "question":"I know  that I have a friend from high school, she was from California and she now lives in Brooklyn, New York. Recently, I heard she got some new apartments in that area, but I could't find them. Could you please help me find ten apartments in that area? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to understand the main goal requested by the user, regardless of any related or unrelated extra context given to the prompt",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_neighbourhood_group"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_neighbourhood_group"
+             ],
+             "parameters":[
+                {
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Sunny and spacious  1-bedroom in Brooklyn',\n    'Large Private Room in Greenpoint Williamsburg',\n    'Spacious Brooklyn Brownstone 3BR+',\n    'Quiet & Spacious Brooklyn Apt for Cat-Lovers',\n    'Brooklyn Home in the Heart of it All',\n    'Spacious 1BR Bushwick Surfers Loft!',\n    'Large Parlor Room, Landmark Home 1 block to PRATT',\n    'Room in Bushwick Bk available June',\n    'Gorgeous Industrial Loft in Prime Williamsburg',\n    'Private 2 bedroom w/ Rooftop Manhattan View!'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Large Private Room in Greenpoint Williamsburg",
+                   "Spacious Brooklyn Brownstone 3BR+",
+                   "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                   "Brooklyn Home in the Heart of it All",
+                   "Spacious 1BR Bushwick Surfers Loft!",
+                   "Large Parlor Room Landmark Home 1 block to PRATT",
+                   "Room in Bushwick Bk available June",
+                   "Gorgeous Industrial Loft in Prime Williamsburg",
+                   "Private 2 bedroom w Rooftop Manhattan View!"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q6",
+          "category":"Extra Context",
+          "question":"I have been visiting this place in Mannhattan, Cozy 2 Bedroom approximately couple of months ago and I would like to thank and suggest that apartment to my friends, but I do not remember who managed it, could you please help me find that person? Return the answer in JSON format: {'name':'host_name'}",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string matching), giving some extra context",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_host_name"
+                ],
+                "parameters":[
+                   {
+                      "listing_name":"Cozy 2 Bedroom"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_host_name"
+             ],
+             "parameters":[
+                {
+                   "listing_name":"Cozy 2 Bedroom"
+                }
+             ],
+             "answer":"```json\n{'name':'Marta'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "name":"Marta"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q7",
+          "category":"Extra Context",
+          "question":"I am traveling with some of my business colleagues, with whom I want to share a spacious place for 10 people and we would like to visit New York today and stay there for some nights. Could you give me some suggestions? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string matching), giving some extra context",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_room_type"
+                ],
+                "parameters":[
+                   {
+                      "room_type":"Entire home apartment"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_neighbourhood_group"
+             ],
+             "parameters":[
+                {
+                   "neighbourhood_group":"Manhattan"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Manhattan Midtown Vacation Home away from Home',\n    '70' Luxury MotorYacht on the Hudson',\n    'Gorgeous Two Bedroom Apartment Columbias Campus',\n    'West 15th Street Cozy Chelsea 1bd Serviced Apt',\n    'Cozy Apartment',\n    'Master Bed/Bath near Lincoln Center in high-rise',\n    'Beautiful & Private Manhattan Room',\n    'Central Harlem Private Studio',\n    'Gorgeous and Renovated Chelsea Apartment',\n    'Modern and Stylish 1 Bedroom in East Village'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Fun 3 Bedroom Just Minutes to Manhattan!!",
+                   "Spacious Bright 1 Bedroom East Village Apartment",
+                   "Spacious Brooklyn Brownstone 3BR+",
+                   "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                   "Spacious 1BR Bushwick Surfers Loft!",
+                   "West Village Studio Apartment",
+                   "West Village Apartment near Washington Square Park",
+                   "5 rooms in clean apartment West Harlem",
+                   "Soho loft with everything",
+                   "Cozy & artsy apt in East Village - 2 bedrooms"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Incorrect",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q8",
+          "category":"Extra Context",
+          "question":"New York is a beautiful city to visit and stay in Brooklyn Home in the Heart of it All. Some neighbourhoods such as Mannhatan, Brooklyn are the heart of all beautiful places to stay. Can you please find contacts to book this place? Return the answer in JSON format: {'name':'host_name'}",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string matching), giving some extra context",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_host_name"
+                ],
+                "parameters":[
+                   {
+                      "listing_name":"Brooklyn Home in the Heart of it All"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_host_name"
+             ],
+             "parameters":[
+                {
+                   "listing_name":"Brooklyn Home in the Heart of it All"
+                }
+             ],
+             "answer":"```json\n{'name':'Samantha'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "name":"Samantha"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_REASON_Q1",
+          "category":"Reasoning",
+          "question":"I would like to stay only tonight at this airbnb: Brooklyn Home in the Heart of it All, is this possible? Return the answer in JSON format: {'number':'number_nights'}",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_min_nights"
+                ],
+                "parameters":[
+                   {
+                      "listing_name":"Brooklyn Home in the Heart of it All"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_min_nights"
+             ],
+             "parameters":[
+                {
+                   "listing_name":"Brooklyn Home in the Heart of it All"
+                }
+             ],
+             "answer":"```json\n{'number':3}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "number":3
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_REASON_Q2",
+          "category":"Reasoning",
+          "question":"I would like to stay only three nights at this airbnb: Spacious 1BR Bushwick Surfers Loft!, how much should I pay for it? Return the answer in JSON format: {'price':my_price}",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_price"
+                ],
+                "parameters":[
+                   {
+                      "listing_name":"Spacious 1BR Bushwick Surfers Loft!"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_price"
+             ],
+             "parameters":[
+                {
+                   "listing_name":"Spacious 1BR Bushwick Surfers Loft!"
+                }
+             ],
+             "answer":"```json\n{'price':330}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "price":330
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_REASON_Q3",
+          "category":"Reasoning",
+          "question":"Me and my friends have in total 300 dollars and we would like to stay for 3 nights at an airbnb in New York. Can you please suggest six some places where we can stay with this budget? Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":100
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":100
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Sunny and spacious 1-bedroom in Brooklyn',\n    'Large Private Room in Greenpoint Williamsburg',\n    'Quiet & Spacious Brooklyn Apt for Cat-Lovers',\n    'Huge room in great area, 25 minutes from Manhattan',\n    'Brooklyn Home in the Heart of it All'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Large Private Room in Greenpoint Williamsburg",
+                   "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                   "Huge room in great area 25 minutes from Manhattan",
+                   "Brooklyn Home in the Heart of it All"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_REASON_Q4",
+          "category":"Reasoning",
+          "question":"Hello! I am now in New York and I would like to try some local traditional dishes, could you please recommend me like seven nice places? Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurants_by_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"American"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurants_by_cuisine"
+             ],
+             "parameters":[
+                {
+                   "cuisine":"American"
+                }
+             ],
+             "answer":"```json\n{\n  'restaurant': [\n    'SMASHBURGER',\n    'BROADHURST THEATER',\n    'MARCO'S',\n    'MILA CAFE',\n    'SMASHBURGER #1714',\n    'MUNCHINETTE',\n    'DUNKIN DONUTS'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant":[
+                   "SMASHBURGER",
+                   "BROADHURST THEATER",
+                   "MARCO'S",
+                   "MILA CAFE",
+                   "SMASHBURGER #1714",
+                   "MUNCHINETTE",
+                   "DUNKIN DONUTS"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_REASON_Q5",
+          "category":"Reasoning",
+          "question":"Hello! I will share my room with two friends and we will stay at this airbnb: Amazing huge furnished room! how much should each of us pay for this per night? Return the answer in JSON format: {'price':my_price}",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_price"
+                ],
+                "parameters":[
+                   {
+                      "listing_name":"Amazing huge furnished room!"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_price"
+             ],
+             "parameters":[
+                {
+                   "listing_name":"Amazing huge furnished room!"
+                }
+             ],
+             "answer":"```json\n{'price':20}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "price":20
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_REASON_Q6",
+          "category":"Reasoning",
+          "question":"I have 300 dollars with me but I was planning to spend one third on accommodation in New York, do you have some recommendations for me, example ten recommendations? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_price"
+                ],
+                "parameters":[
+                   {
+                      "price":100
+                   }
+                ]
+             },
+             {
+                "path_id":2,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":100
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":100
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Sunny and spacious  1-bedroom in Brooklyn',\n    'Large Private Room in Greenpoint Williamsburg',\n    'Quiet & Spacious Brooklyn Apt for Cat-Lovers',\n    'Huge room in great area, 25 minutes from Manhattan',\n    'Brooklyn Home in the Heart of it All',\n    'Large Parlor Room, Landmark Home 1 block to PRATT',\n    'Room in Bushwick Bk available June',\n    'British Room @ Columbia Uni.',\n    'Spacious brand new apartment 2 bedrooms - 2bath'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Large Private Room in Greenpoint Williamsburg",
+                   "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                   "Huge room in great area 25 minutes from Manhattan",
+                   "Brooklyn Home in the Heart of it All",
+                   "Large Parlor Room Landmark Home 1 block to PRATT",
+                   "Room in Bushwick Bk available June",
+                   "British Room @ Columbia Uni.",
+                   "Spacious brand new apartment 2 bedrooms - 2bath"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_REASON_Q7",
+          "category":"Reasoning",
+          "question":"Hello! I will share my room with my little child and two friends and we will stay at this airbnb: Amazing huge furnished room! how much should each of us pay for this per night? Please return at most 10 entries. Return the answer in JSON format: {'price':my_price}",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_price"
+                ],
+                "parameters":[
+                   {
+                      "listing_name":"Amazing huge furnished room!"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_price"
+             ],
+             "parameters":[
+                {
+                   "listing_name":"Amazing huge furnished room!"
+                }
+             ],
+             "answer":"```json\n{'price':15}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "price":20
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_AGG_Q1",
+          "category":"Aggregation",
+          "question":" Hello! I am traveling for work in New York and I have limited refundable budget and I would not like to spend more than 60 dollars per night. Can you find me ten options? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":60
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":60
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Huge room in great area, 25 minutes from Manhattan',\n    'Brooklyn Home in the Heart of it All',\n    'Room in Bushwick Bk available June',\n    'Sunny spacious room full of good energy',\n    'Nice & new room, washer/dryer, 5 min to train!',\n    'Be Comfy Loft Bedroom',\n    'Private Room for short stay in a house.',\n    'NEW Bedroom w/Private Toilet (Great Study Space)',\n    'Large Room Close to NYC'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Huge room in great area 25 minutes from Manhattan",
+                   "Brooklyn Home in the Heart of it All",
+                   "Room in Bushwick Bk available June",
+                   "Sunny spacious room full of good energy",
+                   "Nice & new room  washerdryer 5 min to train!",
+                   "Be Comfy Loft Bedroom",
+                   "Private Room for short stay in a house.",
+                   "NEW Bedroom wPrivate Toilet (Great Study Space)",
+                   "Large Room Close to NYC"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_AGG_Q2",
+          "category":"Aggregation",
+          "question":" Hello, I am currently in New York but I don't have much money and I would like to stay at a place for tonight. My limit is 30 dollars. Do you have around ten suggestions? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":30
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":30
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Room in Bushwick Bk available June',\n    'Calm bed great area.',\n    'Beautiful NYC Apartment in Popular Brooklyn spot!!',\n    'Sunnyside RM w/ a view. Near everything you need.',\n    'Room with a view',\n    'Room in spacious house in Brooklyn!',\n    'Bronx Apartment College Ave',\n    'Beautiful room in renovated Manhattan apartment',\n    'Warm little oasis in Brooklyn with Full size bed',\n    'Comfortable, cozy, dorm-like room',\n    'Great room in a two-bedroom apartment.',\n    'Cozy Ridgewood Spot',\n    'Cozy Four Twenty Friendly Bedroom in Brooklyn',\n    'Quite and comfortable shared room in UES'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Room in Bushwick Bk available June",
+                   "Calm bed great area.",
+                   "Beautiful NYC Apartment in Popular Brooklyn spot!!",
+                   "Sunnyside RM w a view. Near everything you need.",
+                   "Room with a view",
+                   "Room in spacious house in Brooklyn!",
+                   "Bronx Apartment College Ave",
+                   "Beautiful room in renovated Manhattan apartment",
+                   "Warm little oasis in Brooklyn with Full size bed",
+                   "Comfortable cozy dorm-like room"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_AGG_Q3",
+          "category":"Aggregation",
+          "question":" Hello, I have 23 dollars in cash and my card is not working, I am looking for a place to stay tonight in New York, can you please help me? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":23
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":23
+                }
+             ],
+             "answer":"```json\n{'airbnb':['Calm bed great area.','Room with a view']}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Calm bed great area.",
+                   "Room with a view"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_AGG_Q4",
+          "category":"Aggregation",
+          "question":" I intend to allocate 500 dollars for my upcoming trip to New York, with a portion reserved specifically for accommodation, estimated at approximately 100 dollars. Can you provide me with ten suggestions for lodging within this budget? Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":100
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":100
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Sunny and spacious  1-bedroom in Brooklyn',\n    'Large Private Room in Greenpoint Williamsburg',\n    'Quiet & Spacious Brooklyn Apt for Cat-Lovers',\n    'Huge room in great area, 25 minutes from Manhattan',\n    'Brooklyn Home in the Heart of it All',\n    'Large Parlor Room, Landmark Home 1 block to PRATT',\n    'Room in Bushwick Bk available June',\n    'British Room @ Columbia Uni.',\n    'Spacious brand new apartment 2 bedrooms - 2bath'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Large Private Room in Greenpoint Williamsburg",
+                   "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                   "Huge room in great area 25 minutes from Manhattan",
+                   "Brooklyn Home in the Heart of it All",
+                   "Large Parlor Room Landmark Home 1 block to PRATT",
+                   "Room in Bushwick Bk available June",
+                   "British Room @ Columbia Uni.",
+                   "Spacious brand new apartment 2 bedrooms - 2bath"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_AGG_Q5",
+          "category":"Aggregation",
+          "question":"I plan to budget 500 dollars for my upcoming New York trip, with 80 dollars designated for accommodation, 220 dollars for clothing, and 200 dollars for dining at various restaurants. Could you offer me ten diverse lodging recommendations that fit within this financial plan? Return the answer in JSON format: {'airbnb':['my_airbnb']} ",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average, filtering also any extra context given by the user",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":80
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":80
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Sunny and spacious 1-bedroom in Brooklyn',\n    'Huge room in great area, 25 minutes from Manhattan',\n    'Brooklyn Home in the Heart of it All',\n    'Room in Bushwick Bk available June',\n    'British Room @ Columbia Uni.',\n    'Spacious One-bedroom Home in Columbia U',\n    'Midtown Luxury Living room close to Highline',\n    'Bargain Warm Spacious Studio in Carroll Gardens!',\n    'Furnished Bedroom in Murray Hill'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Huge room in great area 25 minutes from Manhattan",
+                   "Brooklyn Home in the Heart of it All",
+                   "Room in Bushwick Bk available June",
+                   "British Room @ Columbia Uni.",
+                   "Spacious One-bedroom Home in Columbia U",
+                   "Midtown Luxury Living room close to Highline",
+                   "Bargain Warm Spacious Studio in Carroll Gardens!",
+                   "Furnished Bedroom in Murray Hill"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_AGG_Q6",
+          "category":"Aggregation",
+          "question":" Some special people are arriving to New York, and I would like to find the best 5 places for them to stay for some nights, could you help me with some recommendations? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_frequent_listings"
+                ],
+                "parameters":[
+                   {
+                      "nr_of_listings":5
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_frequent_listings"
+             ],
+             "parameters":[
+                {
+                   "nr_of_listings":5
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Bright LARGE 2 BEDS! near Manhattan',\n    '1 Pvt. Room in Upper West Manhattan',\n    'Cozy Private Bedroom',\n    'Peaches Paradise.',\n    'Apartment 6'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Bright LARGE 2 BEDS! near Manhattan",
+                   "1 Pvt. Room in Upper West Manhattan",
+                   "Cozy Private Bedroom",
+                   "Peaches Paradise.",
+                   "Apartment 6"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_AGG_Q7",
+          "category":"Aggregation",
+          "question":" Anticipating the imminent arrival of cherished guests in New York, I find myself in a quest for the three utmost in vogue apartments, prioritizing an exceptional stay, all while remaining indifferent to any financial considerations.Return the answer in JSON format: {'airbnb':['my_airbnb']} ",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_frequent_listings"
+                ],
+                "parameters":[
+                   {
+                      "nr_of_listings":3
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_frequent_listings"
+             ],
+             "parameters":[
+                {
+                   "nr_of_listings":3
+                }
+             ],
+             "answer":"```json\n{'airbnb':['Bright LARGE 2 BEDS! near Manhattan','1 Pvt. Room in Upper West Manhattan','Cozy Private Bedroom']}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Bright LARGE 2 BEDS! near Manhattan",
+                   "1 Pvt. Room in Upper West Manhattan",
+                   "Cozy Private Bedroom"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_AGG_Q8",
+          "category":"Aggregation",
+          "question":"Do you think that you can find me around ten accommodations in New York just enough for the 30 dollars in my pocket? Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_listing_by_lower_price"
+                ],
+                "parameters":[
+                   {
+                      "price":30
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_listing_by_lower_price"
+             ],
+             "parameters":[
+                {
+                   "price":30
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Room in Bushwick Bk available June',\n    'Calm bed great area.',\n    'Beautiful NYC Apartment in Popular Brooklyn spot!!',\n    'Sunnyside RM w/ a view. Near everything you need.',\n    'Room with a view',\n    'Room in spacious house in Brooklyn!',\n    'Bronx Apartment College Ave',\n    'Beautiful room in renovated Manhattan apartment',\n    'Warm little oasis in Brooklyn with Full size bed',\n    'Comfortable, cozy, dorm-like room',\n    'Great room in a two-bedroom apartment.',\n    'Cozy Ridgewood Spot',\n    'Cozy Four Twenty Friendly Bedroom in Brooklyn',\n    'Quite and comfortable shared room in UES'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Room in Bushwick Bk available June",
+                   "Calm bed great area.",
+                   "Beautiful NYC Apartment in Popular Brooklyn spot!!",
+                   "Sunnyside RM w a view. Near everything you need.",
+                   "Room with a view",
+                   "Room in spacious house in Brooklyn!",
+                   "Bronx Apartment College Ave",
+                   "Beautiful room in renovated Manhattan apartment",
+                   "Warm little oasis in Brooklyn with Full size bed",
+                   "Comfortable cozy dorm-like room"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TAIL_Q1",
+          "category":"Long-Tail",
+          "question":" I have heard that up until now this airbnb : Loft Suite @ The Box House Hotel has 30 reviews, is that correct? Return the answer in JSON format: {'reviews':nr_reviews}",
+          "motivation":"Testing the ability of the LLM to distinguish between the entry records containing the same values ",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_nr_of_reviews"
+                ],
+                "parameters":[
+                   {
+                      "listing_name":"Loft Suite @ The Box House Hotel"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_nr_of_reviews"
+             ],
+             "parameters":[
+                {
+                   "listing_name":"Loft Suite @ The Box House Hotel"
+                }
+             ],
+             "answer":"```json\n{'reviews':89}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "reviews":89
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TAIL_Q2",
+          "category":"Long-Tail",
+          "question":"Does the DUNKIN BASKIN ROBBINS restaurant also make coffee and tea? Return the answer in JSON format: {'cuisine':['my_cuisine']}",
+          "motivation":"Testing the ability of the LLM to distinguish between the entry records containing the same values",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "restaurant":"DUNKIN',' BASKIN ROBBINS"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "answer":"```json\n{\n  'cuisine': ['Coffee & Tea']\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "cuisine":[
+                   "Donuts",
+                   "Coffee,Tea"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Incorrect",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TAIL_Q3",
+          "category":"Long-Tail",
+          "question":" I am close to 'DUNKIN',' BASKIN ROBBINS .'Is it sure that I will find coffee or tea there? Return the answer in JSON format: {'cuisine':['my_cuisine']}",
+          "motivation":"Testing the ability of the LLM to distinguish between the entry records containing the same values",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "restaurant":"DUNKIN', BASKIN ROBBINS"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "answer":"```json\n{'cuisine':['Ice Cream']}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "cuisine":[
+                   "Donuts",
+                   "Coffee,Tea"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Incorrect",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       }
+    ]
+ }

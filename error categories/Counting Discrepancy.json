@@ -1,0 +1,78 @@
+{
+    "question_result": [
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_ECON_Q2",
+            "category": "Extra Context",
+            "question": "I would like to know the most reviewed album of Madonna, also known as the queen of pop, winner of 7 grammy awards. Can you retrive the album name of Madonna's most reviewed album?  Bad Bunny is a Puerto Rican singer and rapper who produces music often described as Latin trap and reggaeton. A Turkish friend told me that the title of one of this singer's albums when translated into Turkish is 'Sensiz bir Yaz'. The album originally is in Spanish. Can you tell me how many songs are there in this album? Return the answer in JSON format: {'Madonnas_most_reviewed_album': 'album_name', 'song_count_in_BadBunnys_album': song_count}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "songs_by_album"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Madonna"
+                        },
+                        {
+                            "album_name": "Un verano sin ti"
+                        }
+                    ]
+                },
+                {
+                    "path_id": 2,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "albums_by_artist_2",
+                        "songs_by_album"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Madonna"
+                        },
+                        {
+                            "artist_name": "Bad Bunny"
+                        },
+                        {
+                            "album_name": "Un verano sin ti"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "albums_by_artist_2",
+                    "songs_by_album"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Madonna"
+                    },
+                    {
+                        "artist_name": "Bad Bunny"
+                    },
+                    {
+                        "album_name": "Un verano sin ti"
+                    }
+                ],
+                "answer": "```json\n{\n  'Madonnas_most_reviewed_album': 'Ray of Light',\n  'song_count_in_BadBunnys_album': 14\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "Madonnas_most_reviewed_album": "Ray of Light",
+                    "song_count_in_BadBunnys_album": 15
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        }                           
+    ]
+}

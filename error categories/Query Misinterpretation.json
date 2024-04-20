@@ -1,0 +1,364 @@
+{
+    "question_result": [
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q8",
+          "category": "Selection",
+          "question": "Among the 15 most streamed songs, which were released between January 2023 and Februray 2023? Return the answer in JSON format: {'songs': [song_names_here]}",
+          "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on interval (date range)",
+          "overall_match": false,
+          "correct_paths": [
+              {
+                  "path_id": 1,
+                  "functions": [
+                      "top_streamed_songs"
+                  ],
+                  "parameters": [
+                      {
+                          "n": 15
+                      }
+                  ]
+              }
+          ],
+          "model_solution": {
+              "functions": [
+                  "top_streamed_songs",
+                  "songs_by_release_date",
+                  "songs_by_release_date"
+              ],
+              "parameters": [
+                  {
+                      "n": 15
+                  },
+                  {
+                      "release_date": "2023-01"
+                  },
+                  {
+                      "release_date": "2023-02"
+                  }
+              ],
+              "answer": "Here are the songs from the top 15 most streamed songs that were released between January 2023 and February 2023:\n\n```json\n{\n  'songs': [\n    'Flowers',\n    'Last Night',\n    'OMG',\n    'Shakira: Bzrp Music Sessions, Vol. 53',\n    'El Gordo Trae El Mando',\n    'PRC',\n    'Fin de Semana',\n    'Erro Gostoso - Ao Vivo',\n    'Everything I Love',\n    'Sial',\n    'I Wrote The Book',\n    'WANDA',\n    'Love Again',\n    'LLYLM',\n    'I'm Not Here To Make Friends',\n    'TRUSTFALL',\n    'VIBE (feat. Jimin of BTS)',\n    'Mu\\ufffd\\ufffd',\n    'Sugar Rush Ride',\n    'Cupid - Twin Ver.',\n    'TQG',\n    'El Azul',\n    'Die For You - Remix',\n    'AMARGURA',\n    'Moonlight',\n    'Boy's a liar Pt. 2',\n    'Tattoo',\n    'Rara Vez',\n    'Nosso Quadro',\n    'Cupido',\n    'Oi Balde - Ao Vivo',\n    'MIENTRAS ME CURO DEL CORA',\n    'X SI VOLVEMOS',\n    'Cupid',\n    'Di Que Si',\n    'Watch This - ARIZONATEARS Pluggnb Remix',\n    'Rosa Pastel',\n    'If We Ever Broke Up',\n    'Tormenta (feat. Bad Bunny)',\n    'Private Landing (feat. Justin Bieber & Future)',\n    'Heaven',\n    'PERO T'\n  ]\n}\n```\n\nPlease note that the list may contain more than 15 songs as it includes all songs released in the specified period that are among the top streamed songs."
+          },
+          "correct_answer": {
+              "ordered_items": [],
+              "answer": {
+                  "songs": [
+                      "Everything I Love"
+                  ]
+              }
+          },
+          "evaluation": {
+              "function_eval": "Correct",
+              "argument_eval": "Correct",
+              "response_eval": "Incorrect"
+          }
+        },        
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q4",
+            "category": "Selection",
+            "question": "What television genre albums were released in 2023 with a rating lower than 3.0? Please provide only album(s) name.Return the answer in JSON format: {'albums': [album_names_here]}",
+            "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (small floating point number).",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_date_and_genres"],
+                "parameters": [
+                  { "release_date": "2023", "genres": [ "television"] }
+                ]
+              }
+            ],
+            "model_solution": {
+              "functions": ["filter_albums_by_date_range"],
+              "parameters": [{"start_date": "2023-01-01", "end_date": "2023-12-31" }],
+              "answer": "```json\n{\n  'albums': [\n    'The Idol Episode 5 Part 2',\n    'The Idol Episode 5 Part 1',\n    'The Idol Episode 4',\n    'The Idol Episode 3',\n    'The Idol Episode 2',\n    'The Idol Episode 1'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+              "ordered_items": [],
+              "answer": {
+                "albums": [
+                  "The Idol Episode 5 Part 2",
+                  "The Idol Episode 4",
+                  "The Idol Episode 3",
+                  "The Idol Episode 2",
+                  "The Idol Episode 1"
+                ]
+              }
+            },
+            "evaluation": {
+              "function_eval": "Incorrect",
+              "argument_eval": "Incorrect",
+              "response_eval": "Incorrect"
+            }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q4",
+          "category": "Typos",
+          "question": "Identify the album or albums from albums with a minimum rating higher than 4.22, a review count exceeding 100, and a rating count surpassing 1000, where the album title is a colr.If there are any typos, feel free to correct them for accurate results. Return the answer in JSON format: {'album': 'color_album_name_here'}",
+          "motivation": "Evaluate the ability to correctly identify simple typos and infer about album names' meanings.",
+          "overall_match": false,
+          "correct_paths": [
+            {
+              "path_id": 1,
+              "functions": ["high_rated_reviewed_albums"],
+              "parameters": [
+                {
+                  "rating_threshold": 4.22,
+                  "min_ratings": 1000,
+                  "review_threshold": 100
+                }
+              ]
+            }
+          ],
+          "model_solution": {
+            "functions": ["high_rated_reviewed_albums"],
+            "parameters": [
+              {
+                "rating_threshold": 4.22,
+                "min_ratings": 1000,
+                "review_threshold": 100
+              }
+            ],
+            "answer": "```json\n{\n  'album': 'The Black Saint and the Sinner Lady'\n}\n```"
+          },
+          "correct_answer": { "ordered_items": [], "answer": { "album": "Red" } },
+          "evaluation": {
+            "function_eval": "Correct",
+            "argument_eval": "Correct",
+            "response_eval": "Incorrect"
+          }
+        },
+        {
+          "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q6",
+          "category": "Interpretation",
+          "question": "Can you bring me the top songs where the titles of the songs are in Spanish among the top 10 songs by Bad Bunny which the vast majority has been influenced by? Also, can you translate these Spanish language song titles into English? Return the answer in JSON format: {'spanish_titled_songs':[song_names_here],'title_english':[translation_to_english]}",
+          "motivation": "Evaluate the ability to correctly identify what it has been asked and translate the output from different language",
+          "overall_match": false,
+          "correct_paths": [
+              {
+                  "path_id": 1,
+                  "functions": [
+                      "top_streamed_songs_by_artist"
+                  ],
+                  "parameters": [
+                      {
+                          "artist_name": "Bad Bunny",
+                          "n": 10
+                      }
+                  ]
+              }
+          ],
+          "model_solution": {
+              "functions": [
+                  "top_streamed_songs_by_artist"
+              ],
+              "parameters": [
+                  {
+                      "artist_name": "Bad Bunny",
+                      "n": 10
+                  }
+              ],
+              "answer": "From the top 10 streamed songs by Bad Bunny, the following have Spanish titles:\n\n- 'Moscow Mule'\n- 'Lo Siento BB:/ (with Bad Bunny & Julieta Venegas)'\n- 'La Santa'\n- 'A Tu Merced'\n- 'Volv\u00ed'\n- 'Neverita'\n- 'Party'\n- 'MOJAITA GHOST'\n- 'Volando - Remix'\n- 'Tarot'\n\nNow, let's translate these titles into English:\n\n- 'Moscow Mule' (remains the same as it's a drink name)\n- 'Lo Siento BB:/' translates to 'I'm Sorry BB:/'\n- 'La Santa' translates to 'The Saint'\n- 'A Tu Merced' translates to 'At Your Mercy'\n- 'Volv\u00ed' translates to 'I Returned'\n- 'Neverita' translates to 'Little Cooler'\n- 'Party' (remains the same as it's a common English word)\n- 'MOJAITA GHOST' (seems to be a stylized or incorrect title, 'Mojaita' could be a play on 'Mojada' which means 'Wet', and 'Ghost' remains the same)\n- 'Volando - Remix' translates to 'Flying - Remix'\n- 'Tarot' (remains the same as it refers to tarot cards)\n\nHere is the JSON format with the Spanish titles and their English translations:\n\n```json\n{\n  'spanish_titled_songs': [\n    'Moscow Mule',\n    'Lo Siento BB:/ (with Bad Bunny & Julieta Venegas)',\n    'La Santa',\n    'A Tu Merced',\n    'Volv\u00ed',\n    'Neverita',\n    'Party',\n    'MOJAITA GHOST',\n    'Volando - Remix',\n    'Tarot'\n  ],\n  'title_english': [\n    'Moscow Mule',\n    'I'm Sorry BB:/',\n    'The Saint',\n    'At Your Mercy',\n    'I Returned',\n    'Little Cooler',\n    'Party',\n    'Wet Ghost',\n    'Flying - Remix',\n    'Tarot'\n  ]\n}\n```"
+          },
+          "correct_answer": {
+              "ordered_items": [],
+              "answer": {
+                  "spanish_titled_songs": [
+                      "Lo Siento BB:/ (with Bad Bunny & Julieta Venegas)",
+                      "La Santa",
+                      "A Tu Merced",
+                      "Volv",
+                      "Neverita",
+                      "Volando - Remix"
+                  ],
+                  "title_english": [
+                      "I'm Sorry Baby",
+                      "The Saint",
+                      "At Your Mercy",
+                      "I Returned",
+                      "Little Fridge",
+                      "Flying - Remix"
+                  ]
+              }
+          },
+          "evaluation": {
+              "function_eval": "Correct",
+              "argument_eval": "Correct",
+              "response_eval": "Incorrect"
+          }
+        },
+        {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_REASON_Q2",
+          "category":"Reasoning",
+          "question":"I have some friends visiting me this week from Japan and I want to show them some traditional places of Manhattan. I know there are some places around the area with this zip code 10011 that is close to my home. I had this number of theirs: 2129248911 but I don not remember their name. Return the answer in JSON format: {'restaurant_name':'name', 'restaurant_location':'location'} ",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurant_by_zipcode_cuisine_borough_phone"
+                ],
+                "parameters":[
+                   {
+                      "zip_code":10011,
+                      "cuisine":"American",
+                      "borough":"Manhattan",
+                      "phone":"2129248911"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurant_by_zipcode_cuisine_borough_phone"
+             ],
+             "parameters":[
+                {
+                   "zip_code":10011,
+                   "cuisine":"Japanese",
+                   "borough":"Manhattan",
+                   "phone":"2129248911"
+                }
+             ],
+             "answer":"```json\n{'error':'Restaurant not found'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant_name":"FAMOUS BAGEL BUFFET",
+                "restaurant_location":"Manhattan"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+        }, 
+        {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_AGG_Q3",
+          "category":"Aggregation",
+          "question":"Greetings, I'm in the process of planning a family trip to New York in December. We're working with a budget of $ 1500 for a 2 or 3-day stay. Within this budget, we've allocated over 500 dollars for clothing, approximately 600 dollars for dining at nice restaurants and enjoying coffee with friends. With the remaining budget ranging from 250 dollars to maybe 400 dollars, I'm seeking recommendations for a suitable Airbnb around Brooklyn. Return the answer in JSON format: {'airbnb_by_neighbour':'neighbourhood_group', 'airbnb_by_nights':'min_number', 'aribnb_by_price':'price_per_night', 'aribnb_by_price_range':'range_price_per_night'}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighbourhood_group"
+                ],
+                "parameters":[
+                   {
+                      "min_price":250,
+                      "max_price":400,
+                      "min_nights":2,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":250,
+                   "max_price":400,
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb_by_neighbour': 'Brooklyn',\n  'airbnb_by_nights': '2 or 3',\n  'aribnb_by_price': '250 to 400',\n  'aribnb_by_price_range': [\n    'Spacious Brooklyn Brownstone 3BR+',\n    'Magical 3-bed/3-bath fabulous views',\n    'LARGE DUPLEX-3BR/3BA Williamsburg Townhouse+GARDEN',\n    'Spacious & Stylish 3BR Condo Steps to the Subway!',\n    'Unique Fort Greene Getaway with Private Deck',\n    'Amazing Location in Williamsburg with 4 Bedrooms',\n    'Charming Windsor Terrace Home',\n    'Brand new 2-bed in luxury full-service building',\n    'Luxury 4BR Home, Spacious & Central to Trains',\n    '1000 SQ FT Cobble Hill \u00dcbercharmer',\n    'Entire 3rd Fl in Brownstone steps to Prospect Park',\n    'Luxury Pad NYC - Williamsburg Loft',\n    '3BR, 1.5 Bath in Bushwick (10 Mins to Manhattan!)',\n    'Williamsburg Two Bedroom/Two Bath',\n    '100% 5\u2605 Reviews - Big 2-Bed 2-Bath \u2013 Central Wburg',\n    '*NEW*6 BED BROOKLYN DUPLX,15 MIN TRAIN RIDE 2 CITY',\n    'Spacious 2bd apt with Manhattan view and sunset',\n    'Gorgeous Dumbo 2-Bedroom w/ Incredible Views',\n    'Peaceful, Spacious and Comfy 3BR Oasis!',\n    'Oasis in the heart of Williamsburg',\n    'AMAZING  3 BEDROOMS BROOKLYN',\n    'Perfect House for the Whole Family',\n    'Garden apt for 7 close to the city  & w free gym',\n    'Williamsburg 1 bedroom appartement',\n    '3 Story Town House in Park Slope',\n    'Midcentury Inspired Plantlovers Apt',\n    'Penthouse with huge deck and city views'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Spacious Brooklyn Brownstone 3BR+",
+                   "Magical 3-bed3-bath fabulous views",
+                   "LARGE DUPLEX-3BR3BA Williamsburg Townhouse+GARDEN",
+                   "Spacious & Stylish 3BR Condo Steps to the Subway!",
+                   "Unique Fort Greene Getaway with Private Deck",
+                   "Amazing Location in Williamsburg with 4 Bedrooms",
+                   "Charming Windsor Terrace Home",
+                   "Brand new 2-bed in luxury full-service building",
+                   "Luxury 4BR Home Spacious & Central to Trains",
+                   "1000 SQ FT Cobble Hill \u00dcbercharmer",
+                   "Entire 3rd Fl in Brownstone steps to Prospect Park",
+                   "Luxury Pad NYC - Williamsburg Loft",
+                   "3BR 1.5 Bath in Bushwick (10 Mins to Manhattan!)",
+                   "Williamsburg Two BedroomTwo Bath",
+                   "100% 5\u2605 Reviews - Big 2-Bed 2-Bath \u2013 Central Wburg",
+                   "*NEW*6 BED BROOKLYN DUPLX15 MIN TRAIN RIDE 2 CITY",
+                   "Spacious 2bd apt with Manhattan view and sunset",
+                   "Gorgeous Dumbo 2-Bedroom w Incredible Views",
+                   "Peaceful Spacious and Comfy 3BR Oasis!",
+                   "Oasis in the heart of Williamsburg",
+                   "AMAZING  3 BEDROOMS BROOKLYN",
+                   "Perfect House for the Whole Family",
+                   "Garden apt for 7 close to the city  & w free gym",
+                   "Williamsburg 1 bedroom appartement",
+                   "3 Story Town House in Park Slope",
+                   "Midcentury Inspired Plantlovers Apt",
+                   "Penthouse with huge deck and city views"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Incorrect",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+        },
+        {
+          "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q3",
+          "category":"Extra Context",
+          "question":"I got really tired today at school and I have not eaten anything. I still don't have a lot of time and I am located in the area of Brooklyn. I would like to eat something but I cannot eat meat, but would like something with cheese. Could you recommend me some places? Please return at most 10 entries. Return the answer in JSON format: {'restaurant_vegetarian':'my_restaurant_vegetarian','restaurant_vegan':'my_restaurant_vegan' }",
+          "motivation":"Testing the ability of the LLM to understand the main goal requested by the user, regardless of any related or unrelated extra context given to the prompt",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurants_by_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"Vegetarian"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurants_by_cuisine"
+             ],
+             "parameters":[
+                {
+                   "cuisine":"Vegetarian"
+                }
+             ],
+             "answer":"```json\n{\n  'restaurant_vegetarian': 'QUANTUM LEAP',\n }\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant_vegetarian":[
+                   "QUANTUM LEAP"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+        }         
+      ]
+    }

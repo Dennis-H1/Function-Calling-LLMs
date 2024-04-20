@@ -1,0 +1,199 @@
+{
+    "question_result": [
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q7",
+            "category": "Selection",
+            "question": "Among the songs released in 2020, which one has the 2nd most streams? Return the answer in JSON format:{'song_with_2nd_most_streams':'song_name'}",
+            "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (large integer).",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_release_date"
+                    ],
+                    "parameters": [
+                        {
+                            "release_date": "2020"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "top_streamed_songs",
+                    "songs_by_release_date"
+                ],
+                "parameters": [
+                    {
+                        "n": 2
+                    },
+                    {
+                        "release_date": "2020"
+                    }
+                ],
+                "answer": "```json\n{'song_with_2nd_most_streams':'Mood (feat. Iann Dior)'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "song_with_2nd_most_streams": "Levitating (feat. DaBaby)"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Incorrect",
+                "argument_eval": "Incorrect",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_ECON_Q5",
+            "category": "Extra Context",
+            "question": "We're hosting a night filled with laughter, music, and unforgettable moments that you won't want to miss. Join us for a fantastic evening of good company, delicious bites, and a playlist that will keep you on the dance floor all night long. Could you please suggest me 5 music tracks from the songs released in 2010 which are the most known(as per streams) and would keep everyone swinging hither and thither?  Return the answer in JSON format: {'songs': [song_names_here]}",
+            "motivation": "Evaluate the ability to understand the context(modified wordings) and to call the function that can be called and infer and collect information about other desired features.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_release_date"
+                    ],
+                    "parameters": [
+                        {
+                            "release_date": "2010"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "top_streamed_songs",
+                    "songs_by_release_date"
+                ],
+                "parameters": [
+                    {
+                        "n": 5
+                    },
+                    {
+                        "release_date": "2010"
+                    }
+                ],
+                "answer": "```json\n{\n  'songs': [\n    'Danza Kuduro',\n    'Enchanted',\n    'Sure Thing',\n    'Just The Way You Are',\n    'Rolling in the Deep'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "songs": [
+                        "Danza Kuduro",
+                        "Just The Way You Are",
+                        "Rolling in the Deep",
+                        "Talking To The Moon",
+                        "Sure Thing"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Incorrect",
+                "argument_eval": "Incorrect",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q8",
+            "category": "Selection",
+            "question": "Among the 15 most streamed songs, which were released between January 2023 and Februray 2023? Return the answer in JSON format: {'songs': [song_names_here]}",
+            "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on interval (date range)",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "top_streamed_songs"
+                    ],
+                    "parameters": [
+                        {
+                            "n": 15
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "top_streamed_songs",
+                    "songs_by_release_date",
+                    "songs_by_release_date"
+                ],
+                "parameters": [
+                    {
+                        "n": 15
+                    },
+                    {
+                        "release_date": "2023-01"
+                    },
+                    {
+                        "release_date": "2023-02"
+                    }
+                ],
+                "answer": "Here are the songs from the top 15 most streamed songs that were released between January 2023 and February 2023:\n\n```json\n{\n  'songs': [\n    'Flowers',\n    'Last Night',\n    'OMG',\n    'Shakira: Bzrp Music Sessions, Vol. 53',\n    'El Gordo Trae El Mando',\n    'PRC',\n    'Fin de Semana',\n    'Erro Gostoso - Ao Vivo',\n    'Everything I Love',\n    'Sial',\n    'I Wrote The Book',\n    'WANDA',\n    'Love Again',\n    'LLYLM',\n    'I'm Not Here To Make Friends',\n    'TRUSTFALL',\n    'VIBE (feat. Jimin of BTS)',\n    'Mu\\ufffd\\ufffd',\n    'Sugar Rush Ride',\n    'Cupid - Twin Ver.',\n    'TQG',\n    'El Azul',\n    'Die For You - Remix',\n    'AMARGURA',\n    'Moonlight',\n    'Boy's a liar Pt. 2',\n    'Tattoo',\n    'Rara Vez',\n    'Nosso Quadro',\n    'Cupido',\n    'Oi Balde - Ao Vivo',\n    'MIENTRAS ME CURO DEL CORA',\n    'X SI VOLVEMOS',\n    'Cupid',\n    'Di Que Si',\n    'Watch This - ARIZONATEARS Pluggnb Remix',\n    'Rosa Pastel',\n    'If We Ever Broke Up',\n    'Tormenta (feat. Bad Bunny)',\n    'Private Landing (feat. Justin Bieber & Future)',\n    'Heaven',\n    'PERO T'\n  ]\n}\n```\n\nPlease note that the list may contain more than 15 songs as it includes all songs released in the specified period that are among the top streamed songs."
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "songs": [
+                        "Everything I Love"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Incorrect",
+                "argument_eval": "Incorrect",
+                "response_eval": "Incorrect"
+            }
+        },                
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q18",
+            "category": "Selection",
+            "question": "Get the list of albums released in 1988 with min rating 3.5 and reviewed by more than 200 and rated by minimum 5000 persons. From this list, only provide those album names that are of type Progressive Metal. Return the answer in JSON format: {'albums':[album_names_here]}",
+            "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (string matching in list of items per record).",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": 3.5,
+                    "min_ratings": 5000,
+                    "review_threshold": 200,
+                    "release_date": "1988"
+                  }
+                ]
+              }
+            ],
+            "model_solution": {
+              "functions": ["high_rated_reviewed_albums","filter_albums_by_date_range","albums_by_genres2"],
+              "parameters": [
+                { "rating_threshold": 3.5, "min_ratings": 5000, "review_threshold": 200 },
+                { "start_date": "1988-01-01", "end_date": "1988-12-31" },
+                { "genres_in": ["Progressive Metal"], "genres_out": [] }
+              ],
+              "answer": "```json\n{'albums':['Seventh Son of a Seventh Son']}\n```"
+            },
+            "correct_answer": {
+              "ordered_items": [],
+              "answer": {
+                "albums": [
+                  "...And Justice for All",
+                  "Seventh Son of a Seventh Son",
+                  "Operation: Mindcrime"
+                ]
+              }
+            },
+            "evaluation": {
+              "function_eval": "Incorrect",
+              "argument_eval": "Incorrect",
+              "response_eval": "Incorrect"
+            }
+        }                                           
+    ]
+}

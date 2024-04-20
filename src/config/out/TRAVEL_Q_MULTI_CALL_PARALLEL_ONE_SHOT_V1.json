@@ -1,0 +1,1160 @@
+{
+    "metadata":{
+       "run_id":"TRAVEL_MULTI_CALL_PARALLEL_RUN",
+       "run_name":"Mannheim Function Calling Benchmark _ Testrun GPT4 Travel Use Case",
+       "question_set_id":"TRAVEL_Q_MULTI_CALL_PARALLEL_V01",
+       "function_set_id":"TRAVEL_FUNC_MULTI_CALL_PARALLEL_SIMPLE_DESC_NO_EX_V01",
+       "prompt":"You are a helpful assistant. Answer briefly.",
+       "model":"gpt-4-turbo-preview",
+       "hyperparameters":{
+          "temperature":0,
+          "mode":"parallel"
+       },
+       "run_start_timestamp":"2024-04-19 02:21:10.155263",
+       "run_end_timestamp":"2024-04-19 02:23:32.377742",
+       "test_driver_version":"1.0.0"
+    },
+    "statistics":{
+       "number_of_functions":{
+          "total":42,
+          "correct":42,
+          "accuracy":1.00
+       },
+       "number_of_parameters":{
+          "total":44,
+          "correct":42,
+          "accuracy":0.954
+       },
+       "number_of_answers":{
+          "total":19,
+          "correct":10,
+          "accuracy":0.53
+       },
+       "number_of_tokens":{
+          "input":42199,
+          "output":6621
+       }
+    },
+    "question_result":[
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_REAS_Q1",
+          "category":"Reasoning",
+          "question":"Hello, someone told me that the Blue Ribbon Fried Chicken restaurant in New York has very good food options. Currently, I am on an exam period and I haven't much free time to go there. Thus, I would rather order the food online. Do you have any available information on the average total waiting time to order some food online in this restaurant? Return the answer in JSON format: {'total_waiting_time_blue_ribbon_fried_chicken': total_time_for_delivery_and_prep} ",
+          "motivation":"Evaluate LLM's ability to call multiple functions simultaneously. Assess its reasoning ability to understand the task requested by the user requires two concurrent function calls to perform the final calculation.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_delivery_time_by_restaurant_name",
+                   "get_avg_prep_time_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Blue Ribbon Fried Chicken"
+                   },
+                   {
+                      "restaurant_name":"Blue Ribbon Fried Chicken"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_prep_time_by_restaurant_name",
+                "get_avg_delivery_time_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Blue Ribbon Fried Chicken"
+                },
+                {
+                   "restaurant_name":"Blue Ribbon Fried Chicken"
+                }
+             ],
+             "answer":"```json\n{'total_waiting_time_blue_ribbon_fried_chicken': 51.34}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "total_waiting_time_blue_ribbon_fried_chicken":51.343743
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_REAS_Q2",
+          "category":"Reasoning",
+          "question":"I have limited time available today, only 25 minutes, and I would like to know in which restaurant I can eat the fastest, that prepares my food for the time I have available. The two restaurants that I have as options are: Hangawi and Tamarind TriBeCa. Return the answer in JSON format: {'restaurant': 'my_restaurant'} ",
+          "motivation":"Evaluate LLM's ability to call multiple functions simultaneously. Assess its reasoning ability to understand the task requested by the user requires two concurrent function calls to perform the final calculation.",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_prep_time_by_restaurant_name",
+                   "get_avg_prep_time_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Hangawi"
+                   },
+                   {
+                      "restaurant_name":"Tamarind TriBeCa"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_prep_time_by_restaurant_name",
+                "get_avg_prep_time_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Hangawi"
+                },
+                {
+                   "restaurant_name":"Tamarind TriBeCa"
+                }
+             ],
+             "answer":"```json\n{'restaurant': 'Hangawi'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant":"Hangawi"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_REAS_Q3",
+          "category":"Reasoning",
+          "question":"I was considering to go tomorrow in a very nice place to eat with a group of friends from Brooklyn called Shake Shack. However, as this restaurant is located in Manhattan I assume that it might be expensive. I would really appreciate it if you could provide me with a general idea of the prices in this restaurant. Can you also show me some information about customer satisfaction, or if this restaurant has some good reviews about the food.  Return the answer in JSON format: {'Shacke_Shack_cost': the_cost_shake, 'Shacke_Shack_rating': the_rating_shake} ",
+          "motivation":"Evaluate LLM's ability to call multiple functions simultaneously. Assess its reasoning ability to understand the task requested by the user requires two concurrent function calls to provide the final answer.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_costs_by_restaurant_name",
+                   "get_rating_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Shake Shack"
+                   },
+                   {
+                      "restaurant_name":"Shake Shack"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_costs_by_restaurant_name",
+                "get_rating_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Shake Shack"
+                },
+                {
+                   "restaurant_name":"Shake Shack"
+                }
+             ],
+             "answer":"```json\n{\n  'Shacke_Shack_cost': 16.34,\n  'Shacke_Shack_rating': 'Varies (Ratings include a mix of 3, 4, and 5 stars)'\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "Shacke_Shack_cost":16.34,
+                "Shacke_Shack_rating":4.96
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_REAS_Q4",
+          "category":"Reasoning",
+          "question":"I do not have much time available and I need to leave my house quickly, could you please tell me how quick will the bikers arrive at my house and give me my food between The Meatball Shop and Lucky's Famous Burgers? Return the answer in JSON format: {'The_Meatball_Shop_time': the_delivery_time_meatball_shop, 'The_Luckys_Famous_Burgers_time': the_delivery_time_lucky_famous_burgers}",
+          "motivation":"Evaluate LLM's ability to call multiple functions simultaneously. Assess its reasoning ability to understand the task requested by the user requires two concurrent function calls to provide the final answer.",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_delivery_time_by_restaurant_name",
+                   "get_avg_delivery_time_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"The Meatball Shop"
+                   },
+                   {
+                      "restaurant_name":"Lucky's Famous Burgers"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_delivery_time_by_restaurant_name",
+                "get_avg_delivery_time_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"The Meatball Shop"
+                },
+                {
+                   "restaurant_name":"Lucky's Famous Burgers"
+                }
+             ],
+             "answer":"```json\n{\n  'The_Meatball_Shop_time': 24.24,\n  'The_Luckys_Famous_Burgers_time': 24.33\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "The_Meatball_Shop_time":24.242424242424242,
+                "The_Luckys_Famous_Burgers_time":24.333333333333332
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_REAS_Q5",
+          "category":"Reasoning",
+          "question":"Could you please help me find some very good options to have a pizza date with a view of the Statue of Liberty with my partner? Additionally, we haven't found any good place to stay yet, but a friend suggested me to go to the Cozy 2 Bedroom in New York. However, I don't know in which part of the city is this place located. Could you help me with this also? Return the answer in JSON format: {'restaurants_close_Statue_of_Liberty': [restaurants_closeby], 'the_neighborhood_group_of_Cozy2_Bedroom': the_neigh_group_of_cozy2bedroom}",
+          "motivation":"Evaluate LLM's ability to call multiple functions simultaneously. Assess its reasoning ability to understand the task requested by the user requires two concurrent function calls to provide the final answer.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurant_by_cuisine_borough",
+                   "get_neighbourhood_group"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"Pizza",
+                      "borough":"Manhattan"
+                   },
+                   {
+                      "name":"Cozy 2 Bedroom"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurant_by_cuisine_borough",
+                "get_neighbourhood_group"
+             ],
+             "parameters":[
+                {
+                   "borough":"Manhattan",
+                   "cuisine":"Pizza"
+                },
+                {
+                   "name":"Cozy 2 Bedroom in New York"
+                }
+             ],
+             "answer":"```json\n{\n  'restaurants_close_Statue_of_Liberty': [\n    'MAKAVELY PIZZA',\n    'BEN'S PIZZA',\n    'AVE D PIZZERIA',\n    'DOMINO'S PIZZA #3680',\n    'DON PEPI PIZZA',\n    'LITTLE ITALY PIZZA',\n    'FREEHOLD IN THE PARK',\n    'JUMBO PIZZA',\n    'FAMOUS CALABRIA PIZZERIA',\n    'JOE'S PIZZA',\n    'FIORENTINA RESTAURANT',\n    'PIZZA ETALIA',\n    'PRINCE ST PIZZA',\n    'FAMOUS AMADEUS PIZZA',\n    '99 CENT TASTY PIZZA',\n    'CHAMPION PIZZA',\n    'TWO BOOTS UPPER WEST SIDE',\n    'DOMINO'S',\n    'SLICE PIZZA',\n    'FIORENTINA RESTAURANT'\n  ],\n  'the_neighborhood_group_of_Cozy2_Bedroom': 'Neighbourhood group not found'\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants_close_Statue_of_Liberty":[
+                   "MAKAVELY PIZZA",
+                   "BEN'S PIZZA",
+                   "AVE D PIZZERIA",
+                   "DOMINO'S PIZZA #3680",
+                   "DON PEPI PIZZA",
+                   "LITTLE ITALY PIZZA",
+                   "FREEHOLD IN THE PARK",
+                   "JUMBO PIZZA",
+                   "FAMOUS CALABRIA PIZZERIA",
+                   "JOE'S PIZZA",
+                   "FIORENTINA RESTAURANT",
+                   "PIZZA ETALIA",
+                   "PRINCE ST PIZZA",
+                   "FAMOUS AMADEUS PIZZA",
+                   "99 CENT TASTY PIZZA",
+                   "CHAMPION PIZZA",
+                   "TWO BOOTS UPPER WEST SIDE",
+                   "DOMINO'S",
+                   "SLICE PIZZA",
+                   "FIORENTINA RESTAURANT"
+                ],
+                "the_neighborhood_group_of_Cozy2_Bedroom":"Manhattan"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_EXTRA_Q1",
+          "category":"Extra Context",
+          "question":"I am very passionate about sushi and Japanese food. I usually cook sushi with my wife every weekend and play Japanese music. This weekend we decided to order and try sushi at an excellent restaurant. I opened the maps and I saw that nearby the city center three restaurants serve Japanese food: Blue Ribbon Sushi, TAO, Momoya. I would really appreciate if you could let me know about the delivery time of these restaurants.  Return the answer in JSON format: {'the_avg_delivery_time_for_restaurant': [avg_time]} ",
+          "motivation":"Evaluate LLM's ability to call multiple functions simultaneously. Assess the ability of LLM to understand the correct functions regardless of the extra related or unrelated context in the user's question.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_delivery_time_by_restaurant_name",
+                   "get_avg_delivery_time_by_restaurant_name",
+                   "get_avg_delivery_time_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Blue Ribbon Sushi"
+                   },
+                   {
+                      "restaurant_name":"TAO"
+                   },
+                   {
+                      "restaurant_name":"Momoya"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_delivery_time_by_restaurant_name",
+                "get_avg_delivery_time_by_restaurant_name",
+                "get_avg_delivery_time_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Blue Ribbon Sushi"
+                },
+                {
+                   "restaurant_name":"TAO"
+                },
+                {
+                   "restaurant_name":"Momoya"
+                }
+             ],
+             "answer":"```json\n{\n  'the_avg_delivery_time_for_restaurant': [\n    {'Blue Ribbon Sushi': 23.94},\n    {'TAO': 23.16},\n    {'Momoya': 25.13}\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "the_avg_delivery_time_for_restaurant":[
+                   23.94,
+                   23.16,
+                   25.13
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_EXTRA_Q2",
+          "category":"Extra Context",
+          "question":"Since I have a flight in 5 hours, I have very limited time here in New York. I will have a very long flight from New York to Japan so I need to eat in a restaurant before leaving. I know two restaurants close to the place I am staying which are Balthazar Boulangerie and Parm. If it is possible I would like to know the food preparation waiting time for both restaurants so I can choose the fastest one.  Return the answer in JSON format: {'the_average_prep_time_for_restaurants': [avg_time]}",
+          "motivation":"Evaluate LLM's ability to call multiple functions simultaneously. Assess the ability of LLM to understand the correct functions regardless of the extra related or unrelated context in the user's question.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_prep_time_by_restaurant_name",
+                   "get_avg_prep_time_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Balthazar Boulangerie"
+                   },
+                   {
+                      "restaurant_name":"Parm"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_prep_time_by_restaurant_name",
+                "get_avg_prep_time_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Balthazar Boulangerie"
+                },
+                {
+                   "restaurant_name":"Parm"
+                }
+             ],
+             "answer":"```json\n{\n  'the_average_prep_time_for_restaurants': [\n    {\n      'restaurant_name': 'Balthazar Boulangerie',\n      'average_prep_time': 28.0\n    },\n    {\n      'restaurant_name': 'Parm',\n      'average_prep_time': 27.31\n    }\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "the_average_prep_time_for_restaurants":[
+                   28.0,
+                   27.31
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_EXTRA_Q3",
+          "category":"Extra Context",
+          "question":"Hope you're doing well! Planning a unique pizza date with my partner, aiming for a spot offering not just delicious pizza but also a stellar view of the Statue of Liberty in Manhattan. Any insider suggestions for such picturesque pizzerias? Also, a friend recommended the Cozy 2 Bedroom in New York for our stay. The challenge is, I'm in the dark about its exact location within the city. Could you shed some light on that? On a completely different note, I've recently delved into photography and am on the lookout for interesting cityscapes in Brooklyn. Any off-the-beaten-path locations for capturing the essence of the city? Return the answer in JSON format: {'restaurants_close_Statue_of_Liberty': [restaurants_closeby], 'the_neighborhood_group_of_Cozy2_Bedroom': the_neigh_group_of_cozy2bedroom}",
+          "motivation":"Introduce non-relevant information (last paragraph) to test the model's understanding and its capability to discern and prioritize the main idea in parallel function calling. ",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurant_by_cuisine_borough",
+                   "get_neighbourhood_group"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"Pizza",
+                      "borough":"Manhattan"
+                   },
+                   {
+                      "name":"Cozy 2 Bedroom"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurant_by_cuisine_borough",
+                "get_neighbourhood_group"
+             ],
+             "parameters":[
+                {
+                   "borough":"Manhattan",
+                   "cuisine":"Pizza"
+                },
+                {
+                   "name":"Cozy 2 Bedroom in New York"
+                }
+             ],
+             "answer":"```json\n{\n  'restaurants_close_Statue_of_Liberty': [\n    'MAKAVELY PIZZA',\n    'BEN'S PIZZA',\n    'AVE D PIZZERIA',\n    'DOMINO'S PIZZA #3680',\n    'DON PEPI PIZZA',\n    'LITTLE ITALY PIZZA',\n    'FREEHOLD IN THE PARK',\n    'JUMBO PIZZA',\n    'FAMOUS CALABRIA PIZZERIA',\n    'JOE'S PIZZA',\n    'FIORENTINA RESTAURANT',\n    'PIZZA ETALIA',\n    'PRINCE ST PIZZA',\n    'FAMOUS AMADEUS PIZZA',\n    '99 CENT TASTY PIZZA',\n    'CHAMPION PIZZA',\n    'TWO BOOTS UPPER WEST SIDE',\n    'DOMINO'S',\n    'SLICE PIZZA',\n    'FIORENTINA RESTAURANT'\n  ],\n  'the_neighborhood_group_of_Cozy2_Bedroom': 'Neighbourhood group not found'\n}\n```\n\nFor your unique pizza date with a view of the Statue of Liberty in Manhattan, the list above includes several pizzerias you might find interesting. Unfortunately, I couldn't find the neighborhood group for the 'Cozy 2 Bedroom in New York.' \n\nRegarding off-the-beaten-path locations in Brooklyn for photography, while I can't provide specific spots, Brooklyn Heights Promenade and DUMBO (Down Under the Manhattan Bridge Overpass) are renowned for offering stunning cityscapes and views of Manhattan, which might be of interest to you. These areas are popular among photographers for their unique perspectives of the city skyline and the Brooklyn Bridge."
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants_close_Statue_of_Liberty":[
+                   "MAKAVELY PIZZA",
+                   "BEN'S PIZZA",
+                   "AVE D PIZZERIA",
+                   "DOMINO'S PIZZA #3680",
+                   "DON PEPI PIZZA",
+                   "LITTLE ITALY PIZZA",
+                   "FREEHOLD IN THE PARK",
+                   "JUMBO PIZZA",
+                   "FAMOUS CALABRIA PIZZERIA",
+                   "JOE'S PIZZA",
+                   "FIORENTINA RESTAURANT",
+                   "PIZZA ETALIA",
+                   "PRINCE ST PIZZA",
+                   "FAMOUS AMADEUS PIZZA",
+                   "99 CENT TASTY PIZZA",
+                   "CHAMPION PIZZA",
+                   "TWO BOOTS UPPER WEST SIDE",
+                   "DOMINO'S",
+                   "SLICE PIZZA",
+                   "FIORENTINA RESTAURANT"
+                ],
+                "the_neighborhood_group_of_Cozy2_Bedroom":"Manhattan"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_AGG_Q1",
+          "category":"Aggregation",
+          "question":"Hello, I have two very good options which are Sushi Samba and Sushi of Gari which deliver sushi and I would like to order now for me and my sister. Could you please tell me which of the above restaurants delivers the fastest? Return the answer in JSON format: {'return_the_rest_with_smallest_deliv_time': 'my_restaurant'}",
+          "motivation":"Evaluate the ability of the LLM to perform calculations and numerical comparisons (min) while calling simultaneousy several functions",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_delivery_time_by_restaurant_name",
+                   "get_avg_delivery_time_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Sushi Samba"
+                   },
+                   {
+                      "restaurant_name":"Sushi of Gari"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_delivery_time_by_restaurant_name",
+                "get_avg_delivery_time_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Sushi Samba"
+                },
+                {
+                   "restaurant_name":"Sushi of Gari"
+                }
+             ],
+             "answer":"```json\n{'return_the_rest_with_smallest_deliv_time': 'Sushi of Gari'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "return_the_rest_with_smallest_deliv_time":"Sushi of Gari"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_AGG_Q2",
+          "category":"Aggregation",
+          "question":"Hello, I have these three restaurant recommendations: Klong, TAO and Vezzo Thin Crust Pizza and I would like to know which one of them is the most expensive, according to their costs. Could you help me with this?  Return the answer in JSON format: {'the_restaurant_with_the_highest_cost': 'the_most_expensive_restaurant'}",
+          "motivation":"Evaluate the ability of the LLM to perform calculations and numerical comparisons (max) while calling simultaneousy several functions",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_costs_by_restaurant_name",
+                   "get_avg_costs_by_restaurant_name",
+                   "get_avg_costs_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Klong"
+                   },
+                   {
+                      "restaurant_name":"TAO"
+                   },
+                   {
+                      "restaurant_name":"Vezzo Thin Crust Pizza"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_costs_by_restaurant_name",
+                "get_avg_costs_by_restaurant_name",
+                "get_avg_costs_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Klong"
+                },
+                {
+                   "restaurant_name":"TAO"
+                },
+                {
+                   "restaurant_name":"Vezzo Thin Crust Pizza"
+                }
+             ],
+             "answer":"```json\n{'the_restaurant_with_the_highest_cost': ''}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "the_restaurant_with_the_highest_cost":"Klong"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_AGG_Q3",
+          "category":"Aggregation",
+          "question":"Hi, I would like to know which is the average preparation time of these two restaurants: Otto Enoteca Pizzeria and Vezzo Thin Crust Pizza? Return the answer in JSON format: {'the_average_preparation_time_among_2_rest': [avg_time_of_rest]} ",
+          "motivation":"Evaluate the ability of the LLM to perform calculations and numerical comparisons (max) while calling simultaneousy several functions",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_prep_time_by_restaurant_name",
+                   "get_avg_prep_time_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Otto Enoteca Pizzeria"
+                   },
+                   {
+                      "restaurant_name":"Vezzo Thin Crust Pizza"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_prep_time_by_restaurant_name",
+                "get_avg_prep_time_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Otto Enoteca Pizzeria"
+                },
+                {
+                   "restaurant_name":"Vezzo Thin Crust Pizza"
+                }
+             ],
+             "answer":"```json\n{\n  'the_average_preparation_time_among_2_rest': [\n    {\n      'Otto Enoteca Pizzeria': 29.0,\n      'Vezzo Thin Crust Pizza': 27.0\n    }\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "the_average_preparation_time_among_2_rest":[
+                   29.0,
+                   27.0
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_AGG_Q4",
+          "category":"Aggregation",
+          "question":"A colleague suggested to me today 3 Italian restaurants in New York for which I would like to find out the total average rating by the previous clients. The options are The Meatball shop, Osteria Morini and Otto Enoteca Pizzeria. Return the answer in JSON format: {'the_rating_of_meatball_osteria_Otto_Enoteca': [avg_rating_of_each_rest]} ",
+          "motivation":"Evaluate the ability of the LLM to perform calculations and numerical comparisons while calling simultaneousy several functions",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_rating_by_restaurant_name",
+                   "get_rating_by_restaurant_name",
+                   "get_rating_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"The Meatball Shop"
+                   },
+                   {
+                      "restaurant_name":"Osteria Morini"
+                   },
+                   {
+                      "restaurant_name":"Otto Enoteca Pizzeria"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_rating_by_restaurant_name",
+                "get_rating_by_restaurant_name",
+                "get_rating_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"The Meatball Shop"
+                },
+                {
+                   "restaurant_name":"Osteria Morini"
+                },
+                {
+                   "restaurant_name":"Otto Enoteca Pizzeria"
+                }
+             ],
+             "answer":"```json\n{\n  'the_rating_of_meatball_osteria_Otto_Enoteca': [4.3, 4.3, 4.3]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "the_rating_of_meatball_osteria_Otto_Enoteca":[
+                   4.53,
+                   4.0,
+                   4.86
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_AGG_Q5",
+          "category":"Aggregation",
+          "question":"When I was walking around I saw two nice coffee places called Cafe Mogador and Cafe Habana. I would like to choose the best one to have a nice time there with my friends. Could you please provide me the average rating of these coffee places? Return the answer in JSON format: {'the_average_rating_cafe': [both_avg_rating]} ",
+          "motivation":"Evaluate the ability of the LLM to perform calculations (max) and numerical comparisons while calling simultaneousy several functions",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_rating_by_restaurant_name",
+                   "get_rating_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Cafe Mogador"
+                   },
+                   {
+                      "restaurant_name":"Cafe Habana"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_rating_by_restaurant_name",
+                "get_rating_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Cafe Mogador"
+                },
+                {
+                   "restaurant_name":"Cafe Habana"
+                }
+             ],
+             "answer":"```json\n{\n  'the_average_rating_cafe': [4.4, 4.4]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "the_average_rating_cafe":[
+                   4.15,
+                   4.27
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_LANG_Q1",
+          "category":"Languages",
+          "question":"\u0391\u03cd\u03c1\u03b9\u03bf \u03ad\u03c7\u03c9 \u03c0\u03c4\u03ae\u03c3\u03b7 \u03b3\u03b9\u03b1 \u039d\u03ad\u03b1 \u03a5\u03cc\u03c1\u03ba\u03b7. \u0388\u03bd\u03b1\u03c2 \u03bd\u03c4\u03cc\u03c0\u03b9\u03bf\u03c2 \u03c6\u03af\u03bb\u03bf\u03c2 \u03b8\u03b1 \u03bc\u03b1\u03c2 \u03c0\u03ac\u03c1\u03b5\u03b9 \u03b5\u03ba\u03b5\u03af \u03ba\u03b1\u03b9 \u03b8\u03b1 \u03b1\u03c0\u03bf\u03bb\u03b1\u03cd\u03c3\u03bf\u03c5\u03bc\u03b5 \u03ad\u03bd\u03b1 \u03c9\u03c1\u03b1\u03af\u03bf \u03b4\u03b5\u03af\u03c0\u03bd\u03bf \u03bc\u03b1\u03b6\u03af. \u0394\u03b5\u03b4\u03bf\u03bc\u03ad\u03bd\u03bf\u03c5 \u03cc\u03c4\u03b9 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b7 \u03c0\u03c1\u03ce\u03c4\u03b7 \u03c4\u03bf\u03c5\u03c2 \u03b5\u03c0\u03af\u03c3\u03ba\u03b5\u03c8\u03b7, \u03b8\u03ad\u03bb\u03bf\u03c5\u03bd \u03bd\u03b1 \u03c0\u03ac\u03bd\u03b5 \u03c3\u03b5 \u03ad\u03bd\u03b1 \u03b9\u03b1\u03c0\u03c9\u03bd\u03b9\u03ba\u03cc \u03b5\u03c3\u03c4\u03b9\u03b1\u03c4\u03cc\u03c1\u03b9\u03bf \u03c0\u03bf\u03c5 \u03bf\u03bd\u03bf\u03bc\u03ac\u03b6\u03b5\u03c4\u03b1\u03b9 'Nobu Next Door'. \u039c\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03bc\u03bf\u03c5 \u03b4\u03ce\u03c3\u03b5\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03b3\u03b5\u03bd\u03b9\u03ba\u03ae \u03b9\u03b4\u03ad\u03b1 \u03b3\u03b9\u03b1 \u03c4\u03bf \u03c0\u03ce\u03c2 \u03b2\u03b1\u03b8\u03bc\u03bf\u03bb\u03bf\u03b3\u03b5\u03af\u03c4\u03b1\u03b9 \u03b1\u03c5\u03c4\u03ae \u03b7 \u03ba\u03bf\u03c5\u03b6\u03af\u03bd\u03b1 \u03c3\u03c4\u03b7 \u039d\u03ad\u03b1 \u03a5\u03cc\u03c1\u03ba\u03b7 \u03ba\u03b1\u03b9 \u03b1\u03bd \u03c4\u03bf \u03b5\u03c3\u03c4\u03b9\u03b1\u03c4\u03cc\u03c1\u03b9\u03bf \u03ad\u03c7\u03b5\u03b9 \u03c5\u03c8\u03b7\u03bb\u03ae \u03b2\u03b1\u03b8\u03bc\u03bf\u03bb\u03bf\u03b3\u03af\u03b1;  Return the answer in JSON format: {'rating_japan_cuisine': avg_rating_cuisine, rating_for_the_restaurants: avg_rating_rest } ",
+          "motivation":"Test the model's performance when presented with queries written in languages that do not use the Latin alphabet. Assess the accuracy and coherence of parallel multi-call responses in diverse linguistic contexts. ",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_ratings_per_cuisines",
+                   "get_rating_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "cuisines":"Japanese"
+                   },
+                   {
+                      "restaurant_name":"Nobu Next Door"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_ratings_per_cuisines",
+                "get_rating_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "cuisines":"Japanese"
+                },
+                {
+                   "restaurant_name":"Nobu Next Door"
+                }
+             ],
+             "answer":"```json\n{\n  'rating_japan_cuisine': 4.37,\n  'rating_for_the_restaurants': 'Not available'\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "rating_japan_cuisine":4.37,
+                "rating_for_the_restaurants":4.5
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_LANG_Q2",
+          "category":"Languages",
+          "question":"Ich \u00fcberlege, morgen in einem sehr sch\u00f6nen Restaurant namens Shake Shack essen zu gehen. Da sich dieses Restaurant in Manhattan befindet, gehe ich davon aus, dass es m\u00f6glicherweise teuer ist. Ich w\u00fcrde es sehr sch\u00e4tzen, wenn Sie mir eine allgemeine Vorstellung von den Preisen in diesem Restaurant geben k\u00f6nnten. K\u00f6nnen Sie mir auch einige Informationen zu den Kundenbewertungen zeigen? Return the answer in JSON format: {'average_cost_per_restaurant': avg_cost, 'rating_by_the_rest': avg_ratings}",
+          "motivation":"Test the model's performance when presented with queries written in languages other than English. Assess the accuracy and coherence of parallel multi-call responses in diverse linguistic contexts.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_costs_by_restaurant_name",
+                   "get_rating_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Shake Shack"
+                   },
+                   {
+                      "restaurant_name":"Shake Shack"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_costs_by_restaurant_name",
+                "get_rating_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Shake Shack"
+                },
+                {
+                   "restaurant_name":"Shake Shack"
+                }
+             ],
+             "answer":"```json\n{\n  'average_cost_per_restaurant': 16.34,\n  'rating_by_the_rest': 4.2\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "average_cost_per_restaurant":16.34,
+                "rating_by_the_rest":4.96
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_LANG_Q3",
+          "category":"Languages",
+          "question":"Pershendetje, do deshiroja te dija sa jane kostot mesatare per keto restorante ne Nju Jork te lutem: Tortaria dhe Parm. Return the answer in JSON format: {'the_avg_costs': [avg_costs]}",
+          "motivation":"Test the model's performance when presented with queries written in languages other than English. Assess the accuracy and coherence of parallel multi-call responses in diverse linguistic contexts.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_costs_by_restaurant_name",
+                   "get_avg_costs_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Tortaria"
+                   },
+                   {
+                      "restaurant_name":"Parm"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_costs_by_restaurant_name",
+                "get_avg_costs_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Tortaria"
+                },
+                {
+                   "restaurant_name":"Parm"
+                }
+             ],
+             "answer":"```json\n{'the_avg_costs': [13.57, 16.36]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "the_avg_costs":[
+                   29.1,
+                   8.92
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_EXTRA_INSTRUCTIONS_Q1",
+          "category":"Simple Questions",
+          "question":"I am very passionate about sushi and Japanese food. I usually cook sushi with my wife every weekend and play Japanese music. This weekend we decided to order and try sushi at an excellent restaurant. I opened the maps and I saw that nearby the city center three restaurants serve Japanese food: Blue Ribbon Sushi, TAO, Momoya. Could you please find and print me the average delivery time of each restaurants. Return the answer in JSON format: {'the_avg_rest_time': [avg_time]}",
+          "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_delivery_time_by_restaurant_name",
+                   "get_avg_delivery_time_by_restaurant_name",
+                   "get_avg_delivery_time_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Blue Ribbon Sushi"
+                   },
+                   {
+                      "restaurant_name":"TAO"
+                   },
+                   {
+                      "restaurant_name":"Momoya"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_delivery_time_by_restaurant_name",
+                "get_avg_delivery_time_by_restaurant_name",
+                "get_avg_delivery_time_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Blue Ribbon Sushi"
+                },
+                {
+                   "restaurant_name":"TAO"
+                },
+                {
+                   "restaurant_name":"Momoya"
+                }
+             ],
+             "answer":"```json\n{\n  'Blue Ribbon Sushi': 23.94,\n  'TAO': 23.16,\n  'Momoya': 25.13\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "the_avg_rest_time":[
+                   23.94,
+                   23.16,
+                   25.13
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_EXTRA_INSTRUCTIONS_Q2",
+          "category":"Simple Questions",
+          "question":"Hope you're doing well! Planning a unique pizza date with my partner, aiming for a spot offering not just delicious pizza but also a stellar view of the Statue of Liberty in Manhattan. Any insider suggestions for such picturesque pizzerias in that area? Also, a friend recommended the \u2018Cozy 2 Bedroom\u2019 in New York for our stay. The challenge is, I'm in the dark about its exact location within the city. Could you shed some light on the location of that Airbnb? Return the answer in JSON format: {'restaurants_close_Statue_of_Liberty': [restaurants_closeby], 'the_neighborhood_group_of_Cozy2_Bedroom': the_neigh_group_of_cozy2bedroom}",
+          "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts.",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurant_by_cuisine_borough",
+                   "get_neighbourhood_group"
+                ],
+                "parameters":[
+                   {
+                      "cuisine":"Pizza",
+                      "borough":"Manhattan"
+                   },
+                   {
+                      "name":"Cozy 2 Bedroom"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurant_by_cuisine_borough",
+                "get_neighbourhood_group"
+             ],
+             "parameters":[
+                {
+                   "borough":"Manhattan",
+                   "cuisine":"Pizza"
+                },
+                {
+                   "name":"Cozy 2 Bedroom"
+                }
+             ],
+             "answer":"```json\n{\n  'restaurants_close_Statue_of_Liberty': [\n    'MAKAVELY PIZZA',\n    'BEN'S PIZZA',\n    'AVE D PIZZERIA',\n    'DOMINO'S PIZZA #3680',\n    'DON PEPI PIZZA',\n    'LITTLE ITALY PIZZA',\n    'FREEHOLD IN THE PARK',\n    'JUMBO PIZZA',\n    'FAMOUS CALABRIA PIZZERIA',\n    'JOE'S PIZZA',\n    'FIORENTINA RESTAURANT',\n    'PIZZA ETALIA',\n    'PRINCE ST PIZZA',\n    'FAMOUS AMADEUS PIZZA',\n    '99 CENT TASTY PIZZA',\n    'CHAMPION PIZZA',\n    'TWO BOOTS UPPER WEST SIDE',\n    'DOMINO'S',\n    'SLICE PIZZA',\n    'FIORENTINA RESTAURANT'\n  ],\n  'the_neighborhood_group_of_Cozy2_Bedroom': 'Manhattan'\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants_close_Statue_of_Liberty":[
+                   "MAKAVELY PIZZA",
+                   "BEN'S PIZZA",
+                   "AVE D PIZZERIA",
+                   "DOMINO'S PIZZA #3680",
+                   "DON PEPI PIZZA",
+                   "LITTLE ITALY PIZZA",
+                   "FREEHOLD IN THE PARK",
+                   "JUMBO PIZZA",
+                   "FAMOUS CALABRIA PIZZERIA",
+                   "JOE'S PIZZA",
+                   "FIORENTINA RESTAURANT",
+                   "PIZZA ETALIA",
+                   "PRINCE ST PIZZA",
+                   "FAMOUS AMADEUS PIZZA",
+                   "99 CENT TASTY PIZZA",
+                   "CHAMPION PIZZA",
+                   "TWO BOOTS UPPER WEST SIDE",
+                   "DOMINO'S",
+                   "SLICE PIZZA",
+                   "FIORENTINA RESTAURANT"
+                ],
+                "the_neighborhood_group_of_Cozy2_Bedroom":"Manhattan"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_PARALLEL_EXTRA_INSTRUCTIONS_Q3",
+          "category":"Simple Questions",
+          "question":"Hi, I would like to know which is the average preparation time of these two restaurants: Otto Enoteca Pizzeria and Vezzo Thin Crust Pizza? After finding the preparation time for each restaurant, afterwards calculate the average time for both of them. Return the answer in JSON format: {'avg_time_between_2_restaurants: avg_time}",
+          "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts.",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_prep_time_by_restaurant_name",
+                   "get_avg_prep_time_by_restaurant_name"
+                ],
+                "parameters":[
+                   {
+                      "restaurant_name":"Otto Enoteca Pizzeria"
+                   },
+                   {
+                      "restaurant_name":"Vezzo Thin Crust Pizza"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_prep_time_by_restaurant_name",
+                "get_avg_prep_time_by_restaurant_name"
+             ],
+             "parameters":[
+                {
+                   "restaurant_name":"Otto Enoteca Pizzeria"
+                },
+                {
+                   "restaurant_name":"Vezzo Thin Crust Pizza"
+                }
+             ],
+             "answer":"```json\n{'avg_time_between_2_restaurants': 28.0}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "avg_time_between_2_restaurants":28.0
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       }
+    ]
+ }

@@ -1,0 +1,3543 @@
+{
+  "question_sets": [
+    {
+      "id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V01_LANGUAGES",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Single Parameters, One Step and One Shot",
+      "domain": "Music",
+      "date": "2024-01-15",
+      "description": "Simple, single step questions designed to test LLM's understanding capability of different languages.",
+      "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
+      "license": "Apache 2.0",
+      "function_sets": ["MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01", "MUSIC_FUNC_ONE_PARAM_COMPLEX_DESC_NO_EX_V01"],
+      "questions": [
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q1",
+          "category": "Languages",
+          "question": "Können Sie uns bitte die fünf besten Alben basierend auf der durchschnittlichen Bewertung nennen?Bitte antworten Sie auf Englisch. Return the answer in JSON format: {'albums':[album_names_here]}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (German in this case).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_rated_albums"],
+                "parameters": [{ "n": 5 }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "albums": [
+                  "The Black Saint and the Sinner Lady",
+                  "Wish You Were Here",
+                  "To Pimp a Butterfly",
+                  "A Love Supreme",
+                  "In the Court of the Crimson King"
+                ]
+              }
+            },
+            "comment": "Question in English: Can you please provide the top five albums based on average rating?"
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q2",
+          "category": "Languages",
+          "question": "براہ کرم مجھے ٹیلر سوئفٹ کے جاری کردہ تمام البمز دیں۔ انگریزی میں جواب دیں۔ Return the answer in JSON format: {'albums':[album_names_here]}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Urdu in this case). ",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist_1"],
+                "parameters": [{ "artist_name": "Taylor Swift" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "albums": [
+                  "Folklore",
+                  "1989",
+                  "Evermore",
+                  "Red",
+                  "Reputation",
+                  "Lover",
+                  "Speak Now",
+                  "Fearless",
+                  "Taylor Swift",
+                  "Red (Taylor's Version)",
+                  "Fearless (Taylor's Version)",
+                  "Speak Now (Taylor's Version)"
+                ]
+              }
+            },
+            "comment": "Question in English: Please give me all the albums released by Taylor Swift. Provide the answer in English."
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q3",
+          "category": "Languages",
+          "question": "¿Quién es el artista del álbum 'The Wall'? Proporcione la respuesta en inglés. Return the answer in JSON format: {'artist':'name_of_artist'}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Spanish  in this case).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["artist_by_album"],
+                "parameters": [{ "album_name": "The Wall" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "artist": "Pink Floyd"
+              }
+            },
+            "comment": "Question in English: Who is the artist of the album 'The Wall'? Provide the answer in English."
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q4",
+          "category": "Languages",
+          "question": "پرفيڪٽ گيت جو ڳائڻو ڪير آهي؟ انگريزي ۾ جواب ڏيو. Return the answer in JSON format: {'artist':'name_of_artist'}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Sindhi in this case).",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["artist_by_song"],
+                "parameters": [{ "song_name": "Perfect" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "artist": "Ed Sheeran"
+              }
+            },
+            "comment": "Question in English: Who is the singer of the song 'Perfect'? Provide the answer in English."
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q5",
+          "category": "Languages",
+          "question": "Doğum tarihim 16 Haziran 2000. Bu yıl 24 yaşında olacağım. Bana iki yıl önce 16 Haziran'da çıkan şarkıların bir listesini oluşturabilir misin? İngilizce cevap verin. Return the answer in JSON format: {'songs': [song_names_here]}",
+          "motivation": "Evaluate the ability to understand medium-source language(Turkish) and make an inference about datetime.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_release_date"],
+                "parameters": [{ "release_date": "2022-06-16" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "songs": [
+                  "ULTRA SOLO REMIX",
+                  "Don't You Worry"
+                ]
+              }
+            },
+            "comment": "Question in English: My birthdate is  June 16th, 2000. This year I am going to be 24 years old. Can you create me a list of songs that were released two years ago on June 16th? Provide answer in English."
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q6",
+          "category": "Languages",
+          "question": "Foo Fighters'ın en az yorum alan albümü hangisi? Cevabı İngilizce olarak verin. Return the answer in JSON format: {'album':'album_name_here'}",
+          "motivation": "Evaluate the ability to understand medium-source language and retrieve least reviewed album from the result.",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_artist_1"],
+                "parameters": [{ "artist_name": "Foo Fighters" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "album": "Concrete and Gold"
+              }
+            },
+
+            "comment": "Question in English: Which is the least reviewed Foo Fighters album? Provide the answer in English."
+          }
+        }
+      ]
+    },
+    {
+      "id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_MULTI_PARAM_V01_LANGUAGES",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Multiple Parameters, Single Step and One Shot",
+      "domain": "Music",
+      "date": "2024-01-15",
+      "description": "Simple single step questions designed to test LLM's understanding capability of different languages with multi parameter functions",
+      "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
+      "license": "Apache 2.0",
+      "function_sets": ["MUSIC_FUNC_MULTI_PARAM_SIMPLE_DESC_NO_EX_V01"],
+      "questions": [
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q1",
+          "category": "Languages",
+          "question": "¿Qué álbumes se lanzaron entre el 15 de febrero de 2022 y el 15 de septiembre de 2022? Return the answer in JSON format: {'album':'album_name_here'} ",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Spanish in this case)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [
+                  { "start_date": "2022-02-15", "end_date": "2022-09-15" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "album": "Once Twice Melody"
+              }
+            },
+            "comment": "Which albums were released between February 15, 2022 and September 15, 2022?"
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q2",
+          "category": "Languages",
+          "question": "The Weeknd'in en çok dinlenen beş şarkısını söyler misin? Return the answer in JSON format: {'songs': [top_streamed_song_names_here]}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Turkish in this case)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist"],
+                "parameters": [{ "artist_name": "The Weeknd", "n": 5 }]
+              }
+            ],
+            "expected_answer":  {
+              "ordered_items": [],
+              "answer": {
+                "songs": ["Double Fantasy (with Future)",
+                "I Heard You're Married (feat. Lil Wayne)",
+                "Here We Go��� Again (feat. Tyler, the Cr",
+                "Creepin'",
+                "Starry Eyes"
+                ]
+              }
+            },
+              
+            "comment": "Give me The Weeknd's top 5 songs."
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q3",
+          "category": "Languages",
+          "question": "Veuillez citer un album de type Folk pop, énergique et bienfaisant, sorti en 1965. Return the answer in JSON format: {'album':'album_name_here'} ",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (French in this case)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_year_genres_and_descriptors"],
+                "parameters": [
+                  {
+                    "release_date": "1965",
+                    "genre": ["Folk pop"],
+                    "descriptor": ["energetic", "uplifting"]
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "album": "Help!"
+              }
+            },
+            "comment": "Please provide an energetic, uplifting, 'Folk pop' type album released in 1965"
+          }
+        },
+        {
+          "id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q4",
+          "category": "Languages",
+          "question": "کیا آپ 2015 میں ریلیز ہونے والے البمز کی فہرست بنا سکتے ہیں جن کی ریٹنگ 3.6 سے زیادہ ہے، 10,000 سے زیادہ ریٹنگز ہیں، اور کل 168 سے زیادہ جائزے ہیں؟,Return the answer in JSON format: {'albums': [album_names_here]}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Urdu in this case)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": 3.6,
+                    "min_ratings": 10000,
+                    "review_threshold": 168,
+                    "release_date": "2015"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "albums": [ "To Pimp a Butterfly","Carrie & Lowell"]
+              }
+            },
+            "comment": "Could you list albums released in 2015 that have ratings exceeding 3.6, more than 10,000 ratings, and reviews totaling over 168?"
+          }
+        }
+      ]
+    },
+    {
+      "id": "MUSIC_Q_MULTI_CALL_SEQUENTIAL_V01_LANGUAGES",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Multi Step and One Shot for Sequential Function Calling",
+      "domain": "Music",
+      "date": "2024-01-15",
+      "description": "Simple, multi step questions designed to test LLM's understanding capability of different languages using sequential function calling",
+      "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
+      "license": "Apache 2.0",
+      "function_sets": ["MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2"],
+      "questions": [
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q1",
+          "category": "Languages",
+          "question": "Ich mag das Album von Coldplay, das 2011 veröffentlicht wurde, sehr. Finden Sie ihre Alben und können Sie mir dann die Künstler empfehlen, die das gleiche Genre wie das genannte Album haben, mit Ausnahme von Coldplay. Return the answer in JSON format: {'album': 'album_name_by_Coldplay_2011_here', 'artists': [artist_names_here]}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (German in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "albums_by_artist_2",
+                  "artists_by_genres"
+                ],
+                "parameters": [
+                  {
+                    "artist_name": "Coldplay"
+                  },
+                  {
+                    "genres": [
+                      "Pop Rock",
+                      "Dream Pop"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "album": "Mylo Xyloto",
+                "artists": [
+                  "The Beatles",
+                  "The Rolling Stones",
+                  "Bob Dylan",
+                  "Taylor Swift",
+                  "Lady Gaga",
+                  "Miley Cyrus",
+                  "Shakira",
+                  "Olivia Rodrigo",
+                  "Elton John"
+                ]
+              }
+            },
+            "comment": "Question in English: I really like the album of Coldplay which was released in 2011. Find their albums and then can you recommend me the artists with the same genre as that of the mentioned album excluding Coldplay."
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q2",
+          "category": "Languages",
+          "question": "مجھے یاد نہیں آرہا کہ البم 'ڈیزائر' کا آرٹسٹ امریکہ یا برطانیہ سے ہے۔ کیا آپ میری الجھن دور کر سکتے ہیں؟ برائے مہربانی جواب انگریزی میں فراہم کریں۔ Return the answer in JSON format: {'artist': 'artist_name_here','country': 'name_of_country_here'}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Urdu in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "album_info",
+                  "artist_info"
+                ],
+                "parameters": [
+                  {
+                    "album_name": "Desire"
+                  },
+                  {
+                    "artist_name": "Bob Dylan"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "artist": "Bob Dylan",
+                "country": "United States"
+              }
+            },
+            "comment": "Question in English: I cannot recall if the artist of the album 'Desire' is from US or UK. Can you please clear my confusion. Please provide the answer in English."
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q3",
+          "category": "Languages",
+          "question": "Jepni të gjitha albumet e lëshuara në vitin në të cilin u publikua kënga Enchanted. Jep përgjigje në anglisht. Return the answer in JSON format: {'albums': [album_names_here]}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Albanian in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "song_info",
+                  "albums_by_release_date_2"
+                ],
+                "parameters": [
+                  {
+                    "song_name": "Enchanted"
+                  },
+                  {
+                    "release_date": "2010"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "albums": [
+                  "Speak Now",
+                  "Loud",
+                  "Recovery",
+                  "Doo-Wops & Hooligans"
+                ]
+              }
+            },
+            "comment": "Qusetion in English: Provide all the albums released in the year in which song Enchanted was released. Provide answer in English."
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q4",
+          "category": "Languages",
+          "question": "Türlerinden biri Merseybeat olan sanatçının son 5 albümünü bana bildirin. Cevabı İngilizce olarak verin. Return the answer in JSON format: {'albums': [last_5_released_album_names_here]}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Turkish in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "artists_by_genres",
+                  "albums_by_artist_2"
+                ],
+                "parameters": [
+                  {
+                    "genres": [
+                      "Merseybeat"
+                    ]
+                  },
+                  {
+                    "artist_name": "The Beatles"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "albums": [
+                  "Abbey Road",
+                  "The Beatles [White Album]",
+                  "Let It Be",
+                  "Yellow Submarine",
+                  "Love"
+                ]
+              }
+            },
+            "comment": "Question in English: Provide me the last 5 albums released of the artist whose one of the genres is Merseybeat. Provide answer in English."
+          }
+        },
+        {
+          "id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q5",
+          "category": "Languages",
+          "question": "Comparta el nombre y los detalles del segundo artista además de Ed Sheeran de la canción 'Sigue'. Proporcionar respuesta en inglés. Return the answer in JSON format: {'second_artist':'name_of_second_artist', 'place_of_birth':'town, state', 'born_in':'YYYY-MM-DD'}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Spanish in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "song_info",
+                  "artist_info"
+                ],
+                "parameters": [
+                  {
+                    "song_name": "Sigue"
+                  },
+                  {
+                    "artist_name": "J Balvin"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "second_artist": "J Balvin",
+                "place_of_birth": "Medellín, Colombia",
+                "born_in": "1985-05-07"
+              }
+            },
+            "comment": "Question in English: Please share the name and details of the second artist other than Ed Sheeran of the song 'Sigue'. Provide answer in English."
+          }
+        }
+      ]
+    },
+    {
+      "id": "MUSIC_Q_MULTI_CALL_PARALLEL_V01_LANGUAGES",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Multi Step and One Shot for Parallel Function Calling.",
+      "domain": "Music",
+      "date": "2024-01-15",
+      "description": "Simple, multi step questions designed to test LLM's understanding capability of different languages using parallel function calling",
+      "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
+      "license": "Apache 2.0",
+      "function_sets": ["MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2"],
+      "questions": [
+        {
+          "id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_LAN_Q1",
+          "category": "Languages",
+          "question": "ان دو گانوں 'لو یور سیلف' اور 'ہولڈ می کلوزر' کے سلسلے کی تعداد، آرٹسٹ اور البم کا نام بتائیں۔ انگریزی میں جواب دیں۔. Return the answer in JSON format: {'LoveYourself_artist': 'artist_name', 'LoveYourself_album': 'album_name', 'LoveYourself_album_streams': streams_value, 'HoldMecloser_artist': 'artist_name', 'HoldMecloser_album': 'album_name','HoldMecloser_album_streams': streams_value }",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Urdu in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "song_info",
+                  "song_info"
+                ],
+                "parameters": [
+                  {
+                    "song_name": "Love Yourself"
+                  },
+                  {
+                    "song_name": "Hold Me Closer"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "LoveYourself_artist": "Justin Bieber",
+                "LoveYourself_album": "Purpose",
+                "LoveYourself_album_streams": 2123309722,
+                "HoldMecloser_artist": "Elton John, Britney Spears",
+                "HoldMecloser_album": "Single(not album)",
+                "HoldMecloser_album_streams": 284216603
+              }
+            },
+            "comment": "Question in English: Provide the number of streams,artist and album name of these two songs 'Love Yourself' and 'Hold Me Closer'. Provide the answer in English."
+          }
+        },
+        {
+          "id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_LAN_Q2",
+          "category": "Languages",
+          "question": "Pouvez-vous s'il vous plaît me donner des informations sur mes artistes préférés Taylor Swift et The Weeknd. Fournissez la réponse en anglais. Return the answer in JSON format: {'Taylor_place_of_birth':'city, country', 'Taylor_birthdate':'YYYY-MM-DD','TheWeeknd_place_of_birth':'city, country','TheWeeknd_birthdate':'YYYY-MM-DD'}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (French in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "artist_info",
+                  "artist_info"
+                ],
+                "parameters": [
+                  {
+                    "artist_name": "Taylor Swift"
+                  },
+                  {
+                    "artist_name": "The Weeknd"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "Taylor_place_of_birth": "West Reading, United States",
+                "Taylor_birthdate": "1989-12-13",
+                "TheWeeknd_place_of_birth": "Toronto, Canada",
+                "TheWeeknd_birthdate": "1990-02-16"
+              }
+            },
+            "comment": "Question in English: Can you please get me the information about my favourite artists Taylor Swift and The Weeknd. Provide the answer in English."
+          }
+        },
+        {
+          "id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_LAN_Q3",
+          "category": "Languages",
+          "question": "Proporcionar todos los álbumes lanzados por The Weeknd y Coldplay con una calificación superior a 3,5. Por favor proporcione la respuesta en inglés. Return the answer in JSON format: {'albums': [rated_higher_than_3.5_album_names_here]}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Spanish in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "albums_by_artist_2",
+                  "albums_by_artist_2"
+                ],
+                "parameters": [
+                  {
+                    "artist_name": "The Weeknd"
+                  },
+                  {
+                    "artist_name": "Coldplay"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "albums": [
+                  "Parachutes",
+                  "A Rush of Blood to the Head",
+                  "After Hours"
+                ]
+              }
+            },
+            "comment": "Question in English: Provide all albums released by The Weeknd and Coldplay with rating above 3.5. Please provide the answer in English."
+          }
+        },
+        {
+          "id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_LAN_Q4",
+          "category": "Languages",
+          "question": "Sa zhanre mendoni se janë të njëjta në informacionin rreth Guns n' Roses dhe albumin e tyre 'Appetite for Destruction'? Jepni përgjigjen në anglisht. Return the answer in JSON format: {'genres': [same_genres_here], 'genres_count': same_genres_count}",
+          "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Albanian in this case).",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "artist_info",
+                  "album_info"
+                ],
+                "parameters": [
+                  {
+                    "artist_name": "Guns n' Roses"
+                  },
+                  {
+                    "album_name": "Appetite for Destruction"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "genres": [
+                  "Hard Rock",
+                  "Glam Metal"
+                ],
+                "genres_count": 2
+              }
+            },
+            "comment": "Question in English: How many genres do you find to be same in information about Guns n’ Roses and their album ‘Appetite for Destruction’? Provide the answer in English."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TRAVEL_Q_SINGLE_STEP_ONE_SHOT_V01_LANGUAGES",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Single Parameters, One Step and One Shot",
+      "domain": "Travel",
+      "date": "2024-01-15",
+      "description": "Simple, single step questions designed to test a subset of selection of questions in different languages.",
+      "authors": ["Deidamea Bajri", "Serxhina Kutrolli","Stiliana Jano"],
+      "license": "Apache License 2.0",
+      "function_sets": ["TRAVEL_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01"],
+      "questions": [
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q1",
+          "category": "Languages",
+          "question": "A mund te me ndihmosh te gjej nje airbnb qe ndodhet ne New York dhe ka nje cmim relativisht te lire, afersisht 46 dollare? Please return at most 10 entries. Return the answer in JSON format: {'airbnb': [my_airbnb]}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (Albanian)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listing_by_lower_price"],
+                "parameters": [{ "price": 46 }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Huge room in great area 25 minutes from Manhattan",
+                  "Room in Bushwick Bk available June",
+                  "Sunny spacious room full of good energy",
+                  "Nice & new room washerdryer 5 min to train!",
+                  "Private Room for short stay in a house.",
+                  "NEW Bedroom wPrivate Toilet (Great Study Space)",
+                  "Beautiful sunny room in Brooklyn",
+                  "金城发双人房 suit2 queens size bed",
+                  "Bedroom 7 bed A.",
+                  "BK'S FINEST CLOSE 2 TRANSPORTATION-"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q2",
+          "category": "Languages",
+          "question": "Dua te fle afer Bronxit, a me gjen dhjete opsione aty afer ku mund te qendroj? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (Albanian)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listing_by_neighbourhood_group"],
+                "parameters": [{ "neighbourhood_group": "Bronx" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Apartment around the park",
+                  "Bronx Apartment College Ave",
+                  "Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)",
+                  "Sunny Room across CrotonaPark for Women Only Space",
+                  "Uptown Bronx Apartment",
+                  "The Sweet",
+                  "Private Studio in Private Home",
+                  "Large Private Room. Safe area. Near 4 and D trains",
+                  "Cozy 1 Bedroom Apartment near Yankee Stadium",
+                  "Charming Attic RM with BackyardPorchNear Metro"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q3",
+          "category": "Languages",
+          "question": "Po verdallisem neper new york dhe nuk po gjej ndonje vend per te ndenjur sonte. Nuk kam shume para ne xhep keshtu qe me duhet nje vend i lire per fjetur? Me jep dot nja pese sugjerime qe kushtojne rreth 30 dollare per nate? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (Albanian)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listing_by_lower_price"],
+                "parameters": [{ "price": 30 }]
+              },
+              {
+                "path_id": 2,
+                "functions": ["get_listing_by_price"],
+                "parameters": [{ "price": 30 }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Room in Bushwick Bk available June",
+                  "Calm bed great area.",
+                  "Beautiful NYC Apartment in Popular Brooklyn spot!!",
+                  "Sunnyside RM w a view. Near everything you need.",
+                  "Room with a view",
+                  "Room in spacious house in Brooklyn!",
+                  "Bronx Apartment College Ave",
+                  "Beautiful room in renovated Manhattan apartment",
+                  "Warm little oasis in Brooklyn with Full size bed",
+                  "Comfortable cozy dorm-like room",
+                  "Great room in a two-bedroom apartment.",
+                  "Cozy Ridgewood Spot",
+                  "Cozy Four Twenty Friendly Bedroom in Brooklyn",
+                  "Quite and comfortable shared room in UES"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q4",
+          "category": "Languages",
+          "question": "Po verdallisem neper new york dhe nuk po gjej ndonje vend per te ndenjur sonte. Nuk kam shume para ne xhep keshtu qe me duhet nje vend i lire per fjetur? Me jep dot nja pese sugjerime qe kushtojne rreth dyzetepese dollare per nate?  Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (Albanian) and specifically the string representation of a number",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listing_by_lower_price"],
+                "parameters": [{ "price": 45 }]
+              },
+              {
+                "path_id": 2,
+                "functions": ["get_listing_by_price"],
+                "parameters": [{ "price": 45 }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Huge room in great area 25 minutes from Manhattan",
+                  "Room in Bushwick Bk available June",
+                  "Sunny spacious room full of good energy",
+                  "Nice & new room  washerdryer 5 min to train!",
+                  "Private Room for short stay in a house.",
+                  "NEW Bedroom wPrivate Toilet (Great Study Space)",
+                  "Beautiful sunny room in Brooklyn",
+                  "金城发双人房 suit2 queens size bed",
+                  "Bedroom 7 bed A.",
+                  "BK'S FINEST CLOSE 2 TRANSPORTATION-",
+                  "Super-cute apartment in Harlem!",
+                  "The Jamaica Experience",
+                  "Calm bed great area.",
+                  "Sunny room in Brooklyn",
+                  "private room w separate entrance in quiet area",
+                  "Sunny Cozy Room Near Train Cafes & Parks",
+                  "Beautiful NYC Apartment in Popular Brooklyn spot!!",
+                  "Brooklyn Home On The Beach",
+                  "Large Furnished Bedroom in Bushwick",
+                  "Sunny peaceful room in RidgewoodBushwick",
+                  "Sunnyside RM w a view. Near everything you need.",
+                  "Room with a view",
+                  "Cozy room in Brooklyn steps from train",
+                  "Cozy room w Laundry in Building + 3 Bathrooms!",
+                  "Spacious Room in Washington Heights",
+                  "Room in spacious house in Brooklyn!",
+                  "Lefferts Garden Prospect Park Gem",
+                  "Nice room near SI Ferry \n15 minutes by car.",
+                  "Spacious quiet loft close to EVERYTHING! Views!",
+                  "Cute sunny room in big Bushwick apartment",
+                  "Cozy Room Great Price in Bushwick Bklyn!(Suite 3)",
+                  "Colorful Room in Crown Heights",
+                  "Bronx Apartment College Ave",
+                  "Lovely room close to all!",
+                  "Cozy NYC apartment shared space female only",
+                  "Beautiful shared room in 20 min to Manhattan",
+                  "beautiful ROOFTOP apartment",
+                  "Cozy & clean Bedstuy Brooklyn bedroom",
+                  "Sparse room inside well-kept apartment",
+                  "Private Room with Queen-size Bed",
+                  "Fully Furnished Luk Room including Air Conditiner!",
+                  "Laundry + Central AC - Modern Style - Near Metro",
+                  "Sunny Room across CrotonaPark for Women Only Space",
+                  "Private room Flushing Queens 15 min from 7train",
+                  "Beautiful room in renovated Manhattan apartment",
+                  "Shared Room 4 FEMALE Guests 30mins to Manhattan-3",
+                  "ROOM AC WI-FI PARKING CABLE FOR 2",
+                  "Light twin room",
+                  "Quite and comfortable shared room in UES",
+                  "Private large room near LGA airport with queen bed",
+                  "Warm little oasis in Brooklyn with Full size bed",
+                  "Comfortable cozy dorm-like room",
+                  "Cozy Beautiful Room Only 20min from Manhattan NYC!",
+                  "Sunny and isolated living room on Roosevelt island",
+                  "SUNNY BEDROOM IN LARGE BK APT!",
+                  "Great room in a two-bedroom apartment.",
+                  "Private room in quintessential BK!",
+                  "Cozy Ridgewood Spot",
+                  "Cosy Studio in Rego Park",
+                  "Home Sweet Room-HOMEY-Queens NYC!!",
+                  "Cozy bedroom on Roosevelt Island",
+                  "25 minutes from Manhattan shared room bunk beds",
+                  "Bedstuy Artists Quarter (tower corner room)",
+                  "Spacious Private bedroom in Bushwick apartment",
+                  "Harmony House 2 on Madison Street",
+                  "Lady's Powder Room",
+                  "Cozy Four Twenty Friendly Bedroom in Brooklyn",
+                  "2MinToTrainsCozyLivingRoomMaimonideLutheranHospita",
+                  "LovelyCozybrightbeautiful room **only female**",
+                  "Cozy Room in Crown Heights",
+                  "Private Room in 4BR Modern Manhattan Apartment",
+                  "Room in LICAstoria close to the city & LGAJFK",
+                  "Sunny private bedroom in Bushwick Brooklyn",
+                  "great room in the best place",
+                  "1920s Room 1 block from Prospect Park and Q Access",
+                  "Sweet Space in Bed Stuy: July",
+                  "Comfy room with WiFi. Mins to Central Park!",
+                  "Cozy Room Great Price in Bushwick Bklyn! (Suite 2)",
+                  "Shared male Room on Manhattan. Amazing view! II",
+                  "A Couch In East Williamsburg Near Train.",
+                  "Lovely Bedroom in Trendy Brooklyn",
+                  "Cozy and Quiet.",
+                  "Artsy + Light. River Views. 30 min to 42nd St.",
+                  "Spacious Brooklyn Loftprivate room",
+                  "Quite and comfortable shared room in UES",
+                  "Newly renovated Room for 1",
+                  "Shared 1br in Flushing for cheap",
+                  "Comfortable and clean room",
+                  "Shared space wprivacy near NY Botanic Garden",
+                  "This is your Happy Place in Brooklyn NYC",
+                  "Spacious Private Access Near Trains M - L and J",
+                  "Sunny little Nook in NYC!",
+                  "Workspace Room 2",
+                  "PEACEFUL ESCAPE FROM THE BUSY CITY!  L2",
+                  "Cozy private bedroom in GreenpointWilliamsburg",
+                  "靓房",
+                  "Large Size Room Next to Subway",
+                  "•Bright and Cozy room in an elegant apartment•"
+                ]
+              }
+            }
+          }
+        },       
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q5",
+          "category": "Languages",
+          "question": "θελω να μου δωσεις δεκα αιρμπινμπ που ειναι προσωπικα δωματια στη περιοχη της Νεας Υορκης. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (Greek)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listing_by_room_type"],
+                "parameters": [{ "room_type": "Private room" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Amazing huge furnished room!",
+                  "Sunny and spacious  1-bedroom in Brooklyn",
+                  "Large Private Room in Greenpoint Williamsburg",
+                  "Huge room in great area 25 minutes from Manhattan",
+                  "Brooklyn Home in the Heart of it All",
+                  "Large Parlor Room Landmark Home 1 block to PRATT",
+                  "Room in Bushwick Bk available June",
+                  "British Room @ Columbia Uni.",
+                  "Private 2 bedroom w Rooftop Manhattan View!",
+                  "Large charming bedroom"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q6",
+            "category": "Languages",
+            "question": "Ειμαι στη Νεα Υορκη αυτη τη στιγμη, και θα ηθελα να φαω σε γιαπονεζικο εστιατοριο σε αυτη τη περιοχη. Μπορεις να με βοηθησεις; Please return at most 10 entries. Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+            "motivation": "Testing the ability of the LLM to understand another language except English (Greek)",
+            "target": {
+              "chained": false,
+              "solution_paths": [
+                {
+                  "path_id": 1,
+                  "functions": ["get_restaurants_by_cuisine"],
+                  "parameters": [
+                    { "cuisine": "Japanese"}
+                  ]
+                }
+              ],
+              "expected_answer": {
+                "ordered_items": [],
+                "answer": {
+                  "restaurant": ["AJISAI JAPANESE FUSION", "SUSHI DAMO", "AKAGI SUSHI", "IKUMI", "AYA SUSHI", "ZURUTTO RAMEN & GYOZA BAR", "SUSHI YASUDA", "NEW SUSHI TATSU", "KOTO SUSHI & STEAK", "KONDO JAPANESE RESTAURANT", "SUSHI GINZA", "SUSHI ME", "GOSUKE", "TOKYO SUSHI JAPANESE RESTAURANT", "T-SWIRL CREPE", "GANDA SUSHI", "KARAZISHI BOTAN", "DONGWON SUSHI & TUNA", "YUMMY MACHI", "IRON CHEF HOUSE", "MAKIMAKI", "E.A.K. RAMEN", "AVOCADO SUSHI", "ZUTTO JAPANESE AMERICAN PUB", "SUZUME", "MAZETE", "KANOYAMA", "RESOBOX", "SOFTBITE"]
+                }
+              }
+            }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q7",
+          "category": "Languages",
+          "question": "Ειμαι στη Νεα Υορκη αυτη τη στιγμη, και θα ηθελα να φαω σε γιαπονεζικο εστιατοριο σε αυτη τη περιοχη. Μπορεις να με βοηθησεις με δεκα εστιατορια; Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (Greek)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_restaurants_by_cuisine"],
+                "parameters": [{ "cuisine": "Japanese" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "restaurant": [
+                  "AJISAI JAPANESE FUSION",
+                  "SUSHI DAMO",
+                  "AKAGI SUSHI",
+                  "IKUMI",
+                  "AYA SUSHI",
+                  "ZURUTTO RAMEN & GYOZA BAR",
+                  "SUSHI YASUDA",
+                  "NEW SUSHI TATSU",
+                  "KOTO SUSHI & STEAK",
+                  "KONDO JAPANESE RESTAURANT"
+                ]
+              }
+            }
+          }
+        },      
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q8",
+          "category": "Languages",
+          "question": "Θα ηθελα να μεινω σε ενα διαμερισμα στη Νεα Υορκη, αλλα δε ξερω που. Μπορεις να βρεις δεκα σε παρακαλω; Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (Greek)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listing_by_room_type"],
+                "parameters": [
+                  { "neighbourhood_group": "Entire home apartment" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Fun 3 Bedroom Just Minutes to Manhattan!!",
+                  "Spacious Bright 1 Bedroom East Village Apartment",
+                  "Spacious Brooklyn Brownstone 3BR+",
+                  "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                  "Spacious 1BR Bushwick Surfers Loft!",
+                  "West Village Studio Apartment",
+                  "West Village Apartment near Washington Square Park",
+                  "5 rooms in clean apartment West Harlem",
+                  "Soho loft with everything",
+                  "Cozy & artsy apt in East Village - 2 bedrooms"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q9",
+          "category": "Languages",
+          "question": "Ich würde gerne japanisch essen. Kannst du zehn Orten in Manhattan finden? Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (German)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_restaurants_by_cuisine"],
+                "parameters": [{ "cuisine": "Japanese" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "restaurant": [
+                  "AJISAI JAPANESE FUSION",
+                  "SUSHI DAMO",
+                  "AKAGI SUSHI",
+                  "IKUMI",
+                  "AYA SUSHI",
+                  "ZURUTTO RAMEN & GYOZA BAR",
+                  "SUSHI YASUDA",
+                  "NEW SUSHI TATSU",
+                  "KOTO SUSHI & STEAK",
+                  "KONDO JAPANESE RESTAURANT"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q10",
+          "category": "Languages",
+          "question": "Pouvez-vous, s’il vous plaît, me procurer le restaurant de quartier 'JUNOON'? Return the answer in JSON format: {'location':'my_location'}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (French)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_borough_location"],
+                "parameters": [{ "restaurant": "Junoon" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "location": "Manhattan"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "TRAVEL_Q_SINGLE_STEP_ONE_SHOT_MULTI_PARAM_V01_LANGUAGES",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Multiple Parameters, Single Step and One Shot",
+      "domain": "Travel",
+      "date": "2024-01-15",
+      "description": "Single step questions designed to test questions in different languages.",
+      "authors": ["Deidamea Bajri", "Serxhina Kutrolli","Stiliana Jano"],
+      "license": "Apache License 2.0",
+      "function_sets": ["TRAVEL_FUNC_MULTI_PARAM_SIMPLE_DESC_NO_EX_V01"],
+      "questions": [
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_LANGUAGE_Q1",
+          "category": "Languages",
+          "question": "Pershendetje, dua te rri pese dite ne nje vend afer Kuinsit dhe qe te mos kaloje koston e 80 dollareve per nate. A me ndihmon dot me dhjete sugjerime te lutem? Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (Albanian)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters": [
+                  {
+                    "price": 80,
+                    "min_nights": 5,
+                    "neighbourhood_group": "Queens"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Amazing huge furnished room!",
+                  "Sunny and spacious  1-bedroom in Brooklyn",
+                  "Huge room in great area 25 minutes from Manhattan",
+                  "Brooklyn Home in the Heart of it All",
+                  "British Room @ Columbia Uni.",
+                  "Bargain Warm Spacious Studio in Carroll Gardens!",
+                  "Sunny spacious room full of good energy",
+                  "1BR Apt in the Bay Ridge!",
+                  "Nice & new room  washerdryer 5 min to train!",
+                  "Beautiful & Private Manhattan Room"
+                ]
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_LANGUAGE_Q2",
+          "category": "Languages",
+          "question": "Ich möchte eine Reservierung in einem Restaurant mit traditionellen amerikanischen Gerichten namens SMASHBURGER vornehmen. Es ist in ganz New York, insbesondere in der Bronx, sehr berühmt, aber ich kann die Kontaktdaten nicht finden. Können Sie mir helfen? Return the answer in JSON format: {'number':'phone_number', 'restaurant_name':'name'}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (German)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_telephone_number_by_name_neighbourhood_group_cuisine"
+                ],
+                "parameters": [
+                  {
+                    "restaurant": "SMASHBURGER",
+                    "neighbourhood_group": "Bronx",
+                    "cuisine": "American"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "number": "3478018360",
+                "restaurant_name": "SMASHBURGER"
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_LANGUAGE_Q3",
+          "category": "Languages",
+          "question": "Können Sie mir bei einigen Orten in der Gegend von Brooklyn helfen, die Mehrbettzimmer anbieten, mit Bewertungen vom 18. Mai 19? Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (German)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters": [
+                  {
+                    "neighbourhood_group": "Brooklyn",
+                    "room_type": "Shared room",
+                    "last_review_date": "18-05-19"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": "2MinToTrainsCozyLivingRoomMaimonideLutheranHospita"
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_LANGUAGE_Q4",
+          "category": "Languages",
+          "question": "Estaré en Nueva York dos noches y estoy buscando posibles opciones de alojamiento en Brooklyn. ¿Podría proporcionarme algunas opciones con un precio no superior a 20 dólares por noche? Return the answer in JSON format: {'airbnbs':['my_airbnb']",
+          "motivation": "Testing the ability of the LLM to understand another language except English (Spanish)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_airbnb_by_price_and_neighborhood_group"],
+                "parameters": [
+                  { "price": 20, "neighbourhood_group": "Brooklyn" }
+                ]
+              },
+              {
+                "path_id": 2,
+                "functions": ["get_airbnb_by_price_range_neighbourhood"],
+                "parameters": [
+                  {
+                    "min_price": 0,
+                    "max_price": 20,
+                    "neighbourhood_group": "Brooklyn"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnbs": ["Calm bed great area.", "Room with a view"]
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_LANGUAGE_Q5",
+          "category": "Languages",
+          "question": "Je veux surprendre mon partenaire avec un Noël confortable et romantique à New York, en séjournant dans un endroit chaleureux et privé à Manhattan avec vue sur la neige, et j'ai besoin de votre aide pour trouver les meilleures options les moins chères avec les meilleurs avis de décembre 2018. Return the answer in JSON format:{'airbnb':['my_airnbn']}",
+          "motivation": "Testing the ability of the LLM to understand another language except English (French)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters": [
+                  {
+                    "room_type": "Entire home apartment",
+                    "last_review_date": "31-12-18",
+                    "neighbourhood_group": "Manhattan"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": ["Authentic studio-UES (30 days MIN)"]
+              }
+            },
+            "comment": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "TRAVEL_Q_MULTI_CALL_SEQUENTIAL_V01_LANGUAGES",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Multiple Calls and One Shot",
+      "domain": "Travel",
+      "date": "2024-01-15",
+      "description": "Multi step questions designed to test a subset of questions in different languages.",
+      "authors": ["Deidamea Bajri", "Serxhina Kutrolli","Stiliana Jano"],
+      "license": "Apache License 2.0",
+      "function_sets": ["TRAVEL_FUNC_MULTI_CALL_SEQUENTIAL_SIMPLE_DESC_NO_EX_V01"],
+      "questions": [
+        {
+          "id": "TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q1",
+          "category": "Languages",
+          "question": "Γεια, προς το παρων ειμαι στη Νεα Υορκη με κινεζους φιλους στο 'δωμάτιο με θέα'. Πειναμε και θελουμε να βρουμε γρηγορα καπου κοντα για να φαμε. Σε παρακαλω, βοηθησε με να βρω κατι εδω κοντα. Return the answer in JSON format: {'restaurants_nearby': [my_restaurant]}",
+          "motivation": "Test the ability of LLM to comprehend and respond in a different language other than English and perform multiple function calls while requested in different languages.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_long_lat_by_airbnb",
+                  "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters": [
+                  { "listing": "A room with a view" },
+                  { "latitude": 40.82649, "longitude": -73.95253 }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "restaurants_nearby": [
+                  "JUICE RIGHT CORP",
+                  "ARTOPOLIS CAFE",
+                  "MILA CAFE"
+                ]
+              }
+            },
+            "comment": "GPT should understand that the user is requesting a restaurant close to an airbnb that the user is staying in the Chinese language."
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q2",
+          "category": "Languages",
+          "question": "Γεια, είμαι στη Νέα Υόρκη με τη μαμά μου και θα μείνουμε σε ένα Airbnb κοντά στο κέντρο της πόλης για τέσσερις ημέρες. Το Airbnb στο οποίο μείναμε ονομαζόταν Room in Bushwick Bk, διαθέσιμο τον Ιούνιο. Μπορείτε να προτείνετε μερικά καλά εστιατόρια σε κοντινή απόσταση; Καταχωρίστε τη λεπτομερή διεύθυνσή τους, όπως πληροφορίες για το δρόμο.Return the answer in JSON format: {'distance': distance_to_airbnb, 'restaurant_building':'nearby_restaurant_building', 'restaurant_name': 'nearby_restaurant_name', 'restaurant_phone': 'nearby_restaurant_phone_num', 'restaurant_street': 'nearby_restaurant_street_name', 'restaurant_zip': nearby_restaurant_zip_code}",
+          "motivation": "Test the model's performance when presented with queries written in languages that do not use the Latin alphabet. Assess the accuracy and coherence of multi-call responses in diverse linguistic contexts. ",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_long_lat_by_airbnb",
+                  "get_info_restaurant_with_zipcode_street_building"
+                ],
+                "parameters": [
+                  { "listing": "Room in Bushwick Bk available June" },
+                  { "latitude": 40.68651, "longitude": -73.91185 }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "distance": 4.98,
+                "restaurant_building": "1407",
+                "restaurant_name": "AUNTS ET UNCLES",
+                "restaurant_phone": "9175868529",
+                "restaurant_street": "NOSTRAND AVENUE",
+                "restaurant_zip": 11226.0
+              }
+            },
+            "comment": "Testing whether GPT understands the user request in Chinese language to find the proximity between an airbnb and restaurants nearby."
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q3",
+          "category": "Languages",
+          "question": "Përshëndetje, unë po qëndroj me familjen time në 'Apartament 1 Bedroom afër Northwell & JFK' në Nju Jork dhe do të qëndrojmë për disa ditë. Ne jetojmë në një Airbnb e cila është shumë afër qendrës së qytetit. A mund të më ndihmoni duke rekomanduar disa restorante të këndshme në zonë dhe duke më dhënë vendndodhjen e tyre të saktë? Return the answer in JSON format: {'distance': distance_to_airbnb, 'restaurant_building':'nearby_restaurant_building', 'restaurant_name': 'nearby_restaurant_name', 'restaurant_phone': 'nearby_restaurant_phone_num', 'restaurant_street': 'nearby_restaurant_street_name', 'restaurant_zip': nearby_restaurant_zip_code}",
+          "motivation": "Test the model's performance when presented with queries written in languages that do not use the Latin alphabet. Assess the accuracy and coherence of multi-call responses in diverse linguistic contexts.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_long_lat_by_airbnb",
+                  "get_info_restaurant_with_zipcode_street_building"
+                ],
+                "parameters": [
+                  {
+                    "listing": "1 Bedroom  Apartment close to Northwell & JFK"
+                  },
+                  { "latitude": 40.7229, "longitude": -73.7462 }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "distance": 3.8,
+                "restaurant_building": "17237",
+                "restaurant_name": "El Tequilazo",
+                "restaurant_phone": "6462584663",
+                "restaurant_street": "HILLSIDE AVE",
+                "restaurant_zip": 11432.0
+              }
+            },
+            "comment": "Testing whether GPT understands the user request in Czech language to find the proximity between an airbnb and restaurants nearby."
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q4",
+          "category": "Languages",
+          "question": "Momentalisht ndodhem ne restorantin Skinny Cantina qe eshte i vendosur ne rrugen W 133RD ST, meqenese jam nje studente e re nuk i njof shume mire rruget dhe do doja tani te gjeja ndonje vend per te fjetur diku ketu rrotull sepse nuk do doja te levizja shume nga zona afer restorantit dhe shkolles. Ju lutem, mund te me sugjeroni disa vende ku mund te fle sonte. Return the answer in JSON format: {'airbnbs': [my_airbnb]}",
+          "motivation": "Test the ability of LLM to comprehend and respond in a different language other than English and perform multiple function calls while requested in different languages.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_long_lat_by_name_street",
+                  "get_airbnb_by_lat_long"
+                ],
+                "parameters": [
+                  { "restaurant": "SKINNY CANTINA", "street": "W 133RD ST" },
+                  { "latitude": 40.82003511, "longitude": -73.95893838 }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnbs": [
+                  "5 rooms in clean apartment /West Harlem",
+                  "British Room @ Columbia Uni."
+                ]
+              }
+            },
+            "comment": "Testing whether GPT understands the user request in Albanian language to find the airbnbs close to the user requested address."
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q5",
+          "category": "Languages",
+          "question": "Hallo, könnten Sie mir bitte helfen, alle besten und am besten bewerteten mit 5 Sternen im besten Bereich von New York zu finden, der ganz in der Nähe der Freiheitsstatue und Manhattan liegt? Bitte nennen Sie mir den Namen des Restaurants in diesem Teil von New York, damit ich später die genaue Lage auf Google Maps suchen kann. Return the answer in JSON format: {'restaurants_at_manhattan': 'my_restaurant'}",
+          "motivation": "Test the ability of LLM to comprehend and respond in a different language other than English and perform multiple function calls while requested in different languages.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_restaurants_by_ratings",
+                  "get_neighborhood_by_rest_specification"
+                ],
+                "parameters": [
+                  { "rating": 5 },
+                  {
+                    "restaurants": "Cafe Habana, Anjappar Chettinad, Bukhara Grill, Empanada Mama (closed), Blue Ribbon Fried Chicken, Shake Shack, Cafe Mogador, The Meatball Shop, The Kati Roll Company, Klong, Parm, Haru Gramercy Park, RedFarm Broadway, Five Guys Burgers and Fries, DuMont Burger, Hill Country Fried Chicken, TAO, RedFarm Hudson, Prosperity Dumpling, Nobu Next Door, Sushi Samba, Benihana, Chipotle Mexican Grill $1.99 Delivery, Otto Enoteca Pizzeria, Chote Nawab, Mission Cantina, Blue Ribbon Sushi, Joe's Shanghai, Yama Japanese Restaurant, Momoya, Osteria Morini, Sushi of Gari, Boqueria, Song Thai Restaurant & Bar, Barbounia, Yama 49, Jack's Wife Freda, Han Dynasty, Blue Ribbon Sushi Izakaya, Blue Ribbon Sushi Bar & Grill, Rubirosa, Vanessa's Dumplings, Bhatti Indian Grill, Taro Sushi, Delicatessen, Samurai Mama, Waverly Diner, Lucky's Famous Burgers, Dos Caminos, da Umberto, Bubby's, Burger Joint, Xe May Sandwich Shop, Otto Enoteca Pizzeria, El Parador Cafe, Socarrat Paella Bar, Bareburger, Xi'an Famous Foods, Five Leaves, Westville Hudson, Cipriani Le Specialita, The Loop, Burger Joint, UVA Wine Bar & Restaurant, V-Nam Cafe, Amma, The Smile, Hatsuhana, Cho Dang Gol, Sarabeth's, Galli Restaurant, Lantern Thai Kitchen, Hunan Manor, Despa\u00f1a, 12 Chairs, L'Express, Bareburger, Boqueria, Carmine's, The Loop, Balthazar Boulangerie, Lucky's Famous Burgers, Pinto Nouveau Thai Bistro, Hot Kitchen, Dig Inn Seasonal Market, Cafe Mogador, Grand Sichuan International, Le Grainne Cafe, 5 Napkin Burger, Caf China, wichcraft, Melt Shop",
+                    "neighborhood": "Manhattan"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "restaurants_at_manhattan": "Shake Shack"
+              }
+            },
+            "comment": "Testing whether GPT understands the user request in German language to find the neighborhood by some specific restaurant."
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q6",
+          "category": "Languages",
+          "question": "Θα πάω με την οικογένειά μου για μερικές μέρες στη Νέα Υόρκη και θέλουμε να περάσουμε υπέροχα εκεί. Για να το πετύχουμε αρχικά χρειαζόμαστε να βρούμε το πιο δημοφιλές μέρος για διαμονή κάπου κοντά στην περιοχή του Bronx και καθώς είμαστε μια μικρή οικογένεια θέλουμε να μείνουμε όλοι μαζί στο ίδιο μέρος. Αφού βρείτε το κατάλληλο Airbnb, παρακαλώ βρείτε μου επίσης ένα κοντινό εστιατόριο ώστε να πάμε εκεί και να φάμε. Return the answer in JSON format: {'restaurants_near_specified_airbnb': [most_popular_restaurant]}",
+          "motivation": "Test the model's performance when presented with queries written in languages that do not use the Latin alphabet. Assess the accuracy and coherence of multi-call responses in diverse linguistic contexts.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_with_max_reviews",
+                  "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters": [
+                  {
+                    "popularity": 1,
+                    "neighborhood_group": "Bronx",
+                    "room_type": "Shared Room"
+                  },
+                  { "latitude": 40.80772, "longitude": -73.91791 }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "restaurants_near_specified_airbnb": [
+                  "JUICE RIGHT CORP.",
+                  "ARTOPOLIS CAFE",
+                  "MILA CAFE",
+                  "JOE & THE JUICE"
+                ]
+              }
+            },
+            "comment": "Testing whether GPT understands the user request in Greek language to find the restaurants close to the airbnbs that have received the maximum reviews."
+          }
+        }                                                             
+      ]
+    },
+    {
+      "id": "TRAVEL_Q_MULTI_CALL_PARALLEL_V01_LANGUAGES",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Multiple Calls and One Shot",
+      "domain": "Travel",
+      "date": "2024-01-15",
+      "description": "Multi step questions designed to test questions in different languages.",
+      "authors": ["Deidamea Bajri", "Serxhina Kutrolli","Stiliana Jano"],
+      "license": "Apache License 2.0",
+      "function_sets": ["TRAVEL_FUNC_MULTI_CALL_PARALLEL_SIMPLE_DESC_NO_EX_V01"],
+      "questions": [
+        {
+          "id": "TRAVEL_MULTI_CALL_PARALLEL_LANG_Q1",
+          "category": "Languages",
+          "question": "Αύριο έχω πτήση για Νέα Υόρκη. Ένας ντόπιος φίλος θα μας πάρει εκεί και θα απολαύσουμε ένα ωραίο δείπνο μαζί. Δεδομένου ότι είναι η πρώτη τους επίσκεψη, θέλουν να πάνε σε ένα ιαπωνικό εστιατόριο που ονομάζεται 'Nobu Next Door'. Μπορείτε να μου δώσετε μια γενική ιδέα για το πώς βαθμολογείται αυτή η κουζίνα στη Νέα Υόρκη και αν το εστιατόριο έχει υψηλή βαθμολογία;  Return the answer in JSON format: {'rating_japan_cuisine': avg_rating_cuisine, rating_for_the_restaurants: avg_rating_rest } ",
+          "motivation": "Test the model's performance when presented with queries written in languages that do not use the Latin alphabet. Assess the accuracy and coherence of parallel multi-call responses in diverse linguistic contexts. ",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_ratings_per_cuisines",
+                  "get_rating_by_restaurant_name"
+                ],
+                "parameters": [
+                  { "cuisines": "Japanese" },
+                  { "restaurant_name": "Nobu Next Door" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "rating_japan_cuisine": 4.37,
+                "rating_for_the_restaurants": 4.5
+              }
+            },
+            "comment": "GPT should understand the user request consisting of two function calls to answer the user question in another language (Japanese). "
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_CALL_PARALLEL_LANG_Q2",
+          "category": "Languages",
+          "question": "Ich überlege, morgen in einem sehr schönen Restaurant namens Shake Shack essen zu gehen. Da sich dieses Restaurant in Manhattan befindet, gehe ich davon aus, dass es möglicherweise teuer ist. Ich würde es sehr schätzen, wenn Sie mir eine allgemeine Vorstellung von den Preisen in diesem Restaurant geben könnten. Können Sie mir auch einige Informationen zu den Kundenbewertungen zeigen? Return the answer in JSON format: {'average_cost_per_restaurant': avg_cost, 'rating_by_the_rest': avg_ratings}",
+          "motivation": "Test the model's performance when presented with queries written in languages other than English. Assess the accuracy and coherence of parallel multi-call responses in diverse linguistic contexts.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_avg_costs_by_restaurant_name",
+                  "get_rating_by_restaurant_name"
+                ],
+                "parameters": [
+                  { "restaurant_name": "Shake Shack" },
+                  { "restaurant_name": "Shake Shack" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "average_cost_per_restaurant": 16.34,
+                "rating_by_the_rest": 4.96
+              }
+            },
+            "comment": "GPT should understand the user request consisting of two function calls to answer the user question in another language (German)"
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_CALL_PARALLEL_LANG_Q3",
+          "category": "Languages",
+          "question": "Pershendetje, do deshiroja te dija sa jane kostot mesatare per keto restorante ne Nju Jork te lutem: Tortaria dhe Parm. Return the answer in JSON format: {'the_avg_costs': [avg_costs]}",
+          "motivation": "Test the model's performance when presented with queries written in languages other than English. Assess the accuracy and coherence of parallel multi-call responses in diverse linguistic contexts.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_avg_costs_by_restaurant_name",
+                  "get_avg_costs_by_restaurant_name"
+                ],
+                "parameters": [
+                  { "restaurant_name": "Tortaria" },
+                  { "restaurant_name": "Parm" }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "the_avg_costs": [29.1, 8.92]
+              }
+            },
+            "comment": "GPT should understand the user request consisting of two function calls to answer the user question in another language (Albanian)"
+          }
+        }
+      ]
+    }    
+  ],
+  "function_sets": [
+    {
+      "id": "TRAVEL_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 14,
+      "functions": [
+        {
+          "name": "get_host_name",
+          "description": "Provide the host name for the AirbnB listing",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_min_nights",
+          "description": "Provide the number of nights required to stay for an airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_nr_of_reviews",
+          "description": "Provide the number of reviews for an airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },  
+        {
+          "name": "get_listing_price",
+          "description": "Provide the price of an airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_listing_by_neighbourhood_group",
+          "description": "Get the airbnbs for a specific neighbourhood group",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "neighbourhood_group": {
+                      "type": "string",
+                      "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                  }
+              },
+              "required": ["neighbourhood_group"]
+          }
+        },
+        {
+          "name": "get_listings_by_review_date",
+          "description": "Get the listings for a specific review date in the format DD-MM-YY",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "last_review_date": {
+                      "type": "string",
+                      "description": "The date of the last review, e.g. 12-05-19"
+                  }
+              },
+              "required": ["last_review_date"]
+          }
+        },
+        {
+          "name": "get_listings_by_min_nights",
+          "description": "Get the listings for a specific number of minimum nights to stay at an airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "minimum_nights": {
+                      "type": "string",
+                      "description": "The number of minimum nights, e.g. 3"
+                  }
+              },
+              "required": ["minimum_nights"]
+          }
+        },  
+        {
+          "name": "get_frequent_listings",
+          "description": "Get the frequent airbnbs",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "nr_of_listings": {
+                      "type": "integer",
+                      "description": "The number of listings, e.g. 3"
+                  }
+              },
+              "required": ["nr_of_listings"]
+          }
+        },    
+        {
+          "name": "get_listing_by_price",
+          "description": "Get the airbnbs for a specific price in US dollars currency",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "price": {
+                      "type": "integer",
+                      "description": "The price of an airbnb per night, e.g. 90 dollars"
+                  }
+              },
+              "required": ["price"]
+          }
+        },
+        {
+          "name": "get_listing_by_lower_price",
+          "description": "Get the airbnbs for a price equal or less to the price requested in US dollars",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "price": {
+                      "type": "integer",
+                      "description": "The price of an airbnb per night, e.g. 90 dollars"
+                  }
+              },
+              "required": ["price"]
+          }
+        },
+        {
+          "name": "get_neighbourhood_group",
+          "description": "Get the neighbourhood group of a specific airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "name": {
+                      "type": "string",
+                      "description": "The name of the airbnb, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["name"]
+          }
+        },
+        {
+          "name": "get_restaurants_by_cuisine",
+          "description": "For a specific cuisine category, get the respective restaurants",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "cuisine": {
+                      "type": "string",
+                      "description": "The cuisine type, e.g. Japanese"
+                  }
+              },
+              "required": ["cuisine"]
+          }
+        },
+        {
+          "name": "get_borough_location",
+          "description": "For a specific restaurant, get the borough location",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant": {
+                      "type": "string",
+                      "description": "The restaurant name, e.g. Junoon"
+                  }
+              },
+              "required": ["restaurant"]
+          }
+        },
+        {
+          "name": "get_cuisine",
+          "description": "For a specific restaurant, get the cuisine",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant": {
+                      "type": "string",
+                      "description": "The restaurant name, e.g. Junoon"
+                  }
+              },
+              "required": ["restaurant"]
+          }
+        },
+        {
+          "name": "get_listing_by_room_type",
+          "description": "Get the airbnbs for a specific room type",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "room_type": {
+                      "type": "string",
+                      "description": "The room type, e.g. Entire home apt"
+                  }
+              },
+              "required": ["room_type"]
+          }
+        }          
+
+      ]
+    },
+    {
+      "id": "TRAVEL_FUNC_ONE_PARAM_COMPLEX_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Without Examples",
+        "Complex Description"
+      ],
+      "num_functions": 14,
+      "functions": [
+        {
+          "name": "get_host_name",
+          "description": "Provide the name of the Airbnb’s owner.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_min_nights",
+          "description": "Provide the minimum duration of stay for the Airbnb reservation.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_nr_of_reviews",
+          "description": "Provide the count of guest evaluations for the Airbnb listing.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },  
+        {
+          "name": "get_listing_price",
+          "description": "Provide the rental cost for the Airbnb accommodation in US dollars.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_listing_by_neighbourhood_group",
+          "description": "Get the listings of Airbnb properties within a designated district area.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "neighbourhood_group": {
+                      "type": "string",
+                      "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                  }
+              },
+              "required": ["neighbourhood_group"]
+          }
+        },
+        {
+          "name": "get_listings_by_review_date",
+          "description": "Get the Airbnb properties associated with a particular date of feedback in the date format DD-MM-YY.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "last_review_date": {
+                      "type": "string",
+                      "description": "The date of the last review, e.g. 12-05-19"
+                  }
+              },
+              "required": ["last_review_date"]
+          }
+        },
+        {
+          "name": "get_listings_by_min_nights",
+          "description": "Get the Airbnb offerings that require a set minimum number of nights for booking.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "minimum_nights": {
+                      "type": "string",
+                      "description": "The number of minimum nights, e.g. 3"
+                  }
+              },
+              "required": ["minimum_nights"]
+          }
+        },  
+        {
+          "name": "get_frequent_listings",
+          "description": "Get the Airbnb´s that are most commonly booked.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "nr_of_listings": {
+                      "type": "integer",
+                      "description": "The number of listings, e.g. 3"
+                  }
+              },
+              "required": ["nr_of_listings"]
+          }
+        },    
+        {
+          "name": "get_listing_by_price",
+          "description": "Locate Airbnb rentals available at a specified price point in US dollars.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "price": {
+                      "type": "integer",
+                      "description": "The price of an airbnb per night, e.g. 90 dollars"
+                  }
+              },
+              "required": ["price"]
+          }
+        },
+        {
+          "name": "get_listing_by_lower_price",
+          "description": "Get the Airbnb properties priced at or below the specified amount in US dollars.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "price": {
+                      "type": "integer",
+                      "description": "The price of an airbnb per night, e.g. 90 dollars"
+                  }
+              },
+              "required": ["price"]
+          }
+        },
+        {
+          "name": "get_neighbourhood_group",
+          "description": "Get the local community association for a particular Airbnb listing",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "name": {
+                      "type": "string",
+                      "description": "The name of the airbnb, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["name"]
+          }
+        },
+        {
+          "name": "get_restaurants_by_cuisine",
+          "description": " Get some places that serve a particular type of cuisine",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "cuisine": {
+                      "type": "string",
+                      "description": "The cuisine type, e.g. Japanese"
+                  }
+              },
+              "required": ["cuisine"]
+          }
+        },
+        {
+          "name": "get_borough_location",
+          "description": "Determine the district where a particular restaurant is situated.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant": {
+                      "type": "string",
+                      "description": "The restaurant name, e.g. Junoon"
+                  }
+              },
+              "required": ["restaurant"]
+          }
+        },
+        {
+          "name": "get_cuisine",
+          "description": "Identify the culinary style or category of food that a certain dining establishment specializes in.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant": {
+                      "type": "string",
+                      "description": "The restaurant name, e.g. Junoon"
+                  }
+              },
+              "required": ["restaurant"]
+          }
+        },
+        {
+          "name": "get_listing_by_room_type",
+          "description": "Search for Airbnb properties that match a specific accommodation category or room configuration.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "room_type": {
+                      "type": "string",
+                      "description": "The room type, e.g. Entire home apt"
+                  }
+              },
+              "required": ["room_type"]
+          }
+        }          
+
+      ]
+    },
+
+
+    {
+      "id": "TRAVEL_FUNC_MULTI_PARAM_SIMPLE_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 10,
+      "functions": [
+        {
+          "name": "get_airbnb_by_price_range_neighbourhood",
+          "description": "Get the listing by neighbourhood group between a specific price range in US dollars",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "min_price": {
+                      "type": "string",
+                      "description": "The min price in the range"
+                  },
+                  "max_price": {
+                      "type": "string",
+                      "description": "The maximum price in the range"
+                  },                
+                  "neighbourhood_group": {
+                      "type": "string",
+                      "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                  }
+              },
+              "required": ["min_price","max_price","neighbourhood_group"]
+          }
+        },
+        {
+            "name": "get_airbnb_by_price_min_nights_and_neighborhood_group",
+            "description": "Get the listing by minimum price in US dollars, minimum nights and and a specific neighbourhood group",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "price": {
+                        "type": "integer",
+                        "description": "The price of an airbnb per night, e.g. 90 dollars"
+                    },
+                    "min_nights": {
+                        "type": "integer",
+                        "description": "The minimum amount of nights, e.g. 2"
+                    },                
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                    }
+                },
+                "required": ["price","min_nights","neighbourhood_group"]
+            }
+        }, 
+        {
+            "name": "get_airbnb_by_neighbourhood_group_room_type_date",
+            "description": "Get the listing by neighbourhood group, room type and last review date in the format DD-YY-MM",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "room_type": {
+                        "type": "string",
+                        "description": "The type of room of an airbnb, e.g. private room"
+                    },
+                    "last_review_date": {
+                        "type": "string",
+                        "description": "The date when the last review was recorded, e.g. 23-09-2019"
+                    },                
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                    }
+                },
+                "required": ["room_type","last_review_date","neighbourhood_group"]
+            }
+        },
+        {
+            "name": "get_airbnb_by_price_range_neighbourhood",
+            "description": "Get the listing by neighbourhood group between a specific price range in US dollars",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "min_price": {
+                        "type": "string",
+                        "description": "The min price in the range"
+                    },
+                    "max_price": {
+                        "type": "string",
+                        "description": "The maximum price in the range"
+                    },                
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                    }
+                },
+                "required": ["min_price","max_price","neighbourhood_group"]
+            }
+        }, 
+        {
+            "name": "get_x_most_popular_places_in_neighbourhood_group_room_type",
+            "description": "Get the x most popular airbnbs in a neighbourhood group and for a specific room type ",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "popularity": {
+                        "type": "integer",
+                        "description": "The number of airbnbs to output"
+                    },
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                    },                
+                    "room_type": {
+                        "type": "string",
+                        "description": "The type of the room, e.g. Shared Room"
+                    }
+                },
+                "required": ["popularity","neighbourhood_group","room_type"]
+            }
+        },
+           
+        {
+            "name": "get_avg_by_neighbourgood_group_and_room_type",
+            "description": "Get the average price in US dollars of a neighbourhood group by room type ",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                    },                
+                    "room_type": {
+                        "type": "string",
+                        "description": "The type of the room, e.g. Shared Room"
+                    }
+                },
+                "required": ["neighbourhood_group","room_type"]
+            }
+        },
+
+        {
+            "name": "get_min_cost_by_neighbourhood_group_room_type_min_nights",
+            "description": "Get the least costly in US dollars airbnbs for a specific neighbourhood group,room type and minimum nights",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "nr_requests": {
+                        "type": "integer",
+                        "description": "The number of airbnbs to output"
+                    },
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                    },                
+                    "room_type": {
+                        "type": "string",
+                        "description": "The type of the room, e.g. Shared Room"
+                    },
+                    "min_nights": {
+                        "type": "string",
+                        "description": "The minimum number of nights to stay"
+                    }            
+                },
+                "required": ["nr_requests","neighbourhood_group","room_type","min_nights"]
+            }
+        },   
+
+        {
+            "name": "get_telephone_number_by_name_neighbourhood_group_cuisine",
+            "description": "Get the telephone number of a restaurant given the neighbourhood group or cuisine",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "restaurant": {
+                        "type": "string",
+                        "description": "The name of the restaurant"
+                    },
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the borough"
+                    }, 
+                    "cuisine": {
+                        "type": "string",
+                        "description": "The cuisine of the restaurant e.g. Japanese"
+                    }
+                },
+                "required": ["restaurant","neighbourhood_group","cuisine"]
+            }
+        },
+
+        {
+            "name": "get_restaurant_by_zipcode_cuisine_borough_phone",
+            "description": "Get the restaurant info by zip code, cuisine, borough and phone number",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "zip_code": {
+                        "type": "integer",
+                        "description": "The zip code of the restaurant"
+                    },
+                    "cuisine": {
+                        "type": "string",
+                        "description": "The cuisine of the restaurant e.g. Japanese"
+                    }, 
+                    "borough": {
+                        "type": "string",
+                        "description": "The borough of the restaurant e.g. Bronx"
+                    }, 
+                    "phone": {
+                        "type": "string",
+                        "description": "The phone number of the restaurant"
+                    }          
+                },
+                "required": ["zip_code","cuisine","borough","phone"]
+            }
+        }, 
+
+        {
+            "name": "get_info_by_name_cuisine_borough_phone",
+            "description": "Get the information of a restaurant (street, building and zip code)" ,
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "restaurant": {
+                        "type": "string",
+                        "description": "The name of the restaurant"
+                    },
+                    "cuisine": {
+                        "type": "string",
+                        "description": "The cuisine of the restaurant e.g. Japanese"
+                    }, 
+                    "borough": {
+                        "type": "string",
+                        "description": "The borough of the restaurant e.g. Bronx"
+                    }, 
+                    "phone": {
+                        "type": "string",
+                        "description": "The phone number of the restaurant"
+                    }                
+                },
+                "required": ["restaurant","cuisine","borough","phone"]
+            }
+        }   
+      
+      ]
+    },
+
+    {
+      "id": "TRAVEL_FUNC_MULTI_CALL_SEQUENTIAL_SIMPLE_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions, multiple calls and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Multi-call",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 11,
+      "functions": [
+        {
+          "name": "get_airbnb_by_price_min_nights_and_neighborhood_group",
+          "description": "Get the listing by minimum price in US dollars, minimum nights and and a specific neighbourhood group",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "price": {
+                      "type": "integer",
+                      "description": "The price of an airbnb per night, e.g. 90 dollars"
+                  },
+                  "min_nights": {
+                      "type": "integer",
+                      "description": "The minimum amount of nights, e.g. 2"
+                  },                
+                  "neighbourhood_group": {
+                      "type": "string",
+                      "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                  }
+              },
+              "required": ["price","min_nights","neighbourhood_group"]
+          }
+        },   
+        {
+          "name": "get_long_lat_by_name_street",
+          "description": "Get the latitude and longitude of a restaurant by street",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant": {
+                      "type": "string",
+                      "description": "The name of the restaurant"
+                  },
+                  "street": {
+                      "type": "string",
+                      "description": "The street where the restaurant is located"
+                  }             
+              },
+              "required": ["restaurant", "street"]
+          }
+        },
+        {
+          "name": "get_airbnb_by_lat_long",
+          "description": "Get the airbnb by latitude and longitude",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "latitude": {
+                      "type": "string",
+                      "description": "The latitude of the airbnb"
+                  },
+                  "longitude": {
+                      "type": "string",
+                      "description": "The longitude of the airbnb"
+                  }               
+              },
+              "required": ["latitude", "longitude"]
+          }
+        },   
+        {
+          "name": "get_long_lat_by_airbnb",
+          "description": "Get the airbnb by latitude and longitude",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing": {
+                      "type": "string",
+                      "description": "The airbnb's name"
+                  }             
+              },
+              "required": ["listing"]
+          }
+        },
+        {
+          "name": "get_airbnb_address_by_lat_long",
+          "description": "Get the airbnb address from longitude and latitude",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "latitude": {
+                      "type": "string",
+                      "description": "The restaurant's latitude"
+                  },  
+                  "longitude": {
+                      "type": "string",
+                      "description": "The restaurant's longitude"
+                  }               
+              },
+              "required": ["latitude","longitude"]
+          }
+       },
+       {
+          "name": "get_restaurant_by_airbnb_closeness",
+          "description": "Get the restaurant close to an airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "latitude": {
+                      "type": "string",
+                      "description": "The airbnb's latitude"
+                  },  
+                  "longitude": {
+                      "type": "string",
+                      "description": "The airbnb's longitude"
+                  }                
+              },
+              "required": ["latitude","longitude"]
+          }
+        },
+        {
+          "name": "get_info_restaurant_with_zipcode_street_building",
+          "description": "Get the restaurant info (zipcode,street and building)",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "latitude": {
+                      "type": "string",
+                      "description": "The airbnb's latitude"
+                  },  
+                  "longitude": {
+                      "type": "string",
+                      "description": "The airbnb's longitude"
+                  }                 
+              },
+              "required": ["latitude","longitude"]
+          }
+        },
+        {
+          "name": "get_restaurants_by_ratings",
+          "description": "Get the restaurants according to a specific rating",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "rating": {
+                      "type": "string",
+                      "description": "The rating of the restaurant"
+                  }                 
+              },
+              "required": ["rating"]
+          }
+        },
+        {
+          "name": "get_neighborhood_by_rest_specification",
+          "description": "Get the restaurants according to a specific neighborhood",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurants": {
+                      "type": "string",
+                      "description": "The list of restaurant name"
+                  },  
+                  "neigborhood": {
+                      "type": "string",
+                      "description": "The neighborhood of a restaurant"
+                  }              
+              },
+              "required": ["restaurants","neigborhood"]
+          }
+        },
+        {
+          "name": "get_airbnb_with_max_reviews",
+          "description": "Get the airbnbs with max number of reviews at a specific neighborhood group and room type",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "popularity": {
+                      "type": "int",
+                      "description": "The number of airbnbs to show"
+                  },  
+                  "neighbourhood_group": {
+                      "type": "string",
+                      "description": "The neighborhood of an airbnb"
+                  }, 
+                  "room_type": {
+                      "type": "string",
+                      "description": "The type of room of an airbnb"
+                  }              
+              },
+              "required": ["popularity","neigborhood_group","room_type"]
+          }
+        },
+        {
+          "name": "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+          "description": "Get the restaurant info and latitude and longitude by zip code, cuisine, borough and phone number",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "zip_code": {
+                      "type": "number",
+                      "description": "The zip code of the restaurant"
+                  },
+                  "cuisine": {
+                      "type": "string",
+                      "description": "The cuisine of the restaurant e.g. Japanese"
+                  }, 
+                  "borough": {
+                      "type": "string",
+                      "description": "The borough of the restaurant e.g. Bronx"
+                  }, 
+                  "phone": {
+                      "type": "string",
+                      "description": "The phone number of the restaurant"
+                  }                
+              },
+              "required": ["zip_code","cuisine","borough","phone"]
+          }
+        }      
+      ]
+    },
+    {
+      "id": "TRAVEL_FUNC_MULTI_CALL_PARALLEL_SIMPLE_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions, multiple calls and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Multi-call",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 7,
+      "functions": [ 
+        {
+          "name": "get_avg_prep_time_by_restaurant_name",
+          "description": "Get average prep time of a restaurant",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant_name": {
+                      "type": "string",
+                      "description": "The restaurant name"
+                  }
+              },
+              "required": ["restaurant_name"]
+          }
+        },
+        {
+          "name": "get_avg_costs_by_restaurant_name",
+          "description": "Get average costs of a restaurant in US dollars",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant_name": {
+                      "type": "string",
+                      "description": "The restaurant name"
+                  }
+              },
+              "required": ["restaurant_name"]
+          }
+       },
+       {
+          "name": "get_rating_by_restaurant_name",
+          "description": "Get rating by restaurant name",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant_name": {
+                      "type": "string",
+                      "description": "The restaurant name"
+                  }
+              },
+              "required": ["restaurant_name"]
+          }
+        },
+        {
+          "name": "get_avg_delivery_time_by_restaurant_name",
+          "description": "Get average delivery time of a restaurant",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant_name": {
+                      "type": "string",
+                      "description": "The restaurant name"
+                  }
+              },
+              "required": ["restaurant_name"]
+          }
+        },
+        {
+          "name": "get_restaurant_by_cuisine_borough",
+          "description": "Get restaurant by borough and cuisine",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "borough": {
+                      "type": "string",
+                      "description": "The borough, e.g. Manhattan"
+                  },
+                  "cuisine": {
+                      "type": "string",
+                      "description": "The cuisine type of the restaurant, e.g Italian"
+                  }
+              },
+              "required": ["borough", "cuisine"]
+          }
+       },
+       {
+          "name": "get_neighbourhood_group",
+          "description": "Get the neighbourhood group of a specific airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "name": {
+                      "type": "string",
+                      "description": "The name of the airbnb, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["name"]
+          }
+       },
+       {
+          "name": "get_ratings_per_cuisines",
+          "description": "Get restaurant by borough and cuisine",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "cuisines": {
+                      "type": "string",
+                      "description": "The cuisine type, e.g Italian"
+                  }
+              },
+              "required": ["cuisines"]
+          }
+       }             
+      
+      ]
+    },
+
+    {
+      "id": "MUSIC_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
+      "name": "Music - 1 parameter functions with simple function description, no examples.",
+      "domain": "Music",
+      "categories": ["1 Parameter", "Without Examples", "Simple Description"],
+      "num_functions": 10,
+      "functions": [
+        {
+          "name": "albums_by_artist_1",
+          "description": "Returns all albums by a given artist.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        },
+        {
+          "name": "top_rated_albums",
+          "description": "Returns the top-rated albums based on average rating.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of albums to return. Default is 10."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "artist_by_album",
+          "description": "Returns the artist of an album by its name.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "album_name": {
+                "type": "string",
+                "description": "The name of the album."
+              }
+            },
+            "required": ["album_name"]
+          }
+        },
+        {
+          "name": "albums_by_genres",
+          "description": "Retrieves a list of albums that contain any of the specified genres.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of genre strings the albums must contain."
+              }
+            },
+            "required": ["genres"]
+          }
+        },
+        {
+          "name": "albums_by_release_date_1",
+          "description": "Retrieves all albums released on a specific date.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date to filter albums by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+              }
+            },
+            "required": ["release_date"]
+          }
+        },
+        {
+          "name": "top_streamed_songs",
+          "description": "Returns the n most streamed songs.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of top-streamed songs to return. Default is 10."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "songs_by_release_date",
+          "description": "Retrieves all songs released on a specific date, in a specific month, or in a specific year, based on the provided release date.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date to filter songs by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+              }
+            },
+            "required": ["release_date"]
+          }
+        },
+        {
+          "name": "songs_by_longest_duration",
+          "description": "Returns the top 'n' songs sorted by their duration, from longest to shortest.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of top songs to return, based on duration. Defaults to 10 if not specified."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "artist_by_song",
+          "description": "Returns the artist of the song.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "song_name": {
+                "type": "string",
+                "description": "The name of the song."
+              }
+            },
+            "required": ["song_name"]
+          }
+        },
+        {
+          "name": "songs_by_artist_1",
+          "description": "Returns all songs by a given artist.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "MUSIC_FUNC_MULTI_PARAM_SIMPLE_DESC_NO_EX_V01",
+      "name": "Music - Multi(>1) parameter functions with simple function description, no examples.",
+      "domain": "Music",
+      "categories": [
+        "Multi Parameters",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 16,
+      "functions": [
+        {
+          "name": "filter_albums_by_date_range",
+          "description": "Filters and retrieves albums released within a specified date range. The range is inclusive of the start and end dates.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "start_date": {
+                "type": "string",
+                "description": "The start date of the date range for filtering albums. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format."
+              },
+              "end_date": {
+                "type": "string",
+                "description": "The end date of the date range for filtering albums. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format."
+              }
+            },
+            "required": ["start_date", "end_date"]
+          }
+        },
+        {
+          "name": "albums_by_genres2",
+          "description": "Retrieves albums that match specified inclusion and exclusion genre criteria.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genres_in": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of genre strings the albums must contain."
+              },
+              "genres_out": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of genre strings the albums must not contain."
+              }
+            },
+            "required": ["genres_in", "genres_out"]
+          }
+        },
+        {
+          "name": "albums_by_date_and_genres",
+          "description": "Retrieves albums released on a specific date, in a specific month, or in a specific year that match any of the specified genres.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date of the albums. Can be in YYYY, YYYY-MM, or YYYY-MM-DD format."
+              },
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of genre strings to filter albums by."
+              }
+            },
+            "required": ["release_date", "genres"]
+          }
+        },
+        {
+          "name": "high_rated_albums",
+          "description": "Retrieves albums with an average rating above a specified threshold and a minimum number of ratings.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "rating_threshold": {
+                "type": "number",
+                "description": "The minimum average rating for the albums. Defaults to 4.0 if not specified."
+              },
+              "min_ratings": {
+                "type": "number",
+                "description": "The minimum number of ratings an album must have. Defaults to 100 if not specified."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "top_streamed_songs_by_artist",
+          "description": "Retrieves the top streamed songs by specific artist, sorted by number of streams.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist."
+              },
+              "n": {
+                "type": "number",
+                "description": "The number of top-streamed songs to return. Defaults to 5 if not specified."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        },
+        {
+          "name": "songs_by_danceability_explicitness",
+          "description": "Retrieves songs that meet a specified danceability threshold and explicitness criteria.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "danceability_threshold": {
+                "type": "number",
+                "description": "The minimum danceability rating (percentage) to filter songs by."
+              },
+              "explicit": {
+                "type": "boolean",
+                "description": "Flag to filter songs by explicit content. Defaults to True if not specified."
+              }
+            },
+            "required": ["danceability_threshold"]
+          }
+        },
+        {
+          "name": "albums_by_year_genres_and_descriptors",
+          "description": "Retrieves albums released on a specific date, month, or year, that fit within specified genres and match given descriptors.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "Release date to filter albums by, in YYYY, YYYY-MM, or YYYY-MM-DD format."
+              },
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of genres to filter albums by."
+              },
+              "descriptors": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of descriptors to match albums with."
+              }
+            },
+            "required": ["release_date", "genres", "descriptors"]
+          }
+        },
+        {
+          "name": "high_rated_reviewed_albums",
+          "description": "Retrieves albums that meet specific criteria of high average ratings, a minimum number of ratings, and a minimum number of reviews.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "rating_threshold": {
+                "type": "number",
+                "description": "The minimum average rating for the albums."
+              },
+              "min_ratings": {
+                "type": "number",
+                "description": "The minimum number of ratings an album must have."
+              },
+              "review_threshold": {
+                "type": "number",
+                "description": "The minimum number of reviews an album must have."
+              }
+            },
+            "required": ["rating_threshold", "min_ratings", "review_threshold"]
+          }
+        },
+        {
+          "name": "songs_by_danceability_explicitness_speechiness",
+          "description": "Retrieves songs based on specified thresholds for danceability, speechiness, and explicit content criteria.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "danceability_threshold": {
+                "type": "number",
+                "description": "The minimum danceability rating (percentage) to filter songs by."
+              },
+              "speechiness_threshold": {
+                "type": "number",
+                "description": "The minimum speechiness rating (percentage) to filter songs by."
+              },
+              "explicit": {
+                "type": "boolean",
+                "description": "Flag to filter songs by explicit content. Defaults to True if not specified."
+              }
+            },
+            "required": ["danceability_threshold", "speechiness_threshold"]
+          }
+        },
+        {
+          "name": "top_streamed_songs_by_artist_date",
+          "description": "Retrieves the top streamed songs by a specific artist, released on a given date, month, or year.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist whose songs are to be retrieved."
+              },
+              "release_date": {
+                "type": "string",
+                "description": "The release date of the songs to filter by, in YYYY, YYYY-MM, or YYYY-MM-DD format."
+              },
+              "n": {
+                "type": "number",
+                "description": "The number of top-streamed songs to return. Defaults to 5 if not specified."
+              }
+            },
+            "required": ["artist_name", "release_date"]
+          }
+        },
+        {
+          "name": "unique_albums",
+          "description": "Finds albums that are distinctive in terms of genre diversity and artist collaboration but have lower average ratings.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genres_threshold": {
+                "type": "number",
+                "description": "The minimum number of genres an album must cover."
+              },
+              "artist_count_threshold": {
+                "type": "number",
+                "description": "The minimum number of artists required to be involved in an album."
+              },
+              "max_rating_threshold": {
+                "type": "number",
+                "description": "The maximum average rating that an album can have."
+              }
+            },
+            "required": [
+              "genres_threshold",
+              "artist_count_threshold",
+              "max_rating_threshold"
+            ]
+          }
+        },
+        {
+          "name": "albums_by_dates_genres_rating",
+          "description": "Retrieves albums released within a specific date range, filtered by genres to include and exclude, and having an average rating above a specified minimum threshold.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "start_date": {
+                "type": "string",
+                "description": "The start date of the date range for filtering albums, in YYYY-MM-DD format."
+              },
+              "end_date": {
+                "type": "string",
+                "description": "The end date of the date range for filtering albums, in YYYY-MM-DD format."
+              },
+              "genre_in": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of genres that the albums must include."
+              },
+              "genre_out": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of genres that the albums must not include."
+              },
+              "min_rating": {
+                "type": "number",
+                "description": "The minimum average rating threshold for the albums."
+              }
+            },
+            "required": [
+              "start_date",
+              "end_date",
+              "genre_in",
+              "genre_out",
+              "min_rating"
+            ]
+          }
+        },
+        {
+          "name": "high_rated_reviewed_albums_by_date",
+          "description": "Retrieves albums that exceed a certain rating threshold, have a minimum number of ratings and reviews, and are released on a specified date.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "rating_threshold": {
+                "type": "number",
+                "description": "The minimum average rating for the albums."
+              },
+              "min_ratings": {
+                "type": "number",
+                "description": "The minimum number of ratings an album must have."
+              },
+              "review_threshold": {
+                "type": "number",
+                "description": "The minimum number of reviews an album must have."
+              },
+              "release_date": {
+                "type": "string",
+                "description": "The release date of the albums, in YYYY, YYYY-MM, or YYYY-MM-DD format."
+              }
+            },
+            "required": [
+              "rating_threshold",
+              "min_ratings",
+              "review_threshold",
+              "release_date"
+            ]
+          }
+        },
+        {
+          "name": "top_streamed_songs_by_artist_date_range",
+          "description": "Finds the top streamed songs by a specific artist within a given date range, and returns a specified number of these top songs.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist whose songs are to be retrieved."
+              },
+              "start_date": {
+                "type": "string",
+                "description": "The start date of the date range for filtering songs, in YYYY-MM-DD format."
+              },
+              "end_date": {
+                "type": "string",
+                "description": "The end date of the date range for filtering songs, in YYYY-MM-DD format."
+              },
+              "n": {
+                "type": "number",
+                "description": "The number of top-streamed songs to return. Defaults to 5 if not specified."
+              }
+            },
+            "required": ["artist_name", "start_date", "end_date", "n"]
+          }
+        },
+        {
+          "name": "speechiness_songs",
+          "description": "Finds songs based on specific criteria of speechiness, energy, explicit content, and BPM, allowing a tolerance range for speechiness and energy values.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "speechiness": {
+                "type": "number",
+                "description": "Target threshold for speechiness with an acceptable deviation defined by the threshold."
+              },
+              "energy": {
+                "type": "number",
+                "description": "Target threshold for energy with an acceptable deviation defined by the threshold."
+              },
+              "explicit": {
+                "type": "boolean",
+                "description": "Flag indicating whether to filter for explicit content."
+              },
+              "bpm": {
+                "type": "number",
+                "description": "Target Beats Per Minute (BPM) to filter songs by."
+              },
+              "threshold": {
+                "type": "number",
+                "description": "Range value to determine the acceptable deviation from the speechiness and energy thresholds. Defaults to 20 if not specified."
+              }
+            },
+            "required": [
+              "speechiness",
+              "energy",
+              "explicit",
+              "bpm",
+              "threshold"
+            ]
+          }
+        },
+        {
+          "name": "instrumental_songs",
+          "description": "Identifies songs based on specified levels of instrumentalness, valence, danceability, and BPM, with a tolerance range for each parameter.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "instrumentalness": {
+                "type": "number",
+                "description": "Target threshold for instrumentalness, with a specified deviation range."
+              },
+              "valence": {
+                "type": "number",
+                "description": "Target threshold for valence, with a specified deviation range."
+              },
+              "danceability": {
+                "type": "number",
+                "description": "Target threshold for danceability, with a specified deviation range."
+              },
+              "bpm": {
+                "type": "number",
+                "description": "Target Beats Per Minute (BPM) to filter songs by."
+              },
+              "threshold": {
+                "type": "number",
+                "description": "Range value to determine the acceptable deviation from the instrumentalness, valence, and danceability thresholds."
+              }
+            },
+            "required": [
+              "instrumentalness",
+              "valence",
+              "danceability",
+              "bpm",
+              "threshold"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "MUSIC_FUNC_ONE_PARAM_COMPLEX_DESC_NO_EX_V01",
+      "name": "Music - 1 parameter functions with complex function description, no examples.",
+      "domain": "Music",
+      "categories": ["1 Parameter", "Without Examples", "Complex Description"],
+      "num_functions": 10,
+      "functions": [
+        {
+          "name": "albums_by_artist_1",
+          "description": "Fetches the collection of music releases associated with a specific performer.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        },
+        {
+          "name": "top_rated_albums",
+          "description": "Retrieves the records of most favoured music releases ranked by their scores.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of albums to return. Default is 10."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "artist_by_album",
+          "description": "Fetches the singer who released a stated collection.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "album_name": {
+                "type": "string",
+                "description": "The name of the album."
+              }
+            },
+            "required": ["album_name"]
+          }
+        },
+        {
+          "name": "albums_by_genres",
+          "description": "Retrieves a list of records that can be classified to be of the specified category/type.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of genre strings the albums must contain."
+              }
+            },
+            "required": ["genres"]
+          }
+        },
+        {
+          "name": "albums_by_release_date_1",
+          "description": "Retrieves all collections launched during a particular timeframe.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date to filter albums by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+              }
+            },
+            "required": ["release_date"]
+          }
+        },
+        {
+          "name": "top_streamed_songs",
+          "description": "Retrieves the trendy tracks which the vast majority has been influenced by",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of top-streamed songs to return. Default is 10."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "songs_by_release_date",
+          "description": "Retrieves all musical pieces launched during a particular timeframe.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date to filter songs by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+              }
+            },
+            "required": ["release_date"]
+          }
+        },
+        {
+          "name": "songs_by_longest_duration",
+          "description": "Retrieves the n highest-ranking tunes arranged by their length.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "number",
+                "description": "The number of top songs to return, based on duration. Defaults to 10 if not specified."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "artist_by_song",
+          "description": "Fetches the performer who released a stated track.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "song_name": {
+                "type": "string",
+                "description": "The name of the song."
+              }
+            },
+            "required": ["song_name"]
+          }
+        },
+        {
+          "name": "songs_by_artist_1",
+          "description": "Retrieves the music recordings that have been released by the specified singer.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2",
+      "name": "Music - one and multi parameter functions with elaborative function description, no examples.",
+      "domain": "Music",
+      "categories": [
+        "1 Parameter",
+        "Multiple Parameter",
+        "Without Examples",
+        "Complex Description"
+      ],
+      "num_functions": 11,
+      "functions": [
+        {
+          "name": "artist_info",
+          "description": "Retrieves detailed information for a specified artist, including attributes like name, band status, formation/birth date, city, country, genres, and related artists.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The name of the artist. Matches against the 'Name' column in the ARTIST_SQL dataset."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        },
+        {
+          "name": "album_info",
+          "description": "Fetches detailed information about a specific album, covering attributes such as album name, artist name, release date, genres, descriptors, average rating, rating count, and review count.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "album_name": {
+                "type": "string",
+                "description": "The name of the album. Matches against the 'release_name' column in the ALBUMS_SQL dataset."
+              }
+            },
+            "required": ["album_name"]
+          }
+        },
+        {
+          "name": "song_info",
+          "description": "Provides detailed information on a specific song, including track name, artist(s) name, album name, artist count, release date, streams, BPM, key, mode, danceability, valence, energy, acousticness, instrumentalness, liveness, speechiness, and duration in minutes.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "song_name": {
+                "type": "string",
+                "description": "The name of the song. Matches against the 'track_name' column in the SONGS_SQL dataset."
+              }
+            },
+            "required": ["song_name"]
+          }
+        },
+        {
+          "name": "albums_by_artist_2",
+          "description": "Retrieves all albums by a specific artist, searching through the 'artist_name' column in the ALBUMS_SQL dataset. It includes album name, artist name, release date, genres, descriptors, average rating, rating count, and review count.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The artist's name to search albums for. The search is performed within the 'artist_name' column, supporting partial matches."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        },
+        {
+          "name": "artists_by_genres",
+          "description": "Finds artists that match any of the specified genres, utilizing the 'genres' column in the ARTIST_SQL dataset. It covers artist's name, is_band status, formation/birth date, city, country, genres, and related artists.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of genre strings to filter artists by. The filtering checks the 'genres' column for any matches."
+              }
+            },
+            "required": ["genres"]
+          }
+        },
+        {
+          "name": "songs_by_album",
+          "description": "Retrieves all songs from a specific album, including details such as track name, artist(s) name, album name, artist count, release date, streams, and various musical and acoustic properties like BPM, danceability, and duration in minutes.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "album_name": {
+                "type": "string",
+                "description": "The name of the album to find songs for. Matches against the 'album_name' column in the SONGS_SQL dataset."
+              }
+            },
+            "required": ["album_name"]
+          }
+        },
+        {
+          "name": "max_rating_given_albums",
+          "description": "Finds the highest average rating from a list of specified albums. Returns the maximum average rating and the names of albums that share this rating. Relies on 'release_name' for album identification and 'avg_rating' for evaluation.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "albums": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of album names to evaluate. The function searches the 'release_name' column in the ALBUMS_SQL dataset."
+              }
+            },
+            "required": ["albums"]
+          }
+        },
+        {
+          "name": "sum_streams_given_songs",
+          "description": "Calculates the total number of streams for a specified list of songs. Accepts either a list of song names or a single comma-separated string of song names. Utilizes the 'track_name' for song identification and 'streams' for summing.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "songs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "A list of song names, or a single string of comma-separated song names, to calculate total streams for. Matches against the 'track_name' column in the SONGS_SQL dataset."
+              }
+            },
+            "required": ["songs"]
+          }
+        },
+        {
+          "name": "highest_rated_albums",
+          "description": "Retrieves albums that have an average rating above a specified threshold and a minimum number of ratings. Filters based on 'avg_rating' and 'rating_count' columns, providing detailed album information.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "rating_threshold": {
+                "type": "number",
+                "default": 4.0,
+                "description": "The minimum average rating albums must meet to be included. Searches the 'avg_rating' column in the ALBUMS_SQL dataset."
+              },
+              "min_ratings": {
+                "type": "number",
+                "default": 100,
+                "description": "The minimum number of ratings an album must have to be considered. Filters using the 'rating_count' column."
+              }
+            },
+            "required": []
+          }
+        },
+        {
+          "name": "albums_by_release_date_2",
+          "description": "Retrieves all albums released on a specific date, in a specific month, or in a specific year, based on the provided release date, searching through the 'release_date' column in the ALBUMS_SQL dataset. It includes album name, artist name, release date, genres, descriptors, average rating, rating count, and review count.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "release_date": {
+                "type": "string",
+                "description": "The release date to filter albums by. Can be in YYYY (year), YYYY-MM (year-month), or YYYY-MM-DD (specific date) format."
+              }
+            },
+            "required": ["release_date"]
+          }
+        },
+        {
+          "name": "songs_by_artist_2",
+          "description": "Retrieves all songs by a specific artist, searching through the 'artist(s)_name' column in the SONGS_SQL dataset,  including details such as track name, artist(s) name, album name, artist count, release date, streams, and various musical and acoustic properties like BPM, danceability, and duration in minutes.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "description": "The artist's name to search songs for. The search is performed within the 'artist(s)_name' column, supporting partial matches."
+              }
+            },
+            "required": ["artist_name"]
+          }
+        }
+      ]
+    }
+  ]
+}

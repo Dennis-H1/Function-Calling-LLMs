@@ -1,0 +1,2320 @@
+<!DOCTYPE html>
+<!-- saved from url=(0152)file:///C:/Users/saman/AppData/Local/Temp/85a6c9fa-6443-4078-9a9a-181819c91609_Website_Draft_2.zip.609/Website-Team%20Project/website_draft2.html#toc4.1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Benchmarking Function-Calling Enabled LLMs</title>
+    <link rel="stylesheet" href="./Mannheim LLM Function-Calling Benchmark_files/style.css" type="text/css" media="screen">
+    
+    <style>
+      .tar {
+        text-align: right;
+      }
+      .rtable {
+        float: right;
+        padding-left: 10px;
+      }
+      .smalltable,
+      .smalltable TD,
+      .smalltable TH {
+        font-size: 9pt;
+      }
+      .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #eaf3fa;
+        clear: both;
+        padding-left: 25px;
+        width: 650px;
+      }
+      .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 15px 60px;
+        transition: 0.3s;
+      }
+      .tab button:hover {
+        background-color: #ddd;
+      }
+      .tab button.active {
+        background-color: #ccc;
+      }
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+        animation: fadeEffect 1s;
+        width: 500px;
+      }
+      .table-wrapper {
+        position: relative;
+      }
+      .table-scroll {
+        height: 240px;
+        overflow: auto;
+        margin-top: -10px;
+      }
+      .show {
+        display: block;
+      }
+      .no-show {
+        display: none;
+      }
+      caption {
+        caption-side: top;
+        font-style: italic;
+      }
+      td[scope="mergedcol"] {
+        text-align: center;
+      }
+      tr.bordered {
+        border-bottom: 1px solid #000;
+      }
+      hr {
+        width: 50%;
+        margin: 20px 0;
+        /* This leaves 10px margin on left and right. If only right margin is needed try margin-right: 10px; */
+      }
+      .tg {
+        border-collapse: collapse;
+        border-color: #ccc;
+        border-spacing: 0;
+      }
+      .tg td {
+        background-color: #fff;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px;
+        color: #333;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+      }
+      .tg th {
+        background-color: #f0f0f0;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px;
+        color: #333;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+      }
+      .tg tr th {
+        align-items: center;
+      }
+
+      .tg {
+        vertical-align: top;
+      }
+      .tg .tg-lboi {
+        border-color: inherit;
+        text-align: left;
+        vertical-align: middle;
+      }
+      .tg .tg-9wq8 {
+        border-color: inherit;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg .tg-ixdq {
+        border-color: inherit;
+        font-weight: bold;
+        position: -webkit-sticky;
+        position: sticky;
+        text-align: center;
+        top: -1px;
+        vertical-align: middle;
+        will-change: transform;
+      }
+      .tg .tg-mkpc {
+        border-color: inherit;
+        font-weight: bold;
+        position: -webkit-sticky;
+        position: sticky;
+        text-align: left;
+        top: -1px;
+        vertical-align: middle;
+        will-change: transform;
+      }
+      .tg .tg-d459 {
+        background-color: #f9f9f9;
+        border-color: inherit;
+        text-align: left;
+        vertical-align: middle;
+      }
+      .tg .tg-kyy7 {
+        background-color: #f9f9f9;
+        border-color: inherit;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg .tg-h2b0 {
+        background-color: #fff;
+        border-color: inherit;
+        color: #333;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg-sort-header::-moz-selection {
+        background: 0 0;
+      }
+      .tg-sort-header::selection {
+        background: 0 0;
+      }
+      .tg-sort-header {
+        cursor: pointer;
+      }
+      .tg-sort-header:after {
+        content: "";
+        float: right;
+        margin-top: 7px;
+        border-width: 0 5px 5px;
+        border-style: solid;
+        border-color: #404040 transparent;
+        visibility: hidden;
+      }
+      .tg-sort-header:hover:after {
+        visibility: visible;
+      }
+      .tg-sort-asc:after,
+      .tg-sort-asc:hover:after,
+      .tg-sort-desc:after {
+        visibility: visible;
+        opacity: 0.4;
+      }
+      .tg-sort-desc:after {
+        border-bottom: none;
+        border-width: 5px 5px 0;
+      }
+      @media screen and (max-width: 767px) {
+        .tg {
+          width: auto !important;
+        }
+        .tg col {
+          width: auto !important;
+        }
+        .tg-wrap {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+      .tg {
+        border-collapse: collapse;
+        border-color: #ccc;
+        border-spacing: 0;
+      }
+      h3 {
+        padding-bottom: 1rem;
+      }
+      .tg td {
+        background-color: #fff;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px;
+        color: #333;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+      }
+      .tg th {
+        background-color: #f0f0f0;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px;
+        color: #333;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+      }
+      .tg .tg-lboi {
+        border-color: inherit;
+        text-align: left;
+        vertical-align: middle;
+      }
+      .tg .tg-9wq8 {
+        border-color: inherit;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg .tg-baqh {
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-zyik {
+        border-color: inherit;
+        font-weight: bold;
+        position: -webkit-sticky;
+        position: sticky;
+        text-align: center;
+        top: -1px;
+        vertical-align: top;
+        will-change: transform;
+      }
+      .tg .tg-ixdq {
+        border-color: inherit;
+        font-weight: bold;
+        position: -webkit-sticky;
+        position: sticky;
+        text-align: center;
+        top: -1px;
+        vertical-align: middle;
+        will-change: transform;
+      }
+      .tg .tg-yy5h {
+        background-color: #f0f0f0;
+        border-color: inherit;
+        font-weight: bold;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg .tg-o939 {
+        background-color: #f0f0f0;
+        border-color: inherit;
+        font-weight: bold;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg .tg-ufyq {
+        background-color: #f0f0f0;
+        font-weight: bold;
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-asv9 {
+        background-color: #f0f0f0;
+        border-color: inherit;
+        font-weight: bold;
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-d459 {
+        background-color: #f9f9f9;
+        border-color: inherit;
+        text-align: left;
+        vertical-align: middle;
+      }
+      .tg .tg-dzk6 {
+        background-color: #f9f9f9;
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-kyy7 {
+        background-color: #f9f9f9;
+        border-color: inherit;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg-sort-header::-moz-selection {
+        background: 0 0;
+      }
+      .tg-sort-header::selection {
+        background: 0 0;
+      }
+      .tg-sort-header {
+        cursor: pointer;
+      }
+      .tg-sort-header:after {
+        content: "";
+        float: right;
+        margin-top: 7px;
+        border-width: 0 5px 5px;
+        border-style: solid;
+        border-color: #404040 transparent;
+        visibility: hidden;
+      }
+      .tg-sort-header:hover:after {
+        visibility: visible;
+      }
+      .tg-sort-asc:after,
+      .tg-sort-asc:hover:after,
+      .tg-sort-desc:after {
+        visibility: visible;
+        opacity: 0.4;
+      }
+      .tg-sort-desc:after {
+        border-bottom: none;
+        border-width: 5px 5px 0;
+      }
+      @media screen and (max-width: 767px) {
+        .tg {
+          width: auto !important;
+        }
+        .tg col {
+          width: auto !important;
+        }
+        .tg-wrap {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+      h2 {
+        padding-bottom: 1rem;
+      }
+      .tg {
+        border-collapse: collapse;
+        border-color: #ccc;
+        border-spacing: 0;
+        display: inline-block;
+        margin-right: 50px;
+      }
+      .tg td {
+        background-color: #fff;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px;
+        color: #333;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+      }
+      .tg th {
+        background-color: #f0f0f0;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px;
+        color: #333;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        overflow: hidden;
+        padding: 10px 5px;
+        word-break: normal;
+      }
+      .tg .tg-lboi {
+        border-color: inherit;
+        text-align: left;
+        vertical-align: middle;
+      }
+      .tg .tg-pl4i {
+        background-color: #f0f0f0;
+        font-weight: bold;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg .tg-j1i3 {
+        border-color: inherit;
+        position: -webkit-sticky;
+        position: sticky;
+        text-align: left;
+        top: -1px;
+        vertical-align: top;
+        will-change: transform;
+      }
+      .tg .tg-9wq8 {
+        border-color: inherit;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg .tg-ixdq {
+        border-color: inherit;
+        font-weight: bold;
+        position: -webkit-sticky;
+        position: sticky;
+        text-align: center;
+        top: -1px;
+        vertical-align: middle;
+        will-change: transform;
+      }
+      .tg .tg-yy5h {
+        background-color: #f0f0f0;
+        border-color: inherit;
+        font-weight: bold;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg .tg-o939 {
+        background-color: #f0f0f0;
+        border-color: inherit;
+        font-weight: bold;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg .tg-45e1 {
+        background-color: #f0f0f0;
+        border-color: inherit;
+        font-weight: bold;
+        text-align: left;
+        vertical-align: middle;
+      }
+      .tg .tg-nrix {
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg .tg-d459 {
+        background-color: #f9f9f9;
+        border-color: inherit;
+        text-align: left;
+        vertical-align: middle;
+      }
+      .tg .tg-kyy7 {
+        background-color: #f9f9f9;
+        border-color: inherit;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg .tg-57iy {
+        background-color: #f9f9f9;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg .tg-zkss {
+        background-color: #fff;
+        border-color: inherit;
+        color: #333;
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-p91v {
+        background-color: #ff0;
+        border-color: inherit;
+        color: #333;
+        font-weight: bold;
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-c3ow {
+        border-color: inherit;
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-syo5 {
+        background-color: #f0f0f0;
+        border-color: inherit;
+        color: #333;
+        font-weight: bold;
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-h2b0 {
+        background-color: #fff;
+        border-color: inherit;
+        color: #333;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .tg-sort-header::-moz-selection {
+        background: 0 0;
+      }
+      .tg-sort-header::selection {
+        background: 0 0;
+      }
+      .tg-sort-header {
+        cursor: pointer;
+      }
+      .tg-sort-header:after {
+        content: "";
+        float: right;
+        margin-top: 7px;
+        border-width: 0 5px 5px;
+        border-style: solid;
+        border-color: #404040 transparent;
+        visibility: hidden;
+      }
+      .tg-sort-header:hover:after {
+        visibility: visible;
+      }
+      .tg-sort-asc:after,
+      .tg-sort-asc:hover:after,
+      .tg-sort-desc:after {
+        visibility: visible;
+        opacity: 0.4;
+      }
+      .tg-sort-desc:after {
+        border-bottom: none;
+        border-width: 5px 5px 0;
+      }
+      @media screen and (max-width: 767px) {
+        .tg {
+          width: auto !important;
+        }
+        .tg col {
+          width: auto !important;
+        }
+        .tg-wrap {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+      @keyframes fadeEffect {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .left,
+      .right {
+        display: inline-block;
+      }
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 30%;
+      }
+      figure figcaption {
+        text-align: center;
+      }
+    </style>
+    <script type="text/javascript" async="" src="./Mannheim LLM Function-Calling Benchmark_files/ga.js.download"></script><script type="text/javascript" src="./Mannheim LLM Function-Calling Benchmark_files/jquery.min.js.download"></script>
+    <script type="text/javascript" src="file:///C:/Users/saman/AppData/Local/Temp/jquery.toc.min.js"></script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(["_setAccount", "UA-30248817-1"]);
+      _gaq.push(["_trackPageview"]);
+
+      (function () {
+        var ga = document.createElement("script");
+        ga.type = "text/javascript";
+        ga.async = true;
+        ga.src =
+          ("https:" == document.location.protocol
+            ? "https://ssl"
+            : "http://www") + ".google-analytics.com/ga.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script charset="utf-8">
+      var TGSort =
+        window.TGSort ||
+        (function (n) {
+          "use strict";
+          function r(n) {
+            return n ? n.length : 0;
+          }
+          function t(n, t, e, o = 0) {
+            for (e = r(n); o < e; ++o) t(n[o], o);
+          }
+          function e(n) {
+            return n.split("").reverse().join("");
+          }
+          function o(n) {
+            var e = n[0];
+            return (
+              t(n, function (n) {
+                for (; !n.startsWith(e); ) e = e.substring(0, r(e) - 1);
+              }),
+              r(e)
+            );
+          }
+          function u(n, r, e = []) {
+            return (
+              t(n, function (n) {
+                r(n) && e.push(n);
+              }),
+              e
+            );
+          }
+          var a = parseFloat;
+          function i(n, r) {
+            return function (t) {
+              var e = "";
+              return (
+                t.replace(n, function (n, t, o) {
+                  return (e = t.replace(r, "") + "." + (o || "").substring(1));
+                }),
+                a(e)
+              );
+            };
+          }
+          var s = i(/^(?:\s*)([+-]?(?:\d+)(?:,\d{3})*)(\.\d*)?$/g, /,/g),
+            c = i(/^(?:\s*)([+-]?(?:\d+)(?:\.\d{3})*)(,\d*)?$/g, /\./g);
+          function f(n) {
+            var t = a(n);
+            return !isNaN(t) && r("" + t) + 1 >= r(n) ? t : NaN;
+          }
+          function d(n) {
+            var e = [],
+              o = n;
+            return (
+              t([f, s, c], function (u) {
+                var a = [],
+                  i = [];
+                t(n, function (n, r) {
+                  (r = u(n)), a.push(r), r || i.push(n);
+                }),
+                  r(i) < r(o) && ((o = i), (e = a));
+              }),
+              r(
+                u(o, function (n) {
+                  return n == o[0];
+                })
+              ) == r(o)
+                ? e
+                : []
+            );
+          }
+          function v(n) {
+            if ("TABLE" == n.nodeName) {
+              for (
+                var a = (function (r) {
+                    var e,
+                      o,
+                      u = [],
+                      a = [];
+                    return (
+                      (function n(r, e) {
+                        e(r),
+                          t(r.childNodes, function (r) {
+                            n(r, e);
+                          });
+                      })(n, function (n) {
+                        "TR" == (o = n.nodeName)
+                          ? ((e = []), u.push(e), a.push(n))
+                          : ("TD" != o && "TH" != o) || e.push(n);
+                      }),
+                      [u, a]
+                    );
+                  })(),
+                  i = a[0],
+                  s = a[1],
+                  c = r(i),
+                  f = c > 1 && r(i[0]) < r(i[1]) ? 1 : 0,
+                  v = f + 1,
+                  p = i[f],
+                  h = r(p),
+                  l = [],
+                  g = [],
+                  N = [],
+                  m = v;
+                m < c;
+                ++m
+              ) {
+                for (var T = 0; T < h; ++T) {
+                  r(g) < h && g.push([]);
+                  var C = i[m][T],
+                    L = C.textContent || C.innerText || "";
+                  g[T].push(L.trim());
+                }
+                N.push(m - v);
+              }
+              t(p, function (n, t) {
+                l[t] = 0;
+                var a = n.classList;
+                a.add("tg-sort-header"),
+                  n.addEventListener("click", function () {
+                    var n = l[t];
+                    !(function () {
+                      for (var n = 0; n < h; ++n) {
+                        var r = p[n].classList;
+                        r.remove("tg-sort-asc"),
+                          r.remove("tg-sort-desc"),
+                          (l[n] = 0);
+                      }
+                    })(),
+                      (n = 1 == n ? -1 : +!n) &&
+                        a.add(n > 0 ? "tg-sort-asc" : "tg-sort-desc"),
+                      (l[t] = n);
+                    var i,
+                      f = g[t],
+                      m = function (r, t) {
+                        return n * f[r].localeCompare(f[t]) || n * (r - t);
+                      },
+                      T = (function (n) {
+                        var t = d(n);
+                        if (!r(t)) {
+                          var u = o(n),
+                            a = o(n.map(e));
+                          t = d(
+                            n.map(function (n) {
+                              return n.substring(u, r(n) - a);
+                            })
+                          );
+                        }
+                        return t;
+                      })(f);
+                    (r(T) ||
+                      r((T = r(u((i = f.map(Date.parse)), isNaN)) ? [] : i))) &&
+                      (m = function (r, t) {
+                        var e = T[r],
+                          o = T[t],
+                          u = isNaN(e),
+                          a = isNaN(o);
+                        return u && a
+                          ? 0
+                          : u
+                          ? -n
+                          : a
+                          ? n
+                          : e > o
+                          ? n
+                          : e < o
+                          ? -n
+                          : n * (r - t);
+                      });
+                    var C,
+                      L = N.slice();
+                    L.sort(m);
+                    for (var E = v; E < c; ++E)
+                      (C = s[E].parentNode).removeChild(s[E]);
+                    for (E = v; E < c; ++E) C.appendChild(s[v + L[E - v]]);
+                  });
+              });
+            }
+          }
+          n.addEventListener("DOMContentLoaded", function () {
+            for (var t = n.getElementsByClassName("tg"), e = 0; e < r(t); ++e)
+              try {
+                v(t[e]);
+              } catch (n) {}
+          });
+        })(document);
+    </script>
+    <!-- MathJax: cdn to display latex equations -->
+    <script type="text/javascript" async="" src="./Mannheim LLM Function-Calling Benchmark_files/MathJax.js.download"></script>
+  <style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style>
+</head>
+  <body>
+    <div id="logo" style="text-align: right; background-color: white">
+      &nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"
+        ><img src="images/ma-logo.gif" alt="University of Mannheim - Logo"
+      /></a>
+    </div>    
+    <div id="header">
+      <h1 style="font-size: 250%">Mannheim LLM Function-Calling Benchmark (MLFC)</h1>
+    </div>
+    <div id="authors">
+      <a>Deidamea Bajri</a><br>
+      <a>Dennis Heinz</a><br>
+      <a>Saman Khursheed</a><br>
+      <a>Serxhina Kutrolli</a><br>
+      <a>Stiliana Jano</a><br>
+      <a>Zeynep Eroglu</a><br>
+      <a>Keti Korini (Supervisor)</a><br>
+      <a>Christian Bizer (Supervisor)</a><br>
+    </div>
+
+    <div id="content">
+      <p>
+       Large Language Models (LLMs) have revolutionized natural language processing (NLP) tasks like text generation, translation, 
+       and question-answering. However, limitations remain in many areas such as reasoning, factual accuracy, and integration with 
+       external data sources. Function calling, the ability for LLMs to interact with external APIs, presents a promising solution 
+       for accessing real-time information and third-party services. However, evaluating the effectiveness of LLM function calls remains an open question.
+      </p>
+      <p>
+        This project introduces a novel benchmark designed to comprehensively assess the function-calling capabilities of LLMs across 
+        various use cases. This benchmark serves as a comprehensive tool for evaluating function-calling capabilities in three core areas: 
+        function selection (LLMs' ability to identify appropriate functions based on user intent), parameter passing (constructing necessary parameters), 
+        and results provided (understanding query and returning desired answer). 
+      </p>
+      <p>
+        Motivated by the need to assess LLM function calling on real-world tasks, we introduce a benchmark with 310 user questions focused on 
+        two use cases: New York City exploration (Airbnb listings, restaurants) and Music exploration (albums, songs, artists). This benchmark 
+        is designed to evaluate the performance of LLMs across various functionalities: reasoning, information aggregation, data type handling 
+        (numerical, dates, locations, text), and user interaction (typos, extra-context, criteria, entities, instructions). Evaluating this benchmark 
+        with GPT-4 revealed strengths in dealing with different languages, reasoning tasks but challenges with diverse data formats, particularly dates.
+      </p>
+         
+      <h2>Contents</h2>
+      <ul>
+        <li class="toc-h2 toc-active">
+          <a href="#toc1"> 1. Introduction</a>
+        </li>
+        <li class="toc-h2 toc-active">
+          <a href="#toc2"> 2. Datasets and Functions</a>
+        </li>
+        <li class="toc-h2 toc-active">
+          <a href="#toc3"> 3. Question Set and Ground Truth</a>
+              
+        </li><li class="toc-h2 toc-active">
+          <a href="#toc4"> 4. Benchmark Evaluation </a>
+          <ul>
+            <li>
+              <a href="#toc4.1">4.1 Evaluation of LLM Response</a>
+              
+            </li>
+          <li>
+              <a href="#toc4.2">4.2 Experimental Results</a>
+              
+            </li><li>
+              <a href="#toc4.3">4.3 Error Analysis</a>
+              <ul>
+                <li>
+                  <a href="#toc4.3.1">4.3.1 Error Categories for Incorrect Function Calls</a>
+                </li>
+              <li>
+                  <a href="#toc4.3.2">4.3.2 Error Categories for Incorrect Parameter Calls </a>
+                </li><li>
+                  <a href="#toc4.3.3">4.3.3 Error Categories for Incorrect Answers </a>
+                </li></ul>
+            </li></ul>
+        </li>
+        <li class="toc-h2 toc-active">
+          <a href="#toc5"> 5. Download Links </a>
+          
+        </li>
+        <li class="toc-h2 toc-active">
+          <a href="#toc6"> 6. Existing benchmarks</a>
+          
+        </li>
+        <li class="toc-h2 toc-active">
+          <a href="#toc7"> 7. References</a>
+          <ul>
+          </ul>
+        </li>
+      </ul>
+      <span id="toc1"></span>
+      <h2>1. Introduction</h2>
+      <p>
+       Large language models (LLMs) represent a significant advancement beyond early language models by not only proficiently modeling and 
+       generating text but also by addressing broader and more intricate general-purpose tasks[18]. These models exhibit emergent capabilities 
+       that surpass those of smaller, pre-trained language models. They have demonstrated efficacy in tackling multifaceted challenges across 
+       various domains, showcasing a depth of understanding and adaptability previously unseen in their predecessors. LLMs achieve this significant 
+       leap through substantial increases in the amount of computational power employed, the number of model parameters utilized, and the size of the 
+       training dataset employed[19,20]. Large language models exhibit emergent abilities in various domains, including prompt-based task completion, 
+       instruction following without prior exemplars, and program execution, as demonstrated by recent advancements in few-shot prompting, chain-of-thought 
+       prompting, and scratchpad-based execution techniques in multi-step computational tasks. Additionally, ongoing research explores model calibration 
+       methodologies to assess the confidence and accuracy of language model predictions[21].
+      </p>
+      <p>
+        Despite their remarkable capabilities, Large Language Models (LLMs) are susceptible to various limitations and challenges. These include 
+        biases and inaccuracies in generated outputs, difficulties in comprehending complex logic and reasoning tasks, constraints in handling extensive 
+        datasets and long-term memory, and limitations in incorporating real-time or dynamic information [22]. Additionally, LLMs may exhibit sensitivity 
+        to prompts, struggles with text summarization tasks, and limitations in mastering domain-specific knowledge or generating structured data. They also 
+        face challenges in generating truthful information, maintaining alignment with sources, and updating parametric knowledge in a timely manner[18]. 
+        Furthermore, LLMs may exhibit inconsistencies between derived answers and reasoning processes, encounter difficulties in numerical computation, and 
+        demonstrate a tendency to hallucinate facts. Addressing these challenges necessitates multifaceted approaches, including augmenting LLMs with external 
+        knowledge sources, fine-tuning LLMs with process-level feedback, using an ensemble of diverse reasoning paths, refining reasoning processes with self-reflection 
+        or external feedback, utilizing mathematical tools for numerical computation, tokenizing digits for improved arithmetic abilities, alignment tuning to maintain 
+        coherence with sources, and effective tool utilization for mitigating issues such as hallucinations in generated texts[23,24]. 
+      </p>
+      <p> 
+        Function calling addresses these challenges by ensuring a consistent response format and enabling
+        the utilization of external data which accesses dynamic information from diverse sources within interactive
+        user agent chat contexts, thereby augmenting the adaptability and utility of LLMs in practical applications[25,26].
+      </p>
+      <figure>
+        <img src="images/figure1.png" alt="Introduction to Function Calling" class="center" style="width: 60%;">
+        <figcaption class="center">
+            <b><a id="Fig1"></a>Figure 1:</b> Illustration of the LLMs retrieving the user-created functions within the user prompts.
+        </figcaption>
+      </figure>
+      <p>
+ 
+        As illustrated in Figure 1, with the incorporation of the function calling feature, which enables the model to access user-created functions 
+        adhering to specified structure and parameters, the large language model (LLM) selectively invokes the pertinent function within the user-generated 
+        prompt, utilizing designated arguments, and subsequently delivers a response based on the output generated by this invoked function(s). This mechanism 
+        facilitates enhanced versatility and adaptability of LLMs in responding to diverse user queries and prompts, leveraging the customized functionalities 
+        provided by users to enrich the model's capabilities[16].  
+      
+      </p>
+      <p>
+        Function calls in LLMs can be categorized based on the number of functions involved and their execution order.
+        Single calls represent the simplest form, where the LLM executes a single, self-contained function within the prompt 
+        (e.g., "Provide the address of a specific Airbnb listing"). Multiple calls introduce more complexity, allowing for 
+        <i> sequential </i>  or <i>  parallel </i>   execution.  Sequential calls involve executing functions one after another,
+        with the output of one feeding into the next (e.g., "Find the address of a specific Airbnb and then provide some restaurants
+        nearby").  Parallel calls, where multiple functions execute concurrently, is a promising yet challenging area of research
+        due to complexities in context management [16]. 
+      </p>
+      <p>
+        Nevertheless, ongoing discussions among researchers revolve around the performance of these models and their
+        effectiveness in implementing these functionalities, particularly function-calling, that facilitate connectivity
+        with external API sources. When implementing function calling, discussions also center on identifying the main
+        constraints of these models and investigating possible ways to overcome them. These efforts aim to enhance the
+        performance of the LLMs when used in various real-world tasks.
+      </p>
+      <p>
+        To address these inquiries, we introduce an innovative benchmark specifically designed to evaluate the function-calling
+        capabilities of LLMs when interfacing with external APIs. This benchmark is crafted to assess the LLMs' ability to
+        implement function calls for two distinct use cases. Beyond core function calling, our benchmark aims to capture 
+        the primary challenges encountered by the models by exposing them to a variety of user questions. These questions,
+        grouped into distinct categories within the benchmark, will facilitate testing across different domains 
+        (New York City travel and music APIs) and enable us to assess in detail potential limitations when invoking
+        various functions.
+      </p> 
+      <p>
+        Ultimately, the limitations identified through running this benchmark can serve as valuable guidance
+        for future research endeavors, enabling researchers to address and overcome these challenges in enhancing
+        the capabilities of LLMs when interfacing with function-calling using external APIs and handling diverse user queries.
+      </p>
+        
+          
+        
+        
+        
+
+      <span id="toc2"></span>
+      <h2>2. Datasets and Functions</h2>
+      <p> 
+        In this section, we outline the datasets utilized in the creation of our benchmark for function calls using LLMs. A total of six repository 
+        datasets were selected to ensure comprehensive coverage and representativeness across both use cases i.e. Music and Travel. For the Music use case, 
+        three datasets were meticulously chosen containing information about music albums, songs, and artists. For the Travel use case, three datasets were 
+        thoughtfully selected that include information about Airbnb listings, restaurants and cafes in New York City, and food ordering. During the first two 
+        phases (i.e. for single parameter and multiple parameter function calls), we only employed two datasets. However, in the final phase, we introduced a 
+        third dataset to ensure the connectedness between datasets and to enrich the diversity of attributes available for querying in multiple function calling 
+        cases. Further, for the music use case, a sample of the previous two datasets was used in this phase ensuring the fact that it covers common entities and 
+        have overlapping attributes between all three datasets. Table 1 provides details about each dataset used for the respective use cases: 
+      </p>
+      <table>
+        <caption><b>Table 1:</b> Details of Datasets</caption>
+        <tfoot>
+          <tr>
+            <td colspan="6">
+              <sup>*</sup>: Value in bracket indicates sampled no. of entities used in multiple function calling phase
+            </td>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr>
+            <th>Use Case</th>
+            <th><b>Dataset Name</b></th>
+            <th><b>No. of Entities</b></th>
+            <th><b>No. of Attributes</b></th>
+            <th><b>Relevant Attributes for API Creation</b></th>
+            <th><b>Source</b></th>
+          </tr>
+          <tr>
+            <td rowspan="3"> <i>Music</i> </td>
+            <td> Albums </td>
+            <td> 5119 (187)* </td>
+            <td> 8 </td>
+            <td> release name, artist name, release date, genres, descriptors, average rating, rating count, review count </td>
+            <td> <p><strong>Most Popular Albums:</strong></p><a href="https://www.kaggle.com/datasets/tobennao/rym-top-5000 ">https://www.kaggle.com/datasets/tobennao/rym-top-5000/</a>
+              <p><strong>Niche Albums (scraped data):</strong></p> <a href="https://rateyourmusic.com/ ">https://rateyourmusic.com/ </a>
+            </td>
+          </tr>
+          <tr>
+            <td> Songs </td>
+            <td> 1413 (123)*</td>
+            <td> 19</td>
+            <td> track name, artist, album, release date, streams, bpm,  danceability, energy, speechiness,  instrumentalness, explicit, popularity, duration </td>
+            <td> <p><strong>Most Streamed Spotify Songs 2023:</strong></p> <a href="https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023">https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023</a></td>
+          </tr> 
+          <tr>
+            <td> Artists</td>
+            <td> 47 </td>
+            <td> 7 </td>
+            <td> name, formed/born, city, country, genre </td>
+            <td><p><strong>Artists (scraped data)</strong></p><a href="https://rateyourmusic.com/">https://rateyourmusic.com/</a>
+          </tr>                                   
+          <tr>
+            <td rowspan="5"> <i>Travel</i> </td>
+            <td> Airbnbs </td>
+            <td> 1000 </td>
+            <td> 16 </td>
+            <td> hostname, neighbourhood group, precise geo-coordinates (latitude and longitude), room type, prices, reviews, the last date of review, and an average of the reviews per month </td>
+            <td><p><strong>New York City Airbnb Open Data:</strong></p><a href="https://www.kaggle.com/datasets/dgomonov/new-york-city-airbnb-open-data">https://www.kaggle.com/datasets/dgomonov/new-york-city-airbnb-open-data</a></td>
+          </tr>
+          <tr>
+            <td> Restaurants </td>
+            <td> 1000 </td>
+            <td> 9 </td>
+            <td> restaurant name, cuisine, borough of location, street address, zip code, building, phone number, and precise geo-coordinates (latitude and longitude) </td>
+            <td><p><strong>New York City Restaurant Inspection Results:</strong></p><a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/about_data">https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/about_data</a></td>
+          </tr> 
+          <tr>
+            <td> Food Orders </td>
+            <td> 1898 </td>
+            <td> 7 </td>
+            <td> restaurant name, cuisine type, order cost, customer ratings, food preparation time, and delivery time </td>
+            <td><p><strong>NYC Restaurants Data - Food Ordering and Delivery:</strong></p><a href="https://www.kaggle.com/datasets/ahsan81/food-ordering-and-delivery-app-dataset">https://www.kaggle.com/datasets/ahsan81/food-ordering-and-delivery-app-dataset</a></td>
+          </tr>         
+        </tbody>
+      </table>
+
+      <p>
+        For the datasets that we specified in the table above, we have created an API that includes several functions to enhance the LLM’s ability 
+        to answer the user questions provided as prompts. For the three different phases, functions with simple descriptions are created. Additionally, 
+        for phase 1, single parameter calls, functions with complex descriptions are also created to check whether the LLMs would find it challenging 
+        to answer the questions. With complex descriptions, we are referring to descriptions that are worded differently to add complexity or added information 
+        that may confuse LLMs in calling the correct function. The file that includes all the function sets with descriptions in a detailed manner can be 
+        found <a href="https://github.com/Dennis-H1/Function-Calling-LLMs/blob/master/src/config/function_sets.json ">here</a>.
+      </p>
+      <p>
+        For each phase tested, we have created a certain number of functions. For the Travel Use Case, we have created 14 functions for the single 
+        parameter functions, both with simple and complex descriptions, 10 functions for the multi-parameter functions with a range of 1 to 4 parameters, 
+        11 functions for the sequential multi-calls with a range of 1 to 4 parameters and finally 7 for the parallel multi-calls with a range of 1 to 2 parameters. 
+        For the Music Use Case, we have created 10 functions with single parameters, both with simple and complex descriptions, 16 functions with multiple parameters 
+        ranging from 2 to 5, and 11 functions with a range of 1 to 2 parameters for the sequential and parallel multi-calls. For both use cases, the data types we have 
+        used are strings, integers, float, and boolean. We have decided to not include date format as a specific data type of the parameters, to not confuse the LLMs with 
+        the different date formats, but rather specify the required formats in the function descriptions. A few examples of functions created for both use cases are shown in Table 2.
+        </p>
+        
+
+        <table>
+          <caption><b>Table 2:</b> Examples of Functions.</caption>
+          <tbody>
+            <tr>
+              <th>Use Case</th>
+              <th><b>Function Name</b></th>
+              <th><b>Parameters</b></th>
+              <th><b>Data Types of Parameters</b></th>
+              <th><b>Description</b></th>
+            </tr>
+            <tr>
+              <td rowspan="5"> <i>Travel</i> </td>
+              <td> get_host_name </td>
+              <td> listing_name</td>
+              <td> string</td>
+              <td> Provide the host name for the Airbnb listing.</td>
+            </tr>
+            <tr>
+              <td> get_host_name </td>
+              <td> listing_name</td>
+              <td> string</td>
+              <td> Provide the name of the Airbnb’s owner.</td>
+            </tr> 
+            <tr>
+              <td> get_x_most_popular_places_in_neighbourhood_group_room_type </td>
+              <td> popularity, neighbourhood_group, room_type </td>
+              <td> integer, string, string </td>
+              <td> Get the x most popular Airbnbs in a neighborhood group and for a specific room type. </td>
+            </tr> 
+            <tr>
+              <td> get_airbnb_by_price_min_nights_and_neighborhood_group </td>
+              <td> price, min_nights, neighbourhood_group </td>
+              <td> integer, integer, string</td>
+              <td> Get the listing by minimum price in US dollars, minimum nights and specific neighborhood group. </td>
+            </tr>    
+            <tr>
+              <td> get_avg_delivery_time_by_restaurant_name </td>
+              <td> restaurant_name </td>
+              <td> string</td>
+              <td> Get average delivery time of a restaurant. </td>
+            </tr>                                    
+            <tr>
+              <td rowspan="5"> <i>Music</i> </td>
+              <td> top_rated_albums </td>
+              <td> n </td>
+              <td> integer </td>
+              <td> Returns the top-rated albums based on average rating. </td>
+            </tr>
+            <tr>
+              <td> top_rated_albums </td>
+              <td> n </td>
+              <td> integer </td>
+              <td> Retrieves the records of most favoured music releases ranked by their scores. </td>
+            </tr>   
+            <tr>
+              <td> filter_albums_by_date_range </td>
+              <td> start_date, end_date </td>
+              <td> string, string </td>
+              <td> Filters and retrieves albums released within a specified date range. The range is inclusive of the start and end dates. </td>
+            </tr> 
+            <tr>
+              <td> songs_by_danceability_explicitness_speechiness </td>
+              <td> danceability_threshold, speechiness_threshold, explicit </td>
+              <td> integer, integer, boolean </td>
+              <td> Retrieves songs based on specified thresholds for danceability, speechiness, and explicit content criteria. </td>
+            </tr> 
+            <tr>
+              <td> artist_info </td>
+              <td> artist_name </td>
+              <td> string </td>
+              <td> Retrieves detailed information for a specified artist, including attributes like name, band status, formation/birth date, city, country, genres, and related artists. </td>
+            </tr>        
+          </tbody>
+        </table>
+
+
+      <span id="toc3"></span>
+      <h2>3. Question Set and Ground Truth</h2>
+    
+      <p>
+        In order to test the ability of the LLMs to conduct function calling, a vast number of questions need to be created. These questions 
+        will be used so that we can evaluate its function calling ability, parameter filling, and lastly, the final answer given. As a result, 
+        it is important to create different test categories so that questions are better conceptualized and the results are better analyzed. 
+        For both use cases used in this benchmark, we have created these question categories which will contain several questions to test the 
+        extent to which the LLMs understand the question given by the user. The combined categories created by both use cases and all phases 
+        are as follows: Selection, Languages, Data Types, Aggregation, Extra Context, Reasoning, Simple Questions, Typos, Long-Tail Entities, and Interpretation. 
+      </p>
+      <p>
+        For the Travel Use Case, we have tested in total 150 questions, while for the Music Use Case we have tested in total 160 questions for 
+        all the different phases including testing single parameter function calls, multi-parameter function calls and multiple sequential and 
+        parallel function calls to give the final answer to the user. The number of questions tested for each category is listed below:  
+      </p>
+       
+       <ul>
+        <li><strong>Selection</strong>: 40 questions</li>
+        <li><strong>Languages</strong>: 43 questions</li>
+        <li><strong>Aggregation</strong>: 57 questions</li>
+        <li><strong>Extra Context</strong>: 50 questions</li>
+        <li><strong>Reasoning</strong>: 39 questions</li>
+        <li><strong>Data Types</strong>: 22 questions</li>
+        <li><strong>Typos</strong>: 21 questions</li>
+        <li><strong>Interpretation</strong>: 17 questions</li>
+        <li><strong>Simple Questions</strong>: 11 questions</li>
+        <li><strong>Long-Tail Entities</strong>: 9 questions</li>
+    </ul>
+        
+    <p>
+        <b>Languages</b>: We have created this category to examine the LLMs' performance in handling questions in languages other than English. In this way, we can access the LLM's multilingual capabilities and its capacity to return correct answers in case of other popular, unpopular, non-Latin languages. The languages tested in all the phases include German, Turkish, Urdu, Spanish, Greek, Albanian, and French for both use cases.  
+    </p>    
+    <p>
+        <b>Selection</b>: In the Selection of Records category, 
+        we intend to evaluate GPT’s accuracy across several dimensions:  
+        ul&gt;
+        </p><li><strong>Single vs. Multiple Record Retrieval</strong>: This tests the LLM's ability to retrieve either a single record or multiple records based on the query's specificity or breadth.</li>
+        <li><strong>Attribute-Based Selection</strong>: This assesses the model's capability to select records based on specific attributes or characteristics.</li>
+        <li><strong>Handling of Collections</strong>: This focuses on the model's proficiency in dealing with collections, such as retrieving lists of artists.</li>
+        <li><strong>Filtering and Conditional Queries</strong>:
+            <ul>
+                <li><strong>Specific Records</strong>: Evaluate the model's skill in sorting or filtering data based on specific attributes to retrieve exact matches.</li>
+                <li><strong>Range-Based Selection</strong>: Tests the model's handling of queries requiring selection within certain ranges, like dates or ratings.</li>
+                <li><strong>Similarity-based Selection</strong>: Examines the model's understanding and execution of queries involving relationships between data sets, such as selecting records based on association with genres or descriptors.</li>
+            </ul>
+        </li>
+     
+    <p></p> 
+    <p>
+        <b>Aggregation</b>: The Aggregation category comprises questions that test the ability of LLM to perform simple calculations (computation of sum, difference, and average) and identify the minimum, maximum value, and counting of records. It evaluates the LLM’s proficiency in aggregating information from multiple records to provide answers to the user query. Some typical cases being tested are: filtering by a lower or a high price, filtering by a price range, division of the budget by number of visitors, finding average prices for cuisines, summing costs, filtering by the highest number of reviews, the average of streams of songs by an artist, the number of albums released by an artist etc.
+     </p> 
+     <p>
+        <b>Extra Context</b>: The Extra Context category comprises questions where the user provides either additional related context or unrelated context. The questions with related context may require semantic understanding of the query and intend to assess the model's ability to understand and incorporate contextual cues. This category also includes questions with unrelated or misleading context that focus on evaluation of the model's capability to distinguish and disregard irrelevant information. The model should be able to select correct values of parameters and select right functions.
+    </p> 
+    <p>
+        <b>Data Types</b>:  In the Data Types category, we have created questions to test the ability of the LLM to understand several types of data types being currencies and their conversions to other types of currencies (e.g from yuans to dollars), converting to the same currency (e.g cents to dollars), different date formats (e.g from YYYY-MM-DD to DD-MM-YY), time measurement units (e.g. from minutes to hours), phone numbers with prefixes(e.g. +49 is known for Germany’s prefix) or either convert from a textual representation of a number to its numerical value (e.g one zero zero one nine to 10019).
+    </p> 
+    <p>
+        <b>Reasoning</b>:  This category was created to evaluate the ability of LLM for logical reasoning and inference generation. The questions in this category required the model to make some recommendations based on the desired conditions in the query or to reason about the sense of attributes on their own or in relation to other attributes. This helps in analyzing the fact that whether the model is able to make informed conclusions and identify correlation among different attributes in the dataset or not. It also tests the common-sense reasoning capability of the model. These cases could be in regards of: time concept (e.g. tonight refers to one night of stay) and selection of correct records according to a minimum number required, budgeting (e.g. when several people have a fixed amount of budget what could be the cost for each), wording (e.g. if the user is at a specific location, US, then if they require traditional food could be American) and popular locations &amp; geographical proximity (e.g the user is at Statue of Liberty, where would that borough be located). 
+    </p> 
+    <p>
+        <b>Simple Questions</b>: For this category, the user queries are more instructive and informative for 
+        the model to call the correct functions, parameter and parameter values to receive the final answer.
+         These questions are provided to test phase three, which corresponds to multiple function calls, since
+          it is more difficult for LLMs to call a sequence of correct functions. 
+    </p>  
+    <p>
+        <b>Typos</b>: For this category, we have created questions testing different types of typos with intentionally misspelled words: in Airbnb’s or restaurant names, spelling, date formats, currencies, numbers or strings indicating prices, typos in artist name, linguistic typos, typo in genre etc. The model should understand these typos and correct them appropriately when selecting the functions to call as well as with parameter filling.  
+    </p>
+    <p>
+        <b>Long-Tail Entities</b>:  The "Long Tail Entities" category includes those questions which consist of some niche or obscure attributes, including rare entities, lesser-known artists, or obscure music genres. This category focuses on the evaluation of the model's ability to handle long-tail data/attributes and provide accurate responses even for less common entities. Also, in this category are tested some cases in which the model may get confused because of having several cases for example Airbnb listings with the same names but different attributes such as location and location details. In this case, it is tested whether the model understands the fact that there are several entities for the same item and therefore distinguishes those differences by outputting that information to the user.
+    </p> 
+    <p>
+        <b>Interpretation</b>:  In the Interpretation category, we look at the GPT’s
+         capability to interpret and comprehend the attributes in case of parameter filling as well as extracting
+          meaningful insights from the resulting records. We focused on these three dimensions: textual interpretation
+           of attributes, temporal interpretation, and date interpretation (various date formats were tested).
+    </p> 
+    <p>
+        After formulating the questions and categorizing them, we need to have ground truth for evaluation purposes. To test the accuracy of the LLM answers, we have defined ground truths for the three steps of the function calling: Function, Parameter Values, and Overall Answer. Table 3 provides a short overview by providing examples of questions for each category with the respective ground truths including the expected functions to be called, parameter values to be filled, and correct answers. In some cases, we can have several correct function calls, as also indicated in the table, that generate the same correct answer. For the questions in the table that require multiple function calls, we have denoted them with “&amp;” to show that all the functions are needed to receive a response.
+    </p>
+    <style>
+      table.my-custom-table {
+        width: 100%; /* Ensures the table uses full width */
+        table-layout: fixed; /* Forces the table to ignore content size */
+        white-space: normal; /* Ensures text stays on a single line */
+      }
+      .my-custom-table th, .my-custom-table td {
+        text-align: left;
+        padding: 8px;
+        overflow: hidden; /* Ensures content does not overflow */
+        white-space: normal; /* Ensures text stays on a single line */
+        word-wrap: break-word;
+      }
+      .my-custom-table th.category,
+      .my-custom-table th.functions {
+        width: 20%; /* Really small width for 'Category' and 'Functions' */
+      }
+      .my-custom-table th.questions {
+        width: 50%; /* Larger width for 'Questions' */
+      }
+      .my-custom-table th.parameters {
+        width: 15%; /* Adjusted to fill the space */
+      }
+      .my-custom-table th.answer {
+        width: 15%; /* Adjusted to fill the space */
+      }
+      .my-custom-table td.functions {
+        white-space: normal; /* Allows text to wrap */
+        word-wrap: break-word; /* Ensures words can be broken to prevent overflow */
+     }
+    </style>
+    
+    <table border="1" class="my-custom-table">
+      <thead>
+        <tr>
+          <th class="category">Category</th>
+          <th class="questions">Questions</th>
+          <th class="functions">Functions</th>
+          <th class="parameters">Parameters</th>
+          <th class="answer">Answer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Languages</td>
+          <td>Travel: Po verdallisem neper new york dhe nuk po gjej ndonje vend per te ndenjur sonte. Nuk kam shume para ne xhep keshtu qe me duhet nje vend i lire per fjetur? Me jep dot nja 5 sugjerime qe kushtojne rreth 30 dollare per nate? (Translates as: I am wandering around New York and I am not finding a place to stay tonight, I do not have much money with me, so I need a cheap place to stay. Can you give me 5 suggestions that cost around 30 dollars per night?)</td>
+          <td>get_listing_by_lower_price</td>
+          <td>price: 30</td>
+          <td>"Huge room in great area 25 minutes from Manhattan", "Room in Bushwick Bk available June", "Sunny spacious room full of good energy", … etc.</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Music: Ich mag das Album von Coldplay, das 2011 veröffentlicht wurde, sehr. Finden Sie ihre Alben und können Sie mir dann die Künstler empfehlen, die dem gleichen Genre wie das genannte Album angehören. (Translates as: I really like the album of Coldplay which was released in 2011. Find their albums and then can you recommend me the artists with the same genre as that of the mentioned album.)</td>
+          <td>albums_by_artist &amp; artists_by_genres</td>
+          <td>artist_name: Coldplay &amp; genres: ["Pop Rock", "Dream Pop"]</td>
+          <td>"The Beatles", "The Rolling Stones", "Bob Dylan", "Taylor Swift", "Lady Gaga", "Miley Cyrus", "Shakira", "Olivia Rodrigo", "Elton John"</td>
+        </tr>
+        <tr>
+          <td>Selection</td>
+          <td>Music: Among the 15 songs with the longest durations, what is the most popular song?</td>
+          <td>songs_by_longest_duration</td>
+          <td>n: 15</td>
+          <td>“2085”</td>
+        </tr>
+        <tr>
+          <td>Data Types</td>
+          <td>Travel: I am currently in New York, I was wandering around Manhattan and I have only 10 dollars and 10 euros so please help me find a place for tonight.</td>
+          <td>get_airbnb_by_price_range_neighbourhood or get_airbnb_by_price_and_neighborhood_group</td>
+          <td>min_price : 0, max_price : 120, neighbourhood_group : Manhattan or price: 20, neighbourhood_group: Manhattan</td>
+          <td>“Calm bed great area”, “Room with a view”</td>
+        </tr>
+        <tr>
+          <td>Aggregation</td>
+          <td>Travel: I plan to budget 500 dollars for my upcoming New York trip, with 80 dollars designated for accommodation, 220 dollars for clothing, and 200 dollars for dining at various restaurants. Could you offer me diverse lodging recommendations that fit within this financial plan? Please return at most 10 entries.</td>
+          <td>get_listing_by_lower_price</td>
+          <td>price: 80</td>
+          <td>“Amazing huge furnished room!”, “Sunny and spacious 1-bedroom in Brooklyn”, “Huge room in great area 25 minutes from Manhattan”, etc.</td>
+        </tr>
+        <tr>
+          <td>Extra Context</td>
+          <td>Travel: I know that I have a friend from high school, she was from California and she now lives in Brooklyn, New York. Recently, I heard she got some new apartments in that area, but I couldn’t find them. Could you please help me find some apartments in that area?</td>
+          <td>get_listing_by_neighbourhood_group</td>
+          <td>neighbourhood_group: Brooklyn</td>
+          <td>“Sunny and spacious 1-bedroom in Brooklyn”, “Large Private Room in Greenpoint Williamsburg”, “Spacious Brooklyn Brownstone 3BR+ etc.”</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Music: The Michelin star, which the most respected restaurants and chefs can have, has been used to measure the most successful food services in Europe and the world for more than 100 years. While having dinner with my friends in a restaurant in Paris, we started discussing our favourite artists. My best friend likes Bollywood songs and her favourite singer is Arjit Singh, while my other friends are fans of BTS. I personally like Taylor Swift and Selena. Can you recommend 3 songs by my best friend's favourite singer which we can enjoy while tasting an epic menu at a Michelin star restaurant?</td>
+          <td>songs_by_artist</td>
+          <td>artist_name: Arijit Singh</td>
+          <td>"Phir Aur Kya Chahiye", "Apna Bana Le", "Jhoome Jo Pathaan", "Kesariya"</td>
+        </tr>
+        <tr>
+          <td>Reasoning</td>
+          <td>Travel: I have 300 dollars with me but I was planning to spend one third on accommodation in New York, do you have some recommendations for me? Please return at most 10 entries.</td>
+          <td>get_listing_by_price or get_listing_by_lower_price</td>
+          <td>price: 100</td>
+          <td>“Amazing huge furnished room!”, “Sunny and spacious 1-bedroom in Brooklyn”, “Large Private Room in Greenpoint Williamsburg”, etc.</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Music: I am hosting a birthday party for my child. I prefer the danceability score to be higher than 90 to be suitable for a birthday party. Can you please recommend some latest songs which are suitable for children?</td>
+          <td>songs_by_danceability_explicitness</td>
+          <td>danceability_threshold: 90, explicit: false</td>
+          <td>"YOU THE VIBE", "TRAKA", "DOGGY DOGGY", "MOLI", "PALETA PA TO EL MUNDO", "RICO FEO", "TEKIRIKI"</td>
+        </tr>
+        <tr>
+          <td>Simple Questions</td>
+          <td>Travel: As I am staying for seven weekdays in New York, 5 days I will be staying at a relative's house and afterwards I would like to find a very nice Airbnb in Queens to spend the rest of the days with my wife. Each of us have a budget of 220 bucks per night so we could stay together in a nice, clean Airbnb. Considering my requirements and after finding the certain Airbnbs, please find the corresponding proximity data such as latitude and longitude and use them to provide me with its specific address if possible?</td>
+          <td>get_airbnb_by_price_min_nights_and_neighborhood_group &amp; get_long_lat_by_airbnb &amp; get_airbnb_address_by_lat_long</td>
+          <td>price: 440, min_nights: 2, neighbourhood_group: Queens &amp; listing: rooms for rent in Queens with piano, City Skyline Views from every room! Nice Private Room Beauty in Queens &amp; latitude: 40.70163, longitude: -73.90867</td>
+          <td>“TURNBULL AVENUE”</td>
+        </tr>
+        <tr>
+          <td>Typos</td>
+          <td>Travel: I want to find a shered place to stay, can you give me some suggestions?</td>
+          <td>get_listing_by_room_type</td>
+          <td>room_type: Shared room</td>
+          <td>“Bedroom 7 bed A.”, “Williamsburg Loft!! Bedford L 1blk!”, “Calm bed great area.”, etc.</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Music: I am a fan of Dua Lipa. Can you please provide me with a list of her songs.</td>
+          <td>songs_by_artist</td>
+          <td>artist_name: Dua Lipa</td>
+          <td>"Dance The Night", "Cold Heart", "One Kiss ", "Don't Start Now", "No Lie", "Sweetest Pie", "Levitating", "Potion"</td>
+        </tr>
+        <tr>
+          <td>Long Tail Entities</td>
+          <td>Travel: I am close to 'DUNKIN'', BASKIN ROBBINS .'Is it sure that I will find coffee or tea there?</td>
+          <td>get_cuisine</td>
+          <td>restaurant: DUNKIN', BASKIN ROBBINS</td>
+          <td>"Donuts", "CoffeeTea"</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Music: Provide all albums that are footwork but not wonky, alternative R&B, conscious hip hop, instrumental hip hop, deconstructed club.</td>
+          <td>albums_by_genres2</td>
+          <td>genres_in: ["wonky"], genres_out: ["footwork", "alternative R&B", "conscious hip hop", "instrumental hip hop", "deconstructed club"]</td>
+          <td>"No Love Deep Web", "WLFGRL", "Double Cup", "Galaxy Garden", "Room(s)", "So It Goes"</td>
+        </tr>
+        <tr>
+          <td>Interpretation</td>
+          <td>Music: Among the 10 longest songs, how many can I listen to fully in an hour of my time?</td>
+          <td>songs_by_longest_duration</td>
+          <td>n: 10</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+    
+      
+         
+
+      <span id="toc4"></span>
+      <h2>4. Benchmark Evaluation </h2>
+      <span id="toc4.1"></span>
+      <h3>4.1 Evaluation of LLM Response </h3>
+      <p>
+        To assess the LLM responses, we employ a <i>template evaluation</i> method.
+         This involves creating a predetermined JSON response template for each question. The LLM is then instructed to shape its response according to the JSON template structure. The evaluation process involves comparing the LLM's response, formatted as JSON, against the expected JSON template. The comparison is done by exactly matching their name/value pairs. The expected JSON values can include strings, numbers, boolean and lists. For lists, the evaluation may consider the order of items if specified in "ordered_items". If the order is unspecified, the lists are sorted before comparison. Ultimately, the response is evaluated as "Correct" if all key/value pairs match and is evaluated as "Incorrect" otherwise.
+     </p>
+     <p>
+        To evaluate the performance of LLMs in calling the correct sequence of functions along with their parameters, 
+        we adopt a method based on n-grams. We begin by identifying the most appropriate chain of functions and parameters
+         for each given question, referred to as the <i>gold path</i>. This sequence is determined by identifying the target
+          path that shares the largest n-gram function chain with the function chain called by the LLM.
+    </p>
+    <p>
+        The LLM’s function calling performance is measured using an accuracy metric.
+         It is calculated as follows: # functions in n-gram / # functions in the gold path .
+    </p><p>
+        Ultimately, the LLM function calls are evaluated as “Correct” if the n-gram sequence is as long as the gold
+         path function sequence. In other words, the called functions by the LLM cover all gold path functions. 
+         The evaluation is “Partially Correct” if the n-gram sequence is larger than zero but not equal to the gold
+          path function sequence, thus the LLM called at least one function correctly, but not all. The evaluation
+           is “Incorrect if the n-gram function sequence contains zero functions.
+    </p>
+    
+    <p>
+        The LLM’s parameter calling performance is also measured using an accuracy metric, which is calculated as follows: # correct parameters in n-gram / # parameters in the gold path.
+    </p>
+    <p> 
+       In evaluating the accuracy of parameter calls made by LLMs, we compare the called parameters of the largest n-gram with the gold path parameters (in sequence of their function calls). A single parameter call is deemed correct if the keys and values match. For numbers (integers and floats), we round them to two decimals, and for lists, we sort their values before comparison. For the overall evaluation of parameters calls to be classified as “Correct” every called parameter by the LLM in the largest n-gram must match those specified in the gold path without exception. Otherwise, if we have at least one error, we get “Partially Correct”, and “Incorrect” if no parameters match.
+    </p>
+
+    <span id="toc4.2"></span>    
+    <h3>4.2 Experimental Results </h3>
+    <p> 
+       In this section, we present the experimental results of our project, focusing on the accuracy of function calls, parameter filling, and final answers generated by the GPT4 model. 
+       Detailed statistics are provided in the following tables, showcasing the model's performance in various function-calling scenarios. These include the accuracy of the model when 
+       calling functions with a single parameter (both with simple and complex function descriptions), calling functions with multiple parameters, and multiple function calling (sequential 
+       and parallel). The statistical analysis presented in the following tables offers insights into the model's effectiveness in interpreting and responding to queries covering different categories. 
+    </p>
+    <div style="text-align: center" class="tg-wrap">
+      <table class="tg tg-top">
+        <thead>
+          <caption><b>Table 4:</b> Results of Single Parameter Function Calling Phase (Simple Description)</caption>
+          <tr>
+            <th class="tg-mkpc"></th>
+            <th class="tg-mkpc" colspan="3">
+              <span style="background-color: #f0f0f0">Accuracy (in %)</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="tg-syo5">Categories</th>
+            <th class="tg-syo5">Function</th>
+            <th class="tg-syo5">Parameter</th>
+            <th class="tg-syo5">Answer</th>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Selection</span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 64 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Interpretation </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 86 </span></td>
+
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Reasoning </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 80 </span></td>
+          </tr>                    
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Aggregation </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 71 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Data Types </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 77.78 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 77.78 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Languages </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 87.5 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 75 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Typos </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 66.67 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 55.56 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Long-Tail Entities </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 33.33 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 33.33 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 33.33 </span></td>
+          </tr>  
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Extra Context </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 83.33 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 66.67 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 44.44 </span></td>
+          </tr>                   
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Overall </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>95</b> </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>85</b> </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>66</b> </span></td>
+            <tfoot>
+              <tr></tr>
+            </tfoot>
+          </tr>
+        </tbody>
+      </table>
+      <table class="tg">
+        <thead>
+          <caption><b>Table 5:</b> Results of Single Parameter Function Calling Phase (Complex Description) </caption>
+          <tr>
+            <th class="tg-mkpc"></th>
+            <th class="tg-mkpc" colspan="3">
+              <span style="background-color: #f0f0f0">Accuracy (in %)</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="tg-syo5">Categories</th>
+            <th class="tg-syo5">Function</th>
+            <th class="tg-syo5">Parameter</th>
+            <th class="tg-syo5">Answer</th>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Selection</span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 90.91 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 90.91 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 63.63 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Interpretation </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 57.14 </span></td>
+
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Reasoning </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 80 </span></td>
+          </tr>                    
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Aggregation </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 85.71 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Data Types </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Languages </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 93.75 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 87.5 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 87.5 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Typos </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 66.67 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 55.56 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Long-Tail Entities </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 33.33 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 33.33 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 33.33 </span></td>
+          </tr>                    
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Extra Context </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 88.89 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 72.22 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 50 </span></td>
+          </tr>                   
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Overall </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>93.81</b> </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>86.6</b> </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>71.13</b> </span></td>
+            <tfoot>
+              <tr></tr>
+            </tfoot>
+          </tr>
+        </tbody>
+      </table> 
+      <table class="tg">
+        <thead>
+          <caption><b>Table 6:</b> Results of Multiple Parameter Function Calling Phase </caption>
+          <tr>
+            <th class="tg-mkpc"></th>
+            <th class="tg-mkpc" colspan="3">
+              <span style="background-color: #f0f0f0">Accuracy (in %)</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="tg-syo5">Categories</th>
+            <th class="tg-syo5">Function</th>
+            <th class="tg-syo5">Parameter</th>
+            <th class="tg-syo5">Answer</th>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Selection</span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 89 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 90 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 53 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Interpretation </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 80 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 89 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 40 </span></td>
+
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Reasoning </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 82 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 83 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 45 </span></td>
+          </tr>                    
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Aggregation </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 95 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 95 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 81 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Data Types </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 66.67 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 18.18 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Languages </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 92.31 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 77.78 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Typos </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 92 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 82.86 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 58.33 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Long-Tail Entities </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 83.33  </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 88.23  </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 83.33 </span></td>
+          </tr>  
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Extra Context </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 86.67 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 84.09 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 53.33 </span></td>
+          </tr>                   
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Overall </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>90</b> </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>85.68</b> </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>59</b> </span></td>
+            <tfoot>
+              <tr></tr>
+            </tfoot>
+          </tr>
+        </tbody>
+      </table> 
+    </div>           
+    <p> 
+      Table 4 depicts the efficiency of single-parameter function calling when simple function descriptions are employed. The model distinctly exhibited inferior performance within the Long Tail Entities category concerning function calls, relative to its performance in other categories, and demonstrated reduced efficacy in accurately determining parameters across several categories, including Typos, Long Tail Entities, and Extra Context. Comparing the results in Tables 4 and 5, it can be seen that the model performed almost equally well in case of functions with simple and complex descriptions. The overall accuracy is almost the same for both the cases. 
+    </p>
+    <p> 
+      The results depicted in Table 6 shed light on the effectiveness of multi-parameter function invocation. It can be observed from the results that the performance of the model in providing correct answers has declined noticeably in the case of invoking functions with multiple parameters as compared to that of a single parameter. There is a noticeable decline in the accuracy of parameter invocation, particularly within the Data Types category, in comparison to the performance observed across other categories. In delivering the accurate final answer, the model's overall performance notably lags its success in both parameter and function calling.
+    </p>
+    <div style="text-align: center" class="tg-wrap">
+      <table class="tg tg-top">
+        <thead>
+          <caption><b>Table 7:</b> Results of Multiple Function Calling (Parallel)</caption>
+          <tr>
+            <th class="tg-mkpc"></th>
+            <th class="tg-mkpc" colspan="3">
+              <span style="background-color: #f0f0f0">Accuracy (in %)</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="tg-syo5">Categories</th>
+            <th class="tg-syo5">Function</th>
+            <th class="tg-syo5">Parameter</th>
+            <th class="tg-syo5">Answer</th>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Selection</span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 75 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 75 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 50 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Reasoning </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 95.45 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 77.77 </span></td>
+          </tr>                    
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Aggregation </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 50 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Languages </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 57.14 </span></td>
+          </tr>                    
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Extra Context </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 82.35 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 50 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Simple Questions </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 100 </span></td>
+          </tr>            
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Overall </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>97.8</b> </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>93.54</b> </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>60.97</b> </span></td>
+            <tfoot>
+              <tr></tr>
+            </tfoot>
+          </tr>
+        </tbody>
+      </table>
+      <table class="tg">
+        <thead>
+          <caption><b>Table 8:</b> Results of Multiple Function Calling (Sequential) </caption>
+          <tr>
+            <th class="tg-mkpc"></th>
+            <th class="tg-mkpc" colspan="3">
+              <span style="background-color: #f0f0f0">Accuracy (in %)</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="tg-syo5">Categories</th>
+            <th class="tg-syo5">Function</th>
+            <th class="tg-syo5">Parameter</th>
+            <th class="tg-syo5">Answer</th>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Selection</span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 91.67 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 91.67 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 66.67 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Reasoning </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 71.43 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 66.67 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 44.44 </span></td>
+          </tr>                    
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Aggregation </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 78.57 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 68.29 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 50 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Languages </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 72.72 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 48.38 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 36.36 </span></td>
+          </tr>
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Data Types </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 75 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 75 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 50 </span></td>
+          </tr>   
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Extra Context </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 90 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 87.09 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 53.85 </span></td>
+          </tr> 
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Simple Questions </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 63.63 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 50 </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> 37.5 </span></td>
+          </tr>            
+          <tr>
+            <td class="tg-9wq8"><span style="font-weight: 700;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> Overall </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>76.74</b> </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>65.57</b> </span></td>
+            <td class="tg-9wq8"><span style="font-weight: 400;font-style: normal;text-decoration: none;color: #000;background-color: transparent;"> <b>50.88</b> </span></td>
+            <tfoot>                
+              <tr></tr>
+            </tfoot>
+          </tr>
+        </tbody>
+      </table> 
+    </div>    
+      <p> 
+        The findings presented in Tables 7 and 8 offer valuable insight into the effectiveness of parallel invocation of multiple functions as compared to sequential. Table 7 shows that within the Selection and Extra Context category, the model encountered challenges in comprehending context and accurately transferring parameter values, particularly in comparison to other categories. The model faces challenges in determining the final answer in the overall evaluation, particularly Selection of Records, Aggregation, and Extra Context when compared to its accuracy in function and parameter determination. From Table 8, it can be inferred that the model finds it difficult to correctly parse parameters in case of sequential function calling, leading to the decline in accuracy of final answers. The results of Simple Question category indicates that despite providing additional instructions during prompting, the model remained unable to produce the correct final answer.
+      </p>
+
+      <span id="toc4.3"></span>      
+      <h3>4.3 Error Analysis </h3>
+      <p> 
+        After conducting a detailed analysis of cases where the GPT4 model failed to retrieve the correct function calls, and parameters, or provide 
+        accurate final answers, we identified recurring patterns and grouped them into distinct error categories for both use cases. These error 
+        categories are classified into three main groups: instances where the algorithms fail to retrieve correct functions, instances where accurate 
+        parameters are not retrieved, and situations where the models provide incorrect final answers. The latter group encompasses scenarios where the 
+        sequence order of function calls may be incorrect, or the model fails to reason adequately even when functions and parameters are retrieved accurately.
+      </p>
+      <p> 
+        In the following section, we will provide a detailed breakdown of each error category, focusing on the specific types of errors made by the algorithms.
+      </p>
+
+      <span id="toc4.3.1"></span>
+      <h4>4.3.1 Error Categories for Incorrect Function Calls </h4>
+      <p> 
+        There are approximately 8 instances where the GPT4 model fails to call the appropriate functions or provide the correct list of functions. Through identifying 
+        patterns and limitations in each instance, we have clustered them into two error categories. Each category represents similar types of limitations encountered while running the user’s prompts.
+      </p>
+      <p>
+        <b>Incomplete Function Invocation</b>: This error category comprises 7 questions where the model fails to call the second or third function due to lack of reasoning or misunderstanding of the provided 
+        user request. This could occur if the model does not recognize the need for calling the second or the third function or incorrectly assumes that the task can be completed with just one function call. 
+        It may also arise when the user provides excessive numerical details in the input prompt, causing the model to overlook other aspects of the user's request. This also includes the instance where the 
+        model relies on existing knowledge and prefers not to call the artist_info function when information about famous artists is required.
+      </p>
+      <p>
+        <b>Wrong Function Invocation</b>: This error category comprises 11 questions where the model fails to call the correct function due to not understanding the provided 
+        user request. The model either does not correctly undertand which parameters needs to be used to call the correct function which is requested in the user query or in some cases,
+        the model relies on existing knowledge and prefers not to call the correct function.
+      </p>
+      <p>
+        <b>Additional Function Calls</b>: There are around 3 instances where the GPT4 model calls multiple functions in addition to the correct function. The model can not differentiate which function needs to be called 
+        due to the multi-targeted information retrieval and tries to call potential functions in order to retrieve the information requested in the user query.
+      </p>
+      <p>
+        <b>Failure to Pass Entire List between Functions (List Passing Error)</b>: This error category encompasses 2 failed answers, which we consider significant due to their uniqueness and their demonstration 
+        of important algorithm limitations. Although these instances stand alone, they shed light on a broader issue observed during experimentation with other instances: the consistent failure of the model to pass 
+        the full list of values from the output of one function to the input of another. In these failed instances, the algorithms fail to transfer the entire list of elements outputted by the first function to the 
+        second function during the sequential multiple-function calling, resulting in incomplete data processing and potential inaccuracies.
+      </p>
+      <figure>
+        <img src="images/functions.png" alt=" Error Categories for Incorrect Function Calls
+      " class="center" style="width: 60%;">
+        <figcaption class="center">
+          <b><a id="Fig2"></a>Figure 2:</b> Distribution of the questions in the error categories for incorrect function calling </figcaption>
+      </figure>
+      <p> 
+       Based on the error categories assigned for incorrect function calls, we have gained insight into the main limitations contributing to most of the model failures in calling the right functions. According to Figure 2, the primary issue with the function calling functionality of the GPT model lies in sequential multiple function calling. In these instances, the model fails to call the correct sequence of functions or disregards the need to call the second or third function. This failure is typically attributed to a lack of reasoning and understanding of the necessity for calling a sequence of functions rather than just a single function.
+      </p>
+      <span id="toc4.3.2"></span>    
+      <h4>4.3.2 Error Categories for Incorrect Parameter Calls </h4>
+      <p> 
+          There are approximately 60 instances where the GPT4 algorithms fail to retrieve the correct parameters for the called functions. By identifying patterns in the limitations that contribute to the failure of the model to call the correct parameter values given the user’s prompts, we have grouped similar limitations into distinct error categories. As a result, we have identified 7 error categories, each representing a cluster of questions where the algorithms failed to retrieve the right parameters due to similar limitations.
+      </p>
+      <p>
+        <b>Parameter Hallucination due to Wording/Extra Context</b>: This category encompasses 11 instances where the model, tested for function calling abilities, fails to retrieve the correct parameter fillings and instead completely hallucinates the parameters. Parameters generated by the model are entirely unrelated to the task at hand or the information provided in the user query, indicating a disconnect between the generated output and the intended context.
+  
+      </p>
+      <p> 
+        This phenomenon is believed to occur due to the model's inability to correctly understand the entirety of the user request, particularly when the request is verbose, includes excessive details, or provides extensive related context. In such cases, the algorithms become confused and fail to grasp the essence of the request, resulting in inaccurate parameter filling and consequently, a wrong or completely unrelated answer to the user.
+      </p>
+      <p>
+        <b>Misidentification of Numeric Entities in User Prompt</b>: This error category contains 2 instances. In these instances, the model fails to accurately identify parameter fillings, specifically numeric entities provided by the user in the prompt. The model misinterprets numeric sequences in the input text, such as phone numbers and postal codes, as non-numeric entities, such as listing names or other textual elements. This leads to errors in identifying relevant parameter values, resulting in incomplete information being processed.
+  
+      </p>
+      <p>
+        <b>Misinterpretation of Non-Latin Characters</b>: Under this error category fall around 5 instances. The model misinterprets characters from non-Latin scripts, leading to errors in comprehension and analysis of text inputs. The model encounters difficulties in accurately translating the user's request from one language to another, resulting in incorrect parameter values being passed to the function.
+  
+      </p>
+      <p>
+        <b>Incorrect String Handling</b>: There are around 13 instances where the GPT4 model encounters difficulties in handling string values in the prompts. This error occurs in three cases: Firstly, when the user provides context that may confuse the algorithms, leading to incorrect extraction of string elements for parameter values based on the provided context. Secondly, when the model fails to handle string synonyms, resulting in extracted parameters deviating from the expected string representation format in the dataset used, thereby introducing inaccuracies when the function is called. Lastly, when dealing with user typos, the algorithms struggle to identify and correct them, resulting in incorrect parameter values being selected. 
+  
+    </p><p>
+        <b>Currency and Conversion Error</b>: In this error category, there are 5 instances where the model fails to retrieve the correct parameter value due to limitations in currency conversions. This error occurs in two situations: firstly, when the algorithms are unable to perform accurate currency conversion from the currency format provided by the user to the currency type used in the dataset API (e.g., yuan to dollars); secondly, when the algorithms inaccurately convert currency values provided in different units by the user’s prompt (e.g., dollars and cents) to the currency unit of the same currency type used in the dataset API.
+  
+    </p><p>
+        <b>Limitations in Text-to-Number Conversion</b>: There are a total of 3 cases where the model’s algorithm retrieves incorrect parameter fillings due to limitations in text-to-number conversion. The algorithms struggle to recognize and convert textual representations of time, such as "week", into their corresponding numeric values (e.g., 7 days). Additionally, they encounter errors or failures when attempting to perform division or other mathematical operations with numerical values represented as text within user prompts.
+  
+    </p><p>
+        <b>Date Inference Error</b>: According to the data presented, the primary limitation of the GPT4 model arises when dealing with various date formats. There are approximately 18 instances where the model fails to retrieve the correct date value as the parameter. 
+This error category encompasses questions where the model returns inaccurate answers due to difficulties in inferring dates from user inputs or contextual cues. These errors may occur when the algorithms encounter discrepancies in converting textual date representations provided in the prompts to the standardized date format required by the API dataset, resulting in errors in parameter value representation. Additionally, errors may occur when the algorithms fail to accurately recognize and interpret the date format when presented with dates in different formats in the user prompt, leading to errors in parameter value retrieval.
+
+  </p><p>
+    <b>Incomplete Parameter Values Passing</b>: In this category, there are 3 instances. In these three cases, the LLM does not receive all the necessary parameters or arguments that are required to execute the set of functions correctly. It can happen due to misunderstanding of the function requirements and lack of context. 
+
+  
+    </p>
+      <figure>
+        <img src="images/parameters.png" alt=" Error Categories for Incorrect Parameter Calls
+      " class="center" style="width: 80%;">
+        <figcaption class="center">
+          <b><a id="Fig3"></a>Figure 3:</b>Distribution of the questions in the respective error categories for incorrect parameter calls </figcaption>
+    </figure>
+    <p> 
+       As depicted in Figure 3, our analysis reveals that the primary cause of the highest number of failures in the GPT4 model is the presence of dates in various formats within user prompts. Additionally, we observe that the second most prominent limitation occurs when users include additional context (related and unrelated) or synonyms in their prompts, which the model struggles to interpret accurately. This often results in incorrect parameter fillings and subsequently, incorrect answers. These findings underscore the importance of addressing these specific limitations to enhance the model's performance in handling diverse user inputs effectively.
+    </p>
+    <span id="toc4.3.3"></span>
+    <h4>4.3.3 Error Categories for Incorrect Answers</h4>
+    <p> 
+       There are approximately 64 instances where the GPT 4.5 model fails to provide correct answers. By analyzing the underlying patterns and types of errors observed in these instances, we categorized them into 8 distinct error categories. Each error category comprises questions where the model provided inaccurate responses due to similar limitations or recurring patterns.
+    </p>
+    <p>
+        <b>Arithmetic Anomaly (Summation/Average)</b>: This error category contains 13 instances where the GPT 4.5 model encounters difficulty in executing arithmetic computations accurately, leading to inaccurate responses generated by the model in case of summation and average operations. The performance of the model in arithmetic calculations is observed to be especially affected in the case of dealing with a long list of numerical data. For example, when dealing with a long list of ratings by customer, a list of the number of streams of song, or a list of any other numerical attribute, the model struggles to maintain precision in its calculations.
+    </p>
+    <p>
+        <b>Sorting Anomaly (Numerical Values)</b>: This error category comprises 9 questions where the GPT4 model returned inaccurate answers due to probable anomalies in sorting numerical values, particularly when requested to identify specific positions of any attribute such as the third highest or lowest value. Processing multiple numeric values simultaneously poses challenges for the algorithms, leading to inaccuracies or failures in determining relationships between the items.
+    </p>
+    <p>
+        <b>Sorting Anomaly (Dates)</b>: This error category encompasses 6 instances where the GPT4 model provides inaccurate responses due to potential anomalies in sorting date values, particularly when queried to return results based on specific criteria such as the third most recent or least recent date. It can lead to discrepancies in the ordering of dates and consequently inaccurate responses in case of specific chronological criteria-based queries. 
+  
+    </p><p>
+        <b>Counting Discrepancy</b>: This error category consists of 1 instance. In this instances, the model fails to provide a correct response due to discrepancies or inaccuracies in counting elements or results, such as the number of songs from the resulting records of the called function. 
+
+    </p><p>
+        <b>Multi-Information Retrieval Error</b>: This error category includes 12 instances where the GPT4 model encounters challenges or inaccuracies in retrieving multiple pieces of information or results. Instead of retrieving relevant information that satisfies the criteria specified by the user, the model returns responses with errors, such as selecting records that meet only one of the multiple specified criteria. Examples include instances where the model fails to retrieve all relevant records that meet specified criteria or where it overlooks certain criteria altogether, resulting in incomplete or inconsistent responses.
+  
+    </p><p>
+        <b>Query Misinterpretation</b>: This error category comprises 7 questions where the GPT4 model returns inaccurate answers due to difficulty in interpreting user queries. It includes cases where the model fails to grasp the context of user queries, misinterprets specific keywords or phrases, or the intent behind the question by the user. 
+This category also caters to instances where the model incorrectly parses the provided details or fails to recognize a parameter value due to the given extra context in the user’s prompt, leading to errors in identifying the relevant parameter values, resulting in incomplete information being processed. Also, there are cases where the model misinterprets numeric sequences in the input text, such as phone numbers and postal codes, as non-numeric entities, such as listing names or other textual elements.  
+    </p>
+    <p>
+        <b>Inexact Matching/Lack of Contextual Relevance &amp; Common-sense Reasoning/Lack of Specificity</b>: In this category, there are a total of 14 questions. The responses of the GPT4 model lack contextual relevance and specificity, leading to inaccuracies or inadequacies in addressing user queries. This category also encompasses instances where the provided information only partially aligns with the user query, resulting in incomplete responses or additional irrelevant information. 
+Furthermore, the algorithms struggle to select the appropriate functions or provide the right final answer due to a lack of common-sense reasoning abilities. (e.g., the algorithm, lacking common-sense reasoning abilities, fails to understand that a baby typically doesn't require a separate accommodation booking or incur additional charges)
+
+
+  
+    </p><p>
+        <b>Reliance on Previous Knowledge</b>:  There are 2 instances where the GPT4 model returns inaccurate answers due to the use of its previous knowledge base rather than relying on getting information from the results of called functions. Algorithms encounter difficulties when dealing with well-known entities, leading to failures in identifying relevant functions and parameters for popular restaurant names, albums, or artists. They provide responses based on pre-existing knowledge, resulting in potentially inaccurate or incomplete answers.   
+
+  
+    </p><figure>
+        <img src="images/answers.png" alt=" Error Categories for Incorrect Answers
+      " class="center" style="width: 80%;">
+        <figcaption class="center">
+          <b><a id="Fig4"></a>Figure 4:</b>Distribution of the questions in the respective error categories for incorrect final answers.</figcaption>
+    </figure><p> 
+       Even when the correct functions and parameters are called, the models occasionally fail to provide the right final answer to users. According to Figure 4, this can be attributed to various limitations, including the failure to retrieve all relevant records that meet specified criteria or overlook certain criteria altogether, resulting in incomplete or inconsistent responses. Another common limitation is the inability of the models to perform arithmetic operations such as summation and averaging of long lists of values. Additionally, issues such as dealing with nuanced context and the lack of commonsense reasoning contribute to query misinterpretation and inaccurate results.
+    </p>
+    <span id="toc5"></span>
+    <h2>5. Download Links </h2>
+
+        <p>The project can be found <a href="https://github.com/Dennis-H1/Function-Calling-LLMs">here</a>.</p>
+        <p>Question and function sets and test configuration files can be found <a href="https://github.com/Dennis-H1/Function-Calling-LLMs/tree/master/src/config">here</a>.</p>
+        <p>All datasets can be accessed from this <a href="https://github.com/Dennis-H1/Function-Calling-LLMs/tree/master/src/data">link</a>.</p>
+
+        <span id="toc6"></span>
+        <h2>6. Existing Benchmarks</h2>
+        <p>
+            In this section, we show and compare some related work regarding benchmarks, 
+            dataset creation and models that try using different tools in order to enhance LLM with 
+            additional information and capabilities that go in the same line of thought as with function calling enabled LLMs.
+        </p>
+        <p>
+            <b>APIBench</b> introduces a new benchmark to help Large Language Models (LLMs) improve their accuracy and
+             flexibility when working with various tools through APIs and API documentation [7]. By combining self-instruct
+              fine-tuning and retrieval methods, LLMs are trained on a large dataset of APIs gathered from major model hubs
+               like TorchHub, TensorHub, and HuggingFace. This dataset covers a wide range of domains, including multimodal data,
+                computer vision, natural language processing, audio, tabular data, and reinforcement learning. Each API call
+                 is detailed in JSON objects, including information like domain, framework, functionality, and example code.
+                  Synthetic user prompts, generated using the self-instruct approach and GPT-4, accompany each dataset entry
+                   to task the model with creating real-world use cases involving the APIs [8]. Evaluation involves matching
+                    AST sub-trees to determine which API the LLM selects, with a focus on compatibility with the reference API.
+                     Experiments comparing Gorilla's performance against other models in a zero-shot setting assess different 
+                     retrieval methods and Gorilla's adaptability to changes in API documentation at test time. Gorilla's 
+                     retriever-aware training proves highly adaptable to such changes, maintaining accuracy and relevance over
+                      time, while also avoiding hallucination and meeting specified constraints. However, it's worth noting that ML
+                       APIs might produce biased predictions if trained on biased data
+         </p>
+         <p>
+            <b>API-Bank</b> aims to address three key questions regarding the effectiveness of LLMs in
+             utilizing tools, methods to enhance their tool utilization ability, and the obstacles they
+              face in effectively leveraging tools [12]. To evaluate LLMs' tool utilization effectiveness,
+               the API-Bank evaluation system is implemented, incorporating 73 commonly used APIs and 314 
+               tool-use dialogues with 753 manually annotated API calls. To enhance LLMs' tool utilization ability,
+                a comprehensive tool-augmented LLM training dataset is developed using a novel method called Multi-agent,
+                 comprising five collaborative agents. This dataset covers three different API usage abilities and
+                  emphasizes domain diversity, API authenticity, API diversity, and evaluation authenticity. The study
+                   also conducts experimental analyses to illuminate the main challenges faced by LLMs like GPT-4 and
+                    Lynx when utilizing APIs [9][11]. Annotated dialogues in the evaluation data cover Call, Retrieval+Call,
+                     and Plan+Retrieval+Call abilities, with Lynx being fine-tuned using the APIBank training dataset and
+                      benchmarked against various LLMs. Model performance is evaluated based on API call correctness and
+                       the quality of LLM-generated responses, with six primary error types classified and assessed. Limitations
+                        include the implementation being in English only, the use of a small model for fine-tuning, and the
+                         potential for future work in other languages and with larger scale models [12].
+         </p> 
+         <p>
+            <b>ToolQA</b> ToolQA is a dataset designed to assess the Language Model's (LLM) ability to utilize external
+             tools and generate knowledge for improved question answering. It minimizes overlap with pre-training data
+              and includes 8 domains and 13 types of tools to retrieve information [1]. The process involves three phases:
+               reference data collection, human-guided question generation with LLMs, and programmatic answer generation.
+                Different LLM models, including standard and tool-augmented versions, are used for easy and hard questions. 
+                ToolQA focuses on the final correct answer rather than intermediate tool use processes. The dataset employs
+                 reference corpora defined by contextual dimensions and answer templates generated by ChatGPT. Answers are
+                  sampled from retrieved data, and accurate answers are created using operators and tool chains for multi-step reasoning.
+                   Various tools are utilized for text retrieval, database operations, code interpretation, mathematical computations,
+                    graph data, and parsing feedback. The analysis identifies incorrect tool calls and data sources, categorized
+                     into three main error types.
+         </p> 
+         <p>
+            <b>ToolBench </b> ToolBench is a benchmark devised to assess how open-source Language Models
+             (LLMs) can be improved with tool manipulation capabilities akin to closed LLM APIs, with practical
+              human oversight to avoid exposing enterprise-internal workflows [2,3,4]. It integrates a variety
+               of software tools for real-world tasks, incorporating both existing and newly acquired datasets,
+                and employs test cases for quantitative evaluation, setting it apart from other benchmarks. Task
+                 complexity is gauged based on API intricacy and the need for advanced reasoning, with success rate 
+                 serving as the primary evaluation metric. To enhance open-source LLMs, three techniques are employed:
+                  Model Alignment, Incontext demonstration retriever, and System Prompt [5,15]. These methods aim to
+                   align LLMs with API usage examples, enhance argument population, and control the natural language
+                    style of responses, respectively. Evaluation involves identifying challenges such as incorrect API
+                     selection, difficulty in argument population, and non-executable code generation, which are addressed
+                      by tuning with API usage examples. Advanced reasoning remains a challenge for open-source models.
+         </p> 
+         <p>
+            To provide a more general and concentrated picture of the comparisons done above we provide with the following table:
+        </p>
+        
+        <table border="1" style="width: 100%; table-layout: fixed;">
+          <caption><b>Table 9:</b> Comparison of Benchmarks </caption>
+          <thead>
+              <tr>
+                  <th>Comparison Points</th>
+                  <th>ToolQA</th>
+                  <th>ToolBench</th>
+                  <th>APIBench</th>
+                  <th>API-Bank</th>
+                  <th>Our Benchmark</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>The goal</td>
+                  <td>LLMs enhanced using external sources</td>
+                  <td>LLMs enhanced using external sources</td>
+                  <td>LLMs enhanced using external sources</td>
+                  <td>LLMs enhanced using external sources</td>
+                  <td>LLMs enhanced using external sources</td>
+              </tr>
+              <tr>
+                  <td>Type of assessment</td>
+                  <td>Question answering</td>
+                  <td>API Calls</td>
+                  <td>API Calls</td>
+                  <td>API Calls</td>
+                  <td>Question answering</td>
+              </tr>
+              <tr>
+                  <td>Answer Evaluation</td>
+                  <td>Final Correct Answer</td>
+                  <td>Success Rate (in code generation)</td>
+                  <td>Accuracy metric (in code generation)</td>
+                  <td>Accuracy metric(API call) & ROUGE-L metric(responses after API call)</td>
+                  <td>Final Correct Answer</td>
+              </tr>
+              <tr>
+                  <td>Human Intervention</td>
+                  <td>Human Templates</td>
+                  <td>Human Templates</td>
+                  <td>Human Templates & Self-Instruct method</td>
+                  <td>Human Templates & Multi-agent method</td>
+                  <td>Human Templates</td>
+              </tr>
+              <tr>
+                  <td>Answer Retrieval</td>
+                  <td>Operations/ Functions for multi-step reasoning</td>
+                  <td>Functions/Techniques for multi-step reasoning</td>
+                  <td>Functions/Techniques & Retrievers</td>
+                  <td>Functions/Techniques for multi-step reasoning</td>
+                  <td>Operations /Functions for multi-step reasoning</td>
+              </tr>
+              <tr>
+                  <td>Task Challenge</td>
+                  <td>No distinction in questions or API call complexity (advanced reasoning)</td>
+                  <td>API complexity to measure the difficulty of choice of API calls (No advanced reasoning)</td>
+                  <td>API usage abilities in dialogues single and multiple calls</td>
+                  <td>API calls with various constraints</td>
+                  <td>No distinction in questions or API call complexity (advanced reasoning)</td>
+              </tr>
+              <tr>
+                  <td>Type of Enhancement</td>
+                  <td>Specific to different domains</td>
+                  <td>Specific to different domains</td>
+                  <td>Specific to different domains and major ML hubs</td>
+                  <td>Specific to different domains and principles</td>
+                  <td>No direct specification - use case independent</td>
+              </tr>
+              <tr>
+                  <td>LLM Knowledge</td>
+                  <td>API Calls only- no internal LLM knowledge</td>
+                  <td>API Calls only- no internal LLM knowledge</td>
+                  <td>API Calls only- no internal LLM knowledge</td>
+                  <td>API Calls and internal LLM knowledge</td>
+                  <td>API Calls and internal LLM knowledge</td>
+              </tr>
+              <tr>
+                  <td>Type of Data Used</td>
+                  <td>Several types of data: tabular, text corpora, and graphs</td>
+                  <td>New and existing datasets</td>
+                  <td>Tool augmented dataset with Self-Instruct method</td>
+                  <td>Tool augmented dataset with Multi-agent method</td>
+                  <td>Tabular Data only, Existing Datasets</td>
+              </tr>
+              <tr>
+                  <td>Components Passed to Models</td>
+                  <td>Questions, answers, reference corpora, and available tools</td>
+                  <td>Instruction in natural language as a goal, API documentations</td>
+                  <td>Instruction in natural language as a goal, API documentations</td>
+                  <td>Instruction in natural language as a goal, API documentations</td>
+                  <td>Question set file, functions, and ground truths</td>
+              </tr>
+              <tr>
+                  <td>Intermediary Evaluation</td>
+                  <td>No (only final answer)</td>
+                  <td>Yes (intermediate steps included - API calls, parameters, etc.)</td>
+                  <td>Final API call using AST sub-tree matching method</td>
+                  <td>Yes (intermediate steps included - API calls, parameters, etc.)</td>
+                  <td>Yes (intermediate steps included - API calls, parameters, etc.)</td>
+              </tr>
+          </tbody>
+      </table>
+      
+        <span id="toc7"></span>
+        <h2>7. References </h2>
+
+        <p>[1] Zhuang, Y., Yu, Y., Wang, K., et al. (2024). Toolqa: A dataset for LLM question answering with external tools. <i>Advances in Neural Information Processing Systems, 36</i>.</p>
+
+        <p>[2] Xu, Q., Hong, F., Li, B., et al. (2023). On the tool manipulation capability of open-source large language models. <a href="https://arxiv.org/abs/2305.16504" target="_blank">arXiv:2305.16504</a>. arXiv preprint.</p>
+
+        <p>[3] Bloomberg. (2023). Samsung bans staff’s AI use after spotting ChatGPT data leak. [Online]. Available: <a href="https://www.bloomberg.com/news/articles/2023-05-02/samsung-bans-chatgpt-and-other-generative-ai-use-by-staff-after-leak#xj4y7vzkg" target="_blank">https://www.bloomberg.com/news/articles/2023-05-02/...</a></p>
+
+        <p>[4] CNN. (2023). JPMorgan restricts employee use of ChatGPT. [Online]. Available: <a href="https://www.cnn.com/2023/02/22/tech/jpmorgan-chatgpt-employees/index.html" target="_blank">https://www.cnn.com/2023/02/22/tech/jpmorgan-chatgpt-employees/index.html</a></p>
+
+        <p>[5] Ouyang, L., Wu, J., Jiang, X., et al. (2022). Training language models to follow instructions with human feedback. <i>Advances in Neural Information Processing Systems, 35</i>, pp. 27,730–27,744.</p>
+
+        <p>[6] Bai, Y., Kadavath, S., Kundu, S., et al. (2022). Constitutional AI: Harmlessness from AI feedback. <a href="https://arxiv.org/abs/2212.08073" target="_blank">arXiv:2212.08073</a>. arXiv preprint.</p>
+
+        <p>[7] Patil, S.G., Zhang, T., Wang, X., et al. (2023). Gorilla: Large Language Model Connected with Massive APIs. ArXiv, abs/2305.15334.</p>
+
+        <p>[8] Wang, Y., Kordi, Y., Mishra, S., et al. (2022). Self-instruct: Aligning language model with self-generated instructions. arXiv preprint <a href="https://arxiv.org/abs/2212.10560" target="_blank">arXiv:2212.10560</a>.</p>
+
+        <p>[9] OpenAI. (2023). GPT-4 technical report.</p>
+
+        <p>[10] Anthropic. (2022). Claude.</p>
+
+        <p>[11] Taori, R., Gulrajani, I., Zhang, T., et al. (2023). Stanford Alpaca: An instruction-following llama model. <a href="https://github.com/tatsu-lab/stanford_alpaca" target="_blank">https://github.com/tatsu-lab/stanford_alpaca</a>.</p>
+
+        <p>[12] Li, M., Song, F., Bowen, Y., et al. (2023). API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs. Conference on Empirical Methods in Natural Language Processing.</p>
+
+        <p>[13] Brown, T., Mann, B., Ryder, N., et al. (2020). Language models are few-shot learners. <i>Advances in Neural Information Processing Systems, 33</i>, 1877–1901.</p>
+
+        <p>[14] Du, Z., Qian, Y., Liu, X., et al. (2022). GLM: General Language Model Pretraining with Autoregressive Blank Infilling. In <i>Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)</i>, pp. 320–335.</p>
+
+        <p>[15] Glaese, A., McAleese, N., Tr˛ebacz, M., et al. (2022). “Improving alignment of dialogue agents via targeted human judgements,” arXiv preprint <a href="https://arxiv.org/abs/2209.14375" target="_blank">arXiv:2209.14375</a>.</p>
+
+        <p>[16] Kim, S., Moon, S., Tabrizi, R., et al. (2024). <a href="https://arxiv.org/abs/2312.04511">An LLM compiler for parallel function calling</a>. Retrieved from arXiv:2312.04511 [cs.CL]</p>
+
+        <p>[17] Srinivasan, V. K., Dong, Z., Zhu, B., et al. (2023). <a href="https://openreview.net/forum?id=Md6RUrGz67">NexusRaven: A commercially-permissive language model for function calling</a>. In NeurIPS 2023 Workshop on Instruction Tuning and Instruction Following.</p>
+
+        <p>[19] Kaplan, J., McCandlish, S., Henighan, T., et al. (2020). <a href="https://arxiv.org/abs/2001.08361">Scaling Laws for Neural Language Models</a>. ArXiv, abs/2001.08361.</p>
+
+        <p>[20] Hoffmann, J., Borgeaud, S., Mensch, A., et al. (2022). <a href="https://arxiv.org/abs/2203.15556">Training Compute-Optimal Large Language Models</a>. ArXiv, abs/2203.15556.</p>
+
+        <p>[21] Wei, J., Tay, Y., Bommasani, R., et al. (2022). <a href="https://arxiv.org/abs/2206.07682">Emergent Abilities of Large Language Models</a>. ArXiv, abs/2206.07682.</p>
+
+        <p>[22] Chang, Y., Wang, X., Wang, J., et al. (2023). <a href="https://arxiv.org/abs/2307.03109">A Survey on Evaluation of Large Language Models</a>. ArXiv, abs/2307.03109.</p>
+
+        <p>[23] Schick, T., Dwivedi-Yu, J., Dessì, R., et al. (2023). <a href="https://arxiv.org/abs/2302.04761">Toolformer: Language Models Can Teach Themselves to Use Tools</a>. ArXiv, abs/2302.04761.</p>
+
+        <p>[24] Mialon, G., Dessì, R., Lomeli, M., et al. (2023). <a href="https://arxiv.org/abs/2302.07842">Augmented Language Models: a Survey</a>. ArXiv, abs/2302.07842.</p>
+
+        <p>[25] Langchain. (2023). <a href="https://blog.langchain.dev/parallel-function-calling-extraction/">Parallel Function Calling for Structured Data Extraction</a>.</p>
+
+        <p>[26] OpenAI. (2023). <a href="https://platform.openai.com/docs/guides/function-calling">Function calling</a>.</p>
+
+
+      <script type="text/javascript">
+        $("#toc").toc({
+          selectors: "h2", //elements to use as headings
+          container: "#toccontent", //element to find all selectors in
+          smoothScrolling: true, //enable or disable smooth scrolling on click
+          prefix: "toc", //prefix for anchor tags and class names
+          highlightOnScroll: true, //add class to heading that is currently in focus
+          highlightOffset: 100, //offset to trigger the next headline
+          anchorName: function (i, heading, prefix) {
+            //custom function for anchor name
+            return prefix + i;
+          },
+        });
+        $('[id*="link_"]').each(function () {
+          var element = $(this);
+          element.click(function (e) {
+            e.preventDefault();
+            var id = element.attr("id").split("_")[1];
+            element.parent().removeClass("show").addClass("no-show");
+            $("#charts_" + id)
+              .removeClass("no-show")
+              .addClass("show");
+          });
+        });
+        $('[id*="link_"]').each(function () {
+          var element = $(this);
+          element.click(function (e) {
+            e.preventDefault();
+            var id = element.attr("id").split("_")[1];
+            element.parent().removeClass("show").addClass("no-show");
+            $("#charts_" + id)
+              .removeClass("no-show")
+              .addClass("show");
+          });
+        });
+        $('[id*="colapse_"]').each(function () {
+          var element = $(this);
+          element.click(function (e) {
+            e.preventDefault();
+            var id = element.attr("id").split("_")[1];
+            element.parent().removeClass("show").addClass("no-show");
+            $("#intro_" + id)
+              .removeClass("no-show")
+              .addClass("show");
+          });
+        });
+        document.getElementById("defaultOpen").click();
+      </script>
+    </div>
+  
+
+</body></html>

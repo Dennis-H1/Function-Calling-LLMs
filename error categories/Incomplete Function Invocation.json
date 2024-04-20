@@ -1,0 +1,397 @@
+{
+    "question_result": [
+      {
+         "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_REAS_Q2",
+         "category":"Reasoning",
+         "question":"I am aware that the restaurants get rated by the customers, from 1 to 5 stars, here in New York. As I will be with some very important people at a conference in Manhattan. I am seeking recommendations for the highest-rated establishments close to the conference room scheduled for tomorrow. Your insights will be helpful. Return the answer in JSON format: {'restaurant':'my_restaurant'}",
+         "motivation":"Evaluate the ability of LLM to reason the selection of a list of elements according to defined user criteria (string and integer matching) and parameter dependency.",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_restaurants_by_ratings",
+                  "get_neighborhood_by_rest_specification"
+               ],
+               "parameters":[
+                  {
+                     "rating":5
+                  },
+                  {
+                     "restaurants":"Cafe Habana, Anjappar Chettinad, Bukhara Grill,Shake Shack",
+                     "neigborhood":"Manhattan"
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_restaurants_by_ratings"
+            ],
+            "parameters":[
+               {
+                  "rating":5
+               }
+            ],
+            "answer":"```json\n{'restaurant':'Rating not found'}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "restaurant":"SHAKE SHACK"
+            }
+         },
+         "evaluation":{
+            "function_eval":"Partially Correct",
+            "argument_eval":"Partially Correct",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_AGG_Q2",
+         "category":"Aggregation",
+         "question":" I am visiting for the first time New York, I'll be staying in a Cozy Entire Floor of Brownstone Airbnb near my university and I want to try diverse cuisines. Could you please provide a list of the two closest restaurants around here? Return the answer in JSON format: {'restaurants': [closest_restaurant]} ",
+         "motivation":"Evaluate the ability of LLM to filter according to a minimum proximity distance defined by the user",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_long_lat_by_airbnb",
+                  "get_restaurant_by_airbnb_closeness"
+               ],
+               "parameters":[
+                  {
+                     "listing":"Cozy Entire Floor of Brownstone"
+                  },
+                  {
+                     "latitude":40.68514,
+                     "longitude":-73.95976
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_long_lat_by_airbnb"
+            ],
+            "parameters":[
+               {
+                  "listing":"Cozy Entire Floor of Brownstone"
+               }
+            ],
+            "answer":"I'm unable to find the specific Airbnb listing you mentioned. Could you provide more details about its location or any nearby landmarks? This information will help me find the closest restaurants to your accommodation."
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "restaurants":[
+                  "MARCO'S",
+                  "AUNTS ET UNCLES"
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Partially Correct",
+            "argument_eval":"Partially Correct",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_REAS_Q6",
+         "category":"Reasoning",
+         "question":" In an unexpected turn of events, my flight in the Brooklyn area has been canceled, and the next available flight is scheduled for tomorrow morning. Facing this predicament, I'm on the lookout for budget-friendly accommodation, aiming for an exceptionally low cost, around $10. Could you assist me in identifying a suitable Airbnb and provide details regarding its location. Return the answer in JSON format: {'street': [street_of_my_airbnb]}",
+         "motivation":"Evaluate the ability of LLM to reason numerical representations of string-like context for time constraints. Assess GPT's reasoning ability in determining the sequence of three functions as a chain-of-thought in order to finally reason targets according to geographical proximity.",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                  "get_long_lat_by_airbnb",
+                  "get_airbnb_address_by_lat_long"
+               ],
+               "parameters":[
+                  {
+                     "price":10,
+                     "min_nights":1,
+                     "neighbourhood_group":"Brooklyn"
+                  },
+                  {
+                     "listing":"Room with a view"
+                  },
+                  {
+                     "latitude":40.70959,
+                     "longitude":-73.95693
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_airbnb_by_price_min_nights_and_neighborhood_group"
+            ],
+            "parameters":[
+               {
+                  "price":10,
+                  "min_nights":1,
+                  "neighbourhood_group":"Brooklyn"
+               }
+            ],
+            "answer":"```json\n{'street': ['Room with a view']}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "street":"COLUMBIA STREET"
+            }
+         },
+         "evaluation":{
+            "function_eval":"Partially Correct",
+            "argument_eval":"Partially Correct",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_AGG_Q5",
+         "category":"Aggregation",
+         "question":" As I am staying for seven weekdays in New York, 6 days I will be staying at a relative's house and afterwards I would like to find a very nice Airbnb in Bronx to spend the rest of the days with my wife. Each of us have a budget of 15 bucks per night so we could stay together in a nice, clean Airbnb. Could you please provide me with some recommendations and their specific address if possible? Return the answer in JSON format: {'airbnb_address': 'my_airbnb_address'}",
+         "motivation":"Evaluate the ability of LLM to perform numerical operations(summation and substraction) and chain-of-thought reasoning in order to find the geopgraphical proximities to the selection of targets.",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                  "get_long_lat_by_airbnb ",
+                  "get_airbnb_address_by_lat_long"
+               ],
+               "parameters":[
+                  {
+                     "price":30,
+                     "min_nights":1,
+                     "neighbourhood_group":"Bronx"
+                  },
+                  {
+                     "listing":"Bronx Apartment College Av"
+                  },
+                  {
+                     "latitude":40.83739,
+                     "longitude":-73.91118
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_airbnb_by_price_min_nights_and_neighborhood_group",
+               "get_airbnb_address_by_lat_long"
+            ],
+            "parameters":[
+               {
+                  "price":30,
+                  "min_nights":1,
+                  "neighbourhood_group":"Bronx"
+               },
+               {
+                  "latitude":40.858111,
+                  "longitude":-73.903648
+               }
+            ],
+            "answer":"```json\n{'airbnb_address': 'GRAND CONCOURSE'}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb_address":"TURNBULL AVENUE"
+            }
+         },
+         "evaluation":{
+            "function_eval":"Partially Correct",
+            "argument_eval":"Incorrect",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_AGG_Q6",
+         "category":"Aggregation",
+         "question":" I would like to find some good options really near to the place to stay to have dinner with some friends during the evenings, but firstly I would like to find an option to stay for 4 days in Staten Island. I will stay alone there for a seminar so I have a total budget given to 2000 dollars. Return the answer in JSON format: {'airbnb_address': 'my_airbnb_address'}",
+         "motivation":"Evaluate the ability of LLM to perform numerical operations (division) and chain-of-thought reasoning in order to find the geopgraphical proximities to the selection of targets.",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                  "get_long_lat_by_airbnb ",
+                  "get_airbnb_address_by_lat_long"
+               ],
+               "parameters":[
+                  {
+                     "price":500,
+                     "min_nights":4,
+                     "neighbourhood_group":"Staten Island"
+                  },
+                  {
+                     "listing":"5br Duplex. @ Ferry!  Water&City Views!"
+                  },
+                  {
+                     "latitude":40.64605,
+                     "longitude":-74.07897
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_airbnb_by_price_min_nights_and_neighborhood_group"
+            ],
+            "parameters":[
+               {
+                  "price":500,
+                  "min_nights":4,
+                  "neighbourhood_group":"Staten Island"
+               }
+            ],
+            "answer":"```json\n{'airbnb_address': 'WALK TO FREE SI FERRY FROM FURNISHED STUDIO APT'}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb_address":"3 AVENUE"
+            }
+         },
+         "evaluation":{
+            "function_eval":"Partially Correct",
+            "argument_eval":"Partially Correct",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q4",
+         "category":"Languages",
+         "question":"Momentalisht ndodhem ne restorantin Skinny Cantina qe eshte i vendosur ne rrugen W 133RD ST, meqenese jam nje studente e re nuk i njof shume mire rruget dhe do doja tani te gjeja ndonje vend per te fjetur diku ketu rrotull sepse nuk do doja te levizja shume nga zona afer restorantit dhe shkolles. Ju lutem, mund te me sugjeroni disa vende ku mund te fle sonte. Return the answer in JSON format: {'airbnbs': [my_airbnb]}",
+         "motivation":"Test the ability of LLM to comprehend and respond in a different language other than English and perform multiple function calls while requested in different languages.",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_long_lat_by_name_street",
+                  "get_airbnb_by_lat_long"
+               ],
+               "parameters":[
+                  {
+                     "restaurant":"SKINNY CANTINA",
+                     "street":"W 133RD ST"
+                  },
+                  {
+                     "latitude":40.82003511,
+                     "longitude":-73.95893838
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_long_lat_by_name_street"
+            ],
+            "parameters":[
+               {
+                  "restaurant":"Skinny Cantina",
+                  "street":"W 133RD ST"
+               }
+            ],
+            "answer":"{'airbnbs': []}"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnbs":[
+                  "5 rooms in clean apartment /West Harlem",
+                  "British Room @ Columbia Uni."
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Partially Correct",
+            "argument_eval":"Partially Correct",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q7",
+         "category":"Simple Questions",
+         "question":"I would like to find some good options really near to the place to stay to have dinner with some friends during the evenings, but firstly I would like to find an option to stay for 4 days in Staten Island. I will stay alone there for a seminar so I have a total budget given to 2000 dollars. Please, first find the Airbnb that fulfill my conditions and then find the proximity data of this specific Airbnb so you can use them to find out the nearby restaurants. Return the answer in JSON format: {'airbnb_address': 'my_airbnb_street'}  ",
+         "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts. ",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                  "get_long_lat_by_airbnb",
+                  "get_airbnb_address_by_lat_long"
+               ],
+               "parameters":[
+                  {
+                     "price":500,
+                     "min_nights":4,
+                     "neighbourhood_group":"Staten Island"
+                  },
+                  {
+                     "listing":"5br Duplex. @ Ferry!  Water&City Views!"
+                  },
+                  {
+                     "latitude":40.64605,
+                     "longitude":-74.07897
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_airbnb_by_price_min_nights_and_neighborhood_group",
+               "get_long_lat_by_airbnb"
+            ],
+            "parameters":[
+               {
+                  "price":500,
+                  "min_nights":4,
+                  "neighbourhood_group":"Staten Island"
+               },
+               {
+                  "listing":"Still NYC...  Grymes Hill, Staten Island"
+               }
+            ],
+            "answer":"```json\n{\n  'airbnb_address': 'Still NYC...  Grymes Hill, Staten Island'\n}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb_address":"3 AVENUE"
+            }
+         },
+         "evaluation":{
+            "function_eval":"Partially Correct",
+            "argument_eval":"Incorrect",
+            "response_eval":"Incorrect"
+         }
+      }
+                       
+    ]
+}

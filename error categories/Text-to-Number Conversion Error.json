@@ -1,0 +1,166 @@
+{
+    "question_result": [
+      {
+         "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q6",
+         "category":"Extra Context",
+         "question":" Hello, I am planning to go on a trip in New York and watch all the districts like Bronx, Manhattan, Brooklyn etc. My current stop is Queens where I would like to spend a week in order to explore the area more in depth. The budget would be in bounds of 1000 dollars for each of the weekdays. Could you help me find around five places? Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+         "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string and numeric matching), giving some extra context",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group"
+               ],
+               "parameters":[
+                  {
+                     "price":1000,
+                     "min_nights":7,
+                     "neighbourhood_group":"Queens"
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_airbnb_by_price_range_neighbourhood"
+            ],
+            "parameters":[
+               {
+                  "min_price":0,
+                  "max_price":1000,
+                  "neighbourhood_group":"Queens"
+               }
+            ],
+            "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Fun 3 Bedroom Just Minutes to Manhattan!!',\n    'Huge room in great area 25 minutes from Manhattan',\n    'Spacious brand new apartment 2 bedrooms - 2bath',\n    'Private Room for short stay in a house.',\n ]}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb":[
+                  "Amazing huge furnished room!",
+                  "Fun 3 Bedroom Just Minutes to Manhattan!!",
+                  "Sunny and spacious  1-bedroom in Brooklyn",
+                  "Large Private Room in Greenpoint Williamsburg",
+                  "Spacious Bright 1 Bedroom East Village Apartment"
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Incorrect",
+            "argument_eval":"Incorrect",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q7",
+         "category":"Extra Context",
+         "question":"Preparing for an upcoming trip to New York with four colleagues, we're set for a six-day conference in Manhattan. I'm keen on finding five good places to stay near the conference venue. Considering our budget constraints, each of us can spend around $50 per night, allowing for a total of 200 dollars for the stay. I would greatly appreciate your help in identifying some quality Airbnb options within this budget.Return the answer in JSON format: {'airbnb':['my_airbnb']} ",
+         "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string and numeric matching), giving some extra context",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group"
+               ],
+               "parameters":[
+                  {
+                     "price":200,
+                     "min_nights":6,
+                     "neighbourhood_group":"Manhattan"
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_airbnb_by_price_range_neighbourhood"
+            ],
+            "parameters":[
+               {
+                  "min_price":0,
+                  "max_price":200,
+                  "neighbourhood_group":"Manhattan"
+               }
+            ],
+            "answer":"```json\n{\n  'airbnb': [\n    'West Village Apartment near Washington Square Park',\n    'Cozy & artsy apt in East Village - 2 bedrooms',\n    'British Room @ Columbia Uni.',\n    'Spacious One-bedroom Home in Columbia U',\n    'Midtown Luxury Living room close to Highline',\n    'Furnished Bedroom in Murray Hill',\n    'Ballet Suite',\n    'Amazing private room!!!near subway & Central Park2',\n    'Boho escape in Upper Manhattan',\n    'Manhattan Midtown Vacation Home away from Home'\n  ]\n}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb":[
+                  "Sunny and spacious  1-bedroom in Brooklyn",
+                  "Large Private Room in Greenpoint Williamsburg",
+                  "Brooklyn Home in the Heart of it All",
+                  "Spacious 1BR Bushwick Surfers Loft!",
+                  "West Village Apartment near Washington Square Park"
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Incorrect",
+            "argument_eval":"Incorrect",
+            "response_eval":"Incorrect"
+         }
+      }, 
+      {
+         "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_REASON_Q5",
+         "category":"Reasoning",
+         "question":" Hello, I am planning to stay for a week with my friends in Queens and we would like to split the bill between us. A total of 700 dollars would suit us. Can you help us find five good places? Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+         "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group"
+               ],
+               "parameters":[
+                  {
+                     "price":100,
+                     "min_nights":7,
+                     "neighbourhood_group":"Queens"
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_airbnb_by_price_range_neighbourhood"
+            ],
+            "parameters":[
+               {
+                  "min_price":0,
+                  "max_price":700,
+                  "neighbourhood_group":"Queens"
+               }
+            ],
+            "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Fun 3 Bedroom Just Minutes to Manhattan!!',\n    'Huge room in great area, 25 minutes from Manhattan',\n    'Spacious brand new apartment 2 bedrooms - 2bath',\n    'Private Room for short stay in a house.'\n  ]\n}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb":[
+                  "Amazing huge furnished room!",
+                  "Sunny and spacious  1-bedroom in Brooklyn",
+                  "Large Private Room in Greenpoint Williamsburg",
+                  "Huge room in great area 25 minutes from Manhattan",
+                  "Brooklyn Home in the Heart of it All"
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Incorrect",
+            "argument_eval":"Incorrect",
+            "response_eval":"Incorrect"
+         }
+      }                
+    ]
+}

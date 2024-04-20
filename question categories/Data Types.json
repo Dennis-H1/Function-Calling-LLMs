@@ -1,0 +1,1877 @@
+{
+  "question_sets": [
+    {
+      "id": "TRAVEL_Q_SINGLE_STEP_ONE_SHOT_V01_DATA_TYPES",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Single Parameters, One Step and One Shot",
+      "domain": "Travel",
+      "date": "2024-01-15",
+      "description": "Simple, single step questions designed to test a subset of data types questions.",
+      "authors": ["Deidamea Bajri", "Serxhina Kutrolli","Stiliana Jano"],
+      "license": "Apache License 2.0",
+      "function_sets": ["TRAVEL_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01"],
+      "questions": [
+
+
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q1",
+          "category": "Data Types",
+          "question": "Can you please get for me some airbnbs that cost 90 euros per night? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation": "Testing the ability of the LLM to understand the currency differences (euros) and convert it to dollars, then retrieval of the airbnbs in the respective dollar conversion ",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listing_by_price"],
+                "parameters": [{ "price": 90 }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                  "NICEQUIET10 MINUTES TO TIME SQUARE.",
+                  "♕ Downtown Manhattan I Private Bedroom♕",
+                  "Quiet room in Greenpoint Brooklyn",
+                  "Beautiful & Spacious EV Bedroom",
+                  "Red Hook studio space with private entrance",
+                  "Spacious yellow room in Brooklyn",
+                  "Cozy apartment in Noho Soho",
+                  "Rm @Top Floor of a Luxury Building!",
+                  "UWS Studio - Great Neighborhood!"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q2",
+          "category": "Data Types",
+          "question": "I don't have much money and I would like to book an airbnb below 505 yuan, can you suggest me some? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation": "Testing the ability of the LLM to understand the currency differences (yuan) and convert it to dollars, then retrieval of the airbnbs in the respective dollar conversion",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listing_by_lower_price"],
+                "parameters": [{ "price": 70 }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Amazing huge furnished room!",
+                  "Huge room in great area 25 minutes from Manhattan",
+                  "Brooklyn Home in the Heart of it All",
+                  "Room in Bushwick Bk available June",
+                  "Midtown Luxury Living room close to Highline",
+                  "Furnished Bedroom in Murray Hill",
+                  "Sunny spacious room full of good energy",
+                  "Nice & new room washerdryer 5 min to train!",
+                  "Spacious Town House near Park",
+                  "Be Comfy Loft Bedroom"
+                ]
+              }
+            }
+          }
+        }, 
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q3",
+          "category": "Data Types",
+          "question": "I have limited funds available and am seeking accommodation, can you give me some recommendations for less than 9000 cents? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation": "Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listing_by_lower_price"],
+                "parameters": [{ "price": 90 }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Amazing huge furnished room!",
+                  "Sunny and spacious 1-bedroom in Brooklyn",
+                  "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                  "Huge room in great area 25 minutes from Manhattan",
+                  "Brooklyn Home in the Heart of it All",
+                  "Room in Bushwick Bk available June",
+                  "British Room @ Columbia Uni.",
+                  "Spacious One-bedroom Home in Columbia U",
+                  "Midtown Luxury Living room close to Highline",
+                  "Bargain Warm Spacious Studio in Carroll Gardens!"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q4",
+          "category": "Data Types",
+          "question": "Can you find me some airbnbs that have as last review date the date 12-05-2019? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation": "Testing the ability of the LLM to understand another date format (DD-MM-YYYY), regardless of another pre-specified format (DD-MM-YY)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listings_by_review_date"],
+                "parameters": [{ "last_review_date": "12-05-19" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": ["Quiet & Spacious Brooklyn Apt for Cat-Lovers"]
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q5",
+          "category": "Data Types",
+          "question": "Could you please find me an accomodation that is rated on 24th of June 2019 ? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+          "motivation": "Testing the ability of the LLM to understand another date format (Date and Month as string, then YYYY), regardless of another pre-specified format (DD-MM-YY)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listings_by_review_date"],
+                "parameters": [{ "last_review_date": "24-06-19" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                "Large Private Room in Greenpoint Williamsburg",
+                 "Convenient East Village Studio", 
+                 "Red Hook studio space with private entrance",
+                 "BRIGHT Modern Spacious East Village Studio Apt",
+                  "Huge Beautiful Loft in the Heart of Williamsburg", 
+                  "Private big one bedroom apt BrooklynNY",
+                  "Cozy Studio with Patio Close to the Subway", 
+                  "Room at walking distance to the Empire State!",
+                  "Best Location Sun Filled West Village Townhome",
+                  "Shared Room By Times Square near Central Park 3" 
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q6",
+          "category": "Data Types",
+          "question": "Could you please find me an accomodation that is rated on 01-02-2019 ? Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+          "motivation": "Testing the ability of the LLM to understand another date format (DD-MM-YYYY), regardless of another pre-specified format (DD-MM-YY)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listings_by_review_date"],
+                "parameters": [{ "last_review_date": "01-02-19" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": "Warm little oasis in Brooklyn with Full size bed"
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q7",
+          "category": "Data Types",
+          "question": "Could you please find me an accomodation that is lastly rated in June of 2018, maybe on the first? Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+          "motivation": "Testing the ability of the LLM to understand the date as text and convert it to the right date format (DD-MM-YY)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listings_by_review_date"],
+                "parameters": [{ "last_review_date": "01-06-18" }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                "Sunny and spacious  1-bedroom in Brooklyn"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q8",
+          "category": "Data Types",
+          "question": "Could you please find me an accomodation that requires for me to stay at least 48 hours? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation": "Testing the ability of the LLM to understand the time measurement unit (hours) to do the appropriate conversion to days/nights",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listings_by_min_nights"],
+                "parameters": [{ "minimum_nights": 2 }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Amazing huge furnished room!",
+                  "Fun 3 Bedroom Just Minutes to Manhattan!!",
+                  "Spacious Brooklyn Brownstone 3BR+",
+                  "Spacious brand new apartment 2 bedrooms - 2bath",
+                  "Magical 3-bed3-bath fabulous views",
+                  "Central Harlem Private Studio",
+                  "LIC Jackson park luxury apartment Queen Plaza",
+                  "BEST location in Williamsburg",
+                  "NICEQUIET10 MINUTES TO TIME SQUARE.",
+                  "Entire Cozy Apt in Brooklyn - 20 mins to Manhattan"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q9",
+          "category": "Data Types",
+          "question": "I have limited funds available, only 42 dollars and 100 cents, can you give me ten recommendations for accommodation? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+          "motivation": "Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_listing_by_lower_price"],
+                "parameters": [{ "price": 43 }]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Room in Bushwick Bk available June",
+                  "Nice & new room  washerdryer 5 min to train!",
+                  "Private Room for short stay in a house.",
+                  "NEW Bedroom wPrivate Toilet (Great Study Space)",
+                  "金城发双人房 suit2 queens size bed",
+                  "Bedroom 7 bed A.",
+                  "BK'S FINEST CLOSE 2 TRANSPORTATION-",
+                  "Calm bed great area.",
+                  "Sunny room in Brooklyn",
+                  "Sunny Cozy Room Near Train Cafes & Parks"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "TRAVEL_Q_SINGLE_STEP_ONE_SHOT_MULTI_PARAM_V01_DATA_TYPES",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Multiple Parameters, Multi Step and One Shot",
+      "domain": "Travel",
+      "date": "2024-01-15",
+      "description": "Multi step questions designed to test a subset of data types questions.",
+      "authors": ["Deidamea Bajri", "Serxhina Kutrolli","Stiliana Jano"],
+      "license": "Apache License 2.0",
+      "function_sets": ["TRAVEL_FUNC_MULTI_PARAM_SIMPLE_DESC_NO_EX_V01"],
+      "questions": [
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q1",
+          "category": "Data Types",
+          "question": "I am currently in New York, I was wandering around Brooklyn and I have only 10 dollars and 10 euros so please help me find a place for tonight.Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation": "Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_airbnb_by_price_and_neighborhood_group"],
+                "parameters": [
+                  {
+                    "price": 20,
+                    "neighbourhood_group": "Brooklyn"
+                  }
+                ]
+              },
+              {
+                "path_id": 2,
+                "functions": ["get_airbnb_by_price_range_neighbourhood"],
+                "parameters": [
+                  {
+                    "min_price": 0,
+                    "max_price": 20,
+                    "neighbourhood_group": "Brooklyn"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": ["Calm bed great area.", "Room with a view"]
+              }
+            },
+            "comment": "The LLM should comprehend that 10 dollars and 10 euros equal to approximately 20 dollars."
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q2",
+          "category": "Data Types",
+          "question": "Roaming the diverse neighborhoods of Brooklyn, New York City, I have 250 Mexican pesos, 100 Canadian dollars, and 50 Indian rupees in my wallet. With this diverse currency, can you assist me in finding  around five suitable accommodation for tonight? I want to use all the money I have for accommodation.Return the answer in JSON format: {'airbnb':['my_airbnb']",
+          "motivation": "Testing the ability of the LLM to understand the unit conversion of different currencies (dollars, pesos, canadian dollars and indian rupees) and to aggregate to the same unit (full dollar amount)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": ["get_airbnb_by_price_and_neighborhood_group"],
+                "parameters": [
+                  { "price": 87, "neighbourhood_group": "Brooklyn" }
+                ]
+              },
+              {
+                "path_id": 2,
+                "functions": ["get_airbnb_by_price_range_neighbourhood"],
+                "parameters": [
+                  {
+                    "min_price": 0,
+                    "max_price": 87,
+                    "neighbourhood_group": "Brooklyn"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Brooklyn Home in the Heart of it All",
+                   "Room in Bushwick Bk available June",
+                   "Bargain Warm Spacious Studio in Carroll Gardens!",
+                   "Sunny spacious room full of good energy"
+                ]
+              }
+            },
+            "comment": "The LLM should understand the currency variations and perform the necessary calculations to convert the different currencies to dollars and sum them for the final amount being the price of the airbnb per night. "
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q3",
+          "category": "Data Types",
+          "question": "I am currently traveling to Queens where I plan to spend some days. I want to find some place to stay and I have a limited budget of 100 dollars and 300 cents. I don't have much time available, for me it is enough to stay 3 nights and no more than that. Can you give me around ten recommendations? Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation": "Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters": [
+                  {
+                    "price": 103,
+                    "min_nights": 3,
+                    "neighbourhood_group": "Queens"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Amazing huge furnished room!",
+                  "Sunny and spacious  1-bedroom in Brooklyn",
+                  "Large Private Room in Greenpoint Williamsburg",
+                  "Brooklyn Home in the Heart of it All",
+                  "British Room @ Columbia Uni.",
+                  "Spacious brand new apartment 2 bedrooms - 2bath",
+                  "Bargain Warm Spacious Studio in Carroll Gardens!",
+                  "Sunny spacious room full of good energy",
+                  "1BR Apt in the Bay Ridge!",
+                  "Nice & new room  washerdryer 5 min to train!"
+                ]
+              }
+            },
+            "comment": "The LLM should understand that 100 dollars and 300 cents sum up to the full dollar amount of 103 dollars."
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q4",
+          "category": "Data Types",
+          "question": "I am currently traveling to Queens where I plan to spend some days. I want to find some place to stay and I have a limited budget of 99 dollars and 100 cents. I don't have much time available, for me it is enough to stay 3 nights and no more than that. Can you give me around ten recommendations? Return the answer in JSON format: {'airbnb_by_neighbour':'neighbourhood_group', 'airbnb_by_nights':'min_number', 'aribnb_by_price':'price_per_night'}",
+          "motivation": "Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters": [
+                  {
+                    "price": 100,
+                    "min_nights": 3,
+                    "neighbourhood_group": "Queens"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Amazing huge furnished room!",
+                  "Sunny and spacious  1-bedroom in Brooklyn",
+                  "Large Private Room in Greenpoint Williamsburg",
+                  "Brooklyn Home in the Heart of it All",
+                  "British Room @ Columbia Uni.",
+                  "Spacious brand new apartment 2 bedrooms - 2bath",
+                  "Bargain Warm Spacious Studio in Carroll Gardens!",
+                  "Sunny spacious room full of good energy",
+                  "1BR Apt in the Bay Ridge!",
+                  "Nice & new room  washerdryer 5 min to train!"
+                ]
+              }
+            },
+            "comment": "The LLM should understand that 100 dollars and 50 cents sum up to 100.5 dollars."
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q5",
+          "category": "Data Types",
+          "question": "I am coming from London and I have 200 pounds to spend for 4 nights in Bronx. Can you find me some good places to stay? Return the answer in JSON format: {'airbnb':'my_airbnb',}",
+          "motivation": "Testing the ability of the LLM to understand the unit conversion of different currencies (pounds) to the correct currency (dollars)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters": [
+                  {
+                    "price": 63,
+                    "min_nights": 4,
+                    "neighbourhood_group": "Bronx"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Bronx Apartment College Ave",
+                  "Sunny Room across CrotonaPark for Women Only Space",
+                  "Private Studio in Private Home",
+                  "Cozy 1 Bedroom Apartment near Yankee Stadium",
+                  "Charming Attic RM with BackyardPorchNear Metro",
+                  "Cozy Private Bedroom",
+                  "Bronx Little Italy Arthur Ave Fordham Yanks.",
+                  "Shared space wprivacy near NY Botanic Garden",
+                  "•Bright and Cozy room in an elegant apartment•"
+                ]
+              }
+            },
+            "comment": "The LLM should convert the 200 pounds to approximately 253 dollars, which corresponds to a rounded value of 63 dollars per night"
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q6",
+          "category": "Data Types",
+          "question": "I will be traveling to New York for work next week, specifically in the Bronx. I am looking for accommodation within my budget of 300 pounds per night, and I plan to stay for a minimum of a week. Any recommendations for places that fit my budget would be greatly appreciated. Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation": "Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters": [
+                  {
+                    "price": 380,
+                    "min_nights": 7,
+                    "neighbourhood_group": "Bronx"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Apartment around the park",
+                  "Bronx Apartment College Ave",
+                  "Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)",
+                  "Sunny Room across CrotonaPark for Women Only Space",
+                  "Uptown Bronx Apartment",
+                  "The Sweet",
+                  "Private Studio in Private Home",
+                  "Large Private Room. Safe area. Near 4 and D trains",
+                  "Cozy 1 Bedroom Apartment near Yankee Stadium",
+                  "Charming Attic RM with BackyardPorchNear Metro",
+                  "Great room! Good for med students!",
+                  "DOMINIQUE'S NY*Wanderlust roomMetroBronx ZooGdn",
+                  "Gorgeous and Sunlit 1 BR 311-31",
+                  "Cozy Private Bedroom",
+                  "Charming studio apartment",
+                  "Bronx Little Italy Arthur Ave Fordham Yanks.",
+                  "Artsy + Light. River Views. 30 min to 42nd St.",
+                  "Shared space wprivacy near NY Botanic Garden",
+                  "•Bright and Cozy room in an elegant apartment•"
+                ]
+              }
+            },
+            "comment": "The LLM should convert the 300 pounds to approximately 380 dollars"
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q7",
+          "category": "Data Types",
+          "question": "I, along with eight colleagues, will be visiting New York and are currently in search of an apartment that can accommodate all of us. We prefer a location near Manhattan. Could you please provide options that have been recently frequented or reviewed by previous occupants? Additionally, exclude any places with reviews dated before the first of January four years ago from the current date. Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+          "motivation": "Testing the ability of the LLM to understand the correct date format",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters": [
+                  {
+                    "neighbourhood_group": "Manhattan",
+                    "room_type": "Entire home apartment",
+                    "last_review_date": "01-01-19"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "Studio in Brooklyn Heights with Private Entrance",
+                  "Oasis in East Village",
+                  "True 1BR in East Village with City Views",
+                  "Urban sanctuary near Bedford L!",
+                  "Stylish spacious 1 bd centrally located in Midtown",
+                  "Chic and Cozy Chinatown Loft",
+                  "Bright Clean North Central Park"
+                ]
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q8",
+          "category": "Data Types",
+          "question": "I want an entire apartment on 15 Jan in the area of Manhattan. Can you help me find some? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+          "motivation": "Testing the ability of the LLM to understand the the correct date format",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters": [
+                  {
+                    "neighbourhood_group": "Manhattan",
+                    "room_type": "Entire home apartment",
+                    "last_review_date": "15-01-22"
+                  }
+                ]
+              },
+              {
+                "path_id": 2,
+                "functions": [
+                  " get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters": [
+                  {
+                    "neighbourhood_group": "Manhattan",
+                    "room_type": "Entire home apartment",
+                    "last_review_date": "15-01-23"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "There are no available airbnbs in that neighbourhood with that room type and review date"
+                ]
+              }
+            },
+            "comment": "In Case the LLM correctly identifies the current year, we expect no answer since there are no data for the most recent years. "
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q9",
+          "category": "Data Types",
+          "question": "Can you get for me some airbnbs in the area of Brooklyn, a private room would be nice, that was lastly rated on the first day of June in 2018? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+          "motivation": "Testing the ability of the LLM to understand the date data format",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters": [
+                  {
+                    "neighbourhood_group": "Brooklyn",
+                    "room_type": "Private room",
+                    "last_review_date": "01-06-18"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": ["Sunny and spacious  1-bedroom in Brooklyn"]
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q10",
+          "category": "Data Types",
+          "question": "Can you get for me some airbnbs in the area of Brooklyn, a private room would be nice, that was lastly rated on the first June 2018? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+          "motivation": "Testing the ability of the LLM to understand the correct date format",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters": [
+                  {
+                    "last_review_date": "01-06-18",
+                    "room_type": "Private room",
+                    "neighbourhood_group": "Brooklyn"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": ["Sunny and spacious  1-bedroom in Brooklyn"]
+              }
+            },
+            "comment": null
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q11",
+          "category": "Data Types",
+          "question": "I would like to stay in Manhattan for a couple of nights and get a shared room. I would like to get an airbnb that is lastly rated on 2019-06-23? Return the answer in JSON format:{'airbnb_location':'location', 'last_reviewed':'review_date', 'type':'type_of_room'}",
+          "motivation": "Testing the ability of the LLM to understand the correct date format",
+          "target": {
+            "chained": false,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters": [
+                  {
+                    "neighbourhood_group": "Manhattan",
+                    "room_type": "Shared room",
+                    "last_review_date": "23-06-19"
+                  }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb": [
+                  "British Room @ Columbia Uni.",
+                  "Beautiful Room with Laundry in Prime Williamsburg",
+                  "Central Harlem Private Studio",
+                  "Modern and Stylish 1 Bedroom in East Village",
+                  "Spacious & Stylish 3BR Condo Steps to the Subway!",
+                  "Sunny 1BR + Outdoor space [L line]",
+                  "Your own hip and cozy 1BD apartment",
+                  "Artsy and charming retreat in Lefferts Garden",
+                  "Shared Cozy Apartment By Times Square Manhattan",
+                  "Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)",
+                  "NYC Bedroom!! - Minutes to Central Park!!",
+                  "Spacious Great Location Garden 1 stop to City.",
+                  "Sonder | Stock Exchange | Sunny 3BR + Sofa Bed",
+                  "Near Subway and Central Park :)",
+                  "Room wpvt bathroom on Central Park",
+                  "Cozy Private room in Chelsea !",
+                  "Amazing LES apt - cool bright...",
+                  "Cute apartment with Backyard",
+                  "Luxury 2BDR in Prime Area Doorman Elevator",
+                  "Large Charming 1 BR + Den  in  Brownstone Apt",
+                  "Amazing Columbus Circle 3 Bedroom",
+                  "Private 2B Room in 4BR2BA APT in Hell's Kitchen",
+                  "Bright 2BR in Bed-Stuy (20 Minutes to Manhattan!)",
+                  "Comfy 4br 2 full baths 3 fls 2 living rooms"
+                ]
+              }
+            },
+            "comment": "The LLM should be able to align the date with the available date format used in the API (DD-MM-YY)."
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "TRAVEL_Q_MULTI_CALL_SEQUENTIAL_V01_DATA_TYPES",
+      "name": "Mannheim Function Calling Benchmark: Questions w/ Multiple Calls and One Shot",
+      "domain": "Travel",
+      "date": "2024-01-15",
+      "description": "Multi step questions designed to test a subset of data types category.",
+      "authors": ["Deidamea Bajri", "Serxhina Kutrolli","Stiliana Jano"],
+      "license": "Apache License 2.0",
+      "function_sets": ["TRAVEL_FUNC_MULTI_CALL_SEQUENTIAL_SIMPLE_DESC_NO_EX_V01"],
+      "questions": [
+        {
+          "id": "TRAVEL_MULTI_CALL_SEQUENTIAL_DATA_TYPES_Q1",
+          "category": "Data Types",
+          "question": "I am aware that the restaurant I am staying at now is a very famous one as it is one of the best parts of Manhattan. My friend gave me the postal code of the restaurant which was one zero zero one nine and it is one of the best Japanese cuisine restaurants, I reserved a nice place by calling the reception on their contact details: 2127078609, I would like to find some Airbnb very close from here so I can easily come to these attractions and restaurant. Return the answer in JSON format: {'airbnb_close_specific_restaurant': 'my_airbnb'}",
+          "motivation": "Evaluate the ability of the LLM to reason between data types and data type conversions(from string to numerical) for subsequent use in multi function calling.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                  "get_airbnb_by_lat_long"
+                ],
+                "parameters": [
+                  {
+                    "zipcode": "10019",
+                    "cuisine": "Japanese",
+                    "borough": "Manhattan",
+                    "phone": "2127078609"
+                  },
+                  { "latitude": 40.76780591, "longitude": -73.98338972 }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb_close_specific_restaurant": "Manhattan - Columbus Circle Apt"
+              }
+            },
+            "comment": "Task the model with defining geo coordinates for a restaurant using a written (non-numeric) zip code, for subsequent use in finding nearby Airbnbs."
+          }
+        },
+        {
+          "id": "TRAVEL_MULTI_CALL_SEQUENTIAL_DATA_TYPES_Q2",
+          "category": "Data Types",
+          "question": "A friend of mine in New York suggested a nice place to eat in Brooklyn. My friend gave me the postal code of the Chinese restaurant which was: 11207.  He also gave me the contact details of that eating place so I could reserve a table for tonight 212 7183852288. Additionally, I would like to find some Airbnb very close to this certain eating place. Return the answer in JSON format: {'airbnb_close_specific_restaurant': 'my_airbnb'}",
+          "motivation": "Evaluate the ability of the LLM to reason between data types and data type conversions(phone number with and without prefixes) for subsequent use in multi function calling.",
+          "target": {
+            "chained": true,
+            "solution_paths": [
+              {
+                "path_id": 1,
+                "functions": [
+                  "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                  "get_airbnb_by_lat_long"
+                ],
+                "parameters": [
+                  {
+                    "zipcode": "11207",
+                    "cuisine": "Chinese",
+                    "borough": "Brooklyn",
+                    "phone": "7183852288"
+                  },
+                  { "latitude": 40.66254116, "longitude": -73.89814971 }
+                ]
+              }
+            ],
+            "expected_answer": {
+              "ordered_items": [],
+              "answer": {
+                "airbnb_close_specific_restaurant": "Room in Bushwick Bk available June"
+              }
+            },
+            "comment": "GPT should understand the phone prefix (212) which corresponds to Brooklyn's prefix"
+          }
+        }                                                            
+      ]
+    }
+  ],
+
+
+
+  "function_sets": [
+    {
+      "id": "TRAVEL_FUNC_ONE_PARAM_SIMPLE_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 14,
+      "functions": [
+        {
+          "name": "get_host_name",
+          "description": "Provide the host name for the AirbnB listing",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_min_nights",
+          "description": "Provide the number of nights required to stay for an airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_nr_of_reviews",
+          "description": "Provide the number of reviews for an airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },  
+        {
+          "name": "get_listing_price",
+          "description": "Provide the price of an airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_listing_by_neighbourhood_group",
+          "description": "Get the airbnbs for a specific neighbourhood group",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "neighbourhood_group": {
+                      "type": "string",
+                      "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                  }
+              },
+              "required": ["neighbourhood_group"]
+          }
+        },
+        {
+          "name": "get_listings_by_review_date",
+          "description": "Get the listings for a specific review date in the format DD-MM-YY",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "last_review_date": {
+                      "type": "string",
+                      "description": "The date of the last review, e.g. 12-05-19"
+                  }
+              },
+              "required": ["last_review_date"]
+          }
+        },
+        {
+          "name": "get_listings_by_min_nights",
+          "description": "Get the listings for a specific number of minimum nights to stay at an airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "minimum_nights": {
+                      "type": "string",
+                      "description": "The number of minimum nights, e.g. 3"
+                  }
+              },
+              "required": ["minimum_nights"]
+          }
+        },  
+        {
+          "name": "get_frequent_listings",
+          "description": "Get the frequent airbnbs",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "nr_of_listings": {
+                      "type": "integer",
+                      "description": "The number of listings, e.g. 3"
+                  }
+              },
+              "required": ["nr_of_listings"]
+          }
+        },    
+        {
+          "name": "get_listing_by_price",
+          "description": "Get the airbnbs for a specific price in US dollars currency",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "price": {
+                      "type": "integer",
+                      "description": "The price of an airbnb per night, e.g. 90 dollars"
+                  }
+              },
+              "required": ["price"]
+          }
+        },
+        {
+          "name": "get_listing_by_lower_price",
+          "description": "Get the airbnbs for a price equal or less to the price requested in US dollars",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "price": {
+                      "type": "integer",
+                      "description": "The price of an airbnb per night, e.g. 90 dollars"
+                  }
+              },
+              "required": ["price"]
+          }
+        },
+        {
+          "name": "get_neighbourhood_group",
+          "description": "Get the neighbourhood group of a specific airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "name": {
+                      "type": "string",
+                      "description": "The name of the airbnb, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["name"]
+          }
+        },
+        {
+          "name": "get_restaurants_by_cuisine",
+          "description": "For a specific cuisine category, get the respective restaurants",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "cuisine": {
+                      "type": "string",
+                      "description": "The cuisine type, e.g. Japanese"
+                  }
+              },
+              "required": ["cuisine"]
+          }
+        },
+        {
+          "name": "get_borough_location",
+          "description": "For a specific restaurant, get the borough location",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant": {
+                      "type": "string",
+                      "description": "The restaurant name, e.g. Junoon"
+                  }
+              },
+              "required": ["restaurant"]
+          }
+        },
+        {
+          "name": "get_cuisine",
+          "description": "For a specific restaurant, get the cuisine",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant": {
+                      "type": "string",
+                      "description": "The restaurant name, e.g. Junoon"
+                  }
+              },
+              "required": ["restaurant"]
+          }
+        },
+        {
+          "name": "get_listing_by_room_type",
+          "description": "Get the airbnbs for a specific room type",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "room_type": {
+                      "type": "string",
+                      "description": "The room type, e.g. Entire home apt"
+                  }
+              },
+              "required": ["room_type"]
+          }
+        }          
+
+      ]
+    },
+    {
+      "id": "TRAVEL_FUNC_ONE_PARAM_COMPLEX_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Without Examples",
+        "Complex Description"
+      ],
+      "num_functions": 14,
+      "functions": [
+        {
+          "name": "get_host_name",
+          "description": "Provide the name of the Airbnb’s owner.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_min_nights",
+          "description": "Provide the minimum duration of stay for the Airbnb reservation.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_nr_of_reviews",
+          "description": "Provide the count of guest evaluations for the Airbnb listing.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },  
+        {
+          "name": "get_listing_price",
+          "description": "Provide the rental cost for the Airbnb accommodation in US dollars.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing_name": {
+                      "type": "string",
+                      "description": "The name of the airbnb listing, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["listing_name"]
+          }
+        },
+        {
+          "name": "get_listing_by_neighbourhood_group",
+          "description": "Get the listings of Airbnb properties within a designated district area.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "neighbourhood_group": {
+                      "type": "string",
+                      "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                  }
+              },
+              "required": ["neighbourhood_group"]
+          }
+        },
+        {
+          "name": "get_listings_by_review_date",
+          "description": "Get the Airbnb properties associated with a particular date of feedback in the date format DD-MM-YY.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "last_review_date": {
+                      "type": "string",
+                      "description": "The date of the last review, e.g. 12-05-19"
+                  }
+              },
+              "required": ["last_review_date"]
+          }
+        },
+        {
+          "name": "get_listings_by_min_nights",
+          "description": "Get the Airbnb offerings that require a set minimum number of nights for booking.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "minimum_nights": {
+                      "type": "string",
+                      "description": "The number of minimum nights, e.g. 3"
+                  }
+              },
+              "required": ["minimum_nights"]
+          }
+        },  
+        {
+          "name": "get_frequent_listings",
+          "description": "Get the Airbnb´s that are most commonly booked.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "nr_of_listings": {
+                      "type": "integer",
+                      "description": "The number of listings, e.g. 3"
+                  }
+              },
+              "required": ["nr_of_listings"]
+          }
+        },    
+        {
+          "name": "get_listing_by_price",
+          "description": "Locate Airbnb rentals available at a specified price point in US dollars.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "price": {
+                      "type": "integer",
+                      "description": "The price of an airbnb per night, e.g. 90 dollars"
+                  }
+              },
+              "required": ["price"]
+          }
+        },
+        {
+          "name": "get_listing_by_lower_price",
+          "description": "Get the Airbnb properties priced at or below the specified amount in US dollars.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "price": {
+                      "type": "integer",
+                      "description": "The price of an airbnb per night, e.g. 90 dollars"
+                  }
+              },
+              "required": ["price"]
+          }
+        },
+        {
+          "name": "get_neighbourhood_group",
+          "description": "Get the local community association for a particular Airbnb listing",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "name": {
+                      "type": "string",
+                      "description": "The name of the airbnb, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["name"]
+          }
+        },
+        {
+          "name": "get_restaurants_by_cuisine",
+          "description": " Get some places that serve a particular type of cuisine",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "cuisine": {
+                      "type": "string",
+                      "description": "The cuisine type, e.g. Japanese"
+                  }
+              },
+              "required": ["cuisine"]
+          }
+        },
+        {
+          "name": "get_borough_location",
+          "description": "Determine the district where a particular restaurant is situated.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant": {
+                      "type": "string",
+                      "description": "The restaurant name, e.g. Junoon"
+                  }
+              },
+              "required": ["restaurant"]
+          }
+        },
+        {
+          "name": "get_cuisine",
+          "description": "Identify the culinary style or category of food that a certain dining establishment specializes in.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant": {
+                      "type": "string",
+                      "description": "The restaurant name, e.g. Junoon"
+                  }
+              },
+              "required": ["restaurant"]
+          }
+        },
+        {
+          "name": "get_listing_by_room_type",
+          "description": "Search for Airbnb properties that match a specific accommodation category or room configuration.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "room_type": {
+                      "type": "string",
+                      "description": "The room type, e.g. Entire home apt"
+                  }
+              },
+              "required": ["room_type"]
+          }
+        }          
+
+      ]
+    },
+
+
+    {
+      "id": "TRAVEL_FUNC_MULTI_PARAM_SIMPLE_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 10,
+      "functions": [
+        {
+          "name": "get_airbnb_by_price_range_neighbourhood",
+          "description": "Get the listing by neighbourhood group between a specific price range in US dollars",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "min_price": {
+                      "type": "string",
+                      "description": "The min price in the range"
+                  },
+                  "max_price": {
+                      "type": "string",
+                      "description": "The maximum price in the range"
+                  },                
+                  "neighbourhood_group": {
+                      "type": "string",
+                      "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                  }
+              },
+              "required": ["min_price","max_price","neighbourhood_group"]
+          }
+        },
+        {
+            "name": "get_airbnb_by_price_min_nights_and_neighborhood_group",
+            "description": "Get the listing by minimum price in US dollars, minimum nights and and a specific neighbourhood group",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "price": {
+                        "type": "integer",
+                        "description": "The price of an airbnb per night, e.g. 90 dollars"
+                    },
+                    "min_nights": {
+                        "type": "integer",
+                        "description": "The minimum amount of nights, e.g. 2"
+                    },                
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                    }
+                },
+                "required": ["price","min_nights","neighbourhood_group"]
+            }
+        }, 
+        {
+            "name": "get_airbnb_by_neighbourhood_group_room_type_date",
+            "description": "Get the listing by neighbourhood group, room type and last review date in the format DD-YY-MM",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "room_type": {
+                        "type": "string",
+                        "description": "The type of room of an airbnb, e.g. private room"
+                    },
+                    "last_review_date": {
+                        "type": "string",
+                        "description": "The date when the last review was recorded, e.g. 23-09-2019"
+                    },                
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                    }
+                },
+                "required": ["room_type","last_review_date","neighbourhood_group"]
+            }
+        },
+        {
+            "name": "get_airbnb_by_price_range_neighbourhood",
+            "description": "Get the listing by neighbourhood group between a specific price range in US dollars",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "min_price": {
+                        "type": "string",
+                        "description": "The min price in the range"
+                    },
+                    "max_price": {
+                        "type": "string",
+                        "description": "The maximum price in the range"
+                    },                
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                    }
+                },
+                "required": ["min_price","max_price","neighbourhood_group"]
+            }
+        }, 
+        {
+            "name": "get_x_most_popular_places_in_neighbourhood_group_room_type",
+            "description": "Get the x most popular airbnbs in a neighbourhood group and for a specific room type ",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "popularity": {
+                        "type": "integer",
+                        "description": "The number of airbnbs to output"
+                    },
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                    },                
+                    "room_type": {
+                        "type": "string",
+                        "description": "The type of the room, e.g. Shared Room"
+                    }
+                },
+                "required": ["popularity","neighbourhood_group","room_type"]
+            }
+        },
+           
+        {
+            "name": "get_avg_by_neighbourgood_group_and_room_type",
+            "description": "Get the average price in US dollars of a neighbourhood group by room type ",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                    },                
+                    "room_type": {
+                        "type": "string",
+                        "description": "The type of the room, e.g. Shared Room"
+                    }
+                },
+                "required": ["neighbourhood_group","room_type"]
+            }
+        },
+
+        {
+            "name": "get_min_cost_by_neighbourhood_group_room_type_min_nights",
+            "description": "Get the least costly in US dollars airbnbs for a specific neighbourhood group,room type and minimum nights",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "nr_requests": {
+                        "type": "integer",
+                        "description": "The number of airbnbs to output"
+                    },
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                    },                
+                    "room_type": {
+                        "type": "string",
+                        "description": "The type of the room, e.g. Shared Room"
+                    },
+                    "min_nights": {
+                        "type": "string",
+                        "description": "The minimum number of nights to stay"
+                    }            
+                },
+                "required": ["nr_requests","neighbourhood_group","room_type","min_nights"]
+            }
+        },   
+
+        {
+            "name": "get_telephone_number_by_name_neighbourhood_group_cuisine",
+            "description": "Get the telephone number of a restaurant given the neighbourhood group or cuisine",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "restaurant": {
+                        "type": "string",
+                        "description": "The name of the restaurant"
+                    },
+                    "neighbourhood_group": {
+                        "type": "string",
+                        "description": "The name of the borough"
+                    }, 
+                    "cuisine": {
+                        "type": "string",
+                        "description": "The cuisine of the restaurant e.g. Japanese"
+                    }
+                },
+                "required": ["restaurant","neighbourhood_group","cuisine"]
+            }
+        },
+
+        {
+            "name": "get_restaurant_by_zipcode_cuisine_borough_phone",
+            "description": "Get the restaurant info by zip code, cuisine, borough and phone number",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "zip_code": {
+                        "type": "integer",
+                        "description": "The zip code of the restaurant"
+                    },
+                    "cuisine": {
+                        "type": "string",
+                        "description": "The cuisine of the restaurant e.g. Japanese"
+                    }, 
+                    "borough": {
+                        "type": "string",
+                        "description": "The borough of the restaurant e.g. Bronx"
+                    }, 
+                    "phone": {
+                        "type": "string",
+                        "description": "The phone number of the restaurant"
+                    }          
+                },
+                "required": ["zip_code","cuisine","borough","phone"]
+            }
+        }, 
+
+        {
+            "name": "get_info_by_name_cuisine_borough_phone",
+            "description": "Get the information of a restaurant (street, building and zip code)" ,
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "restaurant": {
+                        "type": "string",
+                        "description": "The name of the restaurant"
+                    },
+                    "cuisine": {
+                        "type": "string",
+                        "description": "The cuisine of the restaurant e.g. Japanese"
+                    }, 
+                    "borough": {
+                        "type": "string",
+                        "description": "The borough of the restaurant e.g. Bronx"
+                    }, 
+                    "phone": {
+                        "type": "string",
+                        "description": "The phone number of the restaurant"
+                    }                
+                },
+                "required": ["restaurant","cuisine","borough","phone"]
+            }
+        }   
+      
+      ]
+    },
+
+    {
+      "id": "TRAVEL_FUNC_MULTI_CALL_SEQUENTIAL_SIMPLE_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions, multiple calls and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Multi-call",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 11,
+      "functions": [
+        {
+          "name": "get_airbnb_by_price_min_nights_and_neighborhood_group",
+          "description": "Get the listing by minimum price in US dollars, minimum nights and and a specific neighbourhood group",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "price": {
+                      "type": "integer",
+                      "description": "The price of an airbnb per night, e.g. 90 dollars"
+                  },
+                  "min_nights": {
+                      "type": "integer",
+                      "description": "The minimum amount of nights, e.g. 2"
+                  },                
+                  "neighbourhood_group": {
+                      "type": "string",
+                      "description": "The name of the neighbourhood group, e.g. Brooklyn"
+                  }
+              },
+              "required": ["price","min_nights","neighbourhood_group"]
+          }
+        },   
+        {
+          "name": "get_long_lat_by_name_street",
+          "description": "Get the latitude and longitude of a restaurant by street",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant": {
+                      "type": "string",
+                      "description": "The name of the restaurant"
+                  },
+                  "street": {
+                      "type": "string",
+                      "description": "The street where the restaurant is located"
+                  }             
+              },
+              "required": ["restaurant", "street"]
+          }
+        },
+        {
+          "name": "get_airbnb_by_lat_long",
+          "description": "Get the airbnb by latitude and longitude",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "latitude": {
+                      "type": "string",
+                      "description": "The latitude of the airbnb"
+                  },
+                  "longitude": {
+                      "type": "string",
+                      "description": "The longitude of the airbnb"
+                  }               
+              },
+              "required": ["latitude", "longitude"]
+          }
+        },   
+        {
+          "name": "get_long_lat_by_airbnb",
+          "description": "Get the airbnb by latitude and longitude",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "listing": {
+                      "type": "string",
+                      "description": "The airbnb's name"
+                  }             
+              },
+              "required": ["listing"]
+          }
+        },
+        {
+          "name": "get_airbnb_address_by_lat_long",
+          "description": "Get the airbnb address from longitude and latitude",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "latitude": {
+                      "type": "string",
+                      "description": "The restaurant's latitude"
+                  },  
+                  "longitude": {
+                      "type": "string",
+                      "description": "The restaurant's longitude"
+                  }               
+              },
+              "required": ["latitude","longitude"]
+          }
+       },
+       {
+          "name": "get_restaurant_by_airbnb_closeness",
+          "description": "Get the restaurant close to an airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "latitude": {
+                      "type": "string",
+                      "description": "The airbnb's latitude"
+                  },  
+                  "longitude": {
+                      "type": "string",
+                      "description": "The airbnb's longitude"
+                  }                
+              },
+              "required": ["latitude","longitude"]
+          }
+        },
+        {
+          "name": "get_info_restaurant_with_zipcode_street_building",
+          "description": "Get the restaurant info (zipcode,street and building)",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "latitude": {
+                      "type": "string",
+                      "description": "The airbnb's latitude"
+                  },  
+                  "longitude": {
+                      "type": "string",
+                      "description": "The airbnb's longitude"
+                  }                 
+              },
+              "required": ["latitude","longitude"]
+          }
+        },
+        {
+          "name": "get_restaurants_by_ratings",
+          "description": "Get the restaurants according to a specific rating",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "rating": {
+                      "type": "string",
+                      "description": "The rating of the restaurant"
+                  }                 
+              },
+              "required": ["rating"]
+          }
+        },
+        {
+          "name": "get_neighborhood_by_rest_specification",
+          "description": "Get the restaurants according to a specific neighborhood",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurants": {
+                      "type": "string",
+                      "description": "The list of restaurant name"
+                  },  
+                  "neigborhood": {
+                      "type": "string",
+                      "description": "The neighborhood of a restaurant"
+                  }              
+              },
+              "required": ["restaurants","neigborhood"]
+          }
+        },
+        {
+          "name": "get_airbnb_with_max_reviews",
+          "description": "Get the airbnbs with max number of reviews at a specific neighborhood group and room type",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "popularity": {
+                      "type": "int",
+                      "description": "The number of airbnbs to show"
+                  },  
+                  "neighbourhood_group": {
+                      "type": "string",
+                      "description": "The neighborhood of an airbnb"
+                  }, 
+                  "room_type": {
+                      "type": "string",
+                      "description": "The type of room of an airbnb"
+                  }              
+              },
+              "required": ["popularity","neigborhood_group","room_type"]
+          }
+        },
+        {
+          "name": "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+          "description": "Get the restaurant info and latitude and longitude by zip code, cuisine, borough and phone number",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "zip_code": {
+                      "type": "number",
+                      "description": "The zip code of the restaurant"
+                  },
+                  "cuisine": {
+                      "type": "string",
+                      "description": "The cuisine of the restaurant e.g. Japanese"
+                  }, 
+                  "borough": {
+                      "type": "string",
+                      "description": "The borough of the restaurant e.g. Bronx"
+                  }, 
+                  "phone": {
+                      "type": "string",
+                      "description": "The phone number of the restaurant"
+                  }                
+              },
+              "required": ["zip_code","cuisine","borough","phone"]
+          }
+        }      
+      ]
+    },
+    {
+      "id": "TRAVEL_FUNC_MULTI_CALL_PARALLEL_SIMPLE_DESC_NO_EX_V01",
+      "name": "Functions for Travel Use Case with simple function descriptions, multiple calls and no examples",
+      "domain": "Travel",
+      "categories": [
+        "All Parameters",
+        "Multi-call",
+        "Without Examples",
+        "Simple Description"
+      ],
+      "num_functions": 7,
+      "functions": [ 
+        {
+          "name": "get_avg_prep_time_by_restaurant_name",
+          "description": "Get average prep time of a restaurant",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant_name": {
+                      "type": "string",
+                      "description": "The restaurant name"
+                  }
+              },
+              "required": ["restaurant_name"]
+          }
+        },
+        {
+          "name": "get_avg_costs_by_restaurant_name",
+          "description": "Get average costs of a restaurant in US dollars",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant_name": {
+                      "type": "string",
+                      "description": "The restaurant name"
+                  }
+              },
+              "required": ["restaurant_name"]
+          }
+       },
+       {
+          "name": "get_rating_by_restaurant_name",
+          "description": "Get rating by restaurant name",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant_name": {
+                      "type": "string",
+                      "description": "The restaurant name"
+                  }
+              },
+              "required": ["restaurant_name"]
+          }
+        },
+        {
+          "name": "get_avg_delivery_time_by_restaurant_name",
+          "description": "Get average delivery time of a restaurant",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "restaurant_name": {
+                      "type": "string",
+                      "description": "The restaurant name"
+                  }
+              },
+              "required": ["restaurant_name"]
+          }
+        },
+        {
+          "name": "get_restaurant_by_cuisine_borough",
+          "description": "Get restaurant by borough and cuisine",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "borough": {
+                      "type": "string",
+                      "description": "The borough, e.g. Manhattan"
+                  },
+                  "cuisine": {
+                      "type": "string",
+                      "description": "The cuisine type of the restaurant, e.g Italian"
+                  }
+              },
+              "required": ["borough", "cuisine"]
+          }
+       },
+       {
+          "name": "get_neighbourhood_group",
+          "description": "Get the neighbourhood group of a specific airbnb",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "name": {
+                      "type": "string",
+                      "description": "The name of the airbnb, e.g. Brooklyn Home in the Heart of it All"
+                  }
+              },
+              "required": ["name"]
+          }
+       },
+       {
+          "name": "get_ratings_per_cuisines",
+          "description": "Get restaurant by borough and cuisine",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "cuisines": {
+                      "type": "string",
+                      "description": "The cuisine type, e.g Italian"
+                  }
+              },
+              "required": ["cuisines"]
+          }
+       }             
+      
+      ]
+    }
+  ]
+}

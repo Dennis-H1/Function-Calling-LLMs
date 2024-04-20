@@ -1,0 +1,729 @@
+{
+  "question_result": [
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q4",
+      "category": "Selection",
+      "question": "What television genre albums were released in 2023 with a rating lower than 3.0? Please provide only album(s) name.Return the answer in JSON format: {'albums': [album_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (small floating point number).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_date_and_genres"],
+          "parameters": [{ "release_date": "2023", "genres": ["television"] }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["filter_albums_by_date_range"],
+        "parameters": [
+          { "start_date": "2023-01-01", "end_date": "2023-12-31" }
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'The Idol Episode 5 Part 2',\n    'The Idol Episode 5 Part 1',\n    'The Idol Episode 4',\n    'The Idol Episode 3',\n    'The Idol Episode 2',\n    'The Idol Episode 1'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": [
+            "The Idol Episode 5 Part 2",
+            "The Idol Episode 4",
+            "The Idol Episode 3",
+            "The Idol Episode 2",
+            "The Idol Episode 1"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Incorrect",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_CALL_PARALLEL_REAS_Q5",
+      "category":"Reasoning",
+      "question":"Could you please help me find some very good options to have a pizza date with a view of the Statue of Liberty with my partner? Additionally, we haven't found any good place to stay yet, but a friend suggested me to go to the Cozy 2 Bedroom in New York. However, I don't know in which part of the city is this place located. Could you help me with this also? Return the answer in JSON format: {'restaurants_close_Statue_of_Liberty': [restaurants_closeby], 'the_neighborhood_group_of_Cozy2_Bedroom': the_neigh_group_of_cozy2bedroom}",
+      "motivation":"Evaluate LLM's ability to call multiple functions simultaneously. Assess its reasoning ability to understand the task requested by the user requires two concurrent function calls to provide the final answer.",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_restaurant_by_cuisine_borough",
+               "get_neighbourhood_group"
+            ],
+            "parameters":[
+               {
+                  "cuisine":"Pizza",
+                  "borough":"Manhattan"
+               },
+               {
+                  "name":"Cozy 2 Bedroom"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_restaurant_by_cuisine_borough",
+            "get_neighbourhood_group"
+         ],
+         "parameters":[
+            {
+               "borough":"Manhattan",
+               "cuisine":"Pizza"
+            },
+            {
+               "name":"Cozy 2 Bedroom in New York"
+            }
+         ],
+         "answer":"```json\n{\n  'restaurants_close_Statue_of_Liberty': [\n    'MAKAVELY PIZZA',\n    'BEN'S PIZZA',\n    'AVE D PIZZERIA',\n    'DOMINO'S PIZZA #3680',\n    'DON PEPI PIZZA',\n    'LITTLE ITALY PIZZA',\n    'FREEHOLD IN THE PARK',\n    'JUMBO PIZZA',\n    'FAMOUS CALABRIA PIZZERIA',\n    'JOE'S PIZZA',\n    'FIORENTINA RESTAURANT',\n    'PIZZA ETALIA',\n    'PRINCE ST PIZZA',\n    'FAMOUS AMADEUS PIZZA',\n    '99 CENT TASTY PIZZA',\n    'CHAMPION PIZZA',\n    'TWO BOOTS UPPER WEST SIDE',\n    'DOMINO'S',\n    'SLICE PIZZA',\n    'FIORENTINA RESTAURANT'\n  ],\n  'the_neighborhood_group_of_Cozy2_Bedroom': 'Neighbourhood group not found'\n}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "restaurants_close_Statue_of_Liberty":[
+               "MAKAVELY PIZZA",
+               "BEN'S PIZZA",
+               "AVE D PIZZERIA",
+               "DOMINO'S PIZZA #3680",
+               "DON PEPI PIZZA",
+               "LITTLE ITALY PIZZA",
+               "FREEHOLD IN THE PARK",
+               "JUMBO PIZZA",
+               "FAMOUS CALABRIA PIZZERIA",
+               "JOE'S PIZZA",
+               "FIORENTINA RESTAURANT",
+               "PIZZA ETALIA",
+               "PRINCE ST PIZZA",
+               "FAMOUS AMADEUS PIZZA",
+               "99 CENT TASTY PIZZA",
+               "CHAMPION PIZZA",
+               "TWO BOOTS UPPER WEST SIDE",
+               "DOMINO'S",
+               "SLICE PIZZA",
+               "FIORENTINA RESTAURANT"
+            ],
+            "the_neighborhood_group_of_Cozy2_Bedroom":"Manhattan"
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Incorrect",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_CALL_PARALLEL_EXTRA_Q3",
+      "category":"Extra Context",
+      "question":"Hope you're doing well! Planning a unique pizza date with my partner, aiming for a spot offering not just delicious pizza but also a stellar view of the Statue of Liberty in Manhattan. Any insider suggestions for such picturesque pizzerias? Also, a friend recommended the Cozy 2 Bedroom in New York for our stay. The challenge is, I'm in the dark about its exact location within the city. Could you shed some light on that? On a completely different note, I've recently delved into photography and am on the lookout for interesting cityscapes in Brooklyn. Any off-the-beaten-path locations for capturing the essence of the city? Return the answer in JSON format: {'restaurants_close_Statue_of_Liberty': [restaurants_closeby], 'the_neighborhood_group_of_Cozy2_Bedroom': the_neigh_group_of_cozy2bedroom}",
+      "motivation":"Introduce non-relevant information (last paragraph) to test the model's understanding and its capability to discern and prioritize the main idea in parallel function calling. ",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_restaurant_by_cuisine_borough",
+               "get_neighbourhood_group"
+            ],
+            "parameters":[
+               {
+                  "cuisine":"Pizza",
+                  "borough":"Manhattan"
+               },
+               {
+                  "name":"Cozy 2 Bedroom"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_restaurant_by_cuisine_borough",
+            "get_neighbourhood_group"
+         ],
+         "parameters":[
+            {
+               "borough":"Manhattan",
+               "cuisine":"Pizza"
+            },
+            {
+               "name":"Cozy 2 Bedroom in New York"
+            }
+         ],
+         "answer":"```json\n{\n  'restaurants_close_Statue_of_Liberty': [\n    'MAKAVELY PIZZA',\n    'BEN'S PIZZA',\n    'AVE D PIZZERIA',\n    'DOMINO'S PIZZA #3680',\n    'DON PEPI PIZZA',\n    'LITTLE ITALY PIZZA',\n    'FREEHOLD IN THE PARK',\n    'JUMBO PIZZA',\n    'FAMOUS CALABRIA PIZZERIA',\n    'JOE'S PIZZA',\n    'FIORENTINA RESTAURANT',\n    'PIZZA ETALIA',\n    'PRINCE ST PIZZA',\n    'FAMOUS AMADEUS PIZZA',\n    '99 CENT TASTY PIZZA',\n    'CHAMPION PIZZA',\n    'TWO BOOTS UPPER WEST SIDE',\n    'DOMINO'S',\n    'SLICE PIZZA',\n    'FIORENTINA RESTAURANT'\n  ],\n  'the_neighborhood_group_of_Cozy2_Bedroom': 'Neighbourhood group not found'\n}\n```\n\nFor your unique pizza date with a view of the Statue of Liberty in Manhattan, the list above includes several pizzerias you might find interesting. Unfortunately, I couldn't find the neighborhood group for the 'Cozy 2 Bedroom in New York.' \n\nRegarding off-the-beaten-path locations in Brooklyn for photography, while I can't provide specific spots, Brooklyn Heights Promenade and DUMBO (Down Under the Manhattan Bridge Overpass) are renowned for offering stunning cityscapes and views of Manhattan, which might be of interest to you. These areas are popular among photographers for their unique perspectives of the city skyline and the Brooklyn Bridge."
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "restaurants_close_Statue_of_Liberty":[
+               "MAKAVELY PIZZA",
+               "BEN'S PIZZA",
+               "AVE D PIZZERIA",
+               "DOMINO'S PIZZA #3680",
+               "DON PEPI PIZZA",
+               "LITTLE ITALY PIZZA",
+               "FREEHOLD IN THE PARK",
+               "JUMBO PIZZA",
+               "FAMOUS CALABRIA PIZZERIA",
+               "JOE'S PIZZA",
+               "FIORENTINA RESTAURANT",
+               "PIZZA ETALIA",
+               "PRINCE ST PIZZA",
+               "FAMOUS AMADEUS PIZZA",
+               "99 CENT TASTY PIZZA",
+               "CHAMPION PIZZA",
+               "TWO BOOTS UPPER WEST SIDE",
+               "DOMINO'S",
+               "SLICE PIZZA",
+               "FIORENTINA RESTAURANT"
+            ],
+            "the_neighborhood_group_of_Cozy2_Bedroom":"Manhattan"
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_LANGUAGE_Q8",
+      "category":"Languages",
+      "question":"Θα ηθελα να μεινω σε ενα διαμερισμα στη Νεα Υορκη, αλλα δε ξερω που. Μπορεις να βρεις δεκα σε παρακαλω; Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+      "motivation":"Testing the ability of the LLM to understand another language except English (Greek)",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_listing_by_room_type"
+            ],
+            "parameters":[
+               {
+                  "neighbourhood_group":"Entire home apartment"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_listing_by_room_type"
+         ],
+         "parameters":[
+            {
+               "room_type":"Entire home/apt"
+            }
+         ],
+         "answer":"I encountered an issue retrieving the listings for 'Entire home/apt' room type. It seems there was a problem with the room type specification. Let's try a different approach or adjust the request."
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "Fun 3 Bedroom Just Minutes to Manhattan!!",
+               "Spacious Bright 1 Bedroom East Village Apartment",
+               "Spacious Brooklyn Brownstone 3BR+",
+               "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+               "Spacious 1BR Bushwick Surfers Loft!",
+               "West Village Studio Apartment",
+               "West Village Apartment near Washington Square Park",
+               "5 rooms in clean apartment West Harlem",
+               "Soho loft with everything",
+               "Cozy & artsy apt in East Village - 2 bedrooms"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Incorrect",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TYPO_Q5",
+      "category":"Typos",
+      "question":"Can you please help me find somewhere enjoy some good smoothi? Please return at most 10 entries. Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+      "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (Smoothie instead of smoothi)",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_restaurants_by_cuisine"
+            ],
+            "parameters":[
+               {
+                  "cuisine":"smoothie"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_restaurants_by_cuisine"
+         ],
+         "parameters":[
+            {
+               "cuisine":"Smoothies"
+            }
+         ],
+         "answer":"```json\n{'restaurant':[]}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "restaurant":[
+               "JUICE RIGHT CORP.",
+               "JOE & THE JUICE",
+               "JUICY MAMA",
+               "THE SPOT CAFE",
+               "HEALTH IS LIFE (HERBALIFE)",
+               "JOE & THE JUICE",
+               "HEALTHY LIVING HERBALIFE",
+               "JUICE N' GO",
+               "JUICES FOR LIFE",
+               "KUNG FU TEA"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Incorrect",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q2",
+      "category":"Extra Context",
+      "question":"I got really tired today at school and I have not eaten anything. I still don't have a lot of time and I am located in the area of Brooklyn. I would like to eat something fast, for example fast food, could you recommend me some places? Please return at most 10 entries. Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+      "motivation":"Testing the ability of the LLM to understand the main goal requested by the user, regardless of any related or unrelated extra context given to the prompt",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_restaurants_by_cuisine"
+            ],
+            "parameters":[
+               {
+                  "cuisine":"Hamburgers"
+               }
+            ]
+         },
+         {
+            "path_id":2,
+            "functions":[
+               "get_restaurants_by_cuisine"
+            ],
+            "parameters":[
+               {
+                  "cuisine":"Hotdogs"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_restaurants_by_cuisine"
+         ],
+         "parameters":[
+            {
+               "cuisine":"Fast Food"
+            }
+         ],
+         "answer":"```json\n{'restaurant':[]}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "restaurant":[
+               "CITI FIELD NATHAN'S FAMOUS STAND 417",
+               "NATHAN'S FAMOUS"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Incorrect",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q4",
+      "category":"Extra Context",
+      "question":"I got really tired today at school and I have not eaten anything. I still don't have a lot of time and I am located in the area of Brooklyn. I would like to eat something. I am really craving some good burgers around this area, could you recommend me some? Please return at most 10 entries.Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+      "motivation":"Testing the ability of the LLM to understand the main goal requested by the user, regardless of any related or unrelated extra context given to the prompt",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_restaurants_by_cuisine"
+            ],
+            "parameters":[
+               {
+                  "cuisine":"Hamburgers"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_restaurants_by_cuisine"
+         ],
+         "parameters":[
+            {
+               "cuisine":"Burgers"
+            }
+         ],
+         "answer":"```json\n{'restaurant':[]}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "restaurant":[
+               "JIMBO'S HAMBURGER PALACE",
+               "GINBO'S HAMBURGER HOUSE",
+               "SHAKE SHACK",
+               "BURGER KING",
+               "BAREBURGER",
+               "JIMBO'S HAMBURGER PALACE",
+               "SMASHBURGER #1712",
+               "MCDONALD'S",
+               "MCDONALD'S",
+               "SHAKE SHACK"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Incorrect",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_AGG_Q10",
+      "category":"Aggregation",
+      "question":"I've been planning a summer trip to New York with my family, and my children are particularly keen on staying in an rich neighborhood such as Manhattan. However, a colleague who recently spent four days there cautioned against it due to potential high expenses. I am interested in obtaining a general estimate of the cost for a private accommodation suitable for a small family in that area. Your insights on this matter would be greatly appreciated.Return the answer in JSON format: {'average:avg_price}",
+      "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_avg_by_neighbourgood_group_and_room_type"
+            ],
+            "parameters":[
+               {
+                  "room_type":"Entire home apartment",
+                  "neighbourhood_group":"Manhattan"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_avg_by_neighbourgood_group_and_room_type"
+         ],
+         "parameters":[
+            {
+               "neighbourhood_group":"Manhattan",
+               "room_type":"Entire home/apt"
+            }
+         ],
+         "answer":"```json\n{'average': 'There are no available airbnbs in that neighbourhood with that room type'}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb_by_neighbour":"Manhattan",
+            "type":"Entire home apartment",
+            "average":264.10
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_REASON_Q1",
+      "category":"Reasoning",
+      "question":" I have some good italian friends that have recommended a really nice italian restaurant that serves pizza in the area of Manhattan. They have left me with the zip code which would be: 10004 and the contact details: 2123616160 but I don't know how it is called, can you please help me find this good restaurant? Return the answer in JSON format: {'restaurant_name':'name', 'restaurant_location':'location'}",
+      "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_restaurant_by_zipcode_cuisine_borough_phone"
+            ],
+            "parameters":[
+               {
+                  "zip_code":10004,
+                  "cuisine":"pizza",
+                  "borough":"Manhattan",
+                  "phone":"2123616160"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_restaurant_by_zipcode_cuisine_borough_phone"
+         ],
+         "parameters":[
+            {
+               "zip_code":10004,
+               "cuisine":"Italian",
+               "borough":"Manhattan",
+               "phone":"2123616160"
+            }
+         ],
+         "answer":"```json\n{'restaurant_name':'Not found', 'restaurant_location':'Not available'}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "restaurant_name":"PIZZA ETALIA",
+            "restaurant_location":"Manhattan"
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TYPO_Q1",
+      "category":"Typos",
+      "question":"Can you please help me find a place to stay in New York which cost cen dollars? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+      "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (cen instead of 10)",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_listing_by_price"
+            ],
+            "parameters":[
+               {
+                  "price":10
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_listing_by_price"
+         ],
+         "parameters":[
+            {
+               "price":100
+            }
+         ],
+         "answer":"```json\n{\n  'airbnb': [\n    'Spacious brand new apartment 2 bedrooms - 2bath',\n    'Gorgeous Two Bedroom Apartment Columbias Campus',\n    'Entire Cozy Apt in Brooklyn - 20 mins to Manhattan',\n    'Front Studio in Loft Apartment - Steiner Studios',\n    'Entire Sun Drenched Apartment in Clinton Hill',\n    'Charming East Village Studio',\n    'Cozy, Sunny, UWS Junior One Bedroom',\n    'Huge Dumbo Loft',\n    'The Emerald Suite  (A Gem In A Historic Mansion)',\n    'Seaview Studio in  Brooklyn New york.',\n    'Well Equipped One-Bedroom Apartment',\n    'Cozy brownstone bed & bath; pvt.ent',\n    '2 Bedrooms and a Comfy Couch On Washington',\n    'Private Essex Street Bedroom in the LowerEast Side',\n    'Spacious  Harlem 1-Br. Terrace Apt with Doorman',\n    'Airy, Modern, Large Room W'burg two blocks subway',\n    'Williamsburg, BK large apt',\n    'Bedroom with Patio in Prime Williamsburg Location!',\n    'Chic and Cozy Heart of Williamsburg',\n    'Spacious One King Bed Junior Suite in Times Square',\n    'Cozy Room with Window View near Times Square',\n    'Great spacious room in Stylish apt near Highline',\n    'Cozy private room w/private bath, Hell's Kitchen',\n    'Cute beach bungalow by the beach, 80min Manhattan',\n    'Charming & inviting Brooklyn Brownstone apartment',\n    'Superb Private Bedroom with Private Bath in UPS!',\n    'Family friendly apartment near Prospect Park',\n    'Sunny, Spacious Lower Harlem Condo',\n    'Amazing Brooklyn 1Bd with Private Balcony',\n    'King Suite with sofa bed, your sanctuary in SoHo',\n    'LARGE 1BR (CONV 2BR) CROWN HEIGHTS',\n    'Minimalist Vegan Room in Columbus Circle',\n    'Cozy, Full 1 Bedroom Apartment Near Central Park',\n    'Brownstone BK heaven',\n    'Beach Haven',\n    'World Trade Center Delight',\n    'Apartment near Upper East Side',\n    'Charming -One bedroom -Williamsburg',\n    'TWO BEDROOM APARTMENT IN BEAUTIFUL BED-STUY',\n    'Great view, 1 BR right next to Central Park!'\n  ]\n}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "Room with a view"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Incorrect",
+         "response_eval":"Incorrect"
+      }
+   },
+   {
+    "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_TYPO_Q4",
+    "category":"Typos",
+    "question":"Can you please help me find somewhere to eat pica? Please return at most 10 entries. Return the answer in JSON format: {'restaurant':[my_restaurant]}",
+    "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (pizza instead of pica)",
+    "overall_match":false,
+    "correct_paths":[
+       {
+          "path_id":1,
+          "functions":[
+             "get_restaurants_by_cuisine"
+          ],
+          "parameters":[
+             {
+                "cuisine":"pizza"
+             }
+          ]
+       }
+    ],
+    "model_solution":{
+       "functions":[
+          "get_restaurants_by_cuisine"
+       ],
+       "parameters":[
+          {
+             "cuisine":"Peruvian"
+          }
+       ],
+       "answer":"```json\n{'restaurant':['LIMA RESTAURANT','LOS CHILES BAR & RESTAURANT','MACA RESTAURANT']}\n```"
+    },
+    "correct_answer":{
+       "ordered_items":[
+          
+       ],
+       "answer":{
+          "restaurant":[
+             "BELLA ROMA PIZZA",
+             "MAKAVELY PIZZA",
+             "BEN'S PIZZA",
+             "BELLEROSE FAMOUS PIZZA",
+             "LINDA PIZZERIA",
+             "J AND D PIZZA",
+             "AVE D PIZZERIA",
+             "DOMINO'S PIZZA #3680",
+             "THWAITES PLACE PELHAM PIZZA",
+             "LONA PIZZA"
+          ]
+       }
+    },
+    "evaluation":{
+       "function_eval":"Correct",
+       "argument_eval":"Incorrect",
+       "response_eval":"Incorrect"
+    }
+   },
+   {
+    "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_REAS_Q3",
+    "category":"Reasoning",
+    "question":"Hello, I am currently in India and tomorrow morning I will be flying to New York. Some native friends there suggested me a very good traditional restaurant and they sent me the address details. This restaurant is located in New York, near the borough, Manhattan, and they also provided me with the zipcode,10010, and contact details so I could reserve a place. This is their phone number:2124902100.Considering the location of this recommended restaurant, could you please recommend some good places in close proximity to stay? Return the answer in JSON format: {'airbnbs': [my_airbnb]}",
+    "motivation":"Evaluate the ability of LLM to reason the parameter selection according to the details provided by the user and perform string matching. Evaluate its ability on performing a chain-of-thought process to the calculation of the geographical proximity and mapping to targets.",
+    "overall_match":false,
+    "correct_paths":[
+       {
+          "path_id":1,
+          "functions":[
+             "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+             "get_airbnb_by_lat_long"
+          ],
+          "parameters":[
+             {
+                "zip_code":10010,
+                "cuisine":"Indian",
+                "borough":"Manhattan",
+                "phone":"2124902100"
+             },
+             {
+                "latitude":40.74262626,
+                "longitude":-73.99009391
+             }
+          ]
+       }
+    ],
+    "model_solution":{
+       "functions":[
+          "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone"
+       ],
+       "parameters":[
+          {
+             "zip_code":10010,
+             "cuisine":"traditional",
+             "borough":"Manhattan",
+             "phone":"2124902100"
+          }
+       ],
+       "answer":"It seems I couldn't find the restaurant with the provided details. Could you please check if there's any mistake in the information provided or if there's any additional detail that might help in locating the restaurant?"
+    },
+    "correct_answer":{
+       "ordered_items":[
+          
+       ],
+       "answer":{
+          "airbnbs":[
+             "West Village Studio Apartment",
+             "West Village Apartment near Washington Square Park",
+             "Cozy & artsy apt in East Village - 2 bedrooms",
+             "Spacious Bright 1 Bedroom East Village Apartment",
+             "Soho loft with everything",
+             "Large Private Room in Greenpoint Williamsburg"
+          ]
+       }
+    },
+    "evaluation":{
+       "function_eval":"Partially Correct",
+       "argument_eval":"Partially Correct",
+       "response_eval":"Incorrect"
+    }
+   },
+   {
+    "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_TYPO_Q5",
+    "category":"Typos",
+    "question":"Hello, I dont know the number of a restaurant that is called Addiction in Staten Island or something like that and I have reserved there and I want to cancel. I just know that they serve Bottled Beverages.Return the answer in JSON format: {'number':'phone_number', 'restaurant_name':'name'} ",
+    "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (currency value typo)",
+    "overall_match":false,
+    "correct_paths":[
+       {
+          "path_id":1,
+          "functions":[
+             "get_telephone_number_by_name_neighbourhood_group_cuisine"
+          ],
+          "parameters":[
+             {
+                "restaurant":"ADDICCION",
+                "neighbourhood_group":"Staten Island",
+                "cuisine":"Bottled Beverages"
+             }
+          ]
+       }
+    ],
+    "model_solution":{
+       "functions":[
+          "get_telephone_number_by_name_neighbourhood_group_cuisine"
+       ],
+       "parameters":[
+          {
+             "restaurant":"Addiction",
+             "neighbourhood_group":"Staten Island",
+             "cuisine":"Bottled Beverages"
+          }
+       ],
+       "answer":"```json\n{'number':'not found', 'restaurant_name':'Addiction'}\n```"
+    },
+    "correct_answer":{
+       "ordered_items":[
+          
+       ],
+       "answer":{
+          "number":"7183134986",
+          "restaurant name":"ADDICCION"
+       }
+    },
+    "evaluation":{
+       "function_eval":"Correct",
+       "argument_eval":"Partially Correct",
+       "response_eval":"Incorrect"
+    }
+   }
+
+  ]
+}

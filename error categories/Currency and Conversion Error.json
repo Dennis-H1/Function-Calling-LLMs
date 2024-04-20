@@ -1,0 +1,308 @@
+{
+    "question_result": [
+      {
+         "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q2",
+         "category":"Data Types",
+         "question":"I don't have much money and I would like to book an airbnb below 505 yuan, can you suggest me some? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+         "motivation":"Testing the ability of the LLM to understand the currency differences (yuan) and convert it to dollars, then retrieval of the airbnbs in the respective dollar conversion",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_listing_by_lower_price"
+               ],
+               "parameters":[
+                  {
+                     "price":70
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_listing_by_lower_price"
+            ],
+            "parameters":[
+               {
+                  "price":505
+               }
+            ],
+            "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Fun 3 Bedroom Just Minutes to Manhattan!!',\n    'Sunny and spacious 1-bedroom in Brooklyn',\n    'Large Private Room in Greenpoint Williamsburg',\n    'Spacious Bright 1 Bedroom East Village Apartment',\n    'Spacious Brooklyn Brownstone 3BR+',\n    'Quiet & Spacious Brooklyn Apt for Cat-Lovers',\n    'Huge room in great area 25 minutes from Manhattan',\n    'Brooklyn Home in the Heart of it All',\n    'Spacious 1BR Bushwick Surfers Loft!'\n  ]\n}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb":[
+                  "Amazing huge furnished room!",
+                  "Huge room in great area 25 minutes from Manhattan",
+                  "Brooklyn Home in the Heart of it All",
+                  "Room in Bushwick Bk available June",
+                  "Midtown Luxury Living room close to Highline",
+                  "Furnished Bedroom in Murray Hill",
+                  "Sunny spacious room full of good energy",
+                  "Nice & new room washerdryer 5 min to train!",
+                  "Spacious Town House near Park",
+                  "Be Comfy Loft Bedroom"
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Correct",
+            "argument_eval":"Incorrect",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q5",
+         "category":"Data Types",
+         "question":"I am coming from London and I have 200 pounds to spend for 4 nights in Bronx. Can you find me some good places to stay? Return the answer in JSON format: {'airbnb':'my_airbnb',}",
+         "motivation":"Testing the ability of the LLM to understand the unit conversion of different currencies (pounds) to the correct currency (dollars)",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group"
+               ],
+               "parameters":[
+                  {
+                     "price":63,
+                     "min_nights":4,
+                     "neighbourhood_group":"Bronx"
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_airbnb_by_price_min_nights_and_neighborhood_group"
+            ],
+            "parameters":[
+               {
+                  "price":50,
+                  "min_nights":4,
+                  "neighbourhood_group":"Bronx"
+               }
+            ],
+            "answer":"```json\n{\n  'airbnb': [\n    'Bronx Apartment College Ave',\n    'Sunny Room across CrotonaPark for Women Only Space',\n    'Bronx, Little Italy, Arthur Ave, Fordham, Yanks.',\n    'Shared space w/privacy near NY Botanic Garden',\n    '\u2022Bright and Cozy room in an elegant apartment\u2022'\n  ]\n}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb":[
+                  "Bronx Apartment College Ave",
+                  "Sunny Room across CrotonaPark for Women Only Space",
+                  "Private Studio in Private Home",
+                  "Cozy 1 Bedroom Apartment near Yankee Stadium",
+                  "Charming Attic RM with BackyardPorchNear Metro",
+                  "Cozy Private Bedroom",
+                  "Bronx Little Italy Arthur Ave Fordham Yanks.",
+                  "Shared space wprivacy near NY Botanic Garden",
+                  "\u2022Bright and Cozy room in an elegant apartment\u2022"
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Correct",
+            "argument_eval":"Partially Correct",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q1",
+         "category":"Data Types",
+         "question":"I am currently in New York, I was wandering around Brooklyn and I have only 10 dollars and 10 euros so please help me find a place for tonight.Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+         "motivation":"Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_airbnb_by_price_and_neighborhood_group"
+               ],
+               "parameters":[
+                  {
+                     "price":20,
+                     "neighbourhood_group":"Brooklyn"
+                  }
+               ]
+            },
+            {
+               "path_id":2,
+               "functions":[
+                  "get_airbnb_by_price_range_neighbourhood"
+               ],
+               "parameters":[
+                  {
+                     "min_price":0,
+                     "max_price":20,
+                     "neighbourhood_group":"Brooklyn"
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_airbnb_by_price_range_neighbourhood"
+            ],
+            "parameters":[
+               {
+                  "min_price":0,
+                  "max_price":13,
+                  "neighbourhood_group":"Brooklyn"
+               }
+            ],
+            "answer":"```json\n{'airbnbs':[\n 'Room with a view' ]}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb":[
+                  "Calm bed great area.",
+                  "Room with a view"
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Correct",
+            "argument_eval":"Partially Correct",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q4",
+         "category":"Data Types",
+         "question":"I am currently traveling to Queens where I plan to spend some days. I want to find some place to stay and I have a limited budget of 99 dollars and 100 cents. I don't have much time available, for me it is enough to stay 3 nights and no more than that. Can you give me around ten recommendations? Return the answer in JSON format: {'airbnb_by_neighbour':'neighbourhood_group', 'airbnb_by_nights':'min_number', 'aribnb_by_price':'price_per_night'}",
+         "motivation":"Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group"
+               ],
+               "parameters":[
+                  {
+                     "price":100,
+                     "min_nights":3,
+                     "neighbourhood_group":"Queens"
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_airbnb_by_price_min_nights_and_neighborhood_group"
+            ],
+            "parameters":[
+               {
+                  "price":99.1,
+                  "min_nights":3,
+                  "neighbourhood_group":"Queens"
+               }
+            ],
+            "answer":"```json\n{\n  'airbnb_by_neighbour': 'Queens',\n  'airbnb_by_nights': 3,\n  'aribnb_by_price': 99.1\n}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb":[
+                  "Amazing huge furnished room!",
+                  "Sunny and spacious  1-bedroom in Brooklyn",
+                  "Large Private Room in Greenpoint Williamsburg",
+                  "Brooklyn Home in the Heart of it All",
+                  "British Room @ Columbia Uni.",
+                  "Spacious brand new apartment 2 bedrooms - 2bath",
+                  "Bargain Warm Spacious Studio in Carroll Gardens!",
+                  "Sunny spacious room full of good energy",
+                  "1BR Apt in the Bay Ridge!",
+                  "Nice & new room  washerdryer 5 min to train!"
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Correct",
+            "argument_eval":"Partially Correct",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q6",
+         "category":"Data Types",
+         "question":"I will be traveling to New York for work next week, specifically in the Bronx. I am looking for accommodation within my budget of 300 pounds per night, and I plan to stay for a minimum of a week. Any recommendations for places that fit my budget would be greatly appreciated. Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+         "motivation":"Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_airbnb_by_price_min_nights_and_neighborhood_group"
+               ],
+               "parameters":[
+                  {
+                     "price":380,
+                     "min_nights":7,
+                     "neighbourhood_group":"Bronx"
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_airbnb_by_price_min_nights_and_neighborhood_group"
+            ],
+            "parameters":[
+               {
+                  "price":393,
+                  "min_nights":7,
+                  "neighbourhood_group":"Bronx"
+               }
+            ],
+            "answer":"```json\n{'airbnb':['Apartment around the park','Bronx Apartment College Ave','Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)','Sunny Room across CrotonaPark for Women Only Space','Uptown Bronx Apartment','The Sweet','Private Studio in Private Home','Large Private Room. Safe area. Near 4 and D trains','Cozy 1 Bedroom Apartment near Yankee Stadium','Charming Attic RM with Backyard/Porch/Near Metro','Great room! Good for med students!','DOMINIQUE'S NY*Wanderlust room/Metro/Bronx Zoo/Gdn','Gorgeous and Sunlit 1 BR 31/1-3/1','Cozy Private Bedroom','Charming studio apartment','Bronx, Little Italy, Arthur Ave, Fordham, Yanks.','Artsy + Light. River Views. 30 min to 42nd St.','Shared space w/privacy near NY Botanic Garden','\u2022Bright and Cozy room in an elegant apartment\u2022']}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb":[
+                  "Apartment around the park",
+                  "Bronx Apartment College Ave",
+                  "Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)",
+                  "Sunny Room across CrotonaPark for Women Only Space",
+                  "Uptown Bronx Apartment",
+                  "The Sweet",
+                  "Private Studio in Private Home",
+                  "Large Private Room. Safe area. Near 4 and D trains",
+                  "Cozy 1 Bedroom Apartment near Yankee Stadium",
+                  "Charming Attic RM with BackyardPorchNear Metro",
+                  "Great room! Good for med students!",
+                  "DOMINIQUE'S NY*Wanderlust roomMetroBronx ZooGdn",
+                  "Gorgeous and Sunlit 1 BR 311-31",
+                  "Cozy Private Bedroom",
+                  "Charming studio apartment",
+                  "Bronx Little Italy Arthur Ave Fordham Yanks.",
+                  "Artsy + Light. River Views. 30 min to 42nd St.",
+                  "Shared space wprivacy near NY Botanic Garden",
+                  "\u2022Bright and Cozy room in an elegant apartment\u2022"
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Correct",
+            "argument_eval":"Partially Correct",
+            "response_eval":"Incorrect"
+         }
+      }
+                       
+    ]
+}

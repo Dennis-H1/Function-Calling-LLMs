@@ -1,0 +1,114 @@
+{
+  "question_result": [
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q5",
+      "category": "Reasoning",
+      "question": "Can you please retrieve album(s) related to government and regimes from the ones released in 2015, ensuring they have a minimum rating exceeding 4, a review count surpassing 100, and a rating higher than 1000. Please provide only album(s) name.Return the answer in JSON format: {'album':'album_name'}",
+      "motivation": "Evaluate the ability to correctly identify the albums with related genres from implicitly stated in the question",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums_by_date"],
+          "parameters": [
+            {
+              "rating_threshold": 4,
+              "min_ratings": 1000,
+              "review_threshold": 100,
+              "release_date": "2015"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums"],
+        "parameters": [
+          {
+            "rating_threshold": 4,
+            "min_ratings": 1000,
+            "review_threshold": 100
+          }
+        ],
+        "answer": "```json\n{'album':'To Pimp a Butterfly'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "To Pimp a Butterfly" }
+      },
+      "evaluation": {
+        "function_eval": "Incorrect",
+        "argument_eval": "Incorrect",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q5",
+      "category": "Interpretation",
+      "question": "Among the albums released in 1988 with average rating greater than 3.5, reviewed by more than 200 people, and rated by a minimum of 15,000 individuals, identify the latest album. Please provide only album(s) name. Return the answer in JSON format: {'album':'latest_album_name'}",
+      "motivation": "Evaluate the ability to correctly make temporal interpretation and identify timing of the albums",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums_by_date"],
+          "parameters": [
+            {
+              "rating_threshold": 3.5,
+              "min_ratings": 15000,
+              "review_threshold": 200,
+              "release_date": "1988"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums"],
+        "parameters": [
+          {
+            "rating_threshold": 3.5,
+            "min_ratings": 15000,
+            "review_threshold": 200
+          }
+        ],
+        "answer": "```json\n{'album':'Let's Start Here.'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "Isn't Anything" }
+      },
+      "evaluation": {
+        "function_eval": "Incorrect",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q2",
+      "category": "Aggregation",
+      "question": "Which is the least popular song among the songs with minimum danceability of 87%? Please provide only song(s) name. Return the answer in JSON format: {'song':'least_popular_song_here'}",
+      "motivation": "Evaluate the ability to find minimum value of specific attribute in the result.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_danceability_explicitness"],
+          "parameters": [{ "danceability_threshold": 87, "explicit": true }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_danceability_explicitness"],
+        "parameters": [{ "danceability_threshold": 87 }],
+        "answer": "```json\n{'song':'Facetime Hiding'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "song": "LA GRINGA" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    }    
+  ]
+}

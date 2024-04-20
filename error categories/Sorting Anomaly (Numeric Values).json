@@ -1,0 +1,433 @@
+{
+    "question_result": [
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q5",
+            "category": "Selection",
+            "question": "What is the 8th highest rated 'Alt-Pop' album? Return the answer in JSON format:{'8th_highest_rated_album':'album_name'}",
+            "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small floating point number).",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_genres"
+                    ],
+                    "parameters": [
+                        {
+                            "genres": [
+                                "Alt-Pop"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_genres"
+                ],
+                "parameters": [
+                    {
+                        "genres": [
+                            "Alt-Pop"
+                        ]
+                    }
+                ],
+                "answer": "```json\n{'8th_highest_rated_album':'Happier Than Ever'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "8th_highest_rated_album": "xx"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q7",
+            "category": "Selection",
+            "question": "Among the songs released in 2020, which one has the 2nd most streams? Return the answer in JSON format:{'song_with_2nd_most_streams':'song_name'}",
+            "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (large integer).",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_release_date"
+                    ],
+                    "parameters": [
+                        {
+                            "release_date": "2020"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "top_streamed_songs",
+                    "songs_by_release_date"
+                ],
+                "parameters": [
+                    {
+                        "n": 2
+                    },
+                    {
+                        "release_date": "2020"
+                    }
+                ],
+                "answer": "```json\n{'song_with_2nd_most_streams':'Mood (feat. Iann Dior)'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "song_with_2nd_most_streams": "Levitating (feat. DaBaby)"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q3",
+            "category": "Reasoning",
+            "question": "I am a DJ at a club and want people to party as much as possible. Therefore, I want to play songs with high danceability. Which three top 10 songs do you suggest? Return the answer in JSON format: {'songs': [song_names_here]}",
+            "motivation": "Evaluate the ability to make recommendation about songs based on desired situation.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "top_streamed_songs"
+                    ],
+                    "parameters": [
+                        {
+                            "n": 10
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "top_streamed_songs"
+                ],
+                "parameters": [
+                    {
+                        "n": 10
+                    }
+                ],
+                "answer": "```json\n{\n  'songs': [\n    'Queencard',\n    'Where Are You Now',\n    'Anti-Hero'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "songs": [
+                        "Queencard",
+                        "Seek & Destroy",
+                        "Where Are You Now"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_ECON_Q2",
+            "category": "Extra Context",
+            "question": "Human life has ups and downs. Sometimes, while many opportunities come our way and we fail to see them, we are always more focused on the missed opportunities. While being abandoned makes us very sad, we don't think about the potential of starting a new relationship. Can you recommend 3 songs of BTS with highest energy levels that will help us cope with the ups and downs of life? Return the answer in JSON format: {'songs': [song_names_here]}",
+            "motivation": "Evaluate the ability to understand the context and make an inference about the timeframe that could be.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_artist_1"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "BTS"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "songs_by_artist_1"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "BTS"
+                    }
+                ],
+                "answer": "```json\n{\n  'songs': [\n    'Dynamite',\n    'Boy With Luv (feat. Halsey)',\n    'Bad Decisions (with BTS & Snoop Dogg)'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "songs": [
+                        "Yet To Come",
+                        "Dreamers [Music from the FIFA World Cup Qatar 2022 Official Soundtrack]",
+                        "Bad Decisions (with BTS & Snoop Dogg)"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_ECON_Q5",
+            "category": "Extra Context",
+            "question": "We're hosting a night filled with laughter, music, and unforgettable moments that you won't want to miss. Join us for a fantastic evening of good company, delicious bites, and a playlist that will keep you on the dance floor all night long. Could you please suggest me 5 music tracks from the songs released in 2010 which are the most known(as per streams) and would keep everyone swinging hither and thither?  Return the answer in JSON format: {'songs': [song_names_here]}",
+            "motivation": "Evaluate the ability to understand the context(modified wordings) and to call the function that can be called and infer and collect information about other desired features.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_release_date"
+                    ],
+                    "parameters": [
+                        {
+                            "release_date": "2010"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "top_streamed_songs",
+                    "songs_by_release_date"
+                ],
+                "parameters": [
+                    {
+                        "n": 5
+                    },
+                    {
+                        "release_date": "2010"
+                    }
+                ],
+                "answer": "```json\n{\n  'songs': [\n    'Danza Kuduro',\n    'Enchanted',\n    'Sure Thing',\n    'Just The Way You Are',\n    'Rolling in the Deep'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "songs": [
+                        "Danza Kuduro",
+                        "Just The Way You Are",
+                        "Rolling in the Deep",
+                        "Talking To The Moon",
+                        "Sure Thing"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q4",
+            "category": "Selection",
+            "question": "Provide me the album with the third lowest number of reviews of the same artist as that of 'Ray of Light'. Return the answer in JSON format: {'album':'3rd_least_reviewed_album_name'}",
+            "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "album_info",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "album_name": "Ray of Light"
+                        },
+                        {
+                            "artist_name": "Madonna"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "album_info",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "album_name": "Ray of Light"
+                    },
+                    {
+                        "artist_name": "Madonna"
+                    }
+                ],
+                "answer": "```json\n{'album':'Bedtime Stories'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album": "Music"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_REA_Q1",
+            "category": "Reasoning",
+            "question": "I am organizing a beach party and compiling songs with high beats. Can you get the albums of Bad Bunny and please recommend 4 songs from his most recent album which are suitable for my party. Return the answer in JSON format: {'songs': [4_song_names_with_highest_beats_here]}",
+            "motivation": "Evaluate the ability to make recommendation about songs based on desired situation. ",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "songs_by_album"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Bad Bunny"
+                        },
+                        {
+                            "album_name": "Un verano sin ti"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "songs_by_album"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Bad Bunny"
+                    },
+                    {
+                        "album_name": "Un verano sin ti"
+                    }
+                ],
+                "answer": "```json\n{\n  'songs': [\n    'Neverita',\n    'Moscow Mule',\n    'Un Coco',\n    'Ens\u00e9\u00f1ame a bailar'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "songs": [
+                        "Yo No Soy Celoso",
+                        "Dos Mil 16",
+                        "Un Coco",
+                        "Un Verano Sin Ti"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q2",
+            "category": "Aggregation",
+            "question": "Which is the least popular song among the songs with minimum danceability of 87%? Please provide only song(s) name. Return the answer in JSON format: {'song':'least_popular_song_here'}",
+            "motivation": "Evaluate the ability to find minimum value of specific attribute in the result.",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["songs_by_danceability_explicitness"],
+                "parameters": [{ "danceability_threshold": 87, "explicit": true }]
+              }
+            ],
+            "model_solution": {
+              "functions": ["songs_by_danceability_explicitness"],
+              "parameters": [{ "danceability_threshold": 87 }],
+              "answer": "```json\n{'song':'Facetime Hiding'}\n```"
+            },
+            "correct_answer": {
+              "ordered_items": [],
+              "answer": { "song": "LA GRINGA" }
+            },
+            "evaluation": {
+              "function_eval": "Correct",
+              "argument_eval": "Incorrect",
+              "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id":"TRAVEL_MULTI_CALL_PARALLEL_AGG_Q2",
+            "category":"Aggregation",
+            "question":"Hello, I have these three restaurant recommendations: Klong, TAO and Vezzo Thin Crust Pizza and I would like to know which one of them is the most expensive, according to their costs. Could you help me with this?  Return the answer in JSON format: {'the_restaurant_with_the_highest_cost': 'the_most_expensive_restaurant'}",
+            "motivation":"Evaluate the ability of the LLM to perform calculations and numerical comparisons (max) while calling simultaneousy several functions",
+            "overall_match":true,
+            "correct_paths":[
+               {
+                  "path_id":1,
+                  "functions":[
+                     "get_avg_costs_by_restaurant_name",
+                     "get_avg_costs_by_restaurant_name",
+                     "get_avg_costs_by_restaurant_name"
+                  ],
+                  "parameters":[
+                     {
+                        "restaurant_name":"Klong"
+                     },
+                     {
+                        "restaurant_name":"TAO"
+                     },
+                     {
+                        "restaurant_name":"Vezzo Thin Crust Pizza"
+                     }
+                  ]
+               }
+            ],
+            "model_solution":{
+               "functions":[
+                  "get_avg_costs_by_restaurant_name",
+                  "get_avg_costs_by_restaurant_name",
+                  "get_avg_costs_by_restaurant_name"
+               ],
+               "parameters":[
+                  {
+                     "restaurant_name":"Klong"
+                  },
+                  {
+                     "restaurant_name":"TAO"
+                  },
+                  {
+                     "restaurant_name":"Vezzo Thin Crust Pizza"
+                  }
+               ],
+               "answer":"```json\n{'the_restaurant_with_the_highest_cost': ''}\n```"
+            },
+            "correct_answer":{
+               "ordered_items":[
+                  
+               ],
+               "answer":{
+                  "the_restaurant_with_the_highest_cost":"Klong"
+               }
+            },
+            "evaluation":{
+               "function_eval":"Correct",
+               "argument_eval":"Correct",
+               "response_eval":"Incorrect"
+            }
+        }        
+    ]
+}

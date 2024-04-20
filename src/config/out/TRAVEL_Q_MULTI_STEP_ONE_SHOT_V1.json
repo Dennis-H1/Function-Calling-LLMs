@@ -1,0 +1,3103 @@
+{
+    "metadata":{
+       "run_id":"TRAVEL_SINGLE_STEP_SIMPLE_RUN",
+       "run_name":"Mannheim Function Calling Benchmark _ Testrun GPT4 Travel Use Case",
+       "question_set_id":"TRAVEL_Q_SINGLE_STEP_ONE_SHOT_MULTI_PARAM_V01",
+       "function_set_id":"TRAVEL_FUNC_MULTI_PARAM_SIMPLE_DESC_NO_EX_V01",
+       "prompt":"You are a helpful assistant. Answer briefly.",
+       "model":"gpt-4-turbo-preview",
+       "hyperparameters":{
+          "temperature":0,
+          "mode":"sequential"
+       },
+       "run_start_timestamp":"2024-04-18 21:44:27.742170",
+       "run_end_timestamp":"2024-04-18 21:54:39.998545",
+       "test_driver_version":"1.0.0"
+    },
+    "statistics":{
+       "number_of_functions":{
+          "total":47,
+          "correct":43,
+          "accuracy":0.914
+       },
+       "number_of_parameters":{
+          "total":145,
+          "correct":115,
+          "accuracy":0.793
+       },
+       "number_of_answers":{
+          "total":47,
+          "correct":22,
+          "accuracy":0.468
+       },
+       "number_of_tokens":{
+          "input":39587,
+          "output":13857
+       }
+    },
+    "question_result":[
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_LANGUAGE_Q1",
+          "category":"Languages",
+          "question":"Pershendetje, dua te rri pese dite ne nje vend afer Kuinsit dhe qe te mos kaloje koston e 80 dollareve per nate. A me ndihmon dot me dhjete sugjerime te lutem? Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (Albanian)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":80,
+                      "min_nights":5,
+                      "neighbourhood_group":"Queens"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group"
+             ],
+             "parameters":[
+                {
+                   "price":80,
+                   "min_nights":5,
+                   "neighbourhood_group":"Queens"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Sunny and spacious  1-bedroom in Brooklyn',\n    'Huge room in great area, 25 minutes from Manhattan',\n    'Brooklyn Home in the Heart of it All',\n    'British Room @ Columbia Uni.',\n    'Bargain Warm Spacious Studio in Carroll Gardens!',\n    'Sunny spacious room full of good energy',\n    '1BR Apt in the Bay Ridge!',\n    'Nice & new room,  washer/dryer, 5 min to train!',\n    'Beautiful & Private Manhattan Room'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Huge room in great area 25 minutes from Manhattan",
+                   "Brooklyn Home in the Heart of it All",
+                   "British Room @ Columbia Uni.",
+                   "Bargain Warm Spacious Studio in Carroll Gardens!",
+                   "Sunny spacious room full of good energy",
+                   "1BR Apt in the Bay Ridge!",
+                   "Nice & new room  washerdryer 5 min to train!",
+                   "Beautiful & Private Manhattan Room"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_LANGUAGE_Q2",
+          "category":"Languages",
+          "question":"Ich m\u00f6chte eine Reservierung in einem Restaurant mit traditionellen amerikanischen Gerichten namens SMASHBURGER vornehmen. Es ist in ganz New York, insbesondere in der Bronx, sehr ber\u00fchmt, aber ich kann die Kontaktdaten nicht finden. K\u00f6nnen Sie mir helfen? Return the answer in JSON format: {'number':'phone_number', 'restaurant_name':'name'}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (German)",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_telephone_number_by_name_neighbourhood_group_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "restaurant":"SMASHBURGER",
+                      "neighbourhood_group":"Bronx",
+                      "cuisine":"American"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_telephone_number_by_name_neighbourhood_group_cuisine"
+             ],
+             "parameters":[
+                {
+                   "restaurant":"SMASHBURGER",
+                   "neighbourhood_group":"Bronx",
+                   "cuisine":"American"
+                }
+             ],
+             "answer":"```json\n{'number':'3478018360', 'restaurant_name':'SMASHBURGER'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "number":"3478018360",
+                "restaurant_name":"SMASHBURGER"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_LANGUAGE_Q3",
+          "category":"Languages",
+          "question":"K\u00f6nnen Sie mir bei einigen Orten in der Gegend von Brooklyn helfen, die Mehrbettzimmer anbieten, mit Bewertungen vom 18. Mai 19? Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (German)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Brooklyn",
+                      "room_type":"Shared room",
+                      "last_review_date":"18-05-19"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_neighbourhood_group_room_type_date"
+             ],
+             "parameters":[
+                {
+                   "room_type":"Shared room",
+                   "last_review_date":"19-05-18",
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{'airbnb':'There are no available airbnbs in that neighbourhood with that room type and review date'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":"2MinToTrainsCozyLivingRoomMaimonideLutheranHospita"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_LANGUAGE_Q4",
+          "category":"Languages",
+          "question":"Estar\u00e9 en Nueva York dos noches y estoy buscando posibles opciones de alojamiento en Brooklyn. \u00bfPodr\u00eda proporcionarme algunas opciones con un precio no superior a 20 d\u00f3lares por noche? Return the answer in JSON format: {'airbnbs':['my_airbnb']",
+          "motivation":"Testing the ability of the LLM to understand another language except English (Spanish)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":20,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             },
+             {
+                "path_id":2,
+                "functions":[
+                   "get_airbnb_by_price_range_neighbourhood"
+                ],
+                "parameters":[
+                   {
+                      "min_price":0,
+                      "max_price":20,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":20,
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{'airbnbs':[\n 'Calm bed great area.',\n 'Room with a view' ]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnbs":[
+                   "Calm bed great area.",
+                   "Room with a view"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_LANGUAGE_Q5",
+          "category":"Languages",
+          "question":"Je veux surprendre mon partenaire avec un No\u00ebl confortable et romantique \u00e0 New York, en s\u00e9journant dans un endroit chaleureux et priv\u00e9 \u00e0 Manhattan avec vue sur la neige, et j'ai besoin de votre aide pour trouver les meilleures options les moins ch\u00e8res avec les meilleurs avis de d\u00e9cembre 2018. Return the answer in JSON format:{'airbnb':['my_airnbn']}",
+          "motivation":"Testing the ability of the LLM to understand another language except English (French)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "room_type":"Entire home apartment",
+                      "last_review_date":"31-12-18",
+                      "neighbourhood_group":"Manhattan"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_neighbourhood_group_room_type_date"
+             ],
+             "parameters":[
+                {
+                   "last_review_date":"23-12-2018",
+                   "neighbourhood_group":"Manhattan",
+                   "room_type":"Entire home/apt"
+                }
+             ],
+             "answer":"```json\n{'airbnb':[]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Authentic studio-UES (30 days MIN)"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_TYPO_Q1",
+          "category":"Typos",
+          "question":"Hello, I'll be in New York for two nights and I'm looking for potential accommodation options around Brooklyn. Could you please provide me with some choices that are priced at no more than $-20 per night? Return the answer in JSON format: {'airbnb':['location']}",
+          "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (currency value typo)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_range_neighbourhood"
+                ],
+                "parameters":[
+                   {
+                      "min_price":0,
+                      "max_price":20,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             },
+             {
+                "path_id":2,
+                "functions":[
+                   "get_airbnb_by_price_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":20,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":20,
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{'airbnbs':[\n 'Calm bed great area.',\n 'Room with a view' ]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Calm bed great area.",
+                   "Room with a view"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_TYPO_Q2",
+          "category":"Typos",
+          "question":" Hello, I'll be in New York for two nights and I'm looking for potential accommodation options around Brooklyn. Could you please provide me with some choices that are priced at no more than -tuenti dollars per night? Return the answer in JSON format: {'airbnb':['my_airbnb']",
+          "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (currency value typo)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":20,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             },
+             {
+                "path_id":2,
+                "functions":[
+                   "get_airbnb_by_price_range_neighbourhood"
+                ],
+                "parameters":[
+                   {
+                      "min_price":0,
+                      "max_price":20,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":20,
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{'airbnbs':[\n 'Calm bed great area.',\n 'Room with a view' ]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Calm bed great area.",
+                   "Room with a view"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_TYPO_Q3",
+          "category":"Typos",
+          "question":"Can you get for me some listings that are shareed rooms in Brooklyn and are lastly reviewed in 300 February 2018?  Return the answer in JSON format:{'airbnb_location':'location', 'last_reviewed':'review_date', 'type':'type_of_room'}",
+          "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (date value typo)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "room_type":"Shared room",
+                      "last_review_date":"28-02-18",
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_neighbourhood_group_room_type_date"
+             ],
+             "parameters":[
+                {
+                   "room_type":"Shared room",
+                   "last_review_date":"18-02-28",
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{\n  'error': 'There are no available airbnbs in Brooklyn with the specified room type (Shared room) and review date (February 2018).'\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":"There are no available airbnbs in that neighbourhood with that room type and review date"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_TYPO_Q4",
+          "category":"Typos",
+          "question":" Can you get for me some listings that are shareed rooms in Brooklyn and are lastly reviewed in 310 March 2018? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (date value typo)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Brooklyn",
+                      "room_type":"Shared room",
+                      "last_review_date":"31-03-18"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_neighbourhood_group_room_type_date"
+             ],
+             "parameters":[
+                {
+                   "last_review_date":"18-03-31",
+                   "neighbourhood_group":"Brooklyn",
+                   "room_type":"Shared room"
+                }
+             ],
+             "answer":"```json\n{'error':'There are no available airbnbs in Brooklyn with a Shared room type and last review date of March 31, 2018.'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Clean Cute Williamsburg Apt Steps from train!"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_TYPO_Q5",
+          "category":"Typos",
+          "question":"Hello, I dont know the number of a restaurant that is called Addiction in Staten Island or something like that and I have reserved there and I want to cancel. I just know that they serve Bottled Beverages.Return the answer in JSON format: {'number':'phone_number', 'restaurant_name':'name'} ",
+          "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (currency value typo)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_telephone_number_by_name_neighbourhood_group_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "restaurant":"ADDICCION",
+                      "neighbourhood_group":"Staten Island",
+                      "cuisine":"Bottled Beverages"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_telephone_number_by_name_neighbourhood_group_cuisine"
+             ],
+             "parameters":[
+                {
+                   "restaurant":"Addiction",
+                   "neighbourhood_group":"Staten Island",
+                   "cuisine":"Bottled Beverages"
+                }
+             ],
+             "answer":"```json\n{'number':'not found', 'restaurant_name':'Addiction'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "number":"7183134986",
+                "restaurant name":"ADDICCION"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q1",
+          "category":"Data Types",
+          "question":"I am currently in New York, I was wandering around Brooklyn and I have only 10 dollars and 10 euros so please help me find a place for tonight.Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":20,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             },
+             {
+                "path_id":2,
+                "functions":[
+                   "get_airbnb_by_price_range_neighbourhood"
+                ],
+                "parameters":[
+                   {
+                      "min_price":0,
+                      "max_price":20,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":13,
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{'airbnbs':[\n 'Room with a view' ]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Calm bed great area.",
+                   "Room with a view"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q2",
+          "category":"Data Types",
+          "question":"Roaming the diverse neighborhoods of Brooklyn, New York City, I have 250 Mexican pesos, 100 Canadian dollars, and 50 Indian rupees in my wallet. With this diverse currency, can you assist me in finding  around five suitable accommodation for tonight? I want to use all the money I have for accommodation.Return the answer in JSON format: {'airbnb':['my_airbnb']",
+          "motivation":"Testing the ability of the LLM to understand the unit conversion of different currencies (dollars, pesos, canadian dollars and indian rupees) and to aggregate to the same unit (full dollar amount)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":87,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             },
+             {  
+                "path_id":2,
+                "functions":[
+                   "get_airbnb_by_price_range_neighbourhood"
+                ],
+                "parameters":[
+                   {
+                      "min_price":0,
+                      "max_price":87,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":87,
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Sunny and spacious  1-bedroom in Brooklyn',\n    'Brooklyn Home in the Heart of it All',\n    'Room in Bushwick Bk available June',\n    'Bargain Warm Spacious Studio in Carroll Gardens!',\n    'Sunny spacious room full of good energy'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Brooklyn Home in the Heart of it All",
+                   "Room in Bushwick Bk available June",
+                   "Bargain Warm Spacious Studio in Carroll Gardens!",
+                   "Sunny spacious room full of good energy"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q3",
+          "category":"Data Types",
+          "question":"I am currently traveling to Queens where I plan to spend some days. I want to find some place to stay and I have a limited budget of 100 dollars and 300 cents. I don't have much time available, for me it is enough to stay 3 nights and no more than that. Can you give me around ten recommendations? Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":103,
+                      "min_nights":3,
+                      "neighbourhood_group":"Queens"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group"
+             ],
+             "parameters":[
+                {
+                   "price":103,
+                   "min_nights":3,
+                   "neighbourhood_group":"Queens"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Sunny and spacious  1-bedroom in Brooklyn',\n    'Large Private Room in Greenpoint Williamsburg',\n    'Brooklyn Home in the Heart of it All',\n    'British Room @ Columbia Uni.',\n    'Spacious brand new apartment 2 bedrooms - 2bath',\n    'Bargain Warm Spacious Studio in Carroll Gardens!',\n    'Sunny spacious room full of good energy',\n    '1BR Apt in the Bay Ridge!',\n    'Nice & new room,  washer/dryer, 5 min to train!'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Large Private Room in Greenpoint Williamsburg",
+                   "Brooklyn Home in the Heart of it All",
+                   "British Room @ Columbia Uni.",
+                   "Spacious brand new apartment 2 bedrooms - 2bath",
+                   "Bargain Warm Spacious Studio in Carroll Gardens!",
+                   "Sunny spacious room full of good energy",
+                   "1BR Apt in the Bay Ridge!",
+                   "Nice & new room  washerdryer 5 min to train!"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q4",
+          "category":"Data Types",
+          "question":"I am currently traveling to Queens where I plan to spend some days. I want to find some place to stay and I have a limited budget of 99 dollars and 100 cents. I don't have much time available, for me it is enough to stay 3 nights and no more than that. Can you give me around ten recommendations? Return the answer in JSON format: {'airbnb_by_neighbour':'neighbourhood_group', 'airbnb_by_nights':'min_number', 'aribnb_by_price':'price_per_night'}",
+          "motivation":"Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":100,
+                      "min_nights":3,
+                      "neighbourhood_group":"Queens"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group"
+             ],
+             "parameters":[
+                {
+                   "price":99.1,
+                   "min_nights":3,
+                   "neighbourhood_group":"Queens"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb_by_neighbour': 'Queens',\n  'airbnb_by_nights': 3,\n  'aribnb_by_price': 99.1\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Large Private Room in Greenpoint Williamsburg",
+                   "Brooklyn Home in the Heart of it All",
+                   "British Room @ Columbia Uni.",
+                   "Spacious brand new apartment 2 bedrooms - 2bath",
+                   "Bargain Warm Spacious Studio in Carroll Gardens!",
+                   "Sunny spacious room full of good energy",
+                   "1BR Apt in the Bay Ridge!",
+                   "Nice & new room  washerdryer 5 min to train!"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q5",
+          "category":"Data Types",
+          "question":"I am coming from London and I have 200 pounds to spend for 4 nights in Bronx. Can you find me some good places to stay? Return the answer in JSON format: {'airbnb':'my_airbnb',}",
+          "motivation":"Testing the ability of the LLM to understand the unit conversion of different currencies (pounds) to the correct currency (dollars)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":63,
+                      "min_nights":4,
+                      "neighbourhood_group":"Bronx"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group"
+             ],
+             "parameters":[
+                {
+                   "price":50,
+                   "min_nights":4,
+                   "neighbourhood_group":"Bronx"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Bronx Apartment College Ave',\n    'Sunny Room across CrotonaPark for Women Only Space',\n    'Bronx, Little Italy, Arthur Ave, Fordham, Yanks.',\n    'Shared space w/privacy near NY Botanic Garden',\n    '\u2022Bright and Cozy room in an elegant apartment\u2022'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Bronx Apartment College Ave",
+                   "Sunny Room across CrotonaPark for Women Only Space",
+                   "Private Studio in Private Home",
+                   "Cozy 1 Bedroom Apartment near Yankee Stadium",
+                   "Charming Attic RM with BackyardPorchNear Metro",
+                   "Cozy Private Bedroom",
+                   "Bronx Little Italy Arthur Ave Fordham Yanks.",
+                   "Shared space wprivacy near NY Botanic Garden",
+                   "\u2022Bright and Cozy room in an elegant apartment\u2022"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q6",
+          "category":"Data Types",
+          "question":"I will be traveling to New York for work next week, specifically in the Bronx. I am looking for accommodation within my budget of 300 pounds per night, and I plan to stay for a minimum of a week. Any recommendations for places that fit my budget would be greatly appreciated. Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to understand the unit conversion of the same currency (cents and dollars) and to aggregate to the same unit (full dollar amount)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":380,
+                      "min_nights":7,
+                      "neighbourhood_group":"Bronx"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group"
+             ],
+             "parameters":[
+                {
+                   "price":393,
+                   "min_nights":7,
+                   "neighbourhood_group":"Bronx"
+                }
+             ],
+             "answer":"```json\n{'airbnb':['Apartment around the park','Bronx Apartment College Ave','Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)','Sunny Room across CrotonaPark for Women Only Space','Uptown Bronx Apartment','The Sweet','Private Studio in Private Home','Large Private Room. Safe area. Near 4 and D trains','Cozy 1 Bedroom Apartment near Yankee Stadium','Charming Attic RM with Backyard/Porch/Near Metro','Great room! Good for med students!','DOMINIQUE'S NY*Wanderlust room/Metro/Bronx Zoo/Gdn','Gorgeous and Sunlit 1 BR 31/1-3/1','Cozy Private Bedroom','Charming studio apartment','Bronx, Little Italy, Arthur Ave, Fordham, Yanks.','Artsy + Light. River Views. 30 min to 42nd St.','Shared space w/privacy near NY Botanic Garden','\u2022Bright and Cozy room in an elegant apartment\u2022']}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Apartment around the park",
+                   "Bronx Apartment College Ave",
+                   "Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)",
+                   "Sunny Room across CrotonaPark for Women Only Space",
+                   "Uptown Bronx Apartment",
+                   "The Sweet",
+                   "Private Studio in Private Home",
+                   "Large Private Room. Safe area. Near 4 and D trains",
+                   "Cozy 1 Bedroom Apartment near Yankee Stadium",
+                   "Charming Attic RM with BackyardPorchNear Metro",
+                   "Great room! Good for med students!",
+                   "DOMINIQUE'S NY*Wanderlust roomMetroBronx ZooGdn",
+                   "Gorgeous and Sunlit 1 BR 311-31",
+                   "Cozy Private Bedroom",
+                   "Charming studio apartment",
+                   "Bronx Little Italy Arthur Ave Fordham Yanks.",
+                   "Artsy + Light. River Views. 30 min to 42nd St.",
+                   "Shared space wprivacy near NY Botanic Garden",
+                   "\u2022Bright and Cozy room in an elegant apartment\u2022"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q7",
+          "category":"Data Types",
+          "question":"I, along with eight colleagues, will be visiting New York and are currently in search of an apartment that can accommodate all of us. We prefer a location near Manhattan. Could you please provide options that have been recently frequented or reviewed by previous occupants? Additionally, exclude any places with reviews dated before the first of January four years ago from the current date. Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to understand the correct date format",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Manhattan",
+                      "room_type":"Entire home apartment",
+                      "last_review_date":"01-01-19"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_neighbourhood_group_room_type_date"
+             ],
+             "parameters":[
+                {
+                   "last_review_date":"2019-01-01",
+                   "neighbourhood_group":"Manhattan",
+                   "room_type":"Entire home/apt"
+                }
+             ],
+             "answer":"```json\n{'airbnb':[]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Studio in Brooklyn Heights with Private Entrance",
+                   "Oasis in East Village",
+                   "True 1BR in East Village with City Views",
+                   "Urban sanctuary near Bedford L!",
+                   "Stylish spacious 1 bd centrally located in Midtown",
+                   "Chic and Cozy Chinatown Loft",
+                   "Bright Clean North Central Park"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q8",
+          "category":"Data Types",
+          "question":"I want an entire apartment on 15 Jan in the area of Manhattan. Can you help me find some? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to understand the the correct date format",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Manhattan",
+                      "room_type":"Entire home apartment",
+                      "last_review_date":"15-01-22"
+                   }
+                ]
+             },
+             {
+                "path_id":2,
+                "functions":[
+                   " get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Manhattan",
+                      "room_type":"Entire home apartment",
+                      "last_review_date":"15-01-23"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_neighbourhood_group_room_type_date"
+             ],
+             "parameters":[
+                {
+                   "room_type":"Entire home/apt",
+                   "last_review_date":"23-01-15",
+                   "neighbourhood_group":"Manhattan"
+                }
+             ],
+             "answer":"```json\n{'airbnb':[]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "There are no available airbnbs in that neighbourhood with that room type and review date"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q9",
+          "category":"Data Types",
+          "question":"Can you get for me some airbnbs in the area of Brooklyn, a private room would be nice, that was lastly rated on the first day of June in 2018? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to understand the date data format",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Brooklyn",
+                      "room_type":"Private room",
+                      "last_review_date":"01-06-18"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_neighbourhood_group_room_type_date"
+             ],
+             "parameters":[
+                {
+                   "room_type":"Private room",
+                   "last_review_date":"18-06-01",
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{'airbnb':[]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Sunny and spacious  1-bedroom in Brooklyn"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q10",
+          "category":"Data Types",
+          "question":"Can you get for me some airbnbs in the area of Brooklyn, a private room would be nice, that was lastly rated on the first June 2018? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to understand the correct date format",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "last_review_date":"01-06-18",
+                      "room_type":"Private room",
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_neighbourhood_group_room_type_date"
+             ],
+             "parameters":[
+                {
+                   "room_type":"Private room",
+                   "last_review_date":"01-06-2018",
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{'airbnb':[]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Sunny and spacious  1-bedroom in Brooklyn"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q11",
+          "category":"Data Types",
+          "question":"I would like to stay in Manhattan for a couple of nights and get a shared room. I would like to get an airbnb that is lastly rated on 2019-06-23? Return the answer in JSON format:{'airbnb_location':'location', 'last_reviewed':'review_date', 'type':'type_of_room'}",
+          "motivation":"Testing the ability of the LLM to understand the correct date format",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Manhattan",
+                      "room_type":"Shared room",
+                      "last_review_date":"23-06-19"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_neighbourhood_group_room_type_date"
+             ],
+             "parameters":[
+                {
+                   "last_review_date":"23-06-2019",
+                   "neighbourhood_group":"Manhattan",
+                   "room_type":"Shared room"
+                }
+             ],
+             "answer":"```json\n{\n  'error': 'There are no available airbnbs in that neighbourhood with that room type and review date'\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "British Room @ Columbia Uni.",
+                   "Beautiful Room with Laundry in Prime Williamsburg",
+                   "Central Harlem Private Studio",
+                   "Modern and Stylish 1 Bedroom in East Village",
+                   "Spacious & Stylish 3BR Condo Steps to the Subway!",
+                   "Sunny 1BR + Outdoor space [L line]",
+                   "Your own hip and cozy 1BD apartment",
+                   "Artsy and charming retreat in Lefferts Garden",
+                   "Shared Cozy Apartment By Times Square Manhattan",
+                   "Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)",
+                   "NYC Bedroom!! - Minutes to Central Park!!",
+                   "Spacious Great Location Garden 1 stop to City.",
+                   "Sonder | Stock Exchange | Sunny 3BR + Sofa Bed",
+                   "Near Subway and Central Park :)",
+                   "Room wpvt bathroom on Central Park",
+                   "Cozy Private room in Chelsea !",
+                   "Amazing LES apt - cool bright...",
+                   "Cute apartment with Backyard",
+                   "Luxury 2BDR in Prime Area Doorman Elevator",
+                   "Large Charming 1 BR + Den  in  Brownstone Apt",
+                   "Amazing Columbus Circle 3 Bedroom",
+                   "Private 2B Room in 4BR2BA APT in Hell's Kitchen",
+                   "Bright 2BR in Bed-Stuy (20 Minutes to Manhattan!)",
+                   "Comfy 4br 2 full baths 3 fls 2 living rooms"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q1",
+          "category":"Extra Context",
+          "question":"Today I feel really tired and would like to go somewhere to relax and calm my nerves. What if you suggest me ten places to stay in New York, perhaps in a calm and rich area of Brooklyn. The thing is that I do not want to spend much so it triggers my depression. Something rather cheap would make me really happy. I mean, cheap being like 45 bucks. Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string and numeric matching), giving some extra context",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":45,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             },
+             {
+                "path_id":2,
+                "functions":[
+                   "get_airbnb_by_price_range_neighbourhood"
+                ],
+                "parameters":[
+                   {
+                      "min_price":0,
+                      "max_price":45,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":45,
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Room in Bushwick Bk available June',\n    'Sunny spacious room full of good energy',\n    'Nice & new room, washer/dryer, 5 min to train!',\n    'NEW Bedroom w/Private Toilet (Great Study Space)',\n    'Beautiful sunny room in Brooklyn',\n    'Bedroom 7 bed A.',\n    'BK'S FINEST CLOSE 2 TRANSPORTATION-',\n    'Calm bed great area.',\n    'Sunny room in Brooklyn',\n    'Sunny, Cozy Room Near Train, Cafes & Parks'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                    "Room in Bushwick Bk available June",
+                    "Sunny spacious room full of good energy",
+                    "Nice & new room,  washer/dryer, 5 min to train!",
+                    "NEW Bedroom w/Private Toilet (Great Study Space)",
+                    "Beautiful sunny room in Brooklyn",
+                    "Bedroom 7 bed A.",
+                    "BK'S FINEST CLOSE 2 TRANSPORTATION-",
+                    "Calm bed great area.",
+                    "Sunny room in Brooklyn",
+                    "Sunny, Cozy Room Near Train, Cafes & Parks"
+                    
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q2",
+          "category":"Extra Context",
+          "question":" Hello, I'll be in New York with friends who have a small room in Manhattan, so staying with them isn't an option. However, I'm looking to find an affordable place to stay in the Bronx for a few nights. I'm considering allocating only a portion of my budget for accommodation, perhaps around 1/3 of it, which is approximately $ 60. Can you assist me in finding arount ten suitable places? Return the answer in JSON format: {'airbnb_by_neighbour':'neighbourhood_group', 'aribnb_by_price':'price_per_night'}",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string matching), giving some extra context",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":60,
+                      "neighbourhood_group":"Bronx"
+                   }
+                ]
+             },
+             {
+                "path_id":2,
+                "functions":[
+                   "get_airbnb_by_price_range_neighbourhood"
+                ],
+                "parameters":[
+                   {
+                      "min_price":0,
+                      "max_price":60,
+                      "neighbourhood_group":"Bronx"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":60,
+                   "neighbourhood_group":"Bronx"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb_by_neighbour': 'Bronx',\n  'airbnb_by_price': [\n    {'name': 'Bronx Apartment College Ave', 'price_per_night': 'Up to $60'},\n    {'name': 'Sunny Room across CrotonaPark for Women Only Space', 'price_per_night': 'Up to $60'},\n    {'name': 'Private Studio in Private Home', 'price_per_night': 'Up to $60'},\n    {'name': 'Large Private Room. Safe area. Near 4 and D trains', 'price_per_night': 'Up to $60'},\n    {'name': 'Cozy 1 Bedroom Apartment near Yankee Stadium', 'price_per_night': 'Up to $60'},\n    {'name': 'Charming Attic RM with Backyard/Porch/Near Metro', 'price_per_night': 'Up to $60'},\n    {'name': 'Cozy Private Bedroom', 'price_per_night': 'Up to $60'},\n    {'name': 'Bronx, Little Italy, Arthur Ave, Fordham, Yanks.', 'price_per_night': 'Up to $60'},\n    {'name': 'Artsy + Light. River Views. 30 min to 42nd St.', 'price_per_night': 'Up to $60'},\n    {'name': 'Shared space w/privacy near NY Botanic Garden', 'price_per_night': 'Up to $60'},\n    {'name': '\u2022Bright and Cozy room in an elegant apartment\u2022', 'price_per_night': 'Up to $60'}\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                "Bronx Apartment College Ave",
+                "Sunny Room across CrotonaPark for Women Only Space",
+                "Private Studio in Private Home",
+                "Large Private Room. Safe area. Near 4 and D trains",
+                "Cozy 1 Bedroom Apartment near Yankee Stadium",
+                "Charming Attic RM with Backyard/Porch/Near Metro",
+                "Cozy Private Bedroom",
+                "Bronx, Little Italy, Arthur Ave, Fordham, Yanks.",
+                "Artsy + Light. River Views. 30 min to 42nd St.",
+                "Shared space w/privacy near NY Botanic Garden",
+                "â€¢Bright and Cozy room in an elegant apartmentâ€¢"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q3",
+          "category":"Extra Context",
+          "question":"I am currently panicking because my flight from New York to Miami was cancelled and now I am wandering around Manhattan though I am planning to stay in Brooklyn so I can also visit some friends in the verge of my misfortune. The thing is that since I will be visiting them I will spend a lot so I don't want something expensive, maybe around 100 dollars at maximum for ten places. Return the answer in JSON format: {'airbnb_by_neighbour':'neighbourhood_group', 'aribnb_by_price':'price_per_night'} ",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (numerical and string matching), giving some extra context",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":100,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             },
+             {
+                "path_id":2,
+                "functions":[
+                   "get_airbnb_by_price_range_neighbourhood"
+                ],
+                "parameters":[
+                   {
+                      "min_price":0,
+                      "max_price":100,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":100,
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb_by_neighbour': 'Brooklyn',\n  'aribnb_by_price': [\n    'Sunny and spacious  1-bedroom in Brooklyn',\n    'Large Private Room in Greenpoint Williamsburg',\n    'Quiet & Spacious Brooklyn Apt for Cat-Lovers',\n    'Brooklyn Home in the Heart of it All',\n    'Large Parlor Room, Landmark Home 1 block to PRATT',\n    'Room in Bushwick Bk available June',\n    'Bargain Warm Spacious Studio in Carroll Gardens!',\n    'Sunny spacious room full of good energy',\n    'Beautiful Room with Laundry in Prime Williamsburg',\n    '1BR Apt in the Bay Ridge!'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                    "Sunny and spacious  1-bedroom in Brooklyn",
+                    "Large Private Room in Greenpoint Williamsburg",
+                    "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                    "Brooklyn Home in the Heart of it All",
+                    "Large Parlor Room, Landmark Home 1 block to PRATT",
+                    "Room in Bushwick Bk available June",
+                    "Bargain Warm Spacious Studio in Carroll Gardens!",
+                    "Sunny spacious room full of good energy",
+                    "Beautiful Room with Laundry in Prime Williamsburg",
+                    "1BR Apt in the Bay Ridge!"
+                    
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q4",
+          "category":"Extra Context",
+          "question":" I am currently driving in mannhatan to broklyn and looking for a place to stay there after finishing my work and having a dinner with my collegues tomorrow in mannhatan. The price of the five places suggested doesn't make much differenc, I just want it to have very good reviews, it might be maybe until 600 dolars. Return the answer in JSON format: {'airbnb_by_neighbour':'neighbourhood_group', 'aribnb_by_price':'price_per_night'}",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (numerical and string matching), giving some extra context",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":600,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             },
+             {
+                "path_id":2,
+                "functions":[
+                   "get_airbnb_by_price_range_neighbourhood"
+                ],
+                "parameters":[
+                   {
+                      "min_price":0,
+                      "max_price":600,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":600,
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb_by_neighbour': 'Brooklyn',\n  'aribnb_by_price': [\n    'Sunny and spacious  1-bedroom in Brooklyn',\n    'Large Private Room in Greenpoint Williamsburg',\n    'Spacious Brooklyn Brownstone 3BR+',\n    'Quiet & Spacious Brooklyn Apt for Cat-Lovers',\n    'Brooklyn Home in the Heart of it All',\n    'Spacious 1BR Bushwick Surfers Loft!',\n    'Large Parlor Room, Landmark Home 1 block to PRATT',\n    'Room in Bushwick Bk available June',\n    'Gorgeous Industrial Loft in Prime Williamsburg',\n    'Private 2 bedroom w/ Rooftop Manhattan View!',\n    'Large charming bedroom',\n    'Bargain Warm Spacious Studio in Carroll Gardens!',\n    'Sunny spacious room full of good energy',\n    'Beautiful Room with Laundry in Prime Williamsburg',\n    'Magical 3-bed/3-bath fabulous views',\n    '1BR Apt in the Bay Ridge!',\n    'Nice & new room,  washer/dryer, 5 min to train!',\n    'Spacious Town House near Park',\n    'Be Comfy Loft Bedroom',\n    'Williamsburg apartment right by the subway',\n    'Sunny Artist's Loft',\n    'Charming and spacious duplex in classic brownstone',\n    'NEW Bedroom w/Private Toilet (Great Study Space)',\n    'BEST location in Williamsburg',\n    'Entire Cozy Apt in Brooklyn - 20 mins to Manhattan',\n    'Your Own 2-Bd ~ Comfortable and Unique ~ Bed-Stuy',\n    'Beautiful Studio in Bed Stuy',\n    'Front Studio in Loft Apartment - Steiner Studios',\n    'Master Suite w/Private Bath & Balcony',\n    'LARGE DUPLEX-3BR/3BA Williamsburg Townhouse+GARDEN',\n    'Beautiful sunny room in Brooklyn',\n    'Sweet Quiet Spacious Room Brooklyn',\n    'Spacious & Stylish 3BR Condo Steps to the Subway!',\n    'Sunny Brownstone Apartment in Brooklyn',\n    'Sunny apartment in prime Greenpoint-Steps to train',\n    'Sunny 1BR + Outdoor space [L line]',\n    'Bedroom 7 bed A.',\n    'COZY SPOT',\n    'Private 1 Bdrm Suite in Historic Brownstone',\n    'Penthouse Designer Loft Brooklyn',\n    'Brooklyn Exquisite',\n    '1 br available in a Lovely 2br Apt',\n    'Beautiful BedStuy Bedroom',\n    'BRIGHT AND SPACIOUS 3 BEDROOM WITH GARDEN',\n    'Brooklyn one-bedroom right by Prospect Park!',\n    'Queen bedroom & huge private bath',\n    'Your NYC Home!',\n    'Brooklyn Park Slope Queen Bed',\n    'Williamsburg Loft!! Bedford L 1blk!',\n    'BK'S FINEST CLOSE 2 TRANSPORTATION-',\n    'Cozy in Cobble Hill',\n    'Sunny spacious top floor of brownstone',\n    'One Bedroom Apartment in Townhouse',\n    'Luxury Duplex with large loft space and Terrace',\n    'Loft Suite @ The Box House Hotel',\n    'Bed Stuy Hideaway',\n    'Studio in Brooklyn Heights with Private Entrance',\n    'Artist 2BR in Park Slope w/backyard',\n    'Home 4 Medical Professionals-Wykof3',\n    'Calm bed great area.',\n    'Unique Fort Greene Getaway with Private Deck',\n    'Entire Sun Drenched Apartment in Clinton Hill',\n    'Huge New 1700sf Brownstone Duplex',\n    'New & Bright Garden Apartment',\n    'Sunny room in Brooklyn',\n    'Brooklyn 1BR Full Apartment Great Location',\n    'Cozy Private Room in 2 bedroom APT',\n    'Cute & Cozy studio in Prospect Park',\n    'Bright Studio in New WB Building',\n    'Quiet room in Greenpoint, Brooklyn',\n    'Room in Historic Fort Greene Apt.',\n    'Cozy Corner, Bedford Ave  Brooklyn!',\n    'Clean Private Room, 10 min from 2 subway lines.',\n    'Beautiful Fresh Studio for Sublet',\n    'Cozy Garden Apartment in Bushwick!!',\n    'Beautiful Brooklyn Room',\n    'Landmark Brooklyn Brownstone 35 min from Midtown',\n    'Amazing Location in Williamsburg with 4 Bedrooms',\n    'Huge Dumbo Loft',\n    'Brooklyn apartment 20 min to Manhattan',\n    'Great Private Bedroom',\n    'The Emerald Suite  (A Gem In A Historic Mansion)',\n    'Art Room + Backyard in Williamsburg',\n    'Renovated  Master Bedroom 47 Buffalo 3F Room#1',\n    'Nice Room',\n    'Modern living in semi-industrial setting',\n    'Beautiful 1 bd apartment in the heart of Brooklyn.',\n    'Seaview Studio in  Brooklyn New york.',\n    'Sunny, Cozy Room Near Train, Cafes & Parks',\n    'Beautiful NYC Apartment in Popular Brooklyn spot!!',\n    'Charming room in Victorian home',\n    '**Cozy room, good location, 20 mins to Manhattan',\n    'Brooklyn Home On The Beach',\n    'Large, Furnished Bedroom in Bushwick',\n    'Red Hook studio space with private entrance',\n    'Huge, Light-filled Williamsburg Loft \\u2014\\u00a0Long Term',\n    'Room with a view',\n    'Small Room in Big Williamsburg Apartment',\n    'Charming Windsor Terrace Home',\n    'Spacious yellow room in Brooklyn',\n    'Beautiful brownstone apartment on quiet street',\n    '3 BEDROOMS IN BROOKLYN',\n    'AWESOME CHARMING ROOM C WITH ROOF DECK ACCESS :)',\n    'Brooklyn duplex 10 mins to U Square',\n    'Bedstuy Fly!  Two Bedroom Garden Apartment.',\n    'Newly renovated heart of Williamsburg great views',\n    'BEAUTIFUL 1-BEDROOM @ \\u05d3\\u05d9\\u05e8\\u05d4 \\u05e9\\u05d5\\u05d5\\u05d4 \\u05d1\\u05d5\\u05d5\\u05d9\\u05dc\\u05d9\\u05d0\\u05de\\u05e1\\u05d1\\u05d5\\u05e8\\u05d2',\n    'Spacious Williamsburg apartment',\n    'Huge Beautiful Loft in the Heart of Williamsburg',\n    'Cozy room in Brooklyn steps from train',\n    'Sunny, spacious room in heart of BK',\n    'Bright Brooklyn Room in Shared Apt!',\n    'Cosy home in Bushwick..25 minutes into Manhattan!',\n    'Cozy room w/ Laundry in Building + 3 Bathrooms!',\n    'Private big one bedroom apt, Brooklyn,NY',\n    'Clinton Hill Guest Room',\n    'Room in spacious house in Brooklyn!',\n    'Crown Heights 3BR, 2 BATH (15 mins to Manhattan!)',\n    'Lefferts Garden/ Prospect Park Gem',\n    'Small room in South Slope House',\n    'Charming, Cozy & spacious  bedroom in Brooklyn',\n    'Private Room in lovely Greenpoint',\n    'Sunny, roomy one-bedroom across from Prospect Park',\n    'Cozy Artists Bushwick Loft!',\n    'Charming 2-Bedroom Brownstone Garden Level Apt.',\n    'Spacious, quiet loft close to EVERYTHING! Views!',\n    '2 Bedrooms and a Comfy Couch On Washington',\n    '2 bedroom floor-thru in heart of Park Slope -',\n    '1 Bedroom, Comfortable Large Brownstone apt',\n    'Private En-suite in an Beautiful Brownstone',\n    'Cute sunny room in big Bushwick apartment',\n    'Eclectic and Peaceful Suite with Private Bathroom',\n    'Private room w/ bathroom & kitchen!',\n    'Cozy apartment in the heart of Williamsburg!',\n    'Gorgeous Loft w/ 2 queen beds & full kitchen!',\n    'Renovated: 15min 4 Train ride to NYC-Crown Heights',\n    'Convenient & Spacious & Feel Good Apartment',\n    'PRIVATE ROOM - GREENPOINT',\n    'Cozy Two Bedroom Apartment in Greenpoint',\n    'Brooklyn- Crown Heights Garden Apt.',\n    'Modern Park Slope 1br right by Prospect Park',\n    'The Gallery Bed & Breakfast in Bed-Stuy, Brooklyn',\n    'Comfortable Private Room with everything you need!',\n    'Cozy Room Great Price in Bushwick, Bklyn!(Suite 3)',\n    'Bedstuy Brooklyn home with a view!!!',\n    'Brand new 2-bed in luxury full-service building',\n    'Your own hip and cozy 1BD apartment',\n    'Brick Brownstone Apartment, Perfect for Families',\n    'Holidays in Williamsburg!',\n    'Large bright room in the heart of Bushwick',\n    'Colorful Room in Crown Heights',\n    'Park Slope Master Bedroom',\n    'Cozy Studio on McGolrick Park',\n    'Brooklyn Bright Times',\n    'Sun-drenched, airy industrial loft in Brooklyn!',\n    'Private BR in Two-Floor Hip Bushwick Apartment',\n    'Stuyvesant Heights Townhouse',\n    'Great private room open for Aug!!',\n    'Airy, Modern, Large Room W'burg two blocks subway',\n    'Large room in two-story Brownstone',\n    'Beautiful Boerum Hill 2 Bedroom',\n    'Artsy and charming retreat in Lefferts Garden',\n    'New MidCentury Modern Apt In The Heart Of Brooklyn',\n    'Bright modern loft in Crown Heights brownstone',\n    'Luxury 4BR Home, Spacious & Central to Trains',\n    'Clean, Cute Williamsburg Apt, Steps from train!',\n    'Beautiful, spacious apartment in Brooklyn',\n    'Large Sun-filled room in beautiful brownstone home',\n    'Beautiful 1 Bedroom + futon',\n    'GAMBA Z's Artist Residency for Traveling Artists',\n    '1000 SQ FT Cobble Hill \\u00dcbercharmer',\n    'Cosy Large Bedroom Park Slope',\n    'Beautiful shared room in 20 min to Manhattan',\n    'Cozy, Sunny, Spacious 1 Bedroom Gem in Greenpoint!',\n    'Beautiful Room in Bushwick, Bk. (Hablo Espa\\u00f1ol)',\n    'Bright, cozy room 30mins from downtown Manhattan',\n    'Entire 3rd Fl in Brownstone steps to Prospect Park',\n    'Spacious, Great Location, Garden, 1 stop to City.',\n    'Very Clean, Comfortable Room Available',\n    'Rm @Top Floor of a Luxury Building!',\n    'brooklyn rent apartment',\n    'Clinton Hill Quiet stylish 2 bedroom',\n    'Brand new in the heart of Bushwick',\n    'beautiful ROOFTOP apartment',\n    'Williamsburg, BK large apt',\n    'Cozy & clean Bedstuy, Brooklyn bedroom',\n    '(A) Brand New apto just few steps from the train',\n    'Bedroom with Patio in Prime Williamsburg Location!',\n    'Chic and Cozy Heart of Williamsburg',\n    'Private room in prime Greenpoint-Steps to G train!',\n    'Spacious apt. near Prospect Park',\n    'Charming1 Bedroom Apt in Greenpoint',\n    'Cozy room in Prime Williamsburg',\n    'Room with its private bathroom and garden access',\n    'Large, Fully Furnished, Quiet 1 Bedroom Apt.',\n    'ONE BEDROOM KING SUITE - PRIME WILLIAMSBURG',\n    'Spacious Apt w/ Balcony in Bushwick',\n    'Brooklyn (NYC) Modern Comfort.',\n    'A+ Location - Cozy Brooklyn Room with Great Access',\n    'Spacious 2 Bedrooms w/ Private Entrance + Bathroom',\n    'N 6th & Bedford PRIME Williamsburg ',\n    'Sunny Private Room Near Prospect Pk',\n    'A suite like room with a private bathroom.',\n    'Loft Suite @ The Box House Hotel',\n    'Room with King sized bed in the heart of Bushwick',\n    'Loft 15 - 20 minutes to Manhattan',\n    'Entire One Bedroom Apartment next to Prospect Park',\n    'Park Slope / Spacious and Comfy / Perfect Location',\n    'Charming Private Brooklyn Apartment',\n    'Urban sanctuary near Bedford L!',\n    '1BR Spacious Luxury Apartment in Williamsburg BK',\n    'Private room in Charming, Cozy and Sunny Apt',\n    'Sunny Room on Hippest Block in Bushwick',\n    'WINTER PROMO! BKLN - LG 2bd/ modern/comfy/CLEAN!',\n    'The N residence',\n    'Luxury Pad NYC - Williamsburg Loft',\n    'Sky View beautiful apt in Williamsburg New York',\n    'Beautiful Newly Renovated BK Apt with W&D in Unit',\n    'Shared Room 4 FEMALE Guests 30mins to Manhattan-3',\n    'Light twin room',\n    'Cozy and Convenient',\n    'Beautiful Modern Studio in Bushwick',\n    'Sunny room in spacious Williamsburg Loft!',\n    'APT IN PROSPECT/CROWN HEIGHTS ',\n    'Spacious Brownstone Apartment',\n    'THE BROOKLYN BLUE HOUSE 1.',\n    'Warm little oasis in Brooklyn with Full size bed',\n    '2 BR Duplex @ Box House Hotel',\n    'Huge Room in South Williamsburg',\n    'Sunny Summer Space in Brooklyn\\u2019s Stuyvesant East',\n    'New! Entire private luxury apt near 3 trains!',\n    '3BR, 1.5 Bath in Bushwick (10 Mins to Manhattan!)',\n    'Rooming has never been better.',\n    'SUNNY BEDROOM IN LARGE BK APT!',\n    'In-law unit - bedroom, living room, mini kitchen.',\n    'Charming Brooklyn Brownstone',\n    'Prime Williamsburg Apartment',\n    '7even Days Sleep Near Prospect Park',\n    'Beautiful room in Williamsburg!',\n    'Cozy Room in Bushwick.',\n    'Charming & inviting Brooklyn Brownstone apartment',\n    'Big Bright room in Bushwick',\n    'Sunny Artesian apartment',\n    'Sunny Private Room in Crown Heights',\n    'Bushwick apartment (bedroom) right off L train!',\n    'Williamsburg Two Bedroom/Two Bath',\n    'Cozy, beautiful doormen studio-',\n    'Great room in a two-bedroom apartment.',\n    'Spacious one bedroom, next to the L and G trains',\n    'Lovely Brooklyn Apt',\n    'Charming Pr Room in E. Williamsburg',\n    '100% 5\\u2605 Reviews - Big 2-Bed 2-Bath \\u2013 Central Wburg',\n    'Beautiful Unique Greenpoint Loft Suite',\n    'King Size Dream Room',\n    'Light-Filled Top Floor of 4BR Townhouse.\\u2764\\ufe0f\\u2764\\ufe0f\\u2764\\ufe0f\\u2764\\ufe0f\\u2764\\ufe0f',\n    'Private room in quintessential BK!',\n    'Sunny Clinton Hill Apartment',\n    'Cozy large and sunny bedroom in Greenpoint',\n    'Comfortable room in bushwick',\n    'H.O.M.E (House of M.D. Experience)',\n    'Luxury Boutique Private  One-bedroom Apartment',\n    'Townhouse Apt. w/Backyard-20 min train to City!',\n    'Beautiful Studio in Brooklyn',\n    'Charming big room by Propect Park',\n    'Updated Studio apartment, clean and fresh',\n    'Beautiful Cozy Apt near Subway - Historic Brooklyn',\n    'STYLISH OPEN-PLAN LOFT IN BUSHWICK APARTMENT.',\n    'Family friendly apartment near Prospect Park',\n    'Spacious, Comfortable BK Room',\n    'bedroom in front of prospect park  w/2 queens beds',\n    'Spacious Studio in Prospect Heights',\n    'The ocean view room size 12x14',\n    'ENTIRE Apt in Williamsburg < 1 block to L train',\n    'Amazing Brooklyn 1Bd with Private Balcony',\n    'Duplex Loft Suite w/ Patio @ Box House Hotel',\n    'Bright & spacious room in Brooklyn sanctuary',\n    'MAGNIFICENT apartment in Williamsburg with Balcony',\n    'Cute apartment with Backyard',\n    'Alcove Studio in the heart of Williamsburg',\n    'Spacious Room_2',\n    'LARGE 1BR (CONV 2BR) CROWN HEIGHTS',\n    'ARTIST TRENDY NYC LOFT',\n    '1 bd. Apartment in central Greenpoint',\n    'Spacious room in Bushwick L & JMZ !',\n    'Cozy 1 BR Apt in Brownstone Brooklyn',\n    'Cozy 1.5BD in Parkslope Brooklyn',\n    'Spacious Faerie Room in Bushwick',\n    '25 minutes from Manhattan, shared room bunk beds',\n    'The Dream Room near Barclays Center',\n    'Bedstuy Artists Quarter (tower corner room)',\n    'Luxury Brooklyn Brownstone with Private Backyard',\n    'A walk away from the best in Williamsburg',\n    'Simplistic & Modern Apartment In Brooklyn',\n    'Crown Heights Garden Apt.',\n    'Spacious, Private bedroom in Bushwick apartment',\n    'Prime Williamsburg. Brand new',\n    'Trendy Stylish Chic Loft in Greenpoint!',\n    'Spacious one bedroom appartement - Williamsburg',\n    '*NEW*6 BED BROOKLYN DUPLX,15 MIN TRAIN RIDE 2 CITY',\n    'Spacious 2bd apt with Manhattan view and sunset',\n    'Rustic, 1-bdrm retreat w/roof deck.',\n    'Harmony House 2 on Madison Street',\n    'Bright + cozy room in leafy Williamsburg apartment',\n    'Full 1BR Apartment in Park Slope',\n    'Carroll Gardens Retreat',\n    'Lady's Powder Room',\n    'Quaint Room in Brooklyn',\n    'Sunny and Spacious Two Bedroom Duplex with Terrace',\n    'Cozy Four Twenty Friendly Bedroom in Brooklyn',\n    'Ginger Home',\n    '2MinToTrainsCozyLivingRoomMaimonideLutheranHospita',\n    'Sunny 1 BD in trendy Prospect Heights Brooklyn.',\n    'Master Suite with Private Bath',\n    'Private Garden Apt in Park Slope, Brooklyn, NYC',\n    'Lovely,Cozy,bright,beautiful room **only female**',\n    'Need a Beautiful place to stay?',\n    'Brownstone in Brooklyn Heights',\n    'Great room with private bathroom!!',\n    '1 Bedroom in 2 bdr Bushwick apt',\n    'Beautiful Sleek Apartment in New Building',\n    'Gorgeous Dumbo 2-Bedroom w/ Incredible Views',\n    'Beautiful Fort Greene Loft',\n    'Cozy Room in Crown Heights',\n    'Good Living in Brooklyn! Double Bed',\n    'Spacious & Bright Apt in Park Slope',\n    'Large studio in elevator building Cobble Hill',\n    'Sunny Apartment In Brownstone 2BD with deck',\n    'Red Violet',\n    'Large, luxury, one bedroom with veranda & garden',\n    'Clinton Hill Oversized One Bedroom',\n    'Charming Room in Bushwick, Brooklyn Apt',\n    'New 4BDR LOFT in Williamsburg 2 stops to Manhattan',\n    'Bright, Private Bedroom in Bushwick Proper',\n    'Brownstone BK heaven',\n    'Lavidaloca plc',\n    'Artsy Private BR in Fort Greene Cumberland',\n"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Large Private Room in Greenpoint Williamsburg",
+                   "Spacious Brooklyn Brownstone 3BR+",
+                   "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                   "Brooklyn Home in the Heart of it All"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q5",
+          "category":"Extra Context",
+          "question":" I want to find five nice looking apartments at the heart of Manhattan where I would like to spend some joyful days for Christmas. I am planning to stay for a couple of days, maybe a few so I can enjoy some time away with my family and have fun. Though I am always on the cheaper side of things, this time I am planning to spend a little more on accommodation, 100 dollars would not hurt my pocket that much for each night of our stay, I am determined to make it an unforgettable time.Return the answer in JSON format: {'airbnb':['my_airbnb']} ",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string matching), giving some extra context",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":100,
+                      "min_nights":5,
+                      "neighbourhood_group":"Manhattan"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group"
+             ],
+             "parameters":[
+                {
+                   "price":100,
+                   "min_nights":5,
+                   "neighbourhood_group":"Manhattan"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Master Bed/Bath near Lincoln Center in high-rise',\n    'Beautiful & Private Manhattan Room',\n    '1B share Rm Bed1 Guesthouse in Manhattan',\n    'Cozy Home, Convenient Location near Central Park',\n    'Downtown Manhattan I Private Bedroom'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                  "Sunny and spacious  1-bedroom in Brooklyn",
+                  "Large Private Room in Greenpoint Williamsburg",
+                  "Brooklyn Home in the Heart of it All",
+                  "British Room @ Columbia Uni.",
+                  "Bargain Warm Spacious Studio in Carroll Gardens!",
+                  "Sunny spacious room full of good energy",
+                  "1BR Apt in the Bay Ridge!",
+                  "Nice & new room  washerdryer 5 min to train!",
+                  "Gorgeous Two Bedroom Apartment Columbias Campus",
+                  "Master BedBath near Lincoln Center in high-rise",
+                  "Beautiful & Private Manhattan Room",
+                  "BEST location in Williamsburg",
+                  "NICEQUIET10 MINUTES TO TIME SQUARE.",
+                  "Entire Cozy Apt in Brooklyn - 20 mins to Manhattan",
+                  "Front Studio in Loft Apartment - Steiner Studios",
+                  "Master Suite wPrivate Bath & Balcony",
+                  "Beautiful sunny room in Brooklyn",
+                  "1B  share Rm Bed1 Guesthouse in Manhattan",
+                  "Sweet Quiet Spacious Room Brooklyn",
+                  "Gorgeous charming Upper East private room",
+                  "Sunny Brownstone Apartment in Brooklyn",
+                  "Comfy Home Convenient Location near Central Park",
+                  "♕ Downtown Manhattan I Private Bedroom♕",
+                  "Bedroom 7 bed A.",
+                  "COZY SPOT",
+                  "1 br available in a Lovely 2br Apt",
+                  "Beautiful BedStuy Bedroom",
+                  "located 15 minutes away from Time Square",
+                  "Your NYC Home!",
+                  "BK'S FINEST CLOSE 2 TRANSPORTATION-",
+                  "Apartment around the park",
+                  "Modern room in Harlem",
+                  "One Bedroom Apartment in Townhouse",
+                  "Bed Stuy Hideaway",
+                  "One bedroom near Columbia University",
+                  "Super-cute apartment in Harlem!",
+                  "Charming East Village Studio",
+                  "Sunny room in Brooklyn",
+                  "WaHi Overlook",
+                  "Brooklyn 1BR Full Apartment Great Location",
+                  "Cozy Private Room in 2 bedroom APT",
+                  "Pleasant Enviornment",
+                  "Cute clean quiet room in trendy east village",
+                  "Quiet room in Greenpoint Brooklyn",
+                  "Room in Historic Fort Greene Apt.",
+                  "Cozy Corner Bedford Ave  Brooklyn!",
+                  "Cozy Garden Apartment in Bushwick!!",
+                  "1 Bedroom in shared 2 bedroom NYC walkup apartment",
+                  "Spacious Upper East Side Pvt. Room",
+                  "Beautiful Brooklyn Room",
+                  "Cozy Sunny UWS Junior One Bedroom",
+                  "Great Private Bedroom",
+                  "The Emerald Suite  (A Gem In A Historic Mansion)",
+                  "Art Room + Backyard in Williamsburg",
+                  "Renovated  Master Bedroom 47 Buffalo 3F Room#1",
+                  "La Casa Azul",
+                  "Nice Room",
+                  "Modern living in semi-industrial setting",
+                  "Seaview Studio in  Brooklyn New york.",
+                  "Sunny Cozy Room Near Train Cafes & Parks",
+                  "Beautiful NYC Apartment in Popular Brooklyn spot!!",
+                  "Charming room in Victorian home",
+                  "**Cozy room good location 20 mins to Manhattan",
+                  "Red Hook studio space with private entrance",
+                  "Room with a view",
+                  "Spacious yellow room in Brooklyn",
+                  "Well Equipped One-Bedroom Apartment",
+                  "Cozy room in Brooklyn steps from train",
+                  "Sunny spacious room in heart of BK",
+                  "Bright Brooklyn Room in Shared Apt!",
+                  "Spacious Room in Washington Heights",
+                  "Cozy brownstone bed & bath; pvt.ent",
+                  "Private big one bedroom apt BrooklynNY",
+                  "Room in spacious house in Brooklyn!",
+                  "Private Room 2 - Next to Central Park  CU",
+                  "Small room in South Slope House",
+                  "Charming Cozy & spacious  bedroom in Brooklyn",
+                  "Private Room in lovely Greenpoint",
+                  "Sunny roomy one-bedroom across from Prospect Park",
+                  "1 Pvt. Room in Upper West Manhattan",
+                  "2 Bedrooms and a Comfy Couch On Washington",
+                  "1 Bedroom Comfortable Large Brownstone apt",
+                  "Cozy apartment in Noho Soho",
+                  "Cute sunny room in big Bushwick apartment",
+                  "Bedroom with Manhattan view (females only)",
+                  "Eclectic and Peaceful Suite with Private Bathroom",
+                  "Private room w bathroom & kitchen!",
+                  "Renovated: 15min 4 Train ride to NYC-Crown Heights",
+                  "PRIVATE ROOM - GREENPOINT",
+                  "Brooklyn- Crown Heights Garden Apt.",
+                  "Comfortable Private Room with everything you need!",
+                  "Private Essex Street Bedroom in the LowerEast Side",
+                  "Spacious  Harlem 1-Br. Terrace Apt with Doorman",
+                  "Cozy Room Great Price in Bushwick Bklyn!(Suite 3)",
+                  "Large bright room in the heart of Bushwick",
+                  "Awesome bedroom in Upper Manhattan",
+                  "Park Slope Master Bedroom",
+                  "Cozy Studio on McGolrick Park",
+                  "The Eagle's Nest",
+                  "Sun-drenched airy industrial loft in Brooklyn!",
+                  "Private BR in Two-Floor Hip Bushwick Apartment",
+                  "Bronx Apartment College Ave",
+                  "Stuyvesant Heights Townhouse",
+                  "Great private room open for Aug!!",
+                  "Airy Modern Large Room W'burg two blocks subway",
+                  "Large room in two-story Brownstone",
+                  "Artsy and charming retreat in Lefferts Garden",
+                  "Shared Cozy Apartment By Times Square Manhattan",
+                  "Large Sun-filled room in beautiful brownstone home",
+                  "Cosy Large Bedroom Park Slope",
+                  "Cozy NYC apartment shared space female only",
+                  "Cozy Sunny Spacious 1 Bedroom Gem in Greenpoint!",
+                  "Bright cozy room 30mins from downtown Manhattan",
+                  "Big Sunny Room in NYC (B5)",
+                  "In_Manhattan+1 Small Block to train",
+                  "Very Clean Comfortable Room Available",
+                  "Rm @Top Floor of a Luxury Building!",
+                  "brooklyn rent apartment",
+                  "Comfortable sofa bed in chic apt",
+                  "Williamsburg BK large apt",
+                  "Cozy & clean Bedstuy Brooklyn bedroom",
+                  "(A) Brand New apto just few steps from the train",
+                  "Private Room With Queen Bed in NYC",
+                  "Bedroom with Patio in Prime Williamsburg Location!",
+                  "Chic and Cozy Heart of Williamsburg",
+                  "Private room in prime Greenpoint-Steps to G train!",
+                  "UNBEATABLE LOCATION - SUPREME APARTMENT",
+                  "Lovely bright room in Washington Heights",
+                  "Spacious One King Bed Junior Suite in Times Square",
+                  "Cozy room in Prime Williamsburg",
+                  "Room with its private bathroom and garden access",
+                  "Sparse room inside well-kept apartment",
+                  "Cozy Room with Window View near Times Square",
+                  "Private Room with Queen-size Bed",
+                  "One Room in Murray Hill  Midtown",
+                  "Near Subway and Central Park :)",
+                  "Central Park - Comfy Futon Couch for 2",
+                  "A+ Location - Cozy Brooklyn Room with Great Access",
+                  "Comfortable Room in 3 bedroom Apt",
+                  "East Harlem Modern & Luxurious Studio",
+                  "Cozy Room in the LOWER EAST SIDE!",
+                  "Sunny Room across CrotonaPark for Women Only Space",
+                  "Room with King sized bed in the heart of Bushwick",
+                  "Charming Private Brooklyn Apartment",
+                  "Room wpvt bathroom on Central Park",
+                  "Huge private room with bathroom",
+                  "Very large sunny one bedroom that can be for 2-3",
+                  "Beautiful room in renovated Manhattan apartment",
+                  "Soulful minipenthouse perched over East Village",
+                  "Great spacious room in Stylish apt near Highline",
+                  "Private room in Charming Cozy and Sunny Apt",
+                  "Sunny Room on Hippest Block in Bushwick",
+                  "Beautiful Newly Renovated BK Apt with W&D in Unit",
+                  "Uptown Bronx Apartment",
+                  "Shared Room 4 FEMALE Guests 30mins to Manhattan-3",
+                  "Cozy and Convenient",
+                  "Quite and comfortable shared room in UES",
+                  "Private Studio in Private Home",
+                  "East Village Cottage Life",
+                  "Spacious Brownstone Apartment",
+                  "THE BROOKLYN BLUE HOUSE 1.",
+                  "Cozy private room wprivate bath Hell's Kitchen",
+                  "Warm little oasis in Brooklyn with Full size bed",
+                  "Large Room in Spacious Apartment",
+                  "East Village Cozy Room w Private Entrance & Bath",
+                  "Central Park at your Door!",
+                  "Large Private Room. Safe area. Near 4 and D trains",
+                  "Huge Room in South Williamsburg",
+                  "Sunny Summer Space in Brooklyn’s Stuyvesant East",
+                  "Sunny and isolated living room on Roosevelt island",
+                  "New! Entire private luxury apt near 3 trains!",
+                  "Cozy 1 Bedroom Apartment near Yankee Stadium",
+                  "Rooming has never been better.",
+                  "Large sunny private uptown apartment!",
+                  "Shared Room By Times Square near Central Park 3",
+                  "SUNNY BEDROOM IN LARGE BK APT!",
+                  "In-law unit - bedroom living room mini kitchen.",
+                  "Charming & inviting Brooklyn Brownstone apartment",
+                  "Big Bright room in Bushwick",
+                  "Sunny Artesian apartment",
+                  "Furnished private large room at a great location",
+                  "Sunny Private Room in Crown Heights",
+                  "Great room in a two-bedroom apartment.",
+                  "Charming Pr Room in E. Williamsburg",
+                  "Authentic Chelsea Studio Loft",
+                  "2 mins walk from the subway station in West Harlem",
+                  "Private Room near Central Park",
+                  "King Size Dream Room",
+                  "Private room in quintessential BK!",
+                  "Superb Private Bedroom with Private Bath in UPS!",
+                  "Cozy large and sunny bedroom in Greenpoint",
+                  "H.O.M.E (House of M.D. Experience)",
+                  "Luxury Boutique Private  One-bedroom Apartment",
+                  "Beautiful Studio in Brooklyn",
+                  "Cozy Private room in Chelsea !",
+                  "Charming big room by Propect Park",
+                  "Updated Studio apartment clean and fresh",
+                  "The Happy home!",
+                  "Cozy 1 bedroom + air mattress 2 cats sleeps 3",
+                  "Family friendly apartment near Prospect Park",
+                  "Spacious Comfortable BK Room",
+                  "Sunny Spacious Lower Harlem Condo",
+                  "Spacious room in Midtown East",
+                  "bedroom in front of prospect park  w2 queens beds",
+                  "Amazing LES apt - cool bright...",
+                  "Spacious Studio in Prospect Heights",
+                  "The ocean view room size 12x14",
+                  "Amazing Brooklyn 1Bd with Private Balcony",
+                  "King Suite with sofa bed your sanctuary in SoHo",
+                  "Charming Attic RM with BackyardPorchNear Metro",
+                  "Bright & spacious room in Brooklyn sanctuary",
+                  "MAGNIFICENT apartment in Williamsburg with Balcony",
+                  "Spacious Room_2",
+                  "1 Private Bedroom  East Village",
+                  "Room for Xmas and New Years in NYC",
+                  "Peaceful Room in UWS + sweet pets!",
+                  "Very Spacious 1BR with Park View",
+                  "Spacious room in Bushwick L & JMZ !",
+                  "Cute Private Room in UWS Apartment!",
+                  "Private Room in Large Two-floor Apt w Backyard",
+                  "Spacious Faerie Room in Bushwick",
+                  "25 minutes from Manhattan shared room bunk beds",
+                  "The Dream Room near Barclays Center",
+                  "Bedstuy Artists Quarter (tower corner room)",
+                  "Beautiful 1 BR in The Heights!",
+                  "Crown Heights Garden Apt.",
+                  "Prime Williamsburg. Brand new",
+                  "DOMINIQUE'S NY*Wanderlust roomMetroBronx ZooGdn",
+                  "Harlem cosy renovated unit for two",
+                  "Minimalist Vegan Room in Columbus Circle",
+                  "Chez Jesse Vacation Spot",
+                  "Harmony House 2 on Madison Street",
+                  "Bright + cozy room in leafy Williamsburg apartment",
+                  "Lady's Powder Room",
+                  "Cozy Four Twenty Friendly Bedroom in Brooklyn",
+                  "Ginger Home",
+                  "2MinToTrainsCozyLivingRoomMaimonideLutheranHospita",
+                  "Master Suite with Private Bath",
+                  "LovelyCozybrightbeautiful room **only female**",
+                  "Comfortable place to stay downtown Manhattan NYC",
+                  "1 Bedroom in 2 bdr Bushwick apt",
+                  "Cozy Full 1 Bedroom Apartment Near Central Park",
+                  "Beautiful Sleek Apartment in New Building",
+                  "Private Room in 4BR Modern Manhattan Apartment",
+                  "Good Living in Brooklyn! Double Bed",
+                  "Red Violet",
+                  "Charming Room in Bushwick Brooklyn Apt",
+                  "Large Bedroom in Two Bedroom Apartment",
+                  "Bright Private Bedroom in Bushwick Proper",
+                  "Lavidaloca plc",
+                  "Entire Basement + Yard Access. ",
+                  "Modern & cozy bedroom in Manhattan",
+                  "NYC Lofted Room in the Lower East Side",
+                  "Harlem intimate room20 min to Time Squareby Park",
+                  "1st TimeSoloDuo Travelers!Charming Studio Share!",
+                  "Sunny private bedroom in Bushwick Brooklyn",
+                  "Cozy Private Bedroom",
+                  "great room in the best place",
+                  "Cozy Studio Apt-One block away from Prospect Park!",
+                  "1920s Room 1 block from Prospect Park and Q Access",
+                  "Incredible Brookly Room!",
+                  "Luxury Room in Landmark House",
+                  "Beach Haven",
+                  "Quaint place in seaside Red  Hook",
+                  "Cute spacious windowlit room in Williamsburg",
+                  "Large 1000 SF UES Apt w Balcony",
+                  "Cozy bohemian PRIVATE bedroom in Manhattan NYC",
+                  "Sweet Space in Bed Stuy: July",
+                  "TJ Room",
+                  "Comfort Room in Downtown New York Chinatown Soho",
+                  "Cozy 2 Story Home in U-UES",
+                  "Cozy Room Great Price in Bushwick Bklyn! (Suite 2)",
+                  "Apartment near Upper East Side",
+                  "Charming -One bedroom -Williamsburg",
+                  "Sunny private room !Sheepshead Bay Area.",
+                  "Cozy private room in Brooklyn",
+                  "brooklyn comfy safe near all",
+                  "A Couch In East Williamsburg Near Train.",
+                  "Comfortable and Cozy!",
+                  "Manhattan - Private Room - 1 mn SubwayMetro",
+                  "Bronx Little Italy Arthur Ave Fordham Yanks.",
+                  "Cute brick wall Br in Williamsburg.",
+                  "Very spacious clean Manhattan Apt",
+                  "Sunny Private Room by Prospect Park",
+                  "Artsy + Light. River Views. 30 min to 42nd St.",
+                  "Quite and comfortable shared room in UES",
+                  "Best Manhattan Studio Deal!   ",
+                  "TWO BEDROOM APARTMENT IN BEAUTIFUL BED-STUY",
+                  "Cozy Chic Harlem Apartment",
+                  "Brooklyn's Cozy Jewel",
+                  "STOP! Rooftop Terrace in the East Village!",
+                  "BKlyn:Artsy old fashioned at affordable price !",
+                  "Great view 1 BR right next to Central Park!",
+                  "Shared space wprivacy near NY Botanic Garden",
+                  "This is your Happy Place in Brooklyn NYC",
+                  "Orange in Cypress Hills",
+                  "Spacious Private Access Near Trains M - L and J",
+                  "Unique Furnished Loft Sublet",
+                  "Sunny little Nook in NYC!",
+                  "Workspace Room 2",
+                  "Interfaith Retreats (St. Francis)",
+                  "Cozy private bedroom in GreenpointWilliamsburg",
+                  "Private room in cozy apartment Fort Greene",
+                  "Large Size Room Next to Subway",
+                  "A budget friendly Greenpoint Studio!",
+                  "Brooklyn less than 30 min from manhattan (subway)",
+                  "•Bright and Cozy room in an elegant apartment•"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q6",
+          "category":"Extra Context",
+          "question":" Hello, I am planning to go on a trip in New York and watch all the districts like Bronx, Manhattan, Brooklyn etc. My current stop is Queens where I would like to spend a week in order to explore the area more in depth. The budget would be in bounds of 1000 dollars for each of the weekdays. Could you help me find around five places? Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string and numeric matching), giving some extra context",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":1000,
+                      "min_nights":7,
+                      "neighbourhood_group":"Queens"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":1000,
+                   "neighbourhood_group":"Queens"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Fun 3 Bedroom Just Minutes to Manhattan!!',\n    'Huge room in great area 25 minutes from Manhattan',\n    'Spacious brand new apartment 2 bedrooms - 2bath',\n    'Private Room for short stay in a house.',\n ]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Fun 3 Bedroom Just Minutes to Manhattan!!",
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Large Private Room in Greenpoint Williamsburg",
+                   "Spacious Bright 1 Bedroom East Village Apartment"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Incorrect",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q7",
+          "category":"Extra Context",
+          "question":"Preparing for an upcoming trip to New York with four colleagues, we're set for a six-day conference in Manhattan. I'm keen on finding five good places to stay near the conference venue. Considering our budget constraints, each of us can spend around $50 per night, allowing for a total of 200 dollars for the stay. I would greatly appreciate your help in identifying some quality Airbnb options within this budget.Return the answer in JSON format: {'airbnb':['my_airbnb']} ",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string and numeric matching), giving some extra context",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":200,
+                      "min_nights":6,
+                      "neighbourhood_group":"Manhattan"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":200,
+                   "neighbourhood_group":"Manhattan"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'West Village Apartment near Washington Square Park',\n    'Cozy & artsy apt in East Village - 2 bedrooms',\n    'British Room @ Columbia Uni.',\n    'Spacious One-bedroom Home in Columbia U',\n    'Midtown Luxury Living room close to Highline',\n    'Furnished Bedroom in Murray Hill',\n    'Ballet Suite',\n    'Amazing private room!!!near subway & Central Park2',\n    'Boho escape in Upper Manhattan',\n    'Manhattan Midtown Vacation Home away from Home'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Large Private Room in Greenpoint Williamsburg",
+                   "Brooklyn Home in the Heart of it All",
+                   "Spacious 1BR Bushwick Surfers Loft!",
+                   "West Village Apartment near Washington Square Park"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Incorrect",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q8",
+          "category":"Extra Context",
+          "question":"Hello, I would like to rent a big home just for myself to clear up my mind and relax for three days. I am not sure yet but I think Brooklyn would be my choice in New York to chill. Just to make sure that the airbnb is recently visited I would like for it to have been reviewed at least 2 years ago, maybe in the middle of June of 2019, around the fifteenth. Can you recommend me some places? Return the answer in JSON format:{'airbnb':'my_airbnb'} ",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string and numeric matching), giving some extra context",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "neighbourhood_group":"Brooklyn",
+                      "room_type":"Entire home apartment",
+                      "last_review_date":"15-06-19"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_neighbourhood_group_room_type_date"
+             ],
+             "parameters":[
+                {
+                   "room_type":"Entire home/apt",
+                   "last_review_date":"19-06-15",
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{'airbnb':'There are no available airbnbs in Brooklyn with that room type and review date'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "New & Bright Garden Apartment",
+                   "Sophisticated Brooklyn Brownstone"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q9",
+          "category":"Extra Context",
+          "question":" I'm organizing a surprise for my partner or wife for New Year's in New York. The plan is to stay for three nights, from the 24th to the 26th of January, so we can celebrate the holiday in a cozy, private, and warm setting in Manhattan while watching the snowfall. To ensure a truly delightful experience, I am interested on finding an excellent place for our Christmas celebration. I'm specifically interested in places that received reviews, preferably dated on or after the 20th of January in 2019. Could you please assist me in finding some exceptional options? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string matching), giving some extra context",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "last_review_date":"20-01-19",
+                      "room_type":"Private room",
+                      "neighbourhood_group":"Manhattan"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_neighbourhood_group_room_type_date"
+             ],
+             "parameters":[
+                {
+                   "last_review_date":"20-01-2019",
+                   "neighbourhood_group":"Manhattan",
+                   "room_type":"Private room"
+                }
+             ],
+             "answer":"```json\n{\n  'error': 'There are no available airbnbs in Manhattan with a Private room type and reviews on or after 20-01-2019'\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "2 mins walk from the subway station in West Harlem",
+                   "SoHo Charm - Entire 2-br apartment"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q10",
+          "category":"Extra Context",
+          "question":"I want to make a reservation for the restaurant SMASHBURGER but do not seem to reach them since I do not know their contact details. I do not have much information either but I know that it is traditional american dishes which I really liked along with my family. Especially the kids loved the delicious burgers that Bronx had to offer since they are also very famous in whole New York. Return the answer in JSON format: {'number':'phone_number'}",
+          "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string matching), giving some extra context",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_telephone_number_by_name_neighbourhood_group_cuisine"
+                ],
+                "parameters":[
+                   {
+                      "restaurant":"SMASHBURGER",
+                      "cuisine":"American",
+                      "neighbourhood_group":"Bronx"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_telephone_number_by_name_neighbourhood_group_cuisine"
+             ],
+             "parameters":[
+                {
+                   "restaurant":"SMASHBURGER",
+                   "neighbourhood_group":"Bronx",
+                   "cuisine":"American"
+                }
+             ],
+             "answer":"```json\n{'number':'3478018360'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "number":"3478018360"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_REASON_Q1",
+          "category":"Reasoning",
+          "question":" I have some good italian friends that have recommended a really nice italian restaurant that serves pizza in the area of Manhattan. They have left me with the zip code which would be: 10004 and the contact details: 2123616160 but I don't know how it is called, can you please help me find this good restaurant? Return the answer in JSON format: {'restaurant_name':'name', 'restaurant_location':'location'}",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurant_by_zipcode_cuisine_borough_phone"
+                ],
+                "parameters":[
+                   {
+                      "zip_code":10004,
+                      "cuisine":"pizza",
+                      "borough":"Manhattan",
+                      "phone":"2123616160"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurant_by_zipcode_cuisine_borough_phone"
+             ],
+             "parameters":[
+                {
+                   "zip_code":10004,
+                   "cuisine":"Italian",
+                   "borough":"Manhattan",
+                   "phone":"2123616160"
+                }
+             ],
+             "answer":"```json\n{'restaurant_name':'Not found', 'restaurant_location':'Not available'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant_name":"PIZZA ETALIA",
+                "restaurant_location":"Manhattan"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_REASON_Q2",
+          "category":"Reasoning",
+          "question":"I have some friends visiting me this week from Japan and I want to show them some traditional places of Manhattan. I know there are some places around the area with this zip code 10011 that is close to my home. I had this number of theirs: 2129248911 but I don not remember their name. Return the answer in JSON format: {'restaurant_name':'name', 'restaurant_location':'location'} ",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurant_by_zipcode_cuisine_borough_phone"
+                ],
+                "parameters":[
+                   {
+                      "zip_code":10011,
+                      "cuisine":"American",
+                      "borough":"Manhattan",
+                      "phone":"2129248911"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurant_by_zipcode_cuisine_borough_phone"
+             ],
+             "parameters":[
+                {
+                   "zip_code":10011,
+                   "cuisine":"Japanese",
+                   "borough":"Manhattan",
+                   "phone":"2129248911"
+                }
+             ],
+             "answer":"```json\n{'error':'Restaurant not found'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant_name":"FAMOUS BAGEL BUFFET",
+                "restaurant_location":"Manhattan"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_REASON_Q3",
+          "category":"Reasoning",
+          "question":"Recently a japanese friend of mine suggested a very good restaurant  E.A.K. RAMEN around the area of Manhattan that serves sushi. He gave me its phone number: 6468632027 but I don't know where its exact location, can you please help me find it? Return the answer in JSON format: {'restaurant_info':'info', 'restaurant_location':'location', 'restaurant_name':'name'} ",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_info_by_name_cuisine_borough_phone"
+                ],
+                "parameters":[
+                   {
+                      "restaurant":"E.A.K. RAMEN",
+                      "cuisine":"Japanese",
+                      "borough":"Manhattan",
+                      "phone":"6468632027"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_info_by_name_cuisine_borough_phone"
+             ],
+             "parameters":[
+                {
+                   "restaurant":"E.A.K. RAMEN",
+                   "cuisine":"Japanese",
+                   "borough":"Manhattan",
+                   "phone":"6468632027"
+                }
+             ],
+             "answer":"```json\n{\n  'restaurant_info': '6 AVENUE 469 10011',\n  'restaurant_location': 'Manhattan',\n  'restaurant_name': 'E.A.K. RAMEN'\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant_info":"6 AVENUE 469 10011",
+                "restaurant_location":"Manhattan",
+                "restaurant_name":"E.A.K. RAMEN"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_REASON_Q4",
+          "category":"Reasoning",
+          "question":"Hello, I will stay with my two friends in Manhattan in a very nice shared apartment but we do not want to pay more than 100 dollars each per night. Can you please give us five recommendations? Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":300,
+                      "min_nights":1,
+                      "neighbourhood_group":"Manhattan"
+                   }
+                ]
+             },
+             {
+                "path_id":2,
+                "functions":[
+                   "get_airbnb_by_price_range_neighbourhood"
+                ],
+                "parameters":[
+                   {
+                      "min_price":0,
+                      "max_price":300,
+                      "neighbourhood_group":"Manhattan"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":300,
+                   "neighbourhood_group":"Manhattan"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'West Village Studio Apartment',\n    'West Village Apartment near Washington Square Park',\n    'Cozy & artsy apt in East Village - 2 bedrooms',\n    'British Room @ Columbia Uni.',\n    'Spacious One-bedroom Home in Columbia U'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                  "West Village Studio Apartment",
+                  "West Village Apartment near Washington Square Park",
+                  "Cozy & artsy apt in East Village - 2 bedrooms",
+                  "British Room @ Columbia Uni.",
+                  "Spacious One-bedroom Home in Columbia U"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_REASON_Q5",
+          "category":"Reasoning",
+          "question":" Hello, I am planning to stay for a week with my friends in Queens and we would like to split the bill between us. A total of 700 dollars would suit us. Can you help us find five good places? Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group"
+                ],
+                "parameters":[
+                   {
+                      "price":100,
+                      "min_nights":7,
+                      "neighbourhood_group":"Queens"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":0,
+                   "max_price":700,
+                   "neighbourhood_group":"Queens"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Amazing huge furnished room!',\n    'Fun 3 Bedroom Just Minutes to Manhattan!!',\n    'Huge room in great area, 25 minutes from Manhattan',\n    'Spacious brand new apartment 2 bedrooms - 2bath',\n    'Private Room for short stay in a house.'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Large Private Room in Greenpoint Williamsburg",
+                   "Huge room in great area 25 minutes from Manhattan",
+                   "Brooklyn Home in the Heart of it All"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Incorrect",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_REASON_Q6",
+          "category":"Reasoning",
+          "question":"I want to stay at a good private room close to some friends of mine in Queens, the thing is that I want for it to be lastly reviewed four years ago in 14 December, can you do that for me? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_neighbourhood_group_room_type_date"
+                ],
+                "parameters":[
+                   {
+                      "room_type":"Private room",
+                      "last_review_date":"14-12-19",
+                      "neighbourhood_group":"Queens"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_neighbourhood_group_room_type_date"
+             ],
+             "parameters":[
+                {
+                   "last_review_date":"14-12-2019",
+                   "neighbourhood_group":"Queens",
+                   "room_type":"Private room"
+                }
+             ],
+             "answer":"```json\n{'airbnb':[]}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "There are no available airbnbs in that neighbourhood with that room type and review date"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_AGG_Q1",
+          "category":"Aggregation",
+          "question":"Hello, I want to find a good place to stay in Brooklyn with some friends but I do not know where. I have discussed how much would that cost as and we have decided 80-90 dollars per night. Could you find us some good places to stay? Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_range_neighbourhood"
+                ],
+                "parameters":[
+                   {
+                      "min_price":80,
+                      "max_price":90,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":80,
+                   "max_price":90,
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Sunny and spacious 1-bedroom in Brooklyn',\n    'Quiet & Spacious Brooklyn Apt for Cat-Lovers',\n    'BEST location in Williamsburg',\n    'Quiet room in Greenpoint, Brooklyn',\n    'Nice Room',\n    'Modern living in semi-industrial setting',\n    'Red Hook studio space with private entrance',\n    'Spacious yellow room in Brooklyn',\n    'Charming, Cozy & spacious bedroom in Brooklyn',\n    'Renovated: 15min 4 Train ride to NYC-Crown Heights',\n    'Cozy Studio on McGolrick Park',\n    'Sun-drenched, airy industrial loft in Brooklyn!',\n    'Stuyvesant Heights Townhouse',\n    'Cozy, Sunny, Spacious 1 Bedroom Gem in Greenpoint!',\n    'Rm @Top Floor of a Luxury Building!',\n    'Private room in prime Greenpoint-Steps to G train!',\n    'Room with its private bathroom and garden access',\n    'Large, Fully Furnished, Quiet 1 Bedroom Apt.',\n    'Spacious Apt w/ Balcony in Bushwick',\n    'New! Entire private luxury apt near 3 trains!',\n    'Sunny Artesian apartment',\n    'Lovely Brooklyn Apt',\n    'Charming Pr Room in E. Williamsburg',\n    'Cozy large and sunny bedroom in Greenpoint',\n    'Comfortable room in bushwick',\n    'Cozy Studio Apt-One block away from Prospect Park!',\n    'Luxury Room in Landmark House',\n    'Cute and Cozy Two Bedroom in Sunset Park',\n    'Cute brick wall Br in Williamsburg.',\n    'Private room in cozy apartment, Fort Greene'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Sunny and spacious  1-bedroom in Brooklyn",
+                   "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                   "BEST location in Williamsburg",
+                   "Quiet room in Greenpoint Brooklyn",
+                   "Nice Room",
+                   "Modern living in semi-industrial setting",
+                   "Red Hook studio space with private entrance",
+                   "Spacious yellow room in Brooklyn",
+                   "Charming Cozy & spacious  bedroom in Brooklyn",
+                   "Renovated: 15min 4 Train ride to NYC-Crown Heights",
+                   "Cozy Studio on McGolrick Park",
+                   "Sun-drenched airy industrial loft in Brooklyn!",
+                   "Stuyvesant Heights Townhouse",
+                   "Cozy Sunny Spacious 1 Bedroom Gem in Greenpoint!",
+                   "Rm @Top Floor of a Luxury Building!",
+                   "Private room in prime Greenpoint-Steps to G train!",
+                   "Room with its private bathroom and garden access",
+                   "Large Fully Furnished Quiet 1 Bedroom Apt.",
+                   "Spacious Apt w Balcony in Bushwick",
+                   "New! Entire private luxury apt near 3 trains!",
+                   "Sunny Artesian apartment",
+                   "Lovely Brooklyn Apt",
+                   "Charming Pr Room in E. Williamsburg",
+                   "Cozy large and sunny bedroom in Greenpoint",
+                   "Comfortable room in bushwick",
+                   "Cozy Studio Apt-One block away from Prospect Park!",
+                   "Luxury Room in Landmark House",
+                   "Cute and Cozy Two Bedroom in Sunset Park",
+                   "Cute brick wall Br in Williamsburg.",
+                   "Private room in cozy apartment Fort Greene"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_AGG_Q2",
+          "category":"Aggregation",
+          "question":"Hello, I really would like a good place to stay in Queens. Now I do not have many preferences but a price of 100 would be the upper bound for me. However, a floor could be 50 because I do not want to sleep in a very small and dirty room. Return the answer in JSON format: {'airbnb_by_neighbour':'neighbourhood_group', 'aribnb_by_price_range':'range_price_per_night' }",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_range_neighbourhood"
+                ],
+                "parameters":[
+                   {
+                      "min_price":50,
+                      "max_price":100,
+                      "neighbourhood_group":"Queens"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":50,
+                   "max_price":100,
+                   "neighbourhood_group":"Queens"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb_by_neighbour': 'Queens',\n  'aribnb_by_price_range': [\n    'Amazing huge furnished room!',\n    'Spacious brand new apartment 2 bedrooms - 2bath',\n    'Large Room Close to NYC',\n    'LIC Jackson park luxury apartment Queen Plaza',\n    'The beautiful room with your own bathroom',\n    'Jupiter Suites- Rm #2- (JFK)',\n    'Cozy Studio! Easy Access to Train to Manhattan!',\n    '\u7ebd\u7ea6\u4e4b\u5bb6(SunnyHome3)',\n    'NYC Beach House with Yard.',\n    'Ready!',\n    'LARGE ROOM 15 TO MANHATTAN',\n    '10mins to Manhattan, 59th St, 17mins Times Square.',\n    'Birds singing and sunsets in NYC!',\n    'Spacious Railroad in LIC/Astoria',\n    'Cozy 15 mins Manhattan& 10 Mins LGA',\n    'Cozy & Comfy Room in quiet Briarwood, Queens, NY',\n    'Comfy Bedroom quite neighborhood',\n    'Master Bedroom in Your Cozy Queens Getaway',\n    'Pr\u00edvate Cozy Room',\n    'Spacious Bedroom @ Convinience',\n    'Spacious standalone room in the heart of Astoria',\n    'Twice As Better Home Inn',\n    'Large suite with private bathroom (15 min to city)',\n    '5 Stops to 42nd St/Times Sqaure',\n    'Cozy private bedroom 15 min from Manhattan',\n    '5mn location from Manhattan midtown',\n    'Modern Apartment 7 min from JFK Airport and Casino',\n    'Boho tranquil room in bushwick/ridgewood',\n    'Cozy Two Room Studio Astoria',\n    'Gorgeous Studio Hideout/w Queen Bed.',\n    'Lovely Studio in Flushing/kew Garde',\n    'JFK 10 & LGA 15 MINUTES AWAY A/C PRIVATE BEDROOM B',\n    'Tu Tranquilidad no tiene precio',\n    'Cozy Walk up apartment in a great neighborhood!',\n    'ASTORIA in QUEENS',\n    'Spacious & Sunny Master w Private Bath',\n    '\u2018\u2019AROUND THE CORNER\u2019\u2019 QUEENS, NY',\n    'Beautiful and confortable room',\n    'Lucky home \u6e29\u6696\u5982\u5bb6',\n    'Spacious, Kid-Friendly, and 15-20 Mins. to Midtown',\n    'Cute beach bungalow by the beach, 80min Manhattan',\n    'King Bedroom w/ Private Bath: BUSHWICK L Train',\n    'Double, Cozy Room only 20 min to NYC',\n    'TOWN HOME ONE',\n    'Great! Private Room in Sunnyside',\n    'Peaches Paradise.',\n    'Lovely LIC-Lush garden-Midtown1stop-Breakfast',\n    'Maple Place',\n    'Full Bedroom Avaliable, Astoria',\n    'CLEAN! Executive Studio Suite. Entire apt w/pvt BR',\n    'Large private bedroom near Manhattan.',\n    'Large room in a cozy and very clean apt',\n    'Queens, Astoria - Apartment & Room with NYC view.',\n    'Luxury apartment in the \u2018heart of queens\u2019',\n    '\u2018For Heaven Cakes\u2019',\n    'Private Room in NYC Apartment',\n    'Only 20 mins. to manhattan via N & W trains',\n    'Beautiful Clean & Quiet Room! Rm#3',\n    'Quiet and Spacious 1 Bed in Woodside',\n    'Chris' Cozy Cave!',\n    'Private Room in Spacious Sunnyside Apartment',\n    'Bright LARGE 2 BEDS! near Manhattan',\n    'Luxury Private Room \\n15 mins From Manhattan',\n    'RM',\n    'Peaches Cozy Corner',\n    '3 Bedroom @ JFK CASINO BEACH LOCALE',\n    'Newly renovated apt near the city/ideal room for 2'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Amazing huge furnished room!",
+                   "Spacious brand new apartment 2 bedrooms - 2bath",
+                   "Large Room Close to NYC",
+                   "LIC Jackson park luxury apartment Queen Plaza",
+                   "The beautiful room with your own bathroom",
+                   "Jupiter Suites- Rm #2- (JFK)",
+                   "Cozy Studio! Easy Access to Train to Manhattan!",
+                   "\u7ebd\u7ea6\u4e4b\u5bb6(SunnyHome3)",
+                   "NYC Beach House with Yard.",
+                   "Ready!",
+                   "LARGE ROOM 15 TO MANHATTAN",
+                   "10mins to Manhattan 59th St 17mins Times Square.",
+                   "Birds singing and sunsets in NYC!",
+                   "Spacious Railroad in LICAstoria",
+                   "Cozy 15 mins Manhattan& 10 Mins LGA",
+                   "Cozy &  Comfy Room in quiet Briarwood Queens NY",
+                   "Comfy Bedroom quite neighborhood ",
+                   "Master Bedroom in Your Cozy Queens Getaway",
+                   "Pr\u00edvate Cozy Room",
+                   "Spacious Bedroom @ Convinience",
+                   "Spacious standalone room in the heart of Astoria",
+                   "Twice As Better Home Inn",
+                   "Large suite with private bathroom (15 min to city)",
+                   "5 Stops to 42nd StTimes Sqaure",
+                   "Cozy private bedroom 15 min from Manhattan",
+                   "5mn location from Manhattan midtown",
+                   "Modern Apartment 7 min from JFK Airport and Casino",
+                   "Boho tranquil room in bushwickridgewood",
+                   "Cozy Two Room Studio Astoria",
+                   "Gorgeous Studio Hideoutw Queen Bed.",
+                   "Lovely Studio in Flushingkew Garde",
+                   "JFK 10 & LGA 15 MINUTES AWAY AC PRIVATE BEDROOM B",
+                   "Tu Tranquilidad no tiene precio",
+                   "Cozy Walk up apartment in a great neighborhood!",
+                   "ASTORIA in QUEENS",
+                   "Spacious & Sunny Master w Private Bath",
+                   "\u2018\u2019AROUND THE CORNER\u2019\u2019  QUEENS NY",
+                   "Beautiful and confortable room",
+                   "Lucky home \u6e29\u99a8\u5982\u5bb6",
+                   "Spacious Kid-Friendly and 15-20 Mins. to Midtown",
+                   "Cute beach bungalow by the beach 80min Manhattan",
+                   "King Bedroom w Private Bath: BUSHWICK L Train",
+                   "Double Cozy Room only 20 min to NYC",
+                   "TOWN HOME ONE",
+                   "Great! Private Room in Sunnyside",
+                   "Peaches Paradise.",
+                   "Lovely  LIC-Lush garden-Midtown1stop-Breakfast",
+                   "Maple Place",
+                   "Full Bedroom Avaliable Astoria",
+                   "CLEAN! Executive Studio Suite. Entire apt wpvt BR",
+                   "Large private bedroom near Manhattan.",
+                   "Large room in a cozy and very clean apt",
+                   "Queens Astoria - Apartment & Room with NYC view.",
+                   "Luxury apartment in the \u201cheart of queens\u201d",
+                   "\u201cFor Heaven Cakes\u201d",
+                   "Private Room in NYC Apartment",
+                   "Only 20 mins.  to manhattan via N & W  trains",
+                   "Beautiful Clean & Quiet Room! Rm#3",
+                   "Quiet and Spacious 1 Bed in Woodside",
+                   "Chris' Cozy Cave!",
+                   "Private Room in Spacious Sunnyside Apartment",
+                   "Bright LARGE 2 BEDS! near Manhattan",
+                   "Luxury Private Room \n15 mins From Manhattan",
+                   "RM",
+                   "Peaches Cozy Corner",
+                   "3 Bedroom @ JFK CASINO BEACH LOCALE",
+                   "Newly renovated apt near the cityideal room for 2"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_AGG_Q3",
+          "category":"Aggregation",
+          "question":"Greetings, I'm in the process of planning a family trip to New York in December. We're working with a budget of $ 1500 for a 2 or 3-day stay. Within this budget, we've allocated over 500 dollars for clothing, approximately 600 dollars for dining at nice restaurants and enjoying coffee with friends. With the remaining budget ranging from 250 dollars to maybe 400 dollars, I'm seeking recommendations for a suitable Airbnb around Brooklyn. Return the answer in JSON format: {'airbnb_by_neighbour':'neighbourhood_group', 'airbnb_by_nights':'min_number', 'aribnb_by_price':'price_per_night', 'aribnb_by_price_range':'range_price_per_night'}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighbourhood_group"
+                ],
+                "parameters":[
+                   {
+                      "min_price":250,
+                      "max_price":400,
+                      "min_nights":2,
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_range_neighbourhood"
+             ],
+             "parameters":[
+                {
+                   "min_price":250,
+                   "max_price":400,
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb_by_neighbour': 'Brooklyn',\n  'airbnb_by_nights': '2 or 3',\n  'aribnb_by_price': '250 to 400',\n  'aribnb_by_price_range': [\n    'Spacious Brooklyn Brownstone 3BR+',\n    'Magical 3-bed/3-bath fabulous views',\n    'LARGE DUPLEX-3BR/3BA Williamsburg Townhouse+GARDEN',\n    'Spacious & Stylish 3BR Condo Steps to the Subway!',\n    'Unique Fort Greene Getaway with Private Deck',\n    'Amazing Location in Williamsburg with 4 Bedrooms',\n    'Charming Windsor Terrace Home',\n    'Brand new 2-bed in luxury full-service building',\n    'Luxury 4BR Home, Spacious & Central to Trains',\n    '1000 SQ FT Cobble Hill \u00dcbercharmer',\n    'Entire 3rd Fl in Brownstone steps to Prospect Park',\n    'Luxury Pad NYC - Williamsburg Loft',\n    '3BR, 1.5 Bath in Bushwick (10 Mins to Manhattan!)',\n    'Williamsburg Two Bedroom/Two Bath',\n    '100% 5\u2605 Reviews - Big 2-Bed 2-Bath \u2013 Central Wburg',\n    '*NEW*6 BED BROOKLYN DUPLX,15 MIN TRAIN RIDE 2 CITY',\n    'Spacious 2bd apt with Manhattan view and sunset',\n    'Gorgeous Dumbo 2-Bedroom w/ Incredible Views',\n    'Peaceful, Spacious and Comfy 3BR Oasis!',\n    'Oasis in the heart of Williamsburg',\n    'AMAZING  3 BEDROOMS BROOKLYN',\n    'Perfect House for the Whole Family',\n    'Garden apt for 7 close to the city  & w free gym',\n    'Williamsburg 1 bedroom appartement',\n    '3 Story Town House in Park Slope',\n    'Midcentury Inspired Plantlovers Apt',\n    'Penthouse with huge deck and city views'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Spacious Brooklyn Brownstone 3BR+",
+                   "Magical 3-bed3-bath fabulous views",
+                   "LARGE DUPLEX-3BR3BA Williamsburg Townhouse+GARDEN",
+                   "Spacious & Stylish 3BR Condo Steps to the Subway!",
+                   "Unique Fort Greene Getaway with Private Deck",
+                   "Amazing Location in Williamsburg with 4 Bedrooms",
+                   "Charming Windsor Terrace Home",
+                   "Brand new 2-bed in luxury full-service building",
+                   "Luxury 4BR Home Spacious & Central to Trains",
+                   "1000 SQ FT Cobble Hill \u00dcbercharmer",
+                   "Entire 3rd Fl in Brownstone steps to Prospect Park",
+                   "Luxury Pad NYC - Williamsburg Loft",
+                   "3BR 1.5 Bath in Bushwick (10 Mins to Manhattan!)",
+                   "Williamsburg Two BedroomTwo Bath",
+                   "100% 5\u2605 Reviews - Big 2-Bed 2-Bath \u2013 Central Wburg",
+                   "*NEW*6 BED BROOKLYN DUPLX15 MIN TRAIN RIDE 2 CITY",
+                   "Spacious 2bd apt with Manhattan view and sunset",
+                   "Gorgeous Dumbo 2-Bedroom w Incredible Views",
+                   "Peaceful Spacious and Comfy 3BR Oasis!",
+                   "Oasis in the heart of Williamsburg",
+                   "AMAZING  3 BEDROOMS BROOKLYN",
+                   "Perfect House for the Whole Family",
+                   "Garden apt for 7 close to the city  & w free gym",
+                   "Williamsburg 1 bedroom appartement",
+                   "3 Story Town House in Park Slope",
+                   "Midcentury Inspired Plantlovers Apt",
+                   "Penthouse with huge deck and city views"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Incorrect",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_AGG_Q4",
+          "category":"Aggregation",
+          "question":"Now, I really like spaces that are shared and I would really love to find the best in Brooklyn for me to stay. I have previously visited like three places in Brooklyn but it is been a long time since I was there and I want to find some updated best places, let's not spare it, five would be nice. Please help me in my quest. Return the answer in JSON format:{'airbnb':'my_airbnb'}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_x_most_popular_places_in_neighbourhood_group_room_type"
+                ],
+                "parameters":[
+                   {
+                      "popularity":5,
+                      "room_type":"Shared room",
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_x_most_popular_places_in_neighbourhood_group_room_type"
+             ],
+             "parameters":[
+                {
+                   "popularity":5,
+                   "neighbourhood_group":"Brooklyn",
+                   "room_type":"Shared room"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'A Couch In East Williamsburg Near Train.',\n    'Williamsburg Loft!! Bedford L 1blk!',\n    'Bedroom 7 bed A.',\n    '2MinToTrainsCozyLivingRoomMaimonideLutheranHospita',\n    'Trendy Stylish Chic Loft in Greenpoint!'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "A Couch In East Williamsburg Near Train.",
+                   "Williamsburg Loft!! Bedford L 1blk!",
+                   "Bedroom 7 bed A.",
+                   "2MinToTrainsCozyLivingRoomMaimonideLutheranHospital",
+                   "Trendy Stylish Chic Loft in Greenpoint!"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_AGG_Q5",
+          "category":"Aggregation",
+          "question":"I have previously been in 4 best private places places in Manhattan that you suggested me and I would really like to do that once more for Bronx, where I will be spending some nights next week. In a similar way please find me the best for Bronx. Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_x_most_popular_places_in_neighbourhood_group_room_type"
+                ],
+                "parameters":[
+                   {
+                      "popularity":4,
+                      "room_type":"Private room",
+                      "neighbourhood_group":"Bronx"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_x_most_popular_places_in_neighbourhood_group_room_type"
+             ],
+             "parameters":[
+                {
+                   "popularity":4,
+                   "neighbourhood_group":"Bronx",
+                   "room_type":"Private room"
+                }
+             ],
+             "answer":"```json\n{'airbnb':['Cozy Private Bedroom','Private Studio in Private Home','Large Private Room. Safe area. Near 4 and D trains','Great room! Good for med students!']}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Cozy Private Bedroom",
+                   "Private Studio in Private Home",
+                   "Large Private Room. Safe area. Near 4 and D trains",
+                   "Great room! Good for med students!"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_AGG_Q6",
+          "category":"Aggregation",
+          "question":"I live in Brooklyn, and in mid-January, I'll be hosting some dear friends for a few days. I'm on the lookout for a truly unique, cozy, and inviting Airbnb in close proximity to my home for their stay. I'd greatly appreciate it if you could recommend the top three most distinctive and shared places in my neighborhood. Thank you. Return the answer in JSON format:{'airbnb':'my_airbnb'}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_x_most_popular_places_in_neighbourhood_group_room_type"
+                ],
+                "parameters":[
+                   {
+                      "popularity":3,
+                      "room_type":"Shared room",
+                      "neighbourhood_group":"Brooklyn"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_x_most_popular_places_in_neighbourhood_group_room_type"
+             ],
+             "parameters":[
+                {
+                   "popularity":3,
+                   "neighbourhood_group":"Brooklyn",
+                   "room_type":"Shared room"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'A Couch In East Williamsburg Near Train.',\n    'Williamsburg Loft!! Bedford L 1blk!',\n    'Bedroom 7 bed A.'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "A Couch In East Williamsburg Near Train.",
+                   "Williamsburg Loft!! Bedford L 1blk!",
+                   "Bedroom 7 bed A."
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_AGG_Q7",
+          "category":"Aggregation",
+          "question":"I want you to find me the airbnbs that have the minimum costs possible for the number of nights that I will be staying in Manhattan, I will be staying for at most 3 nights and since I do not have much money with me a shared room I think will be more reasonable than a private room to rent. If you could find me five places, that would be great. Return the answer in JSON format: {'airbnb':['my_airbnb]}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_min_cost_by_neighbourhood_group_room_type_min_nights"
+                ],
+                "parameters":[
+                   {
+                      "nr_requests":5,
+                      "room_type":"Shared room",
+                      "min_nights":3,
+                      "neighbourhood_group":"Manhattan"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_min_cost_by_neighbourhood_group_room_type_min_nights"
+             ],
+             "parameters":[
+                {
+                   "nr_requests":5,
+                   "neighbourhood_group":"Manhattan",
+                   "room_type":"Shared room",
+                   "min_nights":3
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Quite and comfortable shared room in UES',\n    'Quite and comfortable shared room in UES',\n    'Cozy NYC apartment shared space female only',\n    'Comfortable sofa bed in chic apt',\n    'Central Park - Comfy Futon Couch for 2'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Quite and comfortable shared room in UES",
+                   "Quite and comfortable shared room in UES",
+                   "Cozy NYC apartment shared space female only",
+                   "Comfortable sofa bed in chic apt",
+                   "Central Park - Comfy Futon Couch for 2"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_AGG_Q8",
+          "category":"Aggregation",
+          "question":"Greetings, I will be attending a two-day work-related seminar in New York on my own. The conference is scheduled to take place in Manhattan, and I am in search of three economical, private accommodation options in close proximity to the seminar venue. Your assistance in identifying suitable choices would be greatly appreciated. Return the answer in JSON format: {'airbnb':['my_airbnb']}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_min_cost_by_neighbourhood_group_room_type_min_nights"
+                ],
+                "parameters":[
+                   {
+                      "nr_requests":3,
+                      "room_type":"Private room",
+                      "min_nights":2,
+                      "neighbourhood_group":"Manhattan"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_min_cost_by_neighbourhood_group_room_type_min_nights"
+             ],
+             "parameters":[
+                {
+                   "nr_requests":3,
+                   "neighbourhood_group":"Manhattan",
+                   "room_type":"Private room",
+                   "min_nights":2
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb': [\n    'Sparse room inside well-kept apartment',\n    'Sunny and isolated living room on Roosevelt island',\n    'Super-cute apartment in Harlem!'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb":[
+                   "Sparse room inside well-kept apartment",
+                   "Sunny and isolated living room on Roosevelt island",
+                   "Super-cute apartment in Harlem!"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_AGG_Q9",
+          "category":"Aggregation",
+          "question":"I have never been to Bronx out of all the districts in New York but I have heard that it is quite cheap and has a reasonable range of prices however I do not know pretty much how much they cost for private rooms for example. Can you help me? Return the answer in JSON format: {'average:avg_price}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_by_neighbourgood_group_and_room_type"
+                ],
+                "parameters":[
+                   {
+                      "room_type":"Private Room",
+                      "neighbourhood_group":"Bronx"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_by_neighbourgood_group_and_room_type"
+             ],
+             "parameters":[
+                {
+                   "neighbourhood_group":"Bronx",
+                   "room_type":"Private Room"
+                }
+             ],
+             "answer":"```json\n{'average':56.82}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "average":56.82
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_AGG_Q10",
+          "category":"Aggregation",
+          "question":"I've been planning a summer trip to New York with my family, and my children are particularly keen on staying in an rich neighborhood such as Manhattan. However, a colleague who recently spent four days there cautioned against it due to potential high expenses. I am interested in obtaining a general estimate of the cost for a private accommodation suitable for a small family in that area. Your insights on this matter would be greatly appreciated.Return the answer in JSON format: {'average:avg_price}",
+          "motivation":"Testing the ability of the LLM to filter by minimum or maximum, sum, count or average",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_avg_by_neighbourgood_group_and_room_type"
+                ],
+                "parameters":[
+                   {
+                      "room_type":"Entire home apartment",
+                      "neighbourhood_group":"Manhattan"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_avg_by_neighbourgood_group_and_room_type"
+             ],
+             "parameters":[
+                {
+                   "neighbourhood_group":"Manhattan",
+                   "room_type":"Entire home/apt"
+                }
+             ],
+             "answer":"```json\n{'average': 'There are no available airbnbs in that neighbourhood with that room type'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb_by_neighbour":"Manhattan",
+                "type":"Entire home apartment",
+                "average":264.10
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       }
+    ]
+ }

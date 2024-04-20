@@ -1,0 +1,1468 @@
+{
+    "metadata": {
+        "run_id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1",
+        "run_name": "Mannheim Function Calling Benchmark - gpt-4-1106-preview Music wo/ Example Values",
+        "question_set_id": "MUSIC_Q_SEQ_MULTI_STEP_ONE_SHOT_V1",
+        "function_set_id": "MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2",
+        "prompt": "You are a helpful assistant. Answer briefly.",
+        "model": "gpt-4-1106-preview",
+        "hyperparameters": {
+            "temperature": 0
+        },
+        "run_start_timestamp": "2024-03-26 13:35:22.532705",
+        "run_end_timestamp": "2024-03-26 13:39:14.325603",
+        "test_driver_version": "1.0.0"
+    },
+    "statistics": {
+        "number_of_functions": {
+            "total": 52,
+            "correct": 50,
+            "accuracy": 0.96
+        },
+        "number_of_parameters": {
+            "total": 53,
+            "correct": 51,
+            "accuracy": 0.96
+        },
+        "number_of_answers": {
+            "total": 25,
+            "correct": 19,
+            "accuracy": 0.76
+        },
+        "number_of_tokens": {
+            "input": 25680,
+            "output": 4812
+        }
+    },
+    "question_result": [
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q1",
+            "category": "Selection",
+            "question": "Among all the albums of Kanye West, return the album with the maximum rating. Return the answer in JSON format: {'album':'my_album_name'}",
+            "motivation": "Evaluate the ability to perform single-targeted information retrieval of data based on a defined criteria (max. integer/float).",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "max_rating_given_albums"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Kanye West"
+                        },
+                        {
+                            "albums": [
+                                "Donda",
+                                "Donda 2",
+                                "808s & Heartbreak"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "max_rating_given_albums"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Kanye West"
+                    },
+                    {
+                        "albums": [
+                            "Donda",
+                            "Donda 2",
+                            "808s & Heartbreak"
+                        ]
+                    }
+                ],
+                "answer": "```json\n{'album':'808s & Heartbreak'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album": "808s & Heartbreak"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q2",
+            "category": "Selection",
+            "question": "A very famous artist of US, couldn\u2019t recall his name, whose song is 'Mockingbird' is one of my favourites.  Can you find his name and please return his all albums that are rated above 2.5. Return the answer in JSON format: {'name_of_artist':'artist_name', 'albums': [album_names_here]}",
+            "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (above threshold)",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Mockingbird"
+                        },
+                        {
+                            "artist_name": "Eminem"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Mockingbird"
+                    },
+                    {
+                        "artist_name": "Eminem"
+                    }
+                ],
+                "answer": "```json\n{\n  'name_of_artist': 'Eminem',\n  'albums': [\n    'The Marshall Mathers LP',\n    'The Slim Shady LP',\n    'The Eminem Show',\n    'The Marshall Mathers LP 2',\n    'Infinite'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "name_of_artist": "Eminem",
+                    "albums": [
+                        "The Marshall Mathers LP",
+                        "The Slim Shady LP",
+                        "The Eminem Show",
+                        "The Marshall Mathers LP 2",
+                        "Infinite"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q3",
+            "category": "Selection",
+            "question": "Among the albums with rating > 3.5 and minimum number of rating as 30000, select the album released in 2022 and provide the songs of that album. Return the answer in JSON format: {'songs': [song_names_here]} ",
+            "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (date).",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "highest_rated_albums",
+                        "songs_by_album"
+                    ],
+                    "parameters": [
+                        {
+                            "rating_threshold": 3.5,
+                            "min_ratings": 30000
+                        },
+                        {
+                            "album_name": "Mr. Morale & The Big Steppers"
+                        }
+                    ]
+                },
+                {
+                    "path_id": 2,
+                    "functions": [
+                        "highest_rated_albums",
+                        "albums_by_release_date",
+                        "songs_by_album"
+                    ],
+                    "parameters": [
+                        {
+                            "rating_threshold": 3.5,
+                            "min_ratings": 30000
+                        },
+                        {
+                            "release_date": "2022"
+                        },
+                        {
+                            "album_name": "Mr. Morale & The Big Steppers"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "highest_rated_albums",
+                    "songs_by_album"
+                ],
+                "parameters": [
+                    {
+                        "rating_threshold": 3.5,
+                        "min_ratings": 30000
+                    },
+                    {
+                        "album_name": "Mr. Morale & The Big Steppers"
+                    }
+                ],
+                "answer": "```json\n{\n  'songs': [\n    'N95',\n    'United In Grief',\n    'Rich Spirit',\n    'Count Me Out',\n    'Worldwide Steppers',\n    'Rich - Interlude',\n    'Crown',\n    'Auntie Diaries',\n    'Mirror',\n    'Savior - Interlude',\n    'The Heart Part 5'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "songs": [
+                        "N95",
+                        "United In Grief",
+                        "Rich Spirit",
+                        "Count Me Out",
+                        "Worldwide Steppers",
+                        "Rich - Interlude",
+                        "Crown",
+                        "Auntie Diaries",
+                        "Mirror",
+                        "Savior - Interlude",
+                        "The Heart Part 5"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q4",
+            "category": "Selection",
+            "question": "Provide me the album with the third lowest number of reviews of the same artist as that of 'Ray of Light'. Return the answer in JSON format: {'album':'3rd_least_reviewed_album_name'}",
+            "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "album_info",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "album_name": "Ray of Light"
+                        },
+                        {
+                            "artist_name": "Madonna"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "album_info",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "album_name": "Ray of Light"
+                    },
+                    {
+                        "artist_name": "Madonna"
+                    }
+                ],
+                "answer": "```json\n{'album':'Bedtime Stories'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album": "Music"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q5",
+            "category": "Selection",
+            "question": "I like songs with high beats, my friend recommended an artist and his albums, but I only remember the name of album \u201cOasis\u201d. Can you please provide the songs of this artist with bpm in the range of 120-160. Return the answer in JSON format: {'songs': [song_names_here]} ",
+            "motivation": "Evaluate the ability to perform multi-targeted information retrieval of data based on a defined criteria (interval of integer bounds).",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "album_info",
+                        "songs_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "album_name": "Oasis"
+                        },
+                        {
+                            "artist_name": "Bad Bunny"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "album_info",
+                    "songs_by_album"
+                ],
+                "parameters": [
+                    {
+                        "album_name": "Oasis"
+                    },
+                    {
+                        "album_name": "Oasis"
+                    }
+                ],
+                "answer": "It appears that there is only one song listed from the album 'Oasis' by J Balvin and Bad Bunny, and its BPM is 176, which is outside the range of 120-160 BPM that you specified. Therefore, there are no songs from this album within the desired BPM range. Here is the JSON response with an empty song list:\n\n```json\n{'songs': []}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "songs": [
+                        "Neverita",
+                        "Yo No Soy Celoso",
+                        "Un Coco",
+                        "Dos Mil 16",
+                        "Aguacero"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Incorrect",
+                "argument_eval": "Incorrect",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q6",
+            "category": "Selection",
+            "question": "I loved the song 'City of Gods'. Give me all songs released by the same artist ordered from older to newer excluding 'City of Gods'. Return the answer in JSON format: {'songs': [ordered_song_names_here]}",
+            "motivation": "Evaluate the ability to perform multi-targeted information retrieval of data based on a defined criteria (sorting and exclusion of song).",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "songs_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "City of Gods"
+                        },
+                        {
+                            "artist_name": "Kanye West"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "songs_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "City of Gods"
+                    },
+                    {
+                        "artist_name": "Kanye West"
+                    }
+                ],
+                "answer": "Here are the songs by Kanye West, excluding 'City of Gods,' ordered from older to newer:\n\n```json\n{\n  'songs': [\n    'Heartless',\n    'Praise God',\n    'True Love',\n    'Hot Shit (feat. Ye & Lil Durk)'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [
+                    "songs"
+                ],
+                "answer": {
+                    "songs": [
+                        "Heartless",
+                        "Praise God",
+                        "True Love",
+                        "Hot Shit (feat. Ye & Lil Durk)"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q1",
+            "category": "Aggregation",
+            "question": "I have heard a lot about this song \u2018Cruel Summer\u2019 by some artist. Can you find its artist and return me the average of the number of ratings received by his/her albums. Return the answer in JSON format: {'name_of_artist':'artist_name', 'average_number_of_ratings': Average_number_of rating_here}",
+            "motivation": "Evaluate the ability to perform aggregation (average) on the result.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Cruel Summer"
+                        },
+                        {
+                            "artist_name": "Taylor Swift"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Cruel Summer"
+                    },
+                    {
+                        "artist_name": "Taylor Swift"
+                    }
+                ],
+                "answer": "To calculate the average number of ratings received by Taylor Swift's albums, we will sum up the rating counts of all her albums and divide by the number of albums.\n\nLet's do the calculation:\n\nTotal rating count = 9228 (Folklore) + 8278 (1989) + 5546 (Evermore) + 5530 (Red) + 5392 (Reputation) + 5025 (Lover) + 3679 (Speak Now) + 3628 (Fearless) + 2726 (Taylor Swift) + 2626 (Red (Taylor's Version)) + 2301 (Fearless (Taylor's Version)) + 10905 (Midnights) + 3061 (1989 (Taylor's Version)) + 3415 (Speak Now (Taylor's Version))\n\nTotal rating count = 72,320\n\nNumber of albums = 14\n\nAverage number of ratings = Total rating count / Number of albums\nAverage number of ratings = 72,320 / 14\nAverage number of ratings = 5165.71\n\nNow, let's return the result in JSON format:\n\n```json\n{\n  'name_of_artist': 'Taylor Swift',\n  'average_number_of_ratings': 5165.71\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "name_of_artist": "Taylor Swift",
+                    "average_number_of_ratings": 5095.71
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q2",
+            "category": "Aggregation",
+            "question": "Of all the albums of Olivia Rodrigo, please get the songs of her album released in 2021 and return the one with the highest bpm value. Return the answer in JSON format: {'song':'song_name'}",
+            "motivation": "Evaluate the ability to find maximum value of specific attribute in the result.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "songs_by_album"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Olivia Rodrigo"
+                        },
+                        {
+                            "album_name": "Sour"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "songs_by_album"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Olivia Rodrigo"
+                    },
+                    {
+                        "album_name": "Sour"
+                    }
+                ],
+                "answer": "```json\n{'song':'deja vu'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "song": "deja vu"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q3",
+            "category": "Aggregation",
+            "question": "Please return the album with the lowest rating released in the same year in which Mistletoe was released. Return the answer in JSON format: {'album':'name_of_album_with_lowest_rating'}",
+            "motivation": "Evaluate the ability to find minimum value of specific attribute in the result.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "albums_by_release_date_2"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Mistletoe"
+                        },
+                        {
+                            "release_date": "2011"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "albums_by_release_date_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Mistletoe"
+                    },
+                    {
+                        "release_date": "2011"
+                    }
+                ],
+                "answer": "```json\n{'album':'Under the Mistletoe'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album": "Under the Mistletoe"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q4",
+            "category": "Aggregation",
+            "question": "How many songs are released by the co-artist of Taylor Swift in the song \u201cThe Joker And The Queen (feat. Taylor Swift)\u201d? Return the answer in JSON format: {'number_of_songs':number_of_songs_here}",
+            "motivation": "Evaluate the ability to perform aggregation (counting) on the results.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "songs_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "The Joker And The Queen (feat. Taylor Swift)"
+                        },
+                        {
+                            "artist_name": "Ed Sheeran"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "songs_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "The Joker And The Queen (feat. Taylor Swift)"
+                    },
+                    {
+                        "artist_name": "Ed Sheeran"
+                    }
+                ],
+                "answer": "```json\n{\n  'number_of_songs': 13\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "number_of_songs": 13
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q5",
+            "category": "Aggregation",
+            "question": "Can you please return the sum of the number of reviews received by the albums of the famous band whose song is Creep? Return the answer in JSON format: {'total_reviews': total_number_of_reviews}",
+            "motivation": "Evaluate the ability to perform aggregation (sum) on the specific attribute of results.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Creep"
+                        },
+                        {
+                            "artist_name": "Radiohead"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Creep"
+                    },
+                    {
+                        "artist_name": "Radiohead"
+                    }
+                ],
+                "answer": "```json\n{'total_reviews': 4338}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "total_reviews": 4338
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q6",
+            "category": "Aggregation",
+            "question": "Of the two singers of song Merry Christmas, who is the older one? Return the answer in JSON format: {'artist': 'name_of_older_artist_here'}",
+            "motivation": "Evaluate the ability to identify lowest value w.r.t date. ",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "artist_info",
+                        "artist_info"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Merry Christmas"
+                        },
+                        {
+                            "artist_name": "Ed Sheeran"
+                        },
+                        {
+                            "artist_name": "Elton John"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "artist_info",
+                    "artist_info"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Merry Christmas"
+                    },
+                    {
+                        "artist_name": "Ed Sheeran"
+                    },
+                    {
+                        "artist_name": "Elton John"
+                    }
+                ],
+                "answer": "```json\n{'artist': 'Elton John'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "artist": "Elton John"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_REA_Q1",
+            "category": "Reasoning",
+            "question": "I am organizing a beach party and compiling songs with high beats. Can you get the albums of Bad Bunny and please recommend 4 songs from his most recent album which are suitable for my party. Return the answer in JSON format: {'songs': [4_song_names_with_highest_beats_here]}",
+            "motivation": "Evaluate the ability to make recommendation about songs based on desired situation. ",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "songs_by_album"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Bad Bunny"
+                        },
+                        {
+                            "album_name": "Un verano sin ti"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "songs_by_album"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Bad Bunny"
+                    },
+                    {
+                        "album_name": "Un verano sin ti"
+                    }
+                ],
+                "answer": "```json\n{\n  'songs': [\n    'Neverita',\n    'Moscow Mule',\n    'Un Coco',\n    'Ens\u00e9\u00f1ame a bailar'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "songs": [
+                        "Yo No Soy Celoso",
+                        "Dos Mil 16",
+                        "Un Coco",
+                        "Un Verano Sin Ti"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_REA_Q2",
+            "category": "Reasoning",
+            "question": "I cannot remember the artist name of this famous song \u201cPerfect\u201d. Can you please find the artist and then his albums and return the one which is most popular. I consider popularity to be proportional to the number of reviews received by the albums. Return the answer in JSON format: {'album':'name_of_popular_album'}",
+            "motivation": "Evaluate the ability to make value translation capabilities of projecting popularity to number of reviews.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Perfect"
+                        },
+                        {
+                            "artist_name": "Ed Sheeran"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Perfect"
+                    },
+                    {
+                        "artist_name": "Ed Sheeran"
+                    }
+                ],
+                "answer": "```json\n{'album':'\u00f7 (Divide)'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album": "\u00f7 (Divide)"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_REA_Q3",
+            "category": "Reasoning",
+            "question": "Of all the albums released in 2000, which album do you think is not suitable for children and why? Also return the songs of this album. Return the answer in JSON format: {'album': 'album_name_here', 'songs': [song_names_here]}",
+            "motivation": "Evaluate the ability to make album selection based on desired situation using descriptors. ",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_release_date_2",
+                        "songs_by_album"
+                    ],
+                    "parameters": [
+                        {
+                            "release_date": "2000"
+                        },
+                        {
+                            "album_name": "The Marshall Mathers LP"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_release_date_2",
+                    "songs_by_album"
+                ],
+                "parameters": [
+                    {
+                        "release_date": "2000"
+                    },
+                    {
+                        "album_name": "The Marshall Mathers LP"
+                    }
+                ],
+                "answer": "```json\n{\n  'album': 'The Marshall Mathers LP',\n  'songs': [\n    'The Real Slim Shady',\n    'Stan'\n  ]\n}\n```\n\nThe album 'The Marshall Mathers LP' by Eminem is likely not suitable for children due to its descriptors such as vulgar, hateful, misanthropic, sarcastic, humorous, violence, drugs, angry, crime, and aggressive. These themes are often reflected in the lyrics and content of the songs, which may not be appropriate for a young audience."
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album": "The Marshall Mathers LP",
+                    "songs": [
+                        "The Real Slim Shady",
+                        "Stan"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q1",
+            "category": "Languages",
+            "question": "Ich mag das Album von Coldplay, das 2011 ver\u00f6ffentlicht wurde, sehr. Finden Sie ihre Alben und k\u00f6nnen Sie mir dann die K\u00fcnstler empfehlen, die das gleiche Genre wie das genannte Album haben, mit Ausnahme von Coldplay. Return the answer in JSON format: {'album': 'album_name_by_Coldplay_2011_here', 'artists': [artist_names_here]}",
+            "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (German in this case).",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "artists_by_genres"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Coldplay"
+                        },
+                        {
+                            "genres": [
+                                "Pop Rock",
+                                "Dream Pop"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "artists_by_genres"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Coldplay"
+                    },
+                    {
+                        "genres": [
+                            "Pop Rock",
+                            "Dream Pop"
+                        ]
+                    }
+                ],
+                "answer": "```json\n{\n  'album': 'Mylo Xyloto',\n  'artists': [\n    'The Beatles',\n    'The Rolling Stones',\n    'Bob Dylan',\n    'Taylor Swift',\n    'Lady Gaga',\n    'Miley Cyrus',\n    'Shakira',\n    'Olivia Rodrigo',\n    'Elton John'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album": "Mylo Xyloto",
+                    "artists": [
+                        "The Beatles",
+                        "The Rolling Stones",
+                        "Bob Dylan",
+                        "Taylor Swift",
+                        "Lady Gaga",
+                        "Miley Cyrus",
+                        "Shakira",
+                        "Olivia Rodrigo",
+                        "Elton John"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q2",
+            "category": "Languages",
+            "question": "\u0645\u062c\u06be\u06d2 \u06cc\u0627\u062f \u0646\u06c1\u06cc\u06ba \u0622\u0631\u06c1\u0627 \u06a9\u06c1 \u0627\u0644\u0628\u0645 '\u0688\u06cc\u0632\u0627\u0626\u0631' \u06a9\u0627 \u0622\u0631\u0679\u0633\u0679 \u0627\u0645\u0631\u06cc\u06a9\u06c1 \u06cc\u0627 \u0628\u0631\u0637\u0627\u0646\u06cc\u06c1 \u0633\u06d2 \u06c1\u06d2\u06d4 \u06a9\u06cc\u0627 \u0622\u067e \u0645\u06cc\u0631\u06cc \u0627\u0644\u062c\u06be\u0646 \u062f\u0648\u0631 \u06a9\u0631 \u0633\u06a9\u062a\u06d2 \u06c1\u06cc\u06ba\u061f \u0628\u0631\u0627\u0626\u06d2 \u0645\u06c1\u0631\u0628\u0627\u0646\u06cc \u062c\u0648\u0627\u0628 \u0627\u0646\u06af\u0631\u06cc\u0632\u06cc \u0645\u06cc\u06ba \u0641\u0631\u0627\u06c1\u0645 \u06a9\u0631\u06cc\u06ba\u06d4 Return the answer in JSON format: {'artist': 'artist_name_here','country': 'name_of_country_here'}",
+            "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Urdu in this case).",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "album_info",
+                        "artist_info"
+                    ],
+                    "parameters": [
+                        {
+                            "album_name": "Desire"
+                        },
+                        {
+                            "artist_name": "Bob Dylan"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "album_info",
+                    "artist_info"
+                ],
+                "parameters": [
+                    {
+                        "album_name": "Desire"
+                    },
+                    {
+                        "artist_name": "Bob Dylan"
+                    }
+                ],
+                "answer": "```json\n{'artist': 'Bob Dylan','country': 'United States'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "artist": "Bob Dylan",
+                    "country": "United States"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q3",
+            "category": "Languages",
+            "question": "Jepni t\u00eb gjitha albumet e l\u00ebshuara n\u00eb vitin n\u00eb t\u00eb cilin u publikua k\u00ebnga Enchanted. Jep p\u00ebrgjigje n\u00eb anglisht. Return the answer in JSON format: {'albums': [album_names_here]}",
+            "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Albanian in this case).",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "albums_by_release_date_2"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Enchanted"
+                        },
+                        {
+                            "release_date": "2010"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "albums_by_release_date_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Enchanted"
+                    },
+                    {
+                        "release_date": "2010"
+                    }
+                ],
+                "answer": "```json\n{\n  'albums': [\n    'Speak Now',\n    'Loud',\n    'Recovery',\n    'Doo-Wops & Hooligans'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "albums": [
+                        "Speak Now",
+                        "Loud",
+                        "Recovery",
+                        "Doo-Wops & Hooligans"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q4",
+            "category": "Languages",
+            "question": "T\u00fcr\u00fc Merseybeat olan sanat\u00e7\u0131n\u0131n son 5 alb\u00fcm\u00fcn\u00fc bana verin. Cevab\u0131 \u0130ngilizce olarak verin. Return the answer in JSON format: {'albums': [last_5_released_album_names_here]}",
+            "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Turkish in this case).",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "artists_by_genres",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "genres": [
+                                "Merseybeat"
+                            ]
+                        },
+                        {
+                            "artist_name": "The Beatles"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "artists_by_genres",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "genres": [
+                            "Merseybeat"
+                        ]
+                    },
+                    {
+                        "artist_name": "The Beatles"
+                    }
+                ],
+                "answer": "```json\n{\n  'albums': [\n    'Love',\n    'Yellow Submarine',\n    'Beatles for Sale',\n    'With The Beatles',\n    'Please Please Me'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "albums": [
+                        "Abbey Road",
+                        "The Beatles [White Album]",
+                        "Let It Be",
+                        "Yellow Submarine",
+                        "Love"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q5",
+            "category": "Languages",
+            "question": "Comparta el nombre y los detalles del segundo artista adem\u00e1s de Ed Sheeran de la canci\u00f3n 'Sigue'. Proporcionar respuesta en ingl\u00e9s. Return the answer in JSON format: {'second_artist':'name_of_second_artist', 'place_of_birth':'town, state', 'born_in':'YYYY-MM-DD'}",
+            "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Spanish in this case).",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "artist_info"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Sigue"
+                        },
+                        {
+                            "artist_name": "J Balvin"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "artist_info"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Sigue"
+                    },
+                    {
+                        "artist_name": "J Balvin"
+                    }
+                ],
+                "answer": "```json\n{\n  'second_artist': 'J Balvin',\n  'place_of_birth': 'Medell\u00edn, Colombia',\n  'born_in': '1985-05-07'\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "second_artist": "J Balvin",
+                    "place_of_birth": "Medell\u00edn, Colombia",
+                    "born_in": "1985-05-07"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_ECON_Q1",
+            "category": "Extra Context",
+            "question": "Taylor Swift's albums have helped many thesis writing students to maintain their motivation, there are a lot of posts about this on social media. I would like to investigate whether there are genres that help motivation. Can you bring the genres of the album with the highest rating among all her albums? Return the answer in JSON format: {'genres': [genre_names_here]}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "max_rating_given_albums"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Taylor Swift"
+                        },
+                        {
+                            "albums": [
+                                "Folklore",
+                                "1989",
+                                "Evermore",
+                                "Red",
+                                "Reputation",
+                                "Lover",
+                                "Speak Now",
+                                "Fearless",
+                                "Taylor Swift",
+                                "Red (Taylor's Version)",
+                                "Fearless (Taylor's Version)",
+                                "Midnights",
+                                "1989 (Taylor's Version)",
+                                "Speak Now (Taylor's Version)"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "max_rating_given_albums"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Taylor Swift"
+                    },
+                    {
+                        "albums": [
+                            "Folklore",
+                            "1989",
+                            "Evermore",
+                            "Red",
+                            "Reputation",
+                            "Lover",
+                            "Speak Now",
+                            "Fearless",
+                            "Taylor Swift",
+                            "Red (Taylor's Version)",
+                            "Fearless (Taylor's Version)",
+                            "Midnights",
+                            "1989 (Taylor's Version)",
+                            "Speak Now (Taylor's Version)"
+                        ]
+                    }
+                ],
+                "answer": "```json\n{'genres': ['Folk Pop', 'Pop Rock', 'Country Pop', 'Singer-Songwriter', 'Heartland Rock']}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "genres": [
+                        "Folk Pop",
+                        "Pop Rock",
+                        "Country Pop",
+                        "Singer-Songwriter",
+                        "Heartland Rock"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_ECON_Q2",
+            "category": "Extra Context",
+            "question": "Bradley Cooper, a famous American theatre, TV series, and film actor, who was born on January 5, 1975, has collaborated with an American singer. They also starred in a movie 'A Star is Born' and also collaborated in a song of this album. Can you first find the song they collaborated on and then other songs by the second artist. Return the answer in JSON format: {'song': 'name_of_song_by_2_referred_artists', 'songs':[song_names_of_second_artist_here]}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_album",
+                        "songs_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "album_name": "A Star is Born"
+                        },
+                        {
+                            "artist_name": "Lady Gaga"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "songs_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Shallow"
+                    },
+                    {
+                        "artist_name": "Lady Gaga"
+                    }
+                ],
+                "answer": "```json\n{\n  'song': 'Shallow',\n  'songs': ['Bloody Mary', 'Hold My Hand']\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "song": "Shallow",
+                    "songs": [
+                        "Bloody Mary",
+                        "Hold My Hand"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Incorrect",
+                "argument_eval": "Incorrect",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_ECON_Q3",
+            "category": "Extra Context",
+            "question": "Guitarist Ed O\u2019Brien who is also a band member, said in 2022 that he\u2019s not sure if they\u2019ll make music together again, and longtime producer Nigel Godrich has expressed similar uncertainty about whether there will ever be another album. Can you tell me the rating count of the second most recent album among the highest rated albums? Also get the date of birth/formation and country of the artist/band of 2nd most recent album? Return the answer in JSON format: {'album': '2nd_most_recent_album_name', 'rating_count': number_of_rating_of_2nd_most_recent_album, 'artist': 'artist_name_of_2nd_most_recent_album', 'country':'country_of_artist', 'formed_in':'YYYY-MM-DD'}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "highest_rated_albums",
+                        "artist_info"
+                    ],
+                    "parameters": [
+                        {
+                            "rating_threshold": 4,
+                            "min_ratings": 100
+                        },
+                        {
+                            "artist_name": "Radiohead"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "highest_rated_albums",
+                    "artist_info"
+                ],
+                "parameters": [
+                    {
+                        "rating_threshold": 4.0,
+                        "min_ratings": 100
+                    },
+                    {
+                        "artist_name": "Radiohead"
+                    }
+                ],
+                "answer": "```json\n{\n  'album': 'In Rainbows',\n  'rating_count': 51335,\n  'artist': 'Radiohead',\n  'country': 'United Kingdom',\n  'formed_in': '1991-01-01'\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album": "Kid A",
+                    "rating_count": 61658,
+                    "artist": "Radiohead",
+                    "country": "United Kingdom",
+                    "formed_in": "1991-01-01"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_ECON_Q4",
+            "category": "Extra Context",
+            "question": "I was 14 on my birthday in 2008. My birthday is on 16 June. On my 14th birthday, my favourite singer released an album. Can you tell me how many times the title song which shares this album name has been listened to? Return the answer in JSON format: {'number_of_streams': number_of_streams_here}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_release_date_2",
+                        "song_info"
+                    ],
+                    "parameters": [
+                        {
+                            "release_date": "2008-06-16"
+                        },
+                        {
+                            "song_name": "Viva la Vida"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_release_date_2",
+                    "song_info"
+                ],
+                "parameters": [
+                    {
+                        "release_date": "2008-06-16"
+                    },
+                    {
+                        "song_name": "Viva la Vida"
+                    }
+                ],
+                "answer": "```json\n{'number_of_streams': 1592909789}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "number_of_streams": 1592909789
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_ECON_Q5",
+            "category": "Extra Context",
+            "question": "While the women singer from Houston isn't up for any awards at last year's ceremony, she made history and became the artist with the most Grammy wins of all time. Her genres include Contemporary R&B, Pop, Dance-Pop, Pop Rap, Adult Contemporary and Pop Soul. I am talking about Beyonc\u00e9. Can you calculate the total number of listens to the mentioned artist's songs on her latest album? Return the answer in JSON format: {'total_number_of_streams': sum_of_streams_of_songs_here}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "songs_by_album",
+                        "sum_streams_given_songs"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Beyonc\u00e9"
+                        },
+                        {
+                            "album_name": "Renaissance"
+                        },
+                        {
+                            "songs": [
+                                "CUFF IT",
+                                "AMERICA HAS A PROBLEM (feat. Kendrick Lamar)",
+                                "BREAK MY SOUL",
+                                "ALIEN SUPERSTAR"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "songs_by_album",
+                    "sum_streams_given_songs"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Beyonc"
+                    },
+                    {
+                        "album_name": "Renaissance"
+                    },
+                    {
+                        "songs": [
+                            "CUFF IT",
+                            "AMERICA HAS A PROBLEM (feat. Kendrick Lamar)",
+                            "BREAK MY SOUL",
+                            "ALIEN SUPERSTAR"
+                        ]
+                    }
+                ],
+                "answer": "```json\n{'total_number_of_streams': 1179393256}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "total_number_of_streams": 1179393256
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        }
+    ]
+}

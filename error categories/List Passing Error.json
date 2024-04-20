@@ -1,0 +1,108 @@
+{
+    "question_result": [
+        {
+            "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_AGG_Q1",
+            "category":"Aggregation",
+            "question":"In my observations here in New York, I've noticed people tend to rate restaurant experiences with stars ranging from 3 to 5. My hypothesis is that the cheapest restaurants might have the lowest ratings. Hence, I'd like you to locate a restaurant with the lowest star rating in the borough of Manhattan. Return the answer in JSON format: {'restaurants': [min_rating_restaurant]} ",
+            "motivation":"Testing the ability of LLM to comprehend string based ranges to numerical operations with integers (minimum)",
+            "overall_match":false,
+            "correct_paths":[
+               {
+                  "path_id":1,
+                  "functions":[
+                     "get_restaurants_by_ratings",
+                     "get_neighborhood_by_rest_specification"
+                  ],
+                  "parameters":[
+                     {
+                        "rating":3
+                     },
+                     {
+                        "restaurants":"Blue Ribbon Fried Chicken, Tamarind TriBeCa,Barbounia, Pylos, Bareburger, Shake Shack, Pepe Giallo, Sarabeth's",
+                        "neighborhood":"Manhattan"
+                     }
+                  ]
+               }
+            ],
+            "model_solution":{
+               "functions":[
+                  "get_restaurants_by_ratings"
+               ],
+               "parameters":[
+                  {
+                     "rating":3
+                  }
+               ],
+               "answer":"```json\n{'restaurants': []}\n```"
+            },
+            "correct_answer":{
+               "ordered_items":[
+                  
+               ],
+               "answer":{
+                  "restaurants":[
+                     "Bareburger",
+                     "Shake Shack",
+                     "Pepe Giallo",
+                     "Sarabeth's"
+                  ]
+               }
+            },
+            "evaluation":{
+               "function_eval":"Partially Correct",
+               "argument_eval":"Partially Correct",
+               "response_eval":"Incorrect"
+            }
+         },
+         {
+            "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q5",
+            "category":"Languages",
+            "question":"Hallo, k\u00f6nnten Sie mir bitte helfen, alle besten und am besten bewerteten mit 5 Sternen im besten Bereich von New York zu finden, der ganz in der N\u00e4he der Freiheitsstatue und Manhattan liegt? Bitte nennen Sie mir den Namen des Restaurants in diesem Teil von New York, damit ich sp\u00e4ter die genaue Lage auf Google Maps suchen kann. Return the answer in JSON format: {'restaurants_at_manhattan': 'my_restaurant'}",
+            "motivation":"Test the ability of LLM to comprehend and respond in a different language other than English and perform multiple function calls while requested in different languages.",
+            "overall_match":false,
+            "correct_paths":[
+               {
+                  "path_id":1,
+                  "functions":[
+                     "get_restaurants_by_ratings",
+                     "get_neighborhood_by_rest_specification"
+                  ],
+                  "parameters":[
+                     {
+                        "rating":5
+                     },
+                     {
+                        "restaurants":"Cafe Habana, Anjappar Chettinad, Bukhara Grill, Empanada Mama (closed), Blue Ribbon Fried Chicken, Shake Shack, Cafe Mogador, The Meatball Shop, The Kati Roll Company, Klong, Parm, Haru Gramercy Park, RedFarm Broadway, Five Guys Burgers and Fries, DuMont Burger, Hill Country Fried Chicken, TAO, RedFarm Hudson, Prosperity Dumpling, Nobu Next Door, Sushi Samba, Benihana, Chipotle Mexican Grill $1.99 Delivery, Otto Enoteca Pizzeria, Chote Nawab, Mission Cantina, Blue Ribbon Sushi, Joe's Shanghai, Yama Japanese Restaurant, Momoya, Osteria Morini, Sushi of Gari, Boqueria, Song Thai Restaurant & Bar, Barbounia, Yama 49, Jack's Wife Freda, Han Dynasty, Blue Ribbon Sushi Izakaya, Blue Ribbon Sushi Bar & Grill, Rubirosa, Vanessa's Dumplings, Bhatti Indian Grill, Taro Sushi, Delicatessen, Samurai Mama, Waverly Diner, Lucky's Famous Burgers, Dos Caminos, da Umberto, Bubby's, Burger Joint, Xe May Sandwich Shop, Otto Enoteca Pizzeria, El Parador Cafe, Socarrat Paella Bar, Bareburger, Xi'an Famous Foods, Five Leaves, Westville Hudson, Cipriani Le Specialita, The Loop, Burger Joint, UVA Wine Bar & Restaurant, V-Nam Cafe, Amma, The Smile, Hatsuhana, Cho Dang Gol, Sarabeth's, Galli Restaurant, Lantern Thai Kitchen, Hunan Manor, Despa\u00f1a, 12 Chairs, L'Express, Bareburger, Boqueria, Carmine's, The Loop, Balthazar Boulangerie, Lucky's Famous Burgers, Pinto Nouveau Thai Bistro, Hot Kitchen, Dig Inn Seasonal Market, Cafe Mogador, Grand Sichuan International, Le Grainne Cafe, 5 Napkin Burger, Caf China, wichcraft, Melt Shop",
+                        "neighborhood":"Manhattan"
+                     }
+                  ]
+               }
+            ],
+            "model_solution":{
+               "functions":[
+                  "get_restaurants_by_ratings"
+               ],
+               "parameters":[
+                  {
+                     "rating":5
+                  }
+               ],
+               "answer":"{'restaurants_at_manhattan': 'No 5-star rated restaurants found in the specified area'}"
+            },
+            "correct_answer":{
+               "ordered_items":[
+                  
+               ],
+               "answer":{
+                  "restaurants_at_manhattan":"Shake Shack"
+               }
+            },
+            "evaluation":{
+               "function_eval":"Partially Correct",
+               "argument_eval":"Partially Correct",
+               "response_eval":"Incorrect"
+            }
+         }
+                       
+    ]
+}

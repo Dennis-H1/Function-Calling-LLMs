@@ -1,0 +1,1952 @@
+{
+    "metadata":{
+       "run_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_RUN",
+       "run_name":"Mannheim Function Calling Benchmark _ Testrun GPT4 Travel Use Case",
+       "question_set_id":"TRAVEL_Q_MULTI_CALL_SEQUENTIAL_V01",
+       "function_set_id":"TRAVEL_FUNC_MULTI_CALL_SEQUENTIAL_SIMPLE_DESC_NO_EX_V01",
+       "prompt":"You are a helpful assistant. Answer briefly.",
+       "model":"gpt-4-turbo-preview",
+       "hyperparameters":{
+          "temperature":0,
+          "mode":"sequential"
+       },
+       "run_start_timestamp":"2024-04-19 15:02:46.671301",
+       "run_end_timestamp":"2024-04-19 15:06:33.801761",
+       "test_driver_version":"1.0.0"
+    },
+    "statistics":{
+       "number_of_functions":{
+          "total":77,
+          "correct":49,
+          "accuracy":0.636
+       },
+       "number_of_parameters":{
+          "total":159,
+          "correct":88,
+          "accuracy":0.553
+       },
+       "number_of_answers":{
+          "total":32,
+          "correct":10,
+          "accuracy":0.312
+       },
+       "number_of_tokens":{
+          "input":79666,
+          "output":5656
+       }
+    },
+    "question_result":[
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_REAS_Q1",
+          "category":"Reasoning",
+          "question":"I will travel with my little baby from California to Canada tomorrow, but I will stop to have a break with an intended overnight stop in Brooklyn and I want to find a place to stay there with her. I want to find a place that costs ten bucks per single adult. Really close to the place we will be staying, I would like to find a restaurant. Please, help me find good suggestions. Return the answer in JSON format: {'restaurants_nearby':[my_restaurant]}",
+          "motivation":"Evaluate the ability of LLM to reason the time and cost constraint requested by the user. Assess GPT's reasoning ability in determining the sequence of three functions to reason targets according to geographical proximity",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                   "get_long_lat_by_airbnb",
+                   "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters":[
+                   {
+                      "price":10,
+                      "min_nights":1,
+                      "neighbourhood_group":"Brooklyn"
+                   },
+                   {
+                      "listing":"Room with a view"
+                   },
+                   {
+                      "latitude":40.70959,
+                      "longitude":-73.95693
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                "get_long_lat_by_airbnb",
+                "get_restaurant_by_airbnb_closeness"
+             ],
+             "parameters":[
+                {
+                   "price":10,
+                   "min_nights":1,
+                   "neighbourhood_group":"Brooklyn"
+                },
+                {
+                   "listing":"Room with a view"
+                },
+                {
+                   "latitude":40.70959,
+                   "longitude":-73.95693
+                }
+             ],
+             "answer":"```json\n{\n  'restaurants_nearby': [\n    {\n      'restaurant_name': 'DAR 525',\n      'distance': 0.5912795355990464\n    },\n    {\n      'restaurant_name': 'FETTE SAU',\n      'distance': 0.5136844594142908\n    },\n    {\n      'restaurant_name': 'BLANK STREET/ SPRINGBORN',\n      'distance': 0.648144428100528\n    },\n    {\n      'restaurant_name': 'ROKA MODERN MEDITERRANEAN',\n      'distance': 0.5673076218097033\n    },\n    {\n      'restaurant_name': 'SUZUME',\n      'distance': 0.7610912181790632\n    }\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants_nearby":[
+                   "DAR 525",
+                   "FETTE SAU",
+                   "GUSTO LATINO CAFE REST 1",
+                   "BLANK STREET SPRINGBORN",
+                   "ROKA MODERN MEDITERRANEAN",
+                   "SUZUME"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_REAS_Q2",
+          "category":"Reasoning",
+          "question":"I am aware that the restaurants get rated by the customers, from 1 to 5 stars, here in New York. As I will be with some very important people at a conference in Manhattan. I am seeking recommendations for the highest-rated establishments close to the conference room scheduled for tomorrow. Your insights will be helpful. Return the answer in JSON format: {'restaurant':'my_restaurant'}",
+          "motivation":"Evaluate the ability of LLM to reason the selection of a list of elements according to defined user criteria (string and integer matching) and parameter dependency.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurants_by_ratings",
+                   "get_neighborhood_by_rest_specification"
+                ],
+                "parameters":[
+                   {
+                      "rating":5
+                   },
+                   {
+                      "restaurants":"Cafe Habana, Anjappar Chettinad, Bukhara Grill,Shake Shack",
+                      "neigborhood":"Manhattan"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurants_by_ratings"
+             ],
+             "parameters":[
+                {
+                   "rating":5
+                }
+             ],
+             "answer":"```json\n{'restaurant':'Rating not found'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant":"SHAKE SHACK"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_REAS_Q3",
+          "category":"Reasoning",
+          "question":"Hello, I am currently in India and tomorrow morning I will be flying to New York. Some native friends there suggested me a very good traditional restaurant and they sent me the address details. This restaurant is located in New York, near the borough, Manhattan, and they also provided me with the zipcode,10010, and contact details so I could reserve a place. This is their phone number:2124902100.Considering the location of this recommended restaurant, could you please recommend some good places in close proximity to stay? Return the answer in JSON format: {'airbnbs': [my_airbnb]}",
+          "motivation":"Evaluate the ability of LLM to reason the parameter selection according to the details provided by the user and perform string matching. Evaluate its ability on performing a chain-of-thought process to the calculation of the geographical proximity and mapping to targets.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                   "get_airbnb_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "zip_code":10010,
+                      "cuisine":"Indian",
+                      "borough":"Manhattan",
+                      "phone":"2124902100"
+                   },
+                   {
+                      "latitude":40.74262626,
+                      "longitude":-73.99009391
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone"
+             ],
+             "parameters":[
+                {
+                   "zip_code":10010,
+                   "cuisine":"traditional",
+                   "borough":"Manhattan",
+                   "phone":"2124902100"
+                }
+             ],
+             "answer":"It seems I couldn't find the restaurant with the provided details. Could you please check if there's any mistake in the information provided or if there's any additional detail that might help in locating the restaurant?"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnbs":[
+                   "West Village Studio Apartment",
+                   "West Village Apartment near Washington Square Park",
+                   "Cozy & artsy apt in East Village - 2 bedrooms",
+                   "Spacious Bright 1 Bedroom East Village Apartment",
+                   "Soho loft with everything",
+                   "Large Private Room in Greenpoint Williamsburg"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_REAS_Q4",
+          "category":"Reasoning",
+          "question":"As a German tourist exploring New York, I've received a delightful restaurant recommendation from a local friend. This restaurant, renowned for its Mediterranean offerings, is strategically situated in the same borough as the iconic Statue of Liberty. My friend generously provided the zip code,10025 and contact details,2126663744 for reservations tonight. In consideration of my weariness and the late-night timing, could you assist me in discovering accommodations close to that location. Return the answer in JSON format: {'airbnbs': [my_airbnb]}",
+          "motivation":"Testing the ability of GPT to recall targets according to previous knowledge. Evaluating the ability to calculate geographical proximity and mapping to targets.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                   "get_airbnb_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "zip_code":10025,
+                      "cuisine":"Mediterranean",
+                      "borough":"Manhattan",
+                      "phone":"2126663744"
+                   },
+                   {
+                      "latitude":40.80522011,
+                      "longitude":-73.96223102
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                "get_airbnb_by_lat_long"
+             ],
+             "parameters":[
+                {
+                   "zip_code":10025,
+                   "cuisine":"Mediterranean",
+                   "borough":"Manhattan",
+                   "phone":"2126663744"
+                },
+                {
+                   "latitude":40.80522011,
+                   "longitude":-73.96223102
+                }
+             ],
+             "answer":"```json\n{\n  'airbnbs': [\n    {\n      'name': 'Charming 1br in Morningside Heights',\n      'distance': 0.07207660846886017\n    }\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnbs":[
+                   "Charming 1br in Morningside Heights"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_REAS_Q5",
+          "category":"Reasoning",
+          "question":" My native friends have shared a concern about the cleanliness and popularity of places to stay in the Brooklyn. Despite this, I find myself obligated to attend a conference there with my young child, and staying together is a necessity. Could you kindly recommend the most popular and frequently visited Airbnb options in the area? Additionally, as I won't have a car, I'd appreciate suggestions for good eateries that cater to families with children. Return the answer in JSON format: {'restaurants': [my_restaurant]}",
+          "motivation":"Evaluate the ability of LLM to reason numerical representations of string-like context. Assess GPT's reasoning ability in determining the sequence of three functions as a chain-of-thought in order to finally reason targets according to geographical proximity.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_with_max_reviews",
+                   "get_long_lat_by_airbnb",
+                   "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters":[
+                   {
+                      "popularity":1,
+                      "neighbourhood_group":"Brooklyn",
+                      "room_type":"Shared Room"
+                   },
+                   {
+                      "listing":"A Couch In East Williamsburg Near Train."
+                   },
+                   {
+                      "latitude":40.70472,
+                      "longitude":-73.93784
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_with_max_reviews"
+             ],
+             "parameters":[
+                {
+                   "popularity":5,
+                   "neighbourhood_group":"Brooklyn",
+                   "room_type":"Entire home/apt"
+                }
+             ],
+             "answer":"{\n  'restaurants': []\n}"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants":[
+                   "MARCO'S",
+                   "MAKAVELY PIZZA",
+                   "YUMMY YUMMY CHINESE"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_REAS_Q6",
+          "category":"Reasoning",
+          "question":" In an unexpected turn of events, my flight in the Brooklyn area has been canceled, and the next available flight is scheduled for tomorrow morning. Facing this predicament, I'm on the lookout for budget-friendly accommodation, aiming for an exceptionally low cost, around $10. Could you assist me in identifying a suitable Airbnb and provide details regarding its location. Return the answer in JSON format: {'street': [street_of_my_airbnb]}",
+          "motivation":"Evaluate the ability of LLM to reason numerical representations of string-like context for time constraints. Assess GPT's reasoning ability in determining the sequence of three functions as a chain-of-thought in order to finally reason targets according to geographical proximity.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                   "get_long_lat_by_airbnb",
+                   "get_airbnb_address_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "price":10,
+                      "min_nights":1,
+                      "neighbourhood_group":"Brooklyn"
+                   },
+                   {
+                      "listing":"Room with a view"
+                   },
+                   {
+                      "latitude":40.70959,
+                      "longitude":-73.95693
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group"
+             ],
+             "parameters":[
+                {
+                   "price":10,
+                   "min_nights":1,
+                   "neighbourhood_group":"Brooklyn"
+                }
+             ],
+             "answer":"```json\n{'street': ['Room with a view']}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "street":"COLUMBIA STREET"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q1",
+          "category":"Languages",
+          "question":"\u0393\u03b5\u03b9\u03b1, \u03c0\u03c1\u03bf\u03c2 \u03c4\u03bf \u03c0\u03b1\u03c1\u03c9\u03bd \u03b5\u03b9\u03bc\u03b1\u03b9 \u03c3\u03c4\u03b7 \u039d\u03b5\u03b1 \u03a5\u03bf\u03c1\u03ba\u03b7 \u03bc\u03b5 \u03ba\u03b9\u03bd\u03b5\u03b6\u03bf\u03c5\u03c2 \u03c6\u03b9\u03bb\u03bf\u03c5\u03c2 \u03c3\u03c4\u03bf '\u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf \u03bc\u03b5 \u03b8\u03ad\u03b1'. \u03a0\u03b5\u03b9\u03bd\u03b1\u03bc\u03b5 \u03ba\u03b1\u03b9 \u03b8\u03b5\u03bb\u03bf\u03c5\u03bc\u03b5 \u03bd\u03b1 \u03b2\u03c1\u03bf\u03c5\u03bc\u03b5 \u03b3\u03c1\u03b7\u03b3\u03bf\u03c1\u03b1 \u03ba\u03b1\u03c0\u03bf\u03c5 \u03ba\u03bf\u03bd\u03c4\u03b1 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03c6\u03b1\u03bc\u03b5. \u03a3\u03b5 \u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03c9, \u03b2\u03bf\u03b7\u03b8\u03b7\u03c3\u03b5 \u03bc\u03b5 \u03bd\u03b1 \u03b2\u03c1\u03c9 \u03ba\u03b1\u03c4\u03b9 \u03b5\u03b4\u03c9 \u03ba\u03bf\u03bd\u03c4\u03b1. Return the answer in JSON format: {'restaurants_nearby': [my_restaurant]}",
+          "motivation":"Test the ability of LLM to comprehend and respond in a different language other than English and perform multiple function calls while requested in different languages.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_long_lat_by_airbnb",
+                   "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters":[
+                   {
+                      "listing":"A room with a view"
+                   },
+                   {
+                      "latitude":40.82649,
+                      "longitude":-73.95253
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_long_lat_by_airbnb"
+             ],
+             "parameters":[
+                {
+                   "listing":"\u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf \u03bc\u03b5 \u03b8\u03ad\u03b1"
+                }
+             ],
+             "answer":"```json\n{'restaurants_nearby': ['Airbnb not found, unable to locate nearby restaurants.']}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants_nearby":[
+                   "JUICE RIGHT CORP",
+                   "ARTOPOLIS CAFE",
+                   "MILA CAFE"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q2",
+          "category":"Languages",
+          "question":"\u0393\u03b5\u03b9\u03b1, \u03b5\u03af\u03bc\u03b1\u03b9 \u03c3\u03c4\u03b7 \u039d\u03ad\u03b1 \u03a5\u03cc\u03c1\u03ba\u03b7 \u03bc\u03b5 \u03c4\u03b7 \u03bc\u03b1\u03bc\u03ac \u03bc\u03bf\u03c5 \u03ba\u03b1\u03b9 \u03b8\u03b1 \u03bc\u03b5\u03af\u03bd\u03bf\u03c5\u03bc\u03b5 \u03c3\u03b5 \u03ad\u03bd\u03b1 Airbnb \u03ba\u03bf\u03bd\u03c4\u03ac \u03c3\u03c4\u03bf \u03ba\u03ad\u03bd\u03c4\u03c1\u03bf \u03c4\u03b7\u03c2 \u03c0\u03cc\u03bb\u03b7\u03c2 \u03b3\u03b9\u03b1 \u03c4\u03ad\u03c3\u03c3\u03b5\u03c1\u03b9\u03c2 \u03b7\u03bc\u03ad\u03c1\u03b5\u03c2. \u03a4\u03bf Airbnb \u03c3\u03c4\u03bf \u03bf\u03c0\u03bf\u03af\u03bf \u03bc\u03b5\u03af\u03bd\u03b1\u03bc\u03b5 \u03bf\u03bd\u03bf\u03bc\u03b1\u03b6\u03cc\u03c4\u03b1\u03bd Room in Bushwick Bk, \u03b4\u03b9\u03b1\u03b8\u03ad\u03c3\u03b9\u03bc\u03bf \u03c4\u03bf\u03bd \u0399\u03bf\u03cd\u03bd\u03b9\u03bf. \u039c\u03c0\u03bf\u03c1\u03b5\u03af\u03c4\u03b5 \u03bd\u03b1 \u03c0\u03c1\u03bf\u03c4\u03b5\u03af\u03bd\u03b5\u03c4\u03b5 \u03bc\u03b5\u03c1\u03b9\u03ba\u03ac \u03ba\u03b1\u03bb\u03ac \u03b5\u03c3\u03c4\u03b9\u03b1\u03c4\u03cc\u03c1\u03b9\u03b1 \u03c3\u03b5 \u03ba\u03bf\u03bd\u03c4\u03b9\u03bd\u03ae \u03b1\u03c0\u03cc\u03c3\u03c4\u03b1\u03c3\u03b7; \u039a\u03b1\u03c4\u03b1\u03c7\u03c9\u03c1\u03af\u03c3\u03c4\u03b5 \u03c4\u03b7 \u03bb\u03b5\u03c0\u03c4\u03bf\u03bc\u03b5\u03c1\u03ae \u03b4\u03b9\u03b5\u03cd\u03b8\u03c5\u03bd\u03c3\u03ae \u03c4\u03bf\u03c5\u03c2, \u03cc\u03c0\u03c9\u03c2 \u03c0\u03bb\u03b7\u03c1\u03bf\u03c6\u03bf\u03c1\u03af\u03b5\u03c2 \u03b3\u03b9\u03b1 \u03c4\u03bf \u03b4\u03c1\u03cc\u03bc\u03bf.Return the answer in JSON format: {'distance': distance_to_airbnb, 'restaurant_building':'nearby_restaurant_building', 'restaurant_name': 'nearby_restaurant_name', 'restaurant_phone': 'nearby_restaurant_phone_num', 'restaurant_street': 'nearby_restaurant_street_name', 'restaurant_zip': nearby_restaurant_zip_code}",
+          "motivation":"Test the model's performance when presented with queries written in languages that do not use the Latin alphabet. Assess the accuracy and coherence of multi-call responses in diverse linguistic contexts. ",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_long_lat_by_airbnb",
+                   "get_info_restaurant_with_zipcode_street_building"
+                ],
+                "parameters":[
+                   {
+                      "listing":"Room in Bushwick Bk available June"
+                   },
+                   {
+                      "latitude":40.68651,
+                      "longitude":-73.91185
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_long_lat_by_airbnb"
+             ],
+             "parameters":[
+                {
+                   "listing":"Room in Bushwick Bk"
+                }
+             ],
+             "answer":"```json\n{'error':'Airbnb not found'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "distance":4.98,
+                "restaurant_building":"1407",
+                "restaurant_name":"AUNTS ET UNCLES",
+                "restaurant_phone":"9175868529",
+                "restaurant_street":"NOSTRAND AVENUE",
+                "restaurant_zip":11226.0
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q3",
+          "category":"Languages",
+          "question":"P\u00ebrsh\u00ebndetje, un\u00eb po q\u00ebndroj me familjen time n\u00eb 'Apartament 1 Bedroom af\u00ebr Northwell & JFK' n\u00eb Nju Jork dhe do t\u00eb q\u00ebndrojm\u00eb p\u00ebr disa dit\u00eb. Ne jetojm\u00eb n\u00eb nj\u00eb Airbnb e cila \u00ebsht\u00eb shum\u00eb af\u00ebr qendr\u00ebs s\u00eb qytetit. A mund t\u00eb m\u00eb ndihmoni duke rekomanduar disa restorante t\u00eb k\u00ebndshme n\u00eb zon\u00eb dhe duke m\u00eb dh\u00ebn\u00eb vendndodhjen e tyre t\u00eb sakt\u00eb? Return the answer in JSON format: {'distance': distance_to_airbnb, 'restaurant_building':'nearby_restaurant_building', 'restaurant_name': 'nearby_restaurant_name', 'restaurant_phone': 'nearby_restaurant_phone_num', 'restaurant_street': 'nearby_restaurant_street_name', 'restaurant_zip': nearby_restaurant_zip_code}",
+          "motivation":"Test the model's performance when presented with queries written in languages that do not use the Latin alphabet. Assess the accuracy and coherence of multi-call responses in diverse linguistic contexts.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_long_lat_by_airbnb",
+                   "get_info_restaurant_with_zipcode_street_building"
+                ],
+                "parameters":[
+                   {
+                      "listing":"1 Bedroom  Apartment close to Northwell & JFK"
+                   },
+                   {
+                      "latitude":40.7229,
+                      "longitude":-73.7462
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_long_lat_by_airbnb"
+             ],
+             "parameters":[
+                {
+                   "listing":"Apartament 1 Bedroom af\u00ebr Northwell & JFK"
+                }
+             ],
+             "answer":"{'error':'Airbnb location not found. Please provide more specific details about the Airbnb location.'}"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "distance":3.8,
+                "restaurant_building":"17237",
+                "restaurant_name":"El Tequilazo",
+                "restaurant_phone":"6462584663",
+                "restaurant_street":"HILLSIDE AVE",
+                "restaurant_zip":11432.0
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q4",
+          "category":"Languages",
+          "question":"Momentalisht ndodhem ne restorantin Skinny Cantina qe eshte i vendosur ne rrugen W 133RD ST, meqenese jam nje studente e re nuk i njof shume mire rruget dhe do doja tani te gjeja ndonje vend per te fjetur diku ketu rrotull sepse nuk do doja te levizja shume nga zona afer restorantit dhe shkolles. Ju lutem, mund te me sugjeroni disa vende ku mund te fle sonte. Return the answer in JSON format: {'airbnbs': [my_airbnb]}",
+          "motivation":"Test the ability of LLM to comprehend and respond in a different language other than English and perform multiple function calls while requested in different languages.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_long_lat_by_name_street",
+                   "get_airbnb_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "restaurant":"SKINNY CANTINA",
+                      "street":"W 133RD ST"
+                   },
+                   {
+                      "latitude":40.82003511,
+                      "longitude":-73.95893838
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_long_lat_by_name_street"
+             ],
+             "parameters":[
+                {
+                   "restaurant":"Skinny Cantina",
+                   "street":"W 133RD ST"
+                }
+             ],
+             "answer":"{'airbnbs': []}"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnbs":[
+                   "5 rooms in clean apartment /West Harlem",
+                   "British Room @ Columbia Uni."
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q5",
+          "category":"Languages",
+          "question":"Hallo, k\u00f6nnten Sie mir bitte helfen, alle besten und am besten bewerteten mit 5 Sternen im besten Bereich von New York zu finden, der ganz in der N\u00e4he der Freiheitsstatue und Manhattan liegt? Bitte nennen Sie mir den Namen des Restaurants in diesem Teil von New York, damit ich sp\u00e4ter die genaue Lage auf Google Maps suchen kann. Return the answer in JSON format: {'restaurants_at_manhattan': 'my_restaurant'}",
+          "motivation":"Test the ability of LLM to comprehend and respond in a different language other than English and perform multiple function calls while requested in different languages.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurants_by_ratings",
+                   "get_neighborhood_by_rest_specification"
+                ],
+                "parameters":[
+                   {
+                      "rating":5
+                   },
+                   {
+                      "restaurants":"Cafe Habana, Anjappar Chettinad, Bukhara Grill, Empanada Mama (closed), Blue Ribbon Fried Chicken, Shake Shack, Cafe Mogador, The Meatball Shop, The Kati Roll Company, Klong, Parm, Haru Gramercy Park, RedFarm Broadway, Five Guys Burgers and Fries, DuMont Burger, Hill Country Fried Chicken, TAO, RedFarm Hudson, Prosperity Dumpling, Nobu Next Door, Sushi Samba, Benihana, Chipotle Mexican Grill $1.99 Delivery, Otto Enoteca Pizzeria, Chote Nawab, Mission Cantina, Blue Ribbon Sushi, Joe's Shanghai, Yama Japanese Restaurant, Momoya, Osteria Morini, Sushi of Gari, Boqueria, Song Thai Restaurant & Bar, Barbounia, Yama 49, Jack's Wife Freda, Han Dynasty, Blue Ribbon Sushi Izakaya, Blue Ribbon Sushi Bar & Grill, Rubirosa, Vanessa's Dumplings, Bhatti Indian Grill, Taro Sushi, Delicatessen, Samurai Mama, Waverly Diner, Lucky's Famous Burgers, Dos Caminos, da Umberto, Bubby's, Burger Joint, Xe May Sandwich Shop, Otto Enoteca Pizzeria, El Parador Cafe, Socarrat Paella Bar, Bareburger, Xi'an Famous Foods, Five Leaves, Westville Hudson, Cipriani Le Specialita, The Loop, Burger Joint, UVA Wine Bar & Restaurant, V-Nam Cafe, Amma, The Smile, Hatsuhana, Cho Dang Gol, Sarabeth's, Galli Restaurant, Lantern Thai Kitchen, Hunan Manor, Despa\u00f1a, 12 Chairs, L'Express, Bareburger, Boqueria, Carmine's, The Loop, Balthazar Boulangerie, Lucky's Famous Burgers, Pinto Nouveau Thai Bistro, Hot Kitchen, Dig Inn Seasonal Market, Cafe Mogador, Grand Sichuan International, Le Grainne Cafe, 5 Napkin Burger, Caf China, wichcraft, Melt Shop",
+                      "neighborhood":"Manhattan"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurants_by_ratings"
+             ],
+             "parameters":[
+                {
+                   "rating":5
+                }
+             ],
+             "answer":"{'restaurants_at_manhattan': 'No 5-star rated restaurants found in the specified area'}"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants_at_manhattan":"Shake Shack"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q6",
+          "category":"Languages",
+          "question":"\u0398\u03b1 \u03c0\u03ac\u03c9 \u03bc\u03b5 \u03c4\u03b7\u03bd \u03bf\u03b9\u03ba\u03bf\u03b3\u03ad\u03bd\u03b5\u03b9\u03ac \u03bc\u03bf\u03c5 \u03b3\u03b9\u03b1 \u03bc\u03b5\u03c1\u03b9\u03ba\u03ad\u03c2 \u03bc\u03ad\u03c1\u03b5\u03c2 \u03c3\u03c4\u03b7 \u039d\u03ad\u03b1 \u03a5\u03cc\u03c1\u03ba\u03b7 \u03ba\u03b1\u03b9 \u03b8\u03ad\u03bb\u03bf\u03c5\u03bc\u03b5 \u03bd\u03b1 \u03c0\u03b5\u03c1\u03ac\u03c3\u03bf\u03c5\u03bc\u03b5 \u03c5\u03c0\u03ad\u03c1\u03bf\u03c7\u03b1 \u03b5\u03ba\u03b5\u03af. \u0393\u03b9\u03b1 \u03bd\u03b1 \u03c4\u03bf \u03c0\u03b5\u03c4\u03cd\u03c7\u03bf\u03c5\u03bc\u03b5 \u03b1\u03c1\u03c7\u03b9\u03ba\u03ac \u03c7\u03c1\u03b5\u03b9\u03b1\u03b6\u03cc\u03bc\u03b1\u03c3\u03c4\u03b5 \u03bd\u03b1 \u03b2\u03c1\u03bf\u03cd\u03bc\u03b5 \u03c4\u03bf \u03c0\u03b9\u03bf \u03b4\u03b7\u03bc\u03bf\u03c6\u03b9\u03bb\u03ad\u03c2 \u03bc\u03ad\u03c1\u03bf\u03c2 \u03b3\u03b9\u03b1 \u03b4\u03b9\u03b1\u03bc\u03bf\u03bd\u03ae \u03ba\u03ac\u03c0\u03bf\u03c5 \u03ba\u03bf\u03bd\u03c4\u03ac \u03c3\u03c4\u03b7\u03bd \u03c0\u03b5\u03c1\u03b9\u03bf\u03c7\u03ae \u03c4\u03bf\u03c5 Bronx \u03ba\u03b1\u03b9 \u03ba\u03b1\u03b8\u03ce\u03c2 \u03b5\u03af\u03bc\u03b1\u03c3\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03bc\u03b9\u03ba\u03c1\u03ae \u03bf\u03b9\u03ba\u03bf\u03b3\u03ad\u03bd\u03b5\u03b9\u03b1 \u03b8\u03ad\u03bb\u03bf\u03c5\u03bc\u03b5 \u03bd\u03b1 \u03bc\u03b5\u03af\u03bd\u03bf\u03c5\u03bc\u03b5 \u03cc\u03bb\u03bf\u03b9 \u03bc\u03b1\u03b6\u03af \u03c3\u03c4\u03bf \u03af\u03b4\u03b9\u03bf \u03bc\u03ad\u03c1\u03bf\u03c2. \u0391\u03c6\u03bf\u03cd \u03b2\u03c1\u03b5\u03af\u03c4\u03b5 \u03c4\u03bf \u03ba\u03b1\u03c4\u03ac\u03bb\u03bb\u03b7\u03bb\u03bf Airbnb, \u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b2\u03c1\u03b5\u03af\u03c4\u03b5 \u03bc\u03bf\u03c5 \u03b5\u03c0\u03af\u03c3\u03b7\u03c2 \u03ad\u03bd\u03b1 \u03ba\u03bf\u03bd\u03c4\u03b9\u03bd\u03cc \u03b5\u03c3\u03c4\u03b9\u03b1\u03c4\u03cc\u03c1\u03b9\u03bf \u03ce\u03c3\u03c4\u03b5 \u03bd\u03b1 \u03c0\u03ac\u03bc\u03b5 \u03b5\u03ba\u03b5\u03af \u03ba\u03b1\u03b9 \u03bd\u03b1 \u03c6\u03ac\u03bc\u03b5. Return the answer in JSON format: {'restaurants_near_specified_airbnb': [most_popular_restaurant]}",
+          "motivation":"Test the model's performance when presented with queries written in languages that do not use the Latin alphabet. Assess the accuracy and coherence of multi-call responses in diverse linguistic contexts.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_with_max_reviews",
+                   "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters":[
+                   {
+                      "popularity":1,
+                      "neighborhood_group":"Bronx",
+                      "room_type":"Shared Room"
+                   },
+                   {
+                      "latitude":40.80772,
+                      "longitude":-73.91791
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_with_max_reviews"
+             ],
+             "parameters":[
+                {
+                   "popularity":1,
+                   "neighbourhood_group":"Bronx",
+                   "room_type":"Entire home/apt"
+                }
+             ],
+             "answer":"```json\n{'restaurants_near_specified_airbnb': []}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants_near_specified_airbnb":[
+                   "JUICE RIGHT CORP.",
+                   "ARTOPOLIS CAFE",
+                   "MILA CAFE",
+                   "JOE & THE JUICE"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_AGG_Q1",
+          "category":"Aggregation",
+          "question":"In my observations here in New York, I've noticed people tend to rate restaurant experiences with stars ranging from 3 to 5. My hypothesis is that the cheapest restaurants might have the lowest ratings. Hence, I'd like you to locate a restaurant with the lowest star rating in the borough of Manhattan. Return the answer in JSON format: {'restaurants': [min_rating_restaurant]} ",
+          "motivation":"Testing the ability of LLM to comprehend string based ranges to numerical operations with integers (minimum)",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurants_by_ratings",
+                   "get_neighborhood_by_rest_specification"
+                ],
+                "parameters":[
+                   {
+                      "rating":3
+                   },
+                   {
+                      "restaurants":"Blue Ribbon Fried Chicken, Tamarind TriBeCa,Barbounia, Pylos, Bareburger, Shake Shack, Pepe Giallo, Sarabeth's",
+                      "neighborhood":"Manhattan"
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurants_by_ratings"
+             ],
+             "parameters":[
+                {
+                   "rating":3
+                }
+             ],
+             "answer":"```json\n{'restaurants': []}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants":[
+                   "Bareburger",
+                   "Shake Shack",
+                   "Pepe Giallo",
+                   "Sarabeth's"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_AGG_Q2",
+          "category":"Aggregation",
+          "question":" I am visiting for the first time New York, I'll be staying in a Cozy Entire Floor of Brownstone Airbnb near my university and I want to try diverse cuisines. Could you please provide a list of the two closest restaurants around here? Return the answer in JSON format: {'restaurants': [closest_restaurant]} ",
+          "motivation":"Evaluate the ability of LLM to filter according to a minimum proximity distance defined by the user",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_long_lat_by_airbnb",
+                   "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters":[
+                   {
+                      "listing":"Cozy Entire Floor of Brownstone"
+                   },
+                   {
+                      "latitude":40.68514,
+                      "longitude":-73.95976
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_long_lat_by_airbnb"
+             ],
+             "parameters":[
+                {
+                   "listing":"Cozy Entire Floor of Brownstone"
+                }
+             ],
+             "answer":"I'm unable to find the specific Airbnb listing you mentioned. Could you provide more details about its location or any nearby landmarks? This information will help me find the closest restaurants to your accommodation."
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants":[
+                   "MARCO'S",
+                   "AUNTS ET UNCLES"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_AGG_Q3",
+          "category":"Aggregation",
+          "question":" I am in New York now and a friend suggested me to go in the PEPE GIALLO restaurant which is located in the 10 AVENUE street. The suggested restaurant was Italian. Can you please help me find the closest airbnb to this specific restaurant? Return the answer in JSON format: {'airbnb_close_to_rest': 'closest_airbnb']}",
+          "motivation":"Evaluate GPT models on their capability to call a set of functions accurately and retrieve correct parameters, particularly while performing minimum.",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_long_lat_by_name_street",
+                   "get_airbnb_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "restaurant":"PEPE GIALLO",
+                      "street":"10 AVENUE"
+                   },
+                   {
+                      "latitude":40.74676295,
+                      "longitude":-74.0048505
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_long_lat_by_name_street",
+                "get_airbnb_by_lat_long"
+             ],
+             "parameters":[
+                {
+                   "restaurant":"PEPE GIALLO",
+                   "street":"10 AVENUE"
+                },
+                {
+                   "latitude":40.74676295,
+                   "longitude":-74.0048505
+                }
+             ],
+             "answer":"```json\n{'airbnb_close_to_rest': 'Chelsea Haven--Summer Sublet'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb_close_to_rest":"Chelsea Haven--Summer Sublet"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_AGG_Q4",
+          "category":"Aggregation",
+          "question":" As I want to sleep in a place in Brooklyn, I would like to go to one of the 10 most frequently used by the customers, the one with more than 200 reviews, to stay in that zone so I can have the best time ever in the best place to stay. I would like to share my space with my sister and also I would like to find the best restaurant around there so we could eat our breakfast and lunch there. Return the answer in JSON format: {'restaurant_close_popular_airbnb': [best_restaurant]}",
+          "motivation":"Evaluate LLM's ability to do operations on integers(maximum) and filtering based on comparisons based on user requests.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_with_max_reviews",
+                   "get_long_lat_by_airbnb",
+                   "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters":[
+                   {
+                      "popularity":10,
+                      "neigborhood_group":"Brooklyn",
+                      "room_type":"Shared Room"
+                   },
+                   {
+                      "listing":"A Couch In East Williamsburg Near Train."
+                   },
+                   {
+                      "latitude":40.78279,
+                      "longitude":-73.98176
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_with_max_reviews",
+                "get_restaurant_by_airbnb_closeness"
+             ],
+             "parameters":[
+                {
+                   "popularity":10,
+                   "neighbourhood_group":"Brooklyn",
+                   "room_type":"Shared room"
+                },
+                {
+                   "latitude":40.70472,
+                   "longitude":-73.93784
+                }
+             ],
+             "answer":"```json\n{\n  'restaurant_close_popular_airbnb': ['19 CAFE']\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurant_close_popular_airbnb":[
+                   "MARCO'S",
+                   "MAKAVELY PIZZA",
+                   "YUMMY YUMMY CHINESE"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_AGG_Q5",
+          "category":"Aggregation",
+          "question":" As I am staying for seven weekdays in New York, 6 days I will be staying at a relative's house and afterwards I would like to find a very nice Airbnb in Bronx to spend the rest of the days with my wife. Each of us have a budget of 15 bucks per night so we could stay together in a nice, clean Airbnb. Could you please provide me with some recommendations and their specific address if possible? Return the answer in JSON format: {'airbnb_address': 'my_airbnb_address'}",
+          "motivation":"Evaluate the ability of LLM to perform numerical operations(summation and substraction) and chain-of-thought reasoning in order to find the geopgraphical proximities to the selection of targets.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                   "get_long_lat_by_airbnb ",
+                   "get_airbnb_address_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "price":30,
+                      "min_nights":1,
+                      "neighbourhood_group":"Bronx"
+                   },
+                   {
+                      "listing":"Bronx Apartment College Av"
+                   },
+                   {
+                      "latitude":40.83739,
+                      "longitude":-73.91118
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                "get_airbnb_address_by_lat_long"
+             ],
+             "parameters":[
+                {
+                   "price":30,
+                   "min_nights":1,
+                   "neighbourhood_group":"Bronx"
+                },
+                {
+                   "latitude":40.858111,
+                   "longitude":-73.903648
+                }
+             ],
+             "answer":"```json\n{'airbnb_address': 'GRAND CONCOURSE'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb_address":"TURNBULL AVENUE"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_AGG_Q6",
+          "category":"Aggregation",
+          "question":" I would like to find some good options really near to the place to stay to have dinner with some friends during the evenings, but firstly I would like to find an option to stay for 4 days in Staten Island. I will stay alone there for a seminar so I have a total budget given to 2000 dollars. Return the answer in JSON format: {'airbnb_address': 'my_airbnb_address'}",
+          "motivation":"Evaluate the ability of LLM to perform numerical operations (division) and chain-of-thought reasoning in order to find the geopgraphical proximities to the selection of targets.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                   "get_long_lat_by_airbnb ",
+                   "get_airbnb_address_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "price":500,
+                      "min_nights":4,
+                      "neighbourhood_group":"Staten Island"
+                   },
+                   {
+                      "listing":"5br Duplex. @ Ferry!  Water&City Views!"
+                   },
+                   {
+                      "latitude":40.64605,
+                      "longitude":-74.07897
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group"
+             ],
+             "parameters":[
+                {
+                   "price":500,
+                   "min_nights":4,
+                   "neighbourhood_group":"Staten Island"
+                }
+             ],
+             "answer":"```json\n{'airbnb_address': 'WALK TO FREE SI FERRY FROM FURNISHED STUDIO APT'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb_address":"3 AVENUE"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_Q1",
+          "category":"Extra Context",
+          "question":"As I'm hunting for a comfy spot near the Statue of Liberty in Manhattan, I want to pick a shared place that is the most popular among folks in that area, so I can have a blast in the best spot. I'm bringing my sister along, but also we want to explore nearby a fantastic spot for breakfast and lunch. It's like finding the perfect combo for a great stay and tasty meals. Any help in sorting out this adventure puzzle would be awesome! Return the answer in JSON format: {'closeby_restaurants': [my_restaurant_near_popular_airbnb]}",
+          "motivation":"Evaluate the ability of LLM to understand the core components of a user request and extract the correct parameter, parameter values and functions and perform chain-of-thought regardless of the related context.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_with_max_reviews",
+                   "get_long_lat_by_airbnb ",
+                   "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters":[
+                   {
+                      "popularity":1,
+                      "neigborhood_group":"Manhattan",
+                      "room_type":"Shared Room"
+                   },
+                   {
+                      "listing":"Gaudhi"
+                   },
+                   {
+                      "latitude":40.80026,
+                      "longitude":-73.95197
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_with_max_reviews",
+                "get_restaurant_by_airbnb_closeness"
+             ],
+             "parameters":[
+                {
+                   "popularity":1,
+                   "neighbourhood_group":"Manhattan",
+                   "room_type":"Shared room"
+                },
+                {
+                   "latitude":40.74726,
+                   "longitude":-74.00213
+                }
+             ],
+             "answer":"```json\n{\n  'closeby_restaurants': [\n    {\n      'restaurant_name': 'TXIKITO',\n      'distance': 0.12941981642654019\n    },\n    {\n      'restaurant_name': 'PEPE GIALLO',\n      'distance': 0.2357484083700256\n    },\n    {\n      'restaurant_name': 'MILK & HOPS',\n      'distance': 0.2857661513160314\n    },\n    {\n      'restaurant_name': 'JOE'S PIZZA',\n      'distance': 0.4390989291441886\n    },\n    {\n      'restaurant_name': 'BILLYMARKS WEST',\n      'distance': 0.4574684226840758\n    }\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "closeby_restaurants":[
+                   "ARTOPOLIS CAFE",
+                   "MILA CAFE",
+                   "JUICE RIGHT CORP.",
+                   "JOE & THE JUICE",
+                   "AJISAI JAPANESE FUSION",
+                   "SUSHI DAMO"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_Q2",
+          "category":"Extra Context",
+          "question":"As a first-time visitor to New York, I'll be residing in a Furnished Bedroom in Murray Hill Airbnb near my university. Eager to explore and experience diverse culinaries, I find myself in the vast culinary landscape of the city. Since I lack knowledge about which culinary Americans excel at, I'm seeking your assistance. Could you please provide a list of eight restaurants around here? Return the answer in JSON format: {'restaurants_close_Furnished_Bedroom_airbnb': [my_restaurants_close_specific_airbnb]}",
+          "motivation":"Evaluate the ability of LLM to understand the core components of a user request and extract the correct parameter, parameter values and functions and perform chain-of-thought regardless of the related context.",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_long_lat_by_airbnb",
+                   "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters":[
+                   {
+                      "listing":"Furnished Bedroom in Murray Hill"
+                   },
+                   {
+                      "latitude":40.73909,
+                      "longitude":-73.9788
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_long_lat_by_airbnb",
+                "get_restaurant_by_airbnb_closeness"
+             ],
+             "parameters":[
+                {
+                   "listing":"Furnished Bedroom in Murray Hill"
+                },
+                {
+                   "latitude":40.73909,
+                   "longitude":-73.9788
+                }
+             ],
+             "answer":"```json\n{\n  'restaurants_close_Furnished_Bedroom_airbnb': [\n    'AJISAI JAPANESE FUSION',\n    'JUNOON',\n    'BROADHURST THEATER',\n    'SUSHI DAMO',\n    'BAR SIX',\n    'MAKAVELY PIZZA',\n    'JOE & THE JUICE',\n    'HUNAN VILLAGE'\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants_close_Furnished_Bedroom_airbnb":[
+                   "AJISAI JAPANESE FUSION",
+                   "JUNOON",
+                   "BROADHURST THEATER",
+                   "SUSHI DAMO",
+                   "BAR SIX",
+                   "MAKAVELY PIZZA",
+                   "JOE & THE JUICE",
+                   "HUNAN VILLAGE"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_Q3",
+          "category":"Extra Context",
+          "question":"I am aware that the restaurant I am staying at now is a very famous one as it is in one of the best parts of Manhattan. In this restaurant,  you can reach the tallest buildings such as the Empire State Building and many more. Considering the fact that the restaurant I am talking about has a 10019 postal code and it is one of the best Japanese culinary restaurants, I reserved a nice place by calling the reception by their contact details: 2127078609, I would like to find some Airbnb very close from here so I can easily come to these attractions and restaurant. Return the answer in JSON format: {'airbnb_close_specific_restaurant': [my_closest_airbnb]}",
+          "motivation":"Evaluate the ability of LLM to understand the core components of a user request and extract the correct parameters, parameter values and functions and perform chain-of-thought regardless of the related and unrelated context. ",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                   "get_airbnb_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "zipcode":10019,
+                      "cuisine":"Japanese",
+                      "borough":"Manhattan",
+                      "phone":"2127078609"
+                   },
+                   {
+                      "latitude":40.76780591,
+                      "longitude":-73.98338972
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                "get_airbnb_by_lat_long"
+             ],
+             "parameters":[
+                {
+                   "zip_code":10019,
+                   "cuisine":"Japanese",
+                   "borough":"Manhattan",
+                   "phone":"2127078609"
+                },
+                {
+                   "latitude":40.76780591,
+                   "longitude":-73.98338972
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb_close_specific_restaurant': [\n    {\n      'name': 'Manhattan - Columbus Circle Apt',\n      'distance': 0.010249807351178199\n    }\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb_close_specific_restaurant":[
+                   "Manhattan - Columbus Circle Apt"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_Q4",
+          "category":"Extra Context",
+          "question":"I am currently at Makavely Pizza having very good Neapolitan pizza with mozzarella, Parmigiano, and ananas as well as a cheesecake on Columbia street. It is getting very late here in New York, and after getting a little bit drunk with wine, I would really appreciate your assistance in finding 5 nearest places around here as I cannot have a long run now. Return the answer in JSON format: {'airbnbs_close_Makaveky_Pizza': [my_nearby_airbnbs]}",
+          "motivation":"Introduce non-relevant information (detailing the food the user is eating)  to test the model's understanding and its capability to discern and prioritize the main idea.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_long_lat_by_name_street",
+                   "get_airbnb_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "restaurant":"Makavely Pizza",
+                      "street":"Columbia Street"
+                   },
+                   {
+                      "latitude":40.71667876,
+                      "longitude":-73.98046251
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_long_lat_by_name_street",
+                "get_airbnb_by_lat_long"
+             ],
+             "parameters":[
+                {
+                   "restaurant":"Makavely Pizza",
+                   "street":"Columbia Street"
+                },
+                {
+                   "latitude":40.71667876,
+                   "longitude":-73.98046251
+                }
+             ],
+             "answer":"```json\n{\n  'airbnbs_close_Makaveky_Pizza': [\n    {\n      'name': 'Private Essex Street Bedroom in the LowerEast Side',\n      'distance': 0.6012217228695179\n    },\n    {\n      'name': 'Cozy Room in the LOWER EAST SIDE!',\n      'distance': 0.4346480223633683\n    },\n    {\n      'name': 'Bohemian Home in Trendy LES! #10250',\n      'distance': 0.5472096072818172\n    },\n    {\n      'name': 'Trendy and Stylish Downtown apartment !!!',\n      'distance': 0.4886229114747232\n    },\n    {\n      'name': 'Large 1Br Apt + Balcony in LES!',\n      'distance': 0.5439197326520593\n    }\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnbs_close_Makaveky_Pizza":[
+                   "Private Essex Street Bedroom in the LowerEast Side",
+                   "Cozy Room in the LOWER EAST SIDE!",
+                   "Bohemian Home in Trendy LES! #10250",
+                   "Trendy and Stylish Downtown apartment !!!",
+                   "Large 1Br Apt + Balcony in LES!"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_DATA_TYPES_Q1",
+          "category":"Data Types",
+          "question":"I am aware that the restaurant I am staying at now is a very famous one as it is one of the best parts of Manhattan. My friend gave me the postal code of the restaurant which was one zero zero one nine and it is one of the best Japanese cuisine restaurants, I reserved a nice place by calling the reception on their contact details: 2127078609, I would like to find some Airbnb very close from here so I can easily come to these attractions and restaurant. Return the answer in JSON format: {'airbnb_close_specific_restaurant': 'my_airbnb'}",
+          "motivation":"Evaluate the ability of the LLM to reason between data types and data type conversions(from string to numerical) for subsequent use in multi function calling.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                   "get_airbnb_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "zipcode":10019,
+                      "cuisine":"Japanese",
+                      "borough":"Manhattan",
+                      "phone":"2127078609"
+                   },
+                   {
+                      "latitude":40.76780591,
+                      "longitude":-73.98338972
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                "get_airbnb_by_lat_long"
+             ],
+             "parameters":[
+                {
+                   "zip_code":10019,
+                   "cuisine":"Japanese",
+                   "borough":"Manhattan",
+                   "phone":"2127078609"
+                },
+                {
+                   "latitude":40.76780591,
+                   "longitude":-73.98338972
+                }
+             ],
+             "answer":"```json\n{'airbnb_close_specific_restaurant': 'Manhattan - Columbus Circle Apt'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb_close_specific_restaurant":"Manhattan - Columbus Circle Apt"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_DATA_TYPES_Q2",
+          "category":"Data Types",
+          "question":"A friend of mine in New York suggested a nice place to eat in Brooklyn. My friend gave me the postal code of the Chinese restaurant which was: 11207.  He also gave me the contact details of that eating place so I could reserve a table for tonight 212 7183852288. Additionally, I would like to find some Airbnb very close to this certain eating place. Return the answer in JSON format: {'airbnb_close_specific_restaurant': 'my_airbnb'}",
+          "motivation":"Evaluate the ability of the LLM to reason between data types and data type conversions(phone number with and without prefixes) for subsequent use in multi function calling.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                   "get_airbnb_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "zipcode":11207,
+                      "cuisine":"Chinese",
+                      "borough":"Brooklyn",
+                      "phone":"7183852288"
+                   },
+                   {
+                      "latitude":40.66254116,
+                      "longitude":-73.89814971
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone"
+             ],
+             "parameters":[
+                {
+                   "zip_code":11207,
+                   "cuisine":"Chinese",
+                   "borough":"Brooklyn",
+                   "phone":"212 7183852288"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb_close_specific_restaurant': 'Restaurant not found'\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb_close_specific_restaurant":"Room in Bushwick Bk available June"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q1",
+          "category":"Simple Questions",
+          "question":"Hello, I am currently in India and will be flying to New York tomorrow morning. Some native friends there suggested me a very good traditional restaurant and they sent me the address details. This restaurant is located in New York, near the borough, of Manhattan, and they also provided me with the zipcode,10010, and contact details to reserve a place, the phone number: 2124902100. Considering the exact contact details, I did provide you, please by first finding the exact proximity data of this specific restaurant, use this data to recommend some nearby Airbnbs? Return the answer in JSON format: {'airbnb_close_given_restaurant_details': [my_airbnb_close]}",
+          "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts. ",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                   "get_airbnb_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "zip_code":10010,
+                      "cuisine":"Indian",
+                      "borough":"Manhattan",
+                      "phone":"2124902100"
+                   },
+                   {
+                      "latitude":40.74262626,
+                      "longitude":-73.99009391
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+                "functions":[
+                    "get_restaurant_by_airbnb_closeness",
+                    "get_long_lat_by_airbnb"
+                ],
+                "parameters":[
+                {
+                    "latitude":"40.742054",
+                    "longitude":"-73.987731"
+                },
+                {
+                    "listing":"JUNOON"
+                }
+                ],
+             "answer":"It seems that the restaurant with the provided details could not be found. Therefore, I'm unable to retrieve the proximity data needed to recommend nearby Airbnbs. Please check if the details are correct or provide additional information if possible."
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb_close_given_restaurant_details":[
+                   "West Village Studio Apartment",
+                   "West Village Apartment near Washington Square Park",
+                   "Cozy & artsy apt in East Village - 2 bedrooms",
+                   "Spacious Bright 1 Bedroom East Village Apartment",
+                   "Soho loft with everything",
+                   "Large Private Room in Greenpoint Williamsburg"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Incorrect",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q2",
+          "category":"Simple Questions",
+          "question":"My native friends have shared a concern about the cleanliness of places to stay in Brooklyn. Despite this, I find myself obligated to attend a conference there with my young child, and staying together in a shared space is a necessity. Could you kindly recommend the most popular and frequently visited Airbnb options in the area? Additionally, after firstly finding the proximity details of the most popular Airbnb, use this proximity data to find nearby suggestions for restaurants that cater to families with children as I won't have a car. Return the answer in JSON format: {'restaurants': [my_restaurant]} ",
+          "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts. ",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_with_max_reviews",
+                   "get_long_lat_by_airbnb",
+                   "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters":[
+                   {
+                      "popularity":1,
+                      "neighbourhood_group":"Brooklyn",
+                      "room_type":"Shared Room"
+                   },
+                   {
+                      "listing":"A Couch In East Williamsburg Near Train."
+                   },
+                   {
+                      "latitude":40.70472,
+                      "longitude":-73.93784
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_with_max_reviews"
+             ],
+             "parameters":[
+                {
+                   "popularity":5,
+                   "neighbourhood_group":"Brooklyn",
+                   "room_type":"Entire home/apt"
+                }
+             ],
+             "answer":"I'm sorry, but it seems there was an issue finding the most popular Airbnb listings in Brooklyn for entire homes or apartments. This could be due to a lack of data or an error in the search criteria. Is there anything else I can assist you with?"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants":[
+                   "MARCO'S",
+                   "MAKAVELY PIZZA",
+                   "YUMMY YUMMY CHINESE"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Partially Correct",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q3",
+          "category":"Simple Questions",
+          "question":"In an unexpected turn of events, my flight in the Brooklyn area has been canceled, and the next available flight is scheduled for tomorrow morning. Facing this predicament, I'm on the lookout for budget-friendly accommodation, aiming for an exceptionally low cost, around $10. Could you assist me in identifying a suitable Airbnb and after identifying the correct Airbnb please calculate the proximity details of it and use them to calculate and provide details regarding its street location. Return the answer in JSON format: {'airbnb_address': 'my_airbnb_street_name'} ",
+          "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts. ",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                   "get_long_lat_by_airbnb",
+                   "get_airbnb_address_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "price":10,
+                      "min_nights":1,
+                      "neighbourhood_group":"Brooklyn"
+                   },
+                   {
+                      "listing":"Room with a view"
+                   },
+                   {
+                      "latitude":40.70959,
+                      "longitude":-73.95693
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                "get_long_lat_by_airbnb",
+                "get_airbnb_address_by_lat_long"
+             ],
+             "parameters":[
+                {
+                   "price":10,
+                   "min_nights":1,
+                   "neighbourhood_group":"Brooklyn"
+                },
+                {
+                   "listing":"Room with a view"
+                },
+                {
+                   "latitude":40.70959,
+                   "longitude":-73.95693
+                }
+             ],
+             "answer":"```json\n{'airbnb_address': 'METROPOLITAN AVENUE'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb_address":"METROPOLITAN AVENUE"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q4",
+          "category":"Simple Questions",
+          "question":" I am in New York now and a friend suggested me to go in the PEPE GIALLO restaurant which is located in the 10 AVENUE street. The suggested restaurant was Italian. Please calculate the proximity data of this specific restaurant and use this data to help me calculate the minimum distance and find the closest Airbnb to this specific restaurant? Return the answer in JSON format: {'airbnb_close_Pepe_Giallo_rest': 'the_closest_airbnb'} ",
+          "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts. ",
+          "overall_match":true,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_long_lat_by_name_street",
+                   "get_airbnb_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "restaurant":"PEPE GIALLO",
+                      "street":"10 AVENUE"
+                   },
+                   {
+                      "latitude":40.74676295,
+                      "longitude":-74.0048505
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_long_lat_by_name_street",
+                "get_airbnb_by_lat_long"
+             ],
+             "parameters":[
+                {
+                   "restaurant":"PEPE GIALLO",
+                   "street":"10 AVENUE"
+                },
+                {
+                   "latitude":40.74676295,
+                   "longitude":-74.0048505
+                }
+             ],
+             "answer":"```json\n{'airbnb_close_Pepe_Giallo_rest': 'Chelsea Haven--Summer Sublet'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb_close_Pepe_Giallo_rest":"Chelsea Haven--Summer Sublet"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q5",
+          "category":"Simple Questions",
+          "question":"As I want to sleep in a place in Brooklyn, among the 10 most popular Airbnbs used by the customers, I would like to go to the one with more than 200 reviews, to stay in that zone so I can have the best time ever. I would like to share my room with my sister. After finding that specific Airbnb please find the corresponding proximity data and use these data to find restaurants around there so we could eat our breakfast and lunch there. Return the answer in JSON format: {'restaurants_near_required_airbnb': [my_restaurant]} ",
+          "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts. ",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_with_max_reviews",
+                   "get_long_lat_by_airbnb",
+                   "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters":[
+                   {
+                      "popularity":10,
+                      "neigborhood_group":"Brooklyn",
+                      "room_type":"Shared Room"
+                   },
+                   {
+                      "listing":"A Couch In East Williamsburg Near Train."
+                   },
+                   {
+                      "latitude":40.70472,
+                      "longitude":-73.93784
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_with_max_reviews",
+                "get_restaurant_by_airbnb_closeness"
+             ],
+             "parameters":[
+                {
+                   "popularity":10,
+                   "neighbourhood_group":"Brooklyn",
+                   "room_type":"Shared room"
+                },
+                {
+                   "latitude":40.27958,
+                   "longitude":-73.19802
+                }
+             ],
+             "answer":"```json\n{\n  'restaurants_near_required_airbnb': [\n    {\n      'distance': 0.57210120567739,\n      'restaurant_name': '19 CAFE'\n    },\n    {\n      'distance': 0.753475544607451,\n      'restaurant_name': 'TWO BROTHERS FISH & CHIPS'\n    },\n    {\n      'distance': 0.8173021837432524,\n      'restaurant_name': 'MI SABOR CAFE'\n    },\n    {\n      'distance': 0.9866916997061507,\n      'restaurant_name': 'ACTION BURGER'\n    },\n    {\n      'distance': 1.1039860253165805,\n      'restaurant_name': 'YUMMY 88'\n    },\n    {\n      'distance': 1.202394169681627,\n      'restaurant_name': 'HAREFIELD ROAD PUB'\n    },\n    {\n      'distance': 1.2450833310404055,\n      'restaurant_name': 'THE COBRA CLUB'\n    },\n    {\n      'distance': 1.2545317722284695,\n      'restaurant_name': 'PAN RICO AMBATENO'\n    },\n    {\n      'distance': 1.2558455963106854,\n      'restaurant_name': 'DAR 525'\n    },\n    {\n      'distance': 1.2856548684436002,\n      'restaurant_name': 'AVANT GARDENER'\n    }\n  ]\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants_near_required_airbnb":[
+                   "MARCO'S",
+                   "MAKAVELY PIZZA",
+                   "YUMMY YUMMY CHINESE"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q6",
+          "category":"Simple Questions",
+          "question":"As I am staying for seven weekdays in New York, 6 days I will be staying at a relative's house and afterwards I would like to find a very nice Airbnb in Queens to spend the rest of the days with my wife. Each of us have a budget of 15 bucks per night so we could stay together in a nice, clean Airbnb. Considering my requirements and after finding the certain Airbnb\u2019s, please find the corresponding proximity data such as latitude and longitude and use them to provide me with its specific address if possible? Return the answer in JSON format: {'airbnb_address': 'my_airbnb_street'} ",
+          "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts. ",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                   "get_long_lat_by_airbnb",
+                   "get_airbnb_address_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "price":30,
+                      "min_nights":1,
+                      "neighbourhood_group":"Queens"
+                   },
+                   {
+                      "listing":"Room with a view"
+                   },
+                   {
+                      "latitude":40.70959,
+                      "longitude":-73.95693
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                "get_long_lat_by_airbnb",
+                "get_airbnb_address_by_lat_long"
+             ],
+             "parameters":[
+                {
+                   "price":30,
+                   "min_nights":1,
+                   "neighbourhood_group":"Queens"
+                },
+                {
+                   "listing":"Room with a view"
+                },
+                {
+                   "latitude":40.70959,
+                   "longitude":-73.95693
+                }
+             ],
+             "answer":"```json\n{'airbnb_address': 'METROPOLITAN AVENUE'}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb_address":"METROPOLITAN AVENUE"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Correct",
+             "argument_eval":"Correct",
+             "response_eval":"Correct"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q7",
+          "category":"Simple Questions",
+          "question":"I would like to find some good options really near to the place to stay to have dinner with some friends during the evenings, but firstly I would like to find an option to stay for 4 days in Staten Island. I will stay alone there for a seminar so I have a total budget given to 2000 dollars. Please, first find the Airbnb that fulfill my conditions and then find the proximity data of this specific Airbnb so you can use them to find out the nearby restaurants. Return the answer in JSON format: {'airbnb_address': 'my_airbnb_street'}  ",
+          "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts. ",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                   "get_long_lat_by_airbnb",
+                   "get_airbnb_address_by_lat_long"
+                ],
+                "parameters":[
+                   {
+                      "price":500,
+                      "min_nights":4,
+                      "neighbourhood_group":"Staten Island"
+                   },
+                   {
+                      "listing":"5br Duplex. @ Ferry!  Water&City Views!"
+                   },
+                   {
+                      "latitude":40.64605,
+                      "longitude":-74.07897
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_price_min_nights_and_neighborhood_group",
+                "get_long_lat_by_airbnb"
+             ],
+             "parameters":[
+                {
+                   "price":500,
+                   "min_nights":4,
+                   "neighbourhood_group":"Staten Island"
+                },
+                {
+                   "listing":"Still NYC...  Grymes Hill, Staten Island"
+                }
+             ],
+             "answer":"```json\n{\n  'airbnb_address': 'Still NYC...  Grymes Hill, Staten Island'\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "airbnb_address":"3 AVENUE"
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       },
+       {
+          "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q8",
+          "category":"Simple Questions",
+          "question":"I'm looking for the most famous cozy place near the Statue of Liberty in Manhattan where lots of people enjoy hanging out. My sister and I want to stay together and find a spot for breakfast and lunch nearby. We want to have a great time and delicious meals during our stay. Any help figuring this out after firstly finding the proximity details of the corresponding place to stay and using them to help me would be appreciated! Return the answer in JSON format: {'restaurants': [my_restaurant]}  ",
+          "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts.",
+          "overall_match":false,
+          "correct_paths":[
+             {
+                "path_id":1,
+                "functions":[
+                   "get_airbnb_with_max_reviews",
+                   "get_long_lat_by_airbnb ",
+                   "get_restaurant_by_airbnb_closeness"
+                ],
+                "parameters":[
+                   {
+                      "popularity":1,
+                      "neigborhood_group":"Manhattan",
+                      "room_type":"Shared Room"
+                   },
+                   {
+                      "listing":"Gaudhi"
+                   },
+                   {
+                      "latitude":40.80026,
+                      "longitude":-73.95197
+                   }
+                ]
+             }
+          ],
+          "model_solution":{
+             "functions":[
+                "get_airbnb_by_lat_long",
+                "get_restaurant_by_airbnb_closeness"
+             ],
+             "parameters":[
+                {
+                   "latitude":40.689247,
+                   "longitude":-74.044502
+                },
+                {
+                   "latitude":40.689247,
+                   "longitude":-74.044502
+                }
+             ],
+             "answer":"```json\n{\n  'restaurants': ['THE LIBERTY CAFE (S.I. NEWHOUSE)']\n}\n```"
+          },
+          "correct_answer":{
+             "ordered_items":[
+                
+             ],
+             "answer":{
+                "restaurants":[
+                   "ARTOPOLIS CAFE",
+                   "MILA CAFE",
+                   "JUICE RIGHT CORP.",
+                   "JOE & THE JUICE",
+                   "AJISAI JAPANESE FUSION",
+                   "SUSHI DAMO"
+                ]
+             }
+          },
+          "evaluation":{
+             "function_eval":"Partially Correct",
+             "argument_eval":"Incorrect",
+             "response_eval":"Incorrect"
+          }
+       }
+    ]
+ }

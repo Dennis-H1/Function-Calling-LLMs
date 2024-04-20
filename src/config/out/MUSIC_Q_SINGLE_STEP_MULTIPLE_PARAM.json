@@ -1,0 +1,2869 @@
+{
+  "metadata": {
+    "run_id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_MULTI_PARAM_V01",
+    "run_name": "Mannheim Function Calling Benchmark - gpt-4-1106-preview Music wo/ Example Values",
+    "question_set_id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_MULTI_PARAM_V03",
+    "function_set_id": "MUSIC_FUNC_MULTI_PARAM_SIMPLE_DESC_NO_EX_V01",
+    "prompt": "You are a helpful assistant. Answer briefly.",
+    "model": "gpt-4-1106-preview",
+    "hyperparameters": { "temperature": 0 },
+    "run_start_timestamp": "2024-03-26 00:28:28.457101",
+    "run_end_timestamp": "2024-03-26 00:28:43.831524",
+    "test_driver_version": "1.0.0"
+  },
+  "statistics": {
+    "number_of_functions": { "total": 67 , "correct": 60 , "accuracy": 0.895  },
+    "number_of_parameters": { "total": 189 , "correct": 173 , "accuracy": 0.915 },
+    "number_of_answers": { "total": 67 , "correct": 45 , "accuracy": 0.671 },
+    "number_of_tokens": { "input": 138874 , "output": 10630 }
+  },
+  "question_result": [
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q1",
+      "category": "Selection",
+      "question": "What is the album with the second highest average rating among albums released between 2000 and 2001? Please provide only album(s) name. Return the answer in JSON format: {'album':'second_highest_av_rating_album_name'}",
+      "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (small floating point number)",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["filter_albums_by_date_range"],
+          "parameters": [{ "start_date": "2000", "end_date": "2001" }]
+        },
+        {
+          "path_id": 2,
+          "functions": ["filter_albums_by_date_range"],
+          "parameters": [
+            { "start_date": "2000-01-01", "end_date": "2001-12-31" }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["filter_albums_by_date_range"],
+        "parameters": [{ "release_date": "2000" }, { "release_date": "2001" }],
+        "answer": "```json\n{'album':'Lift Yr. Skinny Fists Like Antennas to Heaven!'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "Lift Yr. Skinny Fists Like Antennas to Heaven!" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q2",
+      "category": "Selection",
+      "question": "Among all 'Wonky' but not 'Deconstructed Club'and 'Hip Hop' albums,which has the highest rating? Please provide only album(s) name. Return the answer in JSON format: {'album':'highest_rated_album_name_here'}",
+      "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset. Identify genres correctly, identify elements (genres) in list.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_genres2"],
+          "parameters": [
+            {
+              "genres_in": ["Wonky"],
+              "genres_out": ["Deconstructed Club", "Hip Hop"]
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_genres2"],
+        "parameters": [
+          {
+            "genres_in": ["Wonky"],
+            "genres_out": ["Deconstructed Club", "Hip Hop"]
+          }
+        ],
+        "answer": "```json\n{'album':'I'll Try Living Like This'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "I'll Try Living Like This" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q3",
+      "category": "Selection",
+      "question": "Among all 'Wonky' but not 'Deconstructed Club','Nu Jazz' and 'Hip Hop' albums, which albums have a review count below 20? Please provide only album(s) name. Return the answer in JSON format: {'albums': [album_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (count items in list, select by integer bound).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_genres2"],
+          "parameters": [
+            {
+              "genres_in": ["Wonky"],
+              "genres_out": ["Deconstructed Club", "Hip Hop", "Nu Jazz"]
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_genres2"],
+        "parameters": [
+          {
+            "genres_in": ["Wonky"],
+            "genres_out": ["Deconstructed Club", "Nu Jazz", "Hip Hop"]
+          }
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'Blank Banshee 1',\n    'Flume'\n   ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": [
+            "Blank Banshee 1",
+            "Skin",
+            "Flume",
+            "Things Don't Always Go the Way You Plan"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q4",
+      "category": "Selection",
+      "question": "What television genre albums were released in 2023 with a rating lower than 3.0? Please provide only album(s) name.Return the answer in JSON format: {'albums': [album_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (small floating point number).",
+      "overall_match": false,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "albums_by_date_and_genres"
+              ],
+              "parameters": [
+                  {
+                      "release_date": "2023",
+                      "genres": [
+                          "television"
+                      ]
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "filter_albums_by_date_range"
+          ],
+          "parameters": [
+              {
+                  "start_date": "2023-01-01",
+                  "end_date": "2023-12-31"
+              }
+          ],
+          "answer": "```json\n{\n  'albums': [\n    'The Idol Episode 5 Part 2',\n    'The Idol Episode 5 Part 1',\n    'The Idol Episode 4',\n    'The Idol Episode 3',\n    'The Idol Episode 2',\n    'The Idol Episode 1'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "albums": [
+                  "The Idol Episode 5 Part 2",
+                  "The Idol Episode 4",
+                  "The Idol Episode 3",
+                  "The Idol Episode 2",
+                  "The Idol Episode 1"
+              ]
+          }
+      },
+      "evaluation": {
+          "function_eval": "Incorrect",
+          "argument_eval": "Incorrect",
+          "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q5",
+      "category": "Selection",
+      "question": "Among the top 3 songs of Coldplay, which one was released in 2002? Please provide only album(s) name. Return the answer in JSON format: {'song':'song_name'}",
+      "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (date).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["top_streamed_songs_by_artist"],
+          "parameters": [{ "artist_name": "Coldplay", "n": 3 }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["top_streamed_songs_by_artist"],
+        "parameters": [{ "artist_name": "Coldplay", "n": 3 }],
+        "answer": "```json\n{'song':'The Scientist'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "song": "The Scientist" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q6",
+      "category": "Selection",
+      "question": "Which albums released between June 2020 and Aug. 2020 are by Taylor Swift?  Please provide only album(s) name. Return the answer in JSON format: {'album':'album_name_here'}",
+      "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (date range).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["filter_albums_by_date_range"],
+          "parameters": [{ "start_date": "2020-06", "end_date": "2020-08" }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["filter_albums_by_date_range"],
+        "parameters": [{ "start_date": "2020-06", "end_date": "2020-08" }],
+        "answer": "```json\n{'album':'Folklore'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "Folklore" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q7",
+      "category": "Selection",
+      "question": "Among all the non-explitic songs with a dancability of 90 or more, what song has the longest duration?  Please provide only song(s) nameReturn the answer in JSON format: {'song':'song_name'}",
+      "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on a defined criteria (min. small floating point number).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_danceability_explicitness"],
+          "parameters": [{ "danceability_threshold": 90, "explicit": false }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_danceability_explicitness"],
+        "parameters": [{ "danceability_threshold": 90, "explicit": false }],
+        "answer": "```json\n{'song':'DOGGY DOGGY'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "song": "DOGGY DOGGY" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q8",
+      "category": "Selection",
+      "question": "Among all the non-explitic songs with a dancability of 90 or more, what songs have a duration over 3 minutes?  Please provide only song(s) name. Return the answer in JSON format: {'songs':[song_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (small floating point number range).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_danceability_explicitness"],
+          "parameters": [{ "danceability_threshold": 90, "explicit": false }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_danceability_explicitness"],
+        "parameters": [{ "danceability_threshold": 90, "explicit": false}],
+        "answer": "```json\n{\n  'songs': [\n    'YOU THE VIBE',\n    'DOGGY DOGGY',\n    'MOLI',\n    'PALETA PA TO EL MUNDO',\n    'RICO FEO',\n    'TEKIRIKI'\n   ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "songs": [
+            "YOU THE VIBE",
+            "DOGGY DOGGY",
+            "MOLI",
+            "PALETA PA TO EL MUNDO",
+            "RICO FEO",
+            "TEKIRIKI"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q9",
+      "category": "Selection",
+      "question": "What are the non-explicit songs with a danceability over 85 percent, and speechiness over 10% that has a duration over 4 minutes? Please provide only song(s) name. Return the answer in JSON format: {'songs':[song_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (small floating point number range).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_danceability_explicitness_speechiness"],
+          "parameters": [
+            {
+              "danceability_threshold": 85,
+              "speechiness_threshold": 10,
+              "explicit": false
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_danceability_explicitness_speechiness"],
+        "parameters": [
+          { 
+            "danceability_threshold": 85,
+            "speechiness_threshold": 10,
+            "explicit": false
+          }
+        ],
+        "answer": "```json\n{'songs': ['DOGGY DOGGY']}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "songs": ["DOGGY DOGGY", "RULAY & PICA POLLO"] }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q10",
+      "category": "Selection",
+      "question": "Which Hip Hop album was released in 2000, and contains 'vulgar' language? Please provide only album(s) name. Return the answer in JSON format: {'albums':[album_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on identifying vulgar as descriptor (and not genre).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_year_genres_and_descriptors"],
+          "parameters": [
+            {
+              "release_date": "2000",
+              "genres": ["Hip Hop"],
+              "descriptors": ["vulgar"]
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_year_genres_and_descriptors"],
+        "parameters": [
+          { 
+            "release_date": "2000",
+            "genres": ["Hip Hop"],
+            "descriptors": ["vulgar"]
+          }
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'The Marshall Mathers LP',\n    'Chocolate Starfish and the Hot Dog Flavored Water',\n    'The W'\n   ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": [
+            "The Marshall Mathers LP",
+            "Chocolate Starfish and the Hot Dog Flavored Water",
+            "The W"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q11",
+      "category": "Selection",
+      "question": "Provide me those songs from top 10 songs of Taylor Swift released in 2022, which have bpm in the range of 80-110. Please provide only song(s) name. Return the answer in JSON format: {'songs':[song_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (integer range).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["top_streamed_songs_by_artist_date"],
+          "parameters": [
+            { "artist_name": "Taylor Swift", "release_date": "2022", "n": 10 }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["top_streamed_songs_by_artist_date"],
+        "parameters": [{ "artist_name": "Taylor Swift", "release_date": "2022", "n": 10 }],
+        "answer": "```json\n{\n  'songs': [\n    'Anti-Hero',\n    'Karma',\n    'Vigilante Shit',\n    'Question...?',\n    'Lavender Haze',\n    'Maroon'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "songs": [
+            "Anti-Hero",
+            "Lavender Haze",
+            "Karma",
+            "Maroon",
+            "Vigilante Shit",
+            "Question...?"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q12",
+      "category": "Selection",
+      "question": "Return albums with ratings between 3.0 and 3.5 from a list of melodic, poetic albums in the Indie Folk genre released in 2020. Please provide only album(s) name. Return the answer in JSON format: {'albums':[album_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (small floating point number range).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_year_genres_and_descriptors"],
+          "parameters": [
+            {
+              "release_date": "2020",
+              "genres": ["Indie Folk"],
+              "descriptors": ["melodic", "poetic"]
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_year_genres_and_descriptors"],
+        "parameters": [
+          { 
+            "release_date": "2020",
+            "genres": ["Indie Folk"],
+            "descriptors": ["melodic", "poetic"]
+          }       
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'Folklore',\n    'Evermore',\n    'Women in Music Pt. III',\n    'Color Theory'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": [
+            "Folklore",
+            "Evermore",
+            "Women in Music Pt. III",
+            "Color Theory"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q13",
+      "category": "Selection",
+      "question": "Among the top 5 songs released by SZA in 2022, which songs have the most similarity based on BPM? Please provide only song(s) name. Return the answer in JSON format: {'songs':[song_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on similarity (reasoning;  larger integer and very close).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["top_streamed_songs_by_artist_date"],
+          "parameters": [
+            { "artist_name": "SZA", "release_date": "2022", "n": 5 }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["top_streamed_songs_by_artist_date"],
+        "parameters": [{ "artist_name": "SZA", "release_date": "2022", "n": 5 }],
+        "answer": "```json\n{\n  'songs': [\n    'Seek & Destroy',\n    'Gone Girl'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "songs": ["Seek & Destroy", "Gone Girl"] }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q14",
+      "category": "Selection",
+      "question": "Which album is released between 2000 and 2002, contains Hip Hop but not Metal and has a rating of 3.9 or more? Please provide only album(s) name. Return the answer in JSON format: {'albums':[album_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on date, genres and floating point arguments.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_dates_genres_rating"],
+          "parameters": [
+            {
+              "start_date": "2000-01-01",
+              "end_date": "2002-12-31",
+              "genre_in": ["Hip Hop"],
+              "genre_out": ["Metal"],
+              "min_rating": 3.9
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_dates_genres_rating"],
+        "parameters": [
+          { 
+            "start_date": "2000-01-01",
+            "end_date": "2002-12-31",
+            "genre_in": ["Hip Hop"],
+            "genre_out": ["Metal"],
+            "min_rating": 3.9 
+          }
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'Since I Left You',\n    'Voodoo'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "albums": ["Since I Left You", "Voodoo"] }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q15",
+      "category": "Selection",
+      "question": "Which explicit songs with a speechiness of 50%, energy of 50% and bpm of 100 have a duration between 2.75 and 3.5 minutes? Please provide only song(s) name. Return the answer in JSON format: {'songs':[speechiness_song_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on a defined criteria (small floating point number range).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["speechiness_songs"],
+          "parameters": [
+            { "speechiness": 50, "energy": 50, "explicit": true, "bpm": 100, "threshold": 20 }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["speechiness_songs"],
+        "parameters": [{ "speechiness": 50, "energy": 50, "explicit": true, "bpm": 100, "threshold": 20 }],
+        "answer": "```json\n{\n  'songs': [\n    'Wrong',\n    'Came A Long Way',\n    'Bigger & Better',\n    'Kylie Grande',\n    'Lemme See',\n    'Came Thru Flushin\u2019',\n    'Clocked In',\n    'GRGP'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "songs": [
+            "Wrong",
+            "Bigger & Better",
+            "Kylie Grande",
+            "Lemme See",
+            "Clocked In"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q16",
+      "category": "Selection",
+      "question": "Which albums released in 2000, have a minimum of 5000 ratings, with at least an average rating of 3.5 and a minimum of 200 reviews, and rock as genre? Please provide only album(s) name. Return the answer in JSON format: {'albums': [album_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on criterion (genres).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums_by_date"],
+          "parameters": [
+            {
+              "rating_threshold": 3.5,
+              "min_ratings": 5000,
+              "review_threshold": 200,
+              "release_date": "2000"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums_by_date"],
+        "parameters": [
+          { 
+            "rating_threshold": 3.5,
+            "min_ratings": 5000,
+            "review_threshold": 200,
+            "release_date": "2000"
+          }
+        ],
+        "answer": "```json\n{\n  'albums': ['Kid A', 'The Moon & Antarctica', 'White Pony', 'Parachutes', 'Relationship of Command']\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": [
+            "Kid A",
+            "Lift Yr. Skinny Fists Like Antennas to Heaven!",
+            "The Moon & Antarctica",
+            "Parachutes"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q17",
+      "category": "Selection",
+      "question": "Which albums are released between 2000 and 2002, contain Hip Hop but not Metal and have a rating of 3.85 or more? Please provide only album(s) name. Return the answer in JSON format: {'albums':[album_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based identifying genres, and dates and returning all records.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_dates_genres_rating"],
+          "parameters": [
+            {
+              "start_date": "2000-01-01",
+              "end_date": "2002-12-31",
+              "genre_in": ["Hip Hop"],
+              "genre_out": ["Metal"],
+              "min_rating": 3.85
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_dates_genres_rating"],
+        "parameters": [
+          { 
+            "start_date": "2000-01-01",
+            "end_date": "2002-12-31",
+            "genre_in": ["Hip Hop"],
+            "genre_out": ["Metal"],
+            "min_rating": 3.85
+          }
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'Since I Left You',\n    'Stankonia',\n    'Deltron 3030',\n    'The Blueprint',\n    'Voodoo',\n    'The Cold Vein',\n    'Supreme Clientele'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": [
+            "Since I Left You",
+            "Stankonia",
+            "Deltron 3030",
+            "The Blueprint",
+            "Voodoo",
+            "The Cold Vein",
+            "Supreme Clientele"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q18",
+      "category": "Selection",
+      "question": "Get the list of albums released in 1988 with min rating 3.5 and reviewed by more than 200 and rated by minimum 5000 persons. From this list, only provide those album names that are of type Progressive Metal. Return the answer in JSON format: {'albums':[album_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (string matching in list of items per record).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums_by_date"],
+          "parameters": [
+            {
+              "rating_threshold": 3.5,
+              "min_ratings": 5000,
+              "review_threshold": 200,
+              "release_date": "1988"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums","filter_albums_by_date_range","albums_by_genres2"],
+        "parameters": [
+          { "rating_threshold": 3.5, "min_ratings": 5000, "review_threshold": 200 },
+          { "start_date": "1988-01-01", "end_date": "1988-12-31" },
+          { "genres_in": ["Progressive Metal"], "genres_out": [] }
+        ],
+        "answer": "```json\n{'albums':['Seventh Son of a Seventh Son']}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": [
+            "...And Justice for All",
+            "Seventh Son of a Seventh Son",
+            "Operation: Mindcrime"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Incorrect",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q19",
+      "category": "Selection",
+      "question": "Two songs can have same acousticness percentages. Considering the previous first sentence, which 2 explicit songs with a speechiness of 40, energy of 30% and bpm of 120 with an allowed difference of 25 are the most similar to each other based on acousticness? Return the answer in JSON format: {'songs':[two_sameacousticness_song_names_here], 'acousticness_%':acousticness_percentage_here}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (same parameter value matching).",
+      "overall_match": false,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "speechiness_songs"
+              ],
+              "parameters": [
+                  {
+                      "speechiness": 40,
+                      "energy": 30,
+                      "explicit": true,
+                      "bpm": 120,
+                      "threshold": 25
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "speechiness_songs"
+          ],
+          "parameters": [
+              {
+                  "speechiness": 40,
+                  "energy": 30,
+                  "explicit": true,
+                  "bpm": 120,
+                  "threshold": 25
+              }
+          ],
+          "answer": "It appears that none of the songs returned exactly match the criteria of having a speechiness of 40%, energy of 30%, and BPM of 120. However, I will find the two songs with the closest acousticness percentages from the list provided.\n\nAfter reviewing the list, I found that the songs 'Nightmares (feat. Byron Messia)' by Chris Brown, Byron Messia and 'Don't Hurt Me' by YoungBoy Never Broke Again both have an acousticness of 16%. Here is the JSON representation of the result:\n\n```json\n{\n  'songs': ['Nightmares (feat. Byron Messia)', 'Don't Hurt Me'],\n  'acousticness_%': 16\n}\n```\n\nPlease note that the acousticness percentages are not exactly the same, but they are the closest match from the available data."
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "songs": [
+                  "Don't Hurt Me",
+                  "Fuck You Too"
+              ],
+              "acousticness_%": 16
+          }
+      },
+      "evaluation": {
+          "function_eval": "Correct",
+          "argument_eval": "Correct",
+          "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q1",
+      "category": "Aggregation",
+      "question": "Identify the album with the highest number of reviews among those with an average rating greater than 4 and receiving more than 55,000 ratings. Please provide only album(s) name. Return the answer in JSON format: {'album':'highest_reviewed_album_here'}",
+      "motivation": "Evaluate the ability to find maximum value of specific attribute in the result.",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_albums"],
+          "parameters": [{ "rating_threshold": 4, "min_ratings": 55000 }]
+        },
+        {
+          "path_id": 2,
+          "functions": ["high_rated_reviewed_albums"],
+          "parameters": [
+            {
+              "rating_threshold": 4,
+              "min_ratings": 55000,
+              "review_threshold": 1
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums"],
+        "parameters": [
+          { "rating_threshold": 4, "min_ratings": 55000, "review_threshold": 1 }
+        ],
+        "answer": "```json\n{'album':'The Dark Side of the Moon'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "The Dark Side of the Moon" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q2",
+      "category": "Aggregation",
+      "question": "Which is the least popular song among the songs with minimum danceability of 87%? Please provide only song(s) name. Return the answer in JSON format: {'song':'least_popular_song_here'}",
+      "motivation": "Evaluate the ability to find minimum value of specific attribute in the result.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_danceability_explicitness"],
+          "parameters": [{ "danceability_threshold": 87, "explicit": true }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_danceability_explicitness"],
+        "parameters": [{ "danceability_threshold": 87 }],
+        "answer": "```json\n{'song':'Facetime Hiding'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "song": "LA GRINGA" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q3",
+      "category": "Aggregation",
+      "question": "Can you provide me the average value of energy for the top 5 songs of SZA. Return the answer in JSON format: {'energy_%':[5_song_energy_percentages_here], 'average_energy_value': calculated_number}",
+      "motivation": "Evaluate the ability to perform aggregation (average) on the result.",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["top_streamed_songs_by_artist"],
+          "parameters": [{ "artist_name": "SZA", "n": 5 }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["top_streamed_songs_by_artist"],
+        "parameters": [{ "artist_name": "SZA", "n": 5 }],
+        "answer": "```json\n{\n  'energy_%': [65, 69, 20, 78, 66],\n  'average_energy_value': 59.6\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "energy_%": [65, 69, 20, 78, 66],
+          "average_energy_value": 59.6
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q4",
+      "category": "Aggregation",
+      "question": "Can you calculate the total number of reviews received by albums released from the beginning of March to the end of April in 2010? Return the answer in JSON format: {'review_counts':[album_review_counts_here], 'total_reviews': calculated_reviews}",
+      "motivation": "Evaluate the ability to perform aggregation (sum) on the specific attribute of results.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["filter_albums_by_date_range"],
+          "parameters": [
+            { "start_date": "2010-03-01", "end_date": "2010-04-30" }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["filter_albums_by_date_range"],
+        "parameters": [
+          { "start_date": "2010-03-01", "end_date": "2010-04-30" }
+        ],
+        "answer": "```json\n{\n  'review_counts': [\n    198,\n    203,\n    83,\n    93,\n    78,\n    79,\n    111,\n    84,\n    52,\n    41,\n    48,\n    68,\n    40,\n    51,\n    14,\n    69,\n    52,\n    50,\n    28\n  ],\n  'total_reviews': 1344\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "review_counts": [
+            198, 203, 83, 93, 78, 79, 111, 84, 52, 41, 48, 68, 40, 51, 14, 69,
+            52, 50, 28
+          ],
+          "total_reviews": 1442
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q5",
+      "category": "Aggregation",
+      "question": "How many of 85% danceable songs containing obscene words have more than 1 artist? Return the answer in JSON format: {'track_names':[track_names_here], 'songs_count': count_here}",
+      "motivation": "Evaluate the ability to perform aggregation (counting) on the results.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_danceability_explicitness"],
+          "parameters": [{ "danceability_threshold": 85, "explicit": true }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_danceability_explicitness"],
+        "parameters": [{ "danceability_threshold": 85, "explicit": true }],
+        "answer": "```json\n{\n  'track_names': ['3D (feat. Jack Harlow)', 'Colostomy (feat. WizDaWizard)', 'Tempo', 'LA GRINGA'],\n  'songs_count': 4\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "track_names": [
+            "3D (feat. Jack Harlow)",
+            "Colostomy (feat. WizDaWizard)",
+            "Tempo",
+            "LA GRINGA"
+          ],
+          "songs_count": 4
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q6",
+      "category": "Aggregation",
+      "question": "Which of Eminem's top songs from 2002 has the lowest speechiness value? Please provide only song(s) name. Return the answer in JSON format: {'song':'lowest_lively_song_name'}",
+      "motivation": "Evaluate the ability to find minimum value of specific attribute in the result.",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["top_streamed_songs_by_artist_date"],
+          "parameters": [{ "artist_name": "Eminem", "release_date": "2002" }]
+        },
+        {
+          "path_id": 2,
+          "functions": ["top_streamed_songs_by_artist_date_range"],
+          "parameters": [
+            {
+              "artist_name": "Eminem",
+              "start_date": "2002-01-01",
+              "end_date": "2002-12-31"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["top_streamed_songs_by_artist_date"],
+        "parameters": [{ "artist_name": "Eminem", "release_date": "2002" }],
+        "answer": "```json\n{'song':'Without Me'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "song": "Without Me" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q7",
+      "category": "Aggregation",
+      "question": "Among the top 6 songs of Taylor Swift performed in 2023, which one has the highest value of bpm? Please provide only song(s) name. Return the answer in JSON format: {'song':'song_name'}",
+      "motivation": "Evaluate the ability to find maximum value of specific attribute in the result.",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["top_streamed_songs_by_artist_date"],
+          "parameters": [
+            { "artist_name": "Taylor Swift", "release_date": "2023", "n": 6 }
+          ]
+        },
+        {
+          "path_id": 2,
+          "functions": ["top_streamed_songs_by_artist_date_range"],
+          "parameters": [
+            {
+              "artist_name": "Taylor Swift",
+              "start_date": "2023-01-01",
+              "end_date": "2023-12-31",
+              "n": 6
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["top_streamed_songs_by_artist_date_range"],
+        "parameters": [
+          {
+            "artist_name": "Taylor Swift",
+            "start_date": "2023-01-01",
+            "end_date": "2023-12-31",
+            "n": 6
+          }
+        ],
+        "answer": "```json\n{'song':'Better Than Revenge (Taylor's Version)'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "song": "Better Than Revenge (Taylor's Version)" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q8",
+      "category": "Aggregation",
+      "question": "Among all the explicit songs with a danceability of 80 or more and speechiness above 39, which song has the longest duration? Please provide only song(s) name. Return the answer in JSON format: {'song':'song_name'}",
+      "motivation": "Evaluate the ability to find maximum value of specific attribute in the result.",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_danceability_explicitness_speechiness"],
+          "parameters": [
+            {
+              "danceability_threshold": 80,
+              "speechiness_threshold": 39,
+              "explicit": true
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_danceability_explicitness_speechiness"],
+        "parameters": [
+          {
+            "danceability_threshold": 80,
+            "speechiness_threshold": 39,
+            "explicit": true
+          }
+        ],
+        "answer": "```json\n{'song':'Colostomy (feat. WizDaWizard)'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "song": "Colostomy (feat. WizDaWizard)" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q9",
+      "category": "Aggregation",
+      "question": "Can you identify the Pop Rock album, categorized as melodic, released in 2023 that has the lowest average rating? Please provide only album(s) name. Return the answer in JSON format: {'album':'album_name_here'}",
+      "motivation": "Evaluate the ability to find minumum value of specific attribute in the result.",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_year_genres_and_descriptors"],
+          "parameters": [
+            {
+              "release_date": "2023",
+              "genres": ["Pop Rock"],
+              "descriptors": ["melodic"]
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_year_genres_and_descriptors"],
+        "parameters": [
+          {
+            "release_date": "2023",
+            "genres": ["Pop Rock"],
+            "descriptors": ["melodic"]
+          }
+        ],
+        "answer": "```json\n{'album':'Rush!'}\n```"
+      },
+      "correct_answer": { "ordered_items": [], "answer": { "album": "Rush!" } },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q10",
+      "category": "Aggregation",
+      "question": "How many reviewers, in total, contributed reviews for albums released in 1988 with a rating greater than 3.5, where each album was reviewed by more than 200 people and received ratings from a minimum of 15,000 individuals? Return the answer in JSON format: {'review_counts':[album_review_counts_here], 'total_reviews': calculated_reviews}",
+      "motivation": "Evaluate the ability to perform aggregation (sum) on the specific attribute of results.",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums_by_date"],
+          "parameters": [
+            {
+              "rating_threshold": 3.5,
+              "min_ratings": 15000,
+              "review_threshold": 200,
+              "release_date": "1988"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums_by_date"],
+        "parameters": [
+          {
+            "rating_threshold": 3.5,
+            "min_ratings": 15000,
+            "review_threshold": 200,
+            "release_date": "1988"
+          }
+        ],
+        "answer": "```json\n{\n  'review_counts': [501, 368, 577, 232, 228],\n  'total_reviews': 1906\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "review_counts": [501, 368, 577, 232, 228],
+          "total_reviews": 1906
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q11",
+      "category": "Aggregation",
+      "question": "How many albums, released in the last quarter of 2023, have more than 5 reviews? Return the answer in JSON format: {'albums': [album_names_here], 'review_counts': [review_counts_here], 'album_count': morethan_5_reviewed_albums_count}",
+      "motivation": "Evaluate the ability to perform aggregation (counting) on the result.",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["filter_albums_by_date_range"],
+          "parameters": [
+            { "start_date": "2023-10-01", "end_date": "2023-12-31" }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["filter_albums_by_date_range"],
+        "parameters": [
+          { "start_date": "2023-10-01", "end_date": "2023-12-31" }
+        ],
+        "answer": "```json\n{\n  'albums': ['Heaven Knows', 'I<3UQTINVU', 'Blanket'],\n  'review_counts': [23, 6, 13],\n  'album_count': 3\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": ["Heaven Knows", "I<3UQTINVU", "Blanket"],
+          "review_counts": [23, 6, 13],
+          "album_count": 3
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q1",
+      "category": "Reasoning",
+      "question": "Which of the albums released in november 2021 were released after the first half of the month? Please provide only album(s) name.Return the answer in JSON format: {'albums': [album_names_here]}",
+      "motivation": "Evaluate the ability to correctly make temporal interpretation and assignment of parameter values",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["filter_albums_by_date_range"],
+          "parameters": [
+            { "start_date": "2021-11-01", "end_date": "2021-11-30" }
+          ]
+        },
+        {
+          "path_id": 2,
+          "functions": ["filter_albums_by_date_range"],
+          "parameters": [
+            { "start_date": "2021-11-16", "end_date": "2021-11-30" }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["filter_albums_by_date_range"],
+        "parameters": [
+          { "start_date": "2021-11-16", "end_date": "2021-11-30" }
+        ],
+        "answer": "```json\n{'albums': ['KICK ii', 'Bloodmoon: I', '30']}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "albums": ["KICK ii", "Bloodmoon: I", "30"] }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q2",
+      "category": "Reasoning",
+      "question": "Provide a list of albums categorized under Psychedelic Rock with a minimum rating exceeding 4.25, having more than 100 reviews and being rated by over 1000 individuals. Please include the names of these albums. Return the answer in JSON format: {'albums': [album_names_here]}",
+      "motivation": "Evaluate the ability to make categorization and test the model's awareness about dataset's attributes",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums"],
+          "parameters": [
+            {
+              "rating_threshold": 4.25,
+              "min_ratings": 1000,
+              "review_threshold": 100
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums"],
+        "parameters": [
+          {
+            "rating_threshold": 4.25,
+            "min_ratings": 1000,
+            "review_threshold": 100
+          }
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'Wish You Were Here',\n    'In the Court of the Crimson King',\n    'Abbey Road'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": ["Wish You Were Here", "In the Court of the Crimson King"]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q3",
+      "category": "Reasoning",
+      "question": "Considering popularity as the number of reviews received, can you return the most popular Indie Folk album from those released in 2020, characterized as melodic and poetic. Return the answer in JSON format: {'album': 'album_name_here'}",
+      "motivation": "Evaluate the ability to correctly reason value transition",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_year_genres_and_descriptors"],
+          "parameters": [
+            {
+              "release_date": "2020",
+              "genres": ["Indie Folk"],
+              "descriptors": ["melodic", "poetic"]
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_year_genres_and_descriptors"],
+        "parameters": [
+          {
+            "release_date": "2020",
+            "genres": ["Indie Folk"],
+            "descriptors": ["melodic", "poetic"]
+          }
+        ],
+        "answer": "```json\n{'album': 'Microphones in 2020'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "Microphones in 2020" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q4",
+      "category": "Reasoning",
+      "question": "I am hosting a birthday party for my child. I prefer the danceability score to be higher than 90 to be suitable for a birthday party. Can you please recommend some latest songs which are suitable for children? Please provide only song(s) name. Return the answer in JSON format: {'songs':[nonexplicit_song_names_here]}",
+      "motivation": "Evaluate the ability to correctly identify the function to be called making commonsense reasoning",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_danceability_explicitness"],
+          "parameters": [{ "danceability_threshold": 90, "explicit": false }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_danceability_explicitness"],
+        "parameters": [{ "danceability_threshold": 90, "explicit": false }],
+        "answer": "```json\n{'songs':[]}\n```\n\nUnfortunately, the songs retrieved with a danceability score higher than 90 are explicit, and therefore not suitable for a child's birthday party."
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "songs": [
+            "YOU THE VIBE",
+            "TRAKA",
+            "DOGGY DOGGY",
+            "MOLI",
+            "PALETA PA TO EL MUNDO",
+            "RICO FEO",
+            "TEKIRIKI"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q5",
+      "category": "Reasoning",
+      "question": "Can you please retrieve album(s) related to government and regimes from the ones released in 2015, ensuring they have a minimum rating exceeding 4, a review count surpassing 100, and a rating higher than 1000. Please provide only album(s) name.Return the answer in JSON format: {'album':'album_name'}",
+      "motivation": "Evaluate the ability to correctly identify the albums with related genres from implicitly stated in the question",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums_by_date"],
+          "parameters": [
+            {
+              "rating_threshold": 4,
+              "min_ratings": 1000,
+              "review_threshold": 100,
+              "release_date": "2015"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums"],
+        "parameters": [
+          {
+            "rating_threshold": 4,
+            "min_ratings": 1000,
+            "review_threshold": 100
+          }
+        ],
+        "answer": "```json\n{'album':'To Pimp a Butterfly'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "To Pimp a Butterfly" }
+      },
+      "evaluation": {
+        "function_eval": "Incorrect",
+        "argument_eval": "Incorrect",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q1",
+      "category": "Interpretation",
+      "question": "How many times can I listen to each of the songs fully on the playlist of instrumental songs with a threshold in the range of 20, a valence of 50, a danceability of 70, a bpm of 90, and an instrumentality of 65 in 2 hours? Return the answer in JSON format: {'songs': [song_names_here], 'play_count': [play_counts_here]}",
+      "motivation": "Evaluate the ability to correctly make temporal interpretation and mathematical reasoning",
+      "overall_match": true,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "instrumental_songs"
+              ],
+              "parameters": [
+                  {
+                      "instrumentalness": 65,
+                      "valence": 50,
+                      "danceability": 70,
+                      "bpm": 90,
+                      "threshold": 20
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "instrumental_songs"
+          ],
+          "parameters": [
+              {
+                  "instrumentalness": 65,
+                  "valence": 50,
+                  "danceability": 70,
+                  "bpm": 90,
+                  "threshold": 20
+              }
+          ],
+          "answer": "Based on the criteria provided, there are two instrumental songs that fit the parameters. Here are the details of the songs and the number of times each can be played fully in 2 hours:\n\n1. 'Crosswind' by Chris Stapleton\n   - Duration: 3.3986666666666667 minutes\n\n2. 'The Monster - Instrumental' by Eminem\n   - Duration: 4.1593333333333335 minutes\n\nTo calculate the play count for each song in 2 hours (which is 120 minutes), we divide 120 by the duration of each song:\n\n- 'Crosswind': 120 / 3.3986666666666667 \u2248 35.3 times\n- 'The Monster - Instrumental': 120 / 4.1593333333333335 \u2248 28.8 times\n\nSince you can't listen to a fraction of a song, we'll round down to the nearest whole number:\n\n- 'Crosswind': 35 times\n- 'The Monster - Instrumental': 28 times\n\nHere is the JSON format response:\n\n```json\n{\n  'songs': ['Crosswind', 'The Monster - Instrumental'],\n  'play_count': [35, 28]\n}\n```"
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "songs": [
+                  "Crosswind",
+                  "The Monster - Instrumental"
+              ],
+              "play_count": [
+                  35,
+                  28
+              ]
+          }
+      },
+      "evaluation": {
+          "function_eval": "Correct",
+          "argument_eval": "Correct",
+          "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q2",
+      "category": "Interpretation",
+      "question": "Can you retrieve the songs which were released only by Bad Bunny and on leap day among 5 trendy tracks of Bad Bunny? Return the answer in JSON format: {'songs': [song_names_here]}",
+      "motivation": "Evaluate the ability to correctly make temporal interpretation",
+      "overall_match": false,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "top_streamed_songs_by_artist"
+              ],
+              "parameters": [
+                  {
+                      "artist_name": "Bad Bunny",
+                      "n": 5
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "top_streamed_songs_by_artist_date"
+          ],
+          "parameters": [
+              {
+                  "artist_name": "Bad Bunny",
+                  "release_date": "2020-02-29",
+                  "n": 5
+              }
+          ],
+          "answer": "```json\n{\n  'songs': ['A Tu Merced', 'La Zona']\n}\n```"
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "songs": [
+                  "A Tu Merced"
+              ]
+          }
+      },
+      "evaluation": {
+          "function_eval": "Incorrect",
+          "argument_eval": "Incorrect",
+          "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q3",
+      "category": "Interpretation",
+      "question": "Provide a list of four high-rated albums, each with a rating greater than 4.2 and a rating count exceeding 10,000. Select these albums based on their proximity to the present day, with the criteria of closeness determined by their release dates. Return the answer in JSON format: {'albums': [ordered_album_names_here],'release_dates': [release_dates_here]}",
+      "motivation": "Evaluate the ability to correctly make temporal interpretation and order albums according to the closeness to the present day",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_albums"],
+          "parameters": [{ "rating_threshold": 4.2, "min_ratings": 10000 }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_albums"],
+        "parameters": [{ "rating_threshold": 4.2, "min_ratings": 10000 }],
+        "answer": "```json\n{\n  'albums': [\n    'OK Computer',\n    'Kid A',\n    'The Dark Side of the Moon',\n    'Loveless'\n  ],\n  'release_dates': [\n    '1997-06-16',\n    '2000-10-03',\n    '1973-03-23',\n    '1991-11-11'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": ["release_dates"],
+        "answer": {
+          "albums": [
+            "To Pimp a Butterfly",
+            "good kid, m.A.A.d city",
+            "In Rainbows",
+            "Madvillainy"
+          ],
+          "release_dates": [
+            "2015-03-15",
+            "2012-10-22",
+            "2007-10-10",
+            "2004-03-23"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q4",
+      "category": "Interpretation",
+      "question": "Among all the explicit songs with a danceability of 70 or more and speechiness above 35, what is the difference between the longest and the shortest song? Return the answer in JSON format: {'longest_song': 'longest_song_name','shortest_song': 'shortest_song_name', 'duration_difference_in_minutes': dif_value}",
+      "motivation": "Evaluate the ability to correctly make temporal interpretation and identify time magnitude",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_danceability_explicitness_speechiness"],
+          "parameters": [
+            {
+              "danceability_threshold": 70,
+              "speechiness_threshold": 35,
+              "explicit": true
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_danceability_explicitness_speechiness"],
+        "parameters": [
+          {
+            "danceability_threshold": 70,
+            "speechiness_threshold": 35,
+            "explicit": true
+          }
+        ],
+        "answer": "The longest song among the explicit songs with a danceability of 70 or more and speechiness above 35 is 'Wicked Ways' by Eminem with a duration of 6.50925 minutes. The shortest song is 'Facetime Hiding' by Kodak Black with a duration of 2.0769333333333333 minutes. The difference in duration between the longest and shortest song is 4.432316666666667 minutes.\n\nHere is the JSON representation of the result:\n\n```json\n{\n  'longest_song': 'Wicked Ways',\n  'shortest_song': 'Facetime Hiding',\n  'duration_difference_in_minutes': 4.432316666666667\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "longest_song": "Wicked Ways",
+          "shortest_song": "Facetime Hiding",
+          "duration_difference_in_minutes": 4.432316666666667
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q5",
+      "category": "Interpretation",
+      "question": "Among the albums released in 1988 with average rating greater than 3.5, reviewed by more than 200 people, and rated by a minimum of 15,000 individuals, identify the latest album. Please provide only album(s) name. Return the answer in JSON format: {'album':'latest_album_name'}",
+      "motivation": "Evaluate the ability to correctly make temporal interpretation and identify timing of the albums",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums_by_date"],
+          "parameters": [
+            {
+              "rating_threshold": 3.5,
+              "min_ratings": 15000,
+              "review_threshold": 200,
+              "release_date": "1988"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums"],
+        "parameters": [
+          {
+            "rating_threshold": 3.5,
+            "min_ratings": 15000,
+            "review_threshold": 200
+          }
+        ],
+        "answer": "```json\n{'album':'Let's Start Here.'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "Isn't Anything" }
+      },
+      "evaluation": {
+        "function_eval": "Incorrect",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q6",
+      "category": "Interpretation",
+      "question": "Can you bring me the top songs where the titles of the songs are in Spanish among the top 10 songs by Bad Bunny which the vast majority has been influenced by? Also, can you translate these Spanish language song titles into English? Return the answer in JSON format: {'spanish_titled_songs':[song_names_here],'title_english':[translation_to_english]}",
+      "motivation": "Evaluate the ability to correctly identify what it has been asked and translate the output from different language",
+      "overall_match": false,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "top_streamed_songs_by_artist"
+              ],
+              "parameters": [
+                  {
+                      "artist_name": "Bad Bunny",
+                      "n": 10
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "top_streamed_songs_by_artist"
+          ],
+          "parameters": [
+              {
+                  "artist_name": "Bad Bunny",
+                  "n": 10
+              }
+          ],
+          "answer": "From the top 10 streamed songs by Bad Bunny, the following have Spanish titles:\n\n- 'Moscow Mule'\n- 'Lo Siento BB:/ (with Bad Bunny & Julieta Venegas)'\n- 'La Santa'\n- 'A Tu Merced'\n- 'Volv\u00ed'\n- 'Neverita'\n- 'Party'\n- 'MOJAITA GHOST'\n- 'Volando - Remix'\n- 'Tarot'\n\nNow, let's translate these titles into English:\n\n- 'Moscow Mule' (remains the same as it's a drink name)\n- 'Lo Siento BB:/' translates to 'I'm Sorry BB:/'\n- 'La Santa' translates to 'The Saint'\n- 'A Tu Merced' translates to 'At Your Mercy'\n- 'Volv\u00ed' translates to 'I Returned'\n- 'Neverita' translates to 'Little Cooler'\n- 'Party' (remains the same as it's a common English word)\n- 'MOJAITA GHOST' (seems to be a stylized or incorrect title, 'Mojaita' could be a play on 'Mojada' which means 'Wet', and 'Ghost' remains the same)\n- 'Volando - Remix' translates to 'Flying - Remix'\n- 'Tarot' (remains the same as it refers to tarot cards)\n\nHere is the JSON format with the Spanish titles and their English translations:\n\n```json\n{\n  'spanish_titled_songs': [\n    'Moscow Mule',\n    'Lo Siento BB:/ (with Bad Bunny & Julieta Venegas)',\n    'La Santa',\n    'A Tu Merced',\n    'Volv\u00ed',\n    'Neverita',\n    'Party',\n    'MOJAITA GHOST',\n    'Volando - Remix',\n    'Tarot'\n  ],\n  'title_english': [\n    'Moscow Mule',\n    'I'm Sorry BB:/',\n    'The Saint',\n    'At Your Mercy',\n    'I Returned',\n    'Little Cooler',\n    'Party',\n    'Wet Ghost',\n    'Flying - Remix',\n    'Tarot'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "spanish_titled_songs": [
+                  "Lo Siento BB:/ (with Bad Bunny & Julieta Venegas)",
+                  "La Santa",
+                  "A Tu Merced",
+                  "Volv",
+                  "Neverita",
+                  "Volando - Remix"
+              ],
+              "title_english": [
+                  "I'm Sorry Baby",
+                  "The Saint",
+                  "At Your Mercy",
+                  "I Returned",
+                  "Little Fridge",
+                  "Flying - Remix"
+              ]
+          }
+      },
+      "evaluation": {
+          "function_eval": "Correct",
+          "argument_eval": "Correct",
+          "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q7",
+      "category": "Interpretation",
+      "question": "Among the high rated albums whose average rating are more than 4.25 and rating counts are more than 10000, can you provide the releases that have names consisting of exactly 3 words? Return the answer in JSON format: {'albums': [three_tokens_album_names_here]}",
+      "motivation": "Evaluate the ability to correctly infer from the text and collect the data",
+      "overall_match": false,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "high_rated_albums"
+              ],
+              "parameters": [
+                  {
+                      "rating_threshold": 4.25,
+                      "min_ratings": 10000
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "high_rated_albums"
+          ],
+          "parameters": [
+              {
+                  "rating_threshold": 4.25,
+                  "min_ratings": 10000
+              }
+          ],
+          "answer": "```json\n{\n  'albums': [\n    'Wish You Were Here',\n    'Remain in Light',\n    'A Love Supreme'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "albums": [
+                  "A Love Supreme",
+                  "Remain in Light"
+              ]
+          }
+      },
+      "evaluation": {
+          "function_eval": "Correct",
+          "argument_eval": "Correct",
+          "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q8",
+      "category": "Interpretation",
+      "question": "Among the top explicit songs that make people wriggling(the related parameter can be taken as 85), which song's album denotes a colour? Return the answer in JSON format: {'song': 'song_name_here','album': 'album_name_here'}",
+      "motivation": "Evaluate the ability to correctly infer from the text and collect the data",
+      "overall_match": true,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "songs_by_danceability_explicitness"
+              ],
+              "parameters": [
+                  {
+                      "danceability_threshold": 85,
+                      "explicit": true
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "songs_by_danceability_explicitness"
+          ],
+          "parameters": [
+              {
+                  "danceability_threshold": 85,
+                  "explicit": true
+              }
+          ],
+          "answer": "```json\n{'song': '3D (feat. Jack Harlow)','album': 'GOLDEN'}\n```"
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "song": "3D (feat. Jack Harlow)",
+              "album": "GOLDEN"
+          }
+      },
+      "evaluation": {
+          "function_eval": "Correct",
+          "argument_eval": "Correct",
+          "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q9",
+      "category": "Interpretation",
+      "question": "Provide the songs starting with t from the 6 top streamed songs of Stray kids released in 2023. Return the answer in JSON format: {'songs': [song_names_starting_with_t]}",
+      "motivation": "Evaluate the ability to correctly infer from the text and collect the data",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["top_streamed_songs_by_artist_date"],
+          "parameters": [
+            { "artist_name": "Stray kids", "release_date": "2023", "n": 6 }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["top_streamed_songs_by_artist_date"],
+        "parameters": [
+          { "artist_name": "Stray Kids", "release_date": "2023", "n": 6 }
+        ],
+        "answer": "```json\n{'songs': ['S-Class']}\n```"
+      },
+      "correct_answer": { "ordered_items": [], "answer": { "songs": "" } },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q10",
+      "category": "Interpretation",
+      "question": "Can you retrieve the song released on bissextile by only Bad Bunny among his top 5 streamed songs? Return the answer in JSON format: {'song': 'song_name_here'}",
+      "motivation": "Evaluate the ability to correctly identify the specific expression for a day in the question.",
+      "overall_match": true,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "top_streamed_songs_by_artist"
+              ],
+              "parameters": [
+                  {
+                      "artist_name": "Bad Bunny",
+                      "n": 5
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "top_streamed_songs_by_artist"
+          ],
+          "parameters": [
+              {
+                  "artist_name": "Bad Bunny",
+                  "n": 5
+              }
+          ],
+          "answer": "```json\n{'song': 'A Tu Merced'}\n```"
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "song": "A Tu Merced"
+          }
+      },
+      "evaluation": {
+          "function_eval": "Correct",
+          "argument_eval": "Correct",
+          "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q1",
+      "category": "Languages",
+      "question": "\u00bfQu\u00e9 \u00e1lbumes se lanzaron entre el 15 de febrero de 2022 y el 15 de septiembre de 2022? Return the answer in JSON format: {'album':'album_name_here'} ",
+      "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Spanish in this case)",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["filter_albums_by_date_range"],
+          "parameters": [
+            { "start_date": "2022-02-15", "end_date": "2022-09-15" }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["filter_albums_by_date_range"],
+        "parameters": [
+          { "start_date": "2022-02-15", "end_date": "2022-09-15" }
+        ],
+        "answer": "```json\n{'album':'Once Twice Melody'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "Once Twice Melody" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q2",
+      "category": "Languages",
+      "question": "The Weeknd'in en \u00e7ok dinlenen be\u015f \u015fark\u0131s\u0131n\u0131 s\u00f6yler misin? Return the answer in JSON format: {'songs': [top_streamed_song_names_here]}",
+      "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Turkish in this case)",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["top_streamed_songs_by_artist"],
+          "parameters": [{ "artist_name": "The Weeknd", "n": 5 }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["top_streamed_songs_by_artist"],
+        "parameters": [{ "artist_name": "The Weeknd", "n": 5 }],
+        "answer": "```json\n{\n  'songs': [\n    'Double Fantasy (with Future)',\n    'I Heard You're Married (feat. Lil Wayne)',\n    'Here We Go\u2026 Again (feat. Tyler, the Creator)',\n    'Creepin'',\n    'Starry Eyes'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "songs": [
+            "Double Fantasy (with Future)",
+            "I Heard You're Married (feat. Lil Wayne)",
+            "Here We Go\ufffd\ufffd\ufffd Again (feat. Tyler, the Cr",
+            "Creepin'",
+            "Starry Eyes"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q3",
+      "category": "Languages",
+      "question": "Veuillez citer un album de type Folk pop, \u00e9nergique et bienfaisant, sorti en 1965. Return the answer in JSON format: {'album':'album_name_here'} ",
+      "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (French in this case)",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_year_genres_and_descriptors"],
+          "parameters": [
+            {
+              "release_date": "1965",
+              "genre": ["Folk pop"],
+              "descriptor": ["energetic", "uplifting"]
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_year_genres_and_descriptors"],
+        "parameters": [
+          {
+            "release_date": "1965",
+            "genres": ["Folk pop"],
+            "descriptors": ["energetic", "uplifting"]
+          }
+        ],
+        "answer": "```json\n{'album':'Help!'}\n```"
+      },
+      "correct_answer": { "ordered_items": [], "answer": { "album": "Help!" } },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q4",
+      "category": "Languages",
+      "question": "\u06a9\u06cc\u0627 \u0622\u067e 2015 \u0645\u06cc\u06ba \u0631\u06cc\u0644\u06cc\u0632 \u06c1\u0648\u0646\u06d2 \u0648\u0627\u0644\u06d2 \u0627\u0644\u0628\u0645\u0632 \u06a9\u06cc \u0641\u06c1\u0631\u0633\u062a \u0628\u0646\u0627 \u0633\u06a9\u062a\u06d2 \u06c1\u06cc\u06ba \u062c\u0646 \u06a9\u06cc \u0631\u06cc\u0679\u0646\u06af 3.6 \u0633\u06d2 \u0632\u06cc\u0627\u062f\u06c1 \u06c1\u06d2\u060c 10,000 \u0633\u06d2 \u0632\u06cc\u0627\u062f\u06c1 \u0631\u06cc\u0679\u0646\u06af\u0632 \u06c1\u06cc\u06ba\u060c \u0627\u0648\u0631 \u06a9\u0644 168 \u0633\u06d2 \u0632\u06cc\u0627\u062f\u06c1 \u062c\u0627\u0626\u0632\u06d2 \u06c1\u06cc\u06ba\u061f,Return the answer in JSON format: {'albums': [album_names_here]}",
+      "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Urdu in this case)",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums_by_date"],
+          "parameters": [
+            {
+              "rating_threshold": 3.6,
+              "min_ratings": 10000,
+              "review_threshold": 168,
+              "release_date": "2015"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums_by_date"],
+        "parameters": [
+          {
+            "rating_threshold": 3.6,
+            "min_ratings": 10000,
+            "review_threshold": 168,
+            "release_date": "2015"
+          }
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'To Pimp a Butterfly',\n    'Carrie & Lowell'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "albums": ["To Pimp a Butterfly", "Carrie & Lowell"] }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q1",
+      "category": "Long Tail Entities",
+      "question": "Select all albums that are footwork but not wonky,alternative R&B,conscious hip hop,instrumental hip hop,deconstructed club. Please provide only album(s) name. Return the answer in JSON format: {'albums':[album_names_here]}",
+      "motivation": "Evaluate the ability to correctly identify long tail entity attributes(genres).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_genres2"],
+          "parameters": [
+            {
+              "genres_in": ["footwork"],
+              "genres_out": [
+                "wonky",
+                "alternative R&B",
+                "conscious hip hop",
+                "instrumental hip hop",
+                "deconstructed club"
+              ]
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_genres2"],
+        "parameters": [
+          {
+            "genres_in": ["footwork"],
+            "genres_out": [
+              "wonky",
+              "alternative R&B",
+              "conscious hip hop",
+              "instrumental hip hop",
+              "deconstructed club"
+            ]
+          }
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'No Love Deep Web',\n    'WLFGRL',\n    'Double Cup',\n    'Galaxy Garden',\n    'Room(s)',\n    'So It Goes'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": [
+            "No Love Deep Web",
+            "WLFGRL",
+            "Double Cup",
+            "Galaxy Garden",
+            "Room(s)",
+            "So It Goes"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q2",
+      "category": "Long Tail Entities",
+      "question": "I am celebrating my birthday. Since I was born at 13th 7 1993, I would like to listen to songs released on that date. Also,Downtempo songs are great. Can you find me albums regarding the specified characteristics? Please provide only album(s) name. Return the answer in JSON format: {'album':'specified_album_name_here'}",
+      "motivation": "Evaluate the ability to correctly identify long tail entity attributes(genre).",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_date_and_genres"],
+          "parameters": [
+            { "release_date": "1993-07-13", "genres": ["Downtempo"] }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_date_and_genres"],
+        "parameters": [
+          { "release_date": "1993-07-13", "genres": ["Downtempo"] }
+        ],
+        "answer": "```json\n{'album':'Debut'}\n```"
+      },
+      "correct_answer": { "ordered_items": [], "answer": { "album": "Debut" } },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q3",
+      "category": "Long Tail Entities",
+      "question": "What is the lowest rated chiptune album that is not rock? Return the answer in JSON format: {'album':'chiptune_album_name_here'}",
+      "motivation": "Evaluate the ability to correctly identify long tail entity attributes(genres).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_genres2"],
+          "parameters": [{ "genres_in": ["chiptune"], "genres_out": ["rock"] }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_genres2"],
+        "parameters": [{ "genres_in": ["chiptune"], "genres_out": ["rock"] }],
+        "answer": "```json\n{'album':'Crystal Castles'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "Crystal Castles" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q4",
+      "category": "Long Tail Entities",
+      "question": "It is 2023, and I need some ethereal music. What are light airy breakbeat albums?Please provide only album(s) name. Return the answer in JSON format: {'albums':[album_names_here]}",
+      "motivation": "Evaluate the ability to correctly identify long tail entity attributes(descriptor and genre).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_year_genres_and_descriptors"],
+          "parameters": [
+            {
+              "release_date": "2023",
+              "genres": ["breakbeat"],
+              "descriptors": ["ethereal"]
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_genres2"],
+        "parameters": [
+          {
+            "genres_in": ["breakbeat"],
+            "genres_out": ["heavy", "dark", "aggressive"]
+          }
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'Un/limited Love',\n    'Heaven Knows',\n    'Raven'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "albums": ["Un/limited Love", "Heaven Knows", "Raven"] }
+      },
+      "evaluation": {
+        "function_eval": "Incorrect",
+        "argument_eval": "Incorrect",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q5",
+      "category": "Long Tail Entities",
+      "question": "I like albums that are indietronica,quirky and nocturnal. What are albums released in 2023? Please provide only album(s) name. Return the answer in JSON format: {'albums':[album_names_here]}",
+      "motivation": "Evaluate the ability to correctly identify long tail entity attributes(descriptor and genre).",
+      "overall_match": false,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "albums_by_year_genres_and_descriptors"
+              ],
+              "parameters": [
+                  {
+                      "release_date": "2023",
+                      "genres": [
+                          "indietronica"
+                      ],
+                      "descriptors": [
+                          "quirky",
+                          "nocturnal"
+                      ]
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "albums_by_year_genres_and_descriptors"
+          ],
+          "parameters": [
+              {
+                  "release_date": "2023",
+                  "genres": [
+                      "indietronica"
+                  ],
+                  "descriptors": [
+                      "quirky",
+                      "nocturnal"
+                  ]
+              }
+          ],
+          "answer": "```json\n{\n  'albums': [\n    'going\u2026going\u2026GONE!',\n    'I Don't Want You Anymore',\n    'After the Magic',\n    'Slugs of Love'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "albums": [
+                  "going\u2026going\u2026GONE!",
+                  "I Don't Want You Anymore",
+                  "After the Magic",
+                  "Slugs of Love"
+              ]
+          }
+      },
+      "evaluation": {
+          "function_eval": "Correct",
+          "argument_eval": "Correct",
+          "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q6",
+      "category": "Long Tail Entities",
+      "question": "I want to create a 2023 remix for this year's music. I like atmospheric albums. Find alt-pop albums but exclude indie folk and pop rap, that are rated above 3.4. Please provide only album(s) name which I would like. Return the answer in JSON format: {'albums':[album_names_here]}",
+      "motivation": "Evaluate the ability to correctly identify long tail entity attributes(genres) and infer descriptors from the context.",
+      "overall_match": false,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "albums_by_dates_genres_rating"
+              ],
+              "parameters": [
+                  {
+                      "start_date": "2023-01-01",
+                      "end_date": "2023-12-31",
+                      "genre_in": [
+                          "alt-pop"
+                      ],
+                      "genre_out": [
+                          "indie folk",
+                          "pop rap"
+                      ],
+                      "min_rating": 3.4
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "albums_by_dates_genres_rating"
+          ],
+          "parameters": [
+              {
+                  "start_date": "2023-01-01",
+                  "end_date": "2023-12-31",
+                  "genre_in": [
+                      "alt-pop"
+                  ],
+                  "genre_out": [
+                      "indie folk",
+                      "pop rap"
+                  ],
+                  "min_rating": 3.4
+              }
+          ],
+          "answer": "```json\n{\n  'albums': [\n    'Chill Kill',\n    'Heaven Knows',\n    'Desire, I Want to Turn Into You',\n    'Twin Flame',\n    'Parano\u00efa, Angels, True Love'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "albums": [
+                  "Heaven Knows",
+                  "Desire, I Want to Turn Into You",
+                  "Parano\u00efa, Angels, True Love"
+              ]
+          }
+      },
+      "evaluation": {
+          "function_eval": "Correct",
+          "argument_eval": "Correct",
+          "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q1",
+      "category": "Typos",
+      "question": "Can you retrieve the song released on bsextile by only Bad Bunny among his top 5 streamed songs? Return the answer in JSON format: {'song': 'song_name_here'}",
+      "motivation": "Ability to correctly identify simple typos and aggregate data about mentioned day from the output of called function.",
+      "overall_match": true,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "top_streamed_songs_by_artist"
+              ],
+              "parameters": [
+                  {
+                      "artist_name": "Bad Bunny",
+                      "n": 5
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "top_streamed_songs_by_artist"
+          ],
+          "parameters": [
+              {
+                  "artist_name": "Bad Bunny",
+                  "n": 5
+              }
+          ],
+          "answer": "```json\n{'song': 'A Tu Merced'}\n```"
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "song": "A Tu Merced"
+          }
+      },
+      "evaluation": {
+          "function_eval": "Correct",
+          "argument_eval": "Correct",
+          "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q2",
+      "category": "Typos",
+      "question": "Considering the albums with more than 4 genres, more than 2 artists, and a rating lower than 3.5, please provide the count of albums that include rthmic in their descriptors. If there are any typos, feel free to correct them for accurate results. Return the answer in JSON format: {'albums': [album_names_here], 'album_count': count_of_albums}",
+      "motivation": "Ability to correctly identify simple typos and make an inference from the output about desciptors and make calculation.",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["unique_albums"],
+          "parameters": [
+            {
+              "genres_threshold": 4,
+              "artist_count_threshold": 2,
+              "max_rating_threshold": 3.5
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["unique_albums"],
+        "parameters": [
+          {
+            "genres_threshold": 4,
+            "artist_count_threshold": 2,
+            "max_rating_threshold": 3.5
+          }
+        ],
+        "answer": "```json\n{\n  'albums': ['Cherry Bomb', 'Bastard'],\n  'album_count': 2\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "albums": ["Cherry Bomb", "Bastard"], "album_count": 2 }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q3",
+      "category": "Typos",
+      "question": "How many albums among the albums which have min. rating higher than 4.22, review count higher than 100 and rating count higher than 1000  were released before nineteen sevnty five? Return the answer in JSON format: {'albums': [album_names_here], 'album_count': count_of_albums}",
+      "motivation": "Evaluate the ability to correctly identify simple typos and aggregate and make a calculation.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums"],
+          "parameters": [
+            {
+              "rating_threshold": 4.22,
+              "min_ratings": 1000,
+              "review_threshold": 100
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums_by_date"],
+        "parameters": [
+          {
+            "rating_threshold": 4.22,
+            "min_ratings": 1000,
+            "review_threshold": 100,
+            "release_date": "1975-01-01"
+          }
+        ],
+        "answer": "There are no albums that meet the criteria of having a minimum rating higher than 4.22, a review count higher than 100, a rating count higher than 1000, and were released before 1975."
+      },
+      "correct_answer": { 
+        "ordered_items": [],
+        "answer": { 
+          "albums": [
+            "The Velvet Underground & Nico",
+            "In the Court of the Crimson King",
+            "Abbey Road",
+            "Revolver",
+            "The Rise and Fall of Ziggy Stardust and the Spiders From Mars",
+            "Kind of Blue",
+            "A Love Supreme",
+            "Red",
+            "The Black Saint and the Sinner Lady"
+          ],
+          "album_count": 9
+        }
+      },
+      "evaluation": {
+        "function_eval": "Incorrect",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q4",
+      "category": "Typos",
+      "question": "Identify the album or albums from albums with a minimum rating higher than 4.22, a review count exceeding 100, and a rating count surpassing 1000, where the album title is a colr.If there are any typos, feel free to correct them for accurate results. Return the answer in JSON format: {'album': 'color_album_name_here'}",
+      "motivation": "Evaluate the ability to correctly identify simple typos and infer about album names' meanings.",
+      "overall_match": false,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "high_rated_reviewed_albums"
+              ],
+              "parameters": [
+                  {
+                      "rating_threshold": 4.22,
+                      "min_ratings": 1000,
+                      "review_threshold": 100
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "high_rated_reviewed_albums"
+          ],
+          "parameters": [
+              {
+                  "rating_threshold": 4.22,
+                  "min_ratings": 1000,
+                  "review_threshold": 100
+              }
+          ],
+          "answer": "None of the albums listed in the provided data have a title that is a color. Here is the JSON response indicating that no such album was found:\n\n```json\n{'album': null}\n```"
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "album": "Red"
+          }
+      },
+      "evaluation": {
+          "function_eval": "Correct",
+          "argument_eval": "Correct",
+          "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q5",
+      "category": "Typos",
+      "question": "From the albums with more than 4 genres, more than 2 artists, and a rating lower than 3.5, please identify the album whose name signifies a machine used to represent the orbits of astroomical bodies.If there are any typos, feel free to correct them for accurate results. Return the answer in JSON format: {'album': 'specified_album_name_here'}",
+      "motivation": "Evaluate the ability to correctly identify simple typos and understand the definition in the question and infer about album names' meanings.",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["unique_albums"],
+          "parameters": [
+            {
+              "genres_threshold": 4,
+              "artist_count_threshold": 2,
+              "max_rating_threshold": 3.5
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["unique_albums"],
+        "parameters": [
+          {
+            "genres_threshold": 4,
+            "artist_count_threshold": 2,
+            "max_rating_threshold": 3.5
+          }
+        ],
+        "answer": "```json\n{'album': 'Planetarium'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "Planetarium" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q6",
+      "category": "Typos",
+      "question": "How many albums, among those with more than 4 genres, more than 2 artists, and a rating lower than 3.5, include 'malvocals' in their descriptors?If there are any typos, feel free to correct them for accurate results. Return the answer in JSON format: {'albums': [malevocals_album_names_here], 'album_count': count_of_albums}",
+      "motivation": "Evaluate the ability to correctly identify simple typos and aggregate and make a calculation.",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["unique_albums"],
+          "parameters": [
+            {
+              "genres_threshold": 4,
+              "artist_count_threshold": 2,
+              "max_rating_threshold": 3.5
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["unique_albums"],
+        "parameters": [
+          {
+            "genres_threshold": 4,
+            "artist_count_threshold": 2,
+            "max_rating_threshold": 3.5
+          }
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'Wolf',\n    'Cherry Bomb',\n    'Goblin',\n    'Bastard',\n    'Trash Island',\n    'Planetarium'\n  ],\n  'album_count': 6\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": [
+            "Wolf",
+            "Cherry Bomb",
+            "Goblin",
+            "Bastard",
+            "Trash Island",
+            "Planetarium"
+          ],
+          "album_count": 6
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q7",
+      "category": "Typos",
+      "question": "Among the albums which have more than 4 genes, more than 2 artists and rating lower than 3.5, which one has the loest review count? Please provide only album(s) name. If there are any typos, feel free to correct them for accurate results. Return the answer in JSON format: {'album': 'lowest_reviewed_album_name_here'}",
+      "motivation": "Evaluate the ability to correctly identify more than one simple typos and make an order in ascending order and infer to the lowest value",
+      "overall_match": true,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["unique_albums"],
+          "parameters": [
+            {
+              "genres_threshold": 4,
+              "artist_count_threshold": 2,
+              "max_rating_threshold": 3.5
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["unique_albums"],
+        "parameters": [
+          {
+            "genres_threshold": 4,
+            "artist_count_threshold": 2,
+            "max_rating_threshold": 3.5
+          }
+        ],
+        "answer": "```json\n{'album': 'Trash Island'}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "album": "Trash Island" }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_ECON_Q1",
+      "category": "Extra Context",
+      "question": "The Aircraft Crash Report, one of National Geographic's most popular series, continues to investigate what went wrong and why, exploring the legendary disasters of aviation history. I like to follow aviation events and news. Despite following such news, I feel peaceful on the flight. The year I travelled the most was the summer of 2018. I want to listen to the albums in June 2018. Can you bring me the albums which are rated lower than 3 released in the month I mentioned? Please provide only album(s) name. Return the answer in JSON format: {'albums': [low_rated_album_names_here]}",
+      "motivation": "Evaluate the ability to understand the context(modified wordings) and make an inference about date range",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["filter_albums_by_date_range"],
+          "parameters": [
+            { "start_date": "2018-06-01", "end_date": "2018-06-30" }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["filter_albums_by_date_range"],
+        "parameters": [{ "start_date": "2018-06-01", "end_date": "2018-06-30" }],
+        "answer": "```json\n{\n  'albums': [\n    'Scorpion',\n    'NASIR',\n    'Everything Is Love',\n    'Pray for the Wicked'\n   ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": [
+            "The Now Now",
+            "Scorpion",
+            "NASIR",
+            "Everything Is Love",
+            "Pray for the Wicked"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_ECON_Q2",
+      "category": "Extra Context",
+      "question": "In 1961, in the American state of Philadelphia, on the first Friday after Thanksgiving, there was a great discount in the stores. The interest in this discount is so intense that convoys lasting hours are formed due to traffic congestion. In recent years, especially during the pandemic period, the excitement of Black Friday has increased exponentially as e-commerce sites have become indispensable in our lives. Can you return 6 top streamed songs of The Weeknd that store employees can play in the stores,in the order of up-to-dateness or alphabetically if they were released on the same date? Please provide only song(s) name Return the answer in JSON format: {'release_dates': [ordered_release_dates_here],'songs': [ordered_song_names_here]}",
+      "motivation": "Evaluate the ability to understand the context and to call the function to be called, incorporating ordering logic.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["top_streamed_songs_by_artist"],
+          "parameters": [{ "artist_name": "The Weeknd", "n": 6 }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["top_streamed_songs_by_artist"],
+        "parameters": [{ "artist_name": "The Weeknd", "n": 6 }],
+        "answer": "```json\n{\n  'release_dates': ['2023-04-21', '2022-12-02', '2022-01-07', '2022-01-07', '2022-01-07', '2018-03-29'],\n  'songs': ['Double Fantasy (with Future)', 'Creepin'', 'I Heard You're Married (feat. Lil Wayne)', 'Here We Go\u2026 Again (feat. Tyler, the Creator)', 'Starry Eyes', 'I Was Never There']\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": ["release_dates"],
+        "answer": {
+          "release_dates": [
+            "2023-04-21",
+            "2022-12-02",
+            "2022-01-07",
+            "2022-01-07",
+            "2022-01-07",
+            "2018-03-29"
+          ],
+          "songs": [
+            "Double Fantasy (with Future)",
+            "Creepin'",
+            "Here We Go\ufffd\ufffd\ufffd Again (feat. Tyler, the Cr",
+            "I Heard You're Married (feat. Lil Wayne)",
+            "Starry Eyes",
+            "I Was Never There"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_ECON_Q3",
+      "category": "Extra Context",
+      "question": "I find some song lyrics very meaningful, there are songs that give me goosebumps when I come across them somewhere and listen to them. I am adding the lyrics of one of them: If the deepest wounds are closing,If the greatest pains are forgotten, tell me what to fear in life. Please provide only albums' names that stand out for their artist collaboration (involving at least 2 artists) and genre diversity (featuring at least 3 genres), even if they did not receive high ratings(more than 3.5). Please provide only album(s) name. Return the answer in JSON format: {'albums': [album_with_diversity_names]}",
+      "motivation": "Evaluate the ability to understand the context and to logicaly assign parameter values considering context.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["unique_albums"],
+          "parameters": [
+            {
+              "genres_threshold": 3,
+              "artist_count_threshold": 2,
+              "max_rating_threshold": 3.5
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["unique_albums"],
+        "parameters": [
+          { 
+            "genres_threshold": 3,
+            "artist_count_threshold": 2,
+            "max_rating_threshold": 3.5
+          }
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'Wolf',\n    'Cherry Bomb',\n    'Goblin',\n    'Bastard',\n    'Without Warning',\n    'Trash Island',\n    'Danse Manatee',\n    'Fetti',\n    'D&G',\n    'Planetarium',\n    'The Good, the Bad & the Queen'\n   ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": [
+            "Wolf",
+            "Cherry Bomb",
+            "Goblin",
+            "Bastard",
+            "Without Warning",
+            "Trash Island",
+            "Danse Manatee",
+            "Fetti",
+            "D&G",
+            "Planetarium",
+            "The Good, the Bad & the Queen"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_ECON_Q4",
+      "category": "Extra Context",
+      "question": "Cycling in winter in Germany is doable - but you may need to take extra care to make sure you stay safe on wet or icy roads. Can you provide albums with humorous and playful vibe in the alternative and pop rock genres, specifically those released in 1985? I'm looking for music to set the mood while cycling. Please provide only album(s) name. Return the answer in JSON format: {'albums': [hum_playful_album_names_here]}",
+      "motivation": "Evaluate the ability to understand the context(modified wordings) and to call the function that can be called",
+      "overall_match": false,
+      "correct_paths": [
+          {
+              "path_id": 1,
+              "functions": [
+                  "albums_by_year_genres_and_descriptors"
+              ],
+              "parameters": [
+                  {
+                      "release_date": "1985",
+                      "genres": [
+                          "alternative",
+                          "pop rock"
+                      ],
+                      "descriptors": [
+                          "humorous",
+                          "playful"
+                      ]
+                  }
+              ]
+          }
+      ],
+      "model_solution": {
+          "functions": [
+              "albums_by_year_genres_and_descriptors"
+          ],
+          "parameters": [
+              {
+                  "release_date": "1985",
+                  "genres": [
+                      "alternative",
+                      "pop rock"
+                  ],
+                  "descriptors": [
+                      "humorous",
+                      "playful"
+                  ]
+              }
+          ],
+          "answer": "```json\n{\n  'albums': [\n    'The Head on the Door',\n    'Brothers in Arms',\n    'Little Creatures',\n    'Freaky Styley',\n    'Flip Your Wig'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+          "ordered_items": [],
+          "answer": {
+              "albums": [
+                  "The Head on the Door",
+                  "Brothers in Arms",
+                  "Little Creatures",
+                  "Freaky Styley",
+                  "Flip Your Wig"
+              ]
+          }
+      },
+      "evaluation": {
+          "function_eval": "Correct",
+          "argument_eval": "Correct",
+          "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_ECON_Q5",
+      "category": "Extra Context",
+      "question": "We are currently standing at Niagara Falls and are a group of 5 girls, enjoying our first vacation post pandemic. We have been waiting for this time for so long. The weather is also sunny and breezy and the sight is breathtaking. We have been friends since 2000. Could you suggest albums from that year, specifically in ones that have received at least 35,000 ratings, hold an average rating of 3.5 or higher, and have a minimum of 200 reviews? Please provide only album(s) name. Return the answer in JSON format: {'albums': [high_rated_reviewed_album_names_2020]}",
+      "motivation": "Evaluate the ability to understand the context and to call the function that can be called with the correct parameters mentioned in the question.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums_by_date"],
+          "parameters": [
+            {
+              "rating_threshold": 3.5,
+              "min_ratings": 35000,
+              "review_threshold": 200,
+              "release_date": "2000"
+            }
+          ]
+        },
+        {
+          "path_id": 2,
+          "functions": ["high_rated_reviewed_albums"],
+          "parameters": [
+            {
+              "rating_threshold": 3.5,
+              "min_ratings": 35000,
+              "review_threshold": 200
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums"],
+        "parameters": [
+          { 
+            "rating_threshold": 3.5,
+            "min_ratings": 35000,
+            "review_threshold": 200
+          }
+        ],
+        "answer": "```json\n{'albums': ['The Marshall Mathers LP', 'Lift Yr. Skinny Fists Like Antennas to Heaven!']}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": ["Kid A", "Lift Yr. Skinny Fists Like Antennas to Heaven!"]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Correct",
+        "response_eval": "Correct"
+      }
+    }
+  ]
+}

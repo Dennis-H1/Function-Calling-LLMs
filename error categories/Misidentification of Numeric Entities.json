@@ -1,0 +1,124 @@
+{
+    "question_result": [
+      {
+         "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_DATA_TYPES_Q2",
+         "category":"Data Types",
+         "question":"A friend of mine in New York suggested a nice place to eat in Brooklyn. My friend gave me the postal code of the Chinese restaurant which was: 11207.  He also gave me the contact details of that eating place so I could reserve a table for tonight 212 7183852288. Additionally, I would like to find some Airbnb very close to this certain eating place. Return the answer in JSON format: {'airbnb_close_specific_restaurant': 'my_airbnb'}",
+         "motivation":"Evaluate the ability of the LLM to reason between data types and data type conversions(phone number with and without prefixes) for subsequent use in multi function calling.",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                  "get_airbnb_by_lat_long"
+               ],
+               "parameters":[
+                  {
+                     "zipcode":11207,
+                     "cuisine":"Chinese",
+                     "borough":"Brooklyn",
+                     "phone":"7183852288"
+                  },
+                  {
+                     "latitude":40.66254116,
+                     "longitude":-73.89814971
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+            "functions":[
+               "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone"
+            ],
+            "parameters":[
+               {
+                  "zip_code":11207,
+                  "cuisine":"Chinese",
+                  "borough":"Brooklyn",
+                  "phone":"212 7183852288"
+               }
+            ],
+            "answer":"```json\n{\n  'airbnb_close_specific_restaurant': 'Restaurant not found'\n}\n```"
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb_close_specific_restaurant":"Room in Bushwick Bk available June"
+            }
+         },
+         "evaluation":{
+            "function_eval":"Partially Correct",
+            "argument_eval":"Partially Correct",
+            "response_eval":"Incorrect"
+         }
+      },
+      {
+         "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q1",
+         "category":"Simple Questions",
+         "question":"Hello, I am currently in India and will be flying to New York tomorrow morning. Some native friends there suggested me a very good traditional restaurant and they sent me the address details. This restaurant is located in New York, near the borough, of Manhattan, and they also provided me with the zipcode,10010, and contact details to reserve a place, the phone number: 2124902100. Considering the exact contact details, I did provide you, please by first finding the exact proximity data of this specific restaurant, use this data to recommend some nearby Airbnbs? Return the answer in JSON format: {'airbnb_close_given_restaurant_details': [my_airbnb_close]}",
+         "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts. ",
+         "overall_match":false,
+         "correct_paths":[
+            {
+               "path_id":1,
+               "functions":[
+                  "get_restaurant_long_lat_by_zipcode_cuisine_borough_phone",
+                  "get_airbnb_by_lat_long"
+               ],
+               "parameters":[
+                  {
+                     "zip_code":10010,
+                     "cuisine":"Indian",
+                     "borough":"Manhattan",
+                     "phone":"2124902100"
+                  },
+                  {
+                     "latitude":40.74262626,
+                     "longitude":-73.99009391
+                  }
+               ]
+            }
+         ],
+         "model_solution":{
+               "functions":[
+                   "get_restaurant_by_airbnb_closeness",
+                   "get_long_lat_by_airbnb"
+               ],
+               "parameters":[
+               {
+                   "latitude":"40.742054",
+                   "longitude":"-73.987731"
+               },
+               {
+                   "listing":"JUNOON"
+               }
+               ],
+            "answer":"It seems that the restaurant with the provided details could not be found. Therefore, I'm unable to retrieve the proximity data needed to recommend nearby Airbnbs. Please check if the details are correct or provide additional information if possible."
+         },
+         "correct_answer":{
+            "ordered_items":[
+               
+            ],
+            "answer":{
+               "airbnb_close_given_restaurant_details":[
+                  "West Village Studio Apartment",
+                  "West Village Apartment near Washington Square Park",
+                  "Cozy & artsy apt in East Village - 2 bedrooms",
+                  "Spacious Bright 1 Bedroom East Village Apartment",
+                  "Soho loft with everything",
+                  "Large Private Room in Greenpoint Williamsburg"
+               ]
+            }
+         },
+         "evaluation":{
+            "function_eval":"Incorrect",
+            "argument_eval":"Incorrect",
+            "response_eval":"Incorrect"
+         }
+      }
+                       
+    ]
+}

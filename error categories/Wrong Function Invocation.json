@@ -1,0 +1,496 @@
+{
+    "question_result": [
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q7",
+            "category": "Selection",
+            "question": "Among the songs released in 2020, which one has the 2nd most streams? Return the answer in JSON format:{'song':'song_name'}",
+            "motivation": "Evaluate the ability to perform single-targeted information retrieval of a dataset based on criterion (large integer).",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_release_date"
+                    ],
+                    "parameters": [
+                        {
+                            "release_date": "2020"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "top_streamed_songs"
+                ],
+                "parameters": [
+                    {
+                        "n": 2
+                    }
+                ],
+                "answer": "```json\n{'song_with_2nd_most_streams':'Anti-Hero'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "song": "Levitating (feat. DaBaby)"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Incorrect",
+                "argument_eval": "Incorrect",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_ECON_Q9",
+            "category": "Extra Context",
+            "question": "SIMURG (Phoenix), which burned in the fire and was reborn from its ashes, lived on the branches of the Tree of Knowledge and knew everything. Birds believe in SIMURG and think that he will save them, they believe that SIMURG will find a solution to everything that goes wrong. Can you recommend music releases released in 1963 that have average rating above 3.8. Return the answer in JSON format: {'albums': [album_names_here]}",
+            "motivation": "Evaluate the ability to retrieve the albums by calling available function with the desired year attribute when queried with unrelated extra context.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_release_date_1"
+                    ],
+                    "parameters": [
+                        {
+                            "release_date": "1963"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "top_rated_albums"
+                ],
+                "parameters": [
+                    {
+                        "n": 50
+                    }
+                ],
+                "answer": "```json\n{\n  'albums': [\n    'The Black Saint and the Sinner Lady'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "albums": [
+                        "The Black Saint and the Sinner Lady",
+                        "The Freewheelin' Bob Dylan",
+                        "Money Jungle",
+                        "Monk's Dream",
+                        "Samba esquema novo"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Incorrect",
+                "argument_eval": "Incorrect",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_SEL_Q4",
+            "category": "Selection",
+            "question": "My two favourite songs of Taylor Swift are 'Maroon' and 'Shake It Off'. Which one is streamed more? Return the answer in JSON format: {'song': 'more_streamed_song_name'}",
+            "motivation": "Evaluate the ability to perform single-targeted information retrieval of data based on criterion (large integer).",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "song_info"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Maroon"
+                        },
+                        {
+                            "song_name": "Shake It Off"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "sum_streams_given_songs"
+                ],
+                "parameters": [
+                    {
+                        "songs": [
+                            "Maroon",
+                            "Shake It Off"
+                        ]
+                    }
+                ],
+                "answer": "The song 'Shake It Off' by Taylor Swift is streamed more. Here is the answer in JSON format:\n\n```json\n{'song': 'Shake It Off'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "song": "Shake It Off"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Incorrect",
+                "argument_eval": "Incorrect",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_SEL_Q5",
+            "category": "Selection",
+            "question": "I like songs with high beats, my friend recommended an artist and his albums, but I only remember the name of album \u201cOasis\u201d. Can you please provide the songs of this artist with bpm in the range of 120-160. Return the answer in JSON format: {'songs': [song_names_here]} ",
+            "motivation": "Evaluate the ability to perform multi-targeted information retrieval of data based on a defined criteria (interval of integer bounds).",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "album_info",
+                        "songs_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "album_name": "Oasis"
+                        },
+                        {
+                            "artist_name": "Bad Bunny"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "album_info",
+                    "songs_by_album"
+                ],
+                "parameters": [
+                    {
+                        "album_name": "Oasis"
+                    },
+                    {
+                        "album_name": "Oasis"
+                    }
+                ],
+                "answer": "It appears that there is only one song listed from the album 'Oasis' by J Balvin and Bad Bunny, and its BPM is 176, which is outside the range of 120-160 BPM that you specified. Therefore, there are no songs from this album within the desired BPM range. Here is the JSON response with an empty song list:\n\n```json\n{'songs': []}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "songs": [
+                        "Neverita",
+                        "Yo No Soy Celoso",
+                        "Un Coco",
+                        "Dos Mil 16",
+                        "Aguacero"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Incorrect",
+                "argument_eval": "Incorrect",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_ECON_Q2",
+            "category": "Extra Context",
+            "question": "Bradley Cooper, a famous American theatre, TV series, and film actor, who was born on January 5, 1975, has collaborated with an American singer. They also starred in a movie 'A Star is Born' and also collaborated in a song of this album. Can you first find the song they collaborated on and then other songs by the second artist. Return the answer in JSON format: {'song': 'name_of_song_by_2_referred_artists', 'songs':[song_names_of_second_artist_here]}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_album",
+                        "songs_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "album_name": "A Star is Born"
+                        },
+                        {
+                            "artist_name": "Lady Gaga"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "songs_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Shallow"
+                    },
+                    {
+                        "artist_name": "Lady Gaga"
+                    }
+                ],
+                "answer": "```json\n{\n  'song': 'Shallow',\n  'songs': ['Bloody Mary', 'Hold My Hand']\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "song": "Shallow",
+                    "songs": [
+                        "Bloody Mary",
+                        "Hold My Hand"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Incorrect",
+                "argument_eval": "Incorrect",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q4",
+            "category": "Selection",
+            "question": "What television genre albums were released in 2023 with a rating lower than 3.0? Please provide only album(s) name.Return the answer in JSON format: {'albums': [album_names_here]}",
+            "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (small floating point number).",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_date_and_genres"],
+                "parameters": [
+                  { "release_date": "2023", "genres": ["television"] }
+                ]
+              }
+            ],
+            "model_solution": {
+              "functions": ["filter_albums_by_date_range"],
+              "parameters": [{"start_date": "2023-01-01", "end_date": "2023-12-31" }],
+              "answer": "```json\n{\n  'albums': [\n    'The Idol Episode 5 Part 2',\n    'The Idol Episode 5 Part 1',\n    'The Idol Episode 4',\n    'The Idol Episode 3',\n    'The Idol Episode 2',\n    'The Idol Episode 1'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+              "ordered_items": [],
+              "answer": {
+                "albums": [
+                  "The Idol Episode 5 Part 2",
+                  "The Idol Episode 4",
+                  "The Idol Episode 3",
+                  "The Idol Episode 2",
+                  "The Idol Episode 1"
+                ]
+              }
+            },
+            "evaluation": {
+              "function_eval": "Incorrect",
+              "argument_eval": "Incorrect",
+              "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_REA_Q5",
+            "category": "Reasoning",
+            "question": "Can you please retrieve album(s) related to government and regimes from the ones released in 2015, ensuring they have a minimum rating exceeding 4, a review count surpassing 100, and a rating higher than 1000. Please provide only album(s) name.Return the answer in JSON format: {'album':'album_name'}",
+            "motivation": "Evaluate the ability to correctly identify the albums with related genres from implicitly stated in the question",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": 4,
+                    "min_ratings": 1000,
+                    "review_threshold": 100,
+                    "release_date": "2015"
+                  }
+                ]
+              }
+            ],
+            "model_solution": {
+              "functions": ["high_rated_reviewed_albums"],
+              "parameters": [
+                {
+                  "rating_threshold": 4,
+                  "min_ratings": 1000,
+                  "review_threshold": 100
+                }
+              ],
+              "answer": "```json\n{'album':'To Pimp a Butterfly'}\n```"
+            },
+            "correct_answer": {
+              "ordered_items": [],
+              "answer": { "album": "To Pimp a Butterfly" }
+            },
+            "evaluation": {
+              "function_eval": "Incorrect",
+              "argument_eval": "Incorrect",
+              "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q4",
+            "category": "Long Tail Entities",
+            "question": "It is 2023, and I need some ethereal music. Provide me breakbeat albums of 2023 which are ethereal. Please provide only album(s) name. Return the answer in JSON format: {'albums':[album_names_here]}",
+            "motivation": "Evaluate the ability to correctly identify long tail entity attributes(descriptor and genre).",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["albums_by_year_genres_and_descriptors"],
+                "parameters": [
+                  {
+                    "release_date": "2023",
+                    "genres": ["breakbeat"],
+                    "descriptors": ["ethereal"]
+                  }
+                ]
+              }
+            ],
+            "model_solution": {
+              "functions": ["albums_by_genres2"],
+              "parameters": [
+                {
+                  "genres_in": ["breakbeat"],
+                  "genres_out": ["heavy", "dark", "aggressive"]
+                }
+              ],
+              "answer": "```json\n{\n  'albums': [\n    'Un/limited Love',\n    'Heaven Knows',\n    'Raven'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+              "ordered_items": [],
+              "answer": { "albums": ["Un/limited Love", "Heaven Knows", "Raven"] }
+            },
+            "evaluation": {
+              "function_eval": "Incorrect",
+              "argument_eval": "Incorrect",
+              "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q3",
+            "category": "Typos",
+            "question": "How many albums among the albums which have min. rating higher than 4.22, review count higher than 100 and rating count higher than 1000  were released before nineteen sevnty five? Return the answer in JSON format: {'albums': [album_names_here], 'album_count': count_of_albums}",
+            "motivation": "Evaluate the ability to correctly identify simple typos and aggregate and make a calculation.",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums"],
+                "parameters": [
+                  {
+                    "rating_threshold": 4.22,
+                    "min_ratings": 1000,
+                    "review_threshold": 100
+                  }
+                ]
+              }
+            ],
+            "model_solution": {
+              "functions": ["high_rated_reviewed_albums_by_date"],
+              "parameters": [
+                {
+                  "rating_threshold": 4.22,
+                  "min_ratings": 1000,
+                  "review_threshold": 100,
+                  "release_date": "1975-01-01"
+                }
+              ],
+              "answer": "There are no albums that meet the criteria of having a minimum rating higher than 4.22, a review count higher than 100, a rating count higher than 1000, and were released before 1975."
+            },
+            "correct_answer": { 
+              "ordered_items": [],
+              "answer": { 
+                "albums": [
+                  "The Velvet Underground & Nico",
+                  "In the Court of the Crimson King",
+                  "Abbey Road",
+                  "Revolver",
+                  "The Rise and Fall of Ziggy Stardust and the Spiders From Mars",
+                  "Kind of Blue",
+                  "A Love Supreme",
+                  "Red",
+                  "The Black Saint and the Sinner Lady"
+                ],
+                "album_count": 9
+              }
+            },
+            "evaluation": {
+              "function_eval": "Incorrect",
+              "argument_eval": "Incorrect",
+              "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q2",
+            "category": "Temporal Interpretation",
+            "question": "Can you retrieve the songs which were released only by Bad Bunny and on leap day among 5 trendy tracks of Bad Bunny? Return the answer in JSON format: {'songs': [song_names_here]}",
+            "motivation": "Evaluate the ability to correctly make temporal interpretation",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist"],
+                "parameters": [{ "artist_name": "Bad Bunny", "n": 5 }]
+              }
+            ],
+            "model_solution": {
+              "functions": ["top_streamed_songs_by_artist_date"],
+              "parameters": [
+                { "artist_name": "Bad Bunny", "release_date": "2020-02-29", "n": 5 }
+              ],
+              "answer": "```json\n{\n  'songs': ['A Tu Merced', 'La Zona']\n}\n```"
+            },
+            "correct_answer": {
+              "ordered_items": [],
+              "answer": { "songs": ["A Tu Merced"] }
+            },
+            "evaluation": {
+              "function_eval": "Incorrect",
+              "argument_eval": "Incorrect",
+              "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q5",
+            "category": "Temporal Interpretation",
+            "question": "Among the albums released in 1988 with average rating greater than 3.5, reviewed by more than 200 people, and rated by a minimum of 15,000 individuals, identify the latest album. Please provide only album(s) name. Return the answer in JSON format: {'album':'latest_album_name'}",
+            "motivation": "Evaluate the ability to correctly make temporal interpretation and identify timing of the albums",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": 3.5,
+                    "min_ratings": 15000,
+                    "review_threshold": 200,
+                    "release_date": "1988"
+                  }
+                ]
+              }
+            ],
+            "model_solution": {
+              "functions": ["high_rated_reviewed_albums"],
+              "parameters": [
+                {
+                  "rating_threshold": 3.5,
+                  "min_ratings": 15000,
+                  "review_threshold": 200
+                }
+              ],
+              "answer": "```json\n{'album':'Let's Start Here.'}\n```"
+            },
+            "correct_answer": {
+              "ordered_items": [],
+              "answer": { "album": "Isn't Anything" }
+            },
+            "evaluation": {
+              "function_eval": "Incorrect",
+              "argument_eval": "Incorrect",
+              "response_eval": "Incorrect"
+            }
+        }               
+    ]
+}

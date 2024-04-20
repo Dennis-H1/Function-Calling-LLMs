@@ -1,0 +1,904 @@
+{
+  "question_result": [
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LAN_Q5",
+      "category": "Languages",
+      "question": "Do\u011fum tarihim 16 Haziran 2000. Bu y\u0131l 24 ya\u015f\u0131nda olaca\u011f\u0131m. Bana iki y\u0131l \u00f6nce 16 Haziran'da \u00e7\u0131kan \u015fark\u0131lar\u0131n bir listesini olu\u015fturabilir misin? \u0130ngilizce cevap verin. Return the answer in JSON format: {'songs': [song_names_here]}",
+      "motivation": "Evaluate the ability to understand medium-source language(Turkish) and make an inference about datetime.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_release_date"],
+          "parameters": [
+            {
+              "release_date": "2022-06-16"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_release_date"],
+        "parameters": [
+          {
+            "release_date": "2021-06-16"
+          }
+        ],
+        "answer": "```json\n{'songs': []}\n```\nIt appears that there were no songs in the database that were released on June 16, 2021."
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "songs": ["ULTRA SOLO REMIX", "Don't You Worry"]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_ECON_Q1",
+      "category": "Extra Context",
+      "question": "Birthdays hold a unique significance in our lives, serving as annual milestones that mark the passage of time and the celebration of one's existence. Beyond the joy of receiving gifts and the revelry of parties, birthdays offer an opportunity for reflection and gratitude. They remind us to appreciate the journey we've undertaken, the lessons learned, and the growth experienced throughout the year. Can you make a list of tracks which were released on my birthday last year, 10th of February,that will help me remember this past year with beautiful memories and remind me to value artists and their efforts? Return the answer in JSON format: {'songs': [song_names_here]}",
+      "motivation": "Ability to retrieve the songs that were released on mentioned day and month for the year mentioned in the dataset if there are any entry regarding it.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_release_date"],
+          "parameters": [
+            {
+              "release_date": "2023-02-10"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_release_date"],
+        "parameters": [
+          {
+            "release_date": "2022-02-10"
+          }
+        ],
+        "answer": "```json\n{\n  'songs': ['MAMIII']\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "songs": ["El Azul", "If We Ever Broke Up"]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_ECON_Q6",
+      "category": "Extra Context",
+      "question": "Birthdays hold a unique significance in our lives, serving as annual milestones that mark the passage of time and the celebration of one's existence. Beyond the joy of receiving gifts and the revelry of parties, birthdays offer an opportunity for reflection and gratitude. They remind us to appreciate the journey we've undertaken, the lessons learned, and the growth experienced throughout the year. Can you make a list of tracks which were released on my birthday last year, 10-02-2023,that will help me remember this past year with beautiful memories? Return the answer in JSON format: {'songs': [song_names_here]}",
+      "motivation": "Ability to retrieve the songs that were released on mentioned day and month for all years in the dataset if there are any entry regarding it and understand the different date format",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["songs_by_release_date"],
+          "parameters": [
+            {
+              "release_date": "2023-02-10"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["songs_by_release_date"],
+        "parameters": [
+          {
+            "release_date": "2023-10-02"
+          }
+        ],
+        "answer": "```json\n{'songs': []}\n```\n\nIt appears that there were no tracks recorded in the database as being released on October 2, 2023. This could be due to a lack of data for that specific date or no notable releases on that day."
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "songs": ["El Azul", "If We Ever Broke Up"]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_TYP_Q3",
+      "category": "Typos",
+      "question": "How many albums among the albums which have min. rating higher than 4.22, review count higher than 100 and rating count higher than 1000  were released before nineteen sevnty five? Return the answer in JSON format: {'albums': [album_names_here], 'album_count': count_of_albums}",
+      "motivation": "Evaluate the ability to correctly identify simple typos and aggregate and make a calculation.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums"],
+          "parameters": [
+            {
+              "rating_threshold": 4.22,
+              "min_ratings": 1000,
+              "review_threshold": 100
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["high_rated_reviewed_albums_by_date"],
+        "parameters": [
+          {
+            "rating_threshold": 4.22,
+            "min_ratings": 1000,
+            "review_threshold": 100,
+            "release_date": "1975-01-01"
+          }
+        ],
+        "answer": "There are no albums that meet the criteria of having a minimum rating higher than 4.22, a review count higher than 100, a rating count higher than 1000, and were released before 1975."
+      },
+      "correct_answer": { 
+        "ordered_items": [],
+        "answer": { 
+          "albums": [
+            "The Velvet Underground & Nico",
+            "In the Court of the Crimson King",
+            "Abbey Road",
+            "Revolver",
+            "The Rise and Fall of Ziggy Stardust and the Spiders From Mars",
+            "Kind of Blue",
+            "A Love Supreme",
+            "Red",
+            "The Black Saint and the Sinner Lady"
+          ],
+          "album_count": 9
+        }
+      },
+      "evaluation": {
+        "function_eval": "Incorrect",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_ECON_Q1",
+      "category": "Extra Context",
+      "question": "This year, i.e. 2024, I will complete my master's degree. When I started my master's degree three years ago, an album was released on Republic Day, a very important day for my homeland Turkey, where we commemorate our ATA with respect, love and gratitude every year. Can you find me the name of this album? There is also another special day that our ATA gave as a gift to the youth, which is important for my homeland and shows how advanced ATAT\u00dcRK's vision was. Can you give me the name of the Coldplay album that was released on this special day seven years before the album was released on Republic Day? Return the answer in JSON format: {'album_released_on_RepublicDay': 'album_name', 'second_specified_album': 'specified_album_name'}",
+      "motivation": "Evaluate the ability to understand the context.",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_release_date_2", "albums_by_release_date_2"],
+          "parameters": [
+            {
+              "release_date": "2021-10-29"
+            },
+            {
+              "release_date": "2014-05-19"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_release_date_2", "albums_by_release_date_2"],
+        "parameters": [
+          {
+            "release_date": "2021-01-29"
+          },
+          {
+            "release_date": "2014-05-19"
+          }
+        ],
+        "answer": "Here is the JSON response with the information you requested:\n\n```json\n{\n  'album_released_on_RepublicDay': null,\n  'second_specified_album': 'Ghost Stories'\n}\n```\n\nUnfortunately, I couldn't find an album released on Republic Day in 2021, but the Coldplay album released on May 19, 2014, is 'Ghost Stories.'"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "album_released_on_RepublicDay": "[Equals]",
+          "second_specified_album": "Ghost Stories"
+        }
+      },
+      "evaluation": {
+        "function_eval": "Correct",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_DATA_TYPES_Q7",
+      "category":"Data Types",
+      "question":"Could you please find me an accomodation that is lastly rated in June of 2018, maybe on the first? Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+      "motivation":"Testing the ability of the LLM to understand the date as text and convert it to the right date format (DD-MM-YY)",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_listings_by_review_date"
+            ],
+            "parameters":[
+               {
+                  "last_review_date":"01-06-18"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_listings_by_review_date"
+         ],
+         "parameters":[
+            {
+               "last_review_date":"06-01-18"
+            }
+         ],
+         "answer":"```json\n{''}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "Sunny and spacious  1-bedroom in Brooklyn",
+               "Cozy Two Room Studio Astori"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Incorrect",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_LANGUAGE_Q3",
+      "category":"Languages",
+      "question":"K\u00f6nnen Sie mir bei einigen Orten in der Gegend von Brooklyn helfen, die Mehrbettzimmer anbieten, mit Bewertungen vom 18. Mai 19? Return the answer in JSON format: {'airbnb':'my_airbnb'}",
+      "motivation":"Testing the ability of the LLM to understand another language except English (German)",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "neighbourhood_group":"Brooklyn",
+                  "room_type":"Shared room",
+                  "last_review_date":"18-05-19"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_by_neighbourhood_group_room_type_date"
+         ],
+         "parameters":[
+            {
+               "room_type":"Shared room",
+               "last_review_date":"19-05-18",
+               "neighbourhood_group":"Brooklyn"
+            }
+         ],
+         "answer":"```json\n{'airbnb':'There are no available airbnbs in that neighbourhood with that room type and review date'}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":"2MinToTrainsCozyLivingRoomMaimonideLutheranHospita"
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_LANGUAGE_Q5",
+      "category":"Languages",
+      "question":"Je veux surprendre mon partenaire avec un No\u00ebl confortable et romantique \u00e0 New York, en s\u00e9journant dans un endroit chaleureux et priv\u00e9 \u00e0 Manhattan avec vue sur la neige, et j'ai besoin de votre aide pour trouver les meilleures options les moins ch\u00e8res avec les meilleurs avis de d\u00e9cembre 2018. Return the answer in JSON format:{'airbnb':['my_airnbn']}",
+      "motivation":"Testing the ability of the LLM to understand another language except English (French)",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "room_type":"Entire home apartment",
+                  "last_review_date":"31-12-18",
+                  "neighbourhood_group":"Manhattan"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_by_neighbourhood_group_room_type_date"
+         ],
+         "parameters":[
+            {
+               "last_review_date":"23-12-2018",
+               "neighbourhood_group":"Manhattan",
+               "room_type":"Entire home/apt"
+            }
+         ],
+         "answer":"```json\n{'airbnb':[]}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "Authentic studio-UES (30 days MIN)"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q7",
+      "category":"Data Types",
+      "question":"I, along with eight colleagues, will be visiting New York and are currently in search of an apartment that can accommodate all of us. We prefer a location near Manhattan. Could you please provide options that have been recently frequented or reviewed by previous occupants? Additionally, exclude any places with reviews dated before the first of January four years ago from the current date. Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+      "motivation":"Testing the ability of the LLM to understand the correct date format",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "neighbourhood_group":"Manhattan",
+                  "room_type":"Entire home apartment",
+                  "last_review_date":"01-01-19"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_by_neighbourhood_group_room_type_date"
+         ],
+         "parameters":[
+            {
+               "last_review_date":"2019-01-01",
+               "neighbourhood_group":"Manhattan",
+               "room_type":"Entire home/apt"
+            }
+         ],
+         "answer":"```json\n{'airbnb':[]}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "Studio in Brooklyn Heights with Private Entrance",
+               "Oasis in East Village",
+               "True 1BR in East Village with City Views",
+               "Urban sanctuary near Bedford L!",
+               "Stylish spacious 1 bd centrally located in Midtown",
+               "Chic and Cozy Chinatown Loft",
+               "Bright Clean North Central Park"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q8",
+      "category":"Data Types",
+      "question":"I want an entire apartment on 15 Jan in the area of Manhattan. Can you help me find some? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+      "motivation":"Testing the ability of the LLM to understand the the correct date format",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "neighbourhood_group":"Manhattan",
+                  "room_type":"Entire home apartment",
+                  "last_review_date":"15-01-22"
+               }
+            ]
+         },
+         {
+            "path_id":2,
+            "functions":[
+               " get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "neighbourhood_group":"Manhattan",
+                  "room_type":"Entire home apartment",
+                  "last_review_date":"15-01-23"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_by_neighbourhood_group_room_type_date"
+         ],
+         "parameters":[
+            {
+               "room_type":"Entire home/apt",
+               "last_review_date":"23-01-15",
+               "neighbourhood_group":"Manhattan"
+            }
+         ],
+         "answer":"```json\n{'airbnb':[]}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "There are no available airbnbs in that neighbourhood with that room type and review date"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q9",
+      "category":"Data Types",
+      "question":"Can you get for me some airbnbs in the area of Brooklyn, a private room would be nice, that was lastly rated on the first day of June in 2018? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+      "motivation":"Testing the ability of the LLM to understand the date data format",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "neighbourhood_group":"Brooklyn",
+                  "room_type":"Private room",
+                  "last_review_date":"01-06-18"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_by_neighbourhood_group_room_type_date"
+         ],
+         "parameters":[
+            {
+               "room_type":"Private room",
+               "last_review_date":"18-06-01",
+               "neighbourhood_group":"Brooklyn"
+            }
+         ],
+         "answer":"```json\n{'airbnb':[]}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "Sunny and spacious  1-bedroom in Brooklyn"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q10",
+      "category":"Data Types",
+      "question":"Can you get for me some airbnbs in the area of Brooklyn, a private room would be nice, that was lastly rated on the first June 2018? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+      "motivation":"Testing the ability of the LLM to understand the correct date format",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "last_review_date":"01-06-18",
+                  "room_type":"Private room",
+                  "neighbourhood_group":"Brooklyn"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_by_neighbourhood_group_room_type_date"
+         ],
+         "parameters":[
+            {
+               "room_type":"Private room",
+               "last_review_date":"01-06-2018",
+               "neighbourhood_group":"Brooklyn"
+            }
+         ],
+         "answer":"```json\n{'airbnb':[]}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "Sunny and spacious  1-bedroom in Brooklyn"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q8",
+      "category":"Extra Context",
+      "question":"Hello, I would like to rent a big home just for myself to clear up my mind and relax for three days. I am not sure yet but I think Brooklyn would be my choice in New York to chill. Just to make sure that the airbnb is recently visited I would like for it to have been reviewed at least 2 years ago, maybe in the middle of June of 2019, around the fifteenth. Can you recommend me some places? Return the answer in JSON format:{'airbnb':'my_airbnb'} ",
+      "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string and numeric matching), giving some extra context",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "neighbourhood_group":"Brooklyn",
+                  "room_type":"Entire home apartment",
+                  "last_review_date":"15-06-19"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_by_neighbourhood_group_room_type_date"
+         ],
+         "parameters":[
+            {
+               "room_type":"Entire home/apt",
+               "last_review_date":"19-06-15",
+               "neighbourhood_group":"Brooklyn"
+            }
+         ],
+         "answer":"```json\n{'airbnb':'There are no available airbnbs in Brooklyn with that room type and review date'}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "New & Bright Garden Apartment",
+               "Sophisticated Brooklyn Brownstone"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_EXTRA_Q9",
+      "category":"Extra Context",
+      "question":" I'm organizing a surprise for my partner or wife for New Year's in New York. The plan is to stay for three nights, from the 24th to the 26th of January, so we can celebrate the holiday in a cozy, private, and warm setting in Manhattan while watching the snowfall. To ensure a truly delightful experience, I am interested on finding an excellent place for our Christmas celebration. I'm specifically interested in places that received reviews, preferably dated on or after the 20th of January in 2019. Could you please assist me in finding some exceptional options? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+      "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string matching), giving some extra context",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "last_review_date":"20-01-19",
+                  "room_type":"Private room",
+                  "neighbourhood_group":"Manhattan"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_by_neighbourhood_group_room_type_date"
+         ],
+         "parameters":[
+            {
+               "last_review_date":"20-01-2019",
+               "neighbourhood_group":"Manhattan",
+               "room_type":"Private room"
+            }
+         ],
+         "answer":"```json\n{\n  'error': 'There are no available airbnbs in Manhattan with a Private room type and reviews on or after 20-01-2019'\n}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "2 mins walk from the subway station in West Harlem",
+               "SoHo Charm - Entire 2-br apartment"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_REASON_Q6",
+      "category":"Reasoning",
+      "question":"I want to stay at a good private room close to some friends of mine in Queens, the thing is that I want for it to be lastly reviewed four years ago in 14 December, can you do that for me? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+      "motivation":"Testing the ability of the LLM to reason the common sense implications of the user",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "room_type":"Private room",
+                  "last_review_date":"14-12-19",
+                  "neighbourhood_group":"Queens"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_by_neighbourhood_group_room_type_date"
+         ],
+         "parameters":[
+            {
+               "last_review_date":"14-12-2019",
+               "neighbourhood_group":"Queens",
+               "room_type":"Private room"
+            }
+         ],
+         "answer":"```json\n{'airbnb':[]}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "There are no available airbnbs in that neighbourhood with that room type and review date"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_TYPO_Q3",
+      "category":"Typos",
+      "question":"Can you get for me some listings that are shareed rooms in Brooklyn and are lastly reviewed in 300 February 2018?  Return the answer in JSON format:{'airbnb_location':'location', 'last_reviewed':'review_date', 'type':'type_of_room'}",
+      "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (date value typo)",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "room_type":"Shared room",
+                  "last_review_date":"28-02-18",
+                  "neighbourhood_group":"Brooklyn"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_by_neighbourhood_group_room_type_date"
+         ],
+         "parameters":[
+            {
+               "room_type":"Shared room",
+               "last_review_date":"18-02-28",
+               "neighbourhood_group":"Brooklyn"
+            }
+         ],
+         "answer":"```json\n{\n  'error': 'There are no available airbnbs in Brooklyn with the specified room type (Shared room) and review date (February 2018).'\n}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":"There are no available airbnbs in that neighbourhood with that room type and review date"
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_TYPO_Q4",
+      "category":"Typos",
+      "question":" Can you get for me some listings that are shareed rooms in Brooklyn and are lastly reviewed in 310 March 2018? Return the answer in JSON format:{'airbnb':['my_airbnb']}",
+      "motivation":"Testing the ability of the LLM to understand a typo and correct it approprietely (date value typo)",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "neighbourhood_group":"Brooklyn",
+                  "room_type":"Shared room",
+                  "last_review_date":"31-03-18"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_by_neighbourhood_group_room_type_date"
+         ],
+         "parameters":[
+            {
+               "last_review_date":"18-03-31",
+               "neighbourhood_group":"Brooklyn",
+               "room_type":"Shared room"
+            }
+         ],
+         "answer":"```json\n{'error':'There are no available airbnbs in Brooklyn with a Shared room type and last review date of March 31, 2018.'}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "Clean Cute Williamsburg Apt Steps from train!"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_STEP_ONE_SHOT_DATA_Q11",
+      "category":"Data Types",
+      "question":"I would like to stay in Manhattan for a couple of nights and get a shared room. I would like to get an airbnb that is lastly rated on 2019-06-23? Return the answer in JSON format:{'airbnb_location':'location', 'last_reviewed':'review_date', 'type':'type_of_room'}",
+      "motivation":"Testing the ability of the LLM to understand the correct date format",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_by_neighbourhood_group_room_type_date"
+            ],
+            "parameters":[
+               {
+                  "neighbourhood_group":"Manhattan",
+                  "room_type":"Shared room",
+                  "last_review_date":"23-06-19"
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_by_neighbourhood_group_room_type_date"
+         ],
+         "parameters":[
+            {
+               "last_review_date":"23-06-2019",
+               "neighbourhood_group":"Manhattan",
+               "room_type":"Shared room"
+            }
+         ],
+         "answer":"```json\n{\n  'error': 'There are no available airbnbs in that neighbourhood with that room type and review date'\n}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "airbnb":[
+               "British Room @ Columbia Uni.",
+               "Beautiful Room with Laundry in Prime Williamsburg",
+               "Central Harlem Private Studio",
+               "Modern and Stylish 1 Bedroom in East Village",
+               "Spacious & Stylish 3BR Condo Steps to the Subway!",
+               "Sunny 1BR + Outdoor space [L line]",
+               "Your own hip and cozy 1BD apartment",
+               "Artsy and charming retreat in Lefferts Garden",
+               "Shared Cozy Apartment By Times Square Manhattan",
+               "Arthur Ave 2BDR sleeps 6! (15 mins from Manhattan)",
+               "NYC Bedroom!! - Minutes to Central Park!!",
+               "Spacious Great Location Garden 1 stop to City.",
+               "Sonder | Stock Exchange | Sunny 3BR + Sofa Bed",
+               "Near Subway and Central Park :)",
+               "Room wpvt bathroom on Central Park",
+               "Cozy Private room in Chelsea !",
+               "Amazing LES apt - cool bright...",
+               "Cute apartment with Backyard",
+               "Luxury 2BDR in Prime Area Doorman Elevator",
+               "Large Charming 1 BR + Den  in  Brownstone Apt",
+               "Amazing Columbus Circle 3 Bedroom",
+               "Private 2B Room in 4BR2BA APT in Hell's Kitchen",
+               "Bright 2BR in Bed-Stuy (20 Minutes to Manhattan!)",
+               "Comfy 4br 2 full baths 3 fls 2 living rooms"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    }
+  ]
+}

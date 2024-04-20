@@ -1,0 +1,628 @@
+{
+  "question_result": [
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_SEL_Q18",
+      "category": "Selection",
+      "question": "Get the list of albums released in 1988 with min rating 3.5 and reviewed by more than 200 and rated by minimum 5000 persons. From this list, only provide those album names that are of type Progressive Metal. Return the answer in JSON format: {'albums':[album_names_here]}",
+      "motivation": "Evaluate the ability to perform multi-targeted information retrieval of a dataset based on the criterion (string matching in list of items per record).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["high_rated_reviewed_albums_by_date"],
+          "parameters": [
+            {
+              "rating_threshold": 3.5,
+              "min_ratings": 5000,
+              "review_threshold": 200,
+              "release_date": "1988"
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": [
+          "high_rated_reviewed_albums",
+          "filter_albums_by_date_range",
+          "albums_by_genres2"
+        ],
+        "parameters": [
+          {
+            "rating_threshold": 3.5,
+            "min_ratings": 5000,
+            "review_threshold": 200
+          },
+          { "start_date": "1988-01-01", "end_date": "1988-12-31" },
+          { "genres_in": ["Progressive Metal"], "genres_out": [] }
+        ],
+        "answer": "```json\n{'albums':['Seventh Son of a Seventh Son']}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": [
+            "...And Justice for All",
+            "Seventh Son of a Seventh Son",
+            "Operation: Mindcrime"
+          ]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Incorrect",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_LTAIL_Q4",
+      "category": "Long Tail Entities",
+      "question": "It is 2023, and I need some ethereal music. What are light airy breakbeat albums?Please provide only album(s) name. Return the answer in JSON format: {'albums':[album_names_here]}",
+      "motivation": "Evaluate the ability to correctly identify long tail entity attributes(descriptor and genre).",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["albums_by_year_genres_and_descriptors"],
+          "parameters": [
+            {
+              "release_date": "2023",
+              "genres": ["breakbeat"],
+              "descriptors": ["ethereal"]
+            }
+          ]
+        }
+      ],
+      "model_solution": {
+        "functions": ["albums_by_genres2"],
+        "parameters": [
+          {
+            "genres_in": ["breakbeat"],
+            "genres_out": ["heavy", "dark", "aggressive"]
+          }
+        ],
+        "answer": "```json\n{\n  'albums': [\n    'Un/limited Love',\n    'Heaven Knows',\n    'Raven'\n  ]\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": {
+          "albums": ["Un/limited Love", "Heaven Knows", "Raven"]
+        }
+      },
+      "evaluation": {
+        "function_eval": "Incorrect",
+        "argument_eval": "Incorrect",
+        "response_eval": "Correct"
+      }
+    },
+    {
+      "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q2",
+      "category": "Interpretation",
+      "question": "Can you retrieve the songs which were released only by Bad Bunny and on leap day among 5 trendy tracks of Bad Bunny? Return the answer in JSON format: {'songs': [song_names_here]}",
+      "motivation": "Evaluate the ability to correctly make temporal interpretation",
+      "overall_match": false,
+      "correct_paths": [
+        {
+          "path_id": 1,
+          "functions": ["top_streamed_songs_by_artist"],
+          "parameters": [{ "artist_name": "Bad Bunny", "n": 5 }]
+        }
+      ],
+      "model_solution": {
+        "functions": ["top_streamed_songs_by_artist_date"],
+        "parameters": [
+          { "artist_name": "Bad Bunny", "release_date": "2020-02-29", "n": 5 }
+        ],
+        "answer": "```json\n{\n  'songs': ['A Tu Merced', 'La Zona']\n}\n```"
+      },
+      "correct_answer": {
+        "ordered_items": [],
+        "answer": { "songs": ["A Tu Merced"] }
+      },
+      "evaluation": {
+        "function_eval": "Incorrect",
+        "argument_eval": "Incorrect",
+        "response_eval": "Incorrect"
+      }
+    },
+    {
+      "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_REAS_Q5",
+      "category":"Reasoning",
+      "question":" My native friends have shared a concern about the cleanliness and popularity of places to stay in the Brooklyn. Despite this, I find myself obligated to attend a conference there with my young child, and staying together is a necessity. Could you kindly recommend the most popular and frequently visited Airbnb options in the area? Additionally, as I won't have a car, I'd appreciate suggestions for good eateries that cater to families with children. Return the answer in JSON format: {'restaurants': [my_restaurant]}",
+      "motivation":"Evaluate the ability of LLM to reason numerical representations of string-like context. Assess GPT's reasoning ability in determining the sequence of three functions as a chain-of-thought in order to finally reason targets according to geographical proximity.",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_airbnb_with_max_reviews",
+               "get_long_lat_by_airbnb",
+               "get_restaurant_by_airbnb_closeness"
+            ],
+            "parameters":[
+               {
+                  "popularity":1,
+                  "neighbourhood_group":"Brooklyn",
+                  "room_type":"Shared Room"
+               },
+               {
+                  "listing":"A Couch In East Williamsburg Near Train."
+               },
+               {
+                  "latitude":40.70472,
+                  "longitude":-73.93784
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_airbnb_with_max_reviews"
+         ],
+         "parameters":[
+            {
+               "popularity":5,
+               "neighbourhood_group":"Brooklyn",
+               "room_type":"Entire home/apt"
+            }
+         ],
+         "answer":"{\n  'restaurants': []\n}"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "restaurants":[
+               "MARCO'S",
+               "MAKAVELY PIZZA",
+               "YUMMY YUMMY CHINESE"
+            ]
+         }
+      },
+      "evaluation":{
+         "function_eval":"Partially Correct",
+         "argument_eval":"Partially Correct",
+         "response_eval":"Incorrect"
+      }
+    },
+    {
+        "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_AGG_Q4",
+        "category":"Aggregation",
+        "question":" As I want to sleep in a place in Brooklyn, I would like to go to one of the 10 most frequently used by the customers, the one with more than 200 reviews, to stay in that zone so I can have the best time ever in the best place to stay. I would like to share my space with my sister and also I would like to find the best restaurant around there so we could eat our breakfast and lunch there. Return the answer in JSON format: {'restaurant_close_popular_airbnb': [best_restaurant]}",
+        "motivation":"Evaluate LLM's ability to do operations on integers(maximum) and filtering based on comparisons based on user requests.",
+        "overall_match":false,
+        "correct_paths":[
+          {
+              "path_id":1,
+              "functions":[
+                "get_airbnb_with_max_reviews",
+                "get_long_lat_by_airbnb",
+                "get_restaurant_by_airbnb_closeness"
+              ],
+              "parameters":[
+                {
+                    "popularity":10,
+                    "neigborhood_group":"Brooklyn",
+                    "room_type":"Shared Room"
+                },
+                {
+                    "listing":"A Couch In East Williamsburg Near Train."
+                },
+                {
+                    "latitude":40.78279,
+                    "longitude":-73.98176
+                }
+              ]
+          }
+        ],
+        "model_solution":{
+          "functions":[
+              "get_airbnb_with_max_reviews",
+              "get_restaurant_by_airbnb_closeness"
+          ],
+          "parameters":[
+              {
+                "popularity":10,
+                "neighbourhood_group":"Brooklyn",
+                "room_type":"Shared room"
+              },
+              {
+                "latitude":40.70472,
+                "longitude":-73.93784
+              }
+          ],
+          "answer":"```json\n{\n  'restaurant_close_popular_airbnb': ['19 CAFE']\n}\n```"
+        },
+        "correct_answer":{
+          "ordered_items":[
+              
+          ],
+          "answer":{
+              "restaurant_close_popular_airbnb":[
+                "MARCO'S",
+                "MAKAVELY PIZZA",
+                "YUMMY YUMMY CHINESE"
+              ]
+          }
+        },
+        "evaluation":{
+          "function_eval":"Partially Correct",
+          "argument_eval":"Incorrect",
+          "response_eval":"Incorrect"
+        }
+    },
+    {
+        "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_Q1",
+        "category":"Extra Context",
+        "question":"As I'm hunting for a comfy spot near the Statue of Liberty in Manhattan, I want to pick a shared place that is the most popular among folks in that area, so I can have a blast in the best spot. I'm bringing my sister along, but also we want to explore nearby a fantastic spot for breakfast and lunch. It's like finding the perfect combo for a great stay and tasty meals. Any help in sorting out this adventure puzzle would be awesome! Return the answer in JSON format: {'closeby_restaurants': [my_restaurant_near_popular_airbnb]}",
+        "motivation":"Evaluate the ability of LLM to understand the core components of a user request and extract the correct parameter, parameter values and functions and perform chain-of-thought regardless of the related context.",
+        "overall_match":false,
+        "correct_paths":[
+          {
+              "path_id":1,
+              "functions":[
+                "get_airbnb_with_max_reviews",
+                "get_long_lat_by_airbnb ",
+                "get_restaurant_by_airbnb_closeness"
+              ],
+              "parameters":[
+                {
+                    "popularity":1,
+                    "neigborhood_group":"Manhattan",
+                    "room_type":"Shared Room"
+                },
+                {
+                    "listing":"Gaudhi"
+                },
+                {
+                    "latitude":40.80026,
+                    "longitude":-73.95197
+                }
+              ]
+          }
+        ],
+        "model_solution":{
+          "functions":[
+              "get_airbnb_with_max_reviews",
+              "get_restaurant_by_airbnb_closeness"
+          ],
+          "parameters":[
+              {
+                "popularity":1,
+                "neighbourhood_group":"Manhattan",
+                "room_type":"Shared room"
+              },
+              {
+                "latitude":40.74726,
+                "longitude":-74.00213
+              }
+          ],
+          "answer":"```json\n{\n  'closeby_restaurants': [\n    {\n      'restaurant_name': 'TXIKITO',\n      'distance': 0.12941981642654019\n    },\n    {\n      'restaurant_name': 'PEPE GIALLO',\n      'distance': 0.2357484083700256\n    },\n    {\n      'restaurant_name': 'MILK & HOPS',\n      'distance': 0.2857661513160314\n    },\n    {\n      'restaurant_name': 'JOE'S PIZZA',\n      'distance': 0.4390989291441886\n    },\n    {\n      'restaurant_name': 'BILLYMARKS WEST',\n      'distance': 0.4574684226840758\n    }\n  ]\n}\n```"
+        },
+        "correct_answer":{
+          "ordered_items":[
+              
+          ],
+          "answer":{
+              "closeby_restaurants":[
+                "ARTOPOLIS CAFE",
+                "MILA CAFE",
+                "JUICE RIGHT CORP.",
+                "JOE & THE JUICE",
+                "AJISAI JAPANESE FUSION",
+                "SUSHI DAMO"
+              ]
+          }
+        },
+        "evaluation":{
+          "function_eval":"Partially Correct",
+          "argument_eval":"Incorrect",
+          "response_eval":"Incorrect"
+        }
+    },
+    {
+        "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q2",
+        "category":"Simple Questions",
+        "question":"My native friends have shared a concern about the cleanliness of places to stay in Brooklyn. Despite this, I find myself obligated to attend a conference there with my young child, and staying together in a shared space is a necessity. Could you kindly recommend the most popular and frequently visited Airbnb options in the area? Additionally, after firstly finding the proximity details of the most popular Airbnb, use this proximity data to find nearby suggestions for restaurants that cater to families with children as I won't have a car. Return the answer in JSON format: {'restaurants': [my_restaurant]} ",
+        "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts. ",
+        "overall_match":false,
+        "correct_paths":[
+          {
+              "path_id":1,
+              "functions":[
+                "get_airbnb_with_max_reviews",
+                "get_long_lat_by_airbnb",
+                "get_restaurant_by_airbnb_closeness"
+              ],
+              "parameters":[
+                {
+                    "popularity":1,
+                    "neighbourhood_group":"Brooklyn",
+                    "room_type":"Shared Room"
+                },
+                {
+                    "listing":"A Couch In East Williamsburg Near Train."
+                },
+                {
+                    "latitude":40.70472,
+                    "longitude":-73.93784
+                }
+              ]
+          }
+        ],
+        "model_solution":{
+          "functions":[
+              "get_airbnb_with_max_reviews"
+          ],
+          "parameters":[
+              {
+                "popularity":5,
+                "neighbourhood_group":"Brooklyn",
+                "room_type":"Entire home/apt"
+              }
+          ],
+          "answer":"I'm sorry, but it seems there was an issue finding the most popular Airbnb listings in Brooklyn for entire homes or apartments. This could be due to a lack of data or an error in the search criteria. Is there anything else I can assist you with?"
+        },
+        "correct_answer":{
+          "ordered_items":[
+              
+          ],
+          "answer":{
+              "restaurants":[
+                "MARCO'S",
+                "MAKAVELY PIZZA",
+                "YUMMY YUMMY CHINESE"
+              ]
+          }
+        },
+        "evaluation":{
+          "function_eval":"Partially Correct",
+          "argument_eval":"Partially Correct",
+          "response_eval":"Incorrect"
+        }
+    },
+    {
+        "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q5",
+        "category":"Simple Questions",
+        "question":"As I want to sleep in a place in Brooklyn, among the 10 most popular Airbnbs used by the customers, I would like to go to the one with more than 200 reviews, to stay in that zone so I can have the best time ever. I would like to share my room with my sister. After finding that specific Airbnb please find the corresponding proximity data and use these data to find restaurants around there so we could eat our breakfast and lunch there. Return the answer in JSON format: {'restaurants_near_required_airbnb': [my_restaurant]} ",
+        "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts. ",
+        "overall_match":false,
+        "correct_paths":[
+          {
+              "path_id":1,
+              "functions":[
+                "get_airbnb_with_max_reviews",
+                "get_long_lat_by_airbnb",
+                "get_restaurant_by_airbnb_closeness"
+              ],
+              "parameters":[
+                {
+                    "popularity":10,
+                    "neigborhood_group":"Brooklyn",
+                    "room_type":"Shared Room"
+                },
+                {
+                    "listing":"A Couch In East Williamsburg Near Train."
+                },
+                {
+                    "latitude":40.70472,
+                    "longitude":-73.93784
+                }
+              ]
+          }
+        ],
+        "model_solution":{
+          "functions":[
+              "get_airbnb_with_max_reviews",
+              "get_restaurant_by_airbnb_closeness"
+          ],
+          "parameters":[
+              {
+                "popularity":10,
+                "neighbourhood_group":"Brooklyn",
+                "room_type":"Shared room"
+              },
+              {
+                "latitude":40.27958,
+                "longitude":-73.19802
+              }
+          ],
+          "answer":"```json\n{\n  'restaurants_near_required_airbnb': [\n    {\n      'distance': 0.57210120567739,\n      'restaurant_name': '19 CAFE'\n    },\n    {\n      'distance': 0.753475544607451,\n      'restaurant_name': 'TWO BROTHERS FISH & CHIPS'\n    },\n    {\n      'distance': 0.8173021837432524,\n      'restaurant_name': 'MI SABOR CAFE'\n    },\n    {\n      'distance': 0.9866916997061507,\n      'restaurant_name': 'ACTION BURGER'\n    },\n    {\n      'distance': 1.1039860253165805,\n      'restaurant_name': 'YUMMY 88'\n    },\n    {\n      'distance': 1.202394169681627,\n      'restaurant_name': 'HAREFIELD ROAD PUB'\n    },\n    {\n      'distance': 1.2450833310404055,\n      'restaurant_name': 'THE COBRA CLUB'\n    },\n    {\n      'distance': 1.2545317722284695,\n      'restaurant_name': 'PAN RICO AMBATENO'\n    },\n    {\n      'distance': 1.2558455963106854,\n      'restaurant_name': 'DAR 525'\n    },\n    {\n      'distance': 1.2856548684436002,\n      'restaurant_name': 'AVANT GARDENER'\n    }\n  ]\n}\n```"
+        },
+        "correct_answer":{
+          "ordered_items":[
+              
+          ],
+          "answer":{
+              "restaurants_near_required_airbnb":[
+                "MARCO'S",
+                "MAKAVELY PIZZA",
+                "YUMMY YUMMY CHINESE"
+              ]
+          }
+        },
+        "evaluation":{
+          "function_eval":"Partially Correct",
+          "argument_eval":"Incorrect",
+          "response_eval":"Incorrect"
+        }
+    },
+    {
+        "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_EXTRA_INSTRUCTIONS_Q8",
+        "category":"Simple Questions",
+        "question":"I'm looking for the most famous cozy place near the Statue of Liberty in Manhattan where lots of people enjoy hanging out. My sister and I want to stay together and find a spot for breakfast and lunch nearby. We want to have a great time and delicious meals during our stay. Any help figuring this out after firstly finding the proximity details of the corresponding place to stay and using them to help me would be appreciated! Return the answer in JSON format: {'restaurants': [my_restaurant]}  ",
+        "motivation":"Evaluating the ability of LLM to decide the functions to call based on extra instructions given by the user in the prompts.",
+        "overall_match":false,
+        "correct_paths":[
+          {
+              "path_id":1,
+              "functions":[
+                "get_airbnb_with_max_reviews",
+                "get_long_lat_by_airbnb ",
+                "get_restaurant_by_airbnb_closeness"
+              ],
+              "parameters":[
+                {
+                    "popularity":1,
+                    "neigborhood_group":"Manhattan",
+                    "room_type":"Shared Room"
+                },
+                {
+                    "listing":"Gaudhi"
+                },
+                {
+                    "latitude":40.80026,
+                    "longitude":-73.95197
+                }
+              ]
+          }
+        ],
+        "model_solution":{
+          "functions":[
+              "get_airbnb_by_lat_long",
+              "get_restaurant_by_airbnb_closeness"
+          ],
+          "parameters":[
+              {
+                "latitude":40.689247,
+                "longitude":-74.044502
+              },
+              {
+                "latitude":40.689247,
+                "longitude":-74.044502
+              }
+          ],
+          "answer":"```json\n{\n  'restaurants': ['THE LIBERTY CAFE (S.I. NEWHOUSE)']\n}\n```"
+        },
+        "correct_answer":{
+          "ordered_items":[
+              
+          ],
+          "answer":{
+              "restaurants":[
+                "ARTOPOLIS CAFE",
+                "MILA CAFE",
+                "JUICE RIGHT CORP.",
+                "JOE & THE JUICE",
+                "AJISAI JAPANESE FUSION",
+                "SUSHI DAMO"
+              ]
+          }
+        },
+        "evaluation":{
+          "function_eval":"Partially Correct",
+          "argument_eval":"Incorrect",
+          "response_eval":"Incorrect"
+        }
+    },
+    {
+        "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q1",
+        "category":"Extra Context",
+        "question":"I woke up really tired and sad today and I would like to travel somewhere. I am on my way to Manhattan from Los Angeles and I know there is the Statue of Liberty nearby so I can see that to cure my depression. Could you find me five places to stay for the night and cure my depression? Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+        "motivation":"Testing the ability of the LLM to understand the main goal requested by the user, regardless of any related or unrelated extra context given to the prompt",
+        "overall_match":false,
+        "correct_paths":[
+          {
+              "path_id":1,
+              "functions":[
+                "get_listing_by_neighbourhood_group"
+              ],
+              "parameters":[
+                {
+                    "neighbourhood_group":"Manhattan"
+                }
+              ]
+          }
+        ],
+        "model_solution":{
+          "functions":[
+              "get_listing_by_neighbourhood_group",
+              "get_listing_by_lower_price"
+          ],
+          "parameters":[
+              {
+                "neighbourhood_group":"Manhattan"
+              },
+              {
+                  "price":100
+              }
+          ],
+          "answer":"```json\n{\n  'airbnb': [\n    'British Room @ Columbia Uni'\n  ]\n}\n```"
+        },
+        "correct_answer":{
+          "ordered_items":[
+              
+          ],
+          "answer":{
+              "airbnb":[
+                "Spacious Bright 1 Bedroom East Village Apartment",
+                "West Village Studio Apartment",
+                "West Village Apartment near Washington Square Park",
+                "5 rooms in clean apartment West Harlem",
+                "Soho loft with everything"
+              ]
+          }
+        },
+        "evaluation":{
+          "function_eval":"Partially Correct",
+          "argument_eval":"Partially Correct",
+          "response_eval":"Incorrect"
+        }
+    },
+    {
+        "question_id":"TRAVEL_SINGLE_STEP_ONE_SHOT_EXTRA_Q7",
+        "category":"Extra Context",
+        "question":"I am traveling with some of my business colleagues, with whom I want to share a spacious place for 10 people and we would like to visit New York today and stay there for some nights. Could you give me some suggestions? Please return at most 10 entries. Return the answer in JSON format: {'airbnb':[my_airbnb]}",
+        "motivation":"Evaluate the ability of LLM to filter based on a specic criterion (string matching), giving some extra context",
+        "overall_match":false,
+        "correct_paths":[
+          {
+              "path_id":1,
+              "functions":[
+                "get_listing_by_room_type"
+              ],
+              "parameters":[
+                {
+                    "room_type":"Entire home apartment"
+                }
+              ]
+          }
+        ],
+        "model_solution":{
+          "functions":[
+              "get_listing_by_neighbourhood_group"
+          ],
+          "parameters":[
+              {
+                "neighbourhood_group":"Manhattan"
+              }
+          ],
+          "answer":"```json\n{\n  'airbnb': [\n    'Manhattan Midtown Vacation Home away from Home',\n    '70' Luxury MotorYacht on the Hudson',\n    'Gorgeous Two Bedroom Apartment Columbias Campus',\n    'West 15th Street Cozy Chelsea 1bd Serviced Apt',\n    'Cozy Apartment',\n    'Master Bed/Bath near Lincoln Center in high-rise',\n    'Beautiful & Private Manhattan Room',\n    'Central Harlem Private Studio',\n    'Gorgeous and Renovated Chelsea Apartment',\n    'Modern and Stylish 1 Bedroom in East Village'\n  ]\n}\n```"
+        },
+        "correct_answer":{
+          "ordered_items":[
+              
+          ],
+          "answer":{
+              "airbnb":[
+                "Fun 3 Bedroom Just Minutes to Manhattan!!",
+                "Spacious Bright 1 Bedroom East Village Apartment",
+                "Spacious Brooklyn Brownstone 3BR+",
+                "Quiet & Spacious Brooklyn Apt for Cat-Lovers",
+                "Spacious 1BR Bushwick Surfers Loft!",
+                "West Village Studio Apartment",
+                "West Village Apartment near Washington Square Park",
+                "5 rooms in clean apartment West Harlem",
+                "Soho loft with everything",
+                "Cozy & artsy apt in East Village - 2 bedrooms"
+              ]
+          }
+        },
+        "evaluation":{
+          "function_eval":"Incorrect",
+          "argument_eval":"Incorrect",
+          "response_eval":"Incorrect"
+        }
+    }    
+  ]
+}

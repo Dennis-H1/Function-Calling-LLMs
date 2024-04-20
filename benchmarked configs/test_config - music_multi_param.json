@@ -1,5 +1,5 @@
 {
-  "id": "TRAVEL_Q_MULTI_CALL_PARALLEL_V01",
+  "id": "MUSIC_Q_SINGLE_STEP_MULTI_PARAM_V1",
   "name": "Mannheim Function Calling Benchmark - gpt-4-1106-preview Music wo/ Example Values",
   "description": "Configuration for running the benchmark against GPT4.5 using the single step music questions, functions with up to 5 parameters and simple function descriptions.",
   "authors": ["Dennis Heinz", "Saman Khursheed", "Zeynep Eroglu"],
@@ -7,10 +7,10 @@
   "model": "gpt-4-1106-preview",
   "hyperparameters": {
     "temperature": 0,
-    "mode": "parallel"
+    "mode": "sequential"
   },
   "prompt": "You are a helpful assistant. Answer briefly.",
-  "function_set": "TRAVEL_FUNC_MULTI_CALL_PARALLEL_SIMPLE_DESC_NO_EX_V01",
-  "question_set": "TRAVEL_Q_MULTI_CALL_PARALLEL_V01",
-  "output_file": "./src/config/out/my_benchmark.json"
+  "function_set": "MUSIC_FUNC_MULTI_PARAM_SIMPLE_DESC_NO_EX_V01",
+  "question_set": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_MULTI_PARAM_V01",
+  "output_file": "./src/config/out/MUSIC_Q_SINGLE_STEP_SEQ.json"
 }

@@ -1,0 +1,1319 @@
+{
+    "metadata": {
+        "run_id": "MUSIC_Q_SINGLE_STEP_ONE_SHOT_V1",
+        "run_name": "Mannheim Function Calling Benchmark - gpt-4-1106-preview Music wo/ Example Values",
+        "question_set_id": "MUSIC_Q_PAR_MULTI_STEP_ONE_SHOT_V1",
+        "function_set_id": "MUSIC_FUNC_COMPLEX_DESC_NO_EX_V2",
+        "prompt": "You are a helpful assistant. Answer briefly.",
+        "model": "gpt-4-1106-preview",
+        "hyperparameters": {
+            "temperature": 0
+        },
+        "run_start_timestamp": "2024-03-26 03:48:12.284269",
+        "run_end_timestamp": "2024-03-26 03:52:14.665104",
+        "test_driver_version": "1.0.0"
+    },
+    "statistics": {
+        "number_of_functions": {
+            "total": 49,
+            "correct": 47,
+            "accuracy": 0.96
+        },
+        "number_of_parameters": {
+            "total": 49,
+            "correct": 45,
+            "accuracy": 0.92
+        },
+        "number_of_answers": {
+            "total": 22,
+            "correct": 15,
+            "accuracy": 0.68
+        },
+        "number_of_tokens": {
+            "input": 23048,
+            "output": 6112
+        }
+    },
+    "question_result": [
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_SEL_Q1",
+            "category": "Selection",
+            "question": "Among the albums released in 2000 and 10 years apart in 2010, return the ones with 5 or more genres.Return the answer in JSON format: {'albums': [album_names_here]}",
+            "motivation": "Evaluate the ability to perform multi-targeted information retrieval of data based on niche genre identification.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_release_date_2",
+                        "albums_by_release_date_2"
+                    ],
+                    "parameters": [
+                        {
+                            "release_date": "2000"
+                        },
+                        {
+                            "release_date": "2010"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_release_date_2",
+                    "albums_by_release_date_2"
+                ],
+                "parameters": [
+                    {
+                        "release_date": "2000"
+                    },
+                    {
+                        "release_date": "2010"
+                    }
+                ],
+                "answer": "```json\n{\n  'albums': [\n    'Music',\n    'Speak Now'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "albums": [
+                        "Kid A",
+                        "Speak Now",
+                        "Music"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_SEL_Q2",
+            "category": "Selection",
+            "question": "Among all the songs of Justin Bieber and Bad Bunny, can you please provide the songs with bpm in the range of 120-160. Return the answer in JSON format: {'songs': [specified_bpm_range_song_names_here]}",
+            "motivation": "Evaluate the ability to perform multi-targeted information retrieval of data based on a defined criteria (interval of integer bounds).",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_artist_2",
+                        "songs_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Justin Bieber"
+                        },
+                        {
+                            "artist_name": "Bad Bunny"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "songs_by_artist_2",
+                    "songs_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Justin Bieber"
+                    },
+                    {
+                        "artist_name": "Bad Bunny"
+                    }
+                ],
+                "answer": "```json\n{\n  'songs': [\n    'Ghost',\n    'Honest (feat. Don Toliver)',\n    'Neverita',\n    'Dos Mil 16',\n    'Un Coco'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "songs": [
+                        "Ghost",
+                        "Private Landing (feat. Justin Bieber & Future)",
+                        "Honest (feat. Don Toliver)",
+                        "Neverita",
+                        "Yo No Soy Celoso",
+                        "Dos Mil 16",
+                        "Un Coco",
+                        "Aguacero"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_SEL_Q3",
+            "category": "Selection",
+            "question": "Among the albums of Ed Sheeran and Olivia Rodrigo, return the album with the highest number of reviews. Return the answer in JSON format: {'album': 'highest_reviewed_album_name'}",
+            "motivation": "Evaluate the ability to perform single-targeted information retrieval of data based on criterion (max. number).",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Ed Sheeran"
+                        },
+                        {
+                            "artist_name": "Olivia Rodrigo"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Ed Sheeran"
+                    },
+                    {
+                        "artist_name": "Olivia Rodrigo"
+                    }
+                ],
+                "answer": "```json\n{'album': 'Sour'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album": "Sour"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_SEL_Q4",
+            "category": "Selection",
+            "question": "My two favourite songs of Taylor Swift are 'Maroon' and 'Shake It Off'. Which one is streamed more? Return the answer in JSON format: {'song': 'more_streamed_song_name'}",
+            "motivation": "Evaluate the ability to perform single-targeted information retrieval of data based on criterion (large integer).",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "song_info"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Maroon"
+                        },
+                        {
+                            "song_name": "Shake It Off"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "sum_streams_given_songs"
+                ],
+                "parameters": [
+                    {
+                        "songs": [
+                            "Maroon",
+                            "Shake It Off"
+                        ]
+                    }
+                ],
+                "answer": "The song 'Shake It Off' by Taylor Swift is streamed more. Here is the answer in JSON format:\n\n```json\n{'song': 'Shake It Off'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "song": "Shake It Off"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Incorrect",
+                "argument_eval": "Incorrect",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_AGG_Q1",
+            "category": "Aggregation",
+            "question": "Using the info of Miley Cyrus, Dua Lipa and Rihanna, return the name of the artist who is the youngest. Return the answer in JSON format: {'youngest_artist': 'name_of_artist'}",
+            "motivation": "Evaluate the ability to find the most recent date attribute value.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "artist_info",
+                        "artist_info",
+                        "artist_info"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Miley Cyrus"
+                        },
+                        {
+                            "artist_name": "Dua Lipa"
+                        },
+                        {
+                            "artist_name": "Rihanna"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "artist_info",
+                    "artist_info",
+                    "artist_info"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Miley Cyrus"
+                    },
+                    {
+                        "artist_name": "Dua Lipa"
+                    },
+                    {
+                        "artist_name": "Rihanna"
+                    }
+                ],
+                "answer": "```json\n{'youngest_artist': 'Dua Lipa'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "youngest_artist": "Dua Lipa"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_AGG_Q2",
+            "category": "Aggregation",
+            "question": "Provide the average no of streams for the songs of each of these artists: Bruno Mars, Olivia Rodrigo and Coldplay in that order. Which artist's songs has the highest avg streams? Return the answer in JSON format: {'artist_with_highest_number_streams': 'name', 'avg_num_streams': [ordered_n]}",
+            "motivation": "Evaluate the ability to perform aggregation (average) on the result and find maximum value among the aggregated result.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_artist_2",
+                        "songs_by_artist_2",
+                        "songs_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Bruno Mars"
+                        },
+                        {
+                            "artist_name": "Olivia Rodrigo"
+                        },
+                        {
+                            "artist_name": "Coldplay"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "songs_by_artist_2",
+                    "songs_by_artist_2",
+                    "songs_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Bruno Mars"
+                    },
+                    {
+                        "artist_name": "Olivia Rodrigo"
+                    },
+                    {
+                        "artist_name": "Coldplay"
+                    }
+                ],
+                "answer": "To calculate the average number of streams for each artist, we sum the streams of all their songs and divide by the number of songs. Here are the calculations:\n\n**Bruno Mars:**\n- Total streams: 1481349984 + 1661187319 + 1641426668 + 1062956628 = 5846922599\n- Number of songs: 4\n- Average streams: 5846922599 / 4 = 1461730649.75\n\n**Olivia Rodrigo:**\n- Total streams: 140003974 + 1887039593 + 1858144199 + 1256880657 + 850608354 + 783706581 + 665765558 = 6803071916\n- Number of songs: 7\n- Average streams: 6803071916 / 7 = 971867416.57\n\n**Coldplay:**\n- Total streams: 1592909789 + 1608164312 + 624101957 = 3824175058\n- Number of songs: 3\n- Average streams: 3824175058 / 3 = 1274725019.33\n\nThe artist with the highest average number of streams is Bruno Mars.\n\nHere is the JSON response:\n\n```json\n{\n  'artist_with_highest_number_streams': 'Bruno Mars',\n  'avg_num_streams': [1461730649.75, 971867416.57, 1274725019.33]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [
+                    "avg_num_streams"
+                ],
+                "answer": {
+                    "artist_with_highest_number_streams": "Bruno Mars",
+                    "avg_num_streams": [
+                        1461730149.75,
+                        1063164130.86,
+                        1275058686
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_AGG_Q3",
+            "category": "Aggregation",
+            "question": "Among the albums of The Beatles and Radiohead, which album received the lowest number of reviews? Return the answer in JSON format: {'album': 'lowest_reviewed_album_name'}",
+            "motivation": "Evaluate the ability to find minimum value of specific attribute in the result.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "The Beatles"
+                        },
+                        {
+                            "artist_name": "Radiohead"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "The Beatles"
+                    },
+                    {
+                        "artist_name": "Radiohead"
+                    }
+                ],
+                "answer": "```json\n{'album': 'Love'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album": "Love"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_AGG_Q4",
+            "category": "Aggregation",
+            "question": "Is the no of albums released by Kendrick Lamar and the number of tracks in his album \u201cMr. Morale & The Big Steppers\u201d same? If not, what\u2019s the difference? Return the answer in JSON format: {'album_count': KendrickLamar_album_count, 'song_count': song_counts_in_Mr.Morale&TheBigSteppers, 'difference': subtracted_value}",
+            "motivation": "Evaluate the ability to perform aggregation (counting) on the results and also calculating difference between two values.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "songs_by_album"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Kendrick Lamar"
+                        },
+                        {
+                            "album_name": "Mr. Morale & The Big Steppers"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "songs_by_album"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Kendrick Lamar"
+                    },
+                    {
+                        "album_name": "Mr. Morale & The Big Steppers"
+                    }
+                ],
+                "answer": "```json\n{\n  'album_count': 2,\n  'song_count': 11,\n  'difference': 9\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album_count": 2,
+                    "song_count": 11,
+                    "difference": 9
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_AGG_Q5",
+            "category": "Aggregation",
+            "question": "How many ratings have been received by the albums of Michael Jackson and Madonna? Return the answer in JSON format: {'total_ratings_by_MichealJackson': MJ_total_value, 'total_ratings_by_Madonna': Madonna_total_value}",
+            "motivation": "Evaluate the ability to perform aggregation (sum) on the specific attribute of results.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Michael Jackson"
+                        },
+                        {
+                            "artist_name": "Madonna"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Michael Jackson"
+                    },
+                    {
+                        "artist_name": "Madonna"
+                    }
+                ],
+                "answer": "```json\n{\n  'total_ratings_by_MichaelJackson': 49709,\n  'total_ratings_by_Madonna': 35832\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "total_ratings_by_MichealJackson": 49723,
+                    "total_ratings_by_Madonna": 37932
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_REA_Q1",
+            "category": "Reasoning",
+            "question": "Which band among The Beatles, Guns n' Roses and Coldplay has the most diverse range of genres in their albums? Return the answer in JSON format: {'band_with_most_diversified_genres': 'artist_name'}",
+            "motivation": "Evaluate the ability to select album based on analyzing the genres.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "albums_by_artist_2",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "The Beatles"
+                        },
+                        {
+                            "artist_name": "Guns n' Roses"
+                        },
+                        {
+                            "artist_name": "Coldplay"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "albums_by_artist_2",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "The Beatles"
+                    },
+                    {
+                        "artist_name": "Guns n' Roses"
+                    },
+                    {
+                        "artist_name": "Coldplay"
+                    }
+                ],
+                "answer": "```json\n{\n  'band_with_most_diversified_genres': 'The Beatles'\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "band_with_most_diversified_genres": "The Beatles"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_REA_Q2",
+            "category": "Reasoning",
+            "question": "Do you find Adele and Miley Cyrus to be similar based on their genres? Answer with Yes or No. Return the answer in JSON format: {'Adele_genres': [Adele_genres_here], 'MileyCyrus_genres': [MileyCyrus_genres_here], 'genres_comparison': 'YesOrNo'}",
+            "motivation": "Evaluate the ability to reason about similarity of artists based on analyzing their genres.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "artist_info",
+                        "artist_info"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Adele"
+                        },
+                        {
+                            "artist_name": "Miley Cyrus"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "artist_info",
+                    "artist_info"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Adele"
+                    },
+                    {
+                        "artist_name": "Miley Cyrus"
+                    }
+                ],
+                "answer": "```json\n{\n  'Adele_genres': ['Pop Soul', 'Adult Contemporary', 'Blue-Eyed Soul', 'Pop', 'Singer-Songwriter'],\n  'MileyCyrus_genres': ['Pop Rock', 'Electropop', 'Dance-Pop', 'Teen Pop', 'Contemporary R&B', 'Pop'],\n  'genres_comparison': 'No'\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "Adele_genres": [
+                        "Pop Soul",
+                        "Adult Contemporary",
+                        "Blue-Eyed Soul",
+                        "Pop",
+                        "Singer-Songwriter"
+                    ],
+                    "MileyCyrus_genres": [
+                        "Pop Rock",
+                        "Electropop",
+                        "Dance-Pop",
+                        "Teen Pop",
+                        "Contemporary R&B",
+                        "Pop"
+                    ],
+                    "genres_comparison": "No"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_REA_Q3",
+            "category": "Reasoning",
+            "question": "Looking at the songs of albums \u201cUnorthodox Jukebox\u201d and \u201cDoo-Wops & Hooligans\u201d, do you see any correlation between energy and bpm value? Answer with Yes or No. Return the answer in JSON format: {'correlation_comparison': 'YesOrNo'}",
+            "motivation": "Evaluate the ability to make sense of corelation between energy and bpm.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_album",
+                        "songs_by_album"
+                    ],
+                    "parameters": [
+                        {
+                            "album_name": "Unorthodox Jukebox"
+                        },
+                        {
+                            "album_name": "Doo-Wops & Hooligans"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "songs_by_album",
+                    "songs_by_album"
+                ],
+                "parameters": [
+                    {
+                        "album_name": "Unorthodox Jukebox"
+                    },
+                    {
+                        "album_name": "Doo-Wops & Hooligans"
+                    }
+                ],
+                "answer": "Based on the provided data for the albums 'Unorthodox Jukebox' and 'Doo-Wops & Hooligans,' we can observe the following:\n\n- 'Locked Out Of Heaven' from 'Unorthodox Jukebox' has a BPM of 144 and an energy of 70%.\n- 'When I Was Your Man' from 'Unorthodox Jukebox' has a BPM of 145 and an energy of 27%.\n- 'Just The Way You Are' from 'Doo-Wops & Hooligans' has a BPM of 109 and an energy of 85%.\n- 'Talking To The Moon' from 'Doo-Wops & Hooligans' has a BPM of 146 and an energy of 61%.\n\nFrom these observations, there is no consistent correlation between BPM and energy across these songs. Therefore, the answer is:\n\n```json\n{'correlation_comparison': 'No'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "correlation_comparison": "No"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_REA_Q4",
+            "category": "Reasoning",
+            "question": "Find the songs of album \u201c1989\u201d and \u201cSpeak Now (Taylor's Version)\u201d and looking at the number of streams, return which album is more popular? Return the answer in JSON format: {'more_poular_album':'album_name'}",
+            "motivation": "Evaluate the ability to make value translation capabilities of projecting popularity to number of streams.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_album",
+                        "songs_by_album",
+                        "sum_streams_given_songs",
+                        "sum_streams_given_songs"
+                    ],
+                    "parameters": [
+                        {
+                            "album_name": "1989"
+                        },
+                        {
+                            "album_name": "Speak Now (Taylor's Version)"
+                        },
+                        {
+                            "songs": [
+                                "Blank Space",
+                                "Style",
+                                "Shake It Off"
+                            ]
+                        },
+                        {
+                            "songs": [
+                                "I Can See You (Taylor's Version) ",
+                                "Enchanted (Taylor's Version)",
+                                "Back To December (Taylor's Version)",
+                                "Mine (Taylor's Version)",
+                                "Better Than Revenge (Taylor's Version)"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "path_id": 2,
+                    "functions": [
+                        "songs_by_album",
+                        "sum_streams_given_songs",
+                        "songs_by_album",
+                        "sum_streams_given_songs"
+                    ],
+                    "parameters": [
+                        {
+                            "album_name": "1989"
+                        },
+                        {
+                            "songs": [
+                                "Blank Space",
+                                "Style",
+                                "Shake It Off"
+                            ]
+                        },
+                        {
+                            "album_name": "Speak Now (Taylor's Version)"
+                        },
+                        {
+                            "songs": [
+                                "I Can See You (Taylor's Version) ",
+                                "Enchanted (Taylor's Version)",
+                                "Back To December (Taylor's Version)",
+                                "Mine (Taylor's Version)",
+                                "Better Than Revenge (Taylor's Version)"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "songs_by_album",
+                    "songs_by_album",
+                    "sum_streams_given_songs",
+                    "sum_streams_given_songs"
+                ],
+                "parameters": [
+                    {
+                        "album_name": "1989"
+                    },
+                    {
+                        "album_name": "Speak Now (Taylor's Version)"
+                    },
+                    {
+                        "songs": [
+                            "Blank Space",
+                            "Style",
+                            "Shake It Off"
+                        ]
+                    },
+                    {
+                        "songs": [
+                            "I Can See You (Taylor's Version)",
+                            "Enchanted (Taylor's Version)",
+                            "Back To December (Taylor's Version)",
+                            "Mine (Taylor's Version)",
+                            "Better Than Revenge (Taylor's Version)"
+                        ]
+                    }
+                ],
+                "answer": "```json\n{'more_popular_album':'1989'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "more_poular_album": "1989"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_LAN_Q1",
+            "category": "Languages",
+            "question": "\u0627\u0646 \u062f\u0648 \u06af\u0627\u0646\u0648\u06ba '\u0644\u0648 \u06cc\u0648\u0631 \u0633\u06cc\u0644\u0641' \u0627\u0648\u0631 '\u06c1\u0648\u0644\u0688 \u0645\u06cc \u06a9\u0644\u0648\u0632\u0631' \u06a9\u06d2 \u0633\u0644\u0633\u0644\u06d2 \u06a9\u06cc \u062a\u0639\u062f\u0627\u062f\u060c \u0622\u0631\u0679\u0633\u0679 \u0627\u0648\u0631 \u0627\u0644\u0628\u0645 \u06a9\u0627 \u0646\u0627\u0645 \u0628\u062a\u0627\u0626\u06cc\u06ba\u06d4 \u0627\u0646\u06af\u0631\u06cc\u0632\u06cc \u0645\u06cc\u06ba \u062c\u0648\u0627\u0628 \u062f\u06cc\u06ba\u06d4. Return the answer in JSON format: {'LoveYourself_artist': 'artist_name', 'LoveYourself_album': 'album_name', 'LoveYourself_album_streams': streams_value, 'HoldMecloser_artist': 'artist_name', 'HoldMecloser_album': 'album_name','HoldMecloser_album_streams': streams_value }",
+            "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Urdu in this case).",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "song_info"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Love Yourself"
+                        },
+                        {
+                            "song_name": "Hold Me Closer"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "song_info"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Love Yourself"
+                    },
+                    {
+                        "song_name": "Hold Me Closer"
+                    }
+                ],
+                "answer": "```json\n{\n  'LoveYourself_artist': 'Justin Bieber',\n  'LoveYourself_album': 'Purpose',\n  'LoveYourself_album_streams': 2123309722,\n  'HoldMecloser_artist': 'Elton John, Britney Spears',\n  'HoldMecloser_album': 'Single(not album)',\n  'HoldMecloser_album_streams': 284216603\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "LoveYourself_artist": "Justin Bieber",
+                    "LoveYourself_album": "Purpose",
+                    "LoveYourself_album_streams": 2123309722,
+                    "HoldMecloser_artist": "Elton John, Britney Spears",
+                    "HoldMecloser_album": "Single(not album)",
+                    "HoldMecloser_album_streams": 284216603
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_LAN_Q2",
+            "category": "Languages",
+            "question": "Pouvez-vous s'il vous pla\u00eet me donner des informations sur mes artistes pr\u00e9f\u00e9r\u00e9s Taylor Swift et The Weeknd. Fournissez la r\u00e9ponse en anglais. Return the answer in JSON format: {'Taylor_place_of_birth':'city, country', 'Taylor_birthdate':'YYYY-MM-DD','TheWeeknd_place_of_birth':'city, country','TheWeeknd_birthdate':'YYYY-MM-DD'}",
+            "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (French in this case).",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "artist_info",
+                        "artist_info"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Taylor Swift"
+                        },
+                        {
+                            "artist_name": "The Weeknd"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "artist_info",
+                    "artist_info"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Taylor Swift"
+                    },
+                    {
+                        "artist_name": "The Weeknd"
+                    }
+                ],
+                "answer": "```json\n{\n  'Taylor_place_of_birth': 'West Reading, United States',\n  'Taylor_birthdate': '1989-12-13',\n  'TheWeeknd_place_of_birth': 'Toronto, Canada',\n  'TheWeeknd_birthdate': '1990-02-16'\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "Taylor_place_of_birth": "West Reading, United States",
+                    "Taylor_birthdate": "1989-12-13",
+                    "TheWeeknd_place_of_birth": "Toronto, Canada",
+                    "TheWeeknd_birthdate": "1990-02-16"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_LAN_Q3",
+            "category": "Languages",
+            "question": "Proporcionar todos los \u00e1lbumes lanzados por The Weeknd y Coldplay con una calificaci\u00f3n superior a 3,5. Por favor proporcione la respuesta en ingl\u00e9s. Return the answer in JSON format: {'albums': [rated_higher_than_3.5_album_names_here]}",
+            "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Spanish in this case).",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "The Weeknd"
+                        },
+                        {
+                            "artist_name": "Coldplay"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "The Weeknd"
+                    },
+                    {
+                        "artist_name": "Coldplay"
+                    }
+                ],
+                "answer": "```json\n{\n  'albums': [\n    'After Hours',\n    'Parachutes',\n    'A Rush of Blood to the Head'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "albums": [
+                        "Parachutes",
+                        "A Rush of Blood to the Head",
+                        "After Hours"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_LAN_Q4",
+            "category": "Languages",
+            "question": "Sa zhanre mendoni se jan\u00eb t\u00eb nj\u00ebjta n\u00eb informacionin rreth Guns n' Roses dhe albumin e tyre 'Appetite for Destruction'? Jepni p\u00ebrgjigjen n\u00eb anglisht. Return the answer in JSON format: {'genres': [same_genres_here], 'genres_count': same_genres_count}",
+            "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Albanian in this case).",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "artist_info",
+                        "album_info"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Guns n' Roses"
+                        },
+                        {
+                            "album_name": "Appetite for Destruction"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "artist_info",
+                    "album_info"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Guns n' Roses"
+                    },
+                    {
+                        "album_name": "Appetite for Destruction"
+                    }
+                ],
+                "answer": "```json\n{\n  'genres': ['Hard Rock', 'Glam Metal'],\n  'genres_count': 2\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "genres": [
+                        "Hard Rock",
+                        "Glam Metal"
+                    ],
+                    "genres_count": 2
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_ECON_Q1",
+            "category": "Extra Context",
+            "question": "This year, i.e. 2024, I will complete my master's degree. When I started my master's degree three years ago, an album was released on Republic Day, a very important day for my homeland Turkey, where we commemorate our ATA with respect, love and gratitude every year. Can you find me the name of this album? There is also another special day that our ATA gave as a gift to the youth, which is important for my homeland and shows how advanced ATAT\u00dcRK's vision was. Can you give me the name of the Coldplay album that was released on this special day seven years before the album was released on Republic Day? Return the answer in JSON format: {'album_released_on_RepublicDay': 'album_name', 'second_specified_album': 'specified_album_name'}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_release_date_2",
+                        "albums_by_release_date_2"
+                    ],
+                    "parameters": [
+                        {
+                            "release_date": "2021-10-29"
+                        },
+                        {
+                            "release_date": "2014-05-19"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_release_date_2",
+                    "albums_by_release_date_2"
+                ],
+                "parameters": [
+                    {
+                        "release_date": "2021-01-29"
+                    },
+                    {
+                        "release_date": "2014-05-19"
+                    }
+                ],
+                "answer": "Here is the JSON response with the information you requested:\n\n```json\n{\n  'album_released_on_RepublicDay': null,\n  'second_specified_album': 'Ghost Stories'\n}\n```\n\nUnfortunately, I couldn't find an album released on Republic Day in 2021, but the Coldplay album released on May 19, 2014, is 'Ghost Stories.'"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album_released_on_RepublicDay": "[Equals]",
+                    "second_specified_album": "Ghost Stories"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Incorrect",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_ECON_Q2",
+            "category": "Extra Context",
+            "question": "I would like to know the most reviewed album of Madonna, also known as the queen of pop, winner of 7 grammy awards. Can you retrive the album name of Madonna's most reviewed album?  Bad Bunny is a Puerto Rican singer and rapper who produces music often described as Latin trap and reggaeton. A Turkish friend told me that the title of one of this singer's albums when translated into Turkish is 'Sensiz bir Yaz'. The album originally is in Spanish. Can you tell me how many songs are there in this album? Return the answer in JSON format: {'Madonnas_most_reviewed_album': 'album_name', 'song_count_in_BadBunnys_album': song_count}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "songs_by_album"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Madonna"
+                        },
+                        {
+                            "album_name": "Un verano sin ti"
+                        }
+                    ]
+                },
+                {
+                    "path_id": 2,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "albums_by_artist_2",
+                        "songs_by_album"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Madonna"
+                        },
+                        {
+                            "artist_name": "Bad Bunny"
+                        },
+                        {
+                            "album_name": "Un verano sin ti"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "albums_by_artist_2",
+                    "songs_by_album"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Madonna"
+                    },
+                    {
+                        "artist_name": "Bad Bunny"
+                    },
+                    {
+                        "album_name": "Un verano sin ti"
+                    }
+                ],
+                "answer": "```json\n{\n  'Madonnas_most_reviewed_album': 'Ray of Light',\n  'song_count_in_BadBunnys_album': 14\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "Madonnas_most_reviewed_album": "Ray of Light",
+                    "song_count_in_BadBunnys_album": 15
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_ECON_Q3",
+            "category": "Extra Context",
+            "question": "The audio features of song containing the emotion of jealousy will be analysed. I would like to know the danceability score of the song of Bad Bunny, which contains an adjective related to jealousy in its name. The complete name of that song in Greek is '\u0394\u03b5\u03bd \u03b6\u03b7\u03bb\u03b5\u03cd\u03c9'. The song is originally in Spanish language, can you get the danceability score of this song whose title is mentioned. All this aforementioned jealousy reminded me of Justin Bieber's signature album. Get his albums and provide the average rating of Justin Bieber's album that marked the winter of 2015? Return the answer in JSON format: {'danceability_score': danceability_value, 'album_average_rating': average_rating_value}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Yo No Soy Celoso"
+                        },
+                        {
+                            "artist_name": "Justin Bieber"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "No Me Conoce"
+                    },
+                    {
+                        "artist_name": "Justin Bieber"
+                    }
+                ],
+                "answer": "The album 'Purpose' by Justin Bieber was released on November 13, 2015, which is in the winter of 2015. The average rating of this album is 2.48.\n\nHere is the JSON-formatted response with the danceability score (which could not be retrieved) and the album average rating:\n\n```json\n{\n  'danceability_score': null,\n  'album_average_rating': 2.48\n}\n```\n\nPlease note that the danceability score is set to `null` because the information for the song by Bad Bunny was not available."
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "danceability_score": 87,
+                    "album_average_rating": 2.48
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Incorrect",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_ECON_Q4",
+            "category": "Extra Context",
+            "question": "'Locked Out Of Heaven' is a reggae rock and pop rock song influenced by new wave and funk. Who is the artist of this song? Besides, which Taylor Swift album was released in the same year, on 22 october 2012? Return the answer in JSON format: {'LockedOutofHeaven_song_artist': 'artist_name', 'TaylorSwifts_album_name': 'album_name'}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "albums_by_release_date_2"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Locked Out Of Heaven"
+                        },
+                        {
+                            "release_date": "2012-10-22"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "albums_by_release_date_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Locked Out Of Heaven"
+                    },
+                    {
+                        "release_date": "2012-10-22"
+                    }
+                ],
+                "answer": "```json\n{\n  'LockedOutofHeaven_song_artist': 'Bruno Mars',\n  'TaylorSwifts_album_name': 'Red'\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "LockedOutofHeaven_song_artist": "Bruno Mars",
+                    "TaylorSwifts_album_name": "Red"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_ECON_Q5",
+            "category": "Extra Context",
+            "question": "Who is the rapper and frequent collaborator with Kendrick Lamar, having worked on all of his projects since his eponymous extended play in 2009? Can you also calculate the total number of listens to the most listened to Kendrick Llamar songs 'United In Grief' and 'Rich Spirit'? Return the answer in JSON format: {'related_artist': 'artist_name', 'total_streams': sum_streams}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": true,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "artist_info",
+                        "sum_streams_given_songs"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Kendrick Lamar"
+                        },
+                        {
+                            "songs": [
+                                "United In Grief",
+                                "Rich Spirit"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "artist_info",
+                    "sum_streams_given_songs"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Kendrick Lamar"
+                    },
+                    {
+                        "songs": [
+                            "United In Grief",
+                            "Rich Spirit"
+                        ]
+                    }
+                ],
+                "answer": "```json\n{\n  'related_artist': 'Sounwave',\n  'total_streams': 330600457\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "related_artist": "Sounwave",
+                    "total_streams": 330600457
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Correct"
+            }
+        }
+    ]
+}

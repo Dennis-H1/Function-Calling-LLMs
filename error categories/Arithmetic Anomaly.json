@@ -1,0 +1,668 @@
+{
+    "question_result": [
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q2",
+            "category": "Aggregation",
+            "question": "How many reviews have the albums of Radiohead received in total? Return the answer in JSON format: {'total_number_of_reviews':total_number_of_reviews_here}",
+            "motivation": "Evaluate the ability to perform aggregation (sum) on the specific attribute of results.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_1"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Radiohead"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_1"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Radiohead"
+                    }
+                ],
+                "answer": "```json\n{'total_number_of_reviews': 7157}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "total_number_of_reviews": 6161
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },        
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q5",
+            "category": "Aggregation",
+            "question": "What is the average rating of all the albums of Red Hot Chili Peppers? Return the answer in JSON format: {'average_rating_of_albums':average_rating_here}",
+            "motivation": "Evaluate the ability to perform aggregation (average) on the result.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_1"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Red Hot Chili Peppers"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_1"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Red Hot Chili Peppers"
+                    }
+                ],
+                "answer": "```json\n{'average_rating_of_albums': 3.3}\n```\n\nTo calculate the average rating, I added up all the average ratings of the albums and divided by the number of albums. Here's the calculation for clarity:\n\n(3.48 + 3.6 + 3.29 + 3.01 + 3.29 + 2.62 + 2.81) / 7 = 3.3"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "average_rating_of_albums": 3.157
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q6",
+            "category": "Interpretation",
+            "question": "Among the 10 longest songs, how many can I listen to fully in an hour of my time? Return the answer in JSON format: {'number_of_songs':number_here}",
+            "motivation": "Evaluate the ability to make sense of temporal information.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_longest_duration"
+                    ],
+                    "parameters": [
+                        {
+                            "n": 10
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "songs_by_longest_duration"
+                ],
+                "parameters": [
+                    {
+                        "n": 10
+                    }
+                ],
+                "answer": "To calculate how many of the 10 longest songs I can listen to fully in an hour, I will sum up their durations and see how many fit into 60 minutes.\n\nHere are the durations of the 10 longest songs in minutes:\n1. Bad Guy - 7.239316666666666\n2. SHAQ & KOBE (Remix) ft. Shaquille O\u2019Neal & Dame D.O.L.L.A. - 6.88225\n3. Wicked Ways - 6.50925\n4. LA GRINGA - 6.275\n5. Freestyle - 6.1790666666666665\n6. Rap God - Instrumental - 6.10345\n7. Rap God - 6.058683333333334\n8. Evil Twin - 5.94745\n9. Headlights - Instrumental - 5.84345\n10. Headlights - 5.7172\n\nNow, let's add them up until we reach 60 minutes or less:\n\n7.239316666666666 + 6.88225 + 6.50925 + 6.275 + 6.1790666666666665 + 6.10345 + 6.058683333333334 = 45.24701666666667 minutes\n\nAdding the next song's duration would exceed 60 minutes, so we stop here. We can listen to 7 songs fully in an hour.\n\nHere is the answer in JSON format:\n\n```json\n{'number_of_songs':7}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "number_of_songs": 9
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_AGG_Q1",
+            "category": "Aggregation",
+            "question": "I have heard a lot about this song \u2018Cruel Summer\u2019 by some artist. Can you find its artist and return me the average of the number of ratings received by his/her albums. Return the answer in JSON format: {'name_of_artist':'artist_name', 'average_number_of_ratings': Average_number_of rating_here}",
+            "motivation": "Evaluate the ability to perform aggregation (average) on the result.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "song_info",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "song_name": "Cruel Summer"
+                        },
+                        {
+                            "artist_name": "Taylor Swift"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "song_info",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "song_name": "Cruel Summer"
+                    },
+                    {
+                        "artist_name": "Taylor Swift"
+                    }
+                ],
+                "answer": "To calculate the average number of ratings received by Taylor Swift's albums, we will sum up the rating counts of all her albums and divide by the number of albums.\n\nLet's do the calculation:\n\nTotal rating count = 9228 (Folklore) + 8278 (1989) + 5546 (Evermore) + 5530 (Red) + 5392 (Reputation) + 5025 (Lover) + 3679 (Speak Now) + 3628 (Fearless) + 2726 (Taylor Swift) + 2626 (Red (Taylor's Version)) + 2301 (Fearless (Taylor's Version)) + 10905 (Midnights) + 3061 (1989 (Taylor's Version)) + 3415 (Speak Now (Taylor's Version))\n\nTotal rating count = 72,320\n\nNumber of albums = 14\n\nAverage number of ratings = Total rating count / Number of albums\nAverage number of ratings = 72,320 / 14\nAverage number of ratings = 5165.71\n\nNow, let's return the result in JSON format:\n\n```json\n{\n  'name_of_artist': 'Taylor Swift',\n  'average_number_of_ratings': 5165.71\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "name_of_artist": "Taylor Swift",
+                    "average_number_of_ratings": 5095.71
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_AGG_Q2",
+            "category": "Aggregation",
+            "question": "Provide the average no of streams for the songs of each of these artists: Bruno Mars, Olivia Rodrigo and Coldplay in that order. Which artist's songs has the highest avg streams? Return the answer in JSON format: {'artist_with_highest_number_streams': 'name', 'avg_num_streams': [ordered_n]}",
+            "motivation": "Evaluate the ability to perform aggregation (average) on the result and find maximum value among the aggregated result.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "songs_by_artist_2",
+                        "songs_by_artist_2",
+                        "songs_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Bruno Mars"
+                        },
+                        {
+                            "artist_name": "Olivia Rodrigo"
+                        },
+                        {
+                            "artist_name": "Coldplay"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "songs_by_artist_2",
+                    "songs_by_artist_2",
+                    "songs_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Bruno Mars"
+                    },
+                    {
+                        "artist_name": "Olivia Rodrigo"
+                    },
+                    {
+                        "artist_name": "Coldplay"
+                    }
+                ],
+                "answer": "To calculate the average number of streams for each artist, we sum the streams of all their songs and divide by the number of songs. Here are the calculations:\n\n**Bruno Mars:**\n- Total streams: 1481349984 + 1661187319 + 1641426668 + 1062956628 = 5846922599\n- Number of songs: 4\n- Average streams: 5846922599 / 4 = 1461730649.75\n\n**Olivia Rodrigo:**\n- Total streams: 140003974 + 1887039593 + 1858144199 + 1256880657 + 850608354 + 783706581 + 665765558 = 6803071916\n- Number of songs: 7\n- Average streams: 6803071916 / 7 = 971867416.57\n\n**Coldplay:**\n- Total streams: 1592909789 + 1608164312 + 624101957 = 3824175058\n- Number of songs: 3\n- Average streams: 3824175058 / 3 = 1274725019.33\n\nThe artist with the highest average number of streams is Bruno Mars.\n\nHere is the JSON response:\n\n```json\n{\n  'artist_with_highest_number_streams': 'Bruno Mars',\n  'avg_num_streams': [1461730649.75, 971867416.57, 1274725019.33]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [
+                    "avg_num_streams"
+                ],
+                "answer": {
+                    "artist_with_highest_number_streams": "Bruno Mars",
+                    "avg_num_streams": [
+                        1461730149.75,
+                        1063164130.86,
+                        1275058686
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_AGG_Q5",
+            "category": "Aggregation",
+            "question": "How many ratings have been received by the albums of Michael Jackson and Madonna? Return the answer in JSON format: {'total_ratings_by_MichealJackson': MJ_total_value, 'total_ratings_by_Madonna': Madonna_total_value}",
+            "motivation": "Evaluate the ability to perform aggregation (sum) on the specific attribute of results.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_artist_2",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "artist_name": "Michael Jackson"
+                        },
+                        {
+                            "artist_name": "Madonna"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_artist_2",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "artist_name": "Michael Jackson"
+                    },
+                    {
+                        "artist_name": "Madonna"
+                    }
+                ],
+                "answer": "```json\n{\n  'total_ratings_by_MichaelJackson': 49709,\n  'total_ratings_by_Madonna': 35832\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "total_ratings_by_MichealJackson": 49723,
+                    "total_ratings_by_Madonna": 37932
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_AGG_Q4",
+            "category": "Aggregation",
+            "question": "Can you calculate the total number of reviews received by albums released from the beginning of March to the end of April in 2010? Return the answer in JSON format: {'review_counts':[album_review_counts_here], 'total_reviews': calculated_reviews}",
+            "motivation": "Evaluate the ability to perform aggregation (sum) on the specific attribute of results.",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["filter_albums_by_date_range"],
+                "parameters": [
+                  { "start_date": "2010-03-01", "end_date": "2010-04-30" }
+                ]
+              }
+            ],
+            "model_solution": {
+              "functions": ["filter_albums_by_date_range"],
+              "parameters": [
+                { "start_date": "2010-03-01", "end_date": "2010-04-30" }
+              ],
+              "answer": "```json\n{\n  'review_counts': [\n    198,\n    203,\n    83,\n    93,\n    78,\n    79,\n    111,\n    84,\n    52,\n    41,\n    48,\n    68,\n    40,\n    51,\n    14,\n    69,\n    52,\n    50,\n    28\n  ],\n  'total_reviews': 1344\n}\n```"
+            },
+            "correct_answer": {
+              "ordered_items": [],
+              "answer": {
+                "review_counts": [
+                  198, 203, 83, 93, 78, 79, 111, 84, 52, 41, 48, 68, 40, 51, 14, 69,
+                  52, 50, 28
+                ],
+                "total_reviews": 1442
+              }
+            },
+            "evaluation": {
+              "function_eval": "Correct",
+              "argument_eval": "Correct",
+              "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id":"TRAVEL_MULTI_CALL_PARALLEL_REAS_Q3",
+            "category":"Reasoning",
+            "question":"I was considering to go tomorrow in a very nice place to eat with a group of friends from Brooklyn called Shake Shack. However, as this restaurant is located in Manhattan I assume that it might be expensive. I would really appreciate it if you could provide me with a general idea of the prices in this restaurant. Can you also show me some information about customer satisfaction, or if this restaurant has some good reviews about the food.  Return the answer in JSON format: {'Shacke_Shack_cost': the_cost_shake, 'Shacke_Shack_rating': the_rating_shake} ",
+            "motivation":"Evaluate LLM's ability to call multiple functions simultaneously. Assess its reasoning ability to understand the task requested by the user requires two concurrent function calls to provide the final answer.",
+            "overall_match":false,
+            "correct_paths":[
+               {
+                  "path_id":1,
+                  "functions":[
+                     "get_avg_costs_by_restaurant_name",
+                     "get_rating_by_restaurant_name"
+                  ],
+                  "parameters":[
+                     {
+                        "restaurant_name":"Shake Shack"
+                     },
+                     {
+                        "restaurant_name":"Shake Shack"
+                     }
+                  ]
+               }
+            ],
+            "model_solution":{
+               "functions":[
+                  "get_avg_costs_by_restaurant_name",
+                  "get_rating_by_restaurant_name"
+               ],
+               "parameters":[
+                  {
+                     "restaurant_name":"Shake Shack"
+                  },
+                  {
+                     "restaurant_name":"Shake Shack"
+                  }
+               ],
+               "answer":"```json\n{\n  'Shacke_Shack_cost': 16.34,\n  'Shacke_Shack_rating': 'Varies (Ratings include a mix of 3, 4, and 5 stars)'\n}\n```"
+            },
+            "correct_answer":{
+               "ordered_items":[
+                  
+               ],
+               "answer":{
+                  "Shacke_Shack_cost":16.34,
+                  "Shacke_Shack_rating":4.96
+               }
+            },
+            "evaluation":{
+               "function_eval":"Correct",
+               "argument_eval":"Correct",
+               "response_eval":"Incorrect"
+            }
+        },
+        {
+            "question_id":"TRAVEL_MULTI_CALL_PARALLEL_AGG_Q4",
+            "category":"Aggregation",
+            "question":"A colleague suggested to me today 3 Italian restaurants in New York for which I would like to find out the total average rating by the previous clients. The options are The Meatball shop, Osteria Morini and Otto Enoteca Pizzeria. Return the answer in JSON format: {'the_rating_of_meatball_osteria_Otto_Enoteca': [avg_rating_of_each_rest]} ",
+            "motivation":"Evaluate the ability of the LLM to perform calculations and numerical comparisons while calling simultaneousy several functions",
+            "overall_match":false,
+            "correct_paths":[
+               {
+                  "path_id":1,
+                  "functions":[
+                     "get_rating_by_restaurant_name",
+                     "get_rating_by_restaurant_name",
+                     "get_rating_by_restaurant_name"
+                  ],
+                  "parameters":[
+                     {
+                        "restaurant_name":"The Meatball Shop"
+                     },
+                     {
+                        "restaurant_name":"Osteria Morini"
+                     },
+                     {
+                        "restaurant_name":"Otto Enoteca Pizzeria"
+                     }
+                  ]
+               }
+            ],
+            "model_solution":{
+               "functions":[
+                  "get_rating_by_restaurant_name",
+                  "get_rating_by_restaurant_name",
+                  "get_rating_by_restaurant_name"
+               ],
+               "parameters":[
+                  {
+                     "restaurant_name":"The Meatball Shop"
+                  },
+                  {
+                     "restaurant_name":"Osteria Morini"
+                  },
+                  {
+                     "restaurant_name":"Otto Enoteca Pizzeria"
+                  }
+               ],
+               "answer":"```json\n{\n  'the_rating_of_meatball_osteria_Otto_Enoteca': [4.3, 4.3, 4.3]\n}\n```"
+            },
+            "correct_answer":{
+               "ordered_items":[
+                  
+               ],
+               "answer":{
+                  "the_rating_of_meatball_osteria_Otto_Enoteca":[
+                     4.53,
+                     4.0,
+                     4.86
+                  ]
+               }
+            },
+            "evaluation":{
+               "function_eval":"Correct",
+               "argument_eval":"Correct",
+               "response_eval":"Incorrect"
+            }
+        },
+        {
+            "question_id":"TRAVEL_MULTI_CALL_PARALLEL_AGG_Q5",
+            "category":"Aggregation",
+            "question":"When I was walking around I saw two nice coffee places called Cafe Mogador and Cafe Habana. I would like to choose the best one to have a nice time there with my friends. Could you please provide me the average rating of these coffee places? Return the answer in JSON format: {'the_average_rating_cafe': [both_avg_rating]} ",
+            "motivation":"Evaluate the ability of the LLM to perform calculations (max) and numerical comparisons while calling simultaneousy several functions",
+            "overall_match":false,
+            "correct_paths":[
+               {
+                  "path_id":1,
+                  "functions":[
+                     "get_rating_by_restaurant_name",
+                     "get_rating_by_restaurant_name"
+                  ],
+                  "parameters":[
+                     {
+                        "restaurant_name":"Cafe Mogador"
+                     },
+                     {
+                        "restaurant_name":"Cafe Habana"
+                     }
+                  ]
+               }
+            ],
+            "model_solution":{
+               "functions":[
+                  "get_rating_by_restaurant_name",
+                  "get_rating_by_restaurant_name"
+               ],
+               "parameters":[
+                  {
+                     "restaurant_name":"Cafe Mogador"
+                  },
+                  {
+                     "restaurant_name":"Cafe Habana"
+                  }
+               ],
+               "answer":"```json\n{\n  'the_average_rating_cafe': [4.4, 4.4]\n}\n```"
+            },
+            "correct_answer":{
+               "ordered_items":[
+                  
+               ],
+               "answer":{
+                  "the_average_rating_cafe":[
+                     4.15,
+                     4.27
+                  ]
+               }
+            },
+            "evaluation":{
+               "function_eval":"Correct",
+               "argument_eval":"Correct",
+               "response_eval":"Incorrect"
+            }
+        },
+        {
+            "question_id":"TRAVEL_MULTI_CALL_PARALLEL_LANG_Q1",
+            "category":"Languages",
+            "question":"Αύριο έχω πτήση για Νέα Υόρκη. Ένας ντόπιος φίλος θα μας πάρει εκεί και θα απολαύσουμε ένα ωραίο δείπνο μαζί. Δεδομένου ότι είναι η πρώτη τους επίσκεψη, θέλουν να πάνε σε ένα ιαπωνικό εστιατόριο που ονομάζεται 'Nobu Next Door'. Μπορείτε να μου δώσετε μια γενική ιδέα για το πώς βαθμολογείται αυτή η κουζίνα στη Νέα Υόρκη και αν το εστιατόριο έχει υψηλή βαθμολογία;  Return the answer in JSON format: {'rating_japan_cuisine': avg_rating_cuisine, rating_for_the_restaurants: avg_rating_rest } ",
+            "motivation":"Test the model's performance when presented with queries written in languages that do not use the Latin alphabet. Assess the accuracy and coherence of parallel multi-call responses in diverse linguistic contexts. ",
+            "overall_match":false,
+            "correct_paths":[
+               {
+                  "path_id":1,
+                  "functions":[
+                     "get_ratings_per_cuisines",
+                     "get_rating_by_restaurant_name"
+                  ],
+                  "parameters":[
+                     {
+                        "cuisines":"Japanese"
+                     },
+                     {
+                        "restaurant_name":"Nobu Next Door"
+                     }
+                  ]
+               }
+            ],
+            "model_solution":{
+               "functions":[
+                  "get_ratings_per_cuisines",
+                  "get_rating_by_restaurant_name"
+               ],
+               "parameters":[
+                  {
+                     "cuisines":"Japanese"
+                  },
+                  {
+                     "restaurant_name":"Nobu Next Door"
+                  }
+               ],
+               "answer":"```json\n{\n  'rating_japan_cuisine': 4.37,\n  'rating_for_the_restaurants': 'Not available'\n}\n```"
+            },
+            "correct_answer":{
+               "ordered_items":[
+                  
+               ],
+               "answer":{
+                  "rating_japan_cuisine":4.37,
+                  "rating_for_the_restaurants":4.5
+               }
+            },
+            "evaluation":{
+               "function_eval":"Correct",
+               "argument_eval":"Correct",
+               "response_eval":"Incorrect"
+            }
+        },
+        {
+            "question_id":"TRAVEL_MULTI_CALL_PARALLEL_LANG_Q3",
+            "category":"Languages",
+            "question":"Pershendetje, do deshiroja te dija sa jane kostot mesatare per keto restorante ne Nju Jork te lutem: Tortaria dhe Parm. Return the answer in JSON format: {'the_avg_costs': [avg_costs]}",
+            "motivation":"Test the model's performance when presented with queries written in languages other than English. Assess the accuracy and coherence of parallel multi-call responses in diverse linguistic contexts.",
+            "overall_match":false,
+            "correct_paths":[
+               {
+                  "path_id":1,
+                  "functions":[
+                     "get_avg_costs_by_restaurant_name",
+                     "get_avg_costs_by_restaurant_name"
+                  ],
+                  "parameters":[
+                     {
+                        "restaurant_name":"Tortaria"
+                     },
+                     {
+                        "restaurant_name":"Parm"
+                     }
+                  ]
+               }
+            ],
+            "model_solution":{
+               "functions":[
+                  "get_avg_costs_by_restaurant_name",
+                  "get_avg_costs_by_restaurant_name"
+               ],
+               "parameters":[
+                  {
+                     "restaurant_name":"Tortaria"
+                  },
+                  {
+                     "restaurant_name":"Parm"
+                  }
+               ],
+               "answer":"```json\n{'the_avg_costs': [13.57, 16.36]}\n```"
+            },
+            "correct_answer":{
+               "ordered_items":[
+                  
+               ],
+               "answer":{
+                  "the_avg_costs":[
+                     29.1,
+                     8.92
+                  ]
+               }
+            },
+            "evaluation":{
+               "function_eval":"Correct",
+               "argument_eval":"Correct",
+               "response_eval":"Incorrect"
+            }
+        },
+        {
+            "question_id":"TRAVEL_MULTI_CALL_PARALLEL_LANG_Q2",
+            "category":"Languages",
+            "question":"Ich überlege, morgen in einem sehr schönen Restaurant namens Shake Shack essen zu gehen. Da sich dieses Restaurant in Manhattan befindet, gehe ich davon aus, dass es möglicherweise teuer ist. Ich würde es sehr schätzen, wenn Sie mir eine allgemeine Vorstellung von den Preisen in diesem Restaurant geben könnten. Können Sie mir auch einige Informationen zu den Kundenbewertungen zeigen? Return the answer in JSON format: {'average_cost_per_restaurant': avg_cost, 'rating_by_the_rest': avg_ratings}",
+            "motivation":"Test the model's performance when presented with queries written in languages other than English. Assess the accuracy and coherence of parallel multi-call responses in diverse linguistic contexts.",
+            "overall_match":false,
+            "correct_paths":[
+               {
+                  "path_id":1,
+                  "functions":[
+                     "get_avg_costs_by_restaurant_name",
+                     "get_rating_by_restaurant_name"
+                  ],
+                  "parameters":[
+                     {
+                        "restaurant_name":"Shake Shack"
+                     },
+                     {
+                        "restaurant_name":"Shake Shack"
+                     }
+                  ]
+               }
+            ],
+            "model_solution":{
+               "functions":[
+                  "get_avg_costs_by_restaurant_name",
+                  "get_rating_by_restaurant_name"
+               ],
+               "parameters":[
+                  {
+                     "restaurant_name":"Shake Shack"
+                  },
+                  {
+                     "restaurant_name":"Shake Shack"
+                  }
+               ],
+               "answer":"```json\n{\n  'average_cost_per_restaurant': 16.34,\n  'rating_by_the_rest': 4.2\n}\n```"
+            },
+            "correct_answer":{
+               "ordered_items":[
+                  
+               ],
+               "answer":{
+                  "average_cost_per_restaurant":16.34,
+                  "rating_by_the_rest":4.96
+               }
+            },
+            "evaluation":{
+               "function_eval":"Correct",
+               "argument_eval":"Correct",
+               "response_eval":"Incorrect"
+            }
+        }                        
+    ]
+}

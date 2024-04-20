@@ -1,0 +1,289 @@
+{
+    "question_result": [
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q7",
+            "category": "Interpretation",
+            "question": "Which album was released last in 1965? Return the answer in JSON format: {'album':'album_name_here'}",
+            "motivation": "Evaluate the ability to make sense of temporal information.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "albums_by_release_date_1"
+                    ],
+                    "parameters": [
+                        {
+                            "release_date": "1965"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "albums_by_release_date_1"
+                ],
+                "parameters": [
+                    {
+                        "release_date": "1965"
+                    }
+                ],
+                "answer": "```json\n{'album':'Rubber Soul'}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album": "Turn! Turn! Turn!"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_LAN_Q4",
+            "category": "Languages",
+            "question": "T\u00fcr\u00fc Merseybeat olan sanat\u00e7\u0131n\u0131n son 5 alb\u00fcm\u00fcn\u00fc bana verin. Cevab\u0131 \u0130ngilizce olarak verin. Return the answer in JSON format: {'albums': [last_5_released_album_names_here]}",
+            "motivation": "Evaluate the ability to understand questions in different popular and unpopular languages (Turkish in this case).",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "artists_by_genres",
+                        "albums_by_artist_2"
+                    ],
+                    "parameters": [
+                        {
+                            "genres": [
+                                "Merseybeat"
+                            ]
+                        },
+                        {
+                            "artist_name": "The Beatles"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "artists_by_genres",
+                    "albums_by_artist_2"
+                ],
+                "parameters": [
+                    {
+                        "genres": [
+                            "Merseybeat"
+                        ]
+                    },
+                    {
+                        "artist_name": "The Beatles"
+                    }
+                ],
+                "answer": "```json\n{\n  'albums': [\n    'Love',\n    'Yellow Submarine',\n    'Beatles for Sale',\n    'With The Beatles',\n    'Please Please Me'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "albums": [
+                        "Abbey Road",
+                        "The Beatles [White Album]",
+                        "Let It Be",
+                        "Yellow Submarine",
+                        "Love"
+                    ]
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },         
+        {
+            "question_id": "MUSIC_SEQ_MULTI_STEP_ONE_SHOT_ECON_Q3",
+            "category": "Extra Context",
+            "question": "Guitarist Ed O\u2019Brien who is also a band member, said in 2022 that he\u2019s not sure if they\u2019ll make music together again, and longtime producer Nigel Godrich has expressed similar uncertainty about whether there will ever be another album. Can you tell me the rating count of the second most recent album among the highest rated albums? Also get the date of birth/formation and country of the artist/band of 2nd most recent album? Return the answer in JSON format: {'album': '2nd_most_recent_album_name', 'rating_count': number_of_rating_of_2nd_most_recent_album, 'artist': 'artist_name_of_2nd_most_recent_album', 'country':'country_of_artist', 'formed_in':'YYYY-MM-DD'}",
+            "motivation": "Evaluate the ability to understand the context.",
+            "overall_match": false,
+            "correct_paths": [
+                {
+                    "path_id": 1,
+                    "functions": [
+                        "highest_rated_albums",
+                        "artist_info"
+                    ],
+                    "parameters": [
+                        {
+                            "rating_threshold": 4,
+                            "min_ratings": 100
+                        },
+                        {
+                            "artist_name": "Radiohead"
+                        }
+                    ]
+                }
+            ],
+            "model_solution": {
+                "functions": [
+                    "highest_rated_albums",
+                    "artist_info"
+                ],
+                "parameters": [
+                    {
+                        "rating_threshold": 4.0,
+                        "min_ratings": 100
+                    },
+                    {
+                        "artist_name": "Radiohead"
+                    }
+                ],
+                "answer": "```json\n{\n  'album': 'In Rainbows',\n  'rating_count': 51335,\n  'artist': 'Radiohead',\n  'country': 'United Kingdom',\n  'formed_in': '1991-01-01'\n}\n```"
+            },
+            "correct_answer": {
+                "ordered_items": [],
+                "answer": {
+                    "album": "Kid A",
+                    "rating_count": 61658,
+                    "artist": "Radiohead",
+                    "country": "United Kingdom",
+                    "formed_in": "1991-01-01"
+                }
+            },
+            "evaluation": {
+                "function_eval": "Correct",
+                "argument_eval": "Correct",
+                "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q3",
+            "category": "Interpretation",
+            "question": "Provide a list of four high-rated albums, each with a rating greater than 4.2 and a rating count exceeding 10,000. Select these albums based on their proximity to the present day, with the criteria of closeness determined by their release dates. Return the answer in JSON format: {'albums': [ordered_album_names_here],'release_dates': [release_dates_here]}",
+            "motivation": "Evaluate the ability to correctly make temporal interpretation and order albums according to the closeness to the present day",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_albums"],
+                "parameters": [{ "rating_threshold": 4.2, "min_ratings": 10000 }]
+              }
+            ],
+            "model_solution": {
+              "functions": ["high_rated_albums"],
+              "parameters": [{ "rating_threshold": 4.2, "min_ratings": 10000 }],
+              "answer": "```json\n{\n  'albums': [\n    'OK Computer',\n    'Kid A',\n    'The Dark Side of the Moon',\n    'Loveless'\n  ],\n  'release_dates': [\n    '1997-06-16',\n    '2000-10-03',\n    '1973-03-23',\n    '1991-11-11'\n  ]\n}\n```"
+            },
+            "correct_answer": {
+              "ordered_items": ["release_dates"],
+              "answer": {
+                "albums": [
+                  "To Pimp a Butterfly",
+                  "good kid, m.A.A.d city",
+                  "In Rainbows",
+                  "Madvillainy"
+                ],
+                "release_dates": [
+                  "2015-03-15",
+                  "2012-10-22",
+                  "2007-10-10",
+                  "2004-03-23"
+                ]
+              }
+            },
+            "evaluation": {
+              "function_eval": "Correct",
+              "argument_eval": "Correct",
+              "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_INT_Q5",
+            "category": "Interpretation",
+            "question": "Among the albums released in 1988 with average rating greater than 3.5, reviewed by more than 200 people, and rated by a minimum of 15,000 individuals, identify the latest album. Please provide only album(s) name. Return the answer in JSON format: {'album':'latest_album_name'}",
+            "motivation": "Evaluate the ability to correctly make temporal interpretation and identify timing of the albums",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["high_rated_reviewed_albums_by_date"],
+                "parameters": [
+                  {
+                    "rating_threshold": 3.5,
+                    "min_ratings": 15000,
+                    "review_threshold": 200,
+                    "release_date": "1988"
+                  }
+                ]
+              }
+            ],
+            "model_solution": {
+              "functions": ["high_rated_reviewed_albums"],
+              "parameters": [
+                {
+                  "rating_threshold": 3.5,
+                  "min_ratings": 15000,
+                  "review_threshold": 200
+                }
+              ],
+              "answer": "```json\n{'album':'Let's Start Here.'}\n```"
+            },
+            "correct_answer": {
+              "ordered_items": [],
+              "answer": { "album": "Isn't Anything" }
+            },
+            "evaluation": {
+              "function_eval": "Incorrect",
+              "argument_eval": "Incorrect",
+              "response_eval": "Incorrect"
+            }
+        },
+        {
+            "question_id": "MUSIC_SINGLE_STEP_ONE_SHOT_ECON_Q2",
+            "category": "Extra Context",
+            "question": "In 1961, in the American state of Philadelphia, on the first Friday after Thanksgiving, there was a great discount in the stores. The interest in this discount is so intense that convoys lasting hours are formed due to traffic congestion. In recent years, especially during the pandemic period, the excitement of Black Friday has increased exponentially as e-commerce sites have become indispensable in our lives. Can you return 6 top streamed songs of The Weeknd that store employees can play in the stores,in the order of up-to-dateness or alphabetically if they were released on the same date? Please provide only song(s) name Return the answer in JSON format: {'release_dates': [ordered_release_dates_here],'songs': [ordered_song_names_here]}",
+            "motivation": "Evaluate the ability to understand the context and to call the function to be called, incorporating ordering logic.",
+            "overall_match": false,
+            "correct_paths": [
+              {
+                "path_id": 1,
+                "functions": ["top_streamed_songs_by_artist"],
+                "parameters": [{ "artist_name": "The Weeknd", "n": 6 }]
+              }
+            ],
+            "model_solution": {
+              "functions": ["top_streamed_songs_by_artist"],
+              "parameters": [{ "artist_name": "The Weeknd", "n": 6 }],
+              "answer": "```json\n{\n  'release_dates': ['2023-04-21', '2022-12-02', '2022-01-07', '2022-01-07', '2022-01-07', '2018-03-29'],\n  'songs': ['Double Fantasy (with Future)', 'Creepin'', 'I Heard You're Married (feat. Lil Wayne)', 'Here We Go\u2026 Again (feat. Tyler, the Creator)', 'Starry Eyes', 'I Was Never There']\n}\n```"
+            },
+            "correct_answer": {
+              "ordered_items": ["release_dates"],
+              "answer": {
+                "release_dates": [
+                  "2023-04-21",
+                  "2022-12-02",
+                  "2022-01-07",
+                  "2022-01-07",
+                  "2022-01-07",
+                  "2018-03-29"
+                ],
+                "songs": [
+                  "Double Fantasy (with Future)",
+                  "Creepin'",
+                  "Here We Go\ufffd\ufffd\ufffd Again (feat. Tyler, the Cr",
+                  "I Heard You're Married (feat. Lil Wayne)",
+                  "Starry Eyes",
+                  "I Was Never There"
+                ]
+              }
+            },
+            "evaluation": {
+              "function_eval": "Correct",
+              "argument_eval": "Correct",
+              "response_eval": "Incorrect"
+            }
+        }                            
+    ]
+}

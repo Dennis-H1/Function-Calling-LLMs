@@ -1,0 +1,268 @@
+{
+  "question_result": [
+   {
+   "question_id": "MUSIC_PAR_MULTI_STEP_ONE_SHOT_ECON_Q3",
+   "category": "Extra Context",
+   "question": "The audio features of song containing the emotion of jealousy will be analysed. I would like to know the danceability score of the song of Bad Bunny, which contains an adjective related to jealousy in its name. The complete name of that song in Greek is '\u0394\u03b5\u03bd \u03b6\u03b7\u03bb\u03b5\u03cd\u03c9'. The song is originally in Spanish language, can you get the danceability score of this song whose title is mentioned. All this aforementioned jealousy reminded me of Justin Bieber's signature album. Get his albums and provide the average rating of Justin Bieber's album that marked the winter of 2015? Return the answer in JSON format: {'danceability_score': danceability_value, 'album_average_rating': average_rating_value}",
+   "motivation": "Evaluate the ability to understand the context.",
+   "overall_match": false,
+   "correct_paths": [
+      {
+         "path_id": 1,
+         "functions": ["song_info", "albums_by_artist_2"],
+         "parameters": [
+         {
+            "song_name": "Yo No Soy Celoso"
+         },
+         {
+            "artist_name": "Justin Bieber"
+         }
+         ]
+      }
+   ],
+   "model_solution": {
+      "functions": ["song_info", "albums_by_artist_2"],
+      "parameters": [
+         {
+         "song_name": "No Me Conoce"
+         },
+         {
+         "artist_name": "Justin Bieber"
+         }
+      ],
+      "answer": "The album 'Purpose' by Justin Bieber was released on November 13, 2015, which is in the winter of 2015. The average rating of this album is 2.48.\n\nHere is the JSON-formatted response with the danceability score (which could not be retrieved) and the album average rating:\n\n```json\n{\n  'danceability_score': null,\n  'album_average_rating': 2.48\n}\n```\n\nPlease note that the danceability score is set to `null` because the information for the song by Bad Bunny was not available."
+   },
+   "correct_answer": {
+      "ordered_items": [],
+      "answer": {
+         "danceability_score": 87,
+         "album_average_rating": 2.48
+      }
+   },
+   "evaluation": {
+      "function_eval": "Correct",
+      "argument_eval": "Incorrect",
+      "response_eval": "Incorrect"
+   }
+   },
+   {
+      "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q2",
+      "category":"Languages",
+      "question":"Γεια, είμαι στη Νέα Υόρκη με τη μαμά μου και θα μείνουμε σε ένα Airbnb κοντά στο κέντρο της πόλης για τέσσερις ημέρες. Το Airbnb στο οποίο μείναμε ονομαζόταν Room in Bushwick Bk, διαθέσιμο τον Ιούνιο. Μπορείτε να προτείνετε μερικά καλά εστιατόρια σε κοντινή απόσταση; Καταχωρίστε τη λεπτομερή διεύθυνσή τους, όπως πληροφορίες για το δρόμο..Return the answer in JSON format: {'distance': distance_to_airbnb, 'restaurant_building':'nearby_restaurant_building', 'restaurant_name': 'nearby_restaurant_name', 'restaurant_phone': 'nearby_restaurant_phone_num', 'restaurant_street': 'nearby_restaurant_street_name', 'restaurant_zip': nearby_restaurant_zip_code}",
+      "motivation":"Test the model's performance when presented with queries written in languages that do not use the Latin alphabet. Assess the accuracy and coherence of multi-call responses in diverse linguistic contexts. ",
+      "overall_match":false,
+      "correct_paths":[
+         {
+            "path_id":1,
+            "functions":[
+               "get_long_lat_by_airbnb",
+               "get_info_restaurant_with_zipcode_street_building"
+            ],
+            "parameters":[
+               {
+                  "listing":"Room in Bushwick Bk available June"
+               },
+               {
+                  "latitude":40.68651,
+                  "longitude":-73.91185
+               }
+            ]
+         }
+      ],
+      "model_solution":{
+         "functions":[
+            "get_long_lat_by_airbnb"
+         ],
+         "parameters":[
+            {
+               "listing":"Room in Bushwick Bk"
+            }
+         ],
+         "answer":"```json\n{'error':'Airbnb not found'}\n```"
+      },
+      "correct_answer":{
+         "ordered_items":[
+            
+         ],
+         "answer":{
+            "distance":4.98,
+            "restaurant_building":"1407",
+            "restaurant_name":"AUNTS ET UNCLES",
+            "restaurant_phone":"9175868529",
+            "restaurant_street":"NOSTRAND AVENUE",
+            "restaurant_zip":11226.0
+         }
+      },
+      "evaluation":{
+         "function_eval":"Partially Correct",
+         "argument_eval":"Incorrect",
+         "response_eval":"Incorrect"
+      }
+   },
+   {
+    "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q3",
+    "category":"Languages",
+    "question":"Përshëndetje, unë po qëndroj me familjen time në 'Apartament 1 Bedroom afër Northwell & JFK' në Nju Jork dhe do të qëndrojmë për disa ditë. Ne jetojmë në një Airbnb e cila është shumë afër qendrës së qytetit. A mund të më ndihmoni duke rekomanduar disa restorante të këndshme në zonë dhe duke më dhënë vendndodhjen e tyre të saktë? Return the answer in JSON format: {'distance': distance_to_airbnb, 'restaurant_building':'nearby_restaurant_building', 'restaurant_name': 'nearby_restaurant_name', 'restaurant_phone': 'nearby_restaurant_phone_num', 'restaurant_street': 'nearby_restaurant_street_name', 'restaurant_zip': nearby_restaurant_zip_code}",
+    "motivation":"Test the model's performance when presented with queries written in languages that do not use the Latin alphabet. Assess the accuracy and coherence of multi-call responses in diverse linguistic contexts.",
+    "overall_match":false,
+    "correct_paths":[
+       {
+          "path_id":1,
+          "functions":[
+             "get_long_lat_by_airbnb",
+             "get_info_restaurant_with_zipcode_street_building"
+          ],
+          "parameters":[
+             {
+                "listing":"1 Bedroom  Apartment close to Northwell & JFK"
+             },
+             {
+                "latitude":40.7229,
+                "longitude":-73.7462
+             }
+          ]
+       }
+    ],
+    "model_solution":{
+       "functions":[
+          "get_long_lat_by_airbnb"
+       ],
+       "parameters":[
+          {
+             "listing":"Apartament 1 Bedroom af\u00ebr Northwell & JFK"
+          }
+       ],
+       "answer":"{'error':'Airbnb location not found. Please provide more specific details about the Airbnb location.'}"
+    },
+    "correct_answer":{
+       "ordered_items":[
+          
+       ],
+       "answer":{
+          "distance":3.8,
+          "restaurant_building":"17237",
+          "restaurant_name":"El Tequilazo",
+          "restaurant_phone":"6462584663",
+          "restaurant_street":"HILLSIDE AVE",
+          "restaurant_zip":11432.0
+       }
+    },
+    "evaluation":{
+       "function_eval":"Partially Correct",
+       "argument_eval":"Incorrect",
+       "response_eval":"Incorrect"
+    }
+   },
+   {
+    "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q6",
+    "category":"Languages",
+    "question":"Θα πάω με την οικογένειά μου για μερικές μέρες στη Νέα Υόρκη και θέλουμε να περάσουμε υπέροχα εκεί. Για να το πετύχουμε αρχικά χρειαζόμαστε να βρούμε το πιο δημοφιλές μέρος για διαμονή κάπου κοντά στην περιοχή του Bronx και καθώς είμαστε μια μικρή οικογένεια θέλουμε να μείνουμε όλοι μαζί στο ίδιο μέρος. Αφού βρείτε το κατάλληλο Airbnb, παρακαλώ βρείτε μου επίσης ένα κοντινό εστιατόριο ώστε να πάμε εκεί και να φάμε. Return the answer in JSON format: {'restaurants_near_specified_airbnb': [most_popular_restaurant]}",
+    "motivation":"Test the model's performance when presented with queries written in languages that do not use the Latin alphabet. Assess the accuracy and coherence of multi-call responses in diverse linguistic contexts.",
+    "overall_match":false,
+    "correct_paths":[
+       {
+          "path_id":1,
+          "functions":[
+             "get_airbnb_with_max_reviews",
+             "get_restaurant_by_airbnb_closeness"
+          ],
+          "parameters":[
+             {
+                "popularity":1,
+                "neighborhood_group":"Bronx",
+                "room_type":"Shared Room"
+             },
+             {
+                "latitude":40.80772,
+                "longitude":-73.91791
+             }
+          ]
+       }
+    ],
+    "model_solution":{
+       "functions":[
+          "get_airbnb_with_max_reviews"
+       ],
+       "parameters":[
+          {
+             "popularity":1,
+             "neighbourhood_group":"Bronx",
+             "room_type":"Entire home/apt"
+          }
+       ],
+       "answer":"```json\n{'restaurants_near_specified_airbnb': []}\n```"
+    },
+    "correct_answer":{
+       "ordered_items":[
+          
+       ],
+       "answer":{
+          "restaurants_near_specified_airbnb":[
+             "JUICE RIGHT CORP.",
+             "ARTOPOLIS CAFE",
+             "MILA CAFE",
+             "JOE & THE JUICE"
+          ]
+       }
+    },
+    "evaluation":{
+       "function_eval":"Partially Correct",
+       "argument_eval":"Partially Correct",
+       "response_eval":"Incorrect"
+    }
+   },
+   {
+    "question_id":"TRAVEL_MULTI_CALL_SEQUENTIAL_LANG_Q1",
+    "category":"Languages",
+    "question":"Γεια, προς το παρων ειμαι στη Νεα Υορκη με κινεζους φιλους στο 'δωμάτιο με θέα'. Πειναμε και θελουμε να βρουμε γρηγορα καπου κοντα για να φαμε. Σε παρακαλω, βοηθησε με να βρω κατι εδω κοντα. Return the answer in JSON format: {'restaurants_nearby': [my_restaurant]}",
+    "motivation":"Test the ability of LLM to comprehend and respond in a different language other than English and perform multiple function calls while requested in different languages.",
+    "overall_match":false,
+    "correct_paths":[
+       {
+          "path_id":1,
+          "functions":[
+             "get_long_lat_by_airbnb",
+             "get_restaurant_by_airbnb_closeness"
+          ],
+          "parameters":[
+             {
+                "listing":"A room with a view"
+             },
+             {
+                "latitude":40.82649,
+                "longitude":-73.95253
+             }
+          ]
+       }
+    ],
+    "model_solution":{
+       "functions":[
+          "get_long_lat_by_airbnb"
+       ],
+       "parameters":[
+          {
+             "listing":"\u03b4\u03c9\u03bc\u03ac\u03c4\u03b9\u03bf \u03bc\u03b5 \u03b8\u03ad\u03b1"
+          }
+       ],
+       "answer":"```json\n{'restaurants_nearby': ['Airbnb not found, unable to locate nearby restaurants.']}\n```"
+    },
+    "correct_answer":{
+       "ordered_items":[
+          
+       ],
+       "answer":{
+          "restaurants_nearby":[
+             "JUICE RIGHT CORP",
+             "ARTOPOLIS CAFE",
+             "MILA CAFE"
+          ]
+       }
+    },
+    "evaluation":{
+       "function_eval":"Partially Correct",
+       "argument_eval":"Incorrect",
+       "response_eval":"Incorrect"
+    }
+   }
+  ]
+}
